@@ -85,6 +85,14 @@ classified tables into logical statements and arbitrates their relations.
   (`prose_window`), never from the fragment's own grid; the window's
   checkbox block is the discriminating grid and the reading carries its
   grain as provenance.
+- **Family profiles live once, as data, in the profile registry**: `profiles` is the
+  single home of family profiles for exactly the supported set — each profile carries
+  its measured support state per stratum, its vocabulary seat, its form-test
+  declarations (data only; the stage builds separately), its gate/seat bindings, its
+  exhibit links, and its prose-window permission (none for every family: prose
+  windows are genre-layer only). A family outside the registry does not compete; a
+  retired family is registry data with no profile, never a code branch. Profiles
+  carry stratum codes, never form names — form enters only as detected context data.
 - **Labor capture is schema-led prose-to-table**: linkage terms generate
   candidate spans and the employee group x contract x union fields bind
   inside a linked span only (`labor_capture`); schedule-header terms are

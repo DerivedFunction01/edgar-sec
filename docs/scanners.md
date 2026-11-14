@@ -55,6 +55,10 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
   provider. The URL module owns the rule table (read statically, so the gate and the
   runtime classifier cannot drift); the exhibits coverage registry's provenance
   citations are exempt because they are never fetched.
+- `tables-form-literals`: Bans quoted form-type literals under `engine/tables`, so the
+  classifier layer stays form-agnostic by gate: form enters only as detected context
+  data and per-form differences are family-profile data. Exhibit-type data and
+  stratum codes are not form types and are allowed.
 
 > [!NOTE]
 > `regex-alternations`, `legacy-shims`, `json-io`, and `date-patterns` exist to
