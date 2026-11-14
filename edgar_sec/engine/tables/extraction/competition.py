@@ -7,6 +7,7 @@ explained by a measured containment edge. Closure corroborates.
 
 from __future__ import annotations
 
+import math
 import re
 from dataclasses import dataclass, field
 from functools import lru_cache
@@ -16,8 +17,10 @@ from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
     CONTAINMENT_EDGES,
     INHERITANCE_FACTORS,
+    LADDER_EDGE_TERMS,
     SIGNATURE_TERMS,
     ContainmentEdge,
+    LadderTerm,
     SignatureTerm,
 )
 
@@ -32,6 +35,124 @@ INHERITANCE_FACTOR = 0.5
 INHERITANCE_MAX_DISTANCE = 3
 TIE_POINTS = 1.0
 FRAGMENT_MAX_STUBS = 8
+
+# Step 2A constants, derivation-priced (record: improvement
+# Step 2A). Vetoes are scored negative evidence only — the
+# Deliverable 1 pricing earned no hard veto anywhere.
+VETO_POINTS = 1.5
+AOCI_STUB_EVIDENCE_MIN = 6.0
+AOCI_GATE_MODE = "seat"
+LADDER_MARGIN = 1.0
+LADDER_SINGLE_MODE = "contest"
+REACH_DOMINANCE = 1.25
+REACH_FLOORS = {"pension": 4.0, "deferred_tax": 4.0}
+REACH_MIN_STUB_SHARE: dict[str, float] = {
+    "pension": 0.5,
+    "deferred_tax": 0.5,
+}
+
+# Detail signatures: named detail shapes a summary family never
+# carries, matched over stub + caption text (Deliverable 1 sets).
+DETAIL_SIGNATURES: dict[str, tuple[str, ...]] = {
+    "maturity_buckets": (
+        "thereafter",
+        "less than 1 year",
+        "1 to 2 years",
+        "2 to 3 years",
+        "3 to 4 years",
+        "4 to 5 years",
+        "more than 5 years",
+        "fiscal year ending",
+        "years ending december",
+    ),
+    "rollforward_movement": (
+        "beginning balance",
+        "beginning of year",
+        "beginning of period",
+        "ending balance",
+        "end of year",
+        "end of period",
+        "additions",
+        "deductions",
+        "settlements",
+        "curtailments",
+    ),
+    "period_columns": (
+        "three months ended",
+        "six months ended",
+        "nine months ended",
+        "year ended",
+        "years ended",
+        "quarter ended",
+    ),
+    "supplemental_schedule": (
+        "supplemental",
+        "schedule of",
+        "noncash",
+        "non-cash",
+    ),
+    "grant_activity": (
+        "granted",
+        "exercised",
+        "forfeited",
+        "vested",
+        "unvested",
+        "shares authorized",
+        "options outstanding",
+        "shares available",
+    ),
+    "composition_detail": (
+        "valuation allowance",
+        "net deferred tax",
+        "gross deferred tax",
+        "tax effect of",
+        "deferred tax assets",
+        "deferred tax liabilities",
+    ),
+    "percentage_rows": (
+        "% of",
+        "percentage of",
+        "percent of",
+        "as a percentage",
+    ),
+    "segment_detail": (
+        "total segment",
+        "corporate and other",
+        "eliminations",
+        "segment profit",
+        "segment revenue",
+        "operating segments",
+    ),
+    "acquisition_detail": (
+        "purchase price",
+        "consideration transferred",
+        "identifiable assets acquired",
+        "goodwill recognized",
+        "acquisition date",
+    ),
+}
+_YEAR_TOKENS = ("2022", "2023", "2024", "2025", "2026", "2027")
+
+# The scored class of the Deliverable 1 veto pricing: family ->
+# signatures whose kill rate beat member collateral by the rule.
+SCORED_VETOES: dict[str, tuple[str, ...]] = {
+    "balance_sheet": (
+        "acquisition_detail",
+        "period_columns",
+        "rollforward_movement",
+    ),
+    "comprehensive_income": ("year_columns",),
+    "deferred_tax": ("period_columns",),
+    "equity_statement": ("composition_detail",),
+    "income_statement": ("rollforward_movement", "segment_detail"),
+    "intangibles": (
+        "maturity_buckets",
+        "percentage_rows",
+        "period_columns",
+        "year_columns",
+    ),
+    "stock_comp_rollforward": ("period_columns",),
+}
 
 _HEADING_NOTE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
 _HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
@@ -138,6 +259,19 @@ class FamilyScore:
 
 
 @dataclass(frozen=True, slots=True)
+class ClaimGroup:
+    """One family's grouped scored return over a geometry."""
+
+    family: str
+    score: float
+    state: str
+    role: str
+    channels: dict[str, float]
+    veto_flags: tuple[str, ...]
+    explained_foreign: float
+
+
+@dataclass(frozen=True, slots=True)
 class CompetitionResult:
     """Claiming outcome: claims, contested pairs, and the scores."""
 
@@ -145,12 +279,27 @@ class CompetitionResult:
     contested: tuple[str, ...]
     scores: dict[str, FamilyScore]
     foreign_explained: dict[str, float] = field(default_factory=dict)
+    groups: tuple[ClaimGroup, ...] = ()
 
 
 def _term_present(term: str, text: str) -> bool:
     if " " in term or "-" in term:
         return term in text
     return _term_pattern(term).search(text) is not None
+
+
+def detail_signatures(geometry: GeometryText) -> set[str]:
+    """The named detail signatures present in stub + caption text."""
+    text = geometry.stub_text + " " + normalize_text(geometry.caption)
+    found = {
+        name
+        for name, terms in DETAIL_SIGNATURES.items()
+        if any(term in text for term in terms)
+    }
+    years = {y for y in _YEAR_TOKENS if y in geometry.stub_text}
+    if len(years) >= 2:
+        found.add("year_columns")
+    return found
 
 
 def score_geometry(
@@ -183,6 +332,23 @@ def score_geometry(
         scores[family] = FamilyScore(
             family, total, dict(channels), tuple(evidence[family])
         )
+    fired = detail_signatures(geometry)
+    for family, signatures in SCORED_VETOES.items():
+        score = scores.get(family)
+        if score is None:
+            continue
+        hits = [s for s in signatures if s in fired]
+        if not hits:
+            continue
+        penalty = VETO_POINTS * len(hits)
+        trail = score.evidence + tuple(
+            ClaimEvidence("veto", name, -VETO_POINTS) for name in hits
+        )
+        channels = dict(score.by_channel)
+        channels["veto"] = channels.get("veto", 0.0) - penalty
+        scores[family] = FamilyScore(
+            family, max(score.total - penalty, 0.0), channels, trail
+        )
     return scores
 
 
@@ -211,11 +377,35 @@ def _explained_foreign(
     return effective, explained
 
 
+def _aoci_rollforward_evidence(score: FamilyScore) -> bool:
+    """Rollforward evidence: framing mass, or a movement-shaped stub."""
+    framing = sum(
+        score.by_channel.get(c, 0.0) for c in ("caption", "notehead", "lead_title")
+    )
+    return framing > 0 or score.by_channel.get("stub", 0.0) >= (AOCI_STUB_EVIDENCE_MIN)
+
+
+def _ladder_direction(
+    geometry: GeometryText,
+    ladder_terms: tuple[LadderTerm, ...],
+) -> float:
+    """Signed debt/lease evidence: positive leans lease, from the edge."""
+    text = geometry.stub_text + " " + normalize_text(geometry.caption)
+    direction = 0.0
+    for spec in ladder_terms:
+        if spec.term in text:
+            direction += math.log(
+                (spec.support_lease + 1.0) / (spec.support_debt + 1.0)
+            )
+    return direction
+
+
 def compete(
     geometry: GeometryText,
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
     edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
     scores: dict[str, FamilyScore] | None = None,
+    ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
 ) -> CompetitionResult:
     """Issue claims for one geometry under the dominance rule."""
     scores = scores if scores is not None else score_geometry(geometry, terms)
@@ -235,11 +425,13 @@ def compete(
     claims: list[str] = []
     contested: list[str] = []
     explained_all: dict[str, float] = {}
+    explained_by: dict[str, dict[str, float]] = {}
     for candidate in ranked:
         if candidate.total < CLAIM_FLOOR:
             continue
         foreign, explained = _explained_foreign(candidate.family, scores, edges)
         explained_all.update(explained)
+        explained_by[candidate.family] = explained
         if foreign <= FOREIGN_ALLOWANCE:
             claims.append(candidate.family)
         elif candidate.total >= DOMINANCE_RATIO * foreign:
@@ -256,11 +448,135 @@ def compete(
         second = scores[claims[1]].total
         if top < DOMINANCE_RATIO * second:
             contested = claims[:2]
+    # Cure 1 (aoci bleed): an equity-seated aoci claim without
+    # rollforward evidence spawns from its column alone — gated.
+    aoci_seated = AOCI_GATE_MODE == "any" or (
+        AOCI_GATE_MODE == "seat" and "equity_statement" in claims
+    )
+    if (
+        aoci_seated
+        and "aoci_rollforward" in claims
+        and not _aoci_rollforward_evidence(scores["aoci_rollforward"])
+    ):
+        claims.remove("aoci_rollforward")
+        if "aoci_rollforward" in contested:
+            contested.remove("aoci_rollforward")
+        gated = scores["aoci_rollforward"]
+        scores = dict(scores)
+        scores["aoci_rollforward"] = FamilyScore(
+            gated.family,
+            gated.total,
+            dict(gated.by_channel),
+            gated.evidence
+            + (ClaimEvidence("gate", "aoci: no rollforward evidence", 0.0),),
+        )
+    # Cure 2 (ladder attribution): the map's priced edge terms
+    # decide debt vs lease before the pair stays contested.
+    attributed: list[str] = []
+    if "debt_maturity" in claims and "lease_maturity" in claims:
+        direction = _ladder_direction(geometry, ladder_terms)
+        loser = None
+        if direction >= LADDER_MARGIN:
+            loser = "debt_maturity"
+        elif direction <= -LADDER_MARGIN:
+            loser = "lease_maturity"
+        if loser is not None:
+            claims.remove(loser)
+            attributed.append(loser)
+            if loser in contested:
+                contested.remove(loser)
+            if len(contested) < 2:
+                contested = []
+    # Cure 2, single-claim arm: a decisive edge direction against
+    # a lone ladder claim contests or flips it (priced arms).
+    if LADDER_SINGLE_MODE != "off":
+        ladder_claims = [f for f in claims if f in ("debt_maturity", "lease_maturity")]
+        if len(ladder_claims) == 1:
+            holder = ladder_claims[0]
+            other = "lease_maturity" if holder == "debt_maturity" else "debt_maturity"
+            direction = _ladder_direction(geometry, ladder_terms)
+            opposed = (
+                direction >= LADDER_MARGIN
+                if holder == "debt_maturity"
+                else direction <= -LADDER_MARGIN
+            )
+            if opposed and other in scores:
+                if LADDER_SINGLE_MODE == "flip":
+                    claims.remove(holder)
+                    claims.append(other)
+                    attributed.append(holder)
+                elif not contested:
+                    claims.append(other)
+                    contested = [holder, other]
+    # Cures 4+5 (claim-reach): subject-evidence presence claims
+    # an otherwise unclaimed geometry at declared provenance.
+    reach: list[str] = []
+    if not claims:
+        best_other = max(
+            (s.total for f, s in scores.items() if f not in REACH_FLOORS),
+            default=0.0,
+        )
+        for family, floor in REACH_FLOORS.items():
+            score = scores.get(family)
+            if score is None:
+                continue
+            stub_share = (
+                score.by_channel.get("stub", 0.0) / score.total
+                if score.total > 0
+                else 0.0
+            )
+            if stub_share < REACH_MIN_STUB_SHARE.get(family, 0.0):
+                continue
+            if score.total >= floor and score.total >= (REACH_DOMINANCE * best_other):
+                claims.append(family)
+                reach.append(family)
+    role = (
+        "continuation"
+        if geometry.is_fragment
+        else "head"
+        if geometry.caption.strip()
+        else "standalone"
+    )
+    grouped: list[ClaimGroup] = []
+    for family in claims:
+        score = scores[family]
+        state = (
+            "contested"
+            if family in contested
+            else "reach"
+            if family in reach
+            else "claimed"
+        )
+        grouped.append(
+            ClaimGroup(
+                family,
+                score.total,
+                state,
+                role,
+                dict(score.by_channel),
+                tuple(e.detail for e in score.evidence if e.channel == "veto"),
+                sum(explained_by.get(family, {}).values()),
+            )
+        )
+    for family in attributed:
+        score = scores[family]
+        grouped.append(
+            ClaimGroup(
+                family,
+                score.total,
+                "attributed",
+                role,
+                dict(score.by_channel),
+                tuple(e.detail for e in score.evidence if e.channel == "veto"),
+                sum(explained_by.get(family, {}).values()),
+            )
+        )
     return CompetitionResult(
         claims=tuple(claims),
         contested=tuple(contested),
         scores=scores,
         foreign_explained=explained_all,
+        groups=tuple(grouped),
     )
 
 
@@ -271,13 +587,14 @@ def compete_filing(
     geometries: list[GeometryText] | tuple[GeometryText, ...],
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
     edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
+    ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
 ) -> list[CompetitionResult]:
     """Compete one filing's geometries with context fed back.
 
     Context lends evidence to unclaimed geometries only; it never
     overrides a geometry's own scored claim.
     """
-    results = [compete(g, terms, edges) for g in geometries]
+    results = [compete(g, terms, edges, ladder_terms=ladder_terms) for g in geometries]
     claimed_by_title: dict[str, dict[str, int]] = {}
     for geometry, result in zip(geometries, results, strict=True):
         if geometry.note_title and result.claims:
@@ -342,5 +659,11 @@ def compete_filing(
                 {"context": add},
                 (ClaimEvidence("context", "inherited/tie evidence", add),),
             )
-        results[index] = compete(geometries[index], terms, edges, scores=adjusted)
+        results[index] = compete(
+            geometries[index],
+            terms,
+            edges,
+            scores=adjusted,
+            ladder_terms=ladder_terms,
+        )
     return results

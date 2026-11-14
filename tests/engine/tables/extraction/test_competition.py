@@ -142,6 +142,188 @@ def test_lead_title_channel_decides_an_equity_fragment() -> None:
     assert "lead_title" in result.scores["equity_statement"].by_channel
 
 
+def test_groups_carry_the_scored_contract() -> None:
+    geometry = GeometryText(
+        caption="Operating Lease Liabilities",
+        leadin="Lease liabilities mature as follows; future cash flows are summarized.",
+        stubs=("2025", "Total undiscounted lease payments"),
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert len(result.groups) == 1
+    group = result.groups[0]
+    assert group.family == "lease_maturity"
+    assert group.state == "claimed"
+    assert group.role == "head"
+    assert group.veto_flags == ()
+    assert group.score == result.scores["lease_maturity"].total
+
+
+def test_scored_veto_can_kill_a_detail_shaped_claim() -> None:
+    terms = (
+        SignatureTerm("intangibles", "stub", "intangible assets", 4.0, 30, 0),
+        SignatureTerm("intangibles", "caption", "intangible assets", 3.0, 30, 0),
+    )
+    detailed = GeometryText(
+        caption="Intangible Assets",
+        stubs=("Intangible assets", "2024", "2025", "Thereafter"),
+    )
+    plain = GeometryText(
+        caption="Intangible Assets",
+        stubs=("Intangible assets", "Finite-lived assets"),
+    )
+    killed = compete(detailed, terms=terms, edges=())
+    assert killed.claims == ()
+    vetoed = killed.scores["intangibles"]
+    assert vetoed.by_channel["veto"] == -3.0
+    flags = {e.detail for e in vetoed.evidence if e.channel == "veto"}
+    assert flags == {"year_columns", "maturity_buckets"}
+    assert compete(plain, terms=terms, edges=()).claims == ("intangibles",)
+
+
+def test_aoci_claim_needs_rollforward_evidence() -> None:
+    terms = (
+        SignatureTerm(
+            "aoci_rollforward",
+            "stub",
+            "accumulated other comprehensive",
+            4.0,
+            30,
+            0,
+        ),
+        SignatureTerm(
+            "aoci_rollforward",
+            "leadin",
+            "accumulated other comprehensive income",
+            3.0,
+            30,
+            0,
+        ),
+        SignatureTerm("equity_statement", "caption", "changes in equity", 2.5, 40, 1),
+        SignatureTerm("equity_statement", "leadin", "statement of changes", 2.5, 38, 1),
+        SignatureTerm("equity_statement", "stub", "shares issued", 2.0, 30, 5),
+    )
+    seated = GeometryText(
+        caption="Statements of Changes in Equity",
+        leadin=(
+            "Statement of changes. Accumulated other comprehensive income is a column."
+        ),
+        stubs=(
+            "Shares issued",
+            "Accumulated other comprehensive loss",
+        ),
+    )
+    gated = compete(seated, terms=terms, edges=_EDGES)
+    assert "equity_statement" in gated.claims
+    assert "aoci_rollforward" not in gated.claims
+    trail = gated.scores["aoci_rollforward"].evidence
+    assert any(e.channel == "gate" for e in trail)
+    framed_terms = terms + (
+        SignatureTerm(
+            "aoci_rollforward",
+            "notehead",
+            "accumulated other comprehensive",
+            2.5,
+            30,
+            0,
+        ),
+    )
+    framed = GeometryText(
+        caption="Statements of Changes in Equity",
+        leadin=(
+            "Statement of changes. Accumulated other comprehensive income is a column."
+        ),
+        notehead="Accumulated Other Comprehensive Income",
+        stubs=(
+            "Shares issued",
+            "Accumulated other comprehensive loss",
+        ),
+    )
+    result = compete(framed, terms=framed_terms, edges=_EDGES)
+    assert "aoci_rollforward" in result.claims
+
+
+def test_ladder_edge_terms_attribute_a_contested_pair() -> None:
+    from edgar_sec.engine.tables.extraction.signature_profiles import LadderTerm
+
+    ladder = (
+        LadderTerm("thereafter", 17, 82),
+        LadderTerm("total", 21, 19),
+    )
+    geometry = GeometryText(
+        caption="Long-term Debt and Operating Lease",
+        leadin="Senior notes and lease liabilities are presented together.",
+        stubs=(
+            "Aggregate maturities",
+            "Total undiscounted lease payments",
+            "Thereafter",
+        ),
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES, ladder_terms=ladder)
+    assert result.claims == ("lease_maturity",)
+    states = {g.family: g.state for g in result.groups}
+    assert states["debt_maturity"] == "attributed"
+    untyped = compete(geometry, terms=_TERMS, edges=_EDGES, ladder_terms=())
+    assert set(untyped.contested) == {"debt_maturity", "lease_maturity"}
+
+
+def test_ladder_edge_terms_contest_a_lone_inverted_claim() -> None:
+    from edgar_sec.engine.tables.extraction.signature_profiles import LadderTerm
+
+    ladder = (LadderTerm("thereafter", 17, 82),)
+    geometry = GeometryText(
+        caption="Long-term Debt",
+        leadin="Senior notes mature as follows.",
+        stubs=(
+            "Aggregate maturities",
+            "Undiscounted lease payments",
+            "Thereafter",
+        ),
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES, ladder_terms=ladder)
+    assert set(result.claims) == {"debt_maturity", "lease_maturity"}
+    assert set(result.contested) == {"debt_maturity", "lease_maturity"}
+    untyped = compete(geometry, terms=_TERMS, edges=_EDGES, ladder_terms=())
+    assert untyped.claims == ("debt_maturity",)
+    assert untyped.contested == ()
+
+
+def test_presence_reach_claims_an_unclaimed_pension_geometry() -> None:
+    terms = (
+        SignatureTerm("pension", "stub", "pension obligation", 5.5, 30, 0),
+        SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
+    )
+    geometry = GeometryText(stubs=("Pension obligation", "Cash flows"))
+    result = compete(geometry, terms=terms, edges=())
+    assert result.claims == ("pension",)
+    assert result.groups[0].state == "reach"
+    weak_terms = (
+        SignatureTerm("pension", "stub", "pension obligation", 4.0, 30, 0),
+        SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
+    )
+    assert compete(geometry, terms=weak_terms, edges=()).claims == ()
+
+
+def test_reach_requires_a_stub_share_of_the_family_evidence() -> None:
+    terms = (
+        SignatureTerm("pension", "caption", "pension", 4.5, 30, 0),
+        SignatureTerm("pension", "stub", "pension obligation", 1.0, 30, 0),
+        SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
+    )
+    geometry = GeometryText(
+        caption="Pension",
+        stubs=("Pension obligation", "Cash flows"),
+    )
+    assert compete(geometry, terms=terms, edges=()).claims == ()
+    stub_led = (
+        SignatureTerm("pension", "caption", "pension", 1.0, 30, 0),
+        SignatureTerm("pension", "stub", "pension obligation", 4.5, 30, 0),
+        SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
+    )
+    result = compete(geometry, terms=stub_led, edges=())
+    assert result.claims == ("pension",)
+    assert result.groups[0].state == "reach"
+
+
 def test_fragment_inherits_from_preceding_claim_in_same_note() -> None:
     # The family's inheritance factor is the map's measured
     # title-decides share; equity's is the corpus's highest, so the
