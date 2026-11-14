@@ -142,9 +142,9 @@ def test_statement_index_later_is_refused_on_content() -> None:
 
 
 def test_money_carrying_index_later_is_not_refused() -> None:
-    rows = tuple(
-        (label, values) for label, values in _NOTE_INDEX[:6]
-    ) + (("Long-term debt", (1234.0,)),)
+    rows = tuple((label, values) for label, values in _NOTE_INDEX[:6]) + (
+        ("Long-term debt", (1234.0,)),
+    )
     table = _table(rows, index=224)
     assert toc_signals(table).currency_present
     assert toc_refusal(table) is None

@@ -464,9 +464,7 @@ def classify_table(
     toc = toc_refusal(table)
     if toc is not None:
         labels = [normalize_text(row.label) for row in table.rows]
-        evidence = _context_base(table) + [
-            Evidence("genre_refusal", toc.detail, 0.0)
-        ]
+        evidence = _context_base(table) + [Evidence("genre_refusal", toc.detail, 0.0)]
         return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
     result = _cascade(table, policy, math_outcomes)
     refusal = _section_refusal(table, result.family, policy)
