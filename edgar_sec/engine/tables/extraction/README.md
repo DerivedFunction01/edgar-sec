@@ -71,6 +71,20 @@ classified tables into logical statements and arbitrates their relations.
   foreign words never discriminate. Arithmetic closure corroborates
   the leading family only; it never vetoes. Within a filing, header
   inheritance and cross-parse ties feed back as context evidence.
+- **Prose-window grain decides what the geometry cannot**: a filer-status
+  checkbox fragment is decided from the bounded prose window framing it
+  (`prose_window`), never from the fragment's own grid; the window's
+  checkbox block is the discriminating grid and the reading carries its
+  grain as provenance.
+- **Labor capture is schema-led prose-to-table**: linkage terms generate
+  candidate spans and the employee group x contract x union fields bind
+  inside a linked span only (`labor_capture`); schedule-header terms are
+  field evidence, never generators, rows are text-valued, and an explicit
+  negation binds as a zero fact, not a carrier.
+- **Residue families claim on content, not title alone**: segment,
+  commitments and related-party note-title points land only on grids
+  whose own content corroborates the family (`residue_families`); an
+  uncorroborated sibling grid in the same note earns no title claim.
 - **A filing is classified as a constellation, not table by table**:
   confident core anchors bound the statement zone, and a note satellite's
   win before the first anchor is discounted; a family's registered note

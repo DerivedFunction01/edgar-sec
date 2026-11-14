@@ -9,6 +9,11 @@ from edgar_sec.engine.tables.extraction.calibration import (
     PATTERNS,
     PROSE_PATTERNS,
 )
+from edgar_sec.engine.tables.extraction.competition import geometry_text_from_table
+from edgar_sec.engine.tables.extraction.residue_families import (
+    CONTENT_GATED_FAMILIES,
+    corroborates,
+)
 from edgar_sec.engine.tables.extraction.grouping import grouping_signatures
 from edgar_sec.engine.tables.extraction.negative_evidence import NEGATIVE_EVIDENCE
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
@@ -306,6 +311,13 @@ def _score_family(
             if spec.family != family or note_hits >= NOTE_GROUP_QUOTA:
                 continue
             if spec.phrase in title:
+                if family in CONTENT_GATED_FAMILIES and not corroborates(
+                    family, geometry_text_from_table(table)
+                ):
+                    evidence.append(
+                        Evidence("note", f"{spec.phrase} (uncorroborated)", 0.0)
+                    )
+                    continue
                 note_hits += 1
                 score += spec.points
                 evidence.append(Evidence("note", spec.phrase, spec.points))
