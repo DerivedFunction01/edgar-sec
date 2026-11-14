@@ -45,6 +45,16 @@ class ContainmentEdge:
     provenance: str = PROV_STEP1B_MAP
 
 
+@dataclass(frozen=True, slots=True)
+class LadderTerm:
+    """One debt/lease shared term with its per-subject supports."""
+
+    term: str
+    support_debt: int
+    support_lease: int
+    provenance: str = PROV_STEP1B_MAP
+
+
 def _channel(name: str) -> str:
     return _MAP_CHANNEL.get(name, name)
 
@@ -97,6 +107,12 @@ def _assemble() -> tuple[tuple[SignatureTerm, ...], tuple[ContainmentEdge, ...]]
 
 
 SIGNATURE_TERMS, CONTAINMENT_EDGES = _assemble()
+
+LADDER_EDGE_TERMS: tuple[LadderTerm, ...] = tuple(
+    LadderTerm(spec.term, spec.support_debt, spec.support_lease)
+    for spec in load_map().edge_terms
+    if spec.edge == "debt_maturity/lease_maturity"
+)
 
 CHANNEL_WEIGHTS: dict[str, float] = {
     _channel(spec.channel): spec.weight for spec in load_map().channels
