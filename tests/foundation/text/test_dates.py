@@ -5,6 +5,7 @@ from __future__ import annotations
 from edgar_sec.foundation.text.dates import (
     MONTH_NAME_RE,
     MONTH_NAMES,
+    RE_DATE_OR_YEAR,
     RE_FULL_DATE,
     YEAR_IN_TEXT_RE,
     YEAR_TOKEN_RE,
@@ -47,6 +48,16 @@ def test_full_date_regex() -> None:
     m2 = RE_FULL_DATE.search(text2)
     assert m2 is not None
     assert m2.group(0) == "March 15 2023"
+
+
+def test_date_or_year_prefers_the_full_date() -> None:
+    m = RE_DATE_OR_YEAR.search("The agreement expires March 31, 2016.")
+    assert m is not None
+    assert m.group(0) == "March 31, 2016"
+    bare = RE_DATE_OR_YEAR.search("The agreement was ratified in 2013.")
+    assert bare is not None
+    assert bare.group(0) == "2013"
+    assert RE_DATE_OR_YEAR.search("no date or year in this span") is None
 
 
 def test_year_recognizers_are_full_range_with_no_narrowed_variant() -> None:

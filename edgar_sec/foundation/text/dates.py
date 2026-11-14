@@ -84,6 +84,11 @@ _RE_DATE_FRAGMENT = re.compile(
 _DATE_TOKEN_PAT = rf"(?:{MONTH_PATTERN})\s+\d{{1,2}},?\s+{YEAR_TOKEN_PATTERN}"
 RE_FULL_DATE = re.compile(rf"\b(?:{_DATE_TOKEN_PAT})\b", re.IGNORECASE)
 
+_DATE_OR_YEAR_PAT = build_alternation(
+    [_DATE_TOKEN_PAT, YEAR_TOKEN_PATTERN], auto_escape=False, compact=False
+)
+RE_DATE_OR_YEAR = re.compile(rf"\b(?:{_DATE_OR_YEAR_PAT})\b", re.IGNORECASE)
+
 
 _Q_TOKEN_PAT = rf"Q[1-4]\s+{YEAR_TOKEN_PATTERN}"
 _PERIOD_TOKEN_PAT = build_alternation(
@@ -705,6 +710,7 @@ __all__ = [
     "ORDINAL_SUFFIX_RE",
     "PERIOD_SUBHEADING_PAT",
     "PERIOD_SUBHEADING_RE",
+    "RE_DATE_OR_YEAR",
     "RE_FULL_DATE",
     "SEC_DATE_FORMATS",
     "TABLE_YEAR_RE",

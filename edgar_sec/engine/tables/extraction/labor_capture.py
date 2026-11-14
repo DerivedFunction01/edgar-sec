@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_PATTERN
+from edgar_sec.foundation.text.dates import RE_DATE_OR_YEAR
 
 PROV_STEP3_LABOR = "improvement-step3:labor-capture"
 
@@ -42,8 +42,6 @@ UNION_ACRONYMS = (
     "OPEIU",
     "RWDSU",
 )
-_DATE = rf"(?:{MONTH_PATTERN})\s+\d{{1,2}},?\s+\d{{4}}|\d{{4}}"
-_DATE_RE = re.compile(_DATE, re.IGNORECASE)
 _TERM_KEYWORDS = ("expir", "ratifi", "effective", "renew", "through", "until")
 _NEGATION_RE = re.compile(
     build_alternation(
@@ -113,7 +111,7 @@ def _union_in(span: str) -> str | None:
 
 def _contract_terms(span: str) -> tuple[str, ...]:
     terms: list[str] = []
-    for match in _DATE_RE.finditer(span):
+    for match in RE_DATE_OR_YEAR.finditer(span):
         start = max(0, match.start() - 60)
         lead = span[start : match.start()].lower()
         if any(keyword in lead for keyword in _TERM_KEYWORDS):
@@ -143,7 +141,7 @@ def _bind(span: str) -> LaborRow:
 
 def _field_evidence(sentence: str) -> bool:
     return (
-        _DATE_RE.search(sentence) is not None
+        RE_DATE_OR_YEAR.search(sentence) is not None
         or _COUNT_RE.search(sentence) is not None
         or _union_in(sentence) is not None
         or any(keyword in sentence.lower() for keyword in _TERM_KEYWORDS)
