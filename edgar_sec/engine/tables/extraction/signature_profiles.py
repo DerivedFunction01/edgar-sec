@@ -1,12 +1,11 @@
 """Signature profile types, assembled from the subject-evidence map.
 
-The profile data is the Step 1B subject-evidence map (the shared
-contract): its measured terms, containment edges, channel weights,
-and header/title inheritance pricing, assembled here into the
-competition layer's scoring shapes. Weights are smoothed log odds
-ratios of member vs foreign-member channel presence, with foreign
-support joined across families on term and channel from the map.
+The map is the shared contract: its measured terms, edges, channel
+weights, and inheritance pricing in the competition layer's shapes.
 """
+
+# Weights are smoothed log odds ratios of member vs foreign-member
+# channel presence; foreign support joins families on term+channel.
 
 from __future__ import annotations
 

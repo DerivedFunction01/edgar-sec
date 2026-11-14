@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from functools import lru_cache
 
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.signature_profiles import (
@@ -34,6 +35,13 @@ FRAGMENT_MAX_STUBS = 8
 
 _HEADING_NOTE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
 _HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
+_TITLE_SPLIT = re.compile(r"\s*\|\s*|\n")
+
+
+@lru_cache(maxsize=None)
+def _term_pattern(term: str) -> re.Pattern[str]:
+    """One term's word-boundary pattern, compiled once per term."""
+    return re.compile(r"\b" + re.escape(term) + r"\b")
 
 
 def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
@@ -57,7 +65,7 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
 def lead_title_text(prose_before: str) -> str:
     """The lead-in's title segments: its first two framing chunks."""
     segments = []
-    for chunk in re.split(r"\s*\|\s*|\n", prose_before or ""):
+    for chunk in _TITLE_SPLIT.split(prose_before or ""):
         stripped = chunk.strip()
         if stripped:
             segments.append(stripped)
@@ -142,7 +150,7 @@ class CompetitionResult:
 def _term_present(term: str, text: str) -> bool:
     if " " in term or "-" in term:
         return term in text
-    return re.search(r"\b" + re.escape(term) + r"\b", text) is not None
+    return _term_pattern(term).search(text) is not None
 
 
 def score_geometry(
@@ -256,6 +264,9 @@ def compete(
     )
 
 
+# Inheritance lends a fragment the discounted evidence of the
+# nearest preceding claim in its note or section; a note title
+# shared with 2+ same-family claims lends that family tie evidence.
 def compete_filing(
     geometries: list[GeometryText] | tuple[GeometryText, ...],
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
@@ -263,11 +274,8 @@ def compete_filing(
 ) -> list[CompetitionResult]:
     """Compete one filing's geometries with context fed back.
 
-    Header inheritance: a fragment with no claim inherits discounted
-    evidence from the nearest preceding claimed geometry in the same
-    note or section. Cross-parse ties: an unclaimed geometry sharing
-    a note title with two or more same-family claims gains tie
-    evidence for that family. Neither act overrides a scored claim.
+    Context lends evidence to unclaimed geometries only; it never
+    overrides a geometry's own scored claim.
     """
     results = [compete(g, terms, edges) for g in geometries]
     claimed_by_title: dict[str, dict[str, int]] = {}
