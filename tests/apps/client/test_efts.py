@@ -58,7 +58,7 @@ def _echo_for(url: str) -> dict[str, Any]:
     }
 
 
-def _hit(document_id: str, score: float = 1.0) -> dict[str, Any]:
+def _hit(document_id: str, score: float = 1.0, form: str = "10-K") -> dict[str, Any]:
     accession, _, _filename = document_id.partition(":")
     return {
         "_index": "edgar_file",
@@ -68,11 +68,11 @@ def _hit(document_id: str, score: float = 1.0) -> dict[str, Any]:
             "adsh": accession,
             "ciks": ["0000320193"],
             "display_names": ["APPLE INC  (AAPL)  (CIK 0000320193)"],
-            "form": "10-K",
-            "root_forms": ["10-K"],
+            "form": form,
+            "root_forms": [form],
             "file_date": "2020-01-15",
             "period_ending": "2019-12-31",
-            "file_type": "10-K",
+            "file_type": form,
             "file_description": "annual report",
             "items": [],
             "sics": ["3571"],
@@ -464,6 +464,153 @@ def test_plain_search_leaves_the_artifacts_tree_untouched(tmp_path: Path) -> Non
     assert capture.directory.is_dir()
     assert (capture.directory / "query.json").is_file()
     assert (capture.directory / "hits.parquet").is_file()
+
+
+class _MultiFormHttp:
+    """Per-form datasets; a comma-joined forms param collapses to the last form.
+
+    The collapse mirrors the live endpoint's verified defect.
+    """
+
+    def __init__(self, datasets: dict[str, list[dict[str, Any]]]) -> None:
+        self.datasets = datasets
+        self.calls: list[str] = []
+
+    def get_json(self, url: str) -> Any:
+        self.calls.append(url)
+        params = parse_qs(urlsplit(url).query)
+        forms = params["forms"][0].split(",") if "forms" in params else []
+        served = self.datasets.get(forms[-1], []) if forms else []
+        offset = int(params["from"][0])
+        page = served[offset : offset + 100]
+        buckets = [{"key": forms[-1], "doc_count": len(served)}] if forms else []
+        return {
+            "hits": {
+                "total": {"value": len(served), "relation": "eq"},
+                "hits": page,
+            },
+            "aggregations": {
+                "form_filter": {"buckets": buckets, "sum_other_doc_count": 0}
+            },
+            "query": _echo_for(url),
+        }
+
+
+def _multi_form_datasets() -> dict[str, list[dict[str, Any]]]:
+    return {
+        "10-K": [
+            _hit(f"0000320193-20-00000{i}:k{i}.htm", form="10-K") for i in range(3)
+        ],
+        "10-K/A": [
+            _hit(f"0000320193-20-00010{i}:a{i}.htm", form="10-K/A") for i in range(2)
+        ],
+    }
+
+
+def test_multi_form_search_unions_the_per_form_results() -> None:
+    datasets = _multi_form_datasets()
+    base = full_text_search(
+        EftsQuery(text="apple", forms=("10-K",)), client=_MultiFormHttp(datasets)
+    )
+    amended = full_text_search(
+        EftsQuery(text="apple", forms=("10-K/A",)), client=_MultiFormHttp(datasets)
+    )
+    client = _MultiFormHttp(datasets)
+    result = full_text_search(
+        EftsQuery(text="apple", forms=("10-K", "10-K/A")), client=client
+    )
+
+    assert result.coverage.total_value == (
+        base.coverage.total_value + amended.coverage.total_value
+    )
+    assert result.coverage.total_value == 5
+    assert [hit.document_id for hit in result.hits] == [
+        hit.document_id for hit in base.hits
+    ] + [hit.document_id for hit in amended.hits]
+    assert {hit.form for hit in result.hits} == {"10-K", "10-K/A"}
+    assert result.coverage.hits_returned == 5
+    assert result.coverage.truncated is False
+    sent_forms = {parse_qs(urlsplit(call).query)["forms"][0] for call in client.calls}
+    assert sent_forms == {"10-K", "10-K/A"}
+    form_counts = {
+        bucket.key: bucket.doc_count
+        for agg in result.aggregations
+        if agg.name == "form_filter"
+        for bucket in agg.buckets
+    }
+    assert form_counts == {"10-K": 3, "10-K/A": 2}
+
+
+def test_multi_form_union_is_order_independent_in_membership() -> None:
+    datasets = _multi_form_datasets()
+    forward = full_text_search(
+        EftsQuery(text="apple", forms=("10-K", "10-K/A")),
+        client=_MultiFormHttp(datasets),
+    )
+    reverse = full_text_search(
+        EftsQuery(text="apple", forms=("10-K/A", "10-K")),
+        client=_MultiFormHttp(datasets),
+    )
+
+    assert reverse.coverage.total_value == forward.coverage.total_value == 5
+    assert {hit.document_id for hit in reverse.hits} == {
+        hit.document_id for hit in forward.hits
+    }
+
+
+def test_multi_form_search_all_dedupes_documents_shared_across_forms() -> None:
+    datasets = _multi_form_datasets()
+    shared = _hit("0000320193-20-000099:shared.htm", form="10-K/A")
+    datasets["10-K"].append(shared)
+    datasets["10-K/A"].append(shared)
+
+    result = search_all(
+        EftsQuery(text="apple", forms=("10-K", "10-K/A")),
+        client=_MultiFormHttp(datasets),
+    )
+
+    ids = [hit.document_id for hit in result.hits]
+    assert len(ids) == len(set(ids)) == 6
+    assert result.coverage.total_value == 6
+    assert result.coverage.hits_returned == 6
+
+    pages = list(
+        iter_search_pages(
+            EftsQuery(text="apple", forms=("10-K", "10-K/A")),
+            client=_MultiFormHttp(_multi_form_datasets()),
+        )
+    )
+    assert [page.offset for page in pages] == [0]
+    assert pages[0].total_value == 5
+    assert len(pages[0].hits) == 5
+
+
+def test_multi_form_max_hits_caps_the_union_not_one_form() -> None:
+    client = _MultiFormHttp(_multi_form_datasets())
+    result = full_text_search(
+        EftsQuery(text="apple", forms=("10-K", "10-K/A")),
+        client=client,
+        max_hits=4,
+    )
+
+    assert result.coverage.hits_returned == 4
+    assert result.coverage.total_value == 5
+    assert result.coverage.truncated is True
+    assert {hit.form for hit in result.hits} == {"10-K", "10-K/A"}
+
+
+def test_multi_form_capture_writes_the_union_identities(tmp_path: Path) -> None:
+    from edgar_sec.apps.client.efts import capture_full_text_search
+
+    capture = capture_full_text_search(
+        EftsQuery(text="apple", forms=("10-K", "10-K/A")),
+        client=_MultiFormHttp(_multi_form_datasets()),
+        artifacts_root=tmp_path,
+    )
+
+    assert capture.coverage.total_value == 5
+    assert capture.coverage.hits_returned == 5
+    assert {identity.form for identity in capture.identities} == {"10-K", "10-K/A"}
 
 
 def test_fixture_payloads_are_json_objects() -> None:

@@ -365,7 +365,7 @@ def _fetch_page(query: EftsQuery, offset: int, *, client: Any) -> EftsPage:
     )
 
 
-def iter_search_pages(
+def _iter_pages_single_form(
     query: EftsQuery,
     *,
     client: Any,
@@ -394,6 +394,27 @@ def iter_search_pages(
             return
         if page.total_relation == "eq" and offset >= page.total_value:
             return
+
+
+def iter_search_pages(
+    query: EftsQuery,
+    *,
+    client: Any,
+    max_hits: int | None = None,
+) -> Iterator[EftsPage]:
+    """Yield pages of 100 hits until the reported total or the ceiling.
+
+    A multi-form query fans out per form and yields the union; a
+    single-form query walks the endpoint exactly as probed.
+    """
+    if len(query.forms) <= 1:
+        yield from _iter_pages_single_form(query, client=client, max_hits=max_hits)
+        return
+    from edgar_sec.apps.client.efts_union import iter_pages_multi_form
+
+    yield from iter_pages_multi_form(
+        query, client=client, max_hits=max_hits, walk=_iter_pages_single_form
+    )
 
 
 def full_text_search(
