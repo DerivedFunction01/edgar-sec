@@ -21,6 +21,8 @@ class SectionRef:
 
     item: str | None
     title: str | None
+    form: str | None = None
+    part: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -117,7 +119,12 @@ class TableContext:
             location=(location["start_line"], location["end_line"])
             if location
             else None,
-            section=SectionRef(section.get("item"), section.get("title"))
+            section=SectionRef(
+                section.get("item"),
+                section.get("title"),
+                section.get("form"),
+                section.get("part"),
+            )
             if section
             else None,
             note=NoteRef(note.get("number"), note.get("label"), note.get("title"))

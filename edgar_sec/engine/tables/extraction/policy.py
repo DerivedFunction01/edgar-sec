@@ -30,6 +30,7 @@ class ClassificationPolicy:
 
     specific: tuple[Anchor | LabelRule, ...] = ()
     location_priors: tuple[tuple[str, str | None, float], ...] = ()
+    section_scopes: tuple[tuple[str, str | None, str, str], ...] = ()
 
     def location_share(self, family: str, item: str | None) -> float | None:
         """The prior share for a family in an Item, or None when unset."""

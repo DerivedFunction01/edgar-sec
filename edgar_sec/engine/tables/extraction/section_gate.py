@@ -1,0 +1,120 @@
+"""Section-position gating: the declared section map as genre reach.
+
+Statement-family claims at MD&A position are refused by position
+alone, with the refusal recorded; every other position is silent.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from enum import Enum
+
+from edgar_sec.engine.tables.extraction.normalize import normalize_text
+
+STATEMENT_FAMILIES = frozenset(
+    {
+        "balance_sheet",
+        "income_statement",
+        "cash_flow",
+        "comprehensive_income",
+        "equity_statement",
+    }
+)
+
+_MDA_TITLE = "management's discussion and analysis"
+_FS_TITLE = "financial statements"
+
+# One declared-map row: (form base, part, item, scope name), carried
+# on the classification policy; the forms layer owns the map itself.
+ScopeRow = tuple[str, str | None, str, str]
+
+
+class SectionScope(Enum):
+    """Where a section sits relative to the financial statements."""
+
+    FINANCIAL_STATEMENTS = "financial_statements"
+    MDA = "mda"
+    OTHER = "other"
+    UNKNOWN = "unknown"
+
+
+@dataclass(frozen=True, slots=True)
+class GenreRefusal:
+    """One statement-family claim refused by section position."""
+
+    family: str
+    scope: SectionScope
+    form: str | None
+    part: str | None
+    item: str | None
+    detail: str
+
+
+def _base_form(form: str | None) -> str | None:
+    if form is None:
+        return None
+    return form.split("/")[0].strip().upper()
+
+
+def section_scope(
+    scopes: tuple[ScopeRow, ...],
+    form: str | None,
+    part: str | None,
+    item: str | None,
+    title: str | None = None,
+) -> SectionScope:
+    """The declared scope of one section position.
+
+    A title naming MD&A or the financial statements decides ahead
+    of the injected item map; unmapped positions stay silent.
+    """
+    if title:
+        normalized = normalize_text(title)
+        if _MDA_TITLE in normalized:
+            return SectionScope.MDA
+        if _FS_TITLE in normalized:
+            return SectionScope.FINANCIAL_STATEMENTS
+    if item is None:
+        return SectionScope.UNKNOWN
+    item_key = item.strip().upper()
+    part_key = part.strip().upper() if part else None
+    base = _base_form(form)
+    for form_base, map_part, map_item, scope_name in scopes:
+        if map_item != item_key:
+            continue
+        if map_part is not None and map_part != part_key:
+            continue
+        if base is not None and base != form_base:
+            continue
+        if base is None and map_part is not None:
+            continue
+        return SectionScope(scope_name)
+    return SectionScope.OTHER
+
+
+def genre_refusal(
+    scopes: tuple[ScopeRow, ...],
+    family: str,
+    form: str | None,
+    part: str | None,
+    item: str | None,
+    title: str | None = None,
+) -> GenreRefusal | None:
+    """Refuse a statement-family claim seated at MD&A position.
+
+    Only statement families refuse, and only at MD&A: any other
+    position is silent — location does not decide there.
+    """
+    if family not in STATEMENT_FAMILIES:
+        return None
+    if section_scope(scopes, form, part, item, title) is not SectionScope.MDA:
+        return None
+    where = " ".join(part for part in (form, part, item) if part)
+    return GenreRefusal(
+        family=family,
+        scope=SectionScope.MDA,
+        form=form,
+        part=part,
+        item=item,
+        detail=f"{family} refused by section position: {where} is MD&A",
+    )

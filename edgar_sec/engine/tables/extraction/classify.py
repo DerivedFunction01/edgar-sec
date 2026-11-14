@@ -54,6 +54,11 @@ from edgar_sec.engine.tables.extraction.registry import (
     TRIPLE_POINTS,
 )
 from edgar_sec.engine.tables.extraction.regions import Region, effective_regions
+from edgar_sec.engine.tables.extraction.section_gate import (
+    STATEMENT_FAMILIES,
+    GenreRefusal,
+    genre_refusal,
+)
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.validation import (
     IdentityOutcome,
@@ -407,7 +412,52 @@ def candidate_scores(
     }
 
 
+def _section_refusal(
+    table: TypedTable, family: str, policy: ClassificationPolicy
+) -> GenreRefusal | None:
+    section = table.context.section
+    if section is None or not policy.section_scopes:
+        return None
+    title = " | ".join(
+        part
+        for part in (
+            section.title,
+            *table.context.caption_stack,
+            *table.caption.titles,
+        )
+        if part
+    )
+    return genre_refusal(
+        policy.section_scopes,
+        family,
+        section.form,
+        section.part,
+        section.item,
+        title or None,
+    )
+
+
 def classify_table(
+    table: TypedTable,
+    policy: ClassificationPolicy | None = None,
+    math_outcomes: tuple[IdentityOutcome, ...] | None = None,
+) -> Classification:
+    """Classify one table, then apply the section-position gate.
+
+    A statement-family claim seated at MD&A position is genre-refused
+    by position, with the refusal recorded in the evidence trail.
+    """
+    policy = policy if policy is not None else default_policy()
+    result = _cascade(table, policy, math_outcomes)
+    refusal = _section_refusal(table, result.family, policy)
+    if refusal is None:
+        return result
+    labels = [normalize_text(row.label) for row in table.rows]
+    evidence = _context_base(table) + [Evidence("genre_refusal", refusal.detail, 0.0)]
+    return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
+
+
+def _cascade(
     table: TypedTable,
     policy: ClassificationPolicy | None = None,
     math_outcomes: tuple[IdentityOutcome, ...] | None = None,
@@ -511,8 +561,16 @@ def classify_filing(
     scored: list[dict[str, tuple[float, tuple[Evidence, ...]]]] = []
     for position, table in enumerate(tables):
         outcomes = None if math_outcomes is None else math_outcomes[position]
-        results.append(classify_table(table, policy, math_outcomes=outcomes))
-        scored.append(candidate_scores(table, policy, math_outcomes=outcomes))
+        result = classify_table(table, policy, math_outcomes=outcomes)
+        results.append(result)
+        entry = candidate_scores(table, policy, math_outcomes=outcomes)
+        if result.tier == "genre_refusal":
+            entry = {
+                family: scored_entry
+                for family, scored_entry in entry.items()
+                if family not in STATEMENT_FAMILIES
+            }
+        scored.append(entry)
     regions = effective_regions([table.context for table in tables])
     for position, region in enumerate(regions):
         if region != Region.SIGNATURE.value:

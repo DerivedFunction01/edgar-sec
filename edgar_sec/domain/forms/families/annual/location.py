@@ -186,6 +186,25 @@ def location_priors(form: str) -> tuple[tuple[str, str, float], ...]:
     )
 
 
+# The declared section map: (form base, part, Item, scope name).
+# Item 15/16 in a 10-K are financial-statement schedules / summary
+# by rule (Step 0 record), never an outside scope.
+SECTION_SCOPES: tuple[tuple[str, str | None, str, str], ...] = (
+    ("10-K", None, "ITEM 8", "financial_statements"),
+    ("10-K", None, "ITEM 15", "financial_statements"),
+    ("10-K", None, "ITEM 16", "financial_statements"),
+    ("10-K", None, "ITEM 7", "mda"),
+    ("10-K", None, "ITEM 7A", "mda"),
+    ("10-Q", "PART I", "ITEM 1", "financial_statements"),
+    ("10-Q", "PART I", "ITEM 2", "mda"),
+)
+
+
+def section_scopes() -> tuple[tuple[str, str | None, str, str], ...]:
+    """Policy-shaped declared section scopes for the annual forms."""
+    return SECTION_SCOPES
+
+
 STATEMENT_ORDER: tuple[str, ...] = (
     "balance_sheet",
     "income_statement",

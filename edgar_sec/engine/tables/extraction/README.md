@@ -56,6 +56,11 @@ classified tables into logical statements and arbitrates their relations.
   statement candidate, whatever its vocabulary scores; regions derive from
   filing position, section membership, and the forms layer's signature
   classifier unless a builder stamps one on the context.
+- **Section position is a genre gate, not evidence**: the declared section
+  map rides the classification policy from the forms layer and is applied
+  by `section_gate`; a statement-family claim seated in an MD&A section is
+  refused by position alone, with the refusal recorded in the evidence
+  trail, and every other position is silent — location never scores.
 - **Signature competition is scored claiming over measured profiles**:
   each family's signature terms live once, as data, in the
   subject-evidence map (`subject_evidence`), assembled by
