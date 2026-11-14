@@ -61,6 +61,13 @@ classified tables into logical statements and arbitrates their relations.
   by `section_gate`; a statement-family claim seated in an MD&A section is
   refused by position alone, with the refusal recorded in the evidence
   trail, and every other position is silent — location never scores.
+- **Table-of-contents shape is a genre refusal, seated before scoring**:
+  `toc_gate` measures page-reference rows (the shared TOC row vocabulary,
+  explicit page tokens, and increasing bare page numbers) against the
+  table's rows; a TOC-shaped table among a filing's first tables is
+  refused outright, and a later one only on content — no currency
+  amounts and at least four family namespaces across its page-reference
+  rows. A refused table contributes no family scores to its filing.
 - **Signature competition is scored claiming over measured profiles**:
   each family's signature terms live once, as data, in the
   subject-evidence map (`subject_evidence`), assembled by

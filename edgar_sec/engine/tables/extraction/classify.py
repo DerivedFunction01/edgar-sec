@@ -64,6 +64,7 @@ from edgar_sec.engine.tables.extraction.section_gate import (
     GenreRefusal,
     genre_refusal,
 )
+from edgar_sec.engine.tables.extraction.toc_gate import toc_refusal
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.validation import (
     IdentityOutcome,
@@ -454,12 +455,19 @@ def classify_table(
     policy: ClassificationPolicy | None = None,
     math_outcomes: tuple[IdentityOutcome, ...] | None = None,
 ) -> Classification:
-    """Classify one table, then apply the section-position gate.
+    """Classify one table: TOC elimination first, then the cascade.
 
-    A statement-family claim seated at MD&A position is genre-refused
-    by position, with the refusal recorded in the evidence trail.
+    A TOC-shaped table is genre-refused before any family scoring;
+    a statement-family claim seated at MD&A position is refused after.
     """
     policy = policy if policy is not None else default_policy()
+    toc = toc_refusal(table)
+    if toc is not None:
+        labels = [normalize_text(row.label) for row in table.rows]
+        evidence = _context_base(table) + [
+            Evidence("genre_refusal", toc.detail, 0.0)
+        ]
+        return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
     result = _cascade(table, policy, math_outcomes)
     refusal = _section_refusal(table, result.family, policy)
     if refusal is None:
@@ -577,11 +585,18 @@ def classify_filing(
         results.append(result)
         entry = candidate_scores(table, policy, math_outcomes=outcomes)
         if result.tier == "genre_refusal":
-            entry = {
-                family: scored_entry
-                for family, scored_entry in entry.items()
-                if family not in STATEMENT_FAMILIES
-            }
+            if any(
+                ev.detail.startswith("toc refused")
+                for ev in result.evidence
+                if ev.group == "genre_refusal"
+            ):
+                entry = {}
+            else:
+                entry = {
+                    family: scored_entry
+                    for family, scored_entry in entry.items()
+                    if family not in STATEMENT_FAMILIES
+                }
         scored.append(entry)
     regions = effective_regions([table.context for table in tables])
     for position, region in enumerate(regions):
