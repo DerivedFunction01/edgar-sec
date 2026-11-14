@@ -155,12 +155,9 @@ def toc_signals(table: TypedTable) -> TocSignals:
 
 
 def toc_refusal(table: TypedTable) -> TocRefusal | None:
-    """Refuse a TOC-shaped table: outright early, on content later.
-
-    Early is the cover TOC's seat (among the filing's first tables);
-    a later table must also carry no currency and span at least
-    BREADTH_MIN family namespaces across its page-reference rows.
-    """
+    """Refuse a TOC-shaped table: outright among a filing's first
+    tables; later only with no currency and at least BREADTH_MIN
+    family namespaces across its page-reference rows."""
     signals = toc_signals(table)
     if not signals.shaped:
         return None
