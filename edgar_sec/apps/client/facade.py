@@ -639,38 +639,9 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
         return seq, estimate_retained_bytes(seq) if body else 0
 
     def _detect_sections(self, filing: FilingAggregate, body: str) -> SectionSequence:
-        from edgar_sec.engine.forms.sections.models import SectionSequence
+        from edgar_sec.apps.client.section_detection import detect_sections
 
-        if not body:
-            return SectionSequence(sections=(), family=filing.form)
-
-        from edgar_sec.domain.forms.common.aliases import resolve_alias
-        from edgar_sec.domain.forms.common.processing import profile_version_of
-        from edgar_sec.domain.forms.families.processing_profiles import (
-            get_family_entry,
-        )
-        from edgar_sec.engine.forms.sections.items.detector import (
-            detect_section_sequence,
-        )
-
-        family = resolve_alias(filing.form) or filing.form.strip().upper()
-        entry = get_family_entry(family)
-        taxonomy = entry.taxonomy_items if entry is not None else ()
-        toc_info = (
-            self.toc(filing, text=body) if entry and entry.profile.has_toc else None
-        )
-        toc_span = (
-            (toc_info.start_line, toc_info.end_line) if toc_info is not None else None
-        )
-        return detect_section_sequence(
-            body,
-            family=family,
-            taxonomy_items=taxonomy,
-            toc_span=toc_span,
-            renderer_version=profile_version_of(
-                entry.profile if entry is not None else None
-            ),
-        )
+        return detect_sections(filing, body)
 
     def section(
         self, filing: FilingAggregate, item: str, text: str | None = None
@@ -749,11 +720,9 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
         if not filing.has_toc:
             return None
         body = text if text is not None else self._extract_filing_text(filing)
-        if not body:
-            return None
-        from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
+        from edgar_sec.apps.client.section_detection import detect_toc_span
 
-        return find_toc_span(body)
+        return detect_toc_span(filing, body)
 
     def _extract_filing_text(self, filing: FilingAggregate) -> str:
         return self.content_cache.get_or_build(

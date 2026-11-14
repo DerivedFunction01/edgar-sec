@@ -5,6 +5,7 @@ order and the result record; every algorithm lives in a leaf package
 
 from __future__ import annotations
 
+import difflib
 from dataclasses import dataclass, field, replace
 
 from edgar_sec.domain.document.route import (
@@ -120,6 +121,60 @@ def _trim_text_with_toc_span(
     )
 
 
+def _toc_span_in_source_frame(
+    span: TocSpan | None, *, found_text: str, source_text: str
+) -> TocSpan | None:
+    """The found TOC span expressed in the page-analysis source frame.
+
+    The finder runs once, over the text normalization holds at find
+    time; this maps that one result by line alignment, never re-finds.
+    """
+    if span is None or not source_text:
+        return None
+    if found_text == source_text:
+        return span
+    found_lines = [line.rstrip() for line in found_text.split("\n")]
+    source_lines = [line.rstrip() for line in source_text.split("\n")]
+    mapping = _line_mapping(found_lines, source_lines, span)
+    start = mapping.get(span.start_line)
+    end = mapping.get(span.end_line - 1)
+    if start is None or end is None:
+        return None
+    return replace(
+        span,
+        start_line=start,
+        end_line=end + 1,
+        start_offset=_line_start_offset(source_text, start),
+        end_offset=_line_start_offset(source_text, end + 1),
+    )
+
+
+def _line_mapping(
+    found_lines: list[str], source_lines: list[str], span: TocSpan
+) -> dict[int, int]:
+    """Line alignment from found lines to source lines, prefix first.
+
+    Alignment runs over a prefix window past the span; only a span
+    boundary the window cannot map falls back to the full texts.
+    """
+    window = span.end_line + 2048
+    mapping: dict[int, int] = {}
+    matcher = difflib.SequenceMatcher(
+        None, found_lines[:window], source_lines[: window + 2048], autojunk=False
+    )
+    for a_start, b_start, size in matcher.get_matching_blocks():
+        for offset in range(size):
+            mapping[a_start + offset] = b_start + offset
+    if span.start_line in mapping and span.end_line - 1 in mapping:
+        return mapping
+    mapping = {}
+    matcher = difflib.SequenceMatcher(None, found_lines, source_lines, autojunk=False)
+    for a_start, b_start, size in matcher.get_matching_blocks():
+        for offset in range(size):
+            mapping[a_start + offset] = b_start + offset
+    return mapping
+
+
 def _normalize_paper_stub(raw_bytes: bytes, *, form: str | None) -> NormalizationResult:
     """Record a paper submission without running the form-driven prose pipeline.
 
@@ -155,6 +210,7 @@ class NormalizationResult:
     cover_start_detected_line: int | None = None
     body_start: BodyStart | None = None
     toc_span: TocSpan | None = None
+    toc_span_source: TocSpan | None = None
     closing_span: ClosingSpan | None = None
     page_analysis: PageMarkerAnalysis | None = None
     reflow: ReflowResult | None = None
@@ -279,6 +335,7 @@ def normalize_document(
     text = normalize_final_text_whitespace(text)
 
     toc_span: TocSpan | None = None
+    toc_span_source: TocSpan | None = None
     body_start: BodyStart | None = None
 
     if profile.boundary is not None:
@@ -288,6 +345,11 @@ def normalize_document(
                 start_line=boundary.start_line or 0,
                 page_analysis=analysis,
                 derived_taxonomy=profile.derived_taxonomy,
+            )
+            toc_span_source = _toc_span_in_source_frame(
+                toc_span,
+                found_text=text,
+                source_text=analysis.source_text if analysis is not None else "",
             )
 
         if profile.body_evidence is not None:
@@ -420,6 +482,7 @@ def normalize_document(
         cover_start_detected_line=detected_cover_start,
         body_start=body_start,
         toc_span=toc_span,
+        toc_span_source=toc_span_source,
         closing_span=closing_span,
         page_analysis=analysis,
         reflow=reflow_result,

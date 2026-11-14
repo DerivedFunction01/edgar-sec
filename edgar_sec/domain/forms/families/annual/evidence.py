@@ -29,10 +29,11 @@ BANKRUPTCY_PROCEEDINGS_TERMS: tuple[str, ...] = (
     "plan confirmed by a court",
 )
 
+# EX-13 is named by its base type only: the variant family (decimal
+# suffixes of any width, the .PDF form, amendment marks) is spelled
+# once in domain/forms/exhibits/vocabulary.py (is_ex13_type).
 ANNUAL_TARGET_EXHIBITS: tuple[str, ...] = (
     "EX-13",
-    "EX-13.1",
-    "EX-13.2",
     "EX-99",
     "EX-99.1",
     "EX-99.2",

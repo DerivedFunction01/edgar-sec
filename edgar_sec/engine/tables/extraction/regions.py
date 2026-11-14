@@ -1,8 +1,8 @@
 """Document regions as hard context for classification.
 
-Region derives per geometry from filing position, section membership,
-and the forms layer's signature-table classifier; a context may carry a
-builder-stamped region instead. Only the signature region gates.
+A context's region derives per geometry, or a builder stamps one; only
+the signature region gates, and the producing path is recorded on the
+context (``region_path``), never silent.
 """
 
 from __future__ import annotations
@@ -22,6 +22,13 @@ class Region(str, Enum):
     COVER = "cover"
     SIGNATURE = "signature"
     EXHIBIT = "exhibit"
+
+
+class RegionPath(str, Enum):
+    """The path that produced a context's region value."""
+
+    STAMPED = "stamped"
+    DERIVED = "derived"
 
 
 def _own_text(context: TableContext) -> str:
@@ -74,8 +81,22 @@ def effective_regions(
     contexts: list[TableContext] | tuple[TableContext, ...],
 ) -> tuple[str, ...]:
     """Stamped regions where a builder set them, derived elsewhere."""
+    values, _paths = effective_region_paths(contexts)
+    return values
+
+
+def effective_region_paths(
+    contexts: list[TableContext] | tuple[TableContext, ...],
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Effective region values with the path that produced each one."""
     derived = derive_regions(contexts)
-    return tuple(
-        context.region if context.region is not None else derived[position]
-        for position, context in enumerate(contexts)
-    )
+    values: list[str] = []
+    paths: list[str] = []
+    for position, context in enumerate(contexts):
+        if context.region is not None:
+            values.append(context.region)
+            paths.append(RegionPath.STAMPED.value)
+        else:
+            values.append(derived[position])
+            paths.append(RegionPath.DERIVED.value)
+    return tuple(values), tuple(paths)

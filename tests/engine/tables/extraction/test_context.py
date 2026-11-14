@@ -100,3 +100,27 @@ def test_stamped_region_round_trips_from_record() -> None:
     )
     stamped = TableContext.from_record(geometry, {**record, "region": "signature"})
     assert stamped.region == "signature"
+    assert stamped.region_path is None
+
+
+def test_region_path_round_trips_from_record() -> None:
+    filing = load_fixture("table_extraction_corpus/0000726854-20-000044.json")
+    record = next(item for item in filing["geometries"] if item["table_index"] == 6)
+    geometry = TableGeometry(
+        table_index=6,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=tuple(tuple(row) for row in record["rows"]),
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=record["header_row_count"],
+            ),
+            confidence=1.0,
+        ),
+    )
+    stamped = TableContext.from_record(
+        geometry, {**record, "region": "body", "region_path": "derived"}
+    )
+    assert stamped.region == "body"
+    assert stamped.region_path == "derived"

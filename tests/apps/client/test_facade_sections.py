@@ -165,3 +165,41 @@ def test_filings_result_relational_sql(tmp_path: Path) -> None:
     ).fetchall()
     assert len(notes_sql) == 2
     assert notes_sql[0][0] == 1
+
+
+def test_sections_table_matches_facade_derivation(tmp_path: Path) -> None:
+    """The Arrow builder consumes the facade's one derivation (DR-1)."""
+    f10k = _sample_10k_filing(tmp_path)
+    client = Edgar(artifacts_root=tmp_path)
+
+    seq = client.sections(f10k)
+    table = build_sections_table([f10k])
+
+    rows = table.to_pylist()
+    assert len(rows) == len(seq.sections)
+    for row, section in zip(rows, seq.sections, strict=True):
+        assert row["item_identifier"] == section.item_identifier
+        assert row["canonical_name"] == section.title
+        assert row["heading"] == section.raw_heading
+        assert row["start_line"] == section.start_line
+        assert row["end_line"] == (section.end_line or section.start_line)
+        assert row["payload_sha256"] == (seq.payload_sha256 or "")
+        assert row["renderer_version"] == (seq.renderer_version or "")
+
+
+def test_sections_table_taxonomy_less_family_stays_empty(tmp_path: Path) -> None:
+    """A has-sections family with no taxonomy yields no rows, as before."""
+    p = tmp_path / "40f_primary.txt"
+    p.write_text("PART I\nITEM 1. BUSINESS\nWrapper text.\n", encoding="utf-8")
+    filing = FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-23-000108"),
+        primary_cik=Cik.from_raw(320193),
+        ciks=(Cik.from_raw(320193),),
+        form="40-F",
+        filing_date="2023-11-05",
+        primary_document_path="40f_primary.txt",
+        primary_storage_path=p,
+    )
+
+    assert build_sections_table([filing]).num_rows == 0
+    assert len(Edgar(artifacts_root=tmp_path).sections(filing).sections) == 0

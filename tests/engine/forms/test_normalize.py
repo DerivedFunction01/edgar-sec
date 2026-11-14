@@ -233,6 +233,50 @@ def test_rendered_path_is_not_treated_as_xml() -> None:
     res = normalize_document(payload, form="4", document_path="xslF345X03/doc4.xml")
 
     assert res.representation == "html"
+
+
+_TAGGED_TABLE_TOC = (
+    "FORM 10-K\n"
+    "ACME CORPORATION\n"
+    "TABLE OF CONTENTS\n"
+    "<TABLE>\n"
+    "PART I ........................................ 1\n"
+    "ITEM 1. BUSINESS ............................. 1\n"
+    "ITEM 1A. RISK FACTORS ......................... 8\n"
+    "</TABLE>\n"
+    "PART I\n"
+    "ITEM 1. BUSINESS\n"
+    "Acme provides widgets to customers nationwide.\n"
+)
+
+
+def test_toc_span_source_carries_the_found_span() -> None:
+    """The source-frame span is the finder's result, before reflow (DR-2)."""
+    res = normalize_document(
+        _TAGGED_TABLE_TOC.encode(), form="10-K", document_path="acme.txt"
+    )
+
+    assert res.page_analysis is not None
+    source_lines = res.page_analysis.source_text.splitlines()
+    span = res.toc_span_source
+    assert span is not None
+    assert source_lines[span.start_line] == "TABLE OF CONTENTS"
+    assert source_lines[span.end_line - 1] == "</TABLE>"
+    assert res.page_analysis.source_text[span.start_offset : span.end_offset] == (
+        "\n".join(source_lines[span.start_line : span.end_line]) + "\n"
+    )
+
+
+def test_toc_span_source_absent_without_toc() -> None:
+    """No TOC found in normalize means no carried source span (DR-2)."""
+    res = normalize_document(
+        b"FORM 10-K\nACME\nPART I\nITEM 1. BUSINESS\nAcme provides widgets.\n",
+        form="10-K",
+        document_path="acme.txt",
+    )
+
+    assert res.toc_span is None
+    assert res.toc_span_source is None
     assert res.reflow is None
 
 

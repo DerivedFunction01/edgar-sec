@@ -10,6 +10,7 @@ from edgar_sec.engine.tables.ascii_html.model import (
 from edgar_sec.engine.tables.extraction.context import SectionRef, TableContext
 from edgar_sec.engine.tables.extraction.regions import (
     derive_regions,
+    effective_region_paths,
     effective_regions,
 )
 
@@ -80,3 +81,14 @@ def test_stamped_region_wins_over_derivation() -> None:
         _context(_SIGNATURE_ROWS, region="body"),
     ]
     assert effective_regions(contexts) == ("body", "body")
+
+
+def test_effective_region_paths_record_each_path() -> None:
+    contexts = [
+        _context(_BODY_ROWS, section=SectionRef("ITEM 8", "Financial Statements")),
+        _context(_SIGNATURE_ROWS, region="body"),
+        _context(_SIGNATURE_ROWS),
+    ]
+    values, paths = effective_region_paths(contexts)
+    assert values == effective_regions(contexts)
+    assert paths == ("derived", "stamped", "derived")

@@ -4,7 +4,7 @@ Declarative exhibit authority coverage, profiles, and pack registry for Layer 1 
 
 ## Purpose
 
-The `exhibits` package provides a source-qualified code ledger, authority profiles, declarative candidate packs, and an authority/code lookup for Regulation S-K Item 601, Form 20-F, and Regulation AB. Lookup returns a declared pack where one is mapped and its coverage status is candidate or partial; the body evaluator in `engine/forms/plugins/exhibit_selection.py` consumes the packs.
+The `exhibits` package provides a source-qualified code ledger, authority profiles, declarative candidate packs, and an authority/code lookup for Regulation S-K Item 601, Form 20-F, and Regulation AB. Exhibit type-variant families are spelled once in `vocabulary.py`; consumers ask its predicates instead of spelling variant lists. Lookup returns a declared pack where one is mapped and its coverage status is candidate or partial; the body evaluator in `engine/forms/plugins/exhibit_selection.py` consumes the packs.
 
 ## Contracts
 

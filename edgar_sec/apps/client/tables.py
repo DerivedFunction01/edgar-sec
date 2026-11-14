@@ -366,15 +366,8 @@ def build_joined_table(filings: Iterable[FilingAggregate]) -> pa.Table:
 
 def build_sections_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     """Build Arrow sections table from filing aggregates for covered forms."""
-    from edgar_sec.domain.forms.common.aliases import resolve_alias
-    from edgar_sec.domain.forms.common.processing import profile_version_of
-    from edgar_sec.domain.forms.families.processing_profiles import (
-        get_family_entry,
-    )
+    from edgar_sec.apps.client.section_detection import detect_sections
     from edgar_sec.domain.forms.reports import CompanyReport
-    from edgar_sec.engine.forms.sections.items.detector import (
-        detect_section_sequence,
-    )
 
     batches: list[pa.RecordBatch] = []
     chunk: list[dict[str, Any]] = []
@@ -389,29 +382,7 @@ def build_sections_table(filings: Iterable[FilingAggregate]) -> pa.Table:
         if not body:
             continue
 
-        family = resolve_alias(f.form) or f.form.strip().upper()
-        entry = get_family_entry(family)
-        taxonomy = entry.taxonomy_items if entry is not None else ()
-        if not taxonomy:
-            continue
-
-        toc_span = None
-        if entry and entry.profile.has_toc:
-            from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
-
-            toc_info = find_toc_span(body)
-            if toc_info is not None:
-                toc_span = (toc_info.start_line, toc_info.end_line)
-
-        seq = detect_section_sequence(
-            body,
-            family=family,
-            taxonomy_items=taxonomy,
-            toc_span=toc_span,
-            renderer_version=profile_version_of(
-                entry.profile if entry is not None else None
-            ),
-        )
+        seq = detect_sections(f, body)
         for s in seq.sections:
             chunk.append(
                 {

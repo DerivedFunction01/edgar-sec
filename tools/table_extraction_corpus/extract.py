@@ -31,20 +31,19 @@ def _token_lines(lines: list[str]) -> dict[int, tuple[str, int]]:
     return tokens
 
 
-def _toc_span_in_annotated_frame(analysis, lines: list[str]) -> tuple[int, int] | None:
-    """The filing's cover TOC span mapped into the annotated frame.
+def _toc_span_in_annotated_frame(
+    analysis, lines: list[str], source_span
+) -> tuple[int, int] | None:
+    """The filing's carried TOC span mapped into the annotated frame.
 
-    The cover finder runs once per filing over the source text; the
-    same line alignment the break join uses carries its span into the
-    annotated frame the geometry locations live in.
+    Normalize found the span once and carries it in the source frame
+    on the result; the same line alignment the break join uses
+    carries it into the annotated frame the geometry locations
+    live in. The finder never re-runs here.
     """
-    if analysis is None or not analysis.source_text:
+    if analysis is None or not analysis.source_text or source_span is None:
         return None
-    from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
-
-    span = find_toc_span(analysis.source_text)
-    if span is None:
-        return None
+    span = source_span
     source_lines = [line.rstrip() for line in analysis.source_text.split("\n")]
     matcher = difflib.SequenceMatcher(None, source_lines, list(lines), autojunk=False)
     mapping: dict[int, int] = {}
@@ -56,6 +55,38 @@ def _toc_span_in_annotated_frame(analysis, lines: list[str]) -> tuple[int, int] 
     if start is None or end is None:
         return None
     return (start, end + 1)
+
+
+def _stamp_regions(geometries: list[dict], table_geometries) -> None:
+    """Stamp every record with its region and the path that made it.
+
+    Regions derive once, here, from the filing's section membership;
+    a produced record always carries one, so downstream consumption
+    takes the stamped path uniformly and the record says so.
+    """
+    from edgar_sec.engine.tables.extraction.context import (
+        SectionRef,
+        TableContext,
+    )
+    from edgar_sec.engine.tables.extraction.regions import (
+        RegionPath,
+        derive_regions,
+    )
+
+    contexts = []
+    for record, geometry in zip(geometries, table_geometries, strict=True):
+        section = (record.get("preceding") or {}).get("section")
+        contexts.append(
+            TableContext(
+                geometry=geometry,
+                section=SectionRef(section["item"], section["title"])
+                if section
+                else None,
+            )
+        )
+    for record, region in zip(geometries, derive_regions(contexts), strict=True):
+        record["region"] = region
+        record["region_path"] = RegionPath.DERIVED.value
 
 
 def _break_events(
@@ -297,7 +328,9 @@ def extract_filing(
     extract_started = time.perf_counter()
 
     lines = [line.rstrip() for line in result.text.split("\n")]
-    toc_span = _toc_span_in_annotated_frame(result.page_analysis, lines)
+    toc_span = _toc_span_in_annotated_frame(
+        result.page_analysis, lines, result.toc_span_source
+    )
     tokens = _token_lines(lines)
     namespace_by_id, unresolved_breaks = _break_events(
         result.page_analysis, lines, tokens
@@ -435,6 +468,7 @@ def extract_filing(
                 "label": label,
             }
         )
+    _stamp_regions(geometries, result.table_geometries)
     record["geometries"] = geometries
     timing = {
         "normalize_s": round(normalize_s, 4),
