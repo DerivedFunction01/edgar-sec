@@ -1,8 +1,8 @@
 """Table-of-contents elimination: TOC-shaped tables as genre refusals.
 
-A TOC-shaped table among a filing's first tables is refused outright;
-a later one is refused on content — page-reference rows spanning many
-family namespaces while carrying no currency amounts.
+A table inside the filing's cover TOC span is refused on that fact
+alone; outside the span, a TOC-shaped table is refused on content —
+page-reference rows spanning many namespaces, no currency amounts.
 """
 
 from __future__ import annotations
@@ -20,7 +20,6 @@ from edgar_sec.engine.tables.toc.patterns import (
     looks_like_toc_tabular,
 )
 
-EARLY_TABLE_INDEX = 10
 MIN_ROWS = 3
 PAGE_REF_SHARE = 0.5
 BREADTH_MIN = 4
@@ -155,18 +154,18 @@ def toc_signals(table: TypedTable) -> TocSignals:
 
 
 def toc_refusal(table: TypedTable) -> TocRefusal | None:
-    """Refuse a TOC-shaped table: outright among a filing's first
-    tables; later only with no currency and at least BREADTH_MIN
-    family namespaces across its page-reference rows."""
+    """Refuse on the cover-span fact alone inside the filing's TOC
+    span; outside it, refuse a TOC-shaped table only with no currency
+    and at least BREADTH_MIN namespaces across its page-ref rows."""
     signals = toc_signals(table)
-    if not signals.shaped:
-        return None
     shape = (
         f"{signals.page_ref_rows}/{signals.rows} page-reference rows, "
         f"families {', '.join(signals.families) or 'none'}"
     )
-    if table.context.table_index < EARLY_TABLE_INDEX:
-        return TocRefusal(f"toc refused (first tables): {shape}", signals)
+    if table.context.in_toc_span:
+        return TocRefusal(f"toc refused (cover span): {shape}", signals)
+    if not signals.shaped:
+        return None
     if not signals.currency_present and len(signals.families) >= BREADTH_MIN:
         return TocRefusal(f"toc refused (content): {shape}", signals)
     return None

@@ -1,4 +1,4 @@
-"""TOC gate: early tables refused outright, later ones on content."""
+"""TOC gate: span tables refused on the fact, later ones on content."""
 
 from __future__ import annotations
 
@@ -77,7 +77,10 @@ _BALANCE_SHEET_LABELS = {label for label, _ in _BALANCE_SHEET}
 
 
 def _table(
-    rows: tuple[tuple[str, tuple[float, ...]], ...], *, index: int = 0
+    rows: tuple[tuple[str, tuple[float, ...]], ...],
+    *,
+    index: int = 0,
+    in_span: bool = False,
 ) -> TypedTable:
     geometry = TableGeometry(
         table_index=index,
@@ -89,7 +92,7 @@ def _table(
             confidence=1.0,
         ),
     )
-    context = TableContext(geometry=geometry)
+    context = TableContext(geometry=geometry, in_toc_span=in_span)
     typed = tuple(
         TypedRow(label=label, values=values, kind=RowKind.DATA, raw=_raw(label, values))
         for label, values in rows
@@ -113,15 +116,29 @@ def _table(
     )
 
 
-def test_cover_toc_among_first_tables_is_refused_outright() -> None:
-    table = _table(_COVER_TOC, index=6)
+def test_table_inside_cover_span_is_refused_on_the_fact() -> None:
+    table = _table(_COVER_TOC, index=6, in_span=True)
     result = classify_table(table)
     assert result.family == "other"
     assert result.tier == "genre_refusal"
     assert any(
-        entry.group == "genre_refusal" and "toc refused (first tables)" in entry.detail
+        entry.group == "genre_refusal" and "toc refused (cover span)" in entry.detail
         for entry in result.evidence
     )
+
+
+def test_span_fact_refuses_even_an_unshaped_table() -> None:
+    table = _table(_BALANCE_SHEET, index=3, in_span=True)
+    assert not toc_signals(table).shaped
+    refusal = toc_refusal(table)
+    assert refusal is not None
+    assert "toc refused (cover span)" in refusal.detail
+
+
+def test_position_alone_no_longer_refuses() -> None:
+    table = _table(_COVER_TOC, index=2)
+    assert toc_signals(table).shaped
+    assert toc_refusal(table) is None
 
 
 def test_note_index_later_is_refused_on_content() -> None:
@@ -172,7 +189,7 @@ def test_constant_value_rows_are_not_page_references() -> None:
 
 
 def test_filing_pass_drops_all_scores_for_toc_tables() -> None:
-    toc = _table(_COVER_TOC, index=6)
+    toc = _table(_COVER_TOC, index=6, in_span=True)
     kept = _table(_BALANCE_SHEET, index=20)
     results, scores = classify_filing([toc, kept])
     assert results[0].tier == "genre_refusal"

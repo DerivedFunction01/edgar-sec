@@ -81,6 +81,7 @@ class TableContext:
     issues: tuple[str, ...] = ()
     label: LabelRef | None = None
     region: str | None = None
+    in_toc_span: bool = False
 
     @property
     def table_index(self) -> int:
@@ -152,4 +153,5 @@ class TableContext:
             if label
             else None,
             region=record.get("region"),
+            in_toc_span=bool(record.get("in_toc_span")),
         )

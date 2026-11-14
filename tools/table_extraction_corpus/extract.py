@@ -31,6 +31,33 @@ def _token_lines(lines: list[str]) -> dict[int, tuple[str, int]]:
     return tokens
 
 
+def _toc_span_in_annotated_frame(analysis, lines: list[str]) -> tuple[int, int] | None:
+    """The filing's cover TOC span mapped into the annotated frame.
+
+    The cover finder runs once per filing over the source text; the
+    same line alignment the break join uses carries its span into the
+    annotated frame the geometry locations live in.
+    """
+    if analysis is None or not analysis.source_text:
+        return None
+    from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
+
+    span = find_toc_span(analysis.source_text)
+    if span is None:
+        return None
+    source_lines = [line.rstrip() for line in analysis.source_text.split("\n")]
+    matcher = difflib.SequenceMatcher(None, source_lines, list(lines), autojunk=False)
+    mapping: dict[int, int] = {}
+    for a_start, b_start, size in matcher.get_matching_blocks():
+        for offset in range(size):
+            mapping[a_start + offset] = b_start + offset
+    start = mapping.get(span.start_line)
+    end = mapping.get(span.end_line - 1)
+    if start is None or end is None:
+        return None
+    return (start, end + 1)
+
+
 def _break_events(
     analysis, lines: list[str], tokens: dict[int, tuple[str, int]]
 ) -> tuple[dict[int, dict], int]:
@@ -270,6 +297,7 @@ def extract_filing(
     extract_started = time.perf_counter()
 
     lines = [line.rstrip() for line in result.text.split("\n")]
+    toc_span = _toc_span_in_annotated_frame(result.page_analysis, lines)
     tokens = _token_lines(lines)
     namespace_by_id, unresolved_breaks = _break_events(
         result.page_analysis, lines, tokens
@@ -374,6 +402,12 @@ def extract_filing(
                 "caption_stack": captions,
                 "scale": _scale(captions, titles),
                 "location": location,
+                "in_toc_span": bool(
+                    location is not None
+                    and toc_span is not None
+                    and location["start_line"] < toc_span[1]
+                    and location["end_line"] >= toc_span[0]
+                ),
                 "preceding": {
                     "section": (
                         {"item": section.item_identifier, "title": section.title}
