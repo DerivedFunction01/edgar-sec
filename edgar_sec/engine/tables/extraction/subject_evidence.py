@@ -1,11 +1,8 @@
 """Subject-evidence map: measured caption/prose vocabulary, as data.
 
-The map beside this module (subject_evidence_map.json) is the
-shared contract of the greenfield improvement programme: per-term
-subject evidence per family and channel, measured containment
-edges, header/title inheritance pricing, and Step 0 channel
-weights. It carries free-text evidence only; arithmetic closure
-is recorded as corroboration-only and never as negative evidence.
+The map beside this module (subject_evidence_map.json) is the improvement
+programme's shared contract — per-term subject evidence, measured edges,
+inheritance pricing, Step 0 weights; free-text only, closure never negative.
 """
 
 from __future__ import annotations
@@ -108,7 +105,9 @@ class SubjectEvidenceMap:
     inheritance: tuple[InheritanceSpec, ...]
     priced_absences: tuple[AbsenceSpec, ...]
 
-    def terms_for(self, family: str, channel: str | None = None) -> tuple[TermSpec, ...]:
+    def terms_for(
+        self, family: str, channel: str | None = None
+    ) -> tuple[TermSpec, ...]:
         """The family's measured terms, optionally for one channel."""
         return tuple(
             t
