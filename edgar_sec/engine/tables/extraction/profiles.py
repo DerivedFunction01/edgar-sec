@@ -32,6 +32,8 @@ SEAT_PROSE_CAPTURE = "prose_capture"
 SEAT_GENRE_REFUSAL = "genre_refusal"
 SEAT_REGION_GATED = "region_gated"
 
+PROV_STEP3_FORM_TESTS = "refresh-step3:form-tests"
+
 # Form-test declarations (R1): names only, as registry data.
 # The stage and the test classes themselves build in Step 3.
 TEST_WALK = "beginning_ending_walk"
@@ -132,6 +134,9 @@ PROFILES: tuple[FamilyProfile, ...] = (
         form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
+        note="the residual claimant: recall is done, precision "
+        "needs claim admission — the seat identity closing over "
+        "the table's own totals is that admission",
     ),
     FamilyProfile(
         "cash_flow",
@@ -141,6 +146,9 @@ PROFILES: tuple[FamilyProfile, ...] = (
         form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
+        note="quarterly precision collapse (.218) is the target: "
+        "summaries, recasts and sibling statements carry no "
+        "three-section sum to the change in cash",
     ),
     FamilyProfile(
         "comprehensive_income",
@@ -157,15 +165,22 @@ PROFILES: tuple[FamilyProfile, ...] = (
         _support(0.423, 0.167, 0.010, 0.000),
         SEAT_SIGNATURE,
         form_tests=(TEST_LADDER,),
+        note="directed located recall .06 annual / .02 quarterly: "
+        "true ladders go unclaimed, so the ladder is this family's "
+        "admission evidence; bucketed payments-due tables are the "
+        "commitments form, never this family's ladder",
     ),
     FamilyProfile(
         "deferred_tax",
         KIND_FAMILY,
         _support(0.589, 1.000, 0.519, None, quarterly_directed_recall=0.942),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK, TEST_COMPOSITION_TWIN),
+        form_tests=(TEST_COMPOSITION_TWIN,),
         note="quarterly recall unmeasured on the sealed sweep (n=0); "
-        "the directed rate is the recall evidence of record",
+        "the directed rate is the recall evidence of record. "
+        "Step 3 union disposition: the Step 1 TEST_WALK declaration "
+        "is dropped — no walk spec was ever written for this family; "
+        "its form is the composition twin, which carries a spec",
     ),
     FamilyProfile(
         "derivatives_hedging",
@@ -191,6 +206,10 @@ PROFILES: tuple[FamilyProfile, ...] = (
         form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
+        note="thinnest directed coverage of the four; the directed "
+        "K set (50 verified-member filings) is its specimen base; "
+        "any equity-captioned grid was claimed — the column walk "
+        "is the admission form",
     ),
     FamilyProfile(
         "fair_value",
@@ -207,6 +226,9 @@ PROFILES: tuple[FamilyProfile, ...] = (
         form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
+        note="annual precision .000: the seat claimed everything "
+        "except the statement; the descent's first leg is the "
+        "priced gross_profit_leg1 identity",
     ),
     FamilyProfile(
         "intangibles",
@@ -274,8 +296,21 @@ PROFILES: tuple[FamilyProfile, ...] = (
         _support(0.432, 1.000, 0.000, None, quarterly_directed_recall=0.758),
         SEAT_SIGNATURE,
         form_tests=(TEST_PERCENTAGE_FORM,),
+        shape="statutory-rate anchor row, then adjustment rows, then an "
+        "effective-rate row; every row in the block is percentage-valued "
+        "per period column and anchor + adjustments close to the "
+        "effective rate within 0.3; percentages of pre-tax income",
         note="quarterly recall unmeasured on the sealed sweep (n=0); "
-        "the directed rate is the recall evidence of record",
+        "the directed rate is the recall evidence of record. "
+        "Percentage form is the precision lever (sealed annual precision "
+        ".432): the provision-detail twin (dollar current/deferred "
+        "expense rows, currency total) was the top annual false class "
+        "(4 of 10) and deferred-tax component tables (dollar asset / "
+        "liability rows as of balance dates) share the vocabulary; "
+        "neither carries a percentage anchor or a closing percentage "
+        "total, and incidental percentages without anchor + closure "
+        "are not the form. A dollar-form reconciliation is the same "
+        "family but is not this test.",
     ),
     FamilyProfile(
         "commitments_contingencies",
@@ -284,6 +319,9 @@ PROFILES: tuple[FamilyProfile, ...] = (
         SEAT_ASSEMBLY,
         form_tests=(TEST_LADDER,),
         gate_bindings=("assembly_seat",),
+        note="directed located recall .000 on both strata: the "
+        "ladder (single-year or bucketed payments-due) is the form "
+        "its seat must learn to admit; seat relocation is Step 4",
     ),
     FamilyProfile(
         "labor_capture",

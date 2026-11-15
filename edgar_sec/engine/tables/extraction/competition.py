@@ -12,6 +12,10 @@ import re
 from dataclasses import dataclass, field
 from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.form_tests import (
+    FormTestOutcome,
+    evaluate_form_tests,
+)
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
@@ -207,6 +211,7 @@ class GeometryText:
     closure_closed: bool | None = None
     note_title: str | None = None
     section_item: str | None = None
+    form_tests: tuple[FormTestOutcome, ...] = ()
 
     @property
     def stub_text(self) -> str:
@@ -236,6 +241,7 @@ def geometry_text_from_table(table) -> GeometryText:
         stubs=stubs,
         note_title=note.title if note else None,
         section_item=section.item if section else None,
+        form_tests=evaluate_form_tests(table),
     )
 
 
@@ -332,6 +338,37 @@ def score_geometry(
         scores[family] = FamilyScore(
             family, total, dict(channels), tuple(evidence[family])
         )
+    for outcome in geometry.form_tests:
+        entry = ClaimEvidence(
+            "form_test",
+            f"{outcome.test_id} {'passed' if outcome.passed else 'failed'}",
+            outcome.points if outcome.passed else 0.0,
+        )
+        score = scores.get(outcome.family)
+        if outcome.passed:
+            if score is None:
+                scores[outcome.family] = FamilyScore(
+                    outcome.family,
+                    outcome.points,
+                    {"form_test": outcome.points},
+                    (entry,),
+                )
+            else:
+                channels = dict(score.by_channel)
+                channels["form_test"] = channels.get("form_test", 0.0) + outcome.points
+                scores[outcome.family] = FamilyScore(
+                    outcome.family,
+                    score.total + outcome.points,
+                    channels,
+                    score.evidence + (entry,),
+                )
+        elif outcome.evaluable and score is not None:
+            scores[outcome.family] = FamilyScore(
+                outcome.family,
+                score.total,
+                dict(score.by_channel),
+                score.evidence + (entry,),
+            )
     fired = detail_signatures(geometry)
     for family, signatures in SCORED_VETOES.items():
         score = scores.get(family)

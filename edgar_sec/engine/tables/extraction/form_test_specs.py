@@ -1,0 +1,550 @@
+"""Form-test spec registry: the declared specs for every kind.
+
+Companion to the family-profile registry: profiles declare
+which kinds a family carries; the specs themselves, and each
+kind's parameter table, live here as data.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from edgar_sec.engine.tables.extraction.profiles import (
+    PROV_STEP3_FORM_TESTS,
+    PROV_STEP6_VERDICT,
+    TEST_COMPOSITION_TWIN,
+    TEST_LADDER,
+    TEST_PERCENTAGE_FORM,
+    TEST_PRIMARY_STATEMENT_SEAT,
+    TEST_WALK,
+)
+
+
+@dataclass(frozen=True, slots=True)
+class FormTestSpec:
+    """One form test as registry data: the cross-kind fields only.
+    Label anchors ride here where the kind uses them; each kind's
+    own parameters live in its per-kind table keyed by test_id."""
+
+    family: str
+    kind: str
+    test_id: str
+    points: float
+    beginning: tuple[str, ...] = ()
+    ending: tuple[str, ...] = ()
+    excluded: tuple[str, ...] = ()
+    provenance: str = PROV_STEP3_FORM_TESTS
+
+
+@dataclass(frozen=True, slots=True)
+class WalkSpec:
+    """Walk-kind parameters for one test, keyed by test_id below.
+    column_headers selects value columns (empty means all of them);
+    a pass needs min_columns columns closed over >= min_movements."""
+
+    min_movements: int = 1
+    min_columns: int = 1
+    column_headers: tuple[str, ...] = ()
+
+
+ORIENT_COLUMNS = "columns"
+ORIENT_ROWS = "rows"
+THEREAFTER_REQUIRED = "required"
+THEREAFTER_PREFERRED = "preferred"
+THEREAFTER_NONE = "none"
+TOTAL_CORROBORATE = "corroborate"
+TOTAL_IGNORE = "ignore"
+ANCHOR_AFTER_ASOF = "after_asof_when_present"
+ANCHOR_NONE = "none"
+
+
+@dataclass(frozen=True, slots=True)
+class YearLadderSpec:
+    """Year-ladder form-test parameters, declared as registry data."""
+
+    orientations: tuple[str, ...]
+    min_year_steps: int
+    thereafter: str = THEREAFTER_PREFERRED
+    bucket_ladder: bool = False
+    min_bucket_steps: int = 0
+    total_mode: str = TOTAL_CORROBORATE
+    anchor: str = ANCHOR_AFTER_ASOF
+    tolerance: float = 0.02
+
+
+@dataclass(frozen=True, slots=True)
+class PercentageFormSpec:
+    """One family's percentage-form test, declared as data."""
+
+    family: str
+    anchor_tokens: tuple[str, ...]
+    total_tokens: tuple[str, ...]
+    min_adjustments: int = 1
+    closure_tolerance: float = 0.3
+    min_columns: int = 1
+
+
+@dataclass(frozen=True, slots=True)
+class CompositionSpec:
+    """One family's composition-twin test, declared as data.
+
+    Passes a table enumerating the family's component classes
+    with amounts per class; fails totals-only summaries.
+    """
+
+    family: str
+    stub_groups: tuple[tuple[str, ...], ...]
+    min_stub_groups: int
+    min_class_rows: int
+    column_groups: tuple[tuple[str, ...], ...] = ()
+    min_column_groups: int = 0
+    orientation: str = "rows"
+    period_columns: bool = False
+    total_terms: tuple[str, ...] = ()
+    refused_shapes: tuple[str, ...] = ()
+    provenance: str = PROV_STEP6_VERDICT
+
+
+# The primary-statement seat (Step 3, class iv): a statement
+# table sits in the body region, outside the TOC and closing
+# spans — the seat facts Step 2's context production carries.
+SEAT_REGION_BODY = "body"
+
+
+@dataclass(frozen=True, slots=True)
+class SeatTestSpec:
+    """One primary-statement seat test, declared as registry data.
+
+    The seat facts must hold on the context, and the named
+    identity must close over the table's own total rows.
+    """
+
+    identity: str
+    required_roles: tuple[str, ...]
+    ordered_roles: tuple[str, ...] = ()
+    either_roles: tuple[tuple[str, ...], ...] = ()
+    optional_roles: tuple[str, ...] = ()
+    seat_region: str = SEAT_REGION_BODY
+    in_toc_span: bool = False
+    in_closing_span: bool = False
+    tolerance_abs: float = 2.0
+    tolerance_rel: float = 0.005
+
+
+# Form-test specs (Step 3): every kind's declared specs, per family.
+# A walk passes when the table's own beginning balance plus its
+# movement rows reconciles to its ending balance within tolerance.
+FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
+    FormTestSpec(
+        "aoci_rollforward",
+        TEST_WALK,
+        "aoci_beginning_ending_walk",
+        3.0,
+        beginning=(
+            "beginning balance",
+            "balance at beginning",
+            "balance, beginning",
+            "balance at january",
+            "at beginning of period",
+            "at beginning of year",
+        ),
+        ending=(
+            "ending balance",
+            "balance at end",
+            "balance, end",
+            "balance at december",
+            "at end of period",
+            "at end of year",
+        ),
+    ),
+    FormTestSpec(
+        "comprehensive_income",
+        TEST_WALK,
+        "comprehensive_income_boundary_walk",
+        3.0,
+        beginning=("net income", "net loss", "net earnings"),
+        ending=(
+            "comprehensive income",
+            "comprehensive loss",
+            "total comprehensive",
+        ),
+        excluded=("attributable to",),
+    ),
+    FormTestSpec(
+        "stock_comp_rollforward",
+        TEST_WALK,
+        "stock_comp_activity_walk",
+        3.0,
+        beginning=(
+            "outstanding at beginning",
+            "outstanding at january",
+            "balance at beginning",
+            "beginning balance",
+            "nonvested at beginning",
+            "at beginning of year",
+            "at beginning of period",
+        ),
+        ending=(
+            "outstanding at end",
+            "outstanding at december",
+            "balance at end",
+            "ending balance",
+            "at end of year",
+            "at end of period",
+        ),
+        excluded=("exercisable", "expected to vest", "available for future"),
+    ),
+    FormTestSpec(
+        "eps_reconciliation",
+        TEST_WALK,
+        "eps_numerator_denominator_walk",
+        3.0,
+        beginning=("basic",),
+        ending=("diluted",),
+        excluded=("per share", "antidilutive", "anti-dilutive"),
+    ),
+    FormTestSpec(
+        "debt_maturity",
+        TEST_LADDER,
+        "debt_maturity_year_ladder",
+        3.0,
+    ),
+    FormTestSpec(
+        "commitments_contingencies",
+        TEST_LADDER,
+        "commitments_contingencies_year_ladder",
+        3.0,
+    ),
+    FormTestSpec(
+        "tax_reconciliation",
+        TEST_PERCENTAGE_FORM,
+        "tax_rate_reconciliation_percentage_form",
+        3.0,
+    ),
+    FormTestSpec(
+        "balance_sheet",
+        TEST_PRIMARY_STATEMENT_SEAT,
+        "balance_sheet_either_form",
+        3.0,
+    ),
+    FormTestSpec(
+        "cash_flow",
+        TEST_PRIMARY_STATEMENT_SEAT,
+        "cash_flow_with_fx_leg",
+        3.0,
+    ),
+    FormTestSpec(
+        "income_statement",
+        TEST_PRIMARY_STATEMENT_SEAT,
+        "revenue_to_net_income_descent",
+        3.0,
+    ),
+    FormTestSpec(
+        "equity_statement",
+        TEST_PRIMARY_STATEMENT_SEAT,
+        "equity_column_walk",
+        3.0,
+    ),
+    FormTestSpec("pension", TEST_COMPOSITION_TWIN, "pension_composition", 3.0),
+    FormTestSpec("ppe", TEST_COMPOSITION_TWIN, "ppe_composition", 3.0),
+    FormTestSpec("intangibles", TEST_COMPOSITION_TWIN, "intangibles_composition", 3.0),
+    FormTestSpec(
+        "deferred_tax", TEST_COMPOSITION_TWIN, "deferred_tax_composition", 3.0
+    ),
+    FormTestSpec("inventory", TEST_COMPOSITION_TWIN, "inventory_composition", 3.0),
+    FormTestSpec(
+        "lease_maturity", TEST_COMPOSITION_TWIN, "lease_maturity_composition", 3.0
+    ),
+    FormTestSpec("fair_value", TEST_COMPOSITION_TWIN, "fair_value_composition", 3.0),
+)
+
+# Walk-kind parameters, keyed by test_id (the per-kind table).
+WALK_SPECS_BY_TEST_ID: dict[str, WalkSpec] = {
+    "aoci_beginning_ending_walk": WalkSpec(),
+    "comprehensive_income_boundary_walk": WalkSpec(),
+    "stock_comp_activity_walk": WalkSpec(),
+    "eps_numerator_denominator_walk": WalkSpec(min_columns=2),
+}
+
+# Year-ladder class specs (Step 3), keyed by family: the one
+# literal home of the ladder kind's parameters.
+YEAR_LADDER_SPECS: dict[str, YearLadderSpec] = {
+    "debt_maturity": YearLadderSpec(
+        orientations=(ORIENT_COLUMNS, ORIENT_ROWS),
+        min_year_steps=4,
+        thereafter=THEREAFTER_PREFERRED,
+        bucket_ladder=False,
+        total_mode=TOTAL_CORROBORATE,
+        anchor=ANCHOR_AFTER_ASOF,
+    ),
+    "commitments_contingencies": YearLadderSpec(
+        orientations=(ORIENT_COLUMNS, ORIENT_ROWS),
+        min_year_steps=3,
+        thereafter=THEREAFTER_PREFERRED,
+        bucket_ladder=True,
+        min_bucket_steps=3,
+        total_mode=TOTAL_CORROBORATE,
+        anchor=ANCHOR_AFTER_ASOF,
+    ),
+}
+
+# The same parameters keyed by test_id, derived at registry load
+# for the stage adapter; never a second literal copy.
+LADDER_SPECS_BY_TEST_ID: dict[str, YearLadderSpec] = {
+    spec.test_id: YEAR_LADDER_SPECS[spec.family]
+    for spec in FORM_TEST_SPECS
+    if spec.family in YEAR_LADDER_SPECS
+}
+
+# Percentage-form specs (Step 3 class (iii)): one per family
+# declaring TEST_PERCENTAGE_FORM, pinned from the Step 6
+# directed sets and the adjudicated specimens in each note.
+PERCENTAGE_SPECS: tuple[PercentageFormSpec, ...] = (
+    PercentageFormSpec(
+        "tax_reconciliation",
+        anchor_tokens=(
+            "statutory rate",
+            "statutory tax",
+            "at statutory",
+            "statutory federal",
+            "federal statutory",
+        ),
+        total_tokens=(
+            "effective tax",
+            "effective income tax",
+            "effective rate",
+        ),
+        min_adjustments=1,
+        closure_tolerance=0.3,
+    ),
+)
+
+PERCENTAGE_SPECS_BY_FAMILY = {spec.family: spec for spec in PERCENTAGE_SPECS}
+
+# Primary-statement seat specs (Step 3 class (iv)), keyed by
+# family: the one literal home of the seat kind's parameters.
+SEAT_TEST_SPECS_BY_FAMILY: dict[str, SeatTestSpec] = {
+    "balance_sheet": SeatTestSpec(
+        identity="balance_sheet_either_form",
+        required_roles=("total_assets",),
+        either_roles=(("total_liabilities", "total_equity"), ("combined",)),
+    ),
+    "cash_flow": SeatTestSpec(
+        identity="cash_flow_with_fx_leg",
+        required_roles=("operating", "investing", "financing", "change"),
+        ordered_roles=("operating", "investing", "financing", "change"),
+        optional_roles=("fx", "cash_beginning", "cash_ending"),
+    ),
+    "equity_statement": SeatTestSpec(
+        identity="equity_column_walk",
+        required_roles=(
+            "beginning_balance",
+            "movement",
+            "ending_balance",
+            "component_columns",
+            "total_column",
+        ),
+        ordered_roles=("beginning_balance", "ending_balance"),
+    ),
+    "income_statement": SeatTestSpec(
+        identity="revenue_to_net_income_descent",
+        required_roles=("revenue", "cogs", "gross_profit", "net_income"),
+        ordered_roles=(
+            "revenue",
+            "cogs",
+            "gross_profit",
+            "operating_income",
+            "pretax_income",
+            "net_income",
+        ),
+        optional_roles=("operating_income", "pretax_income"),
+    ),
+}
+
+
+def seat_test_spec_for(family: str) -> SeatTestSpec | None:
+    """The family's primary-statement seat spec, or None."""
+    return SEAT_TEST_SPECS_BY_FAMILY.get(family)
+
+
+# Composition-twin specs (Step 3 class (v)): one per family
+# declaring TEST_COMPOSITION_TWIN, pinned from the directed
+# sets and adjudicated specimens named in each provenance.
+COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
+    CompositionSpec(
+        "pension",
+        stub_groups=(
+            ("service cost",),
+            ("interest cost",),
+            ("expected return on plan assets", "expected return"),
+            ("amortization", "prior service"),
+        ),
+        min_stub_groups=3,
+        min_class_rows=3,
+        total_terms=("net periodic benefit cost", "net periodic pension cost"),
+        refused_shapes=(
+            "aoci_component_composition",
+            "assumption_only",
+            "single_line_summary",
+            "totals_only",
+        ),
+        provenance="step6:directed-t5x-pension-q",
+    ),
+    CompositionSpec(
+        "ppe",
+        stub_groups=(
+            ("land",),
+            ("building",),
+            ("machinery",),
+            ("transportation", "vehicle"),
+            ("construction in progress", "construction in process"),
+            ("furniture", "fixture"),
+            ("leasehold",),
+            ("computer",),
+        ),
+        min_stub_groups=3,
+        min_class_rows=3,
+        column_groups=(
+            ("accumulated depreciation",),
+            ("cost", "gross"),
+            ("net",),
+        ),
+        min_column_groups=1,
+        total_terms=("total property", "property and equipment, net"),
+        refused_shapes=("totals_only", "single_line_summary", "movement_only"),
+        provenance="step6:directed-t5x-ppe",
+    ),
+    CompositionSpec(
+        "intangibles",
+        stub_groups=(
+            ("backlog",),
+            ("technology",),
+            ("trademark", "trade name", "brand"),
+            ("customer",),
+            ("patent",),
+            ("license", "licence"),
+            ("noncompete", "non-compete", "covenant"),
+            ("franchise",),
+            ("supplier",),
+        ),
+        min_stub_groups=2,
+        min_class_rows=2,
+        column_groups=(
+            ("gross carrying", "gross"),
+            ("accumulated amortization",),
+            ("net carrying", "net"),
+        ),
+        min_column_groups=2,
+        period_columns=True,
+        total_terms=("total intangible",),
+        refused_shapes=(
+            "totals_only",
+            "purchase_price_allocation",
+            "rollforward_by_category",
+            "single_class_summary",
+        ),
+        provenance="step6:directed-t5x-intangibles-q",
+    ),
+    CompositionSpec(
+        "deferred_tax",
+        stub_groups=(
+            ("net operating loss", "loss carryforward"),
+            ("tax credit", "credit carryforward"),
+            ("capital loss",),
+            ("accrued",),
+            ("stock compensation", "share-based compensation"),
+            ("valuation allowance",),
+            ("depreciation",),
+            ("amortization",),
+            ("right-of-use", "right of use"),
+            ("unrealized",),
+            ("prepaid",),
+        ),
+        min_stub_groups=2,
+        min_class_rows=2,
+        total_terms=("net deferred tax", "total deferred"),
+        refused_shapes=(
+            "allowance_walk_only",
+            "provision_detail",
+            "single_line_summary",
+        ),
+        provenance="step6:directed-t3-deferred_tax",
+    ),
+    CompositionSpec(
+        "inventory",
+        stub_groups=(
+            ("raw material",),
+            ("work in process", "work-in-process", "work in progress"),
+            ("finished good",),
+            ("supplies",),
+            ("merchandise",),
+        ),
+        min_stub_groups=2,
+        min_class_rows=2,
+        total_terms=("total inventories", "total inventory", "inventories, net"),
+        refused_shapes=("totals_only", "single_line_summary"),
+        provenance="step6:directed-t5x-inventory-q",
+    ),
+    CompositionSpec(
+        "lease_maturity",
+        stub_groups=(
+            ("operating lease",),
+            ("finance lease",),
+            ("capital lease",),
+        ),
+        min_stub_groups=1,
+        min_class_rows=3,
+        orientation="columns",
+        total_terms=(
+            "total undiscounted",
+            "total lease payments",
+            "imputed interest",
+            "total lease liabilities",
+            "present value",
+        ),
+        refused_shapes=(
+            "cost_composition_only",
+            "totals_only",
+            "single_line_summary",
+        ),
+        provenance="step6:directed-t5x-lease_maturity",
+    ),
+    CompositionSpec(
+        "fair_value",
+        stub_groups=(
+            ("level 1",),
+            ("level 2",),
+            ("level 3",),
+            ("net asset value", "nav"),
+        ),
+        min_stub_groups=2,
+        min_class_rows=2,
+        orientation="columns",
+        total_terms=("total assets", "total liabilities"),
+        refused_shapes=(
+            "portfolio_composition_no_levels",
+            "totals_only",
+            "single_line_summary",
+        ),
+    ),
+)
+
+COMPOSITION_SPECS_BY_FAMILY = {spec.family: spec for spec in COMPOSITION_SPECS}
+
+
+def composition_spec_for(family: str) -> CompositionSpec | None:
+    """The family's composition-twin spec, or None if it has none."""
+    return COMPOSITION_SPECS_BY_FAMILY.get(family)
+
+
+FORM_TEST_SPECS_BY_FAMILY: dict[str, tuple[FormTestSpec, ...]] = {}
+for _spec in FORM_TEST_SPECS:
+    FORM_TEST_SPECS_BY_FAMILY[_spec.family] = (
+        *FORM_TEST_SPECS_BY_FAMILY.get(_spec.family, ()),
+        _spec,
+    )
+
+
+def form_test_specs_for(family: str) -> tuple[FormTestSpec, ...]:
+    """The declared form-test specs for a family; none if undeclared."""
+    return FORM_TEST_SPECS_BY_FAMILY.get(family, ())

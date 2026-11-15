@@ -10,6 +10,11 @@ from edgar_sec.engine.tables.extraction.calibration import (
     PROSE_PATTERNS,
 )
 from edgar_sec.engine.tables.extraction.competition import geometry_text_from_table
+from edgar_sec.engine.tables.extraction.form_tests import (
+    FormTestOutcome,
+    cascade_family,
+    evaluate_form_tests,
+)
 from edgar_sec.engine.tables.extraction.residue_families import (
     CONTENT_GATED_FAMILIES,
     corroborates,
@@ -240,6 +245,7 @@ def _score_family(
     table: TypedTable,
     policy: ClassificationPolicy,
     math_outcomes: tuple[IdentityOutcome, ...],
+    form_outcomes: tuple[FormTestOutcome, ...] = (),
 ) -> tuple[float, list[Evidence]]:
     score = 0.0
     evidence: list[Evidence] = []
@@ -369,6 +375,14 @@ def _score_family(
                 evidence.append(Evidence("math", f"{spec.name} closed", spec.points))
             else:
                 evidence.append(Evidence("math", f"{spec.name} failed", 0.0))
+    for outcome in form_outcomes:
+        if outcome.passed:
+            score += outcome.points
+            evidence.append(
+                Evidence("form_test", f"{outcome.test_id} passed", outcome.points)
+            )
+        elif outcome.evaluable:
+            evidence.append(Evidence("form_test", f"{outcome.test_id} failed", 0.0))
     return score, evidence
 
 
@@ -395,6 +409,9 @@ def _evidence_scores(
     math_by_family: dict[str, list[IdentityOutcome]] = {}
     for outcome in outcomes:
         math_by_family.setdefault(outcome.family, []).append(outcome)
+    form_by_family: dict[str, list[FormTestOutcome]] = {}
+    for outcome in evaluate_form_tests(table):
+        form_by_family.setdefault(cascade_family(outcome.family), []).append(outcome)
     return {
         family: _score_family(
             family,
@@ -406,6 +423,7 @@ def _evidence_scores(
             table,
             policy,
             tuple(math_by_family.get(family, ())),
+            tuple(form_by_family.get(family, ())),
         )
         for family in families
     }

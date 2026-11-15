@@ -106,11 +106,19 @@ classified tables into logical statements and arbitrates their relations.
 - **Family profiles live once, as data, in the profile registry**: `profiles` is the
   single home of family profiles for exactly the supported set — each profile carries
   its measured support state per stratum, its vocabulary seat, its form-test
-  declarations (data only; the stage builds separately), its gate/seat bindings, its
+  declarations and specs (data only), its gate/seat bindings, its
   exhibit links, and its prose-window permission (none for every family: prose
   windows are genre-layer only). A family outside the registry does not compete; a
   retired family is registry data with no profile, never a code branch. Profiles
   carry stratum codes, never form names — form enters only as detected context data.
+- **Form tests are registry data, evaluated by one stage**: `form_tests` evaluates
+  the declared specs once per table, between context assembly and the vocabulary
+  competition, dispatching on the spec's kind only — never on its family; each
+  kind's own parameters live in that kind's table in `profiles`, keyed by test_id.
+  A family with no declared specs has none. Anchor labels only locate the rows the test runs
+  over; the test itself is arithmetic. A passed test scores as evidence in both
+  competitions (the `form_test` channel and evidence group); a failed evaluable
+  test records a zero-point signal, never a veto or a standalone assignment.
 - **Labor capture is schema-led prose-to-table**: linkage terms generate
   candidate spans and the employee group x contract x union fields bind
   inside a linked span only (`labor_capture`); schedule-header terms are
