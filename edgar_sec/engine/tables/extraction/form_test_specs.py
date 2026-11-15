@@ -397,7 +397,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
             "single_line_summary",
             "totals_only",
         ),
-        provenance="step6:directed-t5x-pension-q",
+        provenance="directed:t5x-pension-q",
     ),
     CompositionSpec(
         "ppe",
@@ -421,7 +421,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
         min_column_groups=1,
         total_terms=("total property", "property and equipment, net"),
         refused_shapes=("totals_only", "single_line_summary", "movement_only"),
-        provenance="step6:directed-t5x-ppe",
+        provenance="directed:t5x-ppe",
     ),
     CompositionSpec(
         "intangibles",
@@ -452,7 +452,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
             "rollforward_by_category",
             "single_class_summary",
         ),
-        provenance="step6:directed-t5x-intangibles-q",
+        provenance="directed:t5x-intangibles-q",
     ),
     CompositionSpec(
         "deferred_tax",
@@ -477,7 +477,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
             "provision_detail",
             "single_line_summary",
         ),
-        provenance="step6:directed-t3-deferred_tax",
+        provenance="directed:t3-deferred_tax",
     ),
     CompositionSpec(
         "inventory",
@@ -492,7 +492,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
         min_class_rows=2,
         total_terms=("total inventories", "total inventory", "inventories, net"),
         refused_shapes=("totals_only", "single_line_summary"),
-        provenance="step6:directed-t5x-inventory-q",
+        provenance="directed:t5x-inventory-q",
     ),
     CompositionSpec(
         "lease_maturity",
@@ -516,7 +516,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
             "totals_only",
             "single_line_summary",
         ),
-        provenance="step6:directed-t5x-lease_maturity",
+        provenance="directed:t5x-lease_maturity",
     ),
     CompositionSpec(
         "fair_value",
@@ -535,6 +535,7 @@ COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
             "totals_only",
             "single_line_summary",
         ),
+        provenance="directed:fair_value-levels",
     ),
 )
 

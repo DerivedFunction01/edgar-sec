@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.competition import GeometryText
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 
-PROV_STEP3_PROSE_WINDOW = "improvement-step3:prose-window"
+PROV_PROSE_WINDOW = "prose-window:filer_status"
 
 WINDOW_LIMIT = 4000
 _MARK_SPAN = 48
@@ -51,7 +51,7 @@ class FilerStatusReading:
     present: tuple[str, ...]
     marked: tuple[str, ...]
     grain: str = "prose_window"
-    provenance: str = PROV_STEP3_PROSE_WINDOW
+    provenance: str = PROV_PROSE_WINDOW
 
     @property
     def decided(self) -> bool:

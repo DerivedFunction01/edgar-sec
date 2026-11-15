@@ -104,12 +104,12 @@ def test_profile_is_assembled_from_the_subject_evidence_map() -> None:
     from edgar_sec.engine.tables.extraction.signature_profiles import (
         CHANNEL_WEIGHTS,
         INHERITANCE_FACTORS,
-        PROV_STEP1B_MAP,
+        PROV_SUBJECT_EVIDENCE_MAP,
         SIGNATURE_TERMS,
     )
 
     assert len(SIGNATURE_TERMS) > 3000
-    assert {t.provenance for t in SIGNATURE_TERMS} == {PROV_STEP1B_MAP}
+    assert {t.provenance for t in SIGNATURE_TERMS} == {PROV_SUBJECT_EVIDENCE_MAP}
     assert {t.channel for t in SIGNATURE_TERMS} <= {
         "caption",
         "leadin",

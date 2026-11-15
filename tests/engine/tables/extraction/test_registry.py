@@ -35,7 +35,7 @@ def test_every_spec_carries_governed_provenance() -> None:
         *LANDMARK_SPECS,
     )
     assert specs
-    governed = ("step3:", "coverage-redrive:", "repair:")
+    governed = ("calibration:", "coverage-redrive:", "repair:")
     assert all(spec.provenance.startswith(governed) for spec in specs)
 
 
@@ -43,7 +43,7 @@ def test_no_identity_alone_reaches_the_assignment_floor() -> None:
     assert IDENTITIES
     assert all(0.0 < spec.points < ASSIGNMENT_FLOOR for spec in IDENTITIES)
     assert all(
-        spec.points_provenance == "step6:identity_pricing" for spec in IDENTITIES
+        spec.points_provenance == "measurement:identity_pricing" for spec in IDENTITIES
     )
 
 
@@ -88,10 +88,12 @@ def test_thin_families_have_no_term_patterns_at_the_bar() -> None:
 
 def test_negative_evidence_is_the_retained_veto_set() -> None:
     assert len(NEGATIVE_EVIDENCE) == 246
-    step3 = [s for s in NEGATIVE_EVIDENCE if s.provenance.startswith("step3:")]
+    calibration = [
+        s for s in NEGATIVE_EVIDENCE if s.provenance.startswith("calibration:")
+    ]
     repair = [s for s in NEGATIVE_EVIDENCE if s.provenance.startswith("repair:")]
-    assert len(step3) == 178 and len(repair) == 68
-    assert all(spec.member_presence_rate <= 0.01 for spec in step3)
+    assert len(calibration) == 178 and len(repair) == 68
+    assert all(spec.member_presence_rate <= 0.01 for spec in calibration)
     assert all(spec.member_presence_rate <= 0.02 for spec in repair)
 
 
@@ -127,8 +129,8 @@ def test_location_strengths_carry_measured_counts() -> None:
 def test_structure_specs_carry_step8d_dual_provenance() -> None:
     assert STRUCTURE_SPECS
     assert all(
-        spec.provenance == "step8d:structure_census"
-        and spec.discovery == "step8d:structure_drive"
+        spec.provenance == "structure-census:structure_specs"
+        and spec.discovery == "structure-census:context_drive"
         for spec in STRUCTURE_SPECS
     )
     assert all(0.0 < spec.points < ASSIGNMENT_FLOOR for spec in STRUCTURE_SPECS)

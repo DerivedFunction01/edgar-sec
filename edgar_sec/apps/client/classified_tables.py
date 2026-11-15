@@ -26,7 +26,7 @@ from edgar_sec.engine.tables.extraction.profiles import PROV_STEP6_VERDICT
 from edgar_sec.engine.tables.extraction.typed_rows import structure_table
 
 #: Cache stamp: registry provenance plus the production version.
-CLASSIFIED_STAMP = f"step2-v1:{PROV_STEP6_VERDICT}"
+CLASSIFIED_STAMP = f"classified-v1:{PROV_STEP6_VERDICT}"
 _KIND = f"classified_tables:{CLASSIFIED_STAMP}"
 
 

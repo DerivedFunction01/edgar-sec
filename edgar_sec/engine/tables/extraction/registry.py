@@ -5,25 +5,25 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 CALIBRATION_RECORD = "run-logs/2026-11-09-table-extraction-step3-calibration.md"
-PROV_TERM_PATTERNS = "step3:term_patterns"
-PROV_SEQUENCES = "step3:constitutive_sequences"
-PROV_PROSE = "step3:prose_patterns"
-PROV_LOCATION = "step3:location_strengths"
-PROV_SHAPES = "step3:shape_bounds"
-PROV_FLAVORS = "step3:flavor_census"
-PROV_NEGATIVE = "step3:negative_evidence"
-PROV_MATH = "step3:math_pricing"
+PROV_TERM_PATTERNS = "calibration:term_patterns"
+PROV_SEQUENCES = "calibration:constitutive_sequences"
+PROV_PROSE = "calibration:prose_patterns"
+PROV_LOCATION = "calibration:location_strengths"
+PROV_SHAPES = "calibration:shape_bounds"
+PROV_FLAVORS = "calibration:flavor_census"
+PROV_NEGATIVE = "calibration:negative_evidence"
+PROV_MATH = "calibration:math_pricing"
 PROV_COVERAGE_SEED = "coverage-redrive:seed-06af1209"
 PROV_COVERAGE_DISCOVERY = "coverage-redrive:discovery"
 PROV_CONTAINMENT = "containment:census-2026-11-10"
-PROV_MATH_POINTS = "step6:identity_pricing"
+PROV_MATH_POINTS = "measurement:identity_pricing"
 PROV_REPAIR_DISCOVERY = "repair:discovery"
 PROV_REPAIR_LANDMARKS = "repair:landmarks"
 PROV_REPAIR_NEGATIVE = "repair:negative_evidence"
-PROV_STEP8C_CENSUS = "step8c:note_census"
-PROV_STEP8C_DRIVE = "step8c:context_drive"
-PROV_STEP8D_CENSUS = "step8d:structure_census"
-PROV_STEP8D_DRIVE = "step8d:structure_drive"
+PROV_NOTE_CENSUS = "note-census:note_title_specs"
+PROV_NOTE_CENSUS_DRIVE = "note-census:context_drive"
+PROV_STRUCTURE_CENSUS = "structure-census:structure_specs"
+PROV_STRUCTURE_CENSUS_DRIVE = "structure-census:context_drive"
 
 RESIDUAL_FAMILY = "other"
 CORE_FAMILIES = (
@@ -209,8 +209,8 @@ class NoteTitleSpec:
     points: float
     exclusivity: float
     support: int
-    provenance: str = PROV_STEP8C_CENSUS
-    discovery: str = PROV_STEP8C_DRIVE
+    provenance: str = PROV_NOTE_CENSUS
+    discovery: str = PROV_NOTE_CENSUS_DRIVE
 
 
 @dataclass(frozen=True, slots=True)
@@ -222,8 +222,8 @@ class StructureSpec:
     points: float
     exclusivity: float
     support: int
-    provenance: str = PROV_STEP8D_CENSUS
-    discovery: str = PROV_STEP8D_DRIVE
+    provenance: str = PROV_STRUCTURE_CENSUS
+    discovery: str = PROV_STRUCTURE_CENSUS_DRIVE
 
 
 STRUCTURE_SPECS: tuple[StructureSpec, ...] = (

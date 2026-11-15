@@ -14,8 +14,12 @@ from edgar_sec.engine.tables.extraction.registry import (
 
 def test_specs_carry_dual_step8c_provenance() -> None:
     assert NOTE_TITLE_SPECS
-    assert all(spec.provenance == "step8c:note_census" for spec in NOTE_TITLE_SPECS)
-    assert all(spec.discovery == "step8c:context_drive" for spec in NOTE_TITLE_SPECS)
+    assert all(
+        spec.provenance == "note-census:note_title_specs" for spec in NOTE_TITLE_SPECS
+    )
+    assert all(
+        spec.discovery == "note-census:context_drive" for spec in NOTE_TITLE_SPECS
+    )
 
 
 def test_claims_are_floor_tier_and_measured_exclusive() -> None:

@@ -70,7 +70,7 @@ def test_registry_prices_are_the_step3_figures() -> None:
         "cash_flow": ("cash_flow_with_fx_leg", "standard", 0.430, 0.985),
         "income_statement": ("gross_profit_leg1", "weak", 0.247, 0.895),
     }
-    assert all(spec.provenance == "step3:math_pricing" for spec in IDENTITIES)
+    assert all(spec.provenance == "calibration:math_pricing" for spec in IDENTITIES)
 
 
 def test_balance_sheet_two_row_form_closes() -> None:

@@ -11,9 +11,6 @@ import re
 from edgar_sec.engine.tables.extraction.competition import GeometryText
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 
-PROV_STEP3_RESIDUE = "improvement-step3:residue-content"
-PROV_REFRESH_STEP4_SEGMENT = "refresh-step4:segment-gate-widening"
-
 CONTENT_GATED_FAMILIES = (
     "segment_reporting",
     "commitments_contingencies",

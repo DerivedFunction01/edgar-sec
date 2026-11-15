@@ -45,9 +45,9 @@ SIGNAL_KIND_UNCERTAIN = "kind_uncertain"
 SIGNAL_SCALE_UNSTATED = "scale_unstated"
 SIGNAL_BS_IDENTITY_FAILED = "bs_identity_failed"
 
-_PROV_ASSEMBLY = "step7:assembly"
-_PROV_CASCADE = "step4:cascade"
-_PROV_SECOND_SET = "step8c:second_set"
+_PROV_ASSEMBLY = "assembly:arbitration"
+_PROV_CASCADE = "cascade:specific_override"
+_PROV_ASSEMBLY_SECOND_SET = "assembly:second_statement_set"
 SECOND_SET_TAG = "second_set"
 _DUAL_PARENT = ("fair_value", "balance_sheet")
 _STRONG_SIGNALS = ("continued marker", "joint closure")
@@ -592,7 +592,7 @@ def _tag_second_sets(groups: list[_Group]) -> None:
                     "second_set",
                     f"totals differ from the {family} main on "
                     f"{conflicts[0]}: a second statement set",
-                    _PROV_SECOND_SET,
+                    _PROV_ASSEMBLY_SECOND_SET,
                 )
             )
 

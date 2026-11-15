@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.subject_evidence import load_map
 
-PROV_STEP1B_MAP = "improvement-step1b:subject-evidence-map-v1"
+PROV_SUBJECT_EVIDENCE_MAP = "subject-evidence-map:v1"
 
 CHANNELS = ("caption", "leadin", "notehead", "lead_title", "stub")
 _MAP_CHANNEL = {"note_heading": "notehead"}
@@ -31,7 +31,7 @@ class SignatureTerm:
     weight: float
     member_hits: int
     foreign_hits: int
-    provenance: str = PROV_STEP1B_MAP
+    provenance: str = PROV_SUBJECT_EVIDENCE_MAP
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,7 +42,7 @@ class ContainmentEdge:
     parent: str
     discount: float
     support: str
-    provenance: str = PROV_STEP1B_MAP
+    provenance: str = PROV_SUBJECT_EVIDENCE_MAP
 
 
 @dataclass(frozen=True, slots=True)
@@ -52,7 +52,7 @@ class LadderTerm:
     term: str
     support_debt: int
     support_lease: int
-    provenance: str = PROV_STEP1B_MAP
+    provenance: str = PROV_SUBJECT_EVIDENCE_MAP
 
 
 def _channel(name: str) -> str:

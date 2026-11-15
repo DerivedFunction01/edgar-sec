@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import RE_DATE_OR_YEAR
 
-PROV_STEP3_LABOR = "improvement-step3:labor-capture"
+PROV_LABOR_CAPTURE = "labor-capture:prose_conversion"
 
 LINKAGE_TERMS = (
     "collective bargaining",
@@ -90,7 +90,7 @@ class LaborRow:
     contract_terms: tuple[str, ...]
     negated: bool
     span: str
-    provenance: str = PROV_STEP3_LABOR
+    provenance: str = PROV_LABOR_CAPTURE
 
 
 def _sentences(prose: str) -> list[str]:

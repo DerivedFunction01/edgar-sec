@@ -11,10 +11,10 @@ from dataclasses import dataclass
 
 CALIBRATION_RECORD = "run-logs/2026-11-09-table-extraction-step3-calibration.md"
 STUDY_RECORD = "run-logs/2026-11-08-table-taxonomy-extractor-study.md"
-STEP8C_RECORD = "run-logs/2026-11-10-table-extraction-step8c.md"
-PROV_LOCATION = "step3:location_strengths"
+FORM_PROFILE_RECORD = "run-logs/2026-11-10-table-extraction-step8c.md"
+PROV_LOCATION = "calibration:location_strengths"
 PROV_NAMESPACE = "study:page-marker-namespaces"
-PROV_PROFILE = "step8c:form_profile"
+PROV_PROFILE = "form-anatomy:form_profile"
 
 PRIOR_FORMS: tuple[str, ...] = ("10-K", "10-K/A", "10-Q", "10-Q/A")
 
