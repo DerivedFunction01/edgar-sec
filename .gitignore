@@ -389,13 +389,59 @@ uploads/*
 # --- Committable exceptions -------------------------------------------------
 # tests/fixtures/ holds committed golden fixtures. These must stay tracked: a
 # fresh clone lacking them fails the gate, because the engine parity tests and
-# the whole pipeline replay read from this directory.
+# the whole pipeline replay read from this directory. The blanket rules above
+# (*.csv, *.parquet, .*) would otherwise swallow them, so every kept subtree
+# is un-ignored explicitly below.
 #
 # uploads/ is deliberately NOT exempted. It holds operator-supplied CIK
 # manifests, which are local run inputs rather than repository content.
+#
+# The Phase 2 repo-finalization purge deleted tests/fixtures/taxonomy_corpus/
+# in full and tests/fixtures/table_extraction_corpus/ except the four
+# specimen filings listed at the end of this block. Neither tree is
+# un-ignored any longer; only the four specimen files are excepted.
 !tests/fixtures/
-!tests/fixtures/**
+!tests/fixtures/*.csv
+!tests/fixtures/*.html
+!tests/fixtures/*.json
+!tests/fixtures/*.txt
+!tests/fixtures/*.xml
+!tests/fixtures/catalog/
+!tests/fixtures/catalog/**
+!tests/fixtures/client/
+!tests/fixtures/client/**
+!tests/fixtures/company_family/
+!tests/fixtures/company_family/**
+!tests/fixtures/datasets/
+!tests/fixtures/datasets/**
+!tests/fixtures/document/
+!tests/fixtures/document/**
+!tests/fixtures/document_storage/
+!tests/fixtures/document_storage/**
+!tests/fixtures/earnings/
+!tests/fixtures/earnings/**
+!tests/fixtures/efts/
+!tests/fixtures/efts/**
+!tests/fixtures/engine/
+!tests/fixtures/engine/**
+!tests/fixtures/feeds/
+!tests/fixtures/feeds/**
+!tests/fixtures/index_pages/
+!tests/fixtures/index_pages/**
+!tests/fixtures/table_extraction_population/
+!tests/fixtures/table_extraction_population/**
+!tests/fixtures/xbrl/
+!tests/fixtures/xbrl/**
+tests/fixtures/taxonomy_corpus/**
+tests/fixtures/table_extraction_corpus/**
+!tests/fixtures/table_extraction_corpus/0000024491-19-000016.json
+!tests/fixtures/table_extraction_corpus/0000077543-25-000025.json
+!tests/fixtures/table_extraction_corpus/0000726854-20-000044.json
+!tests/fixtures/table_extraction_corpus/0000823094-19-000029.json
 tests/fixtures/**/__pycache__/
+# tracked-files.txt is a `git ls-files` snapshot — a pure function of the
+# tracked set, regenerated on demand; never tracked (R7).
+/tracked-files.txt
 # edgar_sec/engine/xbrl/taxonomy/archive/ holds the derived per-vintage
 # taxonomy slices (Step 4): tracked reference data a fresh clone needs,
 # rebuilt by edgar_sec/tools/build_taxonomy_archive.py.
