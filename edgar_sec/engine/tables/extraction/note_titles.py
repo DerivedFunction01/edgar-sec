@@ -10,7 +10,6 @@ from __future__ import annotations
 from edgar_sec.engine.tables.extraction.registry import NoteTitleSpec
 
 NOTE_TITLE_SPECS: tuple[NoteTitleSpec, ...] = (
-    NoteTitleSpec("subsequent_events", "subsequent event", 5.0, 0.957, 633),
     NoteTitleSpec("segment_reporting", "segment", 5.0, 0.921, 449),
     NoteTitleSpec(
         "commitments_contingencies", "commitments and contingencies", 5.0, 0.989, 117

@@ -326,15 +326,30 @@ def test_repair_tax_vocabulary_wins_on_evidence() -> None:
     )
 
 
-def test_note_title_claim_assigns_an_unclaimed_table() -> None:
+def test_retired_note_title_claims_nothing() -> None:
     table = _table(
         ("Alpha item", "Beta item"),
         note=NoteRef(None, None, "Subsequent Events"),
     )
     result = classify_table(table)
-    assert result.family == "subsequent_events"
+    assert result.family == "other"
+    assert result.tier == "residual"
+    assert not any(entry.group == "note" for entry in result.evidence)
+
+
+def test_note_title_claim_assigns_a_corroborated_table() -> None:
+    table = _table(
+        (
+            "Amounts due from related parties",
+            "Amounts due to related parties",
+            "Related party receivables",
+        ),
+        note=NoteRef(None, None, "Related Party Transactions"),
+    )
+    result = classify_table(table)
+    assert result.family == "related_party"
     assert result.tier == "evidence"
-    assert result.score == 5.0
+    assert result.score >= 5.0
     assert any(entry.group == "note" for entry in result.evidence)
 
 
@@ -355,7 +370,7 @@ def test_note_title_claim_never_overrides_the_specific_tier() -> None:
             "Denominator for basic earnings per share",
             "Denominator for diluted earnings per share",
         ),
-        note=NoteRef(None, None, "Subsequent Events"),
+        note=NoteRef(None, None, "Segment Reporting"),
     )
     result = classify_table(table)
     assert result.family == "eps_reconciliation"

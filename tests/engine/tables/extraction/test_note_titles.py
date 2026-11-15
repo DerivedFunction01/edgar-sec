@@ -25,6 +25,11 @@ def test_claims_are_floor_tier_and_measured_exclusive() -> None:
         assert spec.support >= 25
 
 
+def test_retired_family_has_no_note_title_spec() -> None:
+    assert "subsequent_events" not in NOTE_TITLES_BY_FAMILY
+    assert all(spec.family != "subsequent_events" for spec in NOTE_TITLE_SPECS)
+
+
 def test_families_rank_below_the_named_families() -> None:
     positions = {family: i for i, family in enumerate(FAMILY_PRIORITY)}
     for spec in NOTE_TITLE_SPECS:
