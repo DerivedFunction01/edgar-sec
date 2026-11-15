@@ -10,6 +10,7 @@ from edgar_sec.engine.tables.ascii_html.model import (
 from edgar_sec.engine.tables.extraction.competition import (
     GeometryText,
     compete,
+    geometry_text_from_table,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
@@ -403,3 +404,103 @@ def test_text_channels_default_empty():
     text = DerivativesText.from_geometry(GeometryText(stubs=("Swaps",)))
     verdict = evaluate_derivatives_evidence(text, SPEC)
     assert verdict.admitted and verdict.evidence_class == "U"
+
+
+_UHAUL_PROSE = (
+    "Recognition of Investment Income. Interest income from bonds and"
+    " mortgage notes is recognized when earned. Dividends on common and"
+    " preferred stocks are recognized on the ex-dividend dates. Realized"
+    " gains and losses on the sale or exchange of investments are"
+    " recognized at the trade date.\n"
+    "Derivative Financial Instruments\n"
+    "Our objective for holding derivative financial instruments is to"
+    " manage interest rate risk exposure primarily through entering"
+    " interest rate swap agreements and call options. We do not enter"
+    " into these instruments for trading purposes. Counterparties to"
+    " the interest rate swap agreements are major financial"
+    " institutions. Derivatives are recognized at fair value on the"
+    " balance sheet and are classified as prepaid expenses (asset) or"
+    " accrued expenses (liability). Derivatives that are not designated"
+    " as cash flow hedges for accounting purposes must be adjusted to"
+    " fair value through income. If the derivative qualifies and is"
+    " designated as a cash flow hedge, changes in its fair value will"
+    " be recorded in accumulated other comprehensive income (loss) until"
+    " the hedged item is recognized in earnings. See Note 11,"
+    " Derivatives, of the Notes to Consolidated Financial Statements.\n"
+    "Inventories and parts, net\n"
+    "Inventories and parts, net were as follows:"
+)
+
+
+def _context(rows, prose_before, caption_stack=()):
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=rows,
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+    return TableContext(
+        geometry=geometry,
+        prose_before=prose_before,
+        caption_stack=caption_stack,
+    )
+
+
+def test_uhaul_inventories_table_refused_through_the_production_seam():
+    rows = (
+        ("", "March 31,", "", ""),
+        ("", "2021", "", "2020"),
+        ("Truck and trailer parts and accessories", "$", "95,976", "$"),
+        ("Hitches and towing components", "", "19,972", ""),
+        ("Moving supplies and propane", "", "12,877", ""),
+        ("Subtotal", "", "128,825", ""),
+        ("Total", "$", "105,577", "$"),
+    )
+    table = structure_table(_context(rows, _UHAUL_PROSE, ("March 31,",)))
+    geometry = geometry_text_from_table(table)
+    assert geometry.leadin == (
+        "Inventories and parts, net\nInventories and parts, net were as follows:"
+    )
+    assert "derivative" not in geometry.lead_title.lower()
+    assert not _verdict(geometry).admitted
+    assert "derivatives_hedging" not in compete(geometry).claims
+
+
+def test_framing_prose_true_still_admits_through_the_production_seam():
+    prose = (
+        "Non-designated Hedging Strategy\n"
+        "The Company enters into forward exchange contracts to hedge"
+        " certain nonfunctional currency monetary accounts. The purpose"
+        " of the Company’s foreign currency hedging activities is to"
+        " protect the Company from risk that the eventual U.S. dollar"
+        " equivalent cash flows from the nonfunctional currency monetary"
+        " accounts will be adversely affected by changes in the exchange"
+        " rates.\n"
+        "For derivative instruments that are non-designated, the gain"
+        " or loss on the derivative instrument subject to the hedged"
+        " risk (i.e., nonfunctional currency monetary accounts) is"
+        " recognized in other income (expense), net in current"
+        " earnings.\n"
+        "The Company had the following outstanding foreign currency"
+        " forward contracts that hedge the fair value of nonfunctional"
+        " currency monetary accounts (in millions):"
+    )
+    rows = (
+        ("Currency Denomination", "", "", ""),
+        ("Foreign Currency", "December 31, 2014", "", "December 31, 2013"),
+        ("Norwegian Krone", "NOK", "4,052", "NOK", "3,257"),
+        ("U.S. Dollar", "$", "1,092", "$", "715"),
+        ("Euro", "EUR", "401", "EUR", "310"),
+        ("Danish Krone", "DKK", "322", "DKK", "177"),
+    )
+    table = structure_table(_context(rows, prose, ("Currency Denomination",)))
+    geometry = geometry_text_from_table(table)
+    assert geometry.leadin == prose
+    assert _verdict(geometry).admitted

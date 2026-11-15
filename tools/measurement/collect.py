@@ -33,7 +33,10 @@ from edgar_sec.engine.tables.extraction.competition import (
     GeometryText,
     compete_filing,
     heading_text,
+)
+from edgar_sec.engine.tables.extraction.leadin_segmentation import (
     lead_title_text,
+    leadin_segment,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.toc_gate import toc_refusal
@@ -65,7 +68,7 @@ def geometry_text(g: dict) -> GeometryText:
     )
     return GeometryText(
         caption=caption,
-        leadin=prose_before,
+        leadin=leadin_segment(prose_before),
         notehead=heading_text(prose_before, prose_after, caption),
         lead_title=lead_title_text(prose_before),
         stubs=tuple(stubs),

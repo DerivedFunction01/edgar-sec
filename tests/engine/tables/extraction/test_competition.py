@@ -7,6 +7,10 @@ from edgar_sec.engine.tables.extraction.competition import (
     compete,
     compete_filing,
 )
+from edgar_sec.engine.tables.extraction.leadin_segmentation import (
+    lead_title_text,
+    leadin_segment,
+)
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     ContainmentEdge,
     SignatureTerm,
@@ -344,3 +348,136 @@ def test_fragment_inherits_from_preceding_claim_in_same_note() -> None:
     assert results[1].claims == ("equity_statement",)
     channels = results[1].scores["equity_statement"].by_channel
     assert "context" in channels
+
+
+_UHAUL_PROSE = (
+    "Recognition of Investment Income. Interest income from bonds and"
+    " mortgage notes is recognized when earned. Dividends on common and"
+    " preferred stocks are recognized on the ex-dividend dates. Realized"
+    " gains and losses on the sale or exchange of investments are"
+    " recognized at the trade date.\n"
+    "Derivative Financial Instruments\n"
+    "Our objective for holding derivative financial instruments is to"
+    " manage interest rate risk exposure primarily through entering"
+    " interest rate swap agreements and call options. We do not enter"
+    " into these instruments for trading purposes. Counterparties to"
+    " the interest rate swap agreements are major financial"
+    " institutions. Derivatives are recognized at fair value on the"
+    " balance sheet and are classified as prepaid expenses (asset) or"
+    " accrued expenses (liability). Derivatives that are not designated"
+    " as cash flow hedges for accounting purposes must be adjusted to"
+    " fair value through income. If the derivative qualifies and is"
+    " designated as a cash flow hedge, changes in its fair value will"
+    " be recorded in accumulated other comprehensive income (loss) until"
+    " the hedged item is recognized in earnings. See Note 11,"
+    " Derivatives, of the Notes to Consolidated Financial Statements.\n"
+    "Inventories and parts, net\n"
+    "Inventories and parts, net were as follows:"
+)
+
+
+def test_leadin_segment_starts_at_the_last_heading() -> None:
+    prose = (
+        "Short-Term Borrowings\n"
+        "The Company has a commercial paper facility.\n"
+        "Long-Term Debt\n"
+        "Long-term debt consisted of the following:"
+    )
+    assert leadin_segment(prose) == (
+        "Long-Term Debt\nLong-term debt consisted of the following:"
+    )
+    assert lead_title_text(prose) == (
+        "Long-Term Debt Long-term debt consisted of the following:"
+    )
+
+
+def test_leadin_segment_without_a_heading_is_unchanged() -> None:
+    prose = (
+        "During the first six months of 2014 and 2013, the total change"
+        " in the fair value of the Company’s forward contracts recorded"
+        " in other income (expense), net, was as follows:"
+    )
+    assert leadin_segment(prose) == prose
+    assert lead_title_text(prose) == prose
+
+
+def test_leadin_segment_ignores_furniture_labels_and_fragments() -> None:
+    prose = (
+        "The fair values of derivative instruments are shown below.\n"
+        "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n"
+        "The following tabular disclosure does not include offsetting."
+    )
+    assert leadin_segment(prose) == prose
+    labelled = (
+        "Segment results for the prior year are discussed below.\n"
+        "For the Nine Months Ended September 30, 2017\n"
+        "Cash flow hedges were designated at inception."
+    )
+    assert leadin_segment(labelled) == labelled
+    fragmented = (
+        "Operating income increased due to pricing and mix.\n"
+        "Asia\n"
+        "Sales rose in the region during the year."
+    )
+    assert leadin_segment(fragmented) == fragmented
+
+
+def test_leadin_segment_ignores_a_december_period_label() -> None:
+    prose = (
+        "Derivative Financial Instruments\n"
+        "The Company uses derivatives to manage risk.\n"
+        "For the Three Months Ended Dec. 31, 2024\n"
+        "Inventories and parts, net\n"
+        "Inventories and parts, net were as follows:"
+    )
+    assert leadin_segment(prose) == (
+        "Inventories and parts, net\nInventories and parts, net were as follows:"
+    )
+
+
+def test_uhaul_leadin_segments_to_its_inventories_framing() -> None:
+    segment = leadin_segment(_UHAUL_PROSE)
+    assert segment == (
+        "Inventories and parts, net\nInventories and parts, net were as follows:"
+    )
+    assert "derivative" not in segment.lower()
+    assert lead_title_text(_UHAUL_PROSE) == (
+        "Inventories and parts, net Inventories and parts, net were as follows:"
+    )
+
+
+def test_framing_prose_specimens_keep_their_leadin() -> None:
+    first = (
+        "Non-designated Hedging Strategy\n"
+        "The Company enters into forward exchange contracts to hedge"
+        " certain nonfunctional currency monetary accounts. The purpose"
+        " of the Company’s foreign currency hedging activities is to"
+        " protect the Company from risk that the eventual U.S. dollar"
+        " equivalent cash flows from the nonfunctional currency monetary"
+        " accounts will be adversely affected by changes in the exchange"
+        " rates.\n"
+        "For derivative instruments that are non-designated, the gain"
+        " or loss on the derivative instrument subject to the hedged"
+        " risk (i.e., nonfunctional currency monetary accounts) is"
+        " recognized in other income (expense), net in current"
+        " earnings.\n"
+        "The Company had the following outstanding foreign currency"
+        " forward contracts that hedge the fair value of nonfunctional"
+        " currency monetary accounts (in millions):"
+    )
+    assert leadin_segment(first) == first
+    assert lead_title_text(first).startswith(
+        "Non-designated Hedging Strategy The Company enters into"
+        " forward exchange contracts"
+    )
+    second = (
+        "Notes to Consolidated Financial Statements, Continued\n"
+        "The amount of gain (loss) for cash flow hedges recognized in"
+        " accumulated other comprehensive income or loss, reclassified"
+        " from accumulated other comprehensive income or loss into other"
+        " revenues — other (effective portion) and interest expense"
+        " (effective portion), and recognized in other revenues — other"
+        " (ineffective portion) were as follows:"
+    )
+    assert leadin_segment(second) == second
+    assert lead_title_text(second) == second.replace("\n", " ")

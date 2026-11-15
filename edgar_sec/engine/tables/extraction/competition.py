@@ -23,6 +23,10 @@ from edgar_sec.engine.tables.extraction.form_tests import (
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
 )
+from edgar_sec.engine.tables.extraction.leadin_segmentation import (
+    lead_title_text,
+    leadin_segment,
+)
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
@@ -167,7 +171,6 @@ SCORED_VETOES: dict[str, tuple[str, ...]] = {
 
 _HEADING_NOTE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
 _HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
-_TITLE_SPLIT = re.compile(r"\s*\|\s*|\n")
 
 
 @lru_cache(maxsize=None)
@@ -192,18 +195,6 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
                     lines.append(stripped)
     lines.append(caption or "")
     return normalize_text(" ".join(lines))
-
-
-def lead_title_text(prose_before: str) -> str:
-    """The lead-in's title segments: its first two framing chunks."""
-    segments = []
-    for chunk in _TITLE_SPLIT.split(prose_before or ""):
-        stripped = chunk.strip()
-        if stripped:
-            segments.append(stripped)
-        if len(segments) >= 3:
-            break
-    return " ".join(segments[:2])
 
 
 @dataclass(frozen=True, slots=True)
@@ -252,7 +243,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
     headers = tuple(cell for row in context.rows[:zone] for cell in row if cell.strip())
     return GeometryText(
         caption=caption,
-        leadin=context.prose_before or "",
+        leadin=leadin_segment(context.prose_before or ""),
         notehead=heading_text(
             context.prose_before or "", context.prose_after or "", caption
         ),
