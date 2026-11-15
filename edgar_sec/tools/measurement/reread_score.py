@@ -3,7 +3,8 @@
 import json
 from pathlib import Path
 
-from tools.measurement.config import load_config, workdir
+from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.tools.measurement.config import load_config, workdir
 
 CONFIG = load_config()
 HERE = workdir(CONFIG)
@@ -53,5 +54,5 @@ for stratum in ("b", "d"):
         if class_compared
         else None,
     }
-(HERE / "reread-results.json").write_text(json.dumps(out, indent=1))
+atomic_write_json(HERE / "reread-results.json", out, canonical=False, indent=1)
 print(json.dumps(out, indent=1))

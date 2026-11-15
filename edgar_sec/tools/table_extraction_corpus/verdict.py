@@ -149,9 +149,7 @@ def _verdicts(families: dict) -> dict:
             "terms": CORE_TERMS,
             "precision": p,
             "recall": r,
-            "pass": bool(
-                p is not None and r is not None and p >= 0.90 and r >= 0.85
-            ),
+            "pass": bool(p is not None and r is not None and p >= 0.90 and r >= 0.85),
         }
     for family, fam in families.items():
         if family in CORE_FAMILIES or family in (RESIDUAL_FAMILY, "null"):
@@ -191,9 +189,7 @@ def _placement(rows: list[dict]) -> dict:
     for family in sorted(gold_families | pred_families | {RESIDUAL_FAMILY}):
         gold_counter = by_gold.get(family, Counter())
         pred_counter = by_pred.get(family, Counter())
-        support = sum(
-            1 for row in rows if row["gold"] == family
-        )
+        support = sum(1 for row in rows if row["gold"] == family)
         predicted = sum(1 for row in rows if row["pred"] == family)
         placed_gold = sum(
             n for cat, n in gold_counter.items() if cat != "unlabelled_residual"
@@ -206,9 +202,7 @@ def _placement(rows: list[dict]) -> dict:
             "predicted": predicted,
             "placed_from_gold": placed_gold,
             "placed_from_pred": placed_pred,
-            "placement_recall": round(placed_gold / support, 4)
-            if support
-            else None,
+            "placement_recall": round(placed_gold / support, 4) if support else None,
             "placement_precision": round(placed_pred / predicted, 4)
             if predicted
             else None,

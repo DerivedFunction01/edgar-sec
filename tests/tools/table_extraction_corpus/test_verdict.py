@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from tools.table_extraction_corpus.verdict import (
+from edgar_sec.tools.table_extraction_corpus.verdict import (
     error_classes,
     placement_category,
     score_rows,

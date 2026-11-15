@@ -19,6 +19,7 @@ import tempfile
 from pathlib import Path
 
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
+from edgar_sec.infra.storage.atomic import atomic_write_json
 
 RETIRED_REF = "06af1209"
 
@@ -229,7 +230,7 @@ def main(argv: list[str] | None = None) -> int:
         payload = extract_inventory(args.repo, args.ref)
     else:
         payload = build_seed_candidates(json.loads(args.inventory.read_text()))
-    args.out.write_text(json.dumps(payload, indent=1, sort_keys=True))
+    atomic_write_json(args.out, payload, canonical=False, indent=1)
     return 0
 
 

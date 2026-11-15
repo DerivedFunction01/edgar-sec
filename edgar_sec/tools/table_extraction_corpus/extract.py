@@ -1,12 +1,8 @@
-"""Per-filing successor extraction: normalize under the annotate policy
-and assemble the context record kept per geometry.
+"""Per-filing successor extraction under the annotate policy.
 
-Contexts are produced by the engine's one context-production function
-(refresh Step 2); this module owns the record envelope, the label
-join, defect notes, and exhibit resolution through the engine/forms
-resolver. Location is found inside production by ordered sequential
-search; a geometry that cannot be located is an issue on its record,
-never a silent drop.
+Contexts come from the engine's one context-production function; this
+module owns the record envelope, label join, defect notes, and
+exhibit resolution. An unlocatable geometry is an issue, never a drop.
 """
 
 from __future__ import annotations
@@ -37,12 +33,8 @@ def extract_filing(
 ) -> tuple[dict, list[dict], dict]:
     """Build one successor fixture record from primary bytes.
 
-    Returns the record, filing-level defect entries as plain dicts, and
-    the normalize/extract timing split. Fetch timing is the caller's.
-    ``exhibits`` carries inventory dicts (document_type, document_name,
-    raw); resolution runs only when ``stratum`` names the registry
-    stratum the run measures, and only body-confirmed exhibits are
-    produced, stamped with their source document.
+    Returns the record, filing-level defect entries, and the timing
+    split. ``exhibits`` resolution runs only for the measured stratum.
     """
     accession = str(spec["accession"])
     record: dict = {
@@ -57,7 +49,7 @@ def extract_filing(
         "status": "ok",
         "error": None,
         "builder": {
-            "tool": "tools/table_extraction_corpus",
+            "tool": "edgar_sec.tools.table_extraction_corpus",
             "policy": "annotate",
             "tree": tree,
             "primary_document": spec.get("primary_document"),
@@ -125,9 +117,7 @@ def extract_filing(
     # exhibit is the sole source and nothing is dropped; otherwise an
     # exhibit geometry duplicating a primary geometry is dropped, so
     # a complete primary is never double-counted.
-    delegation_by_name = {
-        entry.document_name: entry.delegation for entry in resolved
-    }
+    delegation_by_name = {entry.document_name: entry.delegation for entry in resolved}
 
     def signature(geometry_record: dict) -> tuple:
         return tuple(

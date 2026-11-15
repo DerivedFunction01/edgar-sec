@@ -9,7 +9,7 @@ import json
 import sys
 from pathlib import Path
 
-from tools.measurement.config import load_config, workdir
+from edgar_sec.tools.measurement.config import load_config, workdir
 
 CONFIG = load_config()
 HERE = workdir(CONFIG)

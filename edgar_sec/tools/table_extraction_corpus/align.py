@@ -1,12 +1,8 @@
 """Content-align inherited labels for geometry-count-drift filings.
 
-A handful of filings segment cover or prose fragments differently
-between the retained corpus's build tree and the current tree, so
-their geometry counts differ by a fragment or two and index-based
-label attachment would misalign past the drift point. For those
-filings only, labels are re-attached by canonical content-stream
-match against the retained geometries; unmatched fragments on either
-side carry no label and are named in the fixture's builder block.
+For filings whose geometry counts drifted between build trees, labels
+are re-attached by canonical content-stream match against the retained
+geometries; unmatched fragments carry no label and are named.
 """
 
 from __future__ import annotations
@@ -15,6 +11,8 @@ import argparse
 import json
 from collections import Counter
 from pathlib import Path
+
+from edgar_sec.infra.storage.atomic import atomic_write_json
 
 
 def _canon(rows: list) -> tuple:
@@ -80,9 +78,7 @@ def main() -> int:
         )
         target = Path(args.successor) / f"{accession}.json"
         successor = json.loads(target.read_text(encoding="utf-8"))
-        target.write_text(
-            json.dumps(align_filing(retained, successor)), encoding="utf-8"
-        )
+        atomic_write_json(target, align_filing(retained, successor))
         print(f"aligned {accession}")
     return 0
 

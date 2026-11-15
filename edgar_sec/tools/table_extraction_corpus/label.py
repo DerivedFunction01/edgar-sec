@@ -1,19 +1,8 @@
 """XBRL-alignment labelling for body table geometries.
 
-Ported verbatim in method and data from the taxonomy corpus lane
-(align.py + the labelling decision procedure in its build.py), where
-the method was stated in the corpus record before application: a
-geometry's numeric cells and a solved role's fact values are compared
-as significant-digit strings, so a value printed in thousands matches
-the as-filed fact at any power-of-ten scale. Cells whose digits are a
-bare year (1990-2030) and digit strings shorter than 3 are excluded.
-A geometry takes a family when the best family's score is >= 0.60,
->= 2 of its row labels token-match the role's row labels, and the
-best score is >= 2x the runner-up (or the runner-up is <= 0.30).
-Schedule note groups label through a structural signature per family;
-a geometry that aligns to a group but matches no signature stays
-unlabelled for adjudication. When a filing has XBRL and nothing
-aligns >= 0.25, the geometry is labelled ``other``.
+Numeric cells and solved fact values are compared as significant-digit
+strings (scale-free). A family is taken at score >= 0.60 with >= 2
+row-label token matches and a >= 2x margin over the runner-up.
 """
 
 from __future__ import annotations
@@ -61,7 +50,13 @@ _STATEMENT_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("balance_sheet", ("balance sheet", "financial position", "financial condition")),
     (
         "equity_statement",
-        ("equity", "stockholders", "shareholders", "partners capital", "changes in capital"),
+        (
+            "equity",
+            "stockholders",
+            "shareholders",
+            "partners capital",
+            "changes in capital",
+        ),
     ),
     (
         "income_statement",
@@ -74,7 +69,10 @@ _GROUP_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("fair_value", ("fair value",)),
     ("pension", ("pension", "postretirement", "defined benefit", "retirement benefit")),
     ("derivatives", ("derivative", "hedging", "hedge instruments")),
-    ("debt", ("debt", "borrowings", "notes payable", "indebtedness", "credit agreement")),
+    (
+        "debt",
+        ("debt", "borrowings", "notes payable", "indebtedness", "credit agreement"),
+    ),
     ("tax", ("income tax", "income taxes", "tax provision")),
     ("lease", ("leases", "operating lease", "finance lease", "lessee")),
     ("intangibles", ("intangible", "goodwill")),
@@ -82,7 +80,13 @@ _GROUP_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("inventory", ("inventor",)),
     (
         "compensation",
-        ("stock compensation", "share-based", "stock-based", "equity compensation", "stock option"),
+        (
+            "stock compensation",
+            "share-based",
+            "stock-based",
+            "equity compensation",
+            "stock option",
+        ),
     ),
     ("eps", ("per share",)),
     ("repurchase", ("issuer purchases", "share repurchase program")),
@@ -93,10 +97,8 @@ _GROUP_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
 def role_family(title: str, category: str) -> tuple[str | None, str | None]:
     """Return (statement_family, note_group) for a catalog role title.
 
-    Exactly one of the two is non-None when the role maps at all.
-    Comprehensive-income-only roles deliberately map to nothing: the
-    registry has no such family, and forcing them into income or
-    equity would manufacture labels.
+    Exactly one is non-None when the role maps; comprehensive-income-
+    only roles map to nothing rather than manufacturing labels.
     """
     text = (title or "").lower()
     if "comprehensive income" in text and not any(
@@ -166,7 +168,9 @@ def schedule_family(group: str, rows: tuple[tuple[str, ...], ...]) -> str | None
         keys = ("benefit obligation", "plan assets", "funded status", "net periodic")
         return "pension" if any(k in text for k in keys) else None
     if group == "intangibles":
-        return "intangibles" if ("intangible" in text or "amortization" in text) else None
+        return (
+            "intangibles" if ("intangible" in text or "amortization" in text) else None
+        )
     if group == "ppe":
         return "ppe"
     if group == "inventory":
@@ -189,9 +193,8 @@ _CF_SECTIONS = ("operating activities", "investing activities", "financing activ
 def statement_signature(rows: tuple[tuple[str, ...], ...]) -> dict[str, object]:
     """Statement-family components visible in one table alone.
 
-    Used where no XBRL roles exist (pre-XBRL filings, unaligned
-    geometries): the components propose a candidate family and the
-    adjudication queue disposes. Never a final label by itself.
+    The components propose a candidate family for adjudication;
+    never a final label by itself.
     """
     firsts = [r[0].strip().lower() for r in rows if r and r[0].strip()]
     joined = " ".join(firsts)
@@ -201,8 +204,12 @@ def statement_signature(rows: tuple[tuple[str, ...], ...]) -> dict[str, object]:
 
     components = {
         "revenue_row": has(
-            "total revenues", "net revenues", "total revenue", "revenues",
-            "net sales", "total sales",
+            "total revenues",
+            "net revenues",
+            "total revenue",
+            "revenues",
+            "net sales",
+            "total sales",
         ),
         "net_income_row": has("net income", "net loss", "net earnings"),
         "total_assets_row": has("total assets"),
@@ -272,10 +279,8 @@ def label_geometries(
 ) -> list[dict[str, object]]:
     """Apply the alignment decision procedure to every geometry.
 
-    ``geometries`` carry ``table_index`` and ``rows``; ``roles`` carry
-    ``title``, ``family``, ``group`` and solved ``rows`` of
-    ``{label, values}``. Labels come back in build format: family /
-    provenance / score / reason / top-candidates per geometry.
+    Labels come back in build format: family / provenance / score /
+    reason / top-candidates per geometry.
     """
     prepared = []
     for role in roles:

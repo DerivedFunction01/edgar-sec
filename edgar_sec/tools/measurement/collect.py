@@ -1,20 +1,13 @@
 """Collect: the landed hand over fresh fixtures (config step).
 
-Per filing, two instruments over the same geometries:
-- compete_filing under production constants -> grouped returns
-  (the Step 4 precision/calibration surface, identical shape);
-- assembly.assemble -> per-geometry assignments (the census and
-  residue-family claim surface, the Step 5 mining instrument),
-  plus a direct toc_refusal read per table.
-Also emits a seeded uniform sweep sample of ALL geometries per
-stratum (the recall surface): packets plus a keying file with the
-hand's claims for each sweep specimen. Stdlib plus the
-extraction package; fixtures are the corpus builder's shape.
+Per filing, two instruments over the same geometries: compete_filing
+grouped returns and assembly assignments with a direct toc_refusal
+read per table, plus a seeded uniform sweep sample per stratum.
 """
 
 from __future__ import annotations
 
-from tools.measurement.config import load_config
+from edgar_sec.tools.measurement.config import load_config
 
 import collections
 import hashlib
@@ -41,6 +34,8 @@ from edgar_sec.engine.tables.extraction.leadin_segmentation import (
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.toc_gate import toc_refusal
 from edgar_sec.engine.tables.extraction.typed_rows import structure_table
+from edgar_sec.foundation.runtime.resources import derive_resources
+from edgar_sec.infra.storage.atomic import atomic_write_json
 
 TEXT_CAP = 6000
 SWEEP_N = 700
@@ -61,10 +56,7 @@ def geometry_text(g: dict) -> GeometryText:
     loc = g.get("structured_location") or {}
     note = loc.get("note")
     grid_text = " ".join(
-        str(cell)
-        for row in g.get("rows") or []
-        for cell in row
-        if str(cell).strip()
+        str(cell) for row in g.get("rows") or [] for cell in row if str(cell).strip()
     )
     return GeometryText(
         caption=caption,
@@ -192,7 +184,7 @@ def main() -> int:
     totals: dict = {"geometries": 0, "toc_refused": 0}
     ret_tot: collections.Counter = collections.Counter()
     asg_tot: collections.Counter = collections.Counter()
-    with ProcessPoolExecutor(max_workers=8) as pool:
+    with ProcessPoolExecutor(max_workers=derive_resources().workers) as pool:
         for returns, assignments, toc, packets, extra in pool.map(
             run_filing, files, chunksize=4
         ):
@@ -272,8 +264,11 @@ def main() -> int:
         "return_families": dict(ret_tot),
         "assignment_families": dict(asg_tot),
     }
-    (out_dir / f"{PREFIX}-collect-summary-{stratum}.json").write_text(
-        json.dumps(summary, indent=1, sort_keys=True)
+    atomic_write_json(
+        out_dir / f"{PREFIX}-collect-summary-{stratum}.json",
+        summary,
+        canonical=False,
+        indent=1,
     )
     print(json.dumps(summary))
     return 0

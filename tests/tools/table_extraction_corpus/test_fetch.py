@@ -6,8 +6,8 @@ from pathlib import Path
 
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from tools.table_extraction_corpus.build import annual_stratum
-from tools.table_extraction_corpus.fetch import (
+from edgar_sec.tools.table_extraction_corpus.build import annual_stratum
+from edgar_sec.tools.table_extraction_corpus.fetch import (
     collect_exhibits,
     declared_exhibit_targets,
     exhibit_candidates,
@@ -120,7 +120,7 @@ class _FakeClient:
 
 
 def test_aggregate_types_come_from_the_index_headers() -> None:
-    from tools.table_extraction_corpus.fetch import build_aggregate
+    from edgar_sec.tools.table_extraction_corpus.fetch import build_aggregate
 
     spec = {
         "accession": "0000000000-24-000001",

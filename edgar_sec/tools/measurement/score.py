@@ -1,16 +1,8 @@
 """Scoring: verdicts + keys through the protocol machinery.
 
-Per stratum, never blended:
-- grouped sample: precision (strict + form-present), grouped
-  top-member rates, calibration, false-claim classes per family,
-  and a band-weighted population precision estimate per family
-  (sample member rates per score band x band population counts);
-- assembly sample: precision for the residue/note-tier families;
-- sweep + grouped cross-reads: per-family labelled recall
-  (a member counts claimed when the hand returned its family in
-  the grouped returns or the assembly assignment);
-- unclassified remainder over all false claims;
-- deltas against the Step 4 readings of record.
+Per stratum, never blended: grouped precision, top-member rates,
+calibration, false-claim classes, band-weighted population precision;
+assembly precision; labelled recall; Step 4 deltas.
 """
 
 from __future__ import annotations
@@ -20,7 +12,8 @@ import json
 import sys
 from pathlib import Path
 
-from tools.measurement.config import load_config, workdir
+from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.tools.measurement.config import BANDS, load_config, workdir
 
 
 from edgar_sec.engine.tables.extraction.measurement import (  # noqa: E402
@@ -37,7 +30,6 @@ CONFIG = load_config()
 HERE = workdir(CONFIG)
 PREFIX = CONFIG["prefix"]
 STRATUM = {"b": "B", "d": "D"}
-BANDS = ((5.0, 7.5), (7.5, 10.0), (10.0, 15.0), (15.0, float("inf")))
 EXTRA_FAMILIES = ("commitments_contingencies", "subsequent_events")
 
 
@@ -295,7 +287,7 @@ def main() -> int:
     out["record_problems"] = problems
     out["vocabulary_notes"] = vocab_notes
     out["records_total"] = len(all_records)
-    (HERE / "pricing-results.json").write_text(json.dumps(out, indent=1))
+    atomic_write_json(HERE / "pricing-results.json", out, canonical=False, indent=1)
     print(
         json.dumps({"records": len(all_records), "problems": problems[:10]}, indent=1)
     )

@@ -1,10 +1,8 @@
 """Fresh-accession draw — DuckDB over the published extracts.
 
-Universe: filing_targets of the configured catalog snapshot; era
-quotas per form, one filing per (cik, fiscal period), seeded order
-md5(accession || seed), dashed-accession normalization for all
-exclusion comparisons. Outputs: one spec JSON per drawn accession
-(labels empty, configured population name) + draw summary.
+Universe: filing_targets of the configured catalog snapshot; era quotas
+per form, one filing per (cik, fiscal period), seeded order
+md5(accession || seed). Outputs: one spec JSON per accession + summary.
 """
 
 from __future__ import annotations
@@ -13,7 +11,9 @@ import json
 import sys
 from pathlib import Path
 
-from tools.measurement.config import load_config
+from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.duckdb import sql_identifier, sql_literal
+from edgar_sec.tools.measurement.config import load_config
 
 import duckdb
 
@@ -42,7 +42,7 @@ def main() -> int:
     cols = [
         r[0]
         for r in con.execute(
-            f"DESCRIBE SELECT * FROM read_parquet('{targets}')"
+            f"DESCRIBE SELECT * FROM read_parquet({sql_literal(targets)})"
         ).fetchall()
     ]
     print("filing_targets columns:", cols)
@@ -67,11 +67,13 @@ def main() -> int:
     cik_col = "source_cik" if "source_cik" in cols else "cik"
     doc_col = "primary_document" if "primary_document" in cols else "primary_doc"
     period_expr = (
-        f"CAST({period_col} AS VARCHAR)"
+        f"CAST({sql_identifier(period_col)} AS VARCHAR)"
         if period_col
-        else "CAST(year(CAST(" + date_col + " AS DATE)) AS VARCHAR)"
+        else "CAST(year(CAST(" + sql_identifier(date_col) + " AS DATE)) AS VARCHAR)"
     )
-    forms_sql = "(" + ", ".join("'%s'" % f for f in forms) + ")"
+    forms_sql = "(" + ", ".join(sql_literal(f) for f in forms) + ")"
+    targets_sql = sql_literal(targets)
+    seed_sql = sql_literal(SEED)
     sql = f"""
     WITH base AS (
         SELECT CASE WHEN length(replace(CAST(accession AS VARCHAR), '-', '')) = 18
@@ -79,9 +81,9 @@ def main() -> int:
                          || '-' || substr(replace(CAST(accession AS VARCHAR), '-', ''), 11, 2)
                          || '-' || substr(replace(CAST(accession AS VARCHAR), '-', ''), 13, 6)
                     ELSE CAST(accession AS VARCHAR) END AS accession,
-               CAST({cik_col} AS VARCHAR) AS cik,
+               CAST({sql_identifier(cik_col)} AS VARCHAR) AS cik,
                CAST(form AS VARCHAR) AS form,
-               CAST({date_col} AS VARCHAR) AS filing_date,
+               CAST({sql_identifier(date_col)} AS VARCHAR) AS filing_date,
                CAST({xbrl_expr} AS BOOLEAN) AS is_xbrl,
                CAST({doc_col} AS VARCHAR) AS primary_document,
                {period_expr} AS period_key,
@@ -91,7 +93,7 @@ def main() -> int:
                          THEN 'y2010s'
                     WHEN year(CAST({date_col} AS DATE)) >= 2020
                          THEN 'ixbrl' END AS era
-        FROM read_parquet('{targets}')
+        FROM read_parquet({targets_sql})
         WHERE form IN {forms_sql}
     ),
     eligible AS (
@@ -100,25 +102,25 @@ def main() -> int:
           AND accession NOT IN (SELECT accession FROM excl)
         QUALIFY ROW_NUMBER() OVER (
             PARTITION BY accession
-            ORDER BY md5(accession || cik || '{SEED}')) = 1
+            ORDER BY md5(accession || cik || {seed_sql})) = 1
     ),
     dedup AS (
         SELECT * FROM eligible
         QUALIFY ROW_NUMBER() OVER (
             PARTITION BY cik, period_key
-            ORDER BY md5(accession || '{SEED}')) = 1
+            ORDER BY md5(accession || {seed_sql})) = 1
     ),
     ranked AS (
         SELECT *, ROW_NUMBER() OVER (
-            PARTITION BY era ORDER BY md5(accession || '{SEED}')) AS rn
+            PARTITION BY era ORDER BY md5(accession || {seed_sql})) AS rn
         FROM dedup
     )
     SELECT accession, cik, form, filing_date, is_xbrl,
            primary_document, era
     FROM ranked
-    WHERE (era = 'pre2010' AND rn <= {quotas["pre2010"]})
-       OR (era = 'y2010s' AND rn <= {quotas["y2010s"]})
-       OR (era = 'ixbrl' AND rn <= {quotas["ixbrl"]})
+    WHERE (era = 'pre2010' AND rn <= {int(quotas["pre2010"])})
+       OR (era = 'y2010s' AND rn <= {int(quotas["y2010s"])})
+       OR (era = 'ixbrl' AND rn <= {int(quotas["ixbrl"])})
     ORDER BY era, accession
     """
     rows = con.execute(sql).fetchall()
@@ -142,7 +144,7 @@ def main() -> int:
             "labels": [],
             "source_geometry_count": None,
         }
-        (specs_dir / f"{accession}.json").write_text(json.dumps(spec))
+        atomic_write_json(specs_dir / f"{accession}.json", spec)
         drawn[era] = drawn.get(era, 0) + 1
         ciks.add(cik10)
         per_cik[cik10] = per_cik.get(cik10, 0) + 1
@@ -159,8 +161,11 @@ def main() -> int:
         "period_column": period_col,
         "columns": cols,
     }
-    (out_dir / "step6-draw-summary.json").write_text(
-        json.dumps(summary, indent=1, sort_keys=True)
+    atomic_write_json(
+        out_dir / f"{CONFIG['prefix']}-draw-summary.json",
+        summary,
+        canonical=False,
+        indent=1,
     )
     print(json.dumps(summary, indent=1, sort_keys=True))
     ok = drawn == quotas

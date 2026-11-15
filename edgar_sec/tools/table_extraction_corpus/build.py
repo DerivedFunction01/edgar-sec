@@ -2,9 +2,7 @@
 
 Per filing: catalog-free aggregate from the Archives index, primary
 bytes through the rate-limited SEC client, successor extraction under
-the annotate policy. Designed to run on Colab High-RAM under a process
-pool; each completed filing writes its JSON immediately, so a stopped
-run harvests cleanly.
+the annotate policy. Each completed filing writes its JSON at once.
 """
 
 from __future__ import annotations
@@ -16,10 +14,15 @@ import traceback
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.families.annual.processing import (
+    PROFILE as ANNUAL_PROFILE,
+)
 from edgar_sec.engine.tables.extraction.profiles import STRATUM_ANNUAL
-from tools.table_extraction_corpus.defects import DefectRegister
-from tools.table_extraction_corpus.extract import extract_filing
-from tools.table_extraction_corpus.fetch import (
+from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.tools.table_extraction_corpus.defects import DefectRegister
+from edgar_sec.tools.table_extraction_corpus.extract import extract_filing
+from edgar_sec.tools.table_extraction_corpus.fetch import (
     build_aggregate,
     collect_exhibits,
     declared_exhibit_targets,
@@ -29,15 +32,12 @@ from tools.table_extraction_corpus.fetch import (
 
 _WORKER: dict[str, object] = {}
 
+
 # Exhibit coverage is the annual path only (refresh Step 5): the
-# registry links exhibits on the annual stratum, and the annual
-# forms are the 10-K family. No era gate applies at any year.
-_ANNUAL_FORMS = ("10-K", "10-K/A")
-
-
+# registry links exhibits on the annual stratum. No era gate applies.
 def annual_stratum(form: str) -> str | None:
     """The registry stratum a filing's form measures on, if annual."""
-    return STRATUM_ANNUAL if form.strip().upper() in _ANNUAL_FORMS else None
+    return STRATUM_ANNUAL if resolve_alias(form) == ANNUAL_PROFILE.family else None
 
 
 def _worker_init(
@@ -57,9 +57,7 @@ def _worker_init(
         json.loads(Path(primary_map).read_text(encoding="utf-8")) if primary_map else {}
     )
     _WORKER["exhibit_types"] = tuple(json.loads(exhibit_types)) if exhibit_types else ()
-    _WORKER["exhibit_targets"] = (
-        json.loads(exhibit_targets) if exhibit_targets else []
-    )
+    _WORKER["exhibit_targets"] = json.loads(exhibit_targets) if exhibit_targets else []
 
 
 def _base_record(spec: dict, tree: str) -> dict:
@@ -75,7 +73,7 @@ def _base_record(spec: dict, tree: str) -> dict:
         "status": "ok",
         "error": None,
         "builder": {
-            "tool": "tools/table_extraction_corpus",
+            "tool": "edgar_sec.tools.table_extraction_corpus",
             "policy": "annotate",
             "tree": tree,
         },
@@ -112,7 +110,7 @@ def _process(accession: str) -> dict:
         timing["fetch_s"] = round(time.perf_counter() - fetch_started, 4)
         if raw is None:
             record["status"] = "no_primary"
-            target.write_text(json.dumps(record), encoding="utf-8")
+            atomic_write_json(target, record)
             return {
                 "accession": accession,
                 "status": "no_primary",
@@ -125,9 +123,7 @@ def _process(accession: str) -> dict:
         if stratum is not None and declared_types:
             exhibit_started = time.perf_counter()
             exhibits = collect_exhibits(aggregate, declared_types)
-            timing["exhibit_fetch_s"] = round(
-                time.perf_counter() - exhibit_started, 4
-            )
+            timing["exhibit_fetch_s"] = round(time.perf_counter() - exhibit_started, 4)
         record, entries, split_timing = extract_filing(
             spec,
             raw,
@@ -143,7 +139,7 @@ def _process(accession: str) -> dict:
         record["status"] = "error"
         record["error"] = traceback.format_exc(limit=3)
     timing["total_s"] = round(time.perf_counter() - started, 4)
-    target.write_text(json.dumps(record), encoding="utf-8")
+    atomic_write_json(target, record)
     return {
         "accession": accession,
         "status": str(record["status"]),
@@ -187,7 +183,7 @@ def main() -> int:
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    register = DefectRegister(args.run_id, "step-1-build", "retained-409")
+    register = DefectRegister(args.run_id, "corpus-build", "retained-409")
     timings: list[dict] = []
     statuses: dict[str, int] = {}
     wall_started = time.perf_counter()
@@ -220,19 +216,18 @@ def main() -> int:
     if args.register:
         register.write(Path(args.register))
     if args.summary:
-        Path(args.summary).write_text(
-            json.dumps(
-                {
-                    "run_id": args.run_id,
-                    "filings": len(accessions),
-                    "statuses": statuses,
-                    "wall_s": wall_s,
-                    "workers": args.workers,
-                    "timings": timings,
-                },
-                indent=1,
-            ),
-            encoding="utf-8",
+        atomic_write_json(
+            Path(args.summary),
+            {
+                "run_id": args.run_id,
+                "filings": len(accessions),
+                "statuses": statuses,
+                "wall_s": wall_s,
+                "workers": args.workers,
+                "timings": timings,
+            },
+            canonical=False,
+            indent=1,
         )
     print(f"build complete: {done} filings in {wall_s}s, statuses={statuses}")
     return 0

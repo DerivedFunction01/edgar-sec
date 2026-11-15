@@ -50,13 +50,15 @@ def test_flags_scale_definition_in_the_corpus_tool(synthetic_repo: Path) -> None
     _build_repo(
         synthetic_repo,
         {
-            "tools/table_extraction_corpus/extract.py": (
+            "edgar_sec/tools/table_extraction_corpus/extract.py": (
                 'SCALE_PATTERNS = (("in thousands",),)\n'
             )
         },
     )
     findings = pattern_registry.scan_pattern_registry()
-    assert [f.path for f in findings] == ["tools/table_extraction_corpus/extract.py"]
+    assert [f.path for f in findings] == [
+        "edgar_sec/tools/table_extraction_corpus/extract.py"
+    ]
 
 
 def test_flags_normaliser_function_defined_outside_its_home(
@@ -75,7 +77,7 @@ def test_flags_normaliser_function_defined_in_the_corpus_tool(
     _build_repo(
         synthetic_repo,
         {
-            "tools/table_extraction_corpus/coverage.py": (
+            "edgar_sec/tools/table_extraction_corpus/coverage.py": (
                 "def collapse_text(text):\n    return text\n"
             )
         },
@@ -126,7 +128,7 @@ def test_allows_imports_and_uses_anywhere(synthetic_repo: Path) -> None:
                 "    for pattern, unit in SCALE_PATTERNS:\n"
                 "        pass\n"
             ),
-            "tools/table_extraction_corpus/extract.py": (
+            "edgar_sec/tools/table_extraction_corpus/extract.py": (
                 "from edgar_sec.engine.tables.patterns import SCALE_PATTERNS\n"
                 "def scale(text):\n"
                 "    return normalize_text(text)\n"
@@ -165,10 +167,12 @@ def test_flags_scale_patterns_defined_in_the_corpus_tool(
 ) -> None:
     _build_repo(
         synthetic_repo,
-        {"tools/table_extraction_corpus/label.py": 'SCALE_PATTERNS = "x"\n'},
+        {"edgar_sec/tools/table_extraction_corpus/label.py": 'SCALE_PATTERNS = "x"\n'},
     )
     findings = pattern_registry.scan_pattern_registry()
-    assert [f.path for f in findings] == ["tools/table_extraction_corpus/label.py"]
+    assert [f.path for f in findings] == [
+        "edgar_sec/tools/table_extraction_corpus/label.py"
+    ]
 
 
 def test_allows_seed_definitions_in_their_foundation_homes(

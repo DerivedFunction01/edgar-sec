@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from tools.table_extraction_corpus.extract import extract_filing
+from edgar_sec.tools.table_extraction_corpus.extract import extract_filing
 
 _HTML_10K = """<html><body>
 <p>UNITED STATES SECURITIES AND EXCHANGE COMMISSION</p>

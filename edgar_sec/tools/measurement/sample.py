@@ -1,13 +1,8 @@
 """Sampling over the collect's returns (config step).
 
-Grouped-contract sample: per family per stratum, seeded,
-stratified across score bands (balance_sheet boosted), exactly
-the Step 4 sample plan so readings delta against Step 4's.
-Assembly sample: claims of families the competition layer does
-not return (residue/note-tier families), seeded cap per family.
-Band population counts are emitted with the keys so scoring can
-band-weight the sample precision into a population estimate.
-The sweep sample was drawn venue-side in the collect.
+Grouped-contract sample: per family per stratum, seeded, stratified
+across score bands, exactly the Step 4 sample plan; band population
+counts ride along. Assembly sample: non-competition families, capped.
 """
 
 from __future__ import annotations
@@ -18,7 +13,8 @@ import json
 import sys
 from pathlib import Path
 
-from tools.measurement.config import load_config, workdir
+from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.tools.measurement.config import BANDS, load_config, workdir
 
 CONFIG = load_config()
 HERE = workdir(CONFIG)
@@ -27,7 +23,6 @@ GROUPED_CAP = CONFIG["caps"]["grouped"]
 BALANCE_SHEET_CAP = CONFIG["caps"]["balance_sheet"]
 ASSEMBLY_CAP = CONFIG["caps"]["assembly"]
 PREFIX = CONFIG["prefix"]
-BANDS = ((5.0, 7.5), (7.5, 10.0), (10.0, 15.0), (15.0, float("inf")))
 COMPETITION_FAMILIES = {
     "aoci_rollforward",
     "balance_sheet",
@@ -182,7 +177,9 @@ def main() -> int:
             "band_population": band_population,
         }
         print(stratum, json.dumps(report[stratum]))
-    (out_dir / "sample-summary.json").write_text(json.dumps(report, indent=1))
+    atomic_write_json(
+        out_dir / "sample-summary.json", report, canonical=False, indent=1
+    )
     return 0
 
 

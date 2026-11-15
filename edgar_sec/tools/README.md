@@ -19,6 +19,8 @@ evaluate grounded XBRL populations.
 - **section_corpus**: Banking for the section detector's fixture corpus.
 - **xbrl_discovery**: XBRL linkbase seeding and taxonomy archive construction.
 - **xbrl_eval**: XBRL census, screening, and benchmark verification.
+- **measurement**: Measurement-protocol drivers (draw, collect, sample, merge, score, blind re-read), step-parameterized by config JSON.
+- **table_extraction_corpus**: Successor corpus build, alignment, labelling, and reconciliation tooling with its shared defect register.
 
 ## Contracts
 

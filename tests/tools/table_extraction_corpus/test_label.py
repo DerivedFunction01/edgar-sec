@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from tools.table_extraction_corpus.label import (
+from edgar_sec.tools.table_extraction_corpus.label import (
     apply_aligned_negative,
     cell_digits,
     label_geometries,

@@ -10,6 +10,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from edgar_sec.infra.storage.atomic import atomic_write_json
+
 _SPECIMEN_CAP = 3
 
 
@@ -82,9 +84,7 @@ class DefectRegister:
         }
 
     def write(self, path: Path) -> None:
-        path.write_text(
-            json.dumps(self.to_dict(), indent=1, sort_keys=True), encoding="utf-8"
-        )
+        atomic_write_json(path, self.to_dict(), canonical=False, indent=1)
 
     @classmethod
     def load(cls, path: Path) -> DefectRegister:

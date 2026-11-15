@@ -1,11 +1,8 @@
 """Reconcile the successor corpus against the retained corpus.
 
-The contract is counts, alignment, and identity: per filing, geometry
-counts and table_index sequences match; per geometry, the inherited
-label is identical. Grid divergences are classified — a divergence
-whose canonical content stream is unchanged is a cell-boundary
-regrouping (the split-paren merge is the named case); anything else is
-an unexplained residual and blocks the step.
+The contract is counts, alignment, and identity: geometry counts,
+table_index sequences, and inherited labels match. A grid divergence
+whose canonical content stream changed is a blocking residual.
 """
 
 from __future__ import annotations
@@ -16,7 +13,8 @@ import re
 import statistics
 from pathlib import Path
 
-from tools.table_extraction_corpus.defects import DefectRegister
+from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.tools.table_extraction_corpus.defects import DefectRegister
 
 _PAREN_OPEN_RE = re.compile(r"\(\$?\d[\d,.]*$")
 _CLOSE_CELL_RE = re.compile(r"\)[%*\u2020\u2021]?$")
@@ -38,9 +36,8 @@ def _canon_rows(rows: list) -> list[str]:
 def _pair_drift(retained: dict, successor: dict):
     """Pair geometries by canonical content for a drift filing.
 
-    Returns ``(pairs, successor_only, retained_only)`` when the
-    successor fixture is content-aligned and every paired geometry
-    carries its pair's retained label verbatim; otherwise ``None``.
+    Returns ``(pairs, successor_only, retained_only)`` when every
+    paired geometry carries its pair's retained label; else ``None``.
     """
     if successor.get("builder", {}).get("label_alignment") != "content-match":
         return None
@@ -128,7 +125,7 @@ def main() -> int:
     parser.add_argument("--run-id", default="reconcile")
     args = parser.parse_args()
 
-    register = DefectRegister(args.run_id, "step-1-reconcile", "retained-409")
+    register = DefectRegister(args.run_id, "corpus-reconcile", "retained-409")
     for path in args.registers:
         register.absorb(DefectRegister.load(Path(path)))
 
@@ -336,9 +333,7 @@ def main() -> int:
             summary["defect_counts"].get(entry["class"], 0) + entry["count"]
         )
     if args.summary_out:
-        Path(args.summary_out).write_text(
-            json.dumps(summary, indent=1, sort_keys=True), encoding="utf-8"
-        )
+        atomic_write_json(Path(args.summary_out), summary, canonical=False, indent=1)
     if args.register_out:
         register.write(Path(args.register_out))
     blocking = [e for e in register.entries() if e["class"] in _BLOCKING]

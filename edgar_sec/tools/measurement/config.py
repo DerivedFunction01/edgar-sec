@@ -12,6 +12,10 @@ import sys
 from pathlib import Path
 
 
+#: Score bands the sampling and scoring drivers share.
+BANDS = ((5.0, 7.5), (7.5, 10.0), (10.0, 15.0), (15.0, float("inf")))
+
+
 def load_config() -> dict:
     """Pop ``--config <path>`` off argv and return the parsed config."""
     argv = sys.argv

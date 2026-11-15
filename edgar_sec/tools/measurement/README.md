@@ -8,7 +8,7 @@ between steps (seeds, catalog snapshot, exclusion dirs, file prefix,
 sample caps, baseline readings, workdir) lives in a config JSON
 under `configs/`; a driver run is:
 
-    python3 -m tools.measurement.<driver> --config configs/<step>.json <args>
+    python3 -m edgar_sec.tools.measurement.<driver> --config configs/<step>.json <args>
 
 - `drive_draw` — DuckDB fresh-accession draw over the published
   filing-catalog extracts (argv: out_dir, forms, quotas, population).

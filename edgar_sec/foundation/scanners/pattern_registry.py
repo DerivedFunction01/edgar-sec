@@ -8,7 +8,6 @@ Corpus tools are in scope; tests and the scanners themselves are exempt.
 from __future__ import annotations
 
 import re
-from pathlib import Path
 
 from .base import Scanner, ScannerFinding
 from .lines import finding, is_noise, scan_text_rule
@@ -53,33 +52,9 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     return None
 
 
-def _scan_tools() -> list[ScannerFinding]:
-    findings: list[ScannerFinding] = []
-    tools_root = Path.cwd() / "tools"
-    if not tools_root.exists():
-        return findings
-    paths = sorted(
-        str(p.relative_to(Path.cwd()))
-        for p in tools_root.rglob("*.py")
-        if not any(part.startswith(".") for part in p.parts)
-    )
-    for path_str in paths:
-        try:
-            content = Path(path_str).read_text(encoding="utf-8")
-        except (OSError, UnicodeDecodeError):
-            continue
-        for number, line in enumerate(content.splitlines(), start=1):
-            if is_noise(line):
-                continue
-            found = _rule(path_str, number, line)
-            if found is not None:
-                findings.append(found)
-    return findings
-
-
 def scan_pattern_registry() -> list[ScannerFinding]:
     """Flag definitions of registered pattern names outside their home."""
-    return scan_text_rule(rule=_rule) + _scan_tools()
+    return scan_text_rule(rule=_rule)
 
 
 SCANNER = Scanner(

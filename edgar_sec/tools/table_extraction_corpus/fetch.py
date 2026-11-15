@@ -1,12 +1,8 @@
 """Catalog-free primary-document retrieval for venues without a catalog.
 
-Adapted from the taxonomy lane's recorded substitution for the same
-wall: the facade's fetch-by-accession requires a published filing
-catalog in the artifacts root, which no live session carries. Builds
-each filing's aggregate straight from its Archives index — one index
-request names every document; the primary document's bytes come back
-through the repo's rate-limited SEC client. URLs are built only by
-``edgar_sec.domain.sec_urls``.
+Builds each filing's aggregate straight from its Archives index; the
+primary document's bytes come back through the repo's rate-limited
+SEC client. URLs are built only by ``edgar_sec.domain.sec_urls``.
 """
 
 from __future__ import annotations
@@ -52,9 +48,8 @@ def _index_page_primary(
 ) -> str:
     """Primary filename from the filing index page, or ''.
 
-    The repo's index-page parser is the planning vehicle for sequence
-    and type; among entries typed as the filing's form, the lowest
-    sequence is the primary.
+    Among entries typed as the filing's form, the lowest sequence
+    is the primary.
     """
     url = index_url_for(accession, cik)
     try:
@@ -99,10 +94,8 @@ def _headers_primary(
 ) -> str:
     """Primary filename from the filing's SGML index headers, or ''.
 
-    The Archives directory listing carries no document types (its type
-    field is a file icon); the SGML headers are the authoritative
-    per-document type record. Among documents typed as the filing's
-    form, the lowest sequence number is the primary.
+    The SGML headers are the authoritative per-document type record;
+    among documents typed as the filing's form, lowest sequence wins.
     """
     for suffix in ("-index-headers.txt", "-index-headers.html"):
         try:
@@ -132,9 +125,8 @@ def _header_types(
 ) -> dict[str, str]:
     """Per-document index types from the SGML index headers.
 
-    The Archives directory listing carries no document types (its
-    type field is a file icon); the headers are the authoritative
-    per-document type record the census's index TYPE route read.
+    The headers are the authoritative per-document type record; the
+    directory listing's type field is only a file icon.
     """
     types: dict[str, str] = {}
     for suffix in ("-index-headers.txt", "-index-headers.html"):
@@ -268,16 +260,12 @@ def declared_exhibit_targets(
 ) -> tuple[dict, ...]:
     """Declared exhibit targets for one registry stratum.
 
-    The registry link lives here, on the consumer side: each linked
-    base type is translated through planning's generic declaration,
-    which emits the role/type/optional triple and learns nothing
-    about the classifier. Planning never imports the registry.
+    Each linked base type is translated through planning's generic
+    declaration into the role/type/optional triple.
     """
     targets: list[dict] = []
     for base_type in linked_exhibit_families(stratum):
-        profile = get_or_create_exhibit_profile(
-            base_type, profiles_root=profiles_root
-        )
+        profile = get_or_create_exhibit_profile(base_type, profiles_root=profiles_root)
         for target in targets_for_form(profile, "*"):
             if target.role == "exhibit":
                 targets.append(
