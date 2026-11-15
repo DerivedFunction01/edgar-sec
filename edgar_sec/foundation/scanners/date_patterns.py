@@ -37,6 +37,20 @@ _MONTH_VAR_RE = re.compile(
     r"\b(?:MONTH_NAMES|MONTH_MAP|MONTH_DICT|MONTH_LIST|MONTH_ALIASES)\s*="
 )
 
+# The two-digit tail of a four-digit year pattern, in its common spellings.
+_YEAR_TAIL = r"(?:\\d\{2\}|\\d\\d|\[0-9\]\{2\}|\[0-9\]\[0-9\])"
+
+# A narrowed year: a (19|20) century alternation, a 19xx|20xx year
+# alternation, or the same pair as alternation-builder list items.
+_NARROWED_CENTURY_RE = re.compile(r"\((?:\?:)?(?:19|20)\s*\|\s*(?:19|20)\)")
+_NARROWED_YEAR_ALT_RE = re.compile(
+    rf"(?:19|20){_YEAR_TAIL}\s*\|\s*(?:19|20){_YEAR_TAIL}"
+)
+_NARROWED_YEAR_LIST_RE = re.compile(
+    rf"(?:19|20){_YEAR_TAIL}[\"']\s*,\s*(?:[A-Za-z]{{0,2}}[\"'])"
+    rf"(?:19|20){_YEAR_TAIL}"
+)
+
 # The module that owns the date vocabulary.
 _ALLOWED_PREFIXES = ("edgar_sec/foundation/text/dates.py",)
 
@@ -45,8 +59,26 @@ _HINT = (
     "edgar_sec.foundation.text.dates instead of a private month table"
 )
 
+_YEAR_HINT = (
+    "use YEAR_TOKEN_PATTERN, YEAR_TOKEN_RE, and YEAR_TOKEN_SEARCH_RE from "
+    "edgar_sec.foundation.text.dates instead of a narrowed year pattern; "
+    "the foundation year patterns span the full 1900-9999 range"
+)
+
 
 def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
+    if (
+        _NARROWED_CENTURY_RE.search(line)
+        or _NARROWED_YEAR_ALT_RE.search(line)
+        or _NARROWED_YEAR_LIST_RE.search(line)
+    ):
+        return finding(
+            "date-patterns",
+            path,
+            number,
+            "narrowed year alternation in a regex",
+            _YEAR_HINT,
+        )
     if _MONTH_VAR_RE.search(line):
         return finding("date-patterns", path, number, "private month table", _HINT)
     if _MONTH_SEQUENCE_RE.search(line):
@@ -73,12 +105,15 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
 
 
 def scan_date_patterns() -> list[ScannerFinding]:
-    """Flag private month tables and hand-crafted date patterns."""
+    """Flag private month tables, hand-crafted date patterns, narrowed years."""
     return scan_text_rule(rule=_rule, prefixes=_ALLOWED_PREFIXES)
 
 
 SCANNER = Scanner(
     name="date-patterns",
-    description="scan for private month tables and hand-crafted date patterns",
+    description=(
+        "scan for private month tables, hand-crafted date patterns, "
+        "and narrowed-year patterns"
+    ),
     run=scan_date_patterns,
 )

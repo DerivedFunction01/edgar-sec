@@ -26,7 +26,12 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `sha256-validation`: Bans duplicate SHA-256 string validation (regex, length/all, or letters in a set) outside `foundation.hashing.is_sha256_hex_digest`; SQL validation is not scanned.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces the no-shims rule).
 - `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
-- `date-patterns`: Bans private month tables and hand-crafted date patterns.
+- `date-patterns`: Bans private month tables, hand-crafted date patterns, and
+  narrowed-year alternations (`(19|20)` / `(?:19|20)` century groups and
+  `19\d{2}|20\d{2}`-style year alternations, in any digit spelling or as
+  alternation-builder list items) outside `foundation/text/dates.py`, whose
+  year patterns span the full 1900-9999 range. Year literals as data are not
+  flagged; the rule targets regex pattern source.
 - `pattern-registry`: Bans definitions of registered pattern names outside their one
   home (word token in `foundation/text/words.py`, full date and year in
   `foundation/text/dates.py`, scale patterns in `engine/tables/patterns.py`,

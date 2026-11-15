@@ -94,3 +94,121 @@ def test_ignores_tests(synthetic_repo: Path) -> None:
         {"tests/test_thing.py": 'MONTH_NAMES = ("january", "february")\n'},
     )
     assert date_patterns.scan_date_patterns() == []
+
+
+def test_flags_narrowed_year_century_alternation(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_YEAR_RE = re.compile(r"\\b(?:19|20)\\d{2}\\b")\n'
+            )
+        },
+    )
+    findings = date_patterns.scan_date_patterns()
+    assert [f.path for f in findings] == ["edgar_sec/engine/thing.py"]
+    assert findings[0].message == "narrowed year alternation in a regex"
+    assert "YEAR_TOKEN_SEARCH_RE" in findings[0].hint
+
+
+def test_flags_narrowed_year_plain_century_group(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": 'YEARS = r"\\b(19|20)\\d{2}\\b"\n'},
+    )
+    assert date_patterns.scan_date_patterns()
+
+
+def test_flags_narrowed_year_digit_alternation(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": 'YEARS = r"19\\d{2}|20\\d{2}"\n'},
+    )
+    assert date_patterns.scan_date_patterns()
+
+
+def test_flags_narrowed_year_bracket_alternation(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": 'YEARS = r"19[0-9]{2}|20[0-9]{2}"\n'},
+    )
+    assert date_patterns.scan_date_patterns()
+
+
+def test_flags_narrowed_year_reversed_alternation(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": 'YEARS = r"20\\d\\d|19\\d\\d"\n'},
+    )
+    assert date_patterns.scan_date_patterns()
+
+
+def test_flags_narrowed_year_alternation_list(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                'PAT = build_alternation([r"19\\d{2}", r"20\\d{2}"])\n'
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns()
+
+
+def test_allows_narrowed_year_in_the_date_vocabulary_owner(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/foundation/text/dates.py": (
+                '_YEAR_RE = re.compile(r"\\b(?:19|20)\\d{2}\\b")\n'
+                'YEARS = r"19\\d{2}|20\\d{2}"\n'
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
+def test_allows_year_literals_as_data(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "EXPECTED_YEARS = [1999, 2019, 2020, 2024]\n"
+                'LABEL = "2019|2020 comparison"\n'
+                "SPECIMENS = {'fy2019': 1, 'fy2020': 2}\n"
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
+def test_allows_full_range_year_composition(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                'PAT = build_alternation([r"19[0-9]{2}", r"[2-9][0-9]{3}"])\n'
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
+def test_allows_import_of_year_token_search_pattern(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "from edgar_sec.foundation.text.dates import (\n"
+                "    YEAR_TOKEN_SEARCH_RE,\n"
+                ")\n"
+                "def years(text):\n"
+                "    return YEAR_TOKEN_SEARCH_RE.findall(text)\n"
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
