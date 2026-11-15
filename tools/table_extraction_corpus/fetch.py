@@ -18,6 +18,12 @@ from edgar_sec.domain.document_inventory.models import (
     IndexPageInput,
     ParsedIndexPage,
 )
+from edgar_sec.domain.forms.exhibits.vocabulary import is_ex13_type
+from edgar_sec.engine.forms.exhibit_resolution import linked_exhibit_families
+from edgar_sec.pipelines.document_planning.profiles import (
+    get_or_create_exhibit_profile,
+    targets_for_form,
+)
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.sec_urls import archives_url, index_json_url_for, index_url_for
 from edgar_sec.engine.document.unpacking.unpacker import unpack_sgml_submission
@@ -121,6 +127,57 @@ def _headers_primary(
     return ""
 
 
+def _header_types(
+    client: SecHttpClient, cik: Cik, accession: AccessionNumber
+) -> dict[str, str]:
+    """Per-document index types from the SGML index headers.
+
+    The Archives directory listing carries no document types (its
+    type field is a file icon); the headers are the authoritative
+    per-document type record the census's index TYPE route read.
+    """
+    types: dict[str, str] = {}
+    for suffix in ("-index-headers.txt", "-index-headers.html"):
+        try:
+            raw = client.get_bytes(
+                archives_url(cik.value, accession.raw, f"{accession.raw}{suffix}")
+            )
+        except Exception:  # noqa: BLE001 - a missing variant is expected
+            continue
+        text = html.unescape(raw.decode("utf-8", errors="ignore"))
+        for doc in unpack_sgml_submission(text):
+            if doc.filename and doc.doc_type:
+                types[doc.filename] = doc.doc_type
+        if types:
+            break
+    return types
+
+
+def _index_page_types(
+    client: SecHttpClient, cik: Cik, accession: AccessionNumber
+) -> dict[str, str]:
+    """Per-document index types from the filing index page.
+
+    Older filings' index headers carry no document blocks; the
+    index page's TYPE column is the census route for those eras.
+    """
+    url = index_url_for(accession, cik)
+    try:
+        raw = client.get_bytes(url)
+    except Exception:  # noqa: BLE001 - an unserved page is a route miss
+        return {}
+    outcome = parse_html_index(
+        IndexPageInput(accession=accession, source_url=url, response_bytes=raw)
+    )
+    if not isinstance(outcome, ParsedIndexPage):
+        return {}
+    return {
+        entry.filename: entry.document_type
+        for entry in outcome.entries
+        if entry.filename and entry.document_type
+    }
+
+
 def build_aggregate(
     client: SecHttpClient, spec: dict[str, object]
 ) -> tuple[FilingAggregate, str]:
@@ -133,6 +190,9 @@ def build_aggregate(
     accession = AccessionNumber(str(spec["accession"]))
     index = client.get_json(index_json_url_for(accession, cik))
     items = index["directory"]["item"]
+    header_types = _header_types(client, cik, accession)
+    for name, doc_type in _index_page_types(client, cik, accession).items():
+        header_types.setdefault(name, doc_type)
 
     def _fetcher(url: str):  # noqa: ANN202
         return lambda att: client.get_bytes(url)
@@ -141,7 +201,7 @@ def build_aggregate(
     has_instance = False
     for item in items:
         name = str(item["name"])
-        doc_type = str(item.get("type") or "")
+        doc_type = header_types.get(name) or str(item.get("type") or "")
         if doc_type.upper() == "EX-101.INS" or name.lower().endswith("_htm.xml"):
             has_instance = True
         size_raw = str(item.get("size") or "")
@@ -201,3 +261,84 @@ def primary_bytes(filing: FilingAggregate) -> bytes | None:
         if (att.filename or "") == target:
             return att.raw()
     return None
+
+
+def declared_exhibit_targets(
+    stratum: str, profiles_root: str | None = None
+) -> tuple[dict, ...]:
+    """Declared exhibit targets for one registry stratum.
+
+    The registry link lives here, on the consumer side: each linked
+    base type is translated through planning's generic declaration,
+    which emits the role/type/optional triple and learns nothing
+    about the classifier. Planning never imports the registry.
+    """
+    targets: list[dict] = []
+    for base_type in linked_exhibit_families(stratum):
+        profile = get_or_create_exhibit_profile(
+            base_type, profiles_root=profiles_root
+        )
+        for target in targets_for_form(profile, "*"):
+            if target.role == "exhibit":
+                targets.append(
+                    {
+                        "role": target.role,
+                        "type": target.type,
+                        "optional": target.optional,
+                    }
+                )
+    return tuple(targets)
+
+
+def _is_metadata_candidate(document_type: str | None, declared_type: str) -> bool:
+    """Metadata candidacy of one index type against a declared type."""
+    if declared_type == "EX-13":
+        return is_ex13_type(document_type)
+    if not document_type:
+        return False
+    value = document_type.strip().upper()
+    return value == declared_type or value.startswith(f"{declared_type}.")
+
+
+def exhibit_candidates(
+    filing: FilingAggregate, declared_types: tuple[str, ...]
+) -> tuple[FilingAttachment, ...]:
+    """Attachments flagged by index metadata alone; no body is read.
+
+    The primary document is never its own exhibit candidate, and a
+    document matching several declared types is returned once.
+    """
+    primary_name = (filing.primary_document_path or "").rsplit("/", 1)[-1]
+    candidates: list[FilingAttachment] = []
+    for attachment in filing.get_attachments():
+        if (attachment.filename or "") == primary_name:
+            continue
+        if any(
+            _is_metadata_candidate(attachment.document_type, declared)
+            for declared in declared_types
+        ):
+            candidates.append(attachment)
+    return tuple(candidates)
+
+
+def collect_exhibits(
+    filing: FilingAggregate, declared_types: tuple[str, ...]
+) -> tuple[dict, ...]:
+    """Fetch bytes for metadata-flagged candidates only.
+
+    Returns the inventory dicts ``extract_filing`` consumes; body
+    confirmation is the resolver's, downstream of this fetch.
+    """
+    exhibits: list[dict] = []
+    for attachment in exhibit_candidates(filing, declared_types):
+        raw = attachment.raw()
+        if raw is None:
+            continue
+        exhibits.append(
+            {
+                "document_type": attachment.document_type,
+                "document_name": attachment.filename or attachment.attachment_id,
+                "raw": raw,
+            }
+        )
+    return tuple(exhibits)

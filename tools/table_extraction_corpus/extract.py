@@ -12,6 +12,7 @@ never a silent drop.
 from __future__ import annotations
 
 import time
+from dataclasses import replace
 
 from edgar_sec.engine.document.page_markers.models import PageArtifactPolicy
 from edgar_sec.engine.forms.exhibit_resolution import (
@@ -112,6 +113,59 @@ def extract_filing(
             filing_form=str(spec["form"]),
             primary_text=result.text,
         )
+    documents = [DocumentInput("primary", result)]
+    documents.extend(
+        DocumentInput(entry.document_name, exhibit_results[entry.document_name])
+        for entry in resolved
+        if entry.body_confirmed
+    )
+    production = produce_contexts(tuple(documents))
+
+    # Overlap rule (Step 5): a delegating primary is a stub, so its
+    # exhibit is the sole source and nothing is dropped; otherwise an
+    # exhibit geometry duplicating a primary geometry is dropped, so
+    # a complete primary is never double-counted.
+    delegation_by_name = {
+        entry.document_name: entry.delegation for entry in resolved
+    }
+
+    def signature(geometry_record: dict) -> tuple:
+        return tuple(
+            tuple(" ".join(str(cell).split()).casefold() for cell in row)
+            for row in geometry_record["rows"]
+        )
+
+    primary_signatures = {
+        signature(dict(geometry_record))
+        for document in production.documents
+        if document.source_document == "primary"
+        for geometry_record in document.records
+    }
+    overlap_dropped: dict[str, int] = {}
+    geometry_counts: dict[str, int] = {}
+    kept_documents = []
+    for document in production.documents:
+        if document.source_document == "primary":
+            kept_documents.append(document)
+            continue
+        delegation = delegation_by_name.get(document.source_document)
+        if delegation is not None and delegation.is_stub:
+            kept = document.records
+        else:
+            kept = tuple(
+                geometry_record
+                for geometry_record in document.records
+                if signature(dict(geometry_record)) not in primary_signatures
+            )
+        overlap_dropped[document.source_document] = len(document.records) - len(kept)
+        geometry_counts[document.source_document] = len(kept)
+        kept_documents.append(
+            replace(document, records=kept)
+            if len(kept) != len(document.records)
+            else document
+        )
+    production = replace(production, documents=tuple(kept_documents))
+
     record["exhibits"] = [
         {
             "document_name": entry.document_name,
@@ -120,6 +174,8 @@ def extract_filing(
             "families": list(entry.families),
             "body_disposition": entry.body_disposition,
             "body_confirmed": entry.body_confirmed,
+            "geometry_count": geometry_counts.get(entry.document_name, 0),
+            "overlap_dropped": overlap_dropped.get(entry.document_name, 0),
             "delegation": (
                 {
                     "is_stub": entry.delegation.is_stub,
@@ -133,14 +189,6 @@ def extract_filing(
         }
         for entry in resolved
     ]
-
-    documents = [DocumentInput("primary", result)]
-    documents.extend(
-        DocumentInput(entry.document_name, exhibit_results[entry.document_name])
-        for entry in resolved
-        if entry.body_confirmed
-    )
-    production = produce_contexts(tuple(documents))
 
     labels = {lab["table_index"]: lab for lab in spec.get("labels", [])}
     geometries: list[dict] = []

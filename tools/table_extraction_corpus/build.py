@@ -16,19 +16,38 @@ import traceback
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+from edgar_sec.engine.tables.extraction.profiles import STRATUM_ANNUAL
 from tools.table_extraction_corpus.defects import DefectRegister
 from tools.table_extraction_corpus.extract import extract_filing
 from tools.table_extraction_corpus.fetch import (
     build_aggregate,
+    collect_exhibits,
+    declared_exhibit_targets,
     make_client,
     primary_bytes,
 )
 
 _WORKER: dict[str, object] = {}
 
+# Exhibit coverage is the annual path only (refresh Step 5): the
+# registry links exhibits on the annual stratum, and the annual
+# forms are the 10-K family. No era gate applies at any year.
+_ANNUAL_FORMS = ("10-K", "10-K/A")
+
+
+def annual_stratum(form: str) -> str | None:
+    """The registry stratum a filing's form measures on, if annual."""
+    return STRATUM_ANNUAL if form.strip().upper() in _ANNUAL_FORMS else None
+
 
 def _worker_init(
-    out_dir: str, fixtures_dir: str, tree: str, workers: int, primary_map: str
+    out_dir: str,
+    fixtures_dir: str,
+    tree: str,
+    workers: int,
+    primary_map: str,
+    exhibit_types: str,
+    exhibit_targets: str,
 ) -> None:
     _WORKER["client"] = make_client(workers)
     _WORKER["out_dir"] = out_dir
@@ -36,6 +55,10 @@ def _worker_init(
     _WORKER["tree"] = tree
     _WORKER["primary"] = (
         json.loads(Path(primary_map).read_text(encoding="utf-8")) if primary_map else {}
+    )
+    _WORKER["exhibit_types"] = tuple(json.loads(exhibit_types)) if exhibit_types else ()
+    _WORKER["exhibit_targets"] = (
+        json.loads(exhibit_targets) if exhibit_targets else []
     )
 
 
@@ -96,12 +119,25 @@ def _process(accession: str) -> dict:
                 "entries": entries,
                 "timing": timing,
             }
+        stratum = annual_stratum(str(spec["form"]))
+        declared_types = tuple(_WORKER["exhibit_types"])  # type: ignore[arg-type]
+        exhibits: tuple[dict, ...] = ()
+        if stratum is not None and declared_types:
+            exhibit_started = time.perf_counter()
+            exhibits = collect_exhibits(aggregate, declared_types)
+            timing["exhibit_fetch_s"] = round(
+                time.perf_counter() - exhibit_started, 4
+            )
         record, entries, split_timing = extract_filing(
             spec,
             raw,
             str(aggregate.primary_document_path or ""),
             tree=str(_WORKER["tree"]),
+            exhibits=exhibits,
+            stratum=stratum,
         )
+        if stratum is not None:
+            record["builder"]["exhibit_targets"] = list(_WORKER["exhibit_targets"])
         timing.update(split_timing)
     except Exception:  # noqa: BLE001 - per-filing isolation is the design
         record["status"] = "error"
@@ -127,7 +163,13 @@ def main() -> int:
     parser.add_argument("--summary")
     parser.add_argument("--run-id", default="build")
     parser.add_argument("--tree", default="unknown")
+    parser.add_argument("--profiles-root")
     args = parser.parse_args()
+
+    exhibit_targets = declared_exhibit_targets(
+        STRATUM_ANNUAL, profiles_root=args.profiles_root
+    )
+    exhibit_types = tuple(target["type"] for target in exhibit_targets)
 
     fixtures_dir = Path(args.fixtures)
     if args.accessions_file:
@@ -159,6 +201,8 @@ def main() -> int:
             args.tree,
             args.workers,
             args.primary_map or "",
+            json.dumps(exhibit_types),
+            json.dumps(exhibit_targets),
         ),
     ) as pool:
         for outcome in pool.map(_process, accessions, chunksize=1):

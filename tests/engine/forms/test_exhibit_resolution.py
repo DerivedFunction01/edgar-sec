@@ -62,6 +62,53 @@ def test_body_confirmation_on_flagged_candidate() -> None:
     assert resolved[0].body_confirmed is True
 
 
+_EX13_1_BODY = """EXHIBIT 13.1
+ANNUAL REPORT TO SECURITY HOLDERS
+ACME CORPORATION
+Consolidated statements of income and balance sheets follow.
+"""
+
+
+def test_body_confirmation_uses_the_candidates_own_code() -> None:
+    resolved = resolve_exhibits(
+        (ExhibitCandidateInput("EX-13.1", "ex13.htm", _EX13_1_BODY),),
+        stratum="B",
+        filing_form="10-K",
+    )
+    assert len(resolved) == 1
+    assert resolved[0].code == "13"
+    assert resolved[0].body_disposition == "consistent"
+    assert resolved[0].body_confirmed is True
+
+
+_PORTION_BODY = """EXHIBIT 13.1
+Five-Year Financial Summary - Selected Financial Data
+Consolidated balance sheet information and statements follow.
+"""
+
+
+def test_portion_exhibit_confirms_on_its_own_designation() -> None:
+    resolved = resolve_exhibits(
+        (ExhibitCandidateInput("EX-13.1", "ex13.htm", _PORTION_BODY),),
+        stratum="B",
+        filing_form="10-K",
+    )
+    assert len(resolved) == 1
+    assert resolved[0].body_disposition == "insufficient_evidence"
+    assert resolved[0].body_confirmed is True
+
+
+def test_other_exhibits_designation_never_confirms() -> None:
+    resolved = resolve_exhibits(
+        (ExhibitCandidateInput("EX-13", "ex13.htm", _EX13_1_BODY),),
+        stratum="B",
+        filing_form="10-K",
+    )
+    assert len(resolved) == 1
+    assert resolved[0].body_disposition == "possible_role_mismatch"
+    assert resolved[0].body_confirmed is False
+
+
 def test_delegation_stub_vs_index_only() -> None:
     stub = delegation_judgement(
         "The financial statements are set forth in Exhibit 13 to this report."

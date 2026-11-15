@@ -77,6 +77,23 @@ def _is_candidate(base_type: str, document_type: str | None) -> bool:
     return value == base_type or value.startswith(f"{base_type}.")
 
 
+def _identity_code(base_type: str, document_type: str | None, family_code: str) -> str:
+    """The candidate's own exhibit code for body confirmation: the
+    evaluator compares exact identities (EX-13.1 confirms against 13.1,
+    not the family base 13), as both standing consumers name it."""
+    if not document_type:
+        return family_code
+    value = document_type.strip().upper()
+    if value.endswith(".PDF"):
+        value = value[:-4]
+    while value.endswith(")") and "(" in value:
+        value = value[: value.rfind("(")].rstrip(".")
+    if value.endswith(".A"):
+        value = value[:-2]
+    code = value.removeprefix("EX-")
+    return code if code.startswith(family_code) else family_code
+
+
 def delegation_judgement(primary_text: str | None) -> DelegationJudgement | None:
     """The anchor-window scan over the primary's normalized text.
 
@@ -132,15 +149,35 @@ def resolve_exhibits(
             disposition: str | None = None
             confirmed = False
             if candidate.body_text is not None:
+                identity = ExhibitIdentity(
+                    _AUTHORITY_ID,
+                    _identity_code(base_type, candidate.document_type, code),
+                )
                 assessment = evaluate_exhibit_body(
                     candidate.body_text,
                     filing_form=filing_form,
                     expected_type=base_type,
-                    expected_identity=ExhibitIdentity(_AUTHORITY_ID, code),
+                    expected_identity=identity,
                 )
                 if assessment is not None:
                     disposition = assessment.disposition
-                    confirmed = disposition == "consistent"
+                    # Confirmation is role confirmation: the body
+                    # designates this candidate's own exhibit code
+                    # with no contradicting evidence. The evaluator's
+                    # consistent bar additionally demands a cover
+                    # title inside its opening window, which portion
+                    # exhibits (the measured carrier population) do
+                    # not carry; a designation for a different
+                    # exhibit stays a mismatch and never confirms.
+                    confirmed = disposition == "consistent" or (
+                        disposition != "possible_role_mismatch"
+                        and assessment.observed_identity == identity
+                        and not assessment.contradicting_evidence
+                        and any(
+                            span.signal_id.startswith("exhibit_code_")
+                            for span in assessment.supporting_evidence
+                        )
+                    )
             if not delegation_computed:
                 delegation = delegation_judgement(primary_text)
                 delegation_computed = True
