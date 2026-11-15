@@ -11,6 +11,7 @@ RE_DOT_LEADER = re.compile(r"\.{3,}")
 RE_COLUMN_GAP = re.compile(r"[ \t]{2,}")
 PAGE_NUMBER_CORE = rf"(?:\d+|{ROMAN_NUMERAL_PATTERN}\b)"
 RE_PAGE_NUMBER_SUFFIX = re.compile(rf"{PAGE_NUMBER_CORE}\s*$", re.IGNORECASE)
+RE_PAGE_REFERENCE = re.compile(r"\bpage\s*(?:no\.?\s*)?[A-Z]?-?\d+", re.IGNORECASE)
 RE_GRAMMATICAL_COMMA = re.compile(r"[a-zA-Z],\s+[a-zA-Z]")
 RE_SENTENCE_TERMINAL = re.compile(r"[.!?][\"\x27\u201d\u2019)]?\s*$")
 RE_TERMINAL_BOUNDARY = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
@@ -32,7 +33,12 @@ def is_separator_line(line: str) -> bool:
 RE_FILL_IN_RUN = re.compile(r"[-_=]{2,}")
 RE_TRAILING_FILL_IN = re.compile(r"\s*[-_=]{2,}\s*$")
 RE_WHITESPACE = re.compile(r"\s+")
+RE_WHITESPACE_GAP = re.compile(r"\s{2,}")
+RE_WHITESPACE_SPLIT = re.compile(r"\t+|\s{2,}")
 RE_NON_ALNUM = re.compile(r"[^a-z0-9]+")
+RE_TABLE_OPEN = re.compile(r"<table\b", re.IGNORECASE)
+RE_TABLE_CLOSE = re.compile(r"</table\s*>", re.IGNORECASE)
+RE_TABLE_SPAN = re.compile(r"<table\b.*?</table\s*>", re.IGNORECASE | re.DOTALL)
 
 RE_STRUCTURAL_SGML = re.compile(
     rf"<(?:{build_alternation(('TABLE', 'S', 'C', 'PAGE', 'DOCUMENT', 'TEXT', 'TYPE', 'CAPTION'))})\b",
@@ -48,11 +54,17 @@ __all__ = [
     "RE_GRAMMATICAL_COMMA",
     "RE_NON_ALNUM",
     "RE_PAGE_NUMBER_SUFFIX",
+    "RE_PAGE_REFERENCE",
     "RE_SENTENCE_TERMINAL",
     "RE_SEPARATOR_RUN",
     "RE_STRUCTURAL_SGML",
+    "RE_TABLE_CLOSE",
+    "RE_TABLE_OPEN",
+    "RE_TABLE_SPAN",
     "RE_TERMINAL_BOUNDARY",
     "RE_TRAILING_FILL_IN",
     "RE_WHITESPACE",
+    "RE_WHITESPACE_GAP",
+    "RE_WHITESPACE_SPLIT",
     "is_separator_line",
 ]

@@ -34,10 +34,9 @@ from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
+from edgar_sec.engine.tables.extraction.validation import values_close
 from edgar_sec.engine.tables.extraction.year_ladder import evaluate_form_test_ladder
 
-_ABS_TOLERANCE = 2.0
-_REL_TOLERANCE = 0.005
 _END_VALUE_WINDOW = 4
 
 # Profile families whose cascade seat carries a shorter name.
@@ -61,12 +60,6 @@ class FormTestOutcome:
     columns_closed: int
     points: float
     detail: str
-
-
-# Closure tolerance is the Step 3 pricing tolerance, as in validation:
-# max(2 units, 0.5% of the target), in the table's own stated units.
-def _close(computed: float, target: float) -> bool:
-    return abs(computed - target) <= max(_ABS_TOLERANCE, _REL_TOLERANCE * abs(target))
 
 
 def _matches(label: str, patterns: tuple[str, ...]) -> bool:
@@ -125,11 +118,11 @@ def _column_closes(
         value = _value_at(table, index, column)
         if value is None:
             continue
-        if accepted and _close(value, accepted_sum):
+        if accepted and values_close(value, accepted_sum):
             continue
         accepted_sum += value
         accepted += 1
-    return accepted >= 1 and _close(begin + accepted_sum, end)
+    return accepted >= 1 and values_close(begin + accepted_sum, end)
 
 
 def _segment_closed(

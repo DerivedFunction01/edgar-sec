@@ -20,7 +20,7 @@ from .normalize import collapse_text
 _MAX_CAPTION_ROWS = 6
 _MONTH_TOKEN_RE = re.compile(rf"\b(?:{MONTH_PATTERN})\b", re.IGNORECASE)
 _PAREN_RE = re.compile(r"\([^)]*\)")
-_TOTAL_RE = re.compile(r"^\s*total\b", re.IGNORECASE)
+TOTAL_ROW_RE = re.compile(r"^\s*total\b", re.IGNORECASE)
 _PERIOD_HINTS = ("ended", "as of", "months", "weeks", "quarter", "fiscal")
 
 
@@ -217,7 +217,7 @@ def _row_kind(label: str, values: tuple[float | int | None, ...]) -> RowKind:
         if label.startswith("(") and label.endswith(")"):
             return RowKind.PARENTHETICAL
         return RowKind.SECTION if label else RowKind.DATA
-    if _TOTAL_RE.match(label):
+    if TOTAL_ROW_RE.match(label):
         return RowKind.TOTAL
     if "subtotal" in label.lower():
         return RowKind.SUBTOTAL

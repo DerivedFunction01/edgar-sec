@@ -119,6 +119,21 @@ def test_financial_rows_are_refused_as_page_labels(line: str) -> None:
     assert _cand(line) is None
 
 
+@pytest.mark.parametrize(
+    ("line", "expected"),
+    [
+        ("Version 3.5 released", False),
+        ("Price 3.50", True),
+        ("Total 1,234,567", True),
+        ("abc 12,34", False),
+    ],
+)
+def test_numeric_data_shape_decimal_and_grouped_figures(
+    line: str, expected: bool
+) -> None:
+    assert has_numeric_data_shape(line) is expected
+
+
 def test_a_long_prose_line_is_not_a_label() -> None:
     line = "This is a long sentence that a reader would call prose and not a label."
     assert looks_like_prose(line) is True

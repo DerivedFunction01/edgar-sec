@@ -17,7 +17,7 @@ from edgar_sec.foundation.text.patterns import (
     is_separator_line,
 )
 
-_MIN_ROWS = 3
+_MIN_RUN_ROWS = 3
 _COLUMN_TOLERANCE = 4
 _MAX_BLANK_GAP = 1
 _MAX_HEADER_PREFIX_LINES = 2
@@ -233,7 +233,7 @@ def find_table_row_runs(
             cursor += 1
 
         if (
-            len(row_geometries) >= _MIN_ROWS
+            len(row_geometries) >= _MIN_RUN_ROWS
             and _has_repeated_numeric_values(row_geometries)
             and not _run_has_prose_shape(row_geometries)
         ):

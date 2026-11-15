@@ -7,7 +7,6 @@ context contract, never the note title alone.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
@@ -17,7 +16,6 @@ from .normalize import normalize_text
 from .typed_rows import TypedTable, parse_caption_stack
 
 FAMILY = "commitments_contingencies"
-PROV_SEAT = "refresh-step4:commitments-seat"
 FORM_PAYMENTS_DUE = "payments_due"
 FORM_CREDIT_CLUSTER = "credit_cluster"
 FORM_GUARANTEE_SCHEDULE = "guarantee_schedule"
@@ -57,7 +55,6 @@ _BUCKET_TERMS = (
     "thereafter",
 )
 _EXPIRY_TERMS = ("expir", "maturit")
-_TOTAL_RE = re.compile(r"^\s*total\b")
 _MIN_BUCKETS = 3
 _MIN_CREDIT_CONCEPTS = 2
 

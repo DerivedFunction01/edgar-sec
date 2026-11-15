@@ -19,13 +19,13 @@ from edgar_sec.engine.tables.toc.patterns import (
     looks_like_toc_row,
     looks_like_toc_tabular,
 )
+from edgar_sec.foundation.text.patterns import RE_PAGE_REFERENCE
 
 MIN_ROWS = 3
+_MIN_PAGE_SEQUENCE = 3
 PAGE_REF_SHARE = 0.5
 BREADTH_MIN = 4
-_PAGE_MAX = 999
 
-_PAGE_TOKEN_RE = re.compile(r"\bpage\s*(?:no\.?\s*)?[A-Z]?-?\d+", re.IGNORECASE)
 _PAGE_LETTER_RE = re.compile(r"^[A-Z]-\d+$")
 _BARE_INT_RE = re.compile(r"^\d{1,3}$")
 _REF_CELL_RE = re.compile(r"^(?:note|item)\s+\d+(?:\.\d+)*[A-Z]?\.?$", re.IGNORECASE)
@@ -84,7 +84,7 @@ def _strong_page_ref(cells: list[str]) -> bool:
     line = " ".join(cells)
     if looks_like_toc_row(line) or looks_like_toc_tabular(line):
         return True
-    if any(_PAGE_TOKEN_RE.search(cell) for cell in cells):
+    if any(RE_PAGE_REFERENCE.search(cell) for cell in cells):
         return True
     return any(_PAGE_LETTER_RE.match(cell) for cell in cells[1:])
 
@@ -103,7 +103,7 @@ def _weak_page_ref(cells: list[str]) -> int | None:
 
 
 def _increasing(pages: list[int]) -> bool:
-    if len(pages) < MIN_ROWS or len(set(pages)) < MIN_ROWS:
+    if len(pages) < _MIN_PAGE_SEQUENCE or len(set(pages)) < _MIN_PAGE_SEQUENCE:
         return False
     steps = sum(1 for a, b in zip(pages, pages[1:], strict=False) if b > a)
     return steps >= 0.8 * (len(pages) - 1)

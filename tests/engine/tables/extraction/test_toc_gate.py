@@ -116,6 +116,41 @@ def _table(
     )
 
 
+def _raw_table(specimens: tuple[tuple[str, tuple[str, ...]], ...]) -> TypedTable:
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=(), column_alignments=(), column_widths=(), header_row_count=0
+            ),
+            confidence=1.0,
+        ),
+    )
+    context = TableContext(geometry=geometry, in_toc_span=False)
+    typed = tuple(
+        TypedRow(label=label, values=(), kind=RowKind.DATA, raw=raw)
+        for label, raw in specimens
+    )
+    return TypedTable(
+        context=context,
+        caption=CaptionInfo(
+            lines=(),
+            company=None,
+            titles=(),
+            audit_status=None,
+            scale=None,
+            continued=False,
+            consumed_rows=0,
+        ),
+        periods=(ColumnPeriod(1, None, "2024", "2024"),),
+        rows=typed,
+        scale=None,
+        header_rows=0,
+        continued=False,
+    )
+
+
 def test_table_inside_cover_span_is_refused_on_the_fact() -> None:
     table = _table(_COVER_TOC, index=6, in_span=True)
     result = classify_table(table)
@@ -188,6 +223,36 @@ def test_constant_value_rows_are_not_page_references() -> None:
     assert toc_refusal(table) is None
 
 
+def test_labelled_page_reference_shapes_are_strong() -> None:
+    # Two-consumer specimen set, detection side: every labelled shape the
+    # homed RE_PAGE_REFERENCE recognizes is a strong page reference.
+    table = _raw_table(
+        (
+            ("Item 1. Business", ("Item 1. Business", "Page 12")),
+            ("Item 2. Properties", ("Item 2. Properties", "Page No. 12")),
+            ("Item 3. Legal Proceedings", ("Item 3. Legal Proceedings", "Page F-3")),
+        )
+    )
+    assert toc_signals(table).strong_rows == 3
+
+
+def test_unlabelled_page_shapes_stay_on_their_own_recognizers() -> None:
+    # No "page" word: a bare letter page is strong via the letter
+    # recognizer, a roman suffix via the TOC row patterns, bare numbers weak.
+    table = _raw_table(
+        (
+            ("Appendix A", ("Appendix A", "F-3")),
+            ("Item 1. Business", ("Item 1. Business", "iv")),
+            ("Business", ("Business", "1")),
+            ("Properties", ("Properties", "2")),
+            ("Legal Proceedings", ("Legal Proceedings", "3")),
+        )
+    )
+    signals = toc_signals(table)
+    assert signals.strong_rows == 2
+    assert signals.weak_rows == 3
+
+
 def test_filing_pass_drops_all_scores_for_toc_tables() -> None:
     toc = _table(_COVER_TOC, index=6, in_span=True)
     kept = _table(_BALANCE_SHEET, index=20)
@@ -196,3 +261,20 @@ def test_filing_pass_drops_all_scores_for_toc_tables() -> None:
     assert scores[0] == {}
     assert results[1].family == "balance_sheet"
     assert scores[1]["balance_sheet"] > 0.0
+
+
+def test_amount_recognizer_verdicts() -> None:
+    from edgar_sec.engine.tables.extraction.toc_gate import _AMOUNT_RE
+
+    for cell in ("1,234", "1234,567", "12,345,678", "1.5", "1,234.56"):
+        assert _AMOUNT_RE.search(cell), cell
+    for cell in ("100", "12,34", "1,23", "abc"):
+        assert not _AMOUNT_RE.search(cell), cell
+
+
+def test_ref_cell_recognizer_preserved_verdicts() -> None:
+    from edgar_sec.engine.tables.extraction.toc_gate import _REF_CELL_RE
+
+    assert _REF_CELL_RE.match("Note 1A")
+    assert _REF_CELL_RE.match("Item 2.")
+    assert not _REF_CELL_RE.match("Notes 1")

@@ -13,16 +13,16 @@ from edgar_sec.engine.tables.extraction.normalize import normalize_label
 from edgar_sec.engine.tables.extraction.registry import IDENTITIES_BY_FAMILY
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable
 
-_ABS_TOLERANCE = 2.0
-_REL_TOLERANCE = 0.005
+ABS_TOLERANCE = 2.0
+REL_TOLERANCE = 0.005
 
 _Matcher = Callable[[str], bool]
 
 
 # Closure tolerance is the Step 3 pricing tolerance — max(2 units,
 # 0.5% of the target) — in the table's own stated units.
-def _close(computed: float, target: float) -> bool:
-    return abs(computed - target) <= max(_ABS_TOLERANCE, _REL_TOLERANCE * abs(target))
+def values_close(computed: float, target: float) -> bool:
+    return abs(computed - target) <= max(ABS_TOLERANCE, REL_TOLERANCE * abs(target))
 
 
 @dataclass(frozen=True, slots=True)
@@ -106,7 +106,9 @@ def _balance_sheet(table: TypedTable) -> IdentityOutcome | None:
     combined = _first_value(table, _is_combined)
     if combined is not None:
         keys = (("total_assets", assets), ("combined", combined))
-        return IdentityOutcome(spec.name, spec.family, _close(combined, assets), keys)
+        return IdentityOutcome(
+            spec.name, spec.family, values_close(combined, assets), keys
+        )
     liabilities = _first_value(table, _is_total_liabilities)
     equity = _first_value(table, _is_total_equity)
     if liabilities is None or equity is None:
@@ -117,7 +119,7 @@ def _balance_sheet(table: TypedTable) -> IdentityOutcome | None:
         ("total_equity", equity),
     )
     return IdentityOutcome(
-        spec.name, spec.family, _close(liabilities + equity, assets), keys
+        spec.name, spec.family, values_close(liabilities + equity, assets), keys
     )
 
 
@@ -133,14 +135,14 @@ def _cash_flow(table: TypedTable) -> IdentityOutcome | None:
         return None
     keys = tuple((name, float(value)) for name, value in values.items())
     total = values["operating"] + values["investing"] + values["financing"]
-    if _close(total, values["change"]):
+    if values_close(total, values["change"]):
         return IdentityOutcome(spec.name, spec.family, True, keys)
     fx = _first_value(table, _is_fx_effect)
     if fx is None:
         return IdentityOutcome(spec.name, spec.family, False, keys)
     keys = keys + (("fx", fx),)
     return IdentityOutcome(
-        spec.name, spec.family, _close(total + fx, values["change"]), keys
+        spec.name, spec.family, values_close(total + fx, values["change"]), keys
     )
 
 
@@ -156,7 +158,9 @@ def _income_leg1(table: TypedTable) -> IdentityOutcome | None:
         ("revenue", revenue),
         ("cogs", cogs),
     )
-    return IdentityOutcome(spec.name, spec.family, _close(revenue - cogs, gross), keys)
+    return IdentityOutcome(
+        spec.name, spec.family, values_close(revenue - cogs, gross), keys
+    )
 
 
 _EVALUATORS = (_balance_sheet, _cash_flow, _income_leg1)

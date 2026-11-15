@@ -27,8 +27,8 @@ from .observations import (
     merge_observations,
 )
 from .units import classify_units
+from edgar_sec.foundation.text.patterns import RE_PAGE_REFERENCE
 
-_PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
 _TRAILING_NUMBER_RE = re.compile(
     r"\s+(?:[a-z]-)?(?:\d{1,4}|[ivxlcdm]{1,8})\s*$",
     re.IGNORECASE,
@@ -57,7 +57,7 @@ def clean_template(line: str) -> str:
     Page labels are masked, or a per-page number fragments one banner into one-occurrence templates; a trailing label only when enough words remain.
     """
     normalized = _WHITESPACE_RE.sub(" ", line.strip().casefold())
-    normalized = _PAGE_TOKEN_RE.sub(" page #", normalized)
+    normalized = RE_PAGE_REFERENCE.sub(" page #", normalized)
     normalized = _STANDALONE_PAGE_NUMBER_RE.sub("#", normalized)
     trailing = _TRAILING_NUMBER_RE.sub(" #", normalized)
     alpha_words = sum(1 for word in trailing.split() if _ALPHA_WORD_RE.search(word))

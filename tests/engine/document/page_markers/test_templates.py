@@ -65,6 +65,22 @@ def test_clean_template_masks_an_inline_page_label() -> None:
     assert clean_template("ABC CORP page 12") == "abc corp  page #"
 
 
+def test_clean_template_masks_a_mid_line_page_no_label() -> None:
+    # Newly masked by the homed page reference: the "No." form the old
+    # banner-local pattern missed, so every page of the banner is one id.
+    assert clean_template("ABC CORP Page No. 12") == "abc corp  page #"
+    assert clean_template("ABC CORP Page No. 12") == clean_template(
+        "ABC CORP Page No. 13"
+    )
+
+
+def test_clean_template_masks_a_mid_line_letter_page_label() -> None:
+    # Newly masked by the homed page reference: the letter-namespaced form.
+    assert clean_template("Notes to statements Page F-3") == (
+        "notes to statements  page #"
+    )
+
+
 def test_clean_template_masks_a_trailing_label_only_when_words_remain() -> None:
     assert clean_template("Notes to consolidated financial statements 12") == (
         "notes to consolidated financial statements #"

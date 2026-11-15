@@ -28,7 +28,11 @@ from edgar_sec.engine.tables.extraction.profiles import (
     SEAT_GEOMETRY_TEXT,
 )
 from edgar_sec.engine.tables.extraction.residue_families import corroborates
-from edgar_sec.engine.tables.extraction.typed_rows import TypedTable, structure_table
+from edgar_sec.engine.tables.extraction.typed_rows import (
+    RowKind,
+    TypedTable,
+    structure_table,
+)
 
 _MDA = "Management's Discussion and Analysis of Financial Condition"
 
@@ -57,6 +61,23 @@ def _table(
         seat=seat,
     )
     return structure_table(context)
+
+
+def test_a_capitalized_total_row_is_typed_total_in_a_seat_table() -> None:
+    # The seat consumes structure_table output, whose row kinds come from
+    # typed_rows' homed TOTAL_ROW_RE — case-insensitive by design.
+    table = _table(
+        (
+            ("Purchase obligations", "1,000", "400"),
+            ("Total contractual obligations", "1,500", "600"),
+        ),
+        section_title=_MDA,
+        seat="mda",
+    )
+    assert any(
+        row.kind is RowKind.TOTAL and "total contractual" in row.label.lower()
+        for row in table.rows
+    )
 
 
 def test_profile_seat_is_the_relocated_geometry_text_seat() -> None:

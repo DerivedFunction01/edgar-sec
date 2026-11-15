@@ -16,6 +16,7 @@ from typing import Any, Protocol
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.text.automaton import compile_lexical_matcher
+from edgar_sec.foundation.text.patterns import RE_COLUMN_GAP
 from edgar_sec.foundation.text.tokens import ROMAN_NUMERAL_PATTERN, roman_to_int
 
 from .content_lines import has_cross_reference
@@ -55,7 +56,6 @@ from .sequence import (
 
 _ASCII_PROBE_WINDOW = 2500
 
-_MULTI_SPACE_RE = re.compile(r"[ \t]{2,}")
 _NUMERIC_RE = re.compile(r"(?<![A-Za-z0-9])\d{1,4}(?![A-Za-z0-9])")
 _DECIMAL_RE = re.compile(r"\d+\.\d{2,}")
 _GROUPED_RE = re.compile(r"\d{1,3}(?:,\d{3})+")
@@ -135,7 +135,7 @@ def has_numeric_data_shape(line: str) -> bool:
     if _DECIMAL_RE.search(stripped) or _GROUPED_RE.search(stripped):
         return True
     numbers = _NUMERIC_RE.findall(stripped)
-    if len(numbers) >= 2 and len(_MULTI_SPACE_RE.findall(line)) >= 1:
+    if len(numbers) >= 2 and len(RE_COLUMN_GAP.findall(line)) >= 1:
         return True
     return is_numeric_cell(stripped) and len(stripped) > 4
 

@@ -26,7 +26,7 @@ from .form_test_specs import (
     FormTestSpec,
     YearLadderSpec,
 )
-from .typed_rows import TypedTable, parse_caption_stack
+from .typed_rows import TOTAL_ROW_RE, TypedTable, parse_caption_stack
 
 _THEREAFTER = build_alternation(
     ("thereafter", "later years", "remaining", r"after\s+\d{4}")
@@ -36,7 +36,6 @@ _YEARS = build_alternation(("years?", "yrs?"))
 _OPEN_PREFIX = build_alternation(("more than", "after", "over", "greater than"))
 _FIRST_PREFIX = build_alternation(("less than", "within", "under", "first"))
 _THEREAFTER_RE = re.compile(rf"(?:{_THEREAFTER})", re.IGNORECASE)
-_TOTAL_RE = re.compile(r"^\s*total\b", re.IGNORECASE)
 _ASOF_RE = re.compile(r"as of\b[^()]*?(\d{4})", re.IGNORECASE)
 _BUCKET_CLOSED_RE = re.compile(
     rf"(\d+)\s*(?:{_RANGE_SEP})\s*(\d+)\s*(?:{_YEARS})\b", re.IGNORECASE
@@ -94,7 +93,7 @@ def _step_for_label(label: str) -> LadderStep | str | None:
     text = collapse_text(label)
     if not text:
         return None
-    if _TOTAL_RE.match(text):
+    if TOTAL_ROW_RE.match(text):
         return "total"
     if _THEREAFTER_RE.search(text):
         years = YEAR_TOKEN_SEARCH_RE.findall(text)

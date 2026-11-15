@@ -9,6 +9,7 @@ from edgar_sec.engine.tables.ascii_html.model import (
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.typed_rows import (
+    TOTAL_ROW_RE,
     RowKind,
     TypedTable,
     structure_table,
@@ -35,6 +36,16 @@ def _table(accession: str, table_index: int) -> TypedTable:
         ),
     )
     return structure_table(TableContext.from_record(geometry, record))
+
+
+def test_total_row_recognizer_is_the_single_home() -> None:
+    # One definition serves typed rows, the year ladder, and every seat
+    # consuming structured tables: case-insensitive, whole-word "total".
+    assert TOTAL_ROW_RE.match("Total revenues")
+    assert TOTAL_ROW_RE.match("total assets")
+    assert TOTAL_ROW_RE.match("  Total liabilities")
+    assert not TOTAL_ROW_RE.match("Subtotal revenues")
+    assert not TOTAL_ROW_RE.match("Totals")
 
 
 def _period_labels(table: TypedTable) -> tuple[str | None, ...]:
