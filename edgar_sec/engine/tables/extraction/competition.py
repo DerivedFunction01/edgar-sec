@@ -12,9 +12,16 @@ import re
 from dataclasses import dataclass, field
 from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.derivatives_evidence import (
+    DerivativesText,
+    evaluate_derivatives_evidence,
+)
 from edgar_sec.engine.tables.extraction.form_tests import (
     FormTestOutcome,
     evaluate_form_tests,
+)
+from edgar_sec.engine.tables.extraction.form_test_specs import (
+    DERIVATIVES_EVIDENCE_SPECS,
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.signature_profiles import (
@@ -212,6 +219,8 @@ class GeometryText:
     note_title: str | None = None
     section_item: str | None = None
     form_tests: tuple[FormTestOutcome, ...] = ()
+    grid_text: str = ""
+    headers: tuple[str, ...] = ()
 
     @property
     def stub_text(self) -> str:
@@ -224,13 +233,23 @@ class GeometryText:
         return len(self.stubs) <= FRAGMENT_MAX_STUBS and not self.caption.strip()
 
 
-def geometry_text_from_table(table) -> GeometryText:
+def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryText:
     """Build channel text from a TypedTable (duck-typed context)."""
     context = table.context
     caption = " | ".join(list(context.caption_stack) + list(table.caption.titles))
     stubs = tuple(row.label for row in table.rows if row.label)
     note = context.note
     section = context.section
+    grid_text = normalize_text(
+        " ".join(cell for row in context.rows for cell in row if cell.strip())
+    )
+    consumed = table.caption.consumed_rows
+    first_data = next(
+        (i for i, row in enumerate(table.rows) if row.kind.name == "DATA"),
+        len(table.rows),
+    )
+    zone = max(consumed + table.header_rows, consumed + first_data)
+    headers = tuple(cell for row in context.rows[:zone] for cell in row if cell.strip())
     return GeometryText(
         caption=caption,
         leadin=context.prose_before or "",
@@ -241,7 +260,9 @@ def geometry_text_from_table(table) -> GeometryText:
         stubs=stubs,
         note_title=note.title if note else None,
         section_item=section.item if section else None,
-        form_tests=evaluate_form_tests(table),
+        form_tests=evaluate_form_tests(table) if evaluate_stage else (),
+        grid_text=grid_text,
+        headers=headers,
     )
 
 
@@ -545,6 +566,36 @@ def compete(
                 elif not contested:
                     claims.append(other)
                     contested = [holder, other]
+    # Cure 6 (derivatives gate): a derivatives claim requires U/A
+    # evidence in the geometry itself; the gate is registry data
+    # (form_test_specs.DERIVATIVES_EVIDENCE_SPECS), priced on the
+    # Step 6 evidence-class split: no-evidence claims are the
+    # false mass.
+    deriv_spec = DERIVATIVES_EVIDENCE_SPECS.get("derivatives_hedging")
+    deriv_evidence = (
+        evaluate_derivatives_evidence(
+            DerivativesText.from_geometry(geometry), deriv_spec
+        )
+        if deriv_spec is not None
+        else None
+    )
+    if (
+        deriv_evidence is not None
+        and not deriv_evidence.admitted
+        and "derivatives_hedging" in claims
+    ):
+        claims.remove("derivatives_hedging")
+        if "derivatives_hedging" in contested:
+            contested.remove("derivatives_hedging")
+        gated = scores["derivatives_hedging"]
+        scores = dict(scores)
+        scores["derivatives_hedging"] = FamilyScore(
+            gated.family,
+            gated.total,
+            dict(gated.by_channel),
+            gated.evidence
+            + (ClaimEvidence("gate", f"derivatives: {deriv_evidence.detail}", 0.0),),
+        )
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -567,6 +618,39 @@ def compete(
             if score.total >= floor and score.total >= (REACH_DOMINANCE * best_other):
                 claims.append(family)
                 reach.append(family)
+        # Derivatives reach: strong U/A evidence (a subject-named
+        # instrument, a period listing, an A-frontier form) claims
+        # an otherwise unclaimed geometry whose signature score
+        # alone stays under the floor — the plain-listing misses.
+        if (
+            not claims
+            and deriv_evidence is not None
+            and deriv_evidence.admitted
+            and deriv_evidence.strong
+        ):
+            existing = scores.get("derivatives_hedging")
+            if existing is None:
+                scores = dict(scores)
+                scores["derivatives_hedging"] = FamilyScore(
+                    "derivatives_hedging",
+                    CLAIM_FLOOR,
+                    {"gate": CLAIM_FLOOR},
+                    (ClaimEvidence("gate", deriv_evidence.detail, CLAIM_FLOOR),),
+                )
+            elif existing.total < CLAIM_FLOOR:
+                lift = CLAIM_FLOOR - existing.total
+                channels = dict(existing.by_channel)
+                channels["gate"] = channels.get("gate", 0.0) + lift
+                scores = dict(scores)
+                scores["derivatives_hedging"] = FamilyScore(
+                    existing.family,
+                    CLAIM_FLOOR,
+                    channels,
+                    existing.evidence
+                    + (ClaimEvidence("gate", deriv_evidence.detail, lift),),
+                )
+            claims.append("derivatives_hedging")
+            reach.append("derivatives_hedging")
     role = (
         "continuation"
         if geometry.is_fragment

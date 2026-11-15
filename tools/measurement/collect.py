@@ -57,6 +57,12 @@ def geometry_text(g: dict) -> GeometryText:
             stubs.append(str(row[0]))
     loc = g.get("structured_location") or {}
     note = loc.get("note")
+    grid_text = " ".join(
+        str(cell)
+        for row in g.get("rows") or []
+        for cell in row
+        if str(cell).strip()
+    )
     return GeometryText(
         caption=caption,
         leadin=prose_before,
@@ -65,6 +71,7 @@ def geometry_text(g: dict) -> GeometryText:
         stubs=tuple(stubs),
         note_title=note if isinstance(note, str) else None,
         section_item=loc.get("item") if isinstance(loc.get("item"), str) else None,
+        grid_text=grid_text,
     )
 
 

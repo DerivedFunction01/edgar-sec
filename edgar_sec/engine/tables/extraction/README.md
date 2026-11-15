@@ -98,6 +98,14 @@ classified tables into logical statements and arbitrates their relations.
   foreign words never discriminate. Arithmetic closure corroborates
   the leading family only; it never vetoes. Within a filing, header
   inheritance and cross-parse ties feed back as context evidence.
+- **Derivatives claims are gated on U/A evidence**: a `derivatives_hedging`
+  claim issues only when the geometry itself carries underlying/notional (U)
+  or accounting-effects (A) evidence under the gate algebra declared as
+  registry data in `profiles` (`DERIVATIVES_EVIDENCE_SPECS`: unambiguous bases
+  decide alone, ambiguous bases only in accumulation, the equity and NPNS
+  exception lists carve their subjects out); strong U/A evidence also reaches
+  an otherwise unclaimed plain listing. The same spec evaluates over a typed
+  table's full grid through the `derivatives_evidence_gate` form-test kind.
 - **Prose-window grain decides what the geometry cannot**: a filer-status
   checkbox fragment is decided from the bounded prose window framing it
   (`prose_window`), never from the fragment's own grid; the window's
@@ -128,6 +136,18 @@ classified tables into logical statements and arbitrates their relations.
   commitments and related-party note-title points land only on grids
   whose own content corroborates the family (`residue_families`); an
   uncorroborated sibling grid in the same note earns no title claim.
+- **Commitments claims sit in the geometry-text seat**: the family's
+  seat (`commitments_seat`) reads the geometry's own text — a
+  payments-due shape anchored on a purchase-obligations row, a
+  credit-commitments cluster, or a guarantee schedule — and claims
+  only where the carried context seats the geometry in the MD&A
+  seat or a note region; a payments-due grid without the purchase
+  row and a lone letter-of-credit line earn no claim.
+  Segment corroboration reads the whole grid, headers included
+  (`GeometryText.grid_text`), and admits a measure grid on any priced
+  arm: segment vocabulary, the bare segment word in the grid, the
+  reconciliation form (markers plus a total), or segment framing in
+  the lead-in (plain, geographic, or disaggregation).
 - **A filing is classified as a constellation, not table by table**:
   confident core anchors bound the statement zone, and a note satellite's
   win before the first anchor is discounted; a family's registered note

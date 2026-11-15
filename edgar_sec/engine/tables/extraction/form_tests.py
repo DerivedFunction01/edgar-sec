@@ -9,6 +9,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.composition import evaluate_composition
+from edgar_sec.engine.tables.extraction.derivatives_evidence import (
+    evaluate_form_test_derivatives,
+)
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.percentage_form import (
     evaluate_percentage_form,
@@ -21,6 +24,7 @@ from edgar_sec.engine.tables.extraction.form_test_specs import (
 )
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_COMPOSITION_TWIN,
+    TEST_DERIVATIVES_EVIDENCE,
     TEST_LADDER,
     TEST_PERCENTAGE_FORM,
     TEST_PRIMARY_STATEMENT_SEAT,
@@ -279,12 +283,27 @@ def _evaluate_seat(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     )
 
 
+def _evaluate_derivatives(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_derivatives(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 _EVALUATORS = {
     TEST_WALK: _evaluate_walk,
     TEST_LADDER: _evaluate_ladder,
     TEST_PERCENTAGE_FORM: _evaluate_percentage,
     TEST_PRIMARY_STATEMENT_SEAT: _evaluate_seat,
     TEST_COMPOSITION_TWIN: _evaluate_composition,
+    TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
 }
 
 

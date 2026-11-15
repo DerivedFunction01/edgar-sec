@@ -86,6 +86,7 @@ class TableContext:
     in_closing_span: bool = False
     closing_kind: str | None = None
     source_document: str | None = None
+    seat: str | None = None
 
     @property
     def table_index(self) -> int:
@@ -162,4 +163,5 @@ class TableContext:
             in_closing_span=bool(record.get("in_closing_span")),
             closing_kind=record.get("closing_kind"),
             source_document=record.get("source_document"),
+            seat=record.get("seat"),
         )

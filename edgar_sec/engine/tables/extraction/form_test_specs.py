@@ -11,8 +11,10 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_STEP3_FORM_TESTS,
+    PROV_STEP4_DERIVATIVES,
     PROV_STEP6_VERDICT,
     TEST_COMPOSITION_TWIN,
+    TEST_DERIVATIVES_EVIDENCE,
     TEST_LADDER,
     TEST_PERCENTAGE_FORM,
     TEST_PRIMARY_STATEMENT_SEAT,
@@ -256,6 +258,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "lease_maturity", TEST_COMPOSITION_TWIN, "lease_maturity_composition", 3.0
     ),
     FormTestSpec("fair_value", TEST_COMPOSITION_TWIN, "fair_value_composition", 3.0),
+    FormTestSpec(
+        "derivatives_hedging",
+        TEST_DERIVATIVES_EVIDENCE,
+        "derivatives_hedging_evidence_gate",
+        0.0,
+        provenance=PROV_STEP4_DERIVATIVES,
+    ),
 )
 
 # Walk-kind parameters, keyed by test_id (the per-kind table).
@@ -548,3 +557,157 @@ for _spec in FORM_TEST_SPECS:
 def form_test_specs_for(family: str) -> tuple[FormTestSpec, ...]:
     """The declared form-test specs for a family; none if undeclared."""
     return FORM_TEST_SPECS_BY_FAMILY.get(family, ())
+
+
+@dataclass(frozen=True, slots=True)
+class DerivativesEvidenceSpec:
+    """Derivatives-evidence gate parameters, declared as data.
+    An unambiguous base decides alone, ambiguous bases decide only
+    in accumulation; the equity / NPNS lists carve subjects out."""
+
+    family: str
+    test_id: str
+    unambiguous_bases: tuple[str, ...]
+    ambiguous_bases: tuple[str, ...]
+    stem_bases: tuple[tuple[str, str], ...]
+    designation_phrases: tuple[str, ...]
+    anchor_terms: tuple[str, ...]
+    suffix_terms: tuple[str, ...]
+    commercial_terms: tuple[str, ...]
+    npns_phrases: tuple[str, ...]
+    equity_comp_terms: tuple[str, ...]
+    equity_prefixes: tuple[str, ...]
+    aoci_subject_phrases: tuple[str, ...]
+    commodity_header: str
+    effects_phrases: tuple[str, ...]
+    effects_leadin_phrases: tuple[str, ...]
+    offsetting_phrases: tuple[str, ...]
+    min_period_rows: int = 2
+    provenance: str = PROV_STEP4_DERIVATIVES
+
+
+# Derivatives-evidence gate specs (Step 4), keyed by family: the
+# one literal home of the gate kind's parameters, priced against
+# the Step 6 evidence-class split over the 58 specimens.
+DERIVATIVES_EVIDENCE_SPECS: dict[str, DerivativesEvidenceSpec] = {
+    "derivatives_hedging": DerivativesEvidenceSpec(
+        family="derivatives_hedging",
+        test_id="derivatives_hedging_evidence_gate",
+        unambiguous_bases=(
+            "swap",
+            "swaps",
+            "forward",
+            "forwards",
+            "collar",
+            "collars",
+            "derivative",
+            "derivatives",
+            "futures",
+            "swaption",
+            "swaptions",
+            "straddle",
+            "strangle",
+        ),
+        ambiguous_bases=(
+            "option",
+            "options",
+            "cap",
+            "caps",
+            "floor",
+            "floors",
+            "put",
+            "puts",
+            "call",
+            "calls",
+            "hedge",
+            "hedges",
+            "hedging",
+            "lock",
+            "locks",
+        ),
+        stem_bases=(("capped", "cap"),),
+        designation_phrases=(
+            "designated as hedging",
+            "not designated",
+            "designated hedging",
+            "hedging instruments",
+            "derivative assets",
+            "derivative liabilities",
+            "derivative contracts",
+            "derivative instruments",
+            "derivative financial instruments",
+            "cash flow hedge",
+            "fair value hedge",
+            "net investment hedge",
+            "hedge accounting",
+            "derivatives designated",
+        ),
+        anchor_terms=(
+            "notional",
+            "fair value",
+            "fair market value",
+            "balance sheet location",
+            "income statement location",
+            "offsetting",
+            "netting",
+            "gross amounts",
+            "exercise price",
+        ),
+        suffix_terms=("contract", "contracts", "instrument", "instruments"),
+        commercial_terms=(
+            "delivery",
+            "deliveries",
+            "supply",
+            "supplies",
+            "shipment",
+            "shipments",
+        ),
+        npns_phrases=(
+            "normal purchases and normal sales",
+            "normal purchase and normal sale",
+            "npns",
+            "own-use exemption",
+            "own use exemption",
+            "physical delivery",
+            "physical settlement",
+        ),
+        equity_comp_terms=(
+            "restricted stock",
+            "stock appreciation",
+            "employee stock",
+            "equity incentive",
+            "options granted",
+            "shares available for future",
+            "weighted-average exercise",
+            "weighted average exercise",
+        ),
+        equity_prefixes=("stock", "equity", "share", "dividend"),
+        aoci_subject_phrases=(
+            "accumulated other comprehensive income components",
+            "details about accumulated other comprehensive",
+        ),
+        commodity_header="commodity contracts",
+        effects_phrases=(
+            "effects of cash flow hedges",
+            "effect of derivative",
+            "effects of derivative",
+            "effect of our derivative",
+        ),
+        effects_leadin_phrases=(
+            "effects of cash flow hedges",
+            "effect of our derivative",
+        ),
+        offsetting_phrases=(
+            "offsetting",
+            "amounts offset",
+            "not offset",
+            "gross amounts offset",
+        ),
+    ),
+}
+
+# The same parameters keyed by test_id, derived at registry load
+# for the stage adapter; never a second literal copy.
+DERIVATIVES_EVIDENCE_SPECS_BY_TEST_ID: dict[str, DerivativesEvidenceSpec] = {
+    spec.test_id: spec for spec in DERIVATIVES_EVIDENCE_SPECS.values()
+}

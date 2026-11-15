@@ -5,6 +5,7 @@ from __future__ import annotations
 from edgar_sec.engine.document.page_markers.models import PageArtifactPolicy
 from edgar_sec.engine.forms.normalize import normalize_document
 from edgar_sec.engine.tables.extraction.classify import classify_table
+from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.context_production import (
     DocumentInput,
     FilingFacts,
@@ -69,6 +70,19 @@ def test_contexts_carry_source_and_closing_stamps() -> None:
     assert records[-1]["in_closing_span"] is True
     assert records[-1]["source_document"] == "primary"
     assert records[0]["in_closing_span"] is False
+
+
+def test_contexts_carry_the_region_map_seat() -> None:
+    production = _production()
+    contexts = production.documents[0].contexts
+    seats = [context.seat for context in contexts]
+    assert "item_1" in seats
+    records = production.documents[0].records
+    assert [record["seat"] for record in records] == seats
+    business = next(context for context in contexts if context.seat == "item_1")
+    record = records[contexts.index(business)]
+    restored = TableContext.from_record(business.geometry, record)
+    assert restored.seat == "item_1"
 
 
 def test_closing_span_table_is_genre_refused() -> None:

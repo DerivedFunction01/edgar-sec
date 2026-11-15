@@ -9,6 +9,12 @@ from edgar_sec.engine.tables.extraction.calibration import (
     PATTERNS,
     PROSE_PATTERNS,
 )
+from edgar_sec.engine.tables.extraction.commitments_seat import (
+    FAMILY as COMMITMENTS_FAMILY,
+)
+from edgar_sec.engine.tables.extraction.commitments_seat import (
+    evaluate_commitments_seat,
+)
 from edgar_sec.engine.tables.extraction.competition import geometry_text_from_table
 from edgar_sec.engine.tables.extraction.form_tests import (
     FormTestOutcome,
@@ -328,6 +334,11 @@ def _score_family(
                 note_hits += 1
                 score += spec.points
                 evidence.append(Evidence("note", spec.phrase, spec.points))
+    if family == COMMITMENTS_FAMILY:
+        seat = evaluate_commitments_seat(table)
+        if seat.passed:
+            score += seat.points
+            evidence.append(Evidence("seat", seat.detail, seat.points))
     vetoes = 0
     for spec in NEGATIVE_EVIDENCE:
         if spec.vetoed_family != family or spec.term not in label_set:

@@ -8,7 +8,10 @@ from edgar_sec.engine.tables.ascii_html.model import (
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.classify import classify_table
-from edgar_sec.engine.tables.extraction.competition import GeometryText
+from edgar_sec.engine.tables.extraction.competition import (
+    GeometryText,
+    geometry_text_from_table,
+)
 from edgar_sec.engine.tables.extraction.context import NoteRef, TableContext
 from edgar_sec.engine.tables.extraction.residue_families import (
     content_score,
@@ -71,6 +74,162 @@ def test_note_claim_refuses_uncorroborated_sibling_grid() -> None:
         ("Cash and cash equivalents", "100"),
         ("Accounts receivable", "50"),
         ("Inventories", "25"),
+    )
+    result = classify_table(_table(rows, "Segment Information"))  # type: ignore[arg-type]
+    assert result.family != "segment_reporting"
+
+
+def test_segment_grid_admits_segment_named_columns() -> None:
+    grid = GeometryText(
+        stubs=(
+            "resident fees and services",
+            "total revenues",
+            "consolidated net operating income",
+        ),
+        grid_text=(
+            "year ended seniors housing operating triple-net "
+            "outpatient medical non-segment corporate total"
+        ),
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_reconciliation_columns() -> None:
+    grid = GeometryText(
+        stubs=("interest income", "total revenues"),
+        grid_text="retail banking mortgage banking eliminations consolidated",
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_section_row_segments() -> None:
+    grid = GeometryText(
+        stubs=(
+            "general banking segment",
+            "service charges on deposit accounts",
+            "net interest income",
+            "wealth management segment",
+        )
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_disaggregation_leadin() -> None:
+    grid = GeometryText(
+        stubs=("medicare commissions", "pharmacy", "total senior revenue"),
+        leadin="revenue disaggregated by reportable operating segment",
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_geographic_framing() -> None:
+    grid = GeometryText(
+        stubs=("puerto rico", "united states", "total consolidated revenues"),
+        caption="geographic information",
+        leadin="the company's reportable segments earn revenues worldwide",
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_segment_measure_heading() -> None:
+    grid = GeometryText(
+        stubs=("direct", "retail", "total capital expenditures"),
+        leadin="notes to financial statements segment capital expenditures",
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_intersegment_rows() -> None:
+    grid = GeometryText(
+        stubs=("motor fuel sales", "intersegment sales", "total revenue"),
+        grid_text="fuel distribution all other eliminations totals",
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_admits_segment_assets_columns() -> None:
+    grid = GeometryText(
+        stubs=(
+            "total assets",
+            "fluids division",
+            "production testing division",
+            "corporate overhead",
+            "consolidated",
+        )
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_refuses_signature_block() -> None:
+    grid = GeometryText(stubs=("by:", "president and chief executive officer", "date:"))
+    assert not segment_grid(grid)
+
+
+def test_segment_grid_refuses_measure_only_schedule() -> None:
+    grid = GeometryText(
+        stubs=("land", "building", "total", "less accumulated depreciation"),
+        caption="schedule of capital leased assets",
+    )
+    assert not segment_grid(grid)
+
+
+def test_segment_grid_refuses_expense_composition() -> None:
+    grid = GeometryText(
+        stubs=(
+            "research and development",
+            "selling general and administrative",
+            "amortization of purchased intangible assets",
+            "total",
+        )
+    )
+    assert not segment_grid(grid)
+
+
+def test_segment_grid_refuses_unframed_geography() -> None:
+    grid = GeometryText(
+        stubs=("taiwan", "china", "total revenues"),
+        leadin="revenues by country were as follows",
+    )
+    assert not segment_grid(grid)
+
+
+def test_segment_grid_refuses_prose_only_segment_mentions() -> None:
+    grid = GeometryText(
+        stubs=("cash and cash equivalents", "accounts receivable", "inventories"),
+        leadin="our operating segments and reportable segments grew segment revenue",
+    )
+    assert not segment_grid(grid)
+
+
+def test_grid_text_carries_header_cells() -> None:
+    rows = (
+        ("", "Year Ended December 31, 2020", "", ""),
+        ("", "Refining", "Eliminations", "Consolidated"),
+        ("Gasoline", "100", "0", "100"),
+        ("Total revenues", "300", "0", "300"),
+    )
+    table = _table(rows, "Segment Information")
+    text = geometry_text_from_table(table)  # type: ignore[arg-type]
+    assert "eliminations" in text.grid_text
+    assert segment_grid(text)
+
+
+def test_note_claim_assigns_column_named_segment_grid() -> None:
+    rows = (
+        ("", "Year Ended December 31, 2020", "", ""),
+        ("", "Refining", "Eliminations", "Consolidated"),
+        ("Gasoline", "100", "0", "100"),
+        ("Total revenues", "300", "0", "300"),
+    )
+    result = classify_table(_table(rows, "Segment Information"))  # type: ignore[arg-type]
+    assert result.family == "segment_reporting"
+
+
+def test_note_claim_refuses_expense_grid_in_segment_note() -> None:
+    rows = (
+        ("Research and development", "100"),
+        ("Selling, general and administrative", "50"),
+        ("Total", "150"),
     )
     result = classify_table(_table(rows, "Segment Information"))  # type: ignore[arg-type]
     assert result.family != "segment_reporting"

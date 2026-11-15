@@ -27,12 +27,14 @@ KIND_GENRE_SEAT = "genre_seat"
 
 SEAT_SIGNATURE = "signature_competition"
 SEAT_ASSEMBLY = "assembly"
+SEAT_GEOMETRY_TEXT = "geometry_text"
 SEAT_NOTE_TITLE_CONTENT = "note_title_content"
 SEAT_PROSE_CAPTURE = "prose_capture"
 SEAT_GENRE_REFUSAL = "genre_refusal"
 SEAT_REGION_GATED = "region_gated"
 
 PROV_STEP3_FORM_TESTS = "refresh-step3:form-tests"
+PROV_STEP4_DERIVATIVES = "refresh-step4:derivatives-cure"
 
 # Form-test declarations (R1): names only, as registry data.
 # The stage and the test classes themselves build in Step 3.
@@ -316,12 +318,13 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "commitments_contingencies",
         KIND_FAMILY,
         _support(0.583, 0.100, 0.417, 0.000),
-        SEAT_ASSEMBLY,
+        SEAT_GEOMETRY_TEXT,
         form_tests=(TEST_LADDER,),
-        gate_bindings=("assembly_seat",),
-        note="directed located recall .000 on both strata: the "
-        "ladder (single-year or bucketed payments-due) is the form "
-        "its seat must learn to admit; seat relocation is Step 4",
+        gate_bindings=("commitments_seat",),
+        note="seat relocated at refresh Step 4: directed located "
+        "recall .000 on both strata under the note-title seat; "
+        "the geometry-text seat claims payments-due, credit-"
+        "cluster and guarantee forms in MD&A / note regions",
     ),
     FamilyProfile(
         "labor_capture",

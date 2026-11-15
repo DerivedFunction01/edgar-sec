@@ -497,6 +497,8 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
             if note_span
             else None
         )
+        seat_obj = facts.seat_at(span[0]) if span is not None else None
+        seat_name = seat_obj.seat if seat_obj is not None else None
         contexts.append(
             TableContext(
                 geometry=geometry,
@@ -525,6 +527,7 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
                 in_closing_span=in_closing,
                 closing_kind=facts.closing_kind if in_closing else None,
                 source_document=document.source_document,
+                seat=seat_name,
             )
         )
         records.append(
@@ -542,6 +545,7 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
                 "in_closing_span": in_closing,
                 "closing_kind": facts.closing_kind if in_closing else None,
                 "source_document": document.source_document,
+                "seat": seat_name,
                 "preceding": {
                     "section": (
                         {"item": section.item_identifier, "title": section.title}
