@@ -23,6 +23,23 @@ INCORPORATED_REFERENCE_TERMS: tuple[str, ...] = (
     "the following documents are incorporated by reference",
 )
 
+# Delegation verbs for the EX-13 judgement (refresh Step 2): a primary
+# delegates when one of these phrases sits inside an exhibit mention's
+# anchor window. A different, wider set than the reference terms above.
+EX13_DELEGATION_VERBS: tuple[str, ...] = (
+    "incorporated by reference",
+    "incorporated herein by reference",
+    "set forth in",
+    "filed herewith as",
+    "furnished herewith as",
+    "included in",
+    "contained in",
+    "presented in",
+    "appear in",
+    "appears in",
+    "will be mailed",
+)
+
 BANKRUPTCY_PROCEEDINGS_TERMS: tuple[str, ...] = (
     "applicable only to registrants involved in bankruptcy proceedings during the preceding five years",
     "bankruptcy proceedings during the preceding five years",
@@ -483,6 +500,7 @@ __all__ = [
     "ANNUAL_TARGET_EXHIBITS",
     "BANKRUPTCY_PROCEEDINGS_TERMS",
     "DELINQUENT_FILERS_TERMS",
+    "EX13_DELEGATION_VERBS",
     "INCORPORATED_REFERENCE_TERMS",
     "PUBLIC_FLOAT_ANCHOR_RE",
     "PUBLIC_FLOAT_EXACT_RE",

@@ -455,16 +455,21 @@ def classify_table(
     policy: ClassificationPolicy | None = None,
     math_outcomes: tuple[IdentityOutcome, ...] | None = None,
 ) -> Classification:
-    """Classify one table: TOC elimination first, then the cascade.
+    """Classify one table: TOC and closing elimination, then the cascade.
 
-    A TOC-shaped table is genre-refused before any family scoring;
-    a statement-family claim seated at MD&A position is refused after.
+    A TOC-shaped table or one inside the closing span is genre-refused
+    before any family scoring; an MD&A-seated claim is refused after.
     """
     policy = policy if policy is not None else default_policy()
     toc = toc_refusal(table)
     if toc is not None:
         labels = [normalize_text(row.label) for row in table.rows]
         evidence = _context_base(table) + [Evidence("genre_refusal", toc.detail, 0.0)]
+        return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
+    if table.context.in_closing_span:
+        labels = [normalize_text(row.label) for row in table.rows]
+        detail = f"closing refused: {table.context.closing_kind or 'closing'} region"
+        evidence = _context_base(table) + [Evidence("genre_refusal", detail, 0.0)]
         return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
     result = _cascade(table, policy, math_outcomes)
     refusal = _section_refusal(table, result.family, policy)
@@ -584,7 +589,7 @@ def classify_filing(
         entry = candidate_scores(table, policy, math_outcomes=outcomes)
         if result.tier == "genre_refusal":
             if any(
-                ev.detail.startswith("toc refused")
+                ev.detail.startswith(("toc refused", "closing refused"))
                 for ev in result.evidence
                 if ev.group == "genre_refusal"
             ):

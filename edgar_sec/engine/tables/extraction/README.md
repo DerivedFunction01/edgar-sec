@@ -56,6 +56,24 @@ classified tables into logical statements and arbitrates their relations.
   statement candidate, whatever its vocabulary scores; regions derive from
   filing position, section membership, and the forms layer's signature
   classifier unless a builder stamps one on the context.
+- **Contexts are produced once, by one function**: `context_production.produce_contexts`
+  is the only context-production path — corpus builder, pipeline, and facade fast
+  path all call it and none assembles a context of its own. Filing-level facts are
+  computed once in document normalization and carried on the context: the TOC span,
+  the closing span, the region map (the section sequence as seats, including the
+  Item 1 seat and the MD&A seat), the exhibit inventory and resolution, and the
+  per-document geometry set. A seat re-deriving a filing-level fact is a defect.
+  No family profile declares a prose window: prose windows are genre-layer only.
+- **The closing span is consumed at the genre seat**: a geometry whose location
+  starts inside the filing's carried closing span is genre-refused before any
+  family scoring, on that fact alone, beside the TOC refusal; it contributes no
+  family scores to its filing.
+- **Exhibits resolve through the registry, once**: a family profile's exhibit
+  links are registry data; the engine/forms resolver decides candidacy from index
+  metadata alone (the domain type-family predicate), confirms bodies only on
+  flagged candidates through the body evaluator, and judges delegation by an
+  anchor-window scan of the primary. Confirmed exhibits enter production stamped
+  with their source document; there is no second resolver.
 - **Section position is a genre gate, not evidence**: the declared section
   map rides the classification policy from the forms layer and is applied
   by `section_gate`; a statement-family claim seated in an MD&A section is

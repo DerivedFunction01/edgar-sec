@@ -724,6 +724,21 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
 
         return detect_toc_span(filing, body)
 
+    def classified_tables(
+        self, filing: FilingAggregate, *, stratum: str | None = None
+    ) -> tuple["ClassifiedTable", ...]:
+        """Classify one filing's free-text tables on demand (fast version).
+
+        The pipeline version over the Step 7 store serves many filings;
+        this one computes a single filing in the call, cached.
+        """
+        from edgar_sec.apps.client.classified_tables import (
+            ClassifiedTable,
+            classified_tables_fast,
+        )
+
+        return classified_tables_fast(self.content_cache, filing, stratum=stratum)
+
     def _extract_filing_text(self, filing: FilingAggregate) -> str:
         return self.content_cache.get_or_build(
             ("text", filing.accession.value),

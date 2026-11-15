@@ -83,6 +83,9 @@ class TableContext:
     region: str | None = None
     region_path: str | None = None
     in_toc_span: bool = False
+    in_closing_span: bool = False
+    closing_kind: str | None = None
+    source_document: str | None = None
 
     @property
     def table_index(self) -> int:
@@ -156,4 +159,7 @@ class TableContext:
             region=record.get("region"),
             region_path=record.get("region_path"),
             in_toc_span=bool(record.get("in_toc_span")),
+            in_closing_span=bool(record.get("in_closing_span")),
+            closing_kind=record.get("closing_kind"),
+            source_document=record.get("source_document"),
         )

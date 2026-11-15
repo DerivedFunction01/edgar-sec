@@ -45,3 +45,51 @@ def test_extract_stamps_regions_and_toc_membership() -> None:
     toc_flags = {g["table_index"]: g["in_toc_span"] for g in geometries}
     assert toc_flags[geometries[0]["table_index"]] is True
     assert toc_flags[geometries[1]["table_index"]] is False
+
+
+_EX13_HTML = """<html><body>
+<p>EXHIBIT 13</p>
+<p>ANNUAL REPORT TO SECURITY HOLDERS</p>
+<p>ACME CORPORATION</p>
+<table><tr><td>Revenue</td><td>900</td></tr><tr><td>Net income</td><td>90</td></tr></table>
+</body></html>"""
+
+
+def test_extract_carries_facts_and_resolves_exhibits() -> None:
+    record, _entries, _timing = extract_filing(
+        _spec(),
+        _HTML_10K.encode(),
+        "acme.htm",
+        tree="test",
+        exhibits=(
+            {
+                "document_type": "EX-13",
+                "document_name": "ex13.htm",
+                "raw": _EX13_HTML.encode(),
+            },
+            {
+                "document_type": "EX-99.1",
+                "document_name": "ex99.htm",
+                "raw": b"<html><body><p>press release</p></body></html>",
+            },
+        ),
+        stratum="B",
+    )
+
+    facts = record["facts"]
+    assert facts["source_document"] == "primary"
+    assert "region_map" in facts
+    assert record["exhibits"]
+    resolved = record["exhibits"][0]
+    assert resolved["document_name"] == "ex13.htm"
+    assert resolved["code"] == "13"
+    assert resolved["body_confirmed"] is True
+    exhibit_geometries = [
+        g for g in record["geometries"] if g["source_document"] == "ex13.htm"
+    ]
+    assert exhibit_geometries
+    assert all(g["label"] is None for g in exhibit_geometries)
+    primary_geometries = [
+        g for g in record["geometries"] if g["source_document"] == "primary"
+    ]
+    assert len(primary_geometries) == 2

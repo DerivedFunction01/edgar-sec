@@ -7,8 +7,16 @@ or a trailing ``.A`` segment, in any combination.
 
 from __future__ import annotations
 
+import re
+
 #: The base type spelling of the Exhibit 13 family (Item 601 code 13).
 EX13_BASE_TYPE = "EX-13"
+
+#: The in-text mention form of the family: an exhibit anchor in prose.
+EX13_TEXT_ANCHOR_RE = re.compile(
+    r"exhibit\s*(?:13|[-–—]\s*13|\(\s*13\s*\))(?:\.\d+)?|ex-13(?:\.\d+)?",
+    re.IGNORECASE,
+)
 
 
 def is_ex13_type(document_type: str | None) -> bool:
@@ -32,4 +40,4 @@ def is_ex13_type(document_type: str | None) -> bool:
     return suffix == "A" or suffix.isdigit()
 
 
-__all__ = ["EX13_BASE_TYPE", "is_ex13_type"]
+__all__ = ["EX13_BASE_TYPE", "EX13_TEXT_ANCHOR_RE", "is_ex13_type"]
