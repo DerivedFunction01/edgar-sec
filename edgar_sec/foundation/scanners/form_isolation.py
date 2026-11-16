@@ -43,7 +43,7 @@ _ALLOWED_PATHS = (
     "edgar_sec/foundation/scanners/form_isolation.py",
     "edgar_sec/domain/forms/exhibits/profiles.py",
     "edgar_sec/domain/forms/families/processing_profiles.py",
-    "edgar_sec/pipelines/document_inventory/progress_scale_check.py",
+    "edgar_sec/tools/document_inventory/progress_scale_check.py",
 )
 
 

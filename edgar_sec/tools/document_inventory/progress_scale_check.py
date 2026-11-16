@@ -27,10 +27,17 @@ from edgar_sec.foundation.runtime.resources import (
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.infra.storage.parquet import count_parquet_rows
 
-from .checkpoint import AttemptWriters, finalize_attempt, validate_committed_chunk
-from .paths import inventory_paths, inventory_run_paths
-from .progress import open_progress
-from .run_state.run_manifest import (
+from edgar_sec.pipelines.document_inventory.checkpoint import (
+    AttemptWriters,
+    finalize_attempt,
+    validate_committed_chunk,
+)
+from edgar_sec.pipelines.document_inventory.paths import (
+    inventory_paths,
+    inventory_run_paths,
+)
+from edgar_sec.pipelines.document_inventory.progress import open_progress
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     iter_work_order_chunks,
     write_run_manifest,
     write_work_order,
@@ -48,7 +55,7 @@ _MIB = 1024 * 1024
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="edgar_sec.pipelines.document_inventory.progress_scale_check",
+        prog="edgar_sec.tools.document_inventory.progress_scale_check",
         description="Run the explicitly opted-in offline progress simulation",
     )
     parser.add_argument(

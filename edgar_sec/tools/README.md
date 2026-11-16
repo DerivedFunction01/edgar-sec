@@ -21,6 +21,7 @@ evaluate grounded XBRL populations.
 - **xbrl_eval**: XBRL census, screening, and benchmark verification.
 - **measurement**: Measurement-protocol drivers (draw, collect, sample, merge, score, blind re-read), step-parameterized by config JSON.
 - **table_extraction_corpus**: Successor corpus build, alignment, labelling, and reconciliation tooling with its shared defect register.
+- **document_inventory**: Offline scale check for the document-inventory progress journal, driven over a synthetic population.
 
 ## Contracts
 

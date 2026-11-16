@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
-from edgar_sec.pipelines.document_inventory.progress_scale_check import main
+from edgar_sec.tools.document_inventory.progress_scale_check import main
 
 
 def test_large_simulation_requires_explicit_opt_in(tmp_path: Path) -> None:
