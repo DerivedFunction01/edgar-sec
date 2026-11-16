@@ -9,6 +9,8 @@ import hashlib
 import re
 from typing import Any
 
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE as _WHITESPACE_RE
+
 from .models import PageArtifactPolicy, PageBreakArtifact, PageMarkerKind
 
 PAGE_BREAK_TOKEN_KIND = "PAGE_BREAK"
@@ -24,7 +26,6 @@ _TOKEN_KINDS = {
 }
 
 _DIGIT_RUN_RE = re.compile(r"(?<![\w-])\d+(?![\w-])")
-_WHITESPACE_RE = re.compile(r"\s+")
 
 
 def token_kind_for(marker_kind: str) -> str:

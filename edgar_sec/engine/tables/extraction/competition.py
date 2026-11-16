@@ -10,10 +10,10 @@ from __future__ import annotations
 import math
 import re
 from dataclasses import dataclass, field
-from functools import lru_cache
 
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
+    _term_pattern,
     evaluate_derivatives_evidence,
 )
 from edgar_sec.engine.tables.extraction.form_tests import (
@@ -28,6 +28,7 @@ from edgar_sec.engine.tables.extraction.leadin_segmentation import (
     leadin_segment,
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
+from edgar_sec.engine.tables.toc.patterns import RE_NOTE_HEADING_CUE
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
@@ -168,14 +169,7 @@ SCORED_VETOES: dict[str, tuple[str, ...]] = {
     "stock_comp_rollforward": ("period_columns",),
 }
 
-_HEADING_NOTE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
 _HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
-
-
-@lru_cache(maxsize=None)
-def _term_pattern(term: str) -> re.Pattern[str]:
-    """One term's word-boundary pattern, compiled once per term."""
-    return re.compile(r"\b" + re.escape(term) + r"\b")
 
 
 def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
@@ -186,7 +180,7 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
             stripped = line.strip()
             if not stripped:
                 continue
-            if _HEADING_NOTE.search(stripped) or _HEADING_NUMBERED.match(stripped):
+            if RE_NOTE_HEADING_CUE.search(stripped) or _HEADING_NUMBERED.match(stripped):
                 if len(stripped) < 120:
                     lines.append(stripped)
             elif len(stripped) >= 8 and stripped == stripped.upper():

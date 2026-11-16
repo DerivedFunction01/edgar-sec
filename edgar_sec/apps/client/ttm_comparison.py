@@ -19,6 +19,7 @@ from edgar_sec.apps.client.companyfacts import (
     CompanyFacts,
     _current_points,
 )
+from edgar_sec.apps.client.fiscal import duration_length_class as _length_class
 from edgar_sec.apps.client.financials_ttm import (
     _TTM_CLASSES,
     QuarterLegSet,
@@ -26,9 +27,6 @@ from edgar_sec.apps.client.financials_ttm import (
     TtmResult,
     _discrete_quarters,
     _ttm_window,
-)
-from edgar_sec.engine.xbrl.normalize.normalization import (
-    normalize_time_coordinate,
 )
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 
@@ -43,11 +41,6 @@ __all__ = [
     "facts_ttm",
     "facts_ttm_from_store",
 ]
-
-
-def _length_class(start: str, end: str) -> str | None:
-    """A facts duration point's length class, the kernel's own rule."""
-    return normalize_time_coordinate("duration", None, start, end).length_class
 
 
 def _unit_points(facts: CompanyFacts, taxonomy: str, tag: str) -> dict[str, list]:

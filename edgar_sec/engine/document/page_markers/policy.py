@@ -12,7 +12,11 @@ from typing import Any
 
 from edgar_sec.engine.document.html.breaks import render_html_to_break_text
 from edgar_sec.foundation.text.healing import NEGATIVE_BOUNDARY_RE
-from edgar_sec.foundation.text.patterns import RE_TERMINAL_BOUNDARY, is_separator_line
+from edgar_sec.foundation.text.patterns import (
+    RE_TABLE_SPAN as _TAGGED_TABLE,
+    RE_TERMINAL_BOUNDARY,
+    is_separator_line,
+)
 
 from .artifacts import note_template, render_page_artifact, token_kind_for
 from .candidates import has_numeric_data_shape, line_for_offset
@@ -27,8 +31,6 @@ from .models import (
     PageMarkerAnalysis,
     PageMarkerKind,
 )
-
-_TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
 
 #: Widening onto a data table would delete document content; repeating furniture is a few lines tall.
 _MAX_COMPACT_TABLE_LINES = 5

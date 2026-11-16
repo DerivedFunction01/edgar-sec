@@ -40,7 +40,10 @@ from edgar_sec.engine.forms.common.extraction import (
     format_field_value,
 )
 from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
-from edgar_sec.engine.forms.common.row_extraction import normalize_row_record
+from edgar_sec.engine.forms.common.row_extraction import (
+    normalize_row_record,
+    row_field as _row_field,
+)
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
 from edgar_sec.engine.forms.form144.row_specs import (
     FORM144_PROPOSED_SALE_ROW_SPEC,
@@ -222,13 +225,6 @@ def _build_issuer_xml(form_data: ET.Element, doc: Form144Document) -> None:
         rels_el = ET.SubElement(issuer_el, "relationshipsToIssuer")
         for rel in doc.reporting_person.relationships:
             _add_text_elem(rels_el, "relationshipToIssuer", rel)
-
-
-def _row_field(spec, name: str) -> FieldSpec:
-    column = spec.column(name)
-    if column is None:
-        raise KeyError(name)
-    return column.field
 
 
 def _build_securities_information_xml(

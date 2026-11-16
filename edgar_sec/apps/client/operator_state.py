@@ -7,10 +7,16 @@ here. Destructive cache rows exist only behind the typed confirm.
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.apps.client.operator_kit import (
+    gather_options as _generic,
+    help_field as _f,
+    make_module_getattr,
+    make_register,
+)
 from edgar_sec.apps.client.operator_tools import (
     absent_result,
     error_result,
@@ -30,10 +36,6 @@ __all__ = [
     "build_specs",
     "register",
 ]
-
-
-def _f(default: Any, help_text: str):
-    return field(default=default, metadata={"help": help_text})
 
 
 _SOURCE_HELP = "Bulk-archive source id (e.g. a dataset store's id, carried as data). Empty lists the sources the store offers; a stored source renders its manifest."
@@ -355,27 +357,10 @@ def build_specs() -> tuple:
     )
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
-
-def _generic(session: Any, options_type: type):
-    from edgar_sec.apps.client.operator_selection import _gather_options
-
-    return _gather_options(session, options_type)
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 GATHERERS: dict[str, Callable[[Any], Any]] = {

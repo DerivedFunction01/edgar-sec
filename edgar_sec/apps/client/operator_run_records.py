@@ -13,6 +13,12 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.apps.client.operator_kit import (
+    artifacts_root as _artifacts_root,
+    make_module_getattr,
+    make_register,
+    make_spec,
+)
 from edgar_sec.foundation.runtime.render import Grid
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
@@ -47,15 +53,6 @@ class RecordOptions:
         default="",
         metadata={"help": "Record id; empty means the session's last run record."},
     )
-
-
-def _artifacts_root(session: Any) -> Path:
-    root = getattr(session.facade, "artifacts_root", None)
-    if root:
-        return Path(root)
-    from edgar_sec.foundation.runtime.paths import resolve_paths
-
-    return resolve_paths().artifacts_root
 
 
 def operator_runs_root(session: Any) -> Path:
@@ -374,20 +371,9 @@ def _rerun(options: RecordOptions, session: Any):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator import OperationSpec
     from edgar_sec.apps.client.operator_fetch import LimitOptions
 
-    def spec(op_id, label, options_type, effect, kind, executor):
-        return OperationSpec(
-            id=op_id,
-            label=label,
-            options_type=options_type,
-            effect=effect,
-            requires="none",
-            result_kind=kind,
-            hints=("session_summary",),
-            executor=executor,
-        )
+    spec = make_spec()
 
     return (
         spec("past_runs", "Past runs", LimitOptions, "reads_state", "grid", _past_runs),
@@ -410,21 +396,10 @@ def build_specs() -> tuple:
     )
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 GATHERERS: dict[str, Callable[[Any], Any]] = {}

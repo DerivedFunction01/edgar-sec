@@ -50,6 +50,17 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
   format shapes: SEC archive URLs, OMB numbers, phone and ZIP+4 tails,
   ISO/compact archive, feed, and version date formats, filename numbering, and
   the signer-name termination slot; corpus tools are in scope.
+- `money-patterns`: Bans private money-amount recognizers (loose amount cores,
+  comma-grouped figures, and decimal figures spelled as pattern text) outside
+  `engine/tables/numeric_cells.py`, private scale vocabularies (scale-word
+  alternations and `in <scale>` labels) outside `engine/tables/patterns.py`,
+  and private percent recognizers (digit cores with a `%` tail and
+  percent-sign alternations) outside `engine/forms/common/numbers.py`.
+- `page-patterns`: Bans private page-reference cores (plain, page-no., and letter-dash forms as spelled in pattern source) outside `foundation/text/patterns.py`, the page-reference vocabulary's one home; page-marker extraction shapes (page N of M, whole-line page labels, optional-prefix line classifiers, compositions over the home's fragments) are not flagged.
+- `period-patterns`: Bans private period-phrase recognizers outside `foundation/text/dates.py`, private total-row recognizers outside `engine/tables/extraction/typed_rows.py`, private whitespace-collapse literals outside `foundation/text/patterns.py` and `foundation/text/normalize.py`, and private table-tag recognizers outside `foundation/text/patterns.py`.
+- `helper-duplicates`: Bans function bodies duplicated across modules or against the scaffold and operator-kit homes, and private parameterized-get helpers (`return x.get("<key>", {})`) outside `engine/forms/common/family_scaffold.py`.
+- `identifier-patterns`: Bans private identifier recognizers (accession cores and digits, CIK member names, commission file caption/number, EIN, registration-number values, CUSIP value class) outside `domain/identity.py`, `engine/forms/common/entities.py`, and `pipelines/metadata_sync/paths.py`; SQL regexp literals, SEC URL paths, and the sanctioned divergences are allowed.
+- `refcell-patterns`: Bans private note/item/part reference cores (caption cores as spelled in pattern source) outside `engine/tables/toc/patterns.py`, the reference vocabulary's one home; slot prefixes, boundary terms, item ranges, and the full `[IVXLCDM]` PART composition are not flagged.
 - `sql-interpolation`: Bans SQL assembled from unescaped values at a query sink. It
   inspects the argument of `execute` / `executemany` / `executescript` and reports an
   f-string, `%`, or `+` that interpolates a value which did not reach the statement

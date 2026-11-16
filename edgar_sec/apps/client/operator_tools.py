@@ -8,11 +8,19 @@ from __future__ import annotations
 
 import uuid
 from collections.abc import Callable, Iterable
-from dataclasses import asdict, dataclass, field, is_dataclass
+from dataclasses import asdict, dataclass, is_dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.apps.client.operator_kit import (
+    error_result,
+    gather_options as _generic,
+    help_field as _f,
+    key_value_result,
+    make_module_getattr,
+    make_register,
+)
 from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
 
 __all__ = [
@@ -34,10 +42,6 @@ __all__ = [
     "record_external_run",
     "register",
 ]
-
-
-def _f(default: Any, help_text: str):
-    return field(default=default, metadata={"help": help_text})
 
 
 _FEED_HELP = "Filter for the feed-events read; an unstored ledger renders as honest absence, never an empty grid."
@@ -140,39 +144,10 @@ def json_native(value: Any) -> Any:
     return value
 
 
-def error_result(kind: str, code: str, title: str, message: str, data=None):
-    """A coded result with the message as its sole prose component."""
-    from edgar_sec.apps.client.operator import OpResult
-
-    return OpResult(
-        kind=kind,
-        title=title,
-        components=(ProseRow(message),),
-        data={**(data or {}), "message": message},
-        error_code=code,
-    )
-
-
 def absent_result(kind: str, title: str, message: str, data=None):
     """An honest-absence result: prose line plus ``present`` false."""
     return error_result(
         kind, "absent", title, message, {**(data or {}), "present": False}
-    )
-
-
-def key_value_result(title: str, data: dict, rows: Iterable[tuple[str, str]], **extra):
-    """A key-value result whose total is its row count."""
-    from edgar_sec.apps.client.operator import OpResult
-
-    components = tuple(KeyValueRow(k, v) for k, v in rows)
-    return OpResult(
-        kind="key_value",
-        title=title,
-        components=components,
-        data=data,
-        total=len(components),
-        shown=len(components),
-        **extra,
     )
 
 
@@ -708,27 +683,10 @@ def build_specs() -> tuple:
     )
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
-
-def _generic(session: Any, options_type: type):
-    from edgar_sec.apps.client.operator_selection import _gather_options
-
-    return _gather_options(session, options_type)
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 def _gather_efts_search(session: Any) -> EftsSearchOptions:

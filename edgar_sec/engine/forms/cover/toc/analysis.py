@@ -9,6 +9,7 @@ import re
 from itertools import pairwise
 
 from edgar_sec.engine.document.page_markers.detector import is_page_marker_line
+from edgar_sec.engine.forms.cover.boundary.corridor import line_offset as _line_offset
 from edgar_sec.engine.forms.cover.structure import (
     is_continuation_prose,
 )
@@ -18,12 +19,9 @@ from edgar_sec.engine.tables.toc.patterns import (
     looks_like_toc_row,
     looks_like_toc_tabular,
 )
+from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 
-from .patterns import (
-    _RE_MULTI_SPACE,
-    _RE_NON_ALPHANUM,
-    RE_TOC_PART_ROW,
-)
+from .patterns import RE_TOC_PART_ROW
 
 _RE_TABLE_TOC_ROW = re.compile(r"^(?P<label>.+?)(?P<gap>\s{2,})(?P<page>\d{1,4})\s*$")
 
@@ -32,12 +30,8 @@ def normalize_for_matching(text: str) -> str:
     """Normalize text into clean lowercase single-spaced alphanumeric tokens."""
     if not text:
         return ""
-    sanitized = _RE_NON_ALPHANUM.sub(" ", text.lower())
-    return _RE_MULTI_SPACE.sub(" ", sanitized).strip()
-
-
-def _line_offset(lines: list[str], line: int) -> int:
-    return sum(len(value) + 1 for value in lines[:line])
+    sanitized = RE_NON_ALNUM.sub(" ", text.lower())
+    return RE_WHITESPACE.sub(" ", sanitized).strip()
 
 
 def _row_lines(

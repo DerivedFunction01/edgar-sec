@@ -14,9 +14,16 @@ from statistics import median
 from typing import Any, Protocol
 
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
-from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
+from edgar_sec.engine.tables.numeric_cells import (
+    DECIMAL_FIGURE_RE,
+    GROUPED_AMOUNT_RE,
+    is_numeric_cell,
+)
 from edgar_sec.foundation.text.automaton import compile_lexical_matcher
-from edgar_sec.foundation.text.patterns import RE_COLUMN_GAP
+from edgar_sec.foundation.text.patterns import (
+    RE_COLUMN_GAP,
+    RE_WHITESPACE as _COLLAPSE_WS_RE,
+)
 from edgar_sec.foundation.text.tokens import ROMAN_NUMERAL_PATTERN, roman_to_int
 
 from .content_lines import has_cross_reference
@@ -57,13 +64,10 @@ from .sequence import (
 _ASCII_PROBE_WINDOW = 2500
 
 _NUMERIC_RE = re.compile(r"(?<![A-Za-z0-9])\d{1,4}(?![A-Za-z0-9])")
-_DECIMAL_RE = re.compile(r"\d+\.\d{2,}")
-_GROUPED_RE = re.compile(r"\d{1,3}(?:,\d{3})+")
 _PROSE_END_RE = re.compile(r"[,;:]$")
 _PROSE_PREFIX_SEP = re.compile(r"[\t]|(?:[ ]{2,})$")
 _PROSE_SUFFIX_SEP = re.compile(r"^(?:[\t]|(?:[ ]{2,}))")
 
-_COLLAPSE_WS_RE = re.compile(r"\s+")
 _ROMAN_NUMERAL_RE = re.compile(
     rf"(?<![A-Za-z0-9]){ROMAN_NUMERAL_PATTERN}(?![A-Za-z0-9])"
 )
@@ -132,7 +136,7 @@ def has_numeric_data_shape(line: str) -> bool:
         return False
     if any(symbol in stripped for symbol in ALL_CURRENCY_SYMBOLS) or "%" in stripped:
         return True
-    if _DECIMAL_RE.search(stripped) or _GROUPED_RE.search(stripped):
+    if DECIMAL_FIGURE_RE.search(stripped) or GROUPED_AMOUNT_RE.search(stripped):
         return True
     numbers = _NUMERIC_RE.findall(stripped)
     if len(numbers) >= 2 and len(RE_COLUMN_GAP.findall(line)) >= 1:

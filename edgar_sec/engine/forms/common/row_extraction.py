@@ -8,6 +8,7 @@ from typing import TypeVar
 
 from edgar_sec.engine.forms.common.extraction import (
     ExtractedValue,
+    FieldKind,
     FieldSpec,
     extract_value,
 )
@@ -38,6 +39,19 @@ class RowSpec:
             if column.name == name:
                 return column
         return None
+
+
+def column_spec(name: str, path: str, kind: FieldKind, **policy: object) -> ColumnSpec:
+    """A column bound to a field specification built from ``path``/``kind``."""
+    return ColumnSpec(name, FieldSpec(path, kind, **policy))
+
+
+def row_field(spec: RowSpec, name: str) -> FieldSpec:
+    """The field of ``spec``'s column ``name``; KeyError when absent."""
+    column = spec.column(name)
+    if column is None:
+        raise KeyError(name)
+    return column.field
 
 
 @dataclass(frozen=True, slots=True)

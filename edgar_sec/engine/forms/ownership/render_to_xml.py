@@ -31,7 +31,11 @@ from edgar_sec.engine.forms.common.extraction import (
 )
 from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
-from edgar_sec.engine.forms.common.row_extraction import RowSpec, normalize_row_record
+from edgar_sec.engine.forms.common.row_extraction import (
+    RowSpec,
+    normalize_row_record,
+    row_field as _row_field,
+)
 from edgar_sec.engine.forms.ownership.field_specs import OWNERSHIP_METADATA_FIELDS
 from edgar_sec.engine.forms.ownership.footnotes import parse_footnotes
 from edgar_sec.engine.forms.ownership.metadata_parser import parse_metadata
@@ -82,13 +86,6 @@ def _add_metadata_field(
 ) -> None:
     spec = OWNERSHIP_METADATA_FIELDS[tag]
     _add_field(parent, spec, value, reference_year, unresolved)
-
-
-def _row_field(spec: RowSpec, name: str) -> FieldSpec:
-    column = spec.column(name)
-    if column is None:
-        raise KeyError(name)
-    return column.field
 
 
 def _build_issuer_xml(

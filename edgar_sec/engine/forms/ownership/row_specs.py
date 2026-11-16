@@ -7,12 +7,11 @@ from edgar_sec.domain.forms.families.ownership.taxonomy import (
     OWNERSHIP_TYPE_CODES,
     VALID_TRANSACTION_CODES,
 )
-from edgar_sec.engine.forms.common.extraction import FieldKind, FieldSpec
-from edgar_sec.engine.forms.common.row_extraction import ColumnSpec, RowSpec
-
-
-def _column(name: str, path: str, kind: FieldKind, **policy: object) -> ColumnSpec:
-    return ColumnSpec(name, FieldSpec(path, kind, **policy))
+from edgar_sec.engine.forms.common.extraction import FieldKind
+from edgar_sec.engine.forms.common.row_extraction import (
+    RowSpec,
+    column_spec as _column,
+)
 
 
 _SHARED_OWNERSHIP_COLUMNS = (

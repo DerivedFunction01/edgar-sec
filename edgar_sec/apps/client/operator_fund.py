@@ -8,13 +8,22 @@ from __future__ import annotations
 
 import uuid
 from collections.abc import Callable, Iterable
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
-from pathlib import Path
 from typing import Any
 
+from edgar_sec.apps.client.operator_kit import (
+    artifacts_root as _artifacts_root,
+    error_result as _error,
+    help_field as _f,
+    json_native as _json_native,
+    key_value_result as _key_value,
+    make_module_getattr,
+    make_register,
+    split_tokens as _split,
+)
 from edgar_sec.foundation.runtime.interactive import prompt_confirm, prompt_text
-from edgar_sec.foundation.runtime.render import KeyValueRow, ProseRow
+from edgar_sec.foundation.runtime.render import KeyValueRow
 
 __all__ = [
     "GATHERERS",
@@ -26,10 +35,6 @@ __all__ = [
 
 _ACTIONS = ("refresh", "reconcile", "status")
 _TITLE = "Fund series/class"
-
-
-def _f(default: Any, help_text: str):
-    return field(default=default, metadata={"help": help_text})
 
 
 @dataclass(frozen=True, slots=True)
@@ -62,52 +67,6 @@ class FundSeriesClassOptions:
         "through the one client, so this never multiplies HTTP clients. "
         "Refused below 1.",
     )
-
-
-def _key_value(title: str, data: dict, rows: Iterable[tuple[str, str]], **extra: Any):
-    from edgar_sec.apps.client.operator import OpResult
-
-    components = tuple(KeyValueRow(k, v) for k, v in rows)
-    return OpResult(
-        kind="key_value",
-        title=title,
-        components=components,
-        data=data,
-        total=len(components),
-        shown=len(components),
-        **extra,
-    )
-
-
-def _error(kind: str, code: str, title: str, message: str, data: dict | None = None):
-    from edgar_sec.apps.client.operator import OpResult
-
-    return OpResult(
-        kind=kind,
-        title=title,
-        components=(ProseRow(message),),
-        data={**(data or {}), "message": message},
-        error_code=code,
-    )
-
-
-def _json_native(value: Any) -> Any:
-    if isinstance(value, dict):
-        return {str(k): _json_native(v) for k, v in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [_json_native(v) for v in value]
-    if isinstance(value, Path):
-        return str(value)
-    return value
-
-
-def _artifacts_root(session: Any) -> Path:
-    root = getattr(session.facade, "artifacts_root", None)
-    if root:
-        return Path(root)
-    from edgar_sec.foundation.runtime.paths import resolve_paths
-
-    return resolve_paths().artifacts_root
 
 
 def _reconciliation_data(counts: Any) -> dict[str, int]:
@@ -288,25 +247,10 @@ def build_specs() -> tuple:
     )
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
-
-def _split(raw: str) -> tuple[str, ...]:
-    return tuple(raw.replace(",", " ").split())
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 def _gather_fund_series_class(session: Any) -> FundSeriesClassOptions:
