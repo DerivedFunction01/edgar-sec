@@ -9,7 +9,7 @@ from enum import Enum
 from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.tables.patterns import SCALE_PATTERNS
 from edgar_sec.foundation.text.dates import (
-    MONTH_PATTERN,
+    MONTH_WORD_RE,
     YEAR_TOKEN_RE,
     YEAR_TOKEN_SEARCH_RE,
 )
@@ -18,7 +18,6 @@ from .context import Scale, TableContext
 from .normalize import collapse_text
 
 _MAX_CAPTION_ROWS = 6
-_MONTH_TOKEN_RE = re.compile(rf"\b(?:{MONTH_PATTERN})\b", re.IGNORECASE)
 _PAREN_RE = re.compile(r"\([^)]*\)")
 TOTAL_ROW_RE = re.compile(r"^\s*total\b", re.IGNORECASE)
 _PERIOD_HINTS = ("ended", "as of", "months", "weeks", "quarter", "fiscal")
@@ -36,7 +35,7 @@ def _has_period_evidence(text: str) -> bool:
     lower = text.lower()
     return (
         bool(YEAR_TOKEN_SEARCH_RE.search(text))
-        or bool(_MONTH_TOKEN_RE.search(text))
+        or bool(MONTH_WORD_RE.search(text))
         or any(hint in lower for hint in _PERIOD_HINTS)
     )
 
@@ -124,7 +123,7 @@ def _compose_label(group: str | None, date_text: str | None) -> str | None:
         return date_text
     head = group.rstrip(", ").strip()
     if YEAR_TOKEN_RE.fullmatch(date_text):
-        if _MONTH_TOKEN_RE.search(head):
+        if MONTH_WORD_RE.search(head):
             return f"{head}, {date_text}"
         return f"{head} {date_text}"
     return f"{head} {date_text}"

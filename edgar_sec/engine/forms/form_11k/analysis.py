@@ -26,6 +26,7 @@ from edgar_sec.engine.forms.cover.registrant import (
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 
 _REPORT_KEYS = ("report_annual", "report_transition")
 
@@ -39,7 +40,8 @@ _ISSUER_CAPTION_RE = re.compile(
     r"name of issuer of the securities held pursuant to the plan", re.IGNORECASE
 )
 _FISCAL_YEAR_END_RE = re.compile(
-    r"for the fiscal year ended\s+([A-Z][a-z]+ \d{1,2}, \d{4})", re.IGNORECASE
+    rf"for the fiscal year ended\s+((?:{MONTH_PATTERN}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN}))",
+    re.IGNORECASE,
 )
 _STATEMENTS_RE = re.compile(
     r"statements of net assets available for benefits", re.IGNORECASE

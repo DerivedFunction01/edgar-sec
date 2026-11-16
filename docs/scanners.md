@@ -32,13 +32,24 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
   alternation-builder list items) outside `foundation/text/dates.py`, whose
   year patterns span the full 1900-9999 range. Year literals as data are not
   flagged; the rule targets regex pattern source.
-- `pattern-registry`: Bans definitions of registered pattern names outside their one
-  home (word token in `foundation/text/words.py`, full date and year in
+- `pattern-registry`: The intent registry: each recognizer family has one home and
+  one sanctioned export surface, recorded as a data table the scanner consumes
+  (word token in `foundation/text/words.py`, full date, year, and month in
   `foundation/text/dates.py`, scale patterns in `engine/tables/patterns.py`,
-  extraction normalisers in `extraction/normalize.py`, the registry fingerprint in
+  extraction normalisers in `extraction/normalize.py`, the classifier registry in
   `extraction/profiles.py`, work-item ids in
-  `pipelines/table_classification/planner.py`); corpus tools are in scope,
-  with no exceptions.
+  `pipelines/table_classification/planner.py`); a new family is a new
+  table row, not new rule code. Bans definitions of a family's names outside its
+  home, with no exceptions — assignment detection is statement-level (a keyword
+  argument inside brackets is a use, not a definition), and function names may
+  register def-only — and bans the recognizer shapes themselves outside
+  `foundation/text/dates.py`: a bare year recognizer (`\d{4}` as a standalone
+  recognizer), a hard-coded consecutive-year vocabulary, a hand-crafted
+  month-name alternation, an any-word month slot in a date pattern, and a
+  private recomposition of `MONTH_PATTERN`. Allowlisted
+  format shapes: SEC archive URLs, OMB numbers, phone and ZIP+4 tails,
+  ISO/compact archive, feed, and version date formats, filename numbering, and
+  the signer-name termination slot; corpus tools are in scope.
 - `sql-interpolation`: Bans SQL assembled from unescaped values at a query sink. It
   inspects the argument of `execute` / `executemany` / `executescript` and reports an
   f-string, `%`, or `+` that interpolates a value which did not reach the statement

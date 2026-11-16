@@ -184,6 +184,20 @@ def test_scored_veto_can_kill_a_detail_shaped_claim() -> None:
     assert compete(plain, terms=terms, edges=()).claims == ("intangibles",)
 
 
+def test_year_columns_signature_spans_the_full_year_range() -> None:
+    """Delta pin: year_columns keys on the homed year token; the
+    deleted private vocabulary was hard-narrowed to 2022-2027."""
+    from edgar_sec.engine.tables.extraction.competition import (
+        GeometryText,
+        detail_signatures,
+    )
+
+    older = GeometryText(stubs=("Revenue", "2020", "2021"))
+    assert "year_columns" in detail_signatures(older)
+    single = GeometryText(stubs=("Revenue", "2024"))
+    assert "year_columns" not in detail_signatures(single)
+
+
 def test_aoci_claim_needs_rollforward_evidence() -> None:
     terms = (
         SignatureTerm(

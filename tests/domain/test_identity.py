@@ -5,6 +5,7 @@ import pytest
 from edgar_sec.domain.identity import (
     AccessionNumber,
     Cik,
+    accession_year,
     is_hyphenated_accession,
 )
 
@@ -40,6 +41,14 @@ def test_accession_number_validation() -> None:
 
     with pytest.raises(ValueError, match="invalid SEC accession number format"):
         AccessionNumber("000032019323000106")
+
+
+def test_accession_year_uses_the_fixed_90_pivot() -> None:
+    """Homed verbatim from form_tender: 90-99 are 19xx, 00-89 20xx."""
+    assert accession_year("0000320193-95-000106") == 1995
+    assert accession_year("0000320193-24-000106") == 2024
+    assert accession_year("0000320193-89-000106") == 2089
+    assert accession_year("not-an-accession") is None
 
 
 def test_hyphenated_accession_predicate_is_exact() -> None:

@@ -25,6 +25,7 @@ from edgar_sec.engine.forms.common.extraction import (
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     _SEPARATOR_RUN_RE,
     cover_field_has_layout_residue,
@@ -93,7 +94,7 @@ _NARRATIVE_NUMERIC_ALT = build_alternation(
         r"based\s+on\s+a\s+total",
         r"based\s+on\s+the\s+percentages",
         r"based\s+on\s+\d",
-        r"as\s+of\s+[A-Za-z]+\s+\d{1,2},\s+\d{4}",
+        rf"as\s+of\s+(?:{MONTH_PATTERN})\s+\d{{1,2}},\s+(?:{YEAR_TOKEN_PATTERN})",
         r"beneficially\s+owned\s+(?:by|are)",
         r"held\s+of\s+record",
         r"investment\s+manager",

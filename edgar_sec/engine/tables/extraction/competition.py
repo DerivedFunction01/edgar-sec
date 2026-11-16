@@ -28,6 +28,7 @@ from edgar_sec.engine.tables.extraction.leadin_segmentation import (
     leadin_segment,
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
     CONTAINMENT_EDGES,
@@ -146,8 +147,6 @@ DETAIL_SIGNATURES: dict[str, tuple[str, ...]] = {
         "acquisition date",
     ),
 }
-_YEAR_TOKENS = ("2022", "2023", "2024", "2025", "2026", "2027")
-
 # The scored class of the Deliverable 1 veto pricing: family ->
 # signatures whose kill rate beat member collateral by the rule.
 SCORED_VETOES: dict[str, tuple[str, ...]] = {
@@ -314,7 +313,7 @@ def detail_signatures(geometry: GeometryText) -> set[str]:
         for name, terms in DETAIL_SIGNATURES.items()
         if any(term in text for term in terms)
     }
-    years = {y for y in _YEAR_TOKENS if y in geometry.stub_text}
+    years = set(YEAR_TOKEN_SEARCH_RE.findall(geometry.stub_text))
     if len(years) >= 2:
         found.add("year_columns")
     return found

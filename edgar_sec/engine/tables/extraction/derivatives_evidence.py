@@ -19,16 +19,15 @@ from edgar_sec.engine.tables.extraction.form_test_specs import (
     FormTestSpec,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
-from edgar_sec.foundation.text.dates import MONTH_PATTERN
-
-_MONTH_RE = re.compile(rf"\b(?:{MONTH_PATTERN})\b", re.IGNORECASE)
-_YEAR_RE = re.compile(r"\b\d{4}\b")
+from edgar_sec.foundation.text.dates import MONTH_WORD_RE, YEAR_TOKEN_SEARCH_RE
 
 
 def _is_period_label(label: str) -> bool:
     """A stub label naming a period: a month range or a dated month."""
-    months = _MONTH_RE.findall(label)
-    return len(months) >= 2 or (bool(months) and _YEAR_RE.search(label) is not None)
+    months = MONTH_WORD_RE.findall(label)
+    return len(months) >= 2 or (
+        bool(months) and YEAR_TOKEN_SEARCH_RE.search(label) is not None
+    )
 
 
 _FORWARD_LOOKING = ("forward-looking", "forward looking")

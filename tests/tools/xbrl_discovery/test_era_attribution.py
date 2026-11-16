@@ -64,6 +64,15 @@ def test_era_year_folds_dated_and_quarterly_versions() -> None:
     assert era_label("2025-03-27") == "2025"
 
 
+def test_era_year_is_range_ruled() -> None:
+    """Delta pin: the era-year recognizer is the homed token; the
+    deleted private copy accepted any leading 4 digits."""
+    import pytest
+
+    with pytest.raises(ValueError):
+        era_year("1899")
+
+
 def test_discover_slices_orders_quarterly_after_annual(tmp_path: Path) -> None:
     archive = _write_archive(tmp_path)
     found = discover_slices(archive)

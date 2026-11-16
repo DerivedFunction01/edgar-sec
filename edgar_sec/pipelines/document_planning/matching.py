@@ -23,6 +23,7 @@ from edgar_sec.domain.sec_urls import (
     validate_archive_url,
 )
 from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 from .catalog_scope import CatalogScopeAccession
 from .inventory_evidence import InventoryEvidenceRow
 from .profiles import ProfileTarget
@@ -37,7 +38,6 @@ _TARGET_STATUSES = {
 }
 _COMPLETE_SUBMISSION_NAME = re.compile(r"\d{10}-\d{2}-\d{6}\.txt$")
 _NUMBERED_DOCUMENT_NAME = re.compile(r"\d{4}\.[A-Za-z0-9]+\Z", re.ASCII)
-_FILING_YEAR = re.compile(r"\d{4}")
 
 
 def _is_placeholder_primary_path(document_path: str | None) -> bool:
@@ -146,7 +146,7 @@ def _no_primary_candidate(
 def _filing_year(filing_date: str | None) -> int | None:
     if not filing_date:
         return None
-    match = _FILING_YEAR.match(filing_date.strip())
+    match = YEAR_TOKEN_SEARCH_RE.match(filing_date.strip())
     return int(match.group()) if match else None
 
 

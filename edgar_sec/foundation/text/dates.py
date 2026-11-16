@@ -49,6 +49,7 @@ for index, aliases in enumerate(MONTH_ALIASES, start=1):
 MONTH_PATTERN = build_alternation(_MONTH_PATTERN_PARTS, auto_escape=True, compact=True)
 MONTH_RE = re.compile(rf"(?i){MONTH_PATTERN}")
 MONTH_NAME_RE = re.compile(rf"(?i)^(?:{MONTH_PATTERN})$")
+MONTH_WORD_RE = re.compile(rf"\b(?:{MONTH_PATTERN})\b", re.IGNORECASE)
 
 ORDINAL_SUFFIX_PATTERN = build_alternation(
     [r"st", r"nd", r"rd", r"th"], auto_escape=True
@@ -702,6 +703,7 @@ __all__ = [
     "MONTH_NAME_RE",
     "MONTH_PATTERN",
     "MONTH_RE",
+    "MONTH_WORD_RE",
     "MONTH_SUFFIX_RE",
     "ISO_DATE_RE",
     "NUMERIC_DATE_RE",

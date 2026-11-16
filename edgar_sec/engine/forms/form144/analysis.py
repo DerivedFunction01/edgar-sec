@@ -18,6 +18,7 @@ from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
 from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
 
 _CORE_FIELDS = (
     "issuerName",
@@ -41,7 +42,6 @@ _UNDERSCORE_FILL_RE = re.compile(r"_{2,}")
 _HYPHEN_FILL_RE = re.compile(r"-{3,}")
 _ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
 _AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
-_YEAR_4DIGIT_RE = re.compile(r"^\d{4}$")
 _BOILERPLATE_LEAK_ALT = build_alternation(
     (
         "address of issuer",
@@ -388,7 +388,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                         "detail": f"Suspected ZIP code {val} leaked into {qty_field}",
                     }
                 )
-            elif _YEAR_4DIGIT_RE.fullmatch(val) and 1990 <= int(val) <= 2025:
+            elif YEAR_TOKEN_RE.fullmatch(val) and 1990 <= int(val) <= 2025:
                 anomalies.append(
                     {
                         "accession": accession,
@@ -406,7 +406,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                     "detail": f"Suspected telephone area code {val} in aggregateMarketValue",
                 }
             )
-        elif _YEAR_4DIGIT_RE.fullmatch(val) and 1990 <= int(val) <= 2025:
+        elif YEAR_TOKEN_RE.fullmatch(val) and 1990 <= int(val) <= 2025:
             anomalies.append(
                 {
                     "accession": accession,

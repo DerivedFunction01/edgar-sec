@@ -16,6 +16,7 @@ from edgar_sec.pipelines.document_planning.inventory_evidence import (
 from edgar_sec.pipelines.document_planning.matching import (
     TargetMatchingError,
     _entry_candidate,
+    _filing_year,
     _is_placeholder_primary_path,
     catalog_only_rows,
     inventory_rows,
@@ -27,6 +28,14 @@ _ACCESSION = "0000899681-00-000405"
 _ARCHIVE_ROOT = "https://www.sec.gov/Archives/edgar/data/898015/000089968100000405"
 _INDEX_URL = f"{_ARCHIVE_ROOT}/{_ACCESSION}-index.html"
 _BUNDLE_URL = f"{_ARCHIVE_ROOT}/{_ACCESSION}.txt"
+
+
+def test_filing_year_is_range_ruled() -> None:
+    """Delta pin: the filing-year recognizer is the homed token;
+    the deleted private copy accepted any leading 4 digits."""
+    assert _filing_year("2023-05-01") == 2023
+    assert _filing_year("1899-05-01") is None
+    assert _filing_year(None) is None
 
 
 @pytest.mark.parametrize(

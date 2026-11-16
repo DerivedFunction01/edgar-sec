@@ -23,6 +23,7 @@ from edgar_sec.engine.forms.cover.registrant import (
     previous_content_line,
 )
 from edgar_sec.engine.tables.protection.tags import find_table_spans
+from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 
 _RULE_KEYS = (
     "rule_15ga_1",
@@ -75,12 +76,12 @@ _SECURITIZER_CIK_BEFORE_CAPTION_RE = re.compile(
     r"([0-9]{7,10})\s*\(\s*central index key(?: number)? of securitizer\s*\)",
     re.IGNORECASE,
 )
-_DATE = r"([a-z]+ \d{1,2}, \d{4})"
+_DATE = rf"((?:{MONTH_PATTERN}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN}))"
 _PERIOD_RE = re.compile(
     r"distribution period from[\s\S]{0,48}?" + _DATE + r"\s+to,?\s+" + _DATE,
     re.IGNORECASE,
 )
-_DATE_LOOSE = r"([a-z]+ ?\d{1,2}\s*, \d{4})"
+_DATE_LOOSE = rf"((?:{MONTH_PATTERN}) ?\d{{1,2}}\s*, (?:{YEAR_TOKEN_PATTERN}))"
 _PERIOD_LOOSE_RE = re.compile(
     r"distribution period from[\s\S]{0,48}?"
     + _DATE_LOOSE
@@ -98,10 +99,10 @@ _DATE_OF_REPORT_RE = re.compile(
 )
 _DATE_OF_REPORT_LOOSE_RE = re.compile(
     r"date of report \(date of earliest event reported\)[:\s]*"
-    r"([a-z]+ ?\d{1,2}\s*[.,]\s*\d{4})",
+    rf"((?:{MONTH_PATTERN}) ?\d{{1,2}}\s*[.,]\s*(?:{YEAR_TOKEN_PATTERN}))",
     re.IGNORECASE,
 )
-_DATE_PERIOD_SEP_RE = re.compile(r"\.\s*(?=\d{4}$)")
+_DATE_PERIOD_SEP_RE = re.compile(rf"\.\s*(?=(?:{YEAR_TOKEN_PATTERN})$)")
 _PAIR_ABOVE_CAPTION_RE = re.compile(r"(\d{1,3}-[0-9a-z-]+)\s+([0-9]{7,10})")
 _PAIR_ABOVE_CIK_ONLY_RE = re.compile(r"(?:(?:N/A|none)\s+)?(\d{10})", re.IGNORECASE)
 _PART_CAPTION_RE = re.compile(

@@ -12,7 +12,11 @@ import re
 
 from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.dates import (
+    YEAR_TOKEN_PATTERN,
+    is_year_token,
+    YEAR_TOKEN_SEARCH_RE,
+)
 
 from .context import TableContext
 from .normalize import collapse_text
@@ -29,14 +33,14 @@ from .form_test_specs import (
 from .typed_rows import TOTAL_ROW_RE, TypedTable, parse_caption_stack
 
 _THEREAFTER = build_alternation(
-    ("thereafter", "later years", "remaining", r"after\s+\d{4}")
+    ("thereafter", "later years", "remaining", rf"after\s+(?:{YEAR_TOKEN_PATTERN})")
 )
 _RANGE_SEP = build_alternation(("to", "-", "–", "—"))
 _YEARS = build_alternation(("years?", "yrs?"))
 _OPEN_PREFIX = build_alternation(("more than", "after", "over", "greater than"))
 _FIRST_PREFIX = build_alternation(("less than", "within", "under", "first"))
 _THEREAFTER_RE = re.compile(rf"(?:{_THEREAFTER})", re.IGNORECASE)
-_ASOF_RE = re.compile(r"as of\b[^()]*?(\d{4})", re.IGNORECASE)
+_ASOF_RE = re.compile(rf"as of\b[^()]*?({YEAR_TOKEN_PATTERN})", re.IGNORECASE)
 _BUCKET_CLOSED_RE = re.compile(
     rf"(\d+)\s*(?:{_RANGE_SEP})\s*(\d+)\s*(?:{_YEARS})\b", re.IGNORECASE
 )
@@ -46,7 +50,9 @@ _BUCKET_OPEN_RE = re.compile(
 _BUCKET_FIRST_RE = re.compile(
     rf"(?:{_FIRST_PREFIX})\s+(\d+)\s*(?:{_YEARS})\b", re.IGNORECASE
 )
-_YEAR_RANGE_RE = re.compile(rf"(\d{{4}})\s*(?:{_RANGE_SEP})\s*(\d{{4}})")
+_YEAR_RANGE_RE = re.compile(
+    rf"({YEAR_TOKEN_PATTERN})\s*(?:{_RANGE_SEP})\s*({YEAR_TOKEN_PATTERN})"
+)
 _AMOUNT_RESIDUE_RE = re.compile(r"[\d\s,$().%+\-]")
 
 
@@ -84,8 +90,7 @@ def _amount(text: str) -> float | int | None:
 
 def _is_year_cell(text: str) -> bool:
     """Whether a cell is a bare year label rather than an amount."""
-    value = _amount(text)
-    return isinstance(value, int) and 1900 <= value <= 2199 and len(text.strip()) == 4
+    return is_year_token(text.strip())
 
 
 def _step_for_label(label: str) -> LadderStep | str | None:

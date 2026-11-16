@@ -18,11 +18,10 @@ from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
 from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.engine.forms.ownership.schema import ownership_schema_anomalies
 from edgar_sec.foundation.text.dates import (
-    MONTH_PATTERN,
+    MONTH_WORD_RE,
     NUMERIC_DATE_RE,
 )
 
-_MONTH_WORD_RE = re.compile(rf"(?i)\b(?:{MONTH_PATTERN})\b")
 _CIK_MASK_RE = re.compile(r"\bCIK\s*[:#]?\s*\d{1,10}\b", re.IGNORECASE)
 _DIGIT_RUN_RE = re.compile(r"\d+")
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -149,7 +148,7 @@ def mask_normalized_pattern(text: str) -> str:
     """Mask text into structural placeholders for digits, months, and dates."""
     masked = _CIK_MASK_RE.sub("CIK_###", text)
     masked = NUMERIC_DATE_RE.sub("DATE_PATTERN", masked)
-    masked = _MONTH_WORD_RE.sub("MONTH", masked)
+    masked = MONTH_WORD_RE.sub("MONTH", masked)
     masked = _DIGIT_RUN_RE.sub("###", masked)
     return _WHITESPACE_RE.sub(" ", masked).strip()
 

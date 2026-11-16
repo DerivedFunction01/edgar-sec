@@ -86,6 +86,17 @@ def test_year_token_search_form_shares_the_token_range() -> None:
     assert not YEAR_TOKEN_SEARCH_RE.search("a 1234 token")
 
 
+def test_month_word_recognizer_is_the_bounded_month_search() -> None:
+    """MONTH_WORD_RE is the one homed bounded month-word search:
+    standalone months and abbreviations match, substrings do not."""
+    from edgar_sec.foundation.text.dates import MONTH_WORD_RE
+
+    assert MONTH_WORD_RE.findall("January to March 2023") == ["January", "March"]
+    assert MONTH_WORD_RE.search("ended Sept. 30")
+    assert not MONTH_WORD_RE.search("Mayonnaise")
+    assert not MONTH_WORD_RE.search("no month here")
+
+
 def test_year_in_text_regex() -> None:
     years = YEAR_IN_TEXT_RE.findall("In 2020 and 2021, compared to 2022.")
     assert years == ["2020", "2021", "2022"]

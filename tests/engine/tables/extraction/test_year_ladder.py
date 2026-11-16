@@ -20,6 +20,8 @@ from edgar_sec.engine.tables.extraction.profiles import (
 )
 from edgar_sec.engine.tables.extraction.typed_rows import structure_table
 from edgar_sec.engine.tables.extraction.year_ladder import (
+    _asof_year,
+    _step_for_label,
     evaluate_form_test_ladder,
     evaluate_year_ladder,
 )
@@ -143,6 +145,31 @@ def test_short_year_ladder_admits_commitments_not_debt() -> None:
     )
     assert evaluate_year_ladder(context, COMMITMENTS).passed
     assert not evaluate_year_ladder(context, DEBT).passed
+
+
+def test_ladder_year_recognizers_are_range_ruled() -> None:
+    """Delta pin: as-of, range, and thereafter years are the homed
+    1900-9999 token; the deleted private copies accepted 0000-9999."""
+    assert _asof_year(("Maturities as of December 31, 2024",), ()) == 2024
+    assert _asof_year(("Maturities as of December 31, 1899",), ()) is None
+    step = _step_for_label("2025 to 2027")
+    assert step is not None and step.kind == "range" and step.start == 2025
+    degraded = _step_for_label("1899 to 2027")
+    assert degraded is not None and degraded.kind == "year"
+    assert degraded.start == 2027
+    open_step = _step_for_label("Thereafter")
+    assert open_step is not None and open_step.kind == "open"
+
+
+def test_year_cell_uses_the_homed_year_bound() -> None:
+    """Delta pin: _is_year_cell collapsed onto is_year_token; the
+    private bound was 2199, the home's is 2100."""
+    from edgar_sec.engine.tables.extraction.year_ladder import _is_year_cell
+
+    assert _is_year_cell("2024")
+    assert _is_year_cell("2100")
+    assert not _is_year_cell("2150")
+    assert not _is_year_cell("1899")
 
 
 def test_anchored_ladder_starts_after_the_balance_sheet_date() -> None:

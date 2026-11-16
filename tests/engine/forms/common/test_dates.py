@@ -46,6 +46,20 @@ def test_schema_date_lexeme_accepts_hyphen_and_slash_delimiters() -> None:
     assert is_valid_schema_date_lexeme("2024-09-30", "2024-09-30", month_first=False)
 
 
+def test_schema_date_calendar_year_is_range_ruled() -> None:
+    """Delta pin: the calendar-year recognizer is the homed token;
+    the deleted private copy accepted any 4-digit year."""
+    assert normalize_iso_date("calendar year 2024") == "2024-12-31"
+    assert normalize_iso_date("calendar year 1899") is None
+
+
+def test_schema_date_day_of_month_requires_a_real_month() -> None:
+    """Delta pin: the day-of-month month slot is MONTH_PATTERN;
+    the deleted private slot accepted any word as a month."""
+    assert normalize_iso_date("5th day of January, 2023") == "2023-01-05"
+    assert normalize_iso_date("5th day of Foo, 2023") is None
+
+
 def test_schema_date_accepts_ordinal_day_of_month_phrases() -> None:
     """Verify ordinal day-of-month clauses normalize to canonical ISO dates."""
     clause = (

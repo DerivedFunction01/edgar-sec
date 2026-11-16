@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.common.models import ItemDefinition
+from edgar_sec.domain.identity import accession_year
 from edgar_sec.domain.forms.families.form_tender.models import TenderKind
 from edgar_sec.domain.forms.families.form_tender.taxonomy import (
     SCHEDULE_13E3_ITEMS,
@@ -106,14 +107,6 @@ _CAPTION_LINE_RE = re.compile(r"^\s*\(.*\)\s*$")
 _HEAD_LINES = 80
 
 
-def _accession_year(accession: str) -> int | None:
-    parts = accession.split("-")
-    if len(parts) != 3 or not parts[1].isdigit():
-        return None
-    yy = int(parts[1])
-    return 1900 + yy if yy >= 90 else 2000 + yy
-
-
 def _classify_kind(form: str, lines: list[str]) -> TenderKind:
     kind = _FORM_KINDS.get(form.strip().upper())
     if kind is not None:
@@ -130,7 +123,7 @@ def _taxonomy_for(
     if any(_SCHEDULE_TO_TITLE_RE.match(line) for line in head):
         return SCHEDULE_TO_ITEMS
     if any(_SCHEDULE_13E3_TITLE_RE.match(line) for line in head):
-        year = _accession_year(accession)
+        year = accession_year(accession)
         if year is not None and year < 2000:
             return SCHEDULE_13E3_PRIOR_ITEMS
         return SCHEDULE_13E3_ITEMS

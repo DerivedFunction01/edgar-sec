@@ -27,6 +27,7 @@ from edgar_sec.engine.forms.sections.items.detector import (
 )
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 
 _RULE_KEYS = ("rule_13p_1", "rule_13q_1")
 _ITEM_IDS = tuple(d.item for d in FORM_SD_ITEMS)
@@ -44,7 +45,6 @@ _PERIOD_13P1_RE = re.compile(
 _PERIOD_13Q1_RE = re.compile(
     r"rule 13q-1.{0,200}?fiscal year ended\s+", re.IGNORECASE | re.DOTALL
 )
-_YEAR_RE = re.compile(r"\d{4}")
 _EX_1_01_RE = re.compile(
     r"exhibit\s+1\.01[\s\S]{0,240}?conflict minerals report"
     r"|conflict minerals report[\s\S]{0,240}?exhibit\s+1\.01",
@@ -252,7 +252,7 @@ def _reporting_period(text: str, states: dict[str, Any]) -> str | None:
         if match is None:
             continue
         window = collapsed[match.end() : match.end() + 80]
-        years = list(_YEAR_RE.finditer(window))
+        years = list(YEAR_TOKEN_SEARCH_RE.finditer(window))
         if not years:
             continue
         end = years[0].end()

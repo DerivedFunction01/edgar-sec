@@ -11,7 +11,11 @@ from edgar_sec.engine.forms.common.registrant_scan import (
 )
 from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_PATTERN, NUMERIC_DATE_RE
+from edgar_sec.foundation.text.dates import (
+    MONTH_PATTERN,
+    NUMERIC_DATE_RE,
+    YEAR_TOKEN_PATTERN,
+)
 
 _FILE_CAPTIONS: tuple[str, ...] = (
     "investment company act file number",
@@ -29,7 +33,9 @@ _FILE_NUMBER_ICA_RE = re.compile(
     r"\s*:?\s*([0-9][0-9\u2011\- ]*[0-9]|[0-9])",
     re.IGNORECASE,
 )
-_NAMED_DATE_RE = re.compile(rf"(?:{MONTH_PATTERN}) \d{{1,2}}, \d{{4}}", re.IGNORECASE)
+_NAMED_DATE_RE = re.compile(
+    rf"(?:{MONTH_PATTERN}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN})", re.IGNORECASE
+)
 _PERIOD_ENDED_RE = re.compile(r"(?:period|fiscal year) ended\s+", re.IGNORECASE)
 _REPORTING_PERIOD_RE = re.compile(r"date of reporting period\s*:?\s*", re.IGNORECASE)
 _DASHES_RE = re.compile(r"^[-_=.\s]+$")

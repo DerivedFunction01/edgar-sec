@@ -20,9 +20,10 @@ from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.taxonomy.archive import CURRENT_SLICES, TAXONOMY_PREFIXES
 from edgar_sec.foundation.runtime.resources import derive_resources
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_PATTERN
 from edgar_sec.infra.storage.atomic import atomic_write_text
 
-_YEAR = re.compile(r"^(\d{4})")
+_YEAR = re.compile(rf"^({YEAR_TOKEN_PATTERN})")
 _DATED = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
 _QUARTER = re.compile(r"^(\d{4})q([1-4])$")
 

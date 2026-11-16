@@ -1,9 +1,18 @@
 """Tests for Form 144 proposed-sale extraction."""
 
 from edgar_sec.engine.forms.form144.sale_parser import (
+    _extract_units,
     parse_proposed_sale_box_3,
 )
 from edgar_sec.engine.forms.form144.sections import partition_form144_tables
+
+
+def test_extract_units_year_window_unchanged_by_homing():
+    """Zero-delta pin: every use site already paired the recognizer
+    with the 1990-2025 window, so homing changes no outcome."""
+    assert _extract_units("2023") is None
+    assert _extract_units("1899") == 1899
+    assert _extract_units("2500") == 2500
 
 
 def test_parse_box_three_values_and_human_readable_sale_date():

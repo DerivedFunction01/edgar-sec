@@ -31,7 +31,7 @@ from edgar_sec.engine.forms.form144.patterns import SEC_FILE_BARE_RE
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE, parse_date
 
 _SPLIT_EXPLANATION_RE = re.compile(
     r"(?:\s+(?:as of|based on)\b|(?:\s+|(?<=\d))\((?:based on|as of)\b)",
@@ -45,7 +45,6 @@ _APPROX_TILDE_RE = re.compile(r"^~+\s*")
 _TRAILING_COMMA_RE = re.compile(r",\s*$")
 _CURRENCY_AMOUNT_RE = re.compile(r"\$\s*\d[\d,]*(?:\.\d+)?")
 _ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
-_YEAR_4DIGIT_RE = re.compile(r"^\d{4}$")
 _AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
 
 _BOILERPLATE_TITLE_ALT = build_alternation(
@@ -223,11 +222,11 @@ def _extract_units(text: str) -> int | None:
         return None
     if _ZIP_5DIGIT_RE.fullmatch(cleaned) and int(cleaned) % 100 != 0:
         return None
-    if _YEAR_4DIGIT_RE.fullmatch(cleaned) and 1990 <= int(cleaned) <= 2025:
+    if YEAR_TOKEN_RE.fullmatch(cleaned) and 1990 <= int(cleaned) <= 2025:
         return None
     value, is_currency = _extract_leading_number(cleaned)
     if isinstance(value, int) and not is_currency:
-        if 1990 <= value <= 2025 and _YEAR_4DIGIT_RE.fullmatch(cleaned):
+        if 1990 <= value <= 2025 and YEAR_TOKEN_RE.fullmatch(cleaned):
             return None
         return value
     return None
@@ -240,7 +239,7 @@ def _extract_market_value(text: str) -> str | None:
     if is_street_or_address_line(cleaned):
         return None
     if (
-        _YEAR_4DIGIT_RE.fullmatch(cleaned)
+        YEAR_TOKEN_RE.fullmatch(cleaned)
         and "$" not in text
         and 1990 <= int(cleaned) <= 2025
     ):
@@ -533,7 +532,7 @@ def parse_proposed_sale_box_3(
                     continue
                 if (
                     isinstance(num, int)
-                    and _YEAR_4DIGIT_RE.fullmatch(raw_c)
+                    and YEAR_TOKEN_RE.fullmatch(raw_c)
                     and 1990 <= num <= 2025
                 ):
                     continue

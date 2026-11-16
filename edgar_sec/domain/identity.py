@@ -13,6 +13,18 @@ def is_hyphenated_accession(value: str) -> bool:
     return _ACCESSION_RE.fullmatch(value) is not None
 
 
+def accession_year(raw: str) -> int | None:
+    """The filing year in an accession number's two-digit segment.
+
+    The segment pivots at 90 (90-99 are 19xx, 00-89 are 20xx).
+    """
+    parts = raw.split("-")
+    if len(parts) != 3 or not parts[1].isdigit():
+        return None
+    yy = int(parts[1])
+    return 1900 + yy if yy >= 90 else 2000 + yy
+
+
 @dataclass(frozen=True, slots=True)
 class Cik:
     """SEC Central Index Key (CIK), stored as a numeric integer with 10-digit zero padding."""

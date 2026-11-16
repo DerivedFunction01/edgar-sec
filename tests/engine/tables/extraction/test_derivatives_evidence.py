@@ -15,6 +15,7 @@ from edgar_sec.engine.tables.extraction.competition import (
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
+    _is_period_label,
     derivatives_evidence_for_geometry,
     evaluate_derivatives_evidence,
     evaluate_form_test_derivatives,
@@ -398,6 +399,15 @@ def test_reach_admits_period_listing_in_competition():
     assert result.claims == ("derivatives_hedging",)
     group = result.groups[0]
     assert group.state == "reach" and group.score >= 5.0
+
+
+def test_period_label_year_is_range_ruled():
+    """Delta pin: the homed year recognizer spans 1900-9999; the
+    deleted private copy accepted any 4-digit token as a year."""
+    assert _is_period_label("January - December 2027")
+    assert _is_period_label("January 2027")
+    assert not _is_period_label("January 1899")
+    assert not _is_period_label("January 1234")
 
 
 def test_text_channels_default_empty():

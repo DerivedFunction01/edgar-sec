@@ -224,6 +224,39 @@ def test_date_patterns_protections_still_fire_beside_the_registry(
     assert pattern_registry.scan_pattern_registry() == []
 
 
+def test_keyword_arguments_are_not_definitions(synthetic_repo: Path) -> None:
+    """The union-formation shapes: registered names passed as keyword
+    arguments (or held in indented locals) are uses, not copies."""
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "def build(state, pattern):\n"
+                "    request = PlanRequest(\n"
+                "        registry_state=state,\n"
+                "        MONTH_RE=pattern,\n"
+                "    )\n"
+                "    registry_state = state\n"
+                "    return request\n"
+            ),
+            "edgar_sec/engine/tables/extraction/profiles.py": (
+                "def registry_state():\n    return {}\n"
+            ),
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_private_def_of_a_def_only_name_is_flagged(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": "def registry_state():\n    return {}\n"},
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "registry_state" in findings[0].message
+
+
 def test_flags_registry_fingerprint_defined_outside_profiles_home(
     synthetic_repo: Path,
 ) -> None:
@@ -244,6 +277,144 @@ def test_flags_work_item_id_defined_outside_planner_home(
     assert pattern_registry.scan_pattern_registry()
 
 
+def test_module_level_assignment_of_a_def_only_name_is_flagged(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": "registry_state = build_state()\n"},
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "registry_state" in findings[0].message
+
+
+def test_family_table_is_consumed_as_data(
+    synthetic_repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A new family is a new registry row: its names and shapes are
+    enforced with no new rule code."""
+    toy = {
+        "family": "toy",
+        "home": "edgar_sec/foundation/text/toy.py",
+        "names": ("TOY_RE",),
+        "shapes": (lambda path, line: "toy shape" if "TOYSHAPE" in line else None,),
+        "shape_hint": "use TOY_RE from the toy home",
+    }
+    monkeypatch.setattr(
+        pattern_registry,
+        "RECOGNIZER_FAMILIES",
+        pattern_registry.RECOGNIZER_FAMILIES + (toy,),
+    )
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": 'TOY_RE = "x"\n_A = "TOYSHAPE"\n',
+            "edgar_sec/foundation/text/toy.py": 'TOY_RE = "x"\n',
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert [f.path for f in findings] == [
+        "edgar_sec/engine/thing.py",
+        "edgar_sec/engine/thing.py",
+    ]
+
+
+def test_flags_month_registered_names_defined_outside_dates_home(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": 'MONTH_RE = "x"\nMONTH_WORD_RE = "y"\n'},
+    )
+    assert len(pattern_registry.scan_pattern_registry()) == 2
+
+
+def test_flags_bare_year_recognizer_under_a_new_private_name(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": '_YEAR_RE = re.compile(r"\\b\\d{4}\\b")\n'},
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert [f.path for f in findings] == ["edgar_sec/engine/thing.py"]
+    assert "bare year recognizer" in findings[0].message
+
+
+def test_flags_bare_year_recognizer_in_fstring_and_bracket_spellings(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_A = re.compile(rf"^\\d{{4}}$")\n_B = re.compile(r"^[0-9]{4}$")\n'
+            )
+        },
+    )
+    assert len(pattern_registry.scan_pattern_registry()) == 2
+
+
+def test_flags_hard_coded_year_vocabulary(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_YEAR_TOKENS = ("2022", "2023", "2024", "2025")\n'
+                '_ONE_YEAR = ("2024",)\n'
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "year vocabulary" in findings[0].message
+
+
+def test_flags_month_pattern_recomposition_under_a_private_name(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_MONTH_RE = re.compile(rf"\\b(?:{MONTH_PATTERN})\\b", re.IGNORECASE)\n'
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "MONTH_PATTERN" in findings[0].message
+
+
+def test_flags_any_word_month_slot_in_a_date_pattern(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_DATE = r"([a-z]+ \\d{1,2}, \\d{4})"\n'
+                '_OTHER = rf"([A-Za-z]+ \\d{{1,2}}, '
+                '(?:{YEAR_TOKEN_PATTERN}))"\n'
+            )
+        },
+    )
+    assert len(pattern_registry.scan_pattern_registry()) == 2
+
+
+def test_flags_hand_crafted_month_name_alternation(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_M = re.compile(r"(?:january|february|march)")\n'
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry()
+
+
 def test_allows_registry_and_work_item_definitions_in_their_homes(
     synthetic_repo: Path,
 ) -> None:
@@ -255,6 +426,37 @@ def test_allows_registry_and_work_item_definitions_in_their_homes(
             ),
             "edgar_sec/pipelines/table_classification/planner.py": (
                 "def work_item_id_for():\n    pass\n"
+            ),
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_allows_format_shapes_and_homed_compositions(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_ZIP = re.compile(r"\\d{5}(?:-\\d{4})?")\n'
+                '_PHONE = re.compile(r"\\d{3}[-.\\s]\\d{3}[-.\\s]\\d{4}")\n'
+                '_DATED = re.compile(r"^(\\d{4})-\\d{2}-\\d{2}$")\n'
+                '_COMPACT = re.compile(r"^(\\d{4})(\\d{2})(\\d{2})$")\n'
+                '_NUMBERED = re.compile(r"\\d{4}\\.[A-Za-z0-9]+\\Z")\n'
+                "_NAMED = re.compile(\n"
+                '    rf"(?:{MONTH_PATTERN}) \\d{{1,2}}, '
+                '(?:{YEAR_TOKEN_PATTERN})")\n'
+            ),
+            "edgar_sec/domain/sec_urls.py": (
+                '_RSS = re.compile(r"^/Archives/edgar/monthly/'
+                'xbrlrss-\\d{4}-\\d{2}\\.xml$")\n'
+            ),
+            "edgar_sec/engine/forms/common/statutory.py": (
+                '_OMB = re.compile(r"\\b3235-\\d{4}\\b")\n'
+            ),
+            "edgar_sec/foundation/text/dates.py": (
+                '_FMT = re.compile(r"(?P<year>\\d{4})")\n'
             ),
         },
     )
