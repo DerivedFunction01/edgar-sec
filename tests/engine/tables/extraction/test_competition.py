@@ -187,8 +187,8 @@ def test_scored_veto_can_kill_a_detail_shaped_claim() -> None:
 def test_year_columns_signature_spans_the_full_year_range() -> None:
     """Delta pin: year_columns keys on the homed year token; the
     deleted private vocabulary was hard-narrowed to 2022-2027."""
-    from edgar_sec.engine.tables.extraction.competition import (
-        GeometryText,
+    from edgar_sec.engine.tables.extraction.competition import GeometryText
+    from edgar_sec.engine.tables.extraction.detail_signatures import (
         detail_signatures,
     )
 

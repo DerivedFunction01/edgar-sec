@@ -1,11 +1,7 @@
-"""Term vetoes: the Step 6 v2 re-priced sets as classifier data.
+"""Term vetoes: specimen tests for the Step 6 v2 re-priced sets.
 
-Specimen tests per tier x channel, the removal semantics
-(contested, groups, inheritance non-resurrection), the
-any-hit scored composition, and the set-completeness pin
-derived from the gap record's accounting as amended by the
-coordinator's rulings (record: 2026-11-16-greenfield-veto-
-landing-gap-pricing.md; plan header, veto act re-scope).
+Removal semantics, any-hit scored composition, and the
+set-completeness pin as ruled (gap record, plan re-scope).
 """
 
 from __future__ import annotations
@@ -16,12 +12,14 @@ from edgar_sec.engine.tables.ascii_html.model import (
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.competition import (
-    TERM_VETOES,
     GeometryText,
     compete,
     compete_filing,
     geometry_text_from_table,
     score_geometry,
+)
+from edgar_sec.engine.tables.extraction.term_vetoes import (
+    TERM_VETOES,
     term_veto_hits,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
@@ -203,9 +201,8 @@ def test_lead_channel_from_production_seam() -> None:
     assert hits["balance_sheet"]["hard"] == "issuer purchases"
 
 
-# Set completeness: the transcription as ruled. Counts per
-# (family, channel, tier) from the re-price record after the
-# ruled exclusions; 350 priced rows in total.
+# Set completeness: counts per (family, channel, tier) from the
+# re-price record after the ruled exclusions; 350 rows total.
 _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "scored"): 11,
     ("aoci_rollforward", "lead", "hard"): 2,
