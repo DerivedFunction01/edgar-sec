@@ -28,23 +28,30 @@ def regenerable_fixtures_seeded() -> None:
     inventory is its generator's own — the builder's release list, the
     catalog generator's manifests — so the seed tracks what they publish.
     """
+    import fcntl
+
     from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
     from edgar_sec.tools.xbrl_discovery.build_taxonomy_archive import (
         _releases,
         build,
     )
 
-    archive_dir = resolve_xbrl_paths().default_taxonomy_archive_dir
-    missing = [
-        (taxonomy, version)
-        for taxonomy, version, _url in _releases()
-        if not (archive_dir / taxonomy / f"{version}.parquet").is_file()
-    ]
-    if missing:
-        # The cache dir mirrors the builder CLI's --cache-dir default.
-        cache_dir = Path.home() / "workspace" / "xbrl-triage" / "taxonomy-archive-src"
-        build(cache_dir, archive_dir)
-    _seed_catalog_fixtures()
+    # The cache dir mirrors the builder CLI's --cache-dir default.
+    cache_dir = Path.home() / "workspace" / "xbrl-triage" / "taxonomy-archive-src"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    # One worker seeds while the rest wait: concurrent builds rewrite
+    # the same slices under each other's readers (torn parquet reads).
+    with open(cache_dir / ".seed.lock", "a+") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        archive_dir = resolve_xbrl_paths().default_taxonomy_archive_dir
+        missing = [
+            (taxonomy, version)
+            for taxonomy, version, _url in _releases()
+            if not (archive_dir / taxonomy / f"{version}.parquet").is_file()
+        ]
+        if missing:
+            build(cache_dir, archive_dir)
+        _seed_catalog_fixtures()
 
 
 def _seed_catalog_fixtures() -> None:
