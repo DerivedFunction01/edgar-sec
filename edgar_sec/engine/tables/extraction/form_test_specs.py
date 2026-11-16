@@ -9,6 +9,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.domain.commodity_terms import (
+    COMMODITY_HEADER_PHRASE,
+    COMMERCIAL_TERMS,
+    NPNS_PHRASES,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_DECLARED_SPECS,
     PROV_DERIVATIVES_EVIDENCE,
@@ -655,23 +660,8 @@ DERIVATIVES_EVIDENCE_SPECS: dict[str, DerivativesEvidenceSpec] = {
             "exercise price",
         ),
         suffix_terms=("contract", "contracts", "instrument", "instruments"),
-        commercial_terms=(
-            "delivery",
-            "deliveries",
-            "supply",
-            "supplies",
-            "shipment",
-            "shipments",
-        ),
-        npns_phrases=(
-            "normal purchases and normal sales",
-            "normal purchase and normal sale",
-            "npns",
-            "own-use exemption",
-            "own use exemption",
-            "physical delivery",
-            "physical settlement",
-        ),
+        commercial_terms=COMMERCIAL_TERMS,
+        npns_phrases=NPNS_PHRASES,
         equity_comp_terms=(
             "restricted stock",
             "stock appreciation",
@@ -687,7 +677,7 @@ DERIVATIVES_EVIDENCE_SPECS: dict[str, DerivativesEvidenceSpec] = {
             "accumulated other comprehensive income components",
             "details about accumulated other comprehensive",
         ),
-        commodity_header="commodity contracts",
+        commodity_header=COMMODITY_HEADER_PHRASE,
         effects_phrases=(
             "effects of cash flow hedges",
             "effect of derivative",
