@@ -14,7 +14,6 @@ DISCOVERY_DIR = Path(__file__).resolve().parent
 SEED_COHORT_FILE = "seed_cohort.json"
 VINTAGE_COHORT_FILE = "vintage_cohort.json"
 SP100_COHORT_FILE = "sp100_cohort.json"
-PROBE_COHORT_FILE = "probe_cohort.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -81,16 +80,6 @@ def canonical_sp100_cohort_path() -> Path:
 def load_canonical_sp100_cohort() -> tuple[SeedFiling, ...]:
     """Load the canonical SP100 cohort registry."""
     return load_seed_cohort(canonical_sp100_cohort_path())
-
-
-def canonical_probe_cohort_path() -> Path:
-    """Path of the canonical probe cohort registry, the form-probe corpus."""
-    return DISCOVERY_DIR / PROBE_COHORT_FILE
-
-
-def load_canonical_probe_cohort() -> tuple[SeedFiling, ...]:
-    """Load the canonical probe cohort registry."""
-    return load_seed_cohort(canonical_probe_cohort_path())
 
 
 def load_canonical_union_cohort() -> tuple[SeedFiling, ...]:

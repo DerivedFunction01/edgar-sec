@@ -7,11 +7,11 @@ import pytest
 from edgar_sec.apps.client.presentation import period_key_class
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.discovery.cohort import canonical_probe_cohort_path
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import load_filing, registry_filings
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 
 _FACADES: dict[str, Xbrl] = {}
 

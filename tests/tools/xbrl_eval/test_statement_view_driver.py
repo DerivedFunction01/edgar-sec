@@ -8,12 +8,10 @@ from typing import Any
 import pytest
 
 from edgar_sec.apps.client.xbrl import Xbrl
-from edgar_sec.engine.xbrl.discovery.cohort import (
-    canonical_probe_cohort_path,
-    canonical_seed_cohort_path,
-)
+from edgar_sec.engine.xbrl.discovery.cohort import canonical_seed_cohort_path
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 from edgar_sec.tools.xbrl_eval.statement_view_driver import (
     BLOCKED,
     FAITHFUL,

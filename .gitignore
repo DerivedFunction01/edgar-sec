@@ -457,5 +457,9 @@ tests/fixtures/**/__pycache__/
 !edgar_sec/engine/xbrl/discovery/vintage/**
 !edgar_sec/engine/xbrl/discovery/sp100/
 !edgar_sec/engine/xbrl/discovery/sp100/**
-!edgar_sec/engine/xbrl/discovery/probe/
-!edgar_sec/engine/xbrl/discovery/probe/**
+# edgar_sec/pipelines/xbrl_review/fixtures/probe/ holds the probe cohort
+# bundle corpus: review-plane measurement data beside its registry in the
+# review pipeline's fixtures, not a production discovery input. It is
+# excluded from the wheel in pyproject.toml, not from the repository.
+!edgar_sec/pipelines/xbrl_review/fixtures/probe/
+!edgar_sec/pipelines/xbrl_review/fixtures/probe/**

@@ -15,7 +15,6 @@ import pyarrow.parquet as pq
 
 from edgar_sec.engine.xbrl.discovery.cohort import (
     SeedFiling,
-    canonical_probe_cohort_path,
     canonical_seed_cohort_path,
     canonical_sp100_cohort_path,
     canonical_vintage_cohort_path,
@@ -35,6 +34,7 @@ from edgar_sec.engine.xbrl.storage.storage import (
     presentation_arcs_from_arrow_table,
     read_declarations_parquet,
 )
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 
 _FACTS_FILE = "facts.parquet"
 _CALC_FILE = "calculation_arcs.parquet"

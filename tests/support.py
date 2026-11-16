@@ -41,7 +41,7 @@ FIXTURES = TESTS_ROOT / "fixtures"
 CATALOG_FIXTURES = FIXTURES / "catalog"
 
 
-_CORPUS_DIRS = ("seed", "vintage", "sp100", "probe")
+_CORPUS_DIRS = ("seed", "vintage", "sp100")
 
 
 def corpus_dir(corpus: str) -> Path:
@@ -51,10 +51,19 @@ def corpus_dir(corpus: str) -> Path:
     return DISCOVERY_DIR / corpus
 
 
+def _probe_corpus_dir() -> Path:
+    """The probe bundle corpus: review fixtures data, not discovery package data."""
+    from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
+
+    return canonical_probe_cohort_path().parent / "probe"
+
+
 def _resolve_fixture(name: str) -> Path:
     parts = name.split("/")
     if len(parts) >= 2 and parts[0] == "xbrl" and parts[1] in _CORPUS_DIRS:
         return corpus_dir(parts[1]).joinpath(*parts[2:])
+    if len(parts) >= 2 and parts[0] == "xbrl" and parts[1] == "probe":
+        return _probe_corpus_dir().joinpath(*parts[2:])
     return FIXTURES / name
 
 
@@ -68,6 +77,13 @@ def fixture_path(name: str) -> Path:
 
 def cohort_registry_path(name: str) -> Path:
     """Canonical cohort registries are package data, beside their loaders."""
+    from edgar_sec.pipelines.xbrl_review.cohort import (
+        PROBE_COHORT_FILE,
+        canonical_probe_cohort_path,
+    )
+
+    if name == PROBE_COHORT_FILE:
+        return canonical_probe_cohort_path()
     from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
 
     return DISCOVERY_DIR / name

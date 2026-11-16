@@ -20,13 +20,11 @@ from edgar_sec.apps.client.catalog import STATEMENT, CatalogEntry
 from edgar_sec.apps.client.corpus_index import _worker_taxonomy
 from edgar_sec.apps.client.presentation import declared_breakdown_members
 from edgar_sec.apps.client.xbrl import Xbrl
-from edgar_sec.engine.xbrl.discovery.cohort import (
-    canonical_probe_cohort_path,
-    load_seed_cohort,
-)
+from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 from edgar_sec.tools.xbrl_eval.facade_battery import check_statement_views
 from edgar_sec.tools.xbrl_eval.xbrl_cross_form_census import analyze_facts
 

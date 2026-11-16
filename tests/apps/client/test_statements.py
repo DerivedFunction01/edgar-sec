@@ -9,7 +9,6 @@ import pytest
 
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.discovery.cohort import canonical_probe_cohort_path
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     FilingXbrl,
@@ -19,6 +18,7 @@ from edgar_sec.engine.xbrl.schema.models import (
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import load_filing, registry_filings
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 from tests.support import bundle_dir, fixture_path
 
 _NET_ROOT = "us-gaap-ebp:EmployeeBenefitPlanNetAssetAvailableForBenefit"

@@ -12,7 +12,6 @@ from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.discovery.cohort import (
-    canonical_probe_cohort_path,
     canonical_seed_cohort_path,
     canonical_vintage_cohort_path,
 )
@@ -26,6 +25,7 @@ from edgar_sec.engine.xbrl.schema.models import (
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import load_filing, registry_filings
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 from tests.support import bundle_dir
 
 _PROBE_FACADES: dict[str, Xbrl] = {}

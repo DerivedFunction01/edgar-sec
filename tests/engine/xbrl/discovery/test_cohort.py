@@ -1,16 +1,18 @@
 """Tests for seed cohort definitions and loading."""
 
 from edgar_sec.engine.xbrl.discovery.cohort import (
-    canonical_probe_cohort_path,
     canonical_seed_cohort_path,
     canonical_sp100_cohort_path,
     canonical_vintage_cohort_path,
-    load_canonical_probe_cohort,
     load_canonical_seed_cohort,
     load_canonical_sp100_cohort,
     load_canonical_union_cohort,
     load_canonical_vintage_cohort,
     load_seed_cohort,
+)
+from edgar_sec.pipelines.xbrl_review.cohort import (
+    canonical_probe_cohort_path,
+    load_canonical_probe_cohort,
 )
 from tests.support import cohort_registry_path, fixture_path
 

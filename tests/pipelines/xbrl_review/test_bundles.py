@@ -6,7 +6,6 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.engine.xbrl.discovery.cohort import (
-    canonical_probe_cohort_path,
     canonical_seed_cohort_path,
     canonical_sp100_cohort_path,
     canonical_vintage_cohort_path,
@@ -21,6 +20,7 @@ from edgar_sec.pipelines.xbrl_review.bundles import (
     missing_bundles,
     registry_filings,
 )
+from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 
 
 def test_registry_filings_cover_canonical_registry() -> None:
