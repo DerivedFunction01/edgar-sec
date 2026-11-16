@@ -129,10 +129,6 @@ _SANCTIONED_SITES = (
         "edgar_sec/engine/forms/beneficial_ownership/item_subsections.py",
         "ownershipMoreThan5Percent",
     ),
-    (
-        "edgar_sec/engine/forms/beneficial_ownership/item_subsections.py",
-        "_RE_PERCENT_OF_CLASS",
-    ),
     ("edgar_sec/engine/forms/ownership/relationship_box.py", r"10\s*%\s*Owner"),
     ("edgar_sec/engine/tables/ascii_html/cell.py", "_UNIT_RE"),
     ("edgar_sec/foundation/text/grammar.py", "RE_WORD_TOKEN"),

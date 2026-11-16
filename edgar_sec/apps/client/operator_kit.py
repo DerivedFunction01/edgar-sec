@@ -136,6 +136,21 @@ def make_spec() -> Callable[..., Any]:
     return spec
 
 
+def make_build_specs(rows: Iterable[tuple]) -> Callable[[], tuple]:
+    """Build a module's spec builder over its own registry rows."""
+
+    def build_specs() -> tuple:
+        """Build the module's registry rows; operator imports resolve at call time."""
+        spec = make_spec()
+
+        return tuple(
+            spec(op_id, label, options_type, effect, kind, executor)
+            for op_id, label, options_type, executor, effect, kind in rows
+        )
+
+    return build_specs
+
+
 __all__ = [
     "accession_text",
     "artifacts_root",
@@ -144,6 +159,7 @@ __all__ = [
     "help_field",
     "json_native",
     "key_value_result",
+    "make_build_specs",
     "make_module_getattr",
     "make_register",
     "make_spec",

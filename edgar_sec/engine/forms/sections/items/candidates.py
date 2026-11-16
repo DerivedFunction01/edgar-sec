@@ -183,7 +183,6 @@ def _match_composite_heading(
 
 
 _RE_ITEM_SINGLE = RE_ITEM_HEADING
-_RE_ITEM_GROUPED = RE_ITEM_GROUPED
 
 _RE_PAREN_LABEL = re.compile(r"^\((\d{1,2})\)\s*(.+)$")
 _RE_NUMERIC_RUN_IN = re.compile(r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2}[A-Z]?)\.\s+(.+)$")
@@ -284,7 +283,7 @@ def extract_section_candidates(
         preceded = is_preceding_continuation(prev_line)
 
         # Check grouped items (Items 1, 1A, and 1B)
-        grouped_match = _RE_ITEM_GROUPED.search(stripped)
+        grouped_match = RE_ITEM_GROUPED.search(stripped)
         if grouped_match:
             raw_ids = grouped_match.group(0)
             raw_title = _RE_LEADING_PUNCT.sub(

@@ -194,6 +194,22 @@ _CLOSING_PERCENT_ALT = build_alternation(
 SCHEMA_CLOSING_PERCENT_RE = re.compile(
     rf"(?i)^\s*(?:{_CLOSING_PERCENT_ALT})(?:\b|(?<=%))"
 )
+_PERCENT_OF_CLASS_PREFIX_ALT = build_alternation(
+    (
+        r"percentage(?:\s+of\s+class)?\s*[:.-]?",
+        r"representing(?:\s+approximately)?",
+        r"approximate\s+percentage",
+        r"percent\s+of\s+class\s*[:.-]?",
+    ),
+    auto_escape=False,
+)
+_PERCENT_OF_CLASS_SIGN_ALT = build_alternation(
+    ("%", r"percent\b"),
+    auto_escape=False,
+)
+PERCENT_OF_CLASS_RE = re.compile(
+    rf"(?i)(?:(?:{_PERCENT_OF_CLASS_PREFIX_ALT})\s*|^|\b)([0-9]+(?:\.[0-9]+)?)\s*(?:{_PERCENT_OF_CLASS_SIGN_ALT})"
+)
 _SCHEMA_LEADING_NUMERIC_RE = re.compile(
     r"(?s)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)(?:\s+.*)?$"
 )

@@ -13,7 +13,6 @@ from edgar_sec.engine.forms.common.numbers import (
     format_scaled_number_string,
 )
 from edgar_sec.engine.forms.common.tables import (
-    WHITESPACE_COLUMN_SPLIT_RE,
     clean_field_candidate,
     is_horizontal_rule_line,
     strip_footnote_references,
@@ -38,6 +37,7 @@ from edgar_sec.engine.forms.form144.patterns import (
     is_form144_instruction_line,
 )
 from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE_SPLIT
 
 
 def _is_bare_zip_or_year(val: str, raw: str) -> bool:
@@ -263,9 +263,7 @@ def extract_ascii_proposed_sales(
             continue
 
         cols = [
-            c.strip(" \t|")
-            for c in WHITESPACE_COLUMN_SPLIT_RE.split(line)
-            if c.strip(" \t|")
+            c.strip(" \t|") for c in RE_WHITESPACE_SPLIT.split(line) if c.strip(" \t|")
         ]
         if not cols:
             continue

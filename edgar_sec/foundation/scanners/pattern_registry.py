@@ -305,6 +305,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "family": "schema-numbers",
         "home": "edgar_sec/engine/forms/common/numbers.py",
         "names": (
+            "PERCENT_OF_CLASS_RE",
             "SCHEMA_CLOSING_PERCENT_RE",
             "SCHEMA_LEADING_PERCENT_RE",
             "SCHEMA_PERCENT_RE",
@@ -327,6 +328,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             "error_result",
             "gather_options",
             "json_native",
+            "make_build_specs",
             "make_spec",
         ),
         "shapes": (),

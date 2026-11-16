@@ -16,9 +16,9 @@ from typing import Any
 from edgar_sec.apps.client.operator_kit import (
     gather_options as _generic,
     help_field as _f,
+    make_build_specs,
     make_module_getattr,
     make_register,
-    make_spec,
 )
 from edgar_sec.apps.client.operator_tools import (
     empty_accounting,
@@ -738,14 +738,7 @@ _SPEC_ROWS = (
 )
 
 
-def build_specs() -> tuple:
-    """Build this module's registry rows; operator imports resolve at call time."""
-    spec = make_spec()
-
-    return tuple(
-        spec(op_id, label, options_type, effect, kind, executor)
-        for op_id, label, options_type, executor, effect, kind in _SPEC_ROWS
-    )
+build_specs = make_build_specs(_SPEC_ROWS)
 
 
 register = make_register(build_specs)

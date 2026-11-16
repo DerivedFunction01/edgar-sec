@@ -361,7 +361,6 @@ def is_empty_continuation_row(cells: Iterable[str]) -> bool:
 HORIZONTAL_RULE_RE = re.compile(r"^[\s\-=_*|+]{4,}$")
 _SGML_TAG_RE = re.compile(r"</?[A-Za-z]+(?:\s+[^>]*)?>")
 _LINE_NUMBER_PREFIX_RE = re.compile(r"^\d+\s*:\s*")
-WHITESPACE_COLUMN_SPLIT_RE = RE_WHITESPACE_SPLIT
 FOOTNOTE_REF_RE = re.compile(r"[\(\[]\s*(\d{1,3})\s*[\)\]]")
 
 
@@ -398,7 +397,6 @@ __all__ = [
     "GridPartition",
     "HORIZONTAL_RULE_RE",
     "IGNORE_SUBBOX_MARKERS",
-    "WHITESPACE_COLUMN_SPLIT_RE",
     "address_from_column_headers",
     "address_from_inline_cells",
     "clean_field_candidate",

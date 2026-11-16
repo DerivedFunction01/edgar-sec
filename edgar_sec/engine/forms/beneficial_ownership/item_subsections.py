@@ -38,6 +38,7 @@ from edgar_sec.engine.forms.common.entities import (
     is_boilerplate_entity_name,
 )
 from edgar_sec.engine.forms.common.numbers import (
+    PERCENT_OF_CLASS_RE,
     _SCHEMA_UNIT_SUFFIX_ALT,
     normalize_schema_number,
 )
@@ -324,23 +325,6 @@ _RE_SHARE_COUNT = re.compile(
     rf"({NUMERIC_TOKEN_RE.pattern})\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\b"
 )
 
-_PERCENT_PREFIX_ALT = build_alternation(
-    (
-        r"percentage(?:\s+of\s+class)?\s*[:.-]?",
-        r"representing(?:\s+approximately)?",
-        r"approximate\s+percentage",
-        r"percent\s+of\s+class\s*[:.-]?",
-    ),
-    auto_escape=False,
-)
-_PERCENT_SIGN_ALT = build_alternation(
-    ("%", r"percent\b"),
-    auto_escape=False,
-)
-_RE_PERCENT_OF_CLASS = re.compile(
-    rf"(?i)(?:(?:{_PERCENT_PREFIX_ALT})\s*|^|\b)([0-9]+(?:\.[0-9]+)?)\s*(?:{_PERCENT_SIGN_ALT})"
-)
-
 _RE_CHECKED_SUBPART_POST = re.compile(
     rf"(?i)(?:\(?\s*([a-k])\s*\)|([a-k])\.)\s*{VARIABLE_CHECKED_PATTERN}"
 )
@@ -399,7 +383,7 @@ def extract_prose_ownership(text: str) -> tuple[str | None, str | None]:
             strip_footnotes=True,
             extract_leading_number=True,
         )
-    m_p = _RE_PERCENT_OF_CLASS.search(clean_text)
+    m_p = PERCENT_OF_CLASS_RE.search(clean_text)
     if m_p:
         pct = normalize_schema_number(
             m_p.group(1),

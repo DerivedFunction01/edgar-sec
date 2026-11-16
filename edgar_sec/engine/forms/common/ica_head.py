@@ -38,7 +38,6 @@ _FILE_NUMBER_ICA_RE = re.compile(
 _NAMED_DATE_RE = re.compile(
     rf"(?:{MONTH_PATTERN}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN})", re.IGNORECASE
 )
-_PERIOD_ENDED_RE = PERIOD_ENDED_RE
 _REPORTING_PERIOD_RE = REPORTING_PERIOD_CAPTION_RE
 _DASHES_RE = re.compile(r"^[-_=.\s]+$")
 _NAME_LOOKBACK_LINES = 12
@@ -77,7 +76,7 @@ def _report_period(head_lines: list[str]) -> str | None:
             if value:
                 return value
     head_text = "\n".join(head_lines)
-    ended = _PERIOD_ENDED_RE.search(head_text)
+    ended = PERIOD_ENDED_RE.search(head_text)
     if ended:
         return _date_value_at(head_text, ended.end())
     return None

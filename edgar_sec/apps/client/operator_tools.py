@@ -19,9 +19,9 @@ from edgar_sec.apps.client.operator_kit import (
     help_field as _f,
     json_native,
     key_value_result,
+    make_build_specs,
     make_module_getattr,
     make_register,
-    make_spec,
 )
 from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
 
@@ -655,14 +655,7 @@ _SPEC_ROWS = (
 )
 
 
-def build_specs() -> tuple:
-    """Build this module's registry rows; operator imports resolve at call time."""
-    spec = make_spec()
-
-    return tuple(
-        spec(op_id, label, options_type, effect, kind, executor)
-        for op_id, label, options_type, executor, effect, kind in _SPEC_ROWS
-    )
+build_specs = make_build_specs(_SPEC_ROWS)
 
 
 register = make_register(build_specs)

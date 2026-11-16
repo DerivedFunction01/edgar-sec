@@ -29,18 +29,15 @@ _HOMES = (
 _SANCTIONED_DIVERGENCES = (
     ("edgar_sec/apps/client/operator_config.py", "_error_result"),
     ("edgar_sec/apps/client/operator.py", "_error_result"),
+    # Census KEEP (paths-template class): KEEP unless the paths classes
+    # get a base — the priced condition for this pair's cure.
+    ("edgar_sec/pipelines/document_inventory/paths.py", "snapshot_id_for"),
+    ("edgar_sec/pipelines/xbrl_review/paths.py", "snapshot_id_for"),
 )
 
-# Census scope statement (coordinator ruling, 2026-11-16), transcribed
-# from the census register: the helper census counted 131 clusters and
-# commissioned cures for its named set only; the clusters below are its
-# unnamed remainder — counted, carrying no cure verdict — plus the cli
-# `main` pair (TC-14) the coordinator ruled KEEP. A cluster is out of
-# this rule's cure scope only while its full site set — the (path,
-# name) pairs carrying one body — matches an entry exactly; the same
-# body at any new site flags again. The statement shrinks only by
-# cure: the 22-micro-cure wave-3 package on the programme record is
-# the priced follow-on.
+# Census scope statement (coordinator ruling, 2026-11-16; full text in
+# the census register): the census's unnamed remainder plus TC-14, out
+# of cure scope only while a cluster's full site set matches an entry.
 _CENSUS_SCOPED_CLUSTERS = (
     # T-1 `_get_client`
     frozenset(

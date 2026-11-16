@@ -85,16 +85,13 @@ NUMERIC_TOKEN_RE = re.compile(r"[0-9][0-9,]*(?:\.[0-9]+)?")
 GROUPED_INTEGER_RE = re.compile(r"[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+")
 
 # The loose grouped-integer fragment: a digit/comma run in any arrangement,
-# as running text actually carries it (the 13F value-total capture is the
-# attested consumer). A string fragment, not a compiled recognizer — sites
-# compose it inside their own anchored patterns.
+# as running text carries it (the 13F value-total capture is the attested
+# consumer). A string fragment — sites compose it in their own patterns.
 GROUPED_INTEGER_FRAGMENT = r"[\d,]+"
 
-# The Unicode-digit twin of the numeric token core: a leading digit,
-# comma-carrying digits, and one optional decimal tail, spelled with \d
-# where the engine's other cores spell [0-9]. Form 144's currency capture
-# admits any Unicode decimal digit; sites compose this fragment instead
-# of re-spelling it.
+# The Unicode-digit twin of the numeric token core, spelled with \d where
+# the engine's other cores spell [0-9]: Form 144's currency capture admits
+# any Unicode decimal digit; sites compose this fragment, never re-spell it.
 UNICODE_NUMERIC_CORE = r"\d[\d,]*(?:\.\d+)?"
 
 # Comma-grouped and decimal figures as they appear inside a line of text.
