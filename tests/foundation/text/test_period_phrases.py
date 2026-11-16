@@ -1,7 +1,6 @@
 """Pins for the homed period-phrase recognizers in text/dates.
-PERIOD_ENDED_RE deliberately keeps the narrower alternation (period and
-fiscal year, not quarter) its whole-head consumers were built on; the wider
-alternation lives only in the PERIOD_ENDED_PAT composition fragment.
+PERIOD_ENDED_RE keeps the narrower alternation its consumers were built on;
+the wider alternation lives only in the PERIOD_ENDED_PAT fragment.
 """
 
 from __future__ import annotations

@@ -8,6 +8,7 @@ from __future__ import annotations
 from collections import Counter
 
 from edgar_sec.engine.document.page_markers.detector import is_page_marker_line
+from edgar_sec.engine.forms.cover.boundary.corridor import line_offset
 from edgar_sec.engine.tables.protection.tags import (
     TAGGED_TABLE_CLOSE_RE,
     TAGGED_TABLE_OPEN_RE,
@@ -21,7 +22,6 @@ from edgar_sec.engine.tables.toc.patterns import (
 from edgar_sec.foundation.text.tokens import roman_to_int
 
 from .analysis import (
-    _line_offset,
     _row_lines,
     _table_toc_rows,
     is_anachronistic_late_item,
@@ -302,8 +302,8 @@ def find_toc_span(
         return TocSpan(
             start_line=index,
             end_line=end_line,
-            start_offset=_line_offset(lines, index),
-            end_offset=_line_offset(lines, end_line),
+            start_offset=line_offset(lines, index),
+            end_offset=line_offset(lines, end_line),
             method=method,
             confidence=0.92 if method == "heading_rows" else 0.78,
             evidence=tuple(evidence),
@@ -345,8 +345,8 @@ def find_toc_span(
         return TocSpan(
             start_line=index,
             end_line=end_line,
-            start_offset=_line_offset(lines, index),
-            end_offset=_line_offset(lines, end_line),
+            start_offset=line_offset(lines, index),
+            end_offset=line_offset(lines, end_line),
             method="tagged_table_merged" if merged else "tagged_table",
             confidence=0.88,
             evidence=refinement_evidence
@@ -388,8 +388,8 @@ def find_toc_span(
                 return TocSpan(
                     start_line=index,
                     end_line=end_line,
-                    start_offset=_line_offset(lines, index),
-                    end_offset=_line_offset(lines, end_line),
+                    start_offset=line_offset(lines, index),
+                    end_offset=line_offset(lines, end_line),
                     method="density_score",
                     confidence=0.85,
                     evidence=(
@@ -416,8 +416,8 @@ def find_toc_span(
                 return TocSpan(
                     start_line=index,
                     end_line=end_line,
-                    start_offset=_line_offset(lines, index),
-                    end_offset=_line_offset(lines, end_line),
+                    start_offset=line_offset(lines, index),
+                    end_offset=line_offset(lines, end_line),
                     method="anachronism_late_item",
                     confidence=0.82,
                     evidence=(
@@ -445,8 +445,8 @@ def find_toc_span(
         return TocSpan(
             start_line=index,
             end_line=end_line,
-            start_offset=_line_offset(lines, index),
-            end_offset=_line_offset(lines, end_line),
+            start_offset=line_offset(lines, index),
+            end_offset=line_offset(lines, end_line),
             method="aligned_rows",
             confidence=0.7,
             evidence=(

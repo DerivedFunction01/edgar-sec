@@ -1,4 +1,4 @@
-"""The helper-duplicates scanner: AST body-hash and parameterized-get lines.
+"""The helper-duplicates scanner: AST body-hash lines and census scope.
 A copied helper body drifts in one module and not the other; the negatives
 pin the shapes that legitimately repeat: unlike bodies and trivial getters.
 """
@@ -70,7 +70,7 @@ def test_flags_a_copy_of_a_home_body(synthetic_repo: Path) -> None:
     assert "duplicates its home" in findings[0].message
 
 
-def test_flags_nested_parameterized_get(synthetic_repo: Path) -> None:
+def test_allows_a_lone_parameterized_get(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
         {
@@ -82,9 +82,28 @@ def test_flags_nested_parameterized_get(synthetic_repo: Path) -> None:
             )
         },
     )
+    assert helper_duplicates.scan_helper_duplicates() == []
+
+
+def test_flags_duplicated_parameterized_get_bodies(synthetic_repo: Path) -> None:
+    nested = (
+        "    def fields_of(rep):\n"
+        '        return rep.get("form_a", {})\n'
+        "    return fields_of(case_reports[0])\n"
+    )
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/a.py": "def summarize_a(case_reports):\n" + nested,
+            "edgar_sec/engine/b.py": "def summarize_b(case_reports):\n" + nested,
+        },
+    )
     findings = helper_duplicates.scan_helper_duplicates()
-    assert len(findings) == 1
-    assert "parameterized get" in findings[0].message
+    assert sorted(f.path for f in findings) == [
+        "edgar_sec/engine/a.py",
+        "edgar_sec/engine/b.py",
+    ]
+    assert all("is duplicated in" in f.message for f in findings)
 
 
 def test_allows_the_homes_themselves(synthetic_repo: Path) -> None:
@@ -155,6 +174,63 @@ def test_allows_import_alias_of_a_home_helper(synthetic_repo: Path) -> None:
                 "    element_int as _int,\n"
                 ")\n"
             ),
+        },
+    )
+    assert helper_duplicates.scan_helper_duplicates() == []
+
+
+# --- The census scope statement: named clusters are out of cure scope ---
+
+
+_ADD_COMMON_BODY = (
+    "def _add_common(parser):\n"
+    '    parser.add_argument("--root", default=".")\n'
+    '    parser.add_argument("--verbose", action="store_true")\n'
+    "    return parser\n"
+)
+
+
+def test_allows_a_census_scoped_cluster_planted_exactly(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/datasets/cli.py": _ADD_COMMON_BODY,
+            "edgar_sec/pipelines/feeds/cli.py": _ADD_COMMON_BODY,
+        },
+    )
+    assert helper_duplicates.scan_helper_duplicates() == []
+
+
+def test_flags_a_census_scoped_body_at_a_new_site(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/datasets/cli.py": _ADD_COMMON_BODY,
+            "edgar_sec/pipelines/feeds/cli.py": _ADD_COMMON_BODY,
+            "edgar_sec/pipelines/metadata_sync/cli.py": _ADD_COMMON_BODY,
+        },
+    )
+    findings = helper_duplicates.scan_helper_duplicates()
+    assert {f.path for f in findings} == {
+        "edgar_sec/pipelines/datasets/cli.py",
+        "edgar_sec/pipelines/feeds/cli.py",
+        "edgar_sec/pipelines/metadata_sync/cli.py",
+    }
+
+
+def test_allows_the_ruled_keep_cli_main_pair(synthetic_repo: Path) -> None:
+    main_body = (
+        "def main(argv=None):\n"
+        "    args = build_parser().parse_args(argv)\n"
+        "    return run(args)\n"
+    )
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/datasets/cli.py": main_body,
+            "edgar_sec/pipelines/feeds/cli.py": main_body,
         },
     )
     assert helper_duplicates.scan_helper_duplicates() == []

@@ -30,6 +30,7 @@ from edgar_sec.engine.forms.common.tables import (
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     cusip_page_residue_match,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import SEC_DATE_FORMATS, parse_date
 
@@ -98,7 +99,7 @@ _PHONE_ALT = build_alternation(
     compact=False,
 )
 _PHONE_RE = re.compile(rf"(?<!\d)(?:{_PHONE_ALT})(?!\d)")
-_WHITESPACE_RE = re.compile(r"\s+")
+_WHITESPACE_RE = RE_WHITESPACE
 _ATTENTION_RE = re.compile(r"(?i)^\s*ATTENTION\s*:\s*(?P<name>.+?)\s*$")
 _COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+(?:A\s+)?)?COPY\s+TO\s*:?\s*$")
 _PHONE_LABEL_ALT = build_alternation(PHONE_LABEL_TERMS, auto_escape=True, compact=True)

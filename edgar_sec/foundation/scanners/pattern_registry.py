@@ -217,6 +217,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             "GROUPED_INTEGER_FRAGMENT",
             "GROUPED_INTEGER_RE",
             "NUMERIC_CELL_RE",
+            "UNICODE_NUMERIC_CORE",
             "UNIT_TOKEN_RE",
         ),
         "shapes": (),
@@ -271,6 +272,8 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "family": "toc-patterns",
         "home": "edgar_sec/engine/tables/toc/patterns.py",
         "names": (
+            "ITEM_HEADING_CORE",
+            "ITEM_NUMBER_PATTERN",
             "RE_ITEM_EXACT",
             "RE_ITEM_GROUPED",
             "RE_ITEM_HEADING",
@@ -374,34 +377,30 @@ _DEF_RES: dict[str, re.Pattern[str]] = {}
 _ASSIGN_RES: dict[str, re.Pattern[str]] = {}
 
 
-def _is_definition(name: str, line: str, depth: int, def_only: bool = False) -> bool:
+def _is_definition(name: str, line: str) -> bool:
     if name not in _DEF_RES:
-        _DEF_RES[name] = re.compile(rf"^\s*def\s+{name}\s*\(")
-        _ASSIGN_RES[name] = re.compile(rf"^\s*{name}\s*(?::[^=\n]+)?=(?!=)")
-    if _DEF_RES[name].search(line):
-        return True
-    if not _ASSIGN_RES[name].search(line):
+        _DEF_RES[name] = re.compile(rf"^def\s+{name}\s*\(")
+        _ASSIGN_RES[name] = re.compile(rf"^{name}\s*(?::[^=\n]+)?=(?!=)")
+    # A registered name is copied only by a module-level definition:
+    # an indented def is a method or a nested function, and an
+    # indented assignment is a local, a field, or a keyword
+    # argument — uses of the name, never copies of the pattern.
+    if line[:1].isspace():
         return False
-    # An assignment inside brackets is a keyword argument, not a
-    # definition; a def-only (function) name is redefined by an
-    # assignment only at module level, never by an indented local.
-    if depth > 0:
-        return False
-    return not def_only or not line[0].isspace()
+    return bool(_DEF_RES[name].search(line) or _ASSIGN_RES[name].search(line))
 
 
 def _module_of(home: str) -> str:
     return home.removesuffix(".py").replace("/", ".")
 
 
-def _rule(path: str, number: int, line: str, depth: int = 0) -> ScannerFinding | None:
+def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     for family in RECOGNIZER_FAMILIES:
         if path == family["home"]:
             continue
-        named = [(name, False) for name in family["names"]]
-        named += [(name, True) for name in family.get("def_only", ())]
-        for name, def_only in named:
-            if _is_definition(name, line, depth, def_only):
+        named = list(family["names"]) + list(family.get("def_only", ()))
+        for name in named:
+            if _is_definition(name, line):
                 return finding(
                     "pattern-registry",
                     path,
@@ -423,51 +422,12 @@ def _rule(path: str, number: int, line: str, depth: int = 0) -> ScannerFinding |
     return None
 
 
-class _BracketTracker:
-    """Bracket depth at each line start, strings and comments aside."""
-
-    def __init__(self) -> None:
-        self.depth = 0
-        self._quote: str | None = None
-        self._triple = False
-
-    def depth_at(self, line: str) -> int:
-        start = self.depth
-        index = 0
-        while index < len(line):
-            char = line[index]
-            if self._quote is not None:
-                if char == "\\":
-                    index += 1
-                elif line.startswith(
-                    self._quote * 3 if self._triple else self._quote, index
-                ):
-                    index += 3 if self._triple else 1
-                    self._quote = None
-                    continue
-            elif char == "#":
-                break
-            elif char in "'\"":
-                self._triple = line.startswith(char * 3, index)
-                self._quote = char
-                index += 3 if self._triple else 1
-                continue
-            elif char in "([{":
-                self.depth += 1
-            elif char in ")]}":
-                self.depth -= 1
-            index += 1
-        return start
-
-
 def _scan_lines(path: str, lines: list[str]) -> list[ScannerFinding]:
     findings: list[ScannerFinding] = []
-    tracker = _BracketTracker()
     for number, line in enumerate(lines, start=1):
-        depth = tracker.depth_at(line)
         if is_noise(line):
             continue
-        found = _rule(path, number, line, depth)
+        found = _rule(path, number, line)
         if found is not None:
             findings.append(found)
     return findings

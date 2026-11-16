@@ -27,6 +27,7 @@ from edgar_sec.engine.tables.ascii_html.converter import (
     convert_html_tables_to_ascii_with_metadata,
 )
 from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.foundation.text.normalize import RE_MULTI_BLANKS
 from edgar_sec.engine.tables.false_tables.unwrapper import (
     cleanup_false_tables_with_metadata,
 )
@@ -58,7 +59,7 @@ _RE_REMAINING_TAGS = re.compile(r"</?[a-zA-Z][a-zA-Z0-9:-]*(?=[\s/>])[^<>]*>")
 _RE_COMMENTS = re.compile(r"<!--.*?-->", re.DOTALL)
 _RE_DECLARATIONS = re.compile(r"<!DOCTYPE[^>]*>|<\?[^>]*\?>", re.IGNORECASE | re.DOTALL)
 _RE_HORIZONTAL_SPACES = re.compile(r"[^\S\n]+")
-_RE_MULTIPLE_NEWLINES = re.compile(r"\n{3,}")
+_RE_MULTIPLE_NEWLINES = RE_MULTI_BLANKS
 
 _RE_CONSECUTIVE_BR = re.compile(r"(?:<br\s*/?>\s*){2,}", re.IGNORECASE)
 _RE_SINGLE_BR = re.compile(r"<br\s*/?>", re.IGNORECASE)

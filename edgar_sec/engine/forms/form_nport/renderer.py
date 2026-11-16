@@ -14,6 +14,7 @@ from edgar_sec.domain.forms.families.form_nport.taxonomy import (
     NPORT_XML_SPEC,
 )
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
+from edgar_sec.engine.forms.common.family_scaffold import qname as _q
 from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
 from edgar_sec.engine.forms.common.xml_builder import (
     add_text_element,
@@ -27,10 +28,6 @@ if TYPE_CHECKING:
     from edgar_sec.engine.document_processing.registry import HandlerContext
 
 _COMMON_NS = "http://www.sec.gov/edgar/common"
-
-
-def _q(ns: str, tag: str) -> str:
-    return f"{{{ns}}}{tag}"
 
 
 def _add_investment(parent: ET.Element, row: NPortInvestment) -> None:

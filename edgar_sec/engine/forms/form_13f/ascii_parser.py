@@ -16,6 +16,7 @@ from edgar_sec.domain.forms.families.form_13f.models import (
     ManagerAddress,
 )
 from edgar_sec.engine.forms.common.entities import is_valid_cusip, parse_cusip
+from edgar_sec.foundation.text.dates import REPORT_QUARTER_ENDED_RE
 
 _VALUE_SCALE = 1000
 _DASH_RUN = re.compile(r"-{2,}")
@@ -34,9 +35,7 @@ _AMENDMENT_RE = re.compile(
     r"|If Amended report check here:\s*\|\s*X\s*\|)",
     re.IGNORECASE,
 )
-_PERIOD_RE = re.compile(
-    r"Report for the (?:Calendar Year or )?Quarter Ended:?\s*(.+)", re.IGNORECASE
-)
+_PERIOD_RE = REPORT_QUARTER_ENDED_RE
 _CAPTION_RES = (
     re.compile(r"^\(Name and Address of Institutional Investment Manager"),
     re.compile(r"^Name of Institutional Investment Manager\s*$"),

@@ -38,6 +38,7 @@ from edgar_sec.engine.forms.common.statutory import (
 )
 from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.engine.forms.cover.registrant import extract_irs_number
+from edgar_sec.engine.tables.toc.patterns import RE_SEE_REFERENCE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     RE_GROUP_OPTION,
@@ -81,7 +82,7 @@ _RE_HEADER_OR_PAGE = re.compile(r"(?i)\bSCHEDULE\s+13[DG]\b|\bCUSIP\b")
 _RE_ROW_NUMBER_PREFIX = re.compile(r"^\s*(\d{1,2})\s+")
 _RE_POWER_LEADING_WITH = re.compile(r"(?i)^\s*WITH\b")
 _RE_POWER_TRAILING_WITH = re.compile(r"(?i)\bWITH\s*[:|]?\s*$")
-_RE_SEE_ROW = re.compile(r"(?i)\bsee\s+(?:item|row)\s+(\d+)")
+_RE_SEE_ROW = RE_SEE_REFERENCE
 _RE_PAGE_BREAK = re.compile(r"(?i)\n\s*<PAGE>")
 
 _ENTITIES_ALT = build_alternation(("&#9;", "&nbsp;", "&#160;"), auto_escape=True)

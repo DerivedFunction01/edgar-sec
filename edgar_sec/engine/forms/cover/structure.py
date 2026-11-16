@@ -9,6 +9,9 @@ from dataclasses import dataclass
 from enum import Enum
 
 from edgar_sec.engine.tables.toc.patterns import (
+    ITEM_NUMBER_PATTERN,
+    RE_ITEM_EXACT,
+    RE_ITEM_INLINE,
     RE_ITEM_REFERENCE,
     RE_PART_REFERENCE,
 )
@@ -92,13 +95,6 @@ RE_PART = re.compile(
 # Real ITEM headings carry a title-case title after an optional separator;
 # TOC rows fail on dot leaders or a trailing page number. A decimal number
 # fused to its title ("Item 2.01Resource ...") is an explicit first alternative.
-_ITEM_NUMBER_PATTERN = r"(?:\d+\.\d{1,2}(?=[A-Z])|\d+[A-Z]?(?:\.\d{1,2})?\b)"
-RE_ITEM_EXACT = re.compile(
-    rf"^\s*ITEMS?\s+{_ITEM_NUMBER_PATTERN}\s*(?:[.:;\-\u2013\u2014]+\s*)?"
-    r"(?:(?-i:[A-Z])[A-Za-z0-9,&'()\s-]*)?[:.]?\s*"
-    r"(?:\(\s*continued\s*\))?\s*$",
-    re.IGNORECASE,
-)
 
 # Anchored section headings for exact structure matching. Requires line-leading
 # structural tokens; disallows leading prose or filler words.
@@ -107,11 +103,11 @@ _PART_HEADING_RE = re.compile(
     re.IGNORECASE,
 )
 _ITEM_HEADING_RE = re.compile(
-    rf"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+({_ITEM_NUMBER_PATTERN})(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    rf"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+({ITEM_NUMBER_PATTERN})(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
     re.IGNORECASE,
 )
 _PART_INLINE_RE = re.compile(r"\bPART\s+([IVXLCDM]+|\d+)\b", re.IGNORECASE)
-_ITEM_INLINE_RE = re.compile(r"\bITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b", re.IGNORECASE)
+_ITEM_INLINE_RE = RE_ITEM_INLINE
 _SECTION_REFERENCE_RE = re.compile(
     r"\b(?:PART|ITEM)\s+(?:[IVX]+|[0-9]+[A-Z]?)\b\s*(.*)",
     re.IGNORECASE,

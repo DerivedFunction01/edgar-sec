@@ -35,6 +35,7 @@ from edgar_sec.foundation.text.evidence import (
     CompiledEvidencePack,
     score_unit,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 # Bounded forward search window after COVER_END/TOC_END.
 _BODY_START_SEARCH_WINDOW = 300
@@ -42,7 +43,7 @@ _BODY_START_SEARCH_WINDOW = 300
 _HEADING_PROSE_WINDOW = 25
 # Minimum lexical score to accept a substantive body start.
 _MIN_BODY_SCORE = 2
-_WHITESPACE_RE = re.compile(r"\s+")
+_WHITESPACE_RE = RE_WHITESPACE
 
 
 def _next_nonblank_line(lines: list[str], start: int) -> tuple[int, str] | None:

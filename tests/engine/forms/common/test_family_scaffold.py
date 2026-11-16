@@ -1,5 +1,5 @@
 """Pins for the homed form-family scaffold helpers.
-Each pin records the legacy per-family behavior the parameterized home must
+Each pin records the per-family behavior the parameterized home must
 reproduce: the five empty reports, the 13F none-checked total, the rest.
 """
 

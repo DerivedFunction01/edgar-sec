@@ -8,12 +8,13 @@ from collections.abc import Sequence
 from edgar_sec.engine.forms.common.signatures.names import (
     extract_clean_signatory_name,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE_SPLIT
 
 _SIGNATURE_LINE_RE = re.compile(
     r"(?:/s/|signature:)\s*(?:/s/\s*)?([A-Za-z\.\,\s\-]+)", re.IGNORECASE
 )
 _STRIP_SLASH_S_RE = re.compile(r"^.*?/s/\s*")
-_WHITESPACE_SPLIT_RE = re.compile(r"\t+|\s{2,}")
+_WHITESPACE_SPLIT_RE = RE_WHITESPACE_SPLIT
 
 
 def extract_columnar_signature_and_date(

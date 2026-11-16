@@ -14,6 +14,8 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
+    PERIOD_ENDED_RE,
+    REPORTING_PERIOD_CAPTION_RE,
     YEAR_TOKEN_PATTERN,
 )
 
@@ -36,8 +38,8 @@ _FILE_NUMBER_ICA_RE = re.compile(
 _NAMED_DATE_RE = re.compile(
     rf"(?:{MONTH_PATTERN}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN})", re.IGNORECASE
 )
-_PERIOD_ENDED_RE = re.compile(r"(?:period|fiscal year) ended\s+", re.IGNORECASE)
-_REPORTING_PERIOD_RE = re.compile(r"date of reporting period\s*:?\s*", re.IGNORECASE)
+_PERIOD_ENDED_RE = PERIOD_ENDED_RE
+_REPORTING_PERIOD_RE = REPORTING_PERIOD_CAPTION_RE
 _DASHES_RE = re.compile(r"^[-_=.\s]+$")
 _NAME_LOOKBACK_LINES = 12
 

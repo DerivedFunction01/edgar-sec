@@ -1,14 +1,7 @@
 """Scanner routing amount, scale, and percent recognition through its homes.
-
-Flags a private money-amount recognizer (a loose amount core, a comma-grouped
-figure, or a decimal figure spelled as pattern text) outside
-`engine/tables/numeric_cells.py`, a private scale vocabulary (a scale-word
-alternation or an `in <scale>` label spelled as pattern text) outside
-`engine/tables/patterns.py`, and a private percent recognizer (a digit core
-with a `%` tail, or a percent-sign alternation spelled as pattern text)
-outside `engine/forms/common/numbers.py`. Allows imports and compositions
-of the homed patterns anywhere; the homes themselves are exempt, as are
-the sanctioned sites below (each carries its ruling).
+Flags a private amount, scale, or percent recognizer spelled as pattern
+text outside its home; allows homed imports and compositions. Exempt:
+the homes themselves and the sanctioned sites below (each has its ruling).
 """
 
 from __future__ import annotations
@@ -16,7 +9,7 @@ from __future__ import annotations
 import re
 
 from .base import Scanner, ScannerFinding
-from .lines import finding, scan_text_rule
+from .lines import Rule, finding, scan_text_rule
 
 # The loose amount core in either digit spelling, with its decimal tail:
 # `[0-9][0-9,]*(?:\.[0-9]+)?`, `\d[\d,]*(\.\d+)?`, `[0-9][0-9,]{2,}...`.
@@ -140,7 +133,7 @@ _SANCTIONED_SITES = (
         "edgar_sec/engine/forms/beneficial_ownership/item_subsections.py",
         "_RE_PERCENT_OF_CLASS",
     ),
-    ("edgar_sec/engine/forms/ownership/relationship_box.py", "_TEN_PERCENT_OWNER_RE"),
+    ("edgar_sec/engine/forms/ownership/relationship_box.py", r"10\s*%\s*Owner"),
     ("edgar_sec/engine/tables/ascii_html/cell.py", "_UNIT_RE"),
     ("edgar_sec/foundation/text/grammar.py", "RE_WORD_TOKEN"),
     ("edgar_sec/engine/forms/form144/patterns.py", "BOX_3C_UNITS_RE"),
@@ -165,8 +158,38 @@ _PERCENT_HINT = (
 )
 
 
-def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
-    if any(path == site and fragment in line for site, fragment in _SANCTIONED_SITES):
+_DEF_START_RE = re.compile(r"^\s*[A-Za-z_]\w*\s*(?::[^=\n]+)?=(?!=)")
+
+
+class _DefinitionLines:
+    """The nearest preceding definition line in each scanned file.
+
+    Sanctions name a definition, so a flagged core spelled on a
+    continuation line is tested against its definition's line too.
+    """
+
+    def __init__(self) -> None:
+        self._path = ""
+        self._definition = ""
+
+    def current(self, path: str, line: str) -> str:
+        if path != self._path:
+            self._path = path
+            self._definition = ""
+        if _DEF_START_RE.match(line):
+            self._definition = line
+        elif line.strip() and not line[:1].isspace():
+            self._definition = ""
+        return self._definition
+
+
+def _rule(
+    path: str, number: int, line: str, definition: str = ""
+) -> ScannerFinding | None:
+    if any(
+        path == site and (fragment in line or fragment in definition)
+        for site, fragment in _SANCTIONED_SITES
+    ):
         return None
     if (
         _MONEY_CORE_RE.search(line)
@@ -207,9 +230,18 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     return None
 
 
+def _make_rule() -> Rule:
+    definitions = _DefinitionLines()
+
+    def rule(path: str, number: int, line: str) -> ScannerFinding | None:
+        return _rule(path, number, line, definitions.current(path, line))
+
+    return rule
+
+
 def scan_money_patterns() -> list[ScannerFinding]:
     """Flag private money, scale, and percent recognizers outside their homes."""
-    return scan_text_rule(rule=_rule, prefixes=_ALLOWED_PREFIXES)
+    return scan_text_rule(rule=_make_rule(), prefixes=_ALLOWED_PREFIXES)
 
 
 SCANNER = Scanner(

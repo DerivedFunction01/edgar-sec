@@ -45,8 +45,8 @@ _FOLD_QUOTES_TRANS = str.maketrans(FOLD_QUOTES)
 
 _RE_STRIP_ZERO_WIDTH = re.compile(f"[{''.join(STRIP_ZERO_WIDTH)}]+")
 _RE_NORMALIZE_SPACE = re.compile(f"[{''.join(NORMALIZE_TO_SPACE)}]")
-_RE_MULTI_BLANKS = re.compile(r"\n{3,}")
-_RE_MULTI_SPACES = re.compile(r"[ \t]+")
+RE_MULTI_BLANKS = re.compile(r"\n{3,}")
+RE_MULTI_SPACES = re.compile(r"[ \t]+")
 
 
 def fold_smart_quotes(text: str) -> str:
@@ -68,19 +68,21 @@ def collapse_whitespace(text: str) -> str:
     """Collapse contiguous horizontal whitespace into single spaces and strip leading/trailing."""
     if not text:
         return ""
-    return _RE_MULTI_SPACES.sub(" ", text).strip()
+    return RE_MULTI_SPACES.sub(" ", text).strip()
 
 
 def collapse_excessive_blank_lines(text: str) -> str:
     """Collapse sequences of three or more newlines into double newlines (paragraph separator)."""
     if not text:
         return ""
-    return _RE_MULTI_BLANKS.sub("\n\n", text)
+    return RE_MULTI_BLANKS.sub("\n\n", text)
 
 
 __all__ = [
     "FOLD_QUOTES",
     "NORMALIZE_TO_SPACE",
+    "RE_MULTI_BLANKS",
+    "RE_MULTI_SPACES",
     "STRIP_ZERO_WIDTH",
     "collapse_excessive_blank_lines",
     "collapse_whitespace",

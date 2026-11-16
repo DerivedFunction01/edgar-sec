@@ -45,7 +45,7 @@ from .merger import (
 )
 from .paths import MetadataPaths, resolve_run_paths
 from .planner import build_plan, utc_now_iso, write_plan
-from .refresh import branch_tip
+from .refresh import _base_members, branch_tip
 from .roster import Roster, write_roster_rows
 from .sec_client import SubmissionsClient
 from .snapshot import resolve_snapshot_parts
@@ -182,21 +182,6 @@ def reconcile_roster_path(
     """Transient destination for a base-and-range-specific reconcile roster."""
     key = sha256_text(f"reconcile:{base_snapshot_id}:{','.join(affected)}")
     return metadata.transient_dir(f"reconcile-{key}") / "ciks.parquet"
-
-
-def _base_members(
-    metadata: MetadataPaths, snapshot_id: str, candidates: list[str]
-) -> set[str]:
-    """Which candidate CIKs the base snapshot already holds a row for."""
-    if not candidates:
-        return set()
-    sources, _from_parts = base_cik_sources(metadata, snapshot_id)
-    con = connect()
-    try:
-        rows = con.execute(_MEMBER_QUERY, [_path_list(sources), candidates]).fetchall()
-    finally:
-        con.close()
-    return {str(row[0]) for row in rows}
 
 
 def reconcile(

@@ -6,7 +6,7 @@ The non-alnum and whitespace recognizers live in
 from __future__ import annotations
 
 from edgar_sec.engine.forms.cover.boundary import corridor
-from edgar_sec.engine.forms.cover.toc import analysis, patterns
+from edgar_sec.engine.forms.cover.toc import analysis, finder, patterns
 
 
 def test_toc_patterns_no_longer_defines_private_copies() -> None:
@@ -23,7 +23,7 @@ def test_normalize_for_matching_verdicts() -> None:
 
 
 def test_line_offset_binding_is_the_corridor_home() -> None:
-    assert analysis._line_offset is corridor.line_offset
+    assert finder.line_offset is corridor.line_offset
 
 
 def test_line_offset_verdicts() -> None:

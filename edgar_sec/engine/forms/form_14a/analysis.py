@@ -22,6 +22,7 @@ from edgar_sec.engine.forms.cover.registrant import (
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE_GAP
 
 _CLASSIFICATION_KEYS = (
     "classification_preliminary",
@@ -53,7 +54,7 @@ _PROPOSAL_HEADING_RE = re.compile(
 )
 _COMP_TABLE_CAPTION_RE = re.compile(r"summary compensation table", re.IGNORECASE)
 _COMP_TABLE_HEADER_RE = re.compile(r"name and principal position", re.IGNORECASE)
-_CELL_SPLIT_RE = re.compile(r"\s{2,}")
+_CELL_SPLIT_RE = RE_WHITESPACE_GAP
 _COMP_TABLE_WINDOW = 120
 _MIN_COMP_NUMERIC_CELLS = 3
 

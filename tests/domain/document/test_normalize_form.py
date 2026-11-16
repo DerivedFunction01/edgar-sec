@@ -1,7 +1,6 @@
 """Pins for the homed document helpers and their diverged former copies.
-normalize_form and normalized_suffix each had one identical pair, now homed;
-the two diverged _normalize_form copies keep their own behavior, pinned here
-as the priced delta a future cure must not silently absorb.
+normalize_form and normalized_suffix are homed; the diverged _normalize_form
+copies keep their behavior, pinned as the delta a cure must not absorb.
 """
 
 from __future__ import annotations

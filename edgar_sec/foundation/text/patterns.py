@@ -12,6 +12,27 @@ RE_COLUMN_GAP = re.compile(r"[ \t]{2,}")
 PAGE_NUMBER_CORE = rf"(?:\d+|{ROMAN_NUMERAL_PATTERN}\b)"
 RE_PAGE_NUMBER_SUFFIX = re.compile(rf"{PAGE_NUMBER_CORE}\s*$", re.IGNORECASE)
 RE_PAGE_REFERENCE = re.compile(r"\bpage\s*(?:no\.?\s*)?[A-Z]?-?\d+", re.IGNORECASE)
+
+# Amount fragments shared across layers: the engine amount homes and the
+# domain evidence recognizers compose from these spellings instead of
+# re-deriving them (the layer wall bars domain -> engine imports).
+# A comma-grouped figure: a 1-3 digit head with comma triples.
+GROUPED_AMOUNT_CORE = r"\d{1,3}(?:,\d{3})+"
+# The digit/comma/dot class of a loose figure run; a run is one head digit
+# plus a quantified tail of this class.
+LOOSE_FIGURE_CLASS = r"[\d,.]"
+# The full-word scale vocabulary of a float value ("500 million dollars"):
+# singular thousand/million/billion only — no plurals, no abbreviations,
+# no trillion. Suffix tokens and statement scale labels are wider
+# vocabularies with their own homes in the engine.
+FLOAT_SCALE_ALT = build_alternation(
+    ["billion", "million", "thousand"], auto_escape=True
+)
+# The section-reference keyword terms, spelled as the foundation line
+# healer uses them: the full Item term, and the Part keyword prefix —
+# each wider consumer (the toc home) keeps its own numeral grammar.
+ITEM_REFERENCE_CORE = r"Item\s+\d+"
+PART_REFERENCE_CORE = r"Part\s+"
 RE_GRAMMATICAL_COMMA = re.compile(r"[a-zA-Z],\s+[a-zA-Z]")
 RE_SENTENCE_TERMINAL = re.compile(r"[.!?][\"\x27\u201d\u2019)]?\s*$")
 RE_TERMINAL_BOUNDARY = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
@@ -47,7 +68,12 @@ RE_STRUCTURAL_SGML = re.compile(
 
 __all__ = [
     "CONTINUATION_PUNCTUATION",
+    "FLOAT_SCALE_ALT",
+    "GROUPED_AMOUNT_CORE",
+    "ITEM_REFERENCE_CORE",
+    "LOOSE_FIGURE_CLASS",
     "PAGE_NUMBER_CORE",
+    "PART_REFERENCE_CORE",
     "RE_COLUMN_GAP",
     "RE_DOT_LEADER",
     "RE_FILL_IN_RUN",

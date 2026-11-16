@@ -6,6 +6,7 @@ directory, so a worker can be handed a copy and reassigned unchanged.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -34,6 +35,9 @@ INPUT_MANIFEST_FILE = "input_manifest.json"
 ASSIGNMENTS_DIR = "assignments"
 RECEIPT_FILE = "receipt.json"
 FINGERPRINTS_FILE_NAME = "fingerprints.parquet"
+
+#: The SEC bulk-archive member name for one CIK's main document file.
+CIK_MEMBER_RE = re.compile(r"^CIK(\d{10})\.json$")
 
 PLANS_DIR = foundation_paths.PLANS_DIR
 CHUNKS_DIR = foundation_paths.CHUNKS_DIR

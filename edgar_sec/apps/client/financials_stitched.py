@@ -10,7 +10,11 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass
 
-from edgar_sec.engine.xbrl.solve.assembly import SeriesBreak, StitchedSeries
+from edgar_sec.engine.xbrl.solve.assembly import (
+    SeriesBreak,
+    StitchedSeries,
+    _key_matches,
+)
 from edgar_sec.engine.xbrl.solve.stitched import StitchedValue
 from edgar_sec.engine.xbrl.solve.unaccumulate import (
     DerivationRefusal,
@@ -100,30 +104,3 @@ def _value_order(item: StitchedValue) -> tuple[object, ...]:
         item.unit or "",
         tuple(sorted(item.dimensions.items())),
     )
-
-
-def _key_matches(
-    item: StitchedValue,
-    concept_qname: str,
-    start_date: str | None,
-    end_date: str | None,
-    instant_date: str | None,
-    unit: str | None,
-    dimensions: Mapping[str, str] | None,
-) -> bool:
-    if item.concept_qname != concept_qname:
-        return False
-    if instant_date is not None:
-        if item.period_type != "instant" or item.instant_date != instant_date:
-            return False
-    elif (
-        item.period_type != "duration"
-        or item.start_date != start_date
-        or item.end_date != end_date
-    ):
-        return False
-    if unit is not None and item.unit != unit:
-        return False
-    if dimensions is None:
-        return not item.dimensions
-    return dict(item.dimensions) == dict(dimensions)

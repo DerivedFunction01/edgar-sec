@@ -17,9 +17,11 @@ from edgar_sec.apps.client.operator_kit import (
     error_result,
     gather_options as _generic,
     help_field as _f,
+    json_native,
     key_value_result,
     make_module_getattr,
     make_register,
+    make_spec,
 )
 from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
 
@@ -131,17 +133,6 @@ class LocalSearchSeedOptions(LocalSearchOptions):
         "Either seed (the hits become the named set) or intersect (the "
         "named/current set is narrowed to the hits). Any other value refuses.",
     )
-
-
-def json_native(value: Any) -> Any:
-    """Recursively convert a value to JSON-native shapes."""
-    if isinstance(value, dict):
-        return {str(k): json_native(v) for k, v in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [json_native(v) for v in value]
-    if isinstance(value, Path):
-        return str(value)
-    return value
 
 
 def absent_result(kind: str, title: str, message: str, data=None):
@@ -666,19 +657,10 @@ _SPEC_ROWS = (
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator import OperationSpec
+    spec = make_spec()
 
     return tuple(
-        OperationSpec(
-            id=op_id,
-            label=label,
-            options_type=options_type,
-            effect=effect,
-            requires="none",
-            result_kind=kind,
-            hints=("session_summary",),
-            executor=executor,
-        )
+        spec(op_id, label, options_type, effect, kind, executor)
         for op_id, label, options_type, executor, effect, kind in _SPEC_ROWS
     )
 

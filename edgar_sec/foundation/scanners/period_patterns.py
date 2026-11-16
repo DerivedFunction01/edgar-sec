@@ -9,12 +9,12 @@ from __future__ import annotations
 import re
 
 from .base import Scanner, ScannerFinding
-from .lines import finding, scan_text_rule
+from .lines import Rule, finding, scan_text_rule
 
 # A period-phrase recognizer spelled as pattern text: the ended alternation,
 # a single ended phrase, or a reporting-period caption shape.
 _PERIOD_RE = re.compile(
-    r"(?:\(\?:period\|fiscal year\|quarter\) ended"
+    r"(?:\(\?:period\|fiscal year(?:\|quarter)?\) ended"
     r"|period ended|fiscal year ended|quarter ended"
     r"|date of reporting period|reporting period[\s\\:]"
     r"|distribution period)",
@@ -95,9 +95,36 @@ _TABLE_HINT = (
 )
 
 
-def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
+_DEF_START_RE = re.compile(r"^\s*[A-Za-z_]\w*\s*(?::[^=\n]+)?=(?!=)")
+
+
+class _DefinitionLines:
+    """The nearest preceding definition line in each scanned file.
+
+    Sanctions name a definition, so a flagged core spelled on a
+    continuation line is tested against its definition's line too.
+    """
+
+    def __init__(self) -> None:
+        self._path = ""
+        self._definition = ""
+
+    def current(self, path: str, line: str) -> str:
+        if path != self._path:
+            self._path = path
+            self._definition = ""
+        if _DEF_START_RE.match(line):
+            self._definition = line
+        elif line.strip() and not line[:1].isspace():
+            self._definition = ""
+        return self._definition
+
+
+def _rule(
+    path: str, number: int, line: str, definition: str = ""
+) -> ScannerFinding | None:
     if any(
-        path == site_path and fragment in line
+        path == site_path and (fragment in line or fragment in definition)
         for site_path, fragment in _SANCTIONED_SITES
     ):
         return None
@@ -129,7 +156,14 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
             "private total-row recognizer outside its home",
             _TOTAL_HINT,
         )
-    if path not in _WHITESPACE_HOMES and _WHITESPACE_RE.search(line):
+    # A literal feeding .join( is a construction separator, not a
+    # private collapse recognizer.
+    whitespace = _WHITESPACE_RE.search(line)
+    if (
+        path not in _WHITESPACE_HOMES
+        and whitespace is not None
+        and not line[whitespace.end() :].startswith(".join(")
+    ):
         return finding(
             "whitespace-patterns",
             path,
@@ -148,9 +182,18 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     return None
 
 
+def _make_rule() -> Rule:
+    definitions = _DefinitionLines()
+
+    def rule(path: str, number: int, line: str) -> ScannerFinding | None:
+        return _rule(path, number, line, definitions.current(path, line))
+
+    return rule
+
+
 def scan_period_patterns() -> list[ScannerFinding]:
     """Flag private period, total, whitespace, and table-tag recognizers."""
-    return scan_text_rule(rule=_rule)
+    return scan_text_rule(rule=_make_rule())
 
 
 SCANNER = Scanner(

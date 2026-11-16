@@ -25,7 +25,10 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node, read_pointer
+from edgar_sec.infra.storage.dag.publication import (
+    publish_node,
+    snapshot_tip as feed_tip,
+)
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 from edgar_sec.infra.storage.parquet import read_parquet_table, write_parquet_table
 
@@ -48,14 +51,6 @@ class FeedPublishResult:
     tip_before: str | None
     new_rows: int
     total_rows: int
-
-
-def feed_tip(paths: AcquisitionPaths, branch: str) -> str | None:
-    """The branch tip snapshot id, or ``None`` when nothing is published."""
-    if not paths.catalog_file.is_file():
-        return None
-    pointer = read_pointer(paths.snapshots_root, branch)
-    return str(pointer["snapshot_id"]) if pointer else None
 
 
 def active_part_paths(

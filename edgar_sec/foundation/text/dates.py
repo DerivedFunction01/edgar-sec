@@ -9,6 +9,7 @@ from functools import lru_cache
 import re
 
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 MONTH_NAMES = (
     "january",
@@ -66,7 +67,6 @@ YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
 NUMERIC_DATE_RE = re.compile(r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b")
 ISO_DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
-_WHITESPACE_RE = re.compile(r"\s+")
 
 TABLE_YEAR_RE = re.compile(
     build_alternation(
@@ -134,6 +134,23 @@ PERIOD_SUBHEADING_PAT = build_alternation(
 )
 PERIOD_SUBHEADING_RE = re.compile(
     rf"^\s*(?:{PERIOD_SUBHEADING_PAT})\s*:?\s*$", re.IGNORECASE
+)
+
+# Period-caption forms. PERIOD_ENDED_PAT is the composition fragment for
+# caption-anchored variants; the compiled forms below are the search and
+# capture shapes consumers anchor on, each kept to its attested wording.
+PERIOD_ENDED_PAT = r"(?:period|fiscal year|quarter) ended"
+PERIOD_ENDED_RE = re.compile(r"(?:period|fiscal year) ended\s+", re.IGNORECASE)
+REPORTING_PERIOD_FROM_PAT = r"reporting period from\s+"
+REPORTING_PERIOD_CAPTION_RE = re.compile(
+    r"date of reporting period\s*:?\s*", re.IGNORECASE
+)
+REPORTING_PERIOD_LABEL_RE = re.compile(r"reporting period:\s*(.*)", re.IGNORECASE)
+REPORTING_PERIOD_VALUE_RE = re.compile(
+    r"date of reporting period:\s*(.+)", re.IGNORECASE
+)
+REPORT_QUARTER_ENDED_RE = re.compile(
+    r"Report for the (?:Calendar Year or )?Quarter Ended:?\s*(.+)", re.IGNORECASE
 )
 
 DEFAULT_YEAR_UPPER_BOUND = max(2100, datetime.now(UTC).year + 50)
@@ -487,7 +504,7 @@ def parse_date(
     reference_year: int | None = None,
 ) -> ParsedDate | None:
     """Parse a complete date string against known formats."""
-    normalized = _WHITESPACE_RE.sub(" ", text).strip()
+    normalized = RE_WHITESPACE.sub(" ", text).strip()
     if not normalized:
         return None
     if formats is ALL_SEC_DATE_FORMATS and reference_year is None:
@@ -595,7 +612,7 @@ def parse_numeric_year(
 
 def contains_date(text: str, *, include_partial: bool = False) -> bool:
     """Return whether text contains a recognizable SEC date."""
-    normalized = _WHITESPACE_RE.sub(" ", text).strip()
+    normalized = RE_WHITESPACE.sub(" ", text).strip()
     if not normalized:
         return False
     if any(fmt.pattern.search(normalized) for fmt in SEC_DATE_FORMATS):
@@ -710,8 +727,15 @@ __all__ = [
     "NUMERIC_YEAR_RE",
     "ORDINAL_SUFFIX_PATTERN",
     "ORDINAL_SUFFIX_RE",
+    "PERIOD_ENDED_PAT",
+    "PERIOD_ENDED_RE",
     "PERIOD_SUBHEADING_PAT",
     "PERIOD_SUBHEADING_RE",
+    "REPORTING_PERIOD_CAPTION_RE",
+    "REPORTING_PERIOD_FROM_PAT",
+    "REPORTING_PERIOD_LABEL_RE",
+    "REPORTING_PERIOD_VALUE_RE",
+    "REPORT_QUARTER_ENDED_RE",
     "RE_DATE_OR_YEAR",
     "RE_FULL_DATE",
     "SEC_DATE_FORMATS",

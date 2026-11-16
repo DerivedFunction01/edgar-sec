@@ -1,13 +1,7 @@
 """Scanner routing page-reference recognition through its one home.
-
-``foundation.text.patterns`` owns the page-reference vocabulary
-(``RE_PAGE_REFERENCE`` over ``PAGE_NUMBER_CORE``); a module keeping its own
-page-reference core yields a second, drifting answer to what a reference is.
-The document page-marker vocabulary (page-number extraction, "page N of M"
-shapes, whole-line page labels) is a different intent and is not flagged:
-its shapes are skipped below, and the inventory's cousin dispositions
-(§d3: models.py whole-line and extraction shapes, the items detector's
-non-prose test, the ownership boilerplate disjunct) stay legal.
+Flags a private page-reference core outside ``foundation.text.patterns``.
+Allows homed compositions; the page-marker vocabulary (extraction,
+"page N of M" shapes, whole-line labels) is a different intent, skipped.
 """
 
 from __future__ import annotations
@@ -26,9 +20,8 @@ _LETTER_CLASS = re.compile(r"\[A-Z\]")
 _DASH_DIGIT = re.compile(r"[-–—](?:\\s)?\*?(?:\\d|\[0-9)")
 
 # Cousin sites dispositioned as distinct intents by the finalization
-# inventory (§d3), identified by file and the core fragment they carry:
-# the ownership boilerplate disjunct (a page term inside a boilerplate
-# alternation, not a reference recognizer).
+# inventory (§d3), by file and core fragment: the ownership boilerplate
+# disjunct (a page term inside a boilerplate alternation).
 _COUSIN_SITES = (("edgar_sec/engine/forms/ownership/patterns.py", "page"),)
 
 # The module that owns the page-reference vocabulary.
@@ -40,9 +33,32 @@ _HINT = (
 )
 
 
+def _is_boilerplate_branch(line: str) -> bool:
+    """Whether a page core is one branch of a boilerplate alternation:
+    the literal alternates it with non-page pattern branches."""
+    quotes = [index for index, char in enumerate(line) if char in "\"'"]
+    span = line[quotes[0] : quotes[-1] + 1] if len(quotes) >= 2 else line
+    if "|" not in span:
+        return False
+    branches = span.split("|")
+    has_core = any(
+        _PLAIN_CORE.search(branch) or _STAR_CORE.search(branch) for branch in branches
+    )
+    has_boilerplate = any(
+        "page" not in branch.lower() and ("\\" in branch or "{" in branch)
+        for branch in branches
+    )
+    return has_core and has_boilerplate
+
+
 def _is_cousin(path: str, line: str) -> bool:
     """Whether the line is an inventory-dispositioned cousin shape."""
     if any(path == site and fragment in line for site, fragment in _COUSIN_SITES):
+        return True
+    # The boilerplate disjunct is a shape, not a file: a page core
+    # alternated with non-page boilerplate terms is the same cousin
+    # wherever it sits.
+    if _is_boilerplate_branch(line):
         return True
     # An optional page prefix ((?:page ...) heads a line-classification
     # shape, not a reference: the page word is not required.
@@ -74,8 +90,10 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     plain = _PLAIN_CORE.search(line) or _STAR_CORE.search(line)
     if plain is not None:
         rest = line[plain.end() :]
-        # "page N of M" is page-marker extraction, a different intent.
-        if "of\\s" in rest or "of[ \\t]" in rest or rest.startswith("of "):
+        # "page N of M" is page-marker extraction, a different intent;
+        # authors spell the "of" in either case (OF\s+ included).
+        lowered = rest.lower()
+        if "of\\s" in lowered or "of[ \\t]" in lowered or lowered.startswith("of "):
             return None
         return finding(
             "page-patterns",

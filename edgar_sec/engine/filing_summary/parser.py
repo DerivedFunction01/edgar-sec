@@ -23,7 +23,7 @@ from edgar_sec.domain.document_inventory.models import (
     inventory_entry_id,
 )
 from edgar_sec.domain.sec_urls import archives_url, full_submission_url_for
-from edgar_sec.engine.forms.common.extraction import local_name as _local_name
+from edgar_sec.engine.forms.common.extraction import local_name
 from edgar_sec.foundation.hashing import sha256_bytes
 
 __all__ = ["ENUMERATOR_FINGERPRINT", "parse_filing_summary", "parse_xbrl_package"]
@@ -97,12 +97,12 @@ def _summary_sections(root: ET.Element) -> list[str] | None:
     inputs: list[str] | None = None
     supplemental: list[str] = []
     for element in root.iter():
-        tag = _local_name(element.tag)
+        tag = local_name(element.tag)
         if tag not in {"InputFiles", "SupplementalFiles"}:
             continue
         names = []
         for child in element:
-            if _local_name(child.tag) != "File":
+            if local_name(child.tag) != "File":
                 continue
             name = (child.text or "").strip() or (child.get("original") or "").strip()
             if name:

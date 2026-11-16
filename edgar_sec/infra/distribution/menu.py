@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import contextlib
-import io
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -24,6 +22,7 @@ from edgar_sec.foundation.runtime.render import (
     RenderComponent,
     render_output,
 )
+from edgar_sec.infra.storage.dag.menu import _rendered
 
 from .cli import cmd_commands, cmd_export, cmd_import, cmd_list, cmd_worker
 from .discovery import discover_bundles, resolve_bundle_choice
@@ -74,13 +73,6 @@ class DistribSession:
             return None
         self.work_id = chosen.value.work_id
         return self.work_id
-
-
-def _rendered(components: list[RenderComponent], title: str = "") -> str:
-    buffer = io.StringIO()
-    with contextlib.redirect_stdout(buffer):
-        render_output(components, title=title)
-    return buffer.getvalue().removesuffix("\n")
 
 
 def render_distrib_dashboard(

@@ -15,7 +15,11 @@ from edgar_sec.domain.forms.families.form_npx.models import (
 )
 from edgar_sec.engine.forms.common.entities import is_valid_cusip
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.dates import (
+    REPORTING_PERIOD_LABEL_RE,
+    REPORTING_PERIOD_VALUE_RE,
+    parse_date,
+)
 
 _FILE_NUMBER_RE = re.compile(
     r"Investment Company Act file (?:number|no\.)\s*:?\s*([0-9][0-9-]*)",
@@ -24,8 +28,8 @@ _FILE_NUMBER_RE = re.compile(
 _FILE_NUMBER_FALLBACK_RE = re.compile(
     r"file (?:number|no\.)\s*:?\s*(811-[0-9-]+)", re.IGNORECASE
 )
-_PERIOD_RE = re.compile(r"Date of reporting period:\s*(.+)", re.IGNORECASE)
-_PERIOD_LABEL_RE = re.compile(r"reporting period:\s*(.*)", re.IGNORECASE)
+_PERIOD_RE = REPORTING_PERIOD_VALUE_RE
+_PERIOD_LABEL_RE = REPORTING_PERIOD_LABEL_RE
 _MEETING_DATE_RE = re.compile(r"Meeting Date:?\s*(\S+)")
 _CUSIP_LABEL_RE = re.compile(r"CUSIP/CINS:\s*(\S+)")
 _SECURITY_TOKEN_RE = re.compile(r"Security\s+(\S+)")

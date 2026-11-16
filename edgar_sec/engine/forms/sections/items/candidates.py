@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from edgar_sec.engine.document.page_markers.detector import is_page_marker_line
 from edgar_sec.engine.forms.cover.structure import is_preceding_continuation
 from edgar_sec.engine.forms.sections.models import CandidateKind, SectionCandidate
+from edgar_sec.engine.tables.toc.patterns import RE_ITEM_GROUPED, RE_ITEM_HEADING
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import MONTH_NAME_RE
 
@@ -181,18 +182,8 @@ def _match_composite_heading(
     return None
 
 
-_RE_ITEM_SINGLE = re.compile(
-    r"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
-    re.IGNORECASE,
-)
-
-_CONJUNCTION = build_alternation(
-    [r",\s*(?:and|&)", r"and", r"&", r","], auto_escape=False
-)
-_RE_ITEM_GROUPED = re.compile(
-    rf"\bITEMS?\s+(\d+[A-Z]?(?:(?:\s*{_CONJUNCTION}\s*(?:ITEMS?\s+)?)\d+[A-Z]?)+)\b",
-    re.IGNORECASE,
-)
+_RE_ITEM_SINGLE = RE_ITEM_HEADING
+_RE_ITEM_GROUPED = RE_ITEM_GROUPED
 
 _RE_PAREN_LABEL = re.compile(r"^\((\d{1,2})\)\s*(.+)$")
 _RE_NUMERIC_RUN_IN = re.compile(r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2}[A-Z]?)\.\s+(.+)$")

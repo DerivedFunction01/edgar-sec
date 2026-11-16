@@ -16,6 +16,13 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
+from edgar_sec.engine.forms.common.entities import (
+    COMMISSION_FILE_CAPTION_RE,
+    COMMISSION_FILE_NUMBER_RE,
+)
+from edgar_sec.engine.forms.common.family_scaffold import (
+    name_before_label as _name_before_label,
+)
 from edgar_sec.engine.forms.cover.registrant import (
     extract_commission_file_number,
     parse_registrant_identity,
@@ -27,20 +34,21 @@ from edgar_sec.engine.forms.sections.items.detector import (
 )
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.dates import (
+    REPORTING_PERIOD_FROM_PAT,
+    YEAR_TOKEN_SEARCH_RE,
+)
 
 _RULE_KEYS = ("rule_13p_1", "rule_13q_1")
 _ITEM_IDS = tuple(d.item for d in FORM_SD_ITEMS)
 
-_FILE_NUMBER_RE = re.compile(
-    r"commission file (?:numbers?|no\.?)[:\s]*([0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+)",
-    re.IGNORECASE,
-)
-_FILE_CAPTION_RE = re.compile(r"commission file (?:numbers?|no\.?)", re.IGNORECASE)
+_FILE_NUMBER_RE = COMMISSION_FILE_NUMBER_RE
+_FILE_CAPTION_RE = COMMISSION_FILE_CAPTION_RE
 _REGISTRANT_LABEL_RE = re.compile(r"exact name of (the )?registrant", re.IGNORECASE)
 _GENERIC_NAME_LABEL_RE = re.compile(r"exact name of", re.IGNORECASE)
 _PERIOD_13P1_RE = re.compile(
-    r"rule 13p-1.{0,200}?reporting period from\s+", re.IGNORECASE | re.DOTALL
+    rf"rule 13p-1.{{0,200}}?{REPORTING_PERIOD_FROM_PAT}",
+    re.IGNORECASE | re.DOTALL,
 )
 _PERIOD_13Q1_RE = re.compile(
     r"rule 13q-1.{0,200}?fiscal year ended\s+", re.IGNORECASE | re.DOTALL
@@ -165,28 +173,6 @@ def _name_from_title_block(lines: list[str]) -> str | None:
         name = parse_registrant_identity(stripped).name
         if name is not None:
             return name
-    return None
-
-
-def _name_before_label(lines: list[str], label_re: re.Pattern[str]) -> str | None:
-    for index, line in enumerate(lines):
-        match = label_re.search(line)
-        if match is None:
-            continue
-        prefix = line[: match.start()].strip(" ,-(")
-        if len(prefix) >= 3:
-            name = parse_registrant_identity(prefix).name
-            if name is not None:
-                return name
-        cursor = index
-        for _ in range(4):
-            previous = previous_content_line(lines, cursor)
-            if previous is None:
-                break
-            cursor, text = previous
-            name = parse_registrant_identity(text).name
-            if name is not None:
-                return name
     return None
 
 

@@ -9,12 +9,11 @@ from __future__ import annotations
 import re
 
 from .base import Scanner, ScannerFinding
-from .lines import finding, scan_text_rule
+from .lines import Rule, finding, scan_text_rule
 
 # The caption cores, spelled as they appear in pattern source: the keyword,
 # a whitespace run, and a digit core (a \d, a capture, or a digit-led class).
-# No leading \b: in source text the keyword usually follows a literal \b or
-# a quote, and a boundary assertion would miss the \b-prefixed spellings.
+# No leading \b: source keywords usually follow a literal \b or a quote.
 _NOTE_CORE = re.compile(r"NOTE(?:S\?|S)?\\s\+(?:\\d|\()", re.IGNORECASE)
 _ITEM_CORE = re.compile(r"ITEM(?:S\?|S)?\\s\+(?:\\d|\(|\[0-9)", re.IGNORECASE)
 
@@ -72,9 +71,48 @@ def _is_fragment(rest: str) -> bool:
     return rest.lstrip("+?}").startswith(_FRAGMENT_HEADS)
 
 
-def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
+# The digit core's own optional letter suffix (`\d+[A-Z]?`) is number
+# grammar, not a reference tail: it is stripped before the tail test,
+# which otherwise counts the core's quantifier continuation as a tail.
+_LETTER_SUFFIX_RE = re.compile(r"^(?:\+|\{\d+(?:,\d*)?\})?\[A-Z\]\?")
+
+
+def _tail_text(rest: str) -> str:
+    """The text after a core, its own letter suffix stripped."""
+    match = _LETTER_SUFFIX_RE.match(rest)
+    return rest[match.end() :] if match is not None else rest
+
+
+_DEF_START_RE = re.compile(r"^\s*[A-Za-z_]\w*\s*(?::[^=\n]+)?=(?!=)")
+
+
+class _DefinitionLines:
+    """The nearest preceding definition line in each scanned file.
+
+    Sanctions name a definition, so a flagged core spelled on a
+    continuation line is tested against its definition's line too.
+    """
+
+    def __init__(self) -> None:
+        self._path = ""
+        self._definition = ""
+
+    def current(self, path: str, line: str) -> str:
+        if path != self._path:
+            self._path = path
+            self._definition = ""
+        if _DEF_START_RE.match(line):
+            self._definition = line
+        elif line.strip() and not line[:1].isspace():
+            self._definition = ""
+        return self._definition
+
+
+def _rule(
+    path: str, number: int, line: str, definition: str = ""
+) -> ScannerFinding | None:
     if any(
-        path == site_path and fragment in line
+        path == site_path and (fragment in line or fragment in definition)
         for site_path, fragment in _SANCTIONED_SITES
     ):
         return None
@@ -102,7 +140,7 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
         if _is_fragment(rest) or _RANGE_TAIL.match(rest):
             continue
         if "re.compile" in line or any(
-            fragment in rest[:24] for fragment in _TAIL_FRAGMENTS
+            fragment in _tail_text(rest)[:24] for fragment in _TAIL_FRAGMENTS
         ):
             return finding(
                 "refcell-patterns",
@@ -114,9 +152,18 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     return None
 
 
+def _make_rule() -> Rule:
+    definitions = _DefinitionLines()
+
+    def rule(path: str, number: int, line: str) -> ScannerFinding | None:
+        return _rule(path, number, line, definitions.current(path, line))
+
+    return rule
+
+
 def scan_refcell_patterns() -> list[ScannerFinding]:
     """Flag note/item/part caption cores defined outside the reference home."""
-    return scan_text_rule(rule=_rule, prefixes=_ALLOWED_PREFIXES)
+    return scan_text_rule(rule=_make_rule(), prefixes=_ALLOWED_PREFIXES)
 
 
 SCANNER = Scanner(

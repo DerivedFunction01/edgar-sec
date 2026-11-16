@@ -9,7 +9,6 @@ import re
 from itertools import pairwise
 
 from edgar_sec.engine.document.page_markers.detector import is_page_marker_line
-from edgar_sec.engine.forms.cover.boundary.corridor import line_offset as _line_offset
 from edgar_sec.engine.forms.cover.structure import (
     is_continuation_prose,
 )

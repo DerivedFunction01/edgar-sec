@@ -15,6 +15,13 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
+from edgar_sec.engine.forms.common.entities import (
+    COMMISSION_FILE_CAPTION_RE,
+    COMMISSION_FILE_NUMBER_RE,
+)
+from edgar_sec.engine.forms.common.family_scaffold import (
+    name_before_label as _name_before_label,
+)
 from edgar_sec.engine.forms.cover.registrant import (
     extract_commission_file_number,
     parse_registrant_identity,
@@ -35,11 +42,8 @@ _INSTRUCTION_KEYS = (
     "regulation_a_concurrent",
 )
 
-_FILE_NUMBER_RE = re.compile(
-    r"commission file (?:numbers?|no\.?)[:\s]*([0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+)",
-    re.IGNORECASE,
-)
-_FILE_CAPTION_RE = re.compile(r"commission file (?:numbers?|no\.?)", re.IGNORECASE)
+_FILE_NUMBER_RE = COMMISSION_FILE_NUMBER_RE
+_FILE_CAPTION_RE = COMMISSION_FILE_CAPTION_RE
 _REGISTRANT_LABEL_RE = re.compile(r"exact name of registrant", re.IGNORECASE)
 _ISSUER_LABEL_RE = re.compile(r"exact name of issuer", re.IGNORECASE)
 _GENERIC_NAME_LABEL_RE = re.compile(r"exact name of", re.IGNORECASE)
@@ -55,28 +59,6 @@ _TABLE_STOP_PHRASES = (
     "information required in registration statement",
     "securities act registration statement",
 )
-
-
-def _name_before_label(lines: list[str], label_re: re.Pattern[str]) -> str | None:
-    for index, line in enumerate(lines):
-        match = label_re.search(line)
-        if match is None:
-            continue
-        prefix = line[: match.start()].strip(" ,-(")
-        if len(prefix) >= 3:
-            name = parse_registrant_identity(prefix).name
-            if name is not None:
-                return name
-        cursor = index
-        for _ in range(4):
-            previous = previous_content_line(lines, cursor)
-            if previous is None:
-                break
-            cursor, text = previous
-            name = parse_registrant_identity(text).name
-            if name is not None:
-                return name
-    return None
 
 
 def _extract_class_pairs(lines: list[str]) -> list[dict[str, str]]:

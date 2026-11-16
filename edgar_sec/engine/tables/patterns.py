@@ -45,6 +45,23 @@ SCALE_PATTERNS = (
     (re.compile(r"in\s+hundreds", re.IGNORECASE), "hundreds"),
 )
 
+# The scale-suffix vocabulary: the words and abbreviations that scale a
+# bare number ("5 million", "5mm"). One token set for every consumer;
+# multipliers keyed by these tokens live with their parsers.
+SCALE_SUFFIX_TOKENS: tuple[str, ...] = (
+    "thousand",
+    "thousands",
+    "k",
+    "million",
+    "millions",
+    "mm",
+    "m",
+    "billion",
+    "billions",
+    "b",
+)
+SCALE_SUFFIX_ALT = build_alternation(SCALE_SUFFIX_TOKENS)
+
 _TABLE_INTRO_NOUNS = build_alternation(
     (
         "table",
@@ -99,6 +116,8 @@ __all__ = [
     "HIDDEN_ELEMENT_STYLE_RE",
     "RE_TABLE_BLOCK",
     "SCALE_PATTERNS",
+    "SCALE_SUFFIX_ALT",
+    "SCALE_SUFFIX_TOKENS",
     "_RE_TABLE_INTRO_CUE",
     "UNITS_LABEL_RE",
 ]

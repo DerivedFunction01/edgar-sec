@@ -13,13 +13,19 @@ from dataclasses import dataclass
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.signature_profiles import SIGNATURE_TERMS
 from edgar_sec.engine.tables.extraction.typed_rows import TypedRow, TypedTable
-from edgar_sec.engine.tables.numeric_cells import CURRENCY_TOKEN_RE
+from edgar_sec.engine.tables.numeric_cells import (
+    CURRENCY_TOKEN_RE,
+    DECIMAL_AMOUNT_RE,
+)
 from edgar_sec.engine.tables.toc.patterns import (
     RE_PART_REFERENCE,
     looks_like_toc_row,
     looks_like_toc_tabular,
 )
-from edgar_sec.foundation.text.patterns import RE_PAGE_REFERENCE
+from edgar_sec.foundation.text.patterns import (
+    GROUPED_AMOUNT_CORE,
+    RE_PAGE_REFERENCE,
+)
 
 MIN_ROWS = 3
 _MIN_PAGE_SEQUENCE = 3
@@ -29,7 +35,7 @@ BREADTH_MIN = 4
 _PAGE_LETTER_RE = re.compile(r"^[A-Z]-\d+$")
 _BARE_INT_RE = re.compile(r"^\d{1,3}$")
 _REF_CELL_RE = re.compile(r"^(?:note|item)\s+\d+(?:\.\d+)*[A-Z]?\.?$", re.IGNORECASE)
-_AMOUNT_RE = re.compile(r"\d,\d{3}|\d+\.\d+")
+_AMOUNT_RE = re.compile(rf"{GROUPED_AMOUNT_CORE}|{DECIMAL_AMOUNT_RE.pattern}")
 
 _TERM_SETS: dict[str, set[str]] = {}
 for _term in SIGNATURE_TERMS:

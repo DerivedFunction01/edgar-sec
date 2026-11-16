@@ -1,7 +1,6 @@
-"""Pins for the shared operator-kit template members.
-The kit carries the ten operator modules' template: the register factory,
-the lazy SPECS getattr, the key-value result (with selection's fixed hints),
-the field helper, and the token/accession spellings.
+"""Pins for the shared operator-kit template members: the register factory,
+the lazy SPECS getattr, the key-value result (selection's fixed hints), the
+field helper, and the token/accession spellings.
 """
 
 from __future__ import annotations

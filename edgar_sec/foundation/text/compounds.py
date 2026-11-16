@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import itertools
-import re
 from enum import Enum
 from typing import Any
 
-_RE_WHITESPACE = re.compile(r"\s+")
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
+
+_RE_WHITESPACE = RE_WHITESPACE
 
 
 def _to_str_list(items: Any) -> list[str]:

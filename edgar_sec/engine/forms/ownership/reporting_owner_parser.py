@@ -34,6 +34,7 @@ from edgar_sec.engine.forms.common.tables import parse_address_parts
 from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.engine.forms.ownership.relationship_box import RelationshipBox
 from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 _REPORTING_PERSON_PLURAL_RE = re.compile(r"^\(s\)\s*", re.IGNORECASE)
 _OFFICER_TITLE_BOUNDARY_RE = re.compile(
@@ -41,7 +42,7 @@ _OFFICER_TITLE_BOUNDARY_RE = re.compile(
 )
 _FORM_MASTHEAD_RE = re.compile(r"(?i)^f\s*o\s*r\s*m\s*[345]\b")
 _STARTS_DIGITS_RE = re.compile(r"^\d+\b")
-_WHITESPACE_COLLAPSE_RE = re.compile(r"\s+")
+_WHITESPACE_COLLAPSE_RE = RE_WHITESPACE
 _NAME_THEN_ADDRESS_RE = re.compile(r"^name:\s*(.+?)\s+address\s*:", re.IGNORECASE)
 _ROLE_TARGETS = (
     ("director", "director"),

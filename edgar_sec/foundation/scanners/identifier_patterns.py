@@ -1,9 +1,7 @@
 """Scanner routing identifier recognition through its homes.
-
-Flags a private accession, CIK member-name, commission file-number, EIN,
-registration-number, or CUSIP recognizer spelled as pattern text outside
-its home. Allows homed compositions, SQL regexp literals, and SEC URL
-paths; the sanctioned sites below are exempt by file and fragment.
+Flags a private accession, CIK, commission file-number, EIN, registration,
+or CUSIP recognizer spelled as pattern text outside its home; allows homed
+compositions, SQL/URL format shapes, and the sanctioned sites below.
 """
 
 from __future__ import annotations
@@ -11,7 +9,7 @@ from __future__ import annotations
 import re
 
 from .base import Scanner, ScannerFinding
-from .lines import finding, scan_text_rule
+from .lines import Rule, finding, scan_text_rule
 
 # An accession core in either digit spelling: `\d{10}-\d{2}-\d{6}`.
 _ACCESSION_CORE_RE = re.compile(
@@ -140,8 +138,38 @@ _CUSIP_HINT = (
 )
 
 
-def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
-    if any(path == site and fragment in line for site, fragment in _SANCTIONED_SITES):
+_DEF_START_RE = re.compile(r"^\s*[A-Za-z_]\w*\s*(?::[^=\n]+)?=(?!=)")
+
+
+class _DefinitionLines:
+    """The nearest preceding definition line in each scanned file.
+
+    Sanctions name a definition, so a flagged core spelled on a
+    continuation line is tested against its definition's line too.
+    """
+
+    def __init__(self) -> None:
+        self._path = ""
+        self._definition = ""
+
+    def current(self, path: str, line: str) -> str:
+        if path != self._path:
+            self._path = path
+            self._definition = ""
+        if _DEF_START_RE.match(line):
+            self._definition = line
+        elif line.strip() and not line[:1].isspace():
+            self._definition = ""
+        return self._definition
+
+
+def _rule(
+    path: str, number: int, line: str, definition: str = ""
+) -> ScannerFinding | None:
+    if any(
+        path == site and (fragment in line or fragment in definition)
+        for site, fragment in _SANCTIONED_SITES
+    ):
         return None
     if any(marker in line for marker in _SQL_MARKERS) or _URL_MARKER in line:
         return None
@@ -200,9 +228,18 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     return None
 
 
+def _make_rule() -> Rule:
+    definitions = _DefinitionLines()
+
+    def rule(path: str, number: int, line: str) -> ScannerFinding | None:
+        return _rule(path, number, line, definitions.current(path, line))
+
+    return rule
+
+
 def scan_identifier_patterns() -> list[ScannerFinding]:
     """Flag private identifier recognizers outside their homes."""
-    return scan_text_rule(rule=_rule, prefixes=_ALLOWED_PREFIXES)
+    return scan_text_rule(rule=_make_rule(), prefixes=_ALLOWED_PREFIXES)
 
 
 SCANNER = Scanner(

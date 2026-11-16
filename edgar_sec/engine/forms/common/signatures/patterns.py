@@ -16,11 +16,12 @@ from edgar_sec.engine.document.signatures import (
     RE_CONFORMED_SIGNER_NAME,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 
 CLEAN_LINE_RE = re.compile(r"[_=\-\*]{2,}")
 
-WHITESPACE_RE = re.compile(r"\s+")
+WHITESPACE_RE = RE_WHITESPACE
 
 PREFIX_STRIP_TERMS = (
     r"by\s*:?",

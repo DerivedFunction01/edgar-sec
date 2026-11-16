@@ -13,12 +13,13 @@ from edgar_sec.engine.tables.protection.tags import (
     restore_tagged_tables,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.normalize import RE_MULTI_BLANKS
 from edgar_sec.foundation.text.tokens import BULLET_MARKERS, GLYPH_BULLET_MARKERS
 
 _ALL_BULLET_ALT = build_alternation(sorted(BULLET_MARKERS), auto_escape=True)
 _GLYPH_BULLET_ALT = build_alternation(sorted(GLYPH_BULLET_MARKERS), auto_escape=True)
 
-_RE_MULTIPLE_BLANKS = re.compile(r"\n{3,}")
+_RE_MULTIPLE_BLANKS = RE_MULTI_BLANKS
 
 # Concatenated-item splitting. Each rule requires punctuation plus a following
 # alphanumeric, so an inline column separator, a hyphenated phrase, or a trailing

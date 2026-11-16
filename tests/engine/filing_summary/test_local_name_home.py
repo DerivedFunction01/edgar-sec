@@ -10,7 +10,7 @@ from edgar_sec.engine.forms.common.extraction import local_name
 
 
 def test_binding_is_the_extraction_home() -> None:
-    assert parser._local_name is local_name
+    assert parser.local_name is local_name
 
 
 def test_local_name_verdicts() -> None:

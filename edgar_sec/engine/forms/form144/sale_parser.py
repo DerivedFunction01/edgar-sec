@@ -30,6 +30,7 @@ from edgar_sec.engine.forms.common.numbers import (
 from edgar_sec.engine.forms.form144.patterns import SEC_FILE_BARE_RE
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
+from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE, parse_date
 
@@ -43,7 +44,7 @@ _CURRENCY_CODE_ALT = build_alternation(
 _CURRENCY_CODE_PREFIX_RE = re.compile(rf"^(?:{_CURRENCY_CODE_ALT})\s*", re.I)
 _APPROX_TILDE_RE = re.compile(r"^~+\s*")
 _TRAILING_COMMA_RE = re.compile(r",\s*$")
-_CURRENCY_AMOUNT_RE = re.compile(r"\$\s*\d[\d,]*(?:\.\d+)?")
+_CURRENCY_AMOUNT_RE = re.compile(rf"\$\s*{UNICODE_NUMERIC_CORE}")
 _ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
 _AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
 

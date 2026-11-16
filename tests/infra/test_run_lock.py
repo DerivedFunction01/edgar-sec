@@ -1,8 +1,6 @@
-"""Pins for the shared lock-file creation and the RunLock policy split.
-The exclusive-create primitive is homed in infra; the two {token, pid, host}
-RunLocks keep their own recovery policies, and the pins record the split:
-metadata_sync never displaces a live local holder, inventory takes over on
-operator confirmation alone.
+"""Pins for the lock-file creation primitive homed in infra and the RunLock
+policy split: metadata_sync never displaces a live local holder, inventory
+takes over on operator confirmation alone.
 """
 
 from __future__ import annotations

@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.patterns import GROUPED_AMOUNT_CORE
 
 from .currencies import MAJOR_CURRENCIES
 from .units import MEASUREMENT_UNITS
@@ -74,6 +75,45 @@ _NUMERIC_STRIP_RE = re.compile(
     rf"(?:{_CURRENCY_ALTERNATION}|{_UNIT_ALTERNATION}|[%()\-,])"
 )
 
+# The in-text numeric core: a leading digit, comma-carrying digits, and one
+# optional decimal tail. Form-schema recognizers compose from this token
+# instead of re-deriving it.
+NUMERIC_TOKEN_RE = re.compile(r"[0-9][0-9,]*(?:\.[0-9]+)?")
+
+# The strict-grouping integer grammar: plain digits, or a 1-3 digit head
+# with comma triples. The schema decimal/integer recognizers compose from it.
+GROUPED_INTEGER_RE = re.compile(r"[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+")
+
+# The loose grouped-integer fragment: a digit/comma run in any arrangement,
+# as running text actually carries it (the 13F value-total capture is the
+# attested consumer). A string fragment, not a compiled recognizer — sites
+# compose it inside their own anchored patterns.
+GROUPED_INTEGER_FRAGMENT = r"[\d,]+"
+
+# The Unicode-digit twin of the numeric token core: a leading digit,
+# comma-carrying digits, and one optional decimal tail, spelled with \d
+# where the engine's other cores spell [0-9]. Form 144's currency capture
+# admits any Unicode decimal digit; sites compose this fragment instead
+# of re-spelling it.
+UNICODE_NUMERIC_CORE = r"\d[\d,]*(?:\.\d+)?"
+
+# Comma-grouped and decimal figures as they appear inside a line of text.
+# The figure variant is the two-or-more-places shape financial figures carry.
+GROUPED_AMOUNT_RE = re.compile(GROUPED_AMOUNT_CORE)
+DECIMAL_AMOUNT_RE = re.compile(r"\d+\.\d+")
+DECIMAL_FIGURE_RE = re.compile(r"\d+\.\d{2,}")
+
+# A comma acting as the decimal separator, at the end of a value.
+EUROPEAN_COMMA_DECIMAL_RE = re.compile(r"\d+,\d{1,2}$")
+
+# An amount as it appears inside a line of text: the numeric core token
+# with an optional currency symbol on either side. Distinct from the
+# whole-cell grammar above and from the bare core token.
+AMOUNT_RE = re.compile(
+    rf"(?:{_CURRENCY_ALTERNATION}\s*)?{NUMERIC_TOKEN_RE.pattern}"
+    rf"(?:\s*(?:{_CURRENCY_ALTERNATION}))?"
+)
+
 
 def is_financial_placeholder(value: str) -> bool:
     """Return whether a cell is an exact configured financial placeholder.
@@ -97,9 +137,17 @@ def is_numeric_start(value: str) -> bool:
 
 __all__ = [
     "ALL_CURRENCY_SYMBOLS",
+    "AMOUNT_RE",
     "CURRENCY_TOKEN_RE",
+    "DECIMAL_AMOUNT_RE",
+    "DECIMAL_FIGURE_RE",
+    "EUROPEAN_COMMA_DECIMAL_RE",
     "FINANCIAL_PLACEHOLDERS",
+    "GROUPED_AMOUNT_RE",
+    "GROUPED_INTEGER_FRAGMENT",
+    "GROUPED_INTEGER_RE",
     "NUMERIC_CELL_RE",
+    "NUMERIC_TOKEN_RE",
     "PREFIX_SYMBOLS",
     "SUFFIX_SYMBOLS",
     "UNIT_SYMBOLS",

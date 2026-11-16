@@ -45,6 +45,7 @@ from edgar_sec.engine.forms.common.tables import (
     strip_markup_tags,
     strip_separator_runs,
 )
+from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 
 _ISSUER_ALIAS_ALT = build_alternation(
@@ -320,7 +321,7 @@ _CONNECTOR_ALT = build_alternation(
 )
 _RE_SHARE_COUNT = re.compile(
     rf"(?i)(?:(?:{_SHARE_PREFIX_ALT})\s*(?:{_CONNECTOR_ALT})?|^|\b)"
-    rf"([0-9][0-9,]*(?:\.[0-9]+)?)\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\b"
+    rf"({NUMERIC_TOKEN_RE.pattern})\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\b"
 )
 
 _PERCENT_PREFIX_ALT = build_alternation(

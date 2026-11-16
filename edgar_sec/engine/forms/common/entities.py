@@ -35,6 +35,7 @@ from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS, has_legal_form
 from edgar_sec.engine.forms.common.statutory import is_pure_statutory_boilerplate
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 
 STATE_ALT = build_alternation(sorted(STATE_POSTAL_CODES))
 _STATE_ZIP_ALT = build_alternation(
@@ -172,13 +173,18 @@ TRAILING_FOOTNOTE_RE = re.compile(
     r"(?:(?<=[a-zA-Z0-9\.\'\"])\s*(?:\[\d{1,2}\]|\(\d{1,2}\)|\*{1,3}|†|‡)|(?<=[a-zA-Z])\s*\d{1,2})\s*$"
 )
 
-_WHITESPACE_COLLAPSE_RE = re.compile(r"\s+")
-
 SEC_FILE_PREFIX_ALT = build_alternation(SEC_FILE_NUMBER_PREFIXES, auto_escape=True)
 SEC_FILE_NUMBER_RE = re.compile(
     rf"\b(?:{SEC_FILE_PREFIX_ALT})-\d{{4,8}}\b", re.IGNORECASE
 )
 COMMISSION_FILE_TOKEN_RE = re.compile(r"[0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+")
+COMMISSION_FILE_CAPTION_RE = re.compile(
+    r"commission file (?:numbers?|no\.?)", re.IGNORECASE
+)
+COMMISSION_FILE_NUMBER_RE = re.compile(
+    rf"commission file (?:numbers?|no\.?)[:\s]*({COMMISSION_FILE_TOKEN_RE.pattern})",
+    re.IGNORECASE,
+)
 
 #: Legal-form tokens whose presence marks a cover line as a name line
 #: (title-position registrant / issuer detection in family analyzers).
@@ -413,7 +419,6 @@ _INSTRUCTION_PHRASE_ALT = build_alternation(
     )
 )
 _INSTRUCTION_PHRASE_RE = re.compile(rf"(?:{_INSTRUCTION_PHRASE_ALT})", re.I)
-_NON_ALNUM_TOKEN_RE = re.compile(r"[^a-zA-Z0-9]+")
 
 
 def is_boilerplate_entity_name(value: str | None) -> bool:
@@ -446,7 +451,7 @@ def is_boilerplate_entity_name(value: str | None) -> bool:
         has_legal_form(lowered) or any(term in lowered for term in ("plan", "401"))
     ):
         return True
-    tokens = [token for token in _NON_ALNUM_TOKEN_RE.split(lowered) if token]
+    tokens = [token for token in RE_NON_ALNUM.split(lowered) if token]
     words = [token for token in tokens if token.isalpha()]
     if not words or len(words) + sum(token.isdigit() for token in tokens) != len(
         tokens
@@ -459,7 +464,7 @@ def sanitize_document_noise(text: str) -> str:
     """Strip border pipes, filler character runs, and collapse extra whitespace."""
     no_pipes = TABLE_BORDER_PIPE_RE.sub("", text)
     no_fillers = FILLER_RUN_RE.sub("", no_pipes)
-    return _WHITESPACE_COLLAPSE_RE.sub(" ", no_fillers).strip()
+    return RE_WHITESPACE.sub(" ", no_fillers).strip()
 
 
 def strip_footnote_markers(text: str) -> str:
@@ -471,6 +476,8 @@ __all__ = [
     "BARE_BOX_NUM_RE",
     "CITY_MATCH_RE",
     "CLEAN_TEMPLATE_RE",
+    "COMMISSION_FILE_CAPTION_RE",
+    "COMMISSION_FILE_NUMBER_RE",
     "COMMISSION_FILE_TOKEN_RE",
     "CRD_RE",
     "CUSIP_RE",

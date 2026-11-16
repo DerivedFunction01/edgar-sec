@@ -9,20 +9,21 @@ import re
 from .candidates import looks_like_prose
 from .content_lines import is_content_line, is_date_line
 from .observations import _ALPHA_WORD_RE, _STANDALONE_TAG_RE, is_table_tag
+from edgar_sec.engine.tables.toc.patterns import ITEM_HEADING_CORE, RE_NOTE_CAPTION
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 from edgar_sec.foundation.text.patterns import is_separator_line
 
 _ITEM_HEADING_ALT = build_alternation(
     (
-        r"item\s+[0-9a-z]+[.:]?",
+        rf"{ITEM_HEADING_CORE}[.:]?",
         r"\(?[0-9]{1,2}\s*[\.\):]?",
     ),
     auto_escape=False,
     compact=True,
 )
 _ITEM_HEADING_RE = re.compile(rf"(?i)^\s*(?:{_ITEM_HEADING_ALT})\s+[a-z]")
-_NOTE_CAPTION_RE = re.compile(r"(?i)^\s*note\s+\d{1,3}(?:\s*[\.\):\-]\s*|\s+)[a-z]")
+_NOTE_CAPTION_RE = RE_NOTE_CAPTION
 _FORM_PREFIX_RE = re.compile(r"(?i)^\s*form\s+")
 _BARE_ITEM_LABEL_RE = re.compile(r"(?i)^\(\s*[a-z0-9]{1,3}\s*\)$")
 _RE_BARE_PERCENT = re.compile(r"^[+-]?\d+(?:\.\d+)?%$")

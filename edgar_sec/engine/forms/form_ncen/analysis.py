@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.families.form_ncen.models import FormNCenDocument
+from edgar_sec.engine.forms.common.family_scaffold import empty_report
 from edgar_sec.engine.forms.form_ncen.xml_parser import parse_ncen_xml
 
 _CORE_FIELDS = (
@@ -23,20 +24,6 @@ def _core_status(doc: FormNCenDocument) -> dict[str, bool]:
         "file_number": bool(doc.file_number),
         "registrant_cik": bool(doc.registrant_cik),
         "classification_type": bool(doc.classification_type),
-    }
-
-
-def _empty_report(case_dir: Path, accession: str, anomaly: str) -> dict[str, Any]:
-    return {
-        "case_id": case_dir.name,
-        "accession_number": accession,
-        "core_fields": {f: False for f in _CORE_FIELDS},
-        "anomalies": [anomaly],
-        "review_signals": [
-            "xml_missing" if anomaly == "missing_extracted_xml" else "corrupt_xml"
-        ],
-        "blank_fields": {},
-        "unparsed_sections": [],
     }
 
 
@@ -57,12 +44,14 @@ def analyze_case(
         else case_dir.name.split("--")[0]
     )
     if not target_xml.exists():
-        return _empty_report(case_dir, accession, "missing_extracted_xml")
+        return empty_report(case_dir, accession, "missing_extracted_xml", _CORE_FIELDS)
 
     try:
         doc = parse_ncen_xml(target_xml.read_bytes())
     except Exception as exc:
-        return _empty_report(case_dir, accession, f"xml_parse_error: {exc}")
+        return empty_report(
+            case_dir, accession, f"xml_parse_error: {exc}", _CORE_FIELDS
+        )
 
     anomalies: list[str] = []
     signals: list[str] = []

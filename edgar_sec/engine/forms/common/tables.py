@@ -22,6 +22,7 @@ from edgar_sec.engine.tables.ascii_html.converter import (
     convert_html_tables_to_ascii,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE_SPLIT
 
 IGNORE_SUBBOX_MARKERS: tuple[str, ...] = (
     "(a)",
@@ -360,7 +361,7 @@ def is_empty_continuation_row(cells: Iterable[str]) -> bool:
 HORIZONTAL_RULE_RE = re.compile(r"^[\s\-=_*|+]{4,}$")
 _SGML_TAG_RE = re.compile(r"</?[A-Za-z]+(?:\s+[^>]*)?>")
 _LINE_NUMBER_PREFIX_RE = re.compile(r"^\d+\s*:\s*")
-WHITESPACE_COLUMN_SPLIT_RE = re.compile(r"\t+|\s{2,}")
+WHITESPACE_COLUMN_SPLIT_RE = RE_WHITESPACE_SPLIT
 FOOTNOTE_REF_RE = re.compile(r"[\(\[]\s*(\d{1,3})\s*[\)\]]")
 
 

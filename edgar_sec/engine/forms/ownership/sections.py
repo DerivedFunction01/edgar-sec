@@ -36,6 +36,7 @@ from edgar_sec.engine.tables.ascii_html.model import (
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import Token, tokenize
 from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE_GAP
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
     compile_evidence_pack,
@@ -53,7 +54,7 @@ _FOOTNOTE_VETO_RE = re.compile(
     build_alternation(FOOTNOTE_VETO_PHRASES, auto_escape=True, compact=True)
 )
 _SIGNATURE_CONTINUATION_PHRASES = ("/s/", "by:", "for:", "date")
-_PRE_COLUMN_SPLIT_RE = re.compile(r"\s{2,}")
+_PRE_COLUMN_SPLIT_RE = RE_WHITESPACE_GAP
 
 
 class SectionRole(StrEnum):

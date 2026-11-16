@@ -1,11 +1,6 @@
 """Pins for the homed Item/Part reference cores (mirror cure, Option A).
-
-The foundation line healer and the toc reference home compose the same
-two fragments from foundation/text/patterns.py. Healing's compiled
-boundary pattern is byte-identical to its pre-cure form (it composes the
-cores verbatim); the toc side takes a keyword-case-only pattern-text
-delta, pinned below, with verdicts unchanged on the discriminating
-case table (both sides compile IGNORECASE).
+Healing composes the cores verbatim (its boundary pattern is byte-identical);
+the toc side's keyword-case-only delta is pinned below, verdicts unchanged.
 """
 
 from __future__ import annotations
