@@ -10,6 +10,7 @@ import pytest
 from edgar_sec.foundation.hashing import (
     _TEXT_CHUNK_CHARS,
     file_sha256,
+    is_prefixed_hex_id,
     is_sha256_hex_digest,
     sha256_bytes,
     sha256_text,
@@ -42,6 +43,23 @@ def test_file_sha256_matches_known_digest(tmp_path: Path) -> None:
 )
 def test_is_sha256_hex_digest(value: object, expected: bool) -> None:
     assert is_sha256_hex_digest(value) is expected
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        ("tcplan-" + "a" * 16, True),
+        ("tcplan-" + "0f1e2d3c4b5a6978", True),
+        ("tcplan-" + "A" * 16, False),
+        ("tcplan-" + "a" * 15, False),
+        ("tcplan-" + "a" * 17, False),
+        ("plan-" + "a" * 16, False),
+        ("a" * 16, False),
+        (None, False),
+    ],
+)
+def test_is_prefixed_hex_id(value: object, expected: bool) -> None:
+    assert is_prefixed_hex_id(value, "tcplan-", 16) is expected
 
 
 def test_sha256_bytes_agrees_with_file_sha256(tmp_path: Path) -> None:

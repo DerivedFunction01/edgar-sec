@@ -222,3 +222,40 @@ def test_date_patterns_protections_still_fire_beside_the_registry(
     )
     assert date_patterns.scan_date_patterns()
     assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_flags_registry_fingerprint_defined_outside_profiles_home(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": "def registry_fingerprint():\n    pass\n"},
+    )
+    assert pattern_registry.scan_pattern_registry()
+
+
+def test_flags_work_item_id_defined_outside_planner_home(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": "def work_item_id_for():\n    pass\n"},
+    )
+    assert pattern_registry.scan_pattern_registry()
+
+
+def test_allows_registry_and_work_item_definitions_in_their_homes(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/tables/extraction/profiles.py": (
+                "def registry_fingerprint():\n    pass\n"
+            ),
+            "edgar_sec/pipelines/table_classification/planner.py": (
+                "def work_item_id_for():\n    pass\n"
+            ),
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []

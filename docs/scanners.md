@@ -35,7 +35,9 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `pattern-registry`: Bans definitions of registered pattern names outside their one
   home (word token in `foundation/text/words.py`, full date and year in
   `foundation/text/dates.py`, scale patterns in `engine/tables/patterns.py`,
-  extraction normalisers in `extraction/normalize.py`); corpus tools are in scope,
+  extraction normalisers in `extraction/normalize.py`, the registry fingerprint in
+  `extraction/profiles.py`, work-item ids in
+  `pipelines/table_classification/planner.py`); corpus tools are in scope,
   with no exceptions.
 - `sql-interpolation`: Bans SQL assembled from unescaped values at a query sink. It
   inspects the argument of `execute` / `executemany` / `executescript` and reports an

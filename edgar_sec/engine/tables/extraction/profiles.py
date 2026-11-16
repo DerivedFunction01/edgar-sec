@@ -2,14 +2,15 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import hashlib
+import json
+from dataclasses import asdict, dataclass
 
-PROV_STEP6_VERDICT = "step6:verdict-2026-11-14"
-PROV_STEP6_MEASUREMENT = "step6:measurement-2026-11-14"
-PROV_STEP0_RETIREMENT = "refresh-step0:retirement-2026-11-14"
-PROV_DEMOGRAPHICS = "step6:demographics-line"
-PROV_LABOR = "step6:labor-capture-row"
-PROV_EX13 = "step6:ex13-census"
+PROV_STEP6_VERDICT = "verdict:family_support"
+PROV_RETIREMENT = "retirement:structurally_undecidable"
+PROV_DEMOGRAPHICS = "measurement:demographics_profile"
+PROV_LABOR = "measurement:labor_capture_profile"
+PROV_EX13 = "census:ex13_exhibit_links"
 
 # Strata are the Step 6 measurement strata: B is the annual
 # stratum, D the quarterly stratum. Profiles carry stratum
@@ -33,8 +34,8 @@ SEAT_PROSE_CAPTURE = "prose_capture"
 SEAT_GENRE_REFUSAL = "genre_refusal"
 SEAT_REGION_GATED = "region_gated"
 
-PROV_STEP3_FORM_TESTS = "refresh-step3:form-tests"
-PROV_STEP4_DERIVATIVES = "refresh-step4:derivatives-cure"
+PROV_STEP3_FORM_TESTS = "form-tests:declared_specs"
+PROV_STEP4_DERIVATIVES = "form-tests:derivatives_evidence"
 
 # Form-test declarations (R1): names only, as registry data.
 # The stage and the test classes themselves build in Step 3.
@@ -102,7 +103,7 @@ class RetiredFamily:
 
     family: str
     reason: str
-    provenance: str = PROV_STEP0_RETIREMENT
+    provenance: str = PROV_RETIREMENT
 
 
 def _support(
@@ -400,3 +401,28 @@ def competing_families() -> tuple[str, ...]:
 def is_retired(family: str) -> bool:
     """Whether a family is retired as registry data."""
     return family in RETIRED_FAMILY_NAMES
+
+
+def registry_fingerprint(
+    profiles: tuple[FamilyProfile, ...] = PROFILES,
+    retired: tuple[RetiredFamily, ...] = RETIRED_FAMILIES,
+) -> str:
+    """Sha256 over the canonical serialization of the whole registry."""
+    canonical = json.dumps(
+        {
+            "profiles": [asdict(profile) for profile in profiles],
+            "retired_families": [asdict(entry) for entry in retired],
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def registry_state(
+    *,
+    profiles: tuple[FamilyProfile, ...] = PROFILES,
+    retired: tuple[RetiredFamily, ...] = RETIRED_FAMILIES,
+) -> str:
+    """The registry-state value a plan's provenance carries."""
+    return f"sha256:{registry_fingerprint(profiles, retired)}"

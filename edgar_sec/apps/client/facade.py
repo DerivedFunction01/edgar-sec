@@ -739,6 +739,23 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
 
         return classified_tables_fast(self.content_cache, filing, stratum=stratum)
 
+    def classified_tables_from_store(
+        self, filing: FilingAggregate, *, store_root: Path | str | None = None
+    ) -> "PipelineClassifiedTables":
+        """Serve one filing's classified tables from the Step 7 store.
+
+        The pipeline version (D2): read-only over the published store,
+        honest absence when missing; never a compute fallback.
+        """
+        from edgar_sec.apps.client.classified_tables_pipeline import (
+            PipelineClassifiedTables,
+            classified_tables_pipeline,
+        )
+
+        return classified_tables_pipeline(
+            filing, store_root=store_root, artifacts_root=self.artifacts_root
+        )
+
     def _extract_filing_text(self, filing: FilingAggregate) -> str:
         return self.content_cache.get_or_build(
             ("text", filing.accession.value),

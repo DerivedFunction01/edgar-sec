@@ -50,6 +50,12 @@ the details below are the layer-level contracts only.
 - [`text_search/`](text_search/README.md) — Builds the materialized
   token/postings index over acquired holdings (acquisition snapshot tip plus
   the facade document cache), deduplicated by payload SHA-256.
+- [`table_classification/`](table_classification/README.md) — Plans
+  classification runs against the family-profile registry over the
+  acquisition snapshot tip, classifies each filing's tables through the
+  engine cascade, and assembles the run outputs the store publishes as
+  a Parquet DAG store over the snapshot tip, provenance-stamped with
+  the source snapshot id and registry state.
 
 Layer 4 is the only layer permitted to orchestrate. Orchestration means ordering,
 chunking, checkpointing, validating, and publishing — deciding *what happens

@@ -49,4 +49,20 @@ def is_sha256_hex_digest(value: object) -> bool:
     )
 
 
-__all__ = ["file_sha256", "is_sha256_hex_digest", "sha256_bytes", "sha256_text"]
+def is_prefixed_hex_id(value: object, prefix: str, hex_length: int) -> bool:
+    """True when value is prefix plus exactly hex_length lowercase hex chars."""
+    return (
+        isinstance(value, str)
+        and value.startswith(prefix)
+        and len(value) == len(prefix) + hex_length
+        and all(character in "0123456789abcdef" for character in value[len(prefix) :])
+    )
+
+
+__all__ = [
+    "file_sha256",
+    "is_prefixed_hex_id",
+    "is_sha256_hex_digest",
+    "sha256_bytes",
+    "sha256_text",
+]

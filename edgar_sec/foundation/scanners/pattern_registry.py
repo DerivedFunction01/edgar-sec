@@ -25,6 +25,8 @@ PATTERN_HOMES: dict[str, str] = {
     "normalize_text": "edgar_sec/engine/tables/extraction/normalize.py",
     "normalize_label": "edgar_sec/engine/tables/extraction/normalize.py",
     "collapse_text": "edgar_sec/engine/tables/extraction/normalize.py",
+    "registry_fingerprint": "edgar_sec/engine/tables/extraction/profiles.py",
+    "work_item_id_for": "edgar_sec/pipelines/table_classification/planner.py",
 }
 
 _DEF_RES = {name: re.compile(rf"^\s*def\s+{name}\s*\(") for name in PATTERN_HOMES}
