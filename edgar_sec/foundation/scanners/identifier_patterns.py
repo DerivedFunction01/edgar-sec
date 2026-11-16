@@ -47,9 +47,7 @@ _REGISTRATION_RE = re.compile(
 _CUSIP_RE = re.compile(r"\[0-9A-Z\*@#\]\{(?:9|8,9)\}")
 
 # The CUSIP caption: `cusip (?:number|no...` in either spacing spelling.
-_CUSIP_LABEL_RE = re.compile(
-    r"cusip(?:\\s\+| )\(\?:number\|no", re.IGNORECASE
-)
+_CUSIP_LABEL_RE = re.compile(r"cusip(?:\\s\+| )\(\?:number\|no", re.IGNORECASE)
 
 # The modules that own the identifier vocabularies.
 _ALLOWED_PREFIXES = (

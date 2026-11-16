@@ -139,7 +139,7 @@ def test_boilerplate_disjunct_is_allowed(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/forms/ownership/patterns.py": (
-                '_BOILERPLATE_RE = re.compile(\n'
+                "_BOILERPLATE_RE = re.compile(\n"
                 '    rf"(?i)\\b(?:{OWNERSHIP_FORM_ALT})\\b|page\\\\s+\\\\d+|'
                 '\\\\(continued\\\\)"\n'
                 ")\n"
@@ -154,7 +154,7 @@ def test_home_fragment_composition_is_allowed(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                'RE_PAGE_SUFFIX = re.compile(\n'
+                "RE_PAGE_SUFFIX = re.compile(\n"
                 '    rf"(?:\\b[A-Z])?[\\.\\-\\s]?{PAGE_NUMBER_CORE}'
                 '(?:\\s*[\\|+])?\\s*$",\n'
                 "    re.IGNORECASE,\n"

@@ -35,7 +35,9 @@ def _messages(findings: list) -> list[str]:
 def test_flags_accession_core_copy(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"edgar_sec/engine/thing.py": '_ACCESSION_RE = re.compile(r"^\\d{10}-\\d{2}-\\d{6}$")\n'},
+        {
+            "edgar_sec/engine/thing.py": '_ACCESSION_RE = re.compile(r"^\\d{10}-\\d{2}-\\d{6}$")\n'
+        },
     )
     findings = identifier_patterns.scan_identifier_patterns()
     assert [f.path for f in findings] == ["edgar_sec/engine/thing.py"]
@@ -65,10 +67,14 @@ def test_flags_accession_named_loose_capture(synthetic_repo: Path) -> None:
 def test_flags_cik_member_copy(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"edgar_sec/engine/thing.py": '_MEMBER_RE = re.compile(r"^CIK(\\d{10})\\.json$")\n'},
+        {
+            "edgar_sec/engine/thing.py": '_MEMBER_RE = re.compile(r"^CIK(\\d{10})\\.json$")\n'
+        },
     )
     findings = identifier_patterns.scan_identifier_patterns()
-    assert _messages(findings) == ["private CIK member-name recognizer outside its home"]
+    assert _messages(findings) == [
+        "private CIK member-name recognizer outside its home"
+    ]
 
 
 def test_flags_commission_number_copy(synthetic_repo: Path) -> None:
@@ -113,7 +119,9 @@ def test_flags_ein_copy(synthetic_repo: Path) -> None:
 def test_flags_registration_value_copy(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"edgar_sec/engine/thing.py": '_NUMBER_RE = re.compile(r"\\d{3}-\\d{3,}(?:-\\d{2})?")\n'},
+        {
+            "edgar_sec/engine/thing.py": '_NUMBER_RE = re.compile(r"\\d{3}-\\d{3,}(?:-\\d{2})?")\n'
+        },
     )
     findings = identifier_patterns.scan_identifier_patterns()
     assert _messages(findings) == [
@@ -124,7 +132,9 @@ def test_flags_registration_value_copy(synthetic_repo: Path) -> None:
 def test_flags_registration_prefix_copy(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"edgar_sec/engine/thing.py": '_NUMBER_RE = re.compile(r"(?:333|33)-\\d{3,}(?:-\\d{2})?")\n'},
+        {
+            "edgar_sec/engine/thing.py": '_NUMBER_RE = re.compile(r"(?:333|33)-\\d{3,}(?:-\\d{2})?")\n'
+        },
     )
     assert identifier_patterns.scan_identifier_patterns()
 
@@ -317,6 +327,8 @@ def test_sanction_does_not_travel_to_other_paths(synthetic_repo: Path) -> None:
 def test_ignores_tests(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"tests/test_thing.py": '_ACCESSION_RE = re.compile(r"^\\d{10}-\\d{2}-\\d{6}$")\n'},
+        {
+            "tests/test_thing.py": '_ACCESSION_RE = re.compile(r"^\\d{10}-\\d{2}-\\d{6}$")\n'
+        },
     )
     assert identifier_patterns.scan_identifier_patterns() == []

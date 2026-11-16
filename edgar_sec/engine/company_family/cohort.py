@@ -57,7 +57,10 @@ def execute_delta_roster(
             con,
             _DELTA_QUERY,
             output_dataset,
-            params=[dataset_path(requested_dataset), dataset_path(base_cik_map_dataset)],
+            params=[
+                dataset_path(requested_dataset),
+                dataset_path(base_cik_map_dataset),
+            ],
             schema=_ROSTER_SCHEMA,
         )
 

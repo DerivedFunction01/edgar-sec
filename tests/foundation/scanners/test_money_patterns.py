@@ -35,7 +35,9 @@ def _messages(findings: list) -> list[str]:
 def test_flags_toc_gate_amount_copy(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"edgar_sec/engine/thing.py": '_AMOUNT_RE = re.compile(r"\\d,\\d{3}|\\d+\\.\\d+")\n'},
+        {
+            "edgar_sec/engine/thing.py": '_AMOUNT_RE = re.compile(r"\\d,\\d{3}|\\d+\\.\\d+")\n'
+        },
     )
     findings = money_patterns.scan_money_patterns()
     assert [f.path for f in findings] == ["edgar_sec/engine/thing.py"]
@@ -53,7 +55,9 @@ def test_flags_decimal_figure_copy(synthetic_repo: Path) -> None:
 def test_flags_grouped_figure_copy(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"edgar_sec/engine/thing.py": '_GROUPED_RE = re.compile(r"\\d{1,3}(?:,\\d{3})+")\n'},
+        {
+            "edgar_sec/engine/thing.py": '_GROUPED_RE = re.compile(r"\\d{1,3}(?:,\\d{3})+")\n'
+        },
     )
     assert money_patterns.scan_money_patterns()
 
@@ -357,8 +361,7 @@ def test_allows_zip_plus_four(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                'ZIP = "12345-6789"\n'
-                'ZIP_RE = re.compile(r"^\\d{5}(?:-\\d{4})?$")\n'
+                'ZIP = "12345-6789"\nZIP_RE = re.compile(r"^\\d{5}(?:-\\d{4})?$")\n'
             )
         },
     )

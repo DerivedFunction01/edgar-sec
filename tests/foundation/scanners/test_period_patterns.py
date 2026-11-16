@@ -146,9 +146,7 @@ def test_flags_whitespace_run_copy(synthetic_repo: Path) -> None:
         synthetic_repo,
         {"edgar_sec/engine/thing.py": '_WHITESPACE_RE = re.compile(r"\\s+")\n'},
     )
-    assert _scanners(period_patterns.scan_period_patterns()) == [
-        "whitespace-patterns"
-    ]
+    assert _scanners(period_patterns.scan_period_patterns()) == ["whitespace-patterns"]
 
 
 def test_flags_blank_line_run_copy(synthetic_repo: Path) -> None:
@@ -156,9 +154,7 @@ def test_flags_blank_line_run_copy(synthetic_repo: Path) -> None:
         synthetic_repo,
         {"edgar_sec/engine/thing.py": '_RE_BLANKS = re.compile(r"\\n{3,}")\n'},
     )
-    assert _scanners(period_patterns.scan_period_patterns()) == [
-        "whitespace-patterns"
-    ]
+    assert _scanners(period_patterns.scan_period_patterns()) == ["whitespace-patterns"]
 
 
 def test_allows_the_patterns_and_normalize_homes(synthetic_repo: Path) -> None:
@@ -204,9 +200,7 @@ def test_flags_table_open_copy(synthetic_repo: Path) -> None:
             )
         },
     )
-    assert _scanners(period_patterns.scan_period_patterns()) == [
-        "table-tag-patterns"
-    ]
+    assert _scanners(period_patterns.scan_period_patterns()) == ["table-tag-patterns"]
 
 
 def test_flags_table_span_copy(synthetic_repo: Path) -> None:
@@ -218,9 +212,7 @@ def test_flags_table_span_copy(synthetic_repo: Path) -> None:
             )
         },
     )
-    assert _scanners(period_patterns.scan_period_patterns()) == [
-        "table-tag-patterns"
-    ]
+    assert _scanners(period_patterns.scan_period_patterns()) == ["table-tag-patterns"]
 
 
 def test_allows_the_migration_sources(synthetic_repo: Path) -> None:
@@ -279,8 +271,7 @@ def test_allows_zip_plus_four(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                'ZIP = "12345-6789"\n'
-                'ZIP_RE = re.compile(r"^\\d{5}(?:-\\d{4})?$")\n'
+                'ZIP = "12345-6789"\nZIP_RE = re.compile(r"^\\d{5}(?:-\\d{4})?$")\n'
             )
         },
     )

@@ -106,8 +106,7 @@ def test_allows_same_name_different_bodies(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/a.py": (
-                "def _normalize_form(token):\n"
-                "    return token.strip().upper()\n"
+                "def _normalize_form(token):\n    return token.strip().upper()\n"
             ),
             "edgar_sec/engine/b.py": (
                 "def _normalize_form(value):\n"

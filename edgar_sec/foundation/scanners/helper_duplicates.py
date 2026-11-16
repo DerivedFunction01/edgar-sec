@@ -129,9 +129,7 @@ def scan_helper_duplicates() -> list[ScannerFinding]:
             if key is not None:
                 home_keys.setdefault(key, home)
 
-    collected: list[
-        tuple[str, ast.FunctionDef | ast.AsyncFunctionDef, str | None]
-    ] = []
+    collected: list[tuple[str, ast.FunctionDef | ast.AsyncFunctionDef, str | None]] = []
     by_key: dict[str, list[str]] = {}
     for path in discover_python_files():
         if path in _HOMES or is_scanner_infrastructure(path):
@@ -155,8 +153,7 @@ def scan_helper_duplicates() -> list[ScannerFinding]:
                     path=path,
                     line=node.lineno,
                     message=(
-                        f"private parameterized get {node.name!r} "
-                        "outside its home"
+                        f"private parameterized get {node.name!r} outside its home"
                     ),
                     hint=_FIELDS_OF_HINT,
                 )

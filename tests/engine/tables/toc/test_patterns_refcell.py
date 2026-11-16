@@ -162,9 +162,7 @@ def test_item_exact_match(line: str, expected: bool) -> None:
         ("PART I Financial Information", None),
     ],
 )
-def test_item_section_heading_groups(
-    line: str, groups: tuple[str, str] | None
-) -> None:
+def test_item_section_heading_groups(line: str, groups: tuple[str, str] | None) -> None:
     match = RE_ITEM_SECTION_HEADING.match(line)
     assert (None if match is None else match.groups()) == groups
 

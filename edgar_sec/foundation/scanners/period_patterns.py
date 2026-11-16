@@ -51,7 +51,10 @@ _SANCTIONED_SITES = (
     ("edgar_sec/engine/forms/ownership/ascii_tables.py", "_TABLE_TAG_RE"),
     ("edgar_sec/engine/forms/form_sd/analysis.py", "rule 13q-1"),
     ("edgar_sec/engine/forms/form_abs_reports/analysis.py", "distribution period from"),
-    ("edgar_sec/engine/forms/form_abs_reports/analysis.py", "reporting period\\s+(?:from\\s+)?"),
+    (
+        "edgar_sec/engine/forms/form_abs_reports/analysis.py",
+        "reporting period\\s+(?:from\\s+)?",
+    ),
     ("edgar_sec/engine/forms/form_rega/analysis.py", "semiannual period ended"),
 )
 

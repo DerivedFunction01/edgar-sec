@@ -20,9 +20,7 @@ from .lines import finding, scan_text_rule
 # The reference cores, spelled as they appear in pattern source: the word
 # page, a whitespace run (either escape spelling), and a number core.
 _NO_CORE = re.compile(r"page\\s\*\(\?:no", re.IGNORECASE)
-_PLAIN_CORE = re.compile(
-    r"page(?:\\s|\[ \\t\])\+(?:\\d|\[0-9|\(\?P)", re.IGNORECASE
-)
+_PLAIN_CORE = re.compile(r"page(?:\\s|\[ \\t\])\+(?:\\d|\[0-9|\(\?P)", re.IGNORECASE)
 _STAR_CORE = re.compile(r"page\\s\*(?:\\d|\[0-9)", re.IGNORECASE)
 _LETTER_CLASS = re.compile(r"\[A-Z\]")
 _DASH_DIGIT = re.compile(r"[-–—](?:\\s)?\*?(?:\\d|\[0-9)")
@@ -31,9 +29,7 @@ _DASH_DIGIT = re.compile(r"[-–—](?:\\s)?\*?(?:\\d|\[0-9)")
 # inventory (§d3), identified by file and the core fragment they carry:
 # the ownership boilerplate disjunct (a page term inside a boilerplate
 # alternation, not a reference recognizer).
-_COUSIN_SITES = (
-    ("edgar_sec/engine/forms/ownership/patterns.py", "page"),
-)
+_COUSIN_SITES = (("edgar_sec/engine/forms/ownership/patterns.py", "page"),)
 
 # The module that owns the page-reference vocabulary.
 _ALLOWED_PREFIXES = ("edgar_sec/foundation/text/patterns.py",)

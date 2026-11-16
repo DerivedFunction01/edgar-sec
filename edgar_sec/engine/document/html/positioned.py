@@ -288,9 +288,7 @@ class FlowLine:
 
 PageBlock = TableBand | FlowLine
 
-_RE_NUMERIC_FRAGMENT = re.compile(
-    rf"^\$?\s?\(?-?{NUMERIC_TOKEN_RE.pattern}\)?\s?%?$"
-)
+_RE_NUMERIC_FRAGMENT = re.compile(rf"^\$?\s?\(?-?{NUMERIC_TOKEN_RE.pattern}\)?\s?%?$")
 _DASH_FRAGMENTS = frozenset({"-", "—", "–"})
 _MAX_PITCH_DELTA = 60.0
 _TABULAR_SPAN = 150.0

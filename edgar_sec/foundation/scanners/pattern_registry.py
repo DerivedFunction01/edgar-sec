@@ -225,9 +225,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
     {
         "family": "metadata-paths",
         "home": "edgar_sec/pipelines/metadata_sync/paths.py",
-        "names": (
-            "CIK_MEMBER_RE",
-        ),
+        "names": ("CIK_MEMBER_RE",),
         "shapes": (),
         "shape_hint": "",
     },
@@ -314,9 +312,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
     {
         "family": "typed-rows",
         "home": "edgar_sec/engine/tables/extraction/typed_rows.py",
-        "names": (
-            "TOTAL_ROW_RE",
-        ),
+        "names": ("TOTAL_ROW_RE",),
         "shapes": (),
         "shape_hint": "",
     },
@@ -361,9 +357,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
     {
         "family": "company-cohort",
         "home": "edgar_sec/engine/company_family/cohort.py",
-        "names": (
-            "dataset_path",
-        ),
+        "names": ("dataset_path",),
         "shapes": (),
         "shape_hint": "",
     },

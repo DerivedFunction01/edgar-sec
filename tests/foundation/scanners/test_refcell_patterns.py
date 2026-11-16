@@ -126,8 +126,7 @@ def test_allows_omb_number(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                'OMB = re.compile(r"^\\d{4}-\\d{2}$")\n'
-                'OMB_TEXT = "OMB No. 3235-0001"\n'
+                'OMB = re.compile(r"^\\d{4}-\\d{2}$")\nOMB_TEXT = "OMB No. 3235-0001"\n'
             )
         },
     )
@@ -224,9 +223,7 @@ def test_allows_item_range_branch(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                "_ALT = (\n"
-                '    r"ITEMS?\\s+\\d+(?:[-\u2013]\\d+)?",\n'
-                ")\n"
+                '_ALT = (\n    r"ITEMS?\\s+\\d+(?:[-\u2013]\\d+)?",\n)\n'
             )
         },
     )

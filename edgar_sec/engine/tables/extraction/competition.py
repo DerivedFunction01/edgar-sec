@@ -180,7 +180,9 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
             stripped = line.strip()
             if not stripped:
                 continue
-            if RE_NOTE_HEADING_CUE.search(stripped) or _HEADING_NUMBERED.match(stripped):
+            if RE_NOTE_HEADING_CUE.search(stripped) or _HEADING_NUMBERED.match(
+                stripped
+            ):
                 if len(stripped) < 120:
                     lines.append(stripped)
             elif len(stripped) >= 8 and stripped == stripped.upper():

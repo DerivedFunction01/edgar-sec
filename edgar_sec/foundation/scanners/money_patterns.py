@@ -25,9 +25,7 @@ _MONEY_CORE_RE = re.compile(
 )
 
 # A comma-grouped figure: `\d{1,3}(?:,\d{3})+` in either digit spelling.
-_MONEY_GROUPED_RE = re.compile(
-    r"(?:\\d|\[0-9\])\{1,3\}\(\?:,(?:\\d|\[0-9\])\{3\}\)\+"
-)
+_MONEY_GROUPED_RE = re.compile(r"(?:\\d|\[0-9\])\{1,3\}\(\?:,(?:\\d|\[0-9\])\{3\}\)\+")
 
 # A decimal figure: `\d+\.\d+` or `\d+\.\d{2,}` in either digit spelling.
 _MONEY_DECIMAL_RE = re.compile(
@@ -92,9 +90,18 @@ _SANCTIONED_SITES = (
     # sibling diverges from numbers.py's surface on both sides — each
     # side holds members the other lacks (coordinator ruling,
     # 2026-11-15, Wave 2 priced stops F10 + narrative sibling).
-    ("edgar_sec/engine/forms/beneficial_ownership/analysis/xml_audit.py", "_MULTI_CLASS_VALUE_RE"),
-    ("edgar_sec/engine/forms/beneficial_ownership/analysis/xml_audit.py", "_RE_NARRATIVE_NUMERIC"),
-    ("edgar_sec/engine/forms/beneficial_ownership/cover_value_diagnostics.py", "_NUMERIC_FOOTNOTE_RE"),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/analysis/xml_audit.py",
+        "_MULTI_CLASS_VALUE_RE",
+    ),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/analysis/xml_audit.py",
+        "_RE_NARRATIVE_NUMERIC",
+    ),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/cover_value_diagnostics.py",
+        "_NUMERIC_FOOTNOTE_RE",
+    ),
     # Proposal numbers ("1.1", "2.3"), not amounts — the decimal core
     # trips on the shape; allowlisted, the money rule is not narrowed
     # (coordinator ruling, 2026-11-15).
@@ -117,10 +124,22 @@ _SANCTIONED_SITES = (
     ("edgar_sec/engine/forms/ownership/ascii_tables.py", "_RE_STANZA_AMT"),
     ("edgar_sec/engine/forms/ownership/table_common.py", "_COMPOSITE_UNDERLYING_RE"),
     ("edgar_sec/engine/document/page_markers/eligibility.py", "_RE_BARE_PERCENT"),
-    ("edgar_sec/engine/forms/beneficial_ownership/cover_parser.py", "_RE_LABEL_PERCENT"),
-    ("edgar_sec/engine/forms/beneficial_ownership/item_subsections.py", "percentOfClass"),
-    ("edgar_sec/engine/forms/beneficial_ownership/item_subsections.py", "ownershipMoreThan5Percent"),
-    ("edgar_sec/engine/forms/beneficial_ownership/item_subsections.py", "_RE_PERCENT_OF_CLASS"),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/cover_parser.py",
+        "_RE_LABEL_PERCENT",
+    ),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/item_subsections.py",
+        "percentOfClass",
+    ),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/item_subsections.py",
+        "ownershipMoreThan5Percent",
+    ),
+    (
+        "edgar_sec/engine/forms/beneficial_ownership/item_subsections.py",
+        "_RE_PERCENT_OF_CLASS",
+    ),
     ("edgar_sec/engine/forms/ownership/relationship_box.py", "_TEN_PERCENT_OWNER_RE"),
     ("edgar_sec/engine/tables/ascii_html/cell.py", "_UNIT_RE"),
     ("edgar_sec/foundation/text/grammar.py", "RE_WORD_TOKEN"),
