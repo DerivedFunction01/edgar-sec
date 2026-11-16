@@ -1,9 +1,11 @@
 """Tests for XBRL benchmark execution engine."""
 
+import json
 from pathlib import Path
 
 import pytest
 
+from edgar_sec.engine.xbrl.review import benchmark
 from edgar_sec.engine.xbrl.review.benchmark import (
     PAIR_SET,
     CENSUS_EXPECTATIONS,
@@ -96,6 +98,24 @@ def test_census_expectations_cover_the_full_census() -> None:
     """Every scored population's expectation accounts for all its evaluations."""
     for expectation in CENSUS_EXPECTATIONS.values():
         assert expectation.correct + expectation.honest == expectation.n
+
+
+def test_probe_expectation_comes_from_its_record() -> None:
+    """The probe entry equals its data record; no probe literal stays inline."""
+    module_path = Path(benchmark.__file__)
+    record = json.loads(
+        module_path.with_name("census_probe_expectation.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    row = record["probe"]
+    assert CENSUS_EXPECTATIONS["probe"] == CensusExpectation(
+        n=row["n"],
+        correct=row["correct"],
+        honest=row["honest"],
+        surfaced_conflicts=row["surfaced_conflicts"],
+    )
+    assert '"probe": CensusExpectation' not in module_path.read_text(encoding="utf-8")
 
 
 def test_pair_set_entries_carry_provenance() -> None:

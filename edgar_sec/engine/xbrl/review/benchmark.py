@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
+import json
 from pathlib import Path
 import time
 from typing import Any
@@ -449,20 +450,29 @@ class CensusScore:
     failures: tuple[str, ...]
 
 
+def _load_probe_expectation() -> CensusExpectation:
+    """Load the pinned probe census expectation from its data file."""
+    raw = json.loads(
+        Path(__file__)
+        .with_name("census_probe_expectation.json")
+        .read_text(encoding="utf-8")
+    )
+    row = raw["probe"]
+    return CensusExpectation(
+        n=row["n"],
+        correct=row["correct"],
+        honest=row["honest"],
+        surfaced_conflicts=row["surfaced_conflicts"],
+    )
+
+
+# Span adjudications: F5 moved span 127/62/33 -> 130/59/36, and the
+# derivation fix moved span -> 161/28/4; adjudicated in
+# .artifacts/run-logs/2026-11-01-derivation-direction-fix.md.
 CENSUS_EXPECTATIONS: dict[str, CensusExpectation] = {
-    # F5 moved probe 92/76/23 -> 94/74/25 and span 127/62/33 -> 130/59/36
-    # (burn-down left the revenue pool). The derivation fix then moved
-    # probe -> 110/58/8 and span -> 161/28/4: complete formulas only,
-    # solved for any term, so fabricated VERIFY conflicts (single-edge
-    # atom sums) became genuine VERIFIED reconciliations or honest
-    # REPORTED rows; every mover has facade == faithful, adjudicated in
-    # .artifacts/run-logs/2026-11-01-derivation-direction-fix.md. The R/P
-    # partner build then moved probe -> 112/56/6 and span -> 162/27/3:
-    # PLD's bare-head split identities dissolve under M_OTHER — Assets
-    # loses a fabricated conflict, Liabilities verifies on its true
-    # components; adjudicated in
+    "probe": _load_probe_expectation(),
+    # The R/P partner build moved span -> 162/27/3, adjudicated in
     # .artifacts/run-logs/2026-11-09-rp-partner-coverage-impl.md.
-    "probe": CensusExpectation(n=168, correct=112, honest=56, surfaced_conflicts=6),
     "span": CensusExpectation(n=189, correct=162, honest=27, surfaced_conflicts=3),
     "span-supplement": CensusExpectation(
         n=5, correct=0, honest=5, surfaced_conflicts=0
