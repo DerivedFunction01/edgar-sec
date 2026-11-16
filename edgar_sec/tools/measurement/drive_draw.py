@@ -12,10 +12,8 @@ import sys
 from pathlib import Path
 
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.duckdb import sql_identifier, sql_literal
+from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
 from edgar_sec.tools.measurement.config import load_config
-
-import duckdb
 
 CONFIG = load_config()
 SEED = CONFIG["seed"]
@@ -37,7 +35,7 @@ def main() -> int:
         names = {p.stem for p in d.glob("*.json") if p.name not in SKIP_NAMES}
         per_dir[str(d)] = len(names)
         excluded |= names
-    con = duckdb.connect()
+    con = connect()
     targets = str(SNAPSHOT / "filing_targets" / "*.parquet")
     cols = [
         r[0]
