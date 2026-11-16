@@ -104,13 +104,6 @@ _CENSUS_SCOPED_CLUSTERS = (
             ),
         }
     ),
-    # T-10 `_normalized_suffix`
-    frozenset(
-        {
-            ("edgar_sec/domain/document/path_facts.py", "_normalized_suffix"),
-            ("edgar_sec/domain/document/route.py", "_normalized_suffix"),
-        }
-    ),
     # T-11 `_merge_sections`
     frozenset(
         {
