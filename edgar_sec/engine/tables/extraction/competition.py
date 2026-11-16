@@ -168,6 +168,761 @@ SCORED_VETOES: dict[str, tuple[str, ...]] = {
     "stock_comp_rollforward": ("period_columns",),
 }
 
+
+@dataclass(frozen=True, slots=True)
+class VetoSpec:
+    """One family's priced term vetoes for one channel at one tier.
+
+    Tier "hard" removes the family's claim outright; tier
+    "scored" lowers its score once per claim (any-hit, at
+    VETO_POINTS), however many of the family's terms hit.
+    """
+
+    family: str
+    channel: str
+    tier: str
+    terms: tuple[str, ...]
+
+
+# Term vetoes: the Step 6 v2 re-priced sets (record:
+# 2026-11-16-greenfield-step6-v2-measurement-record; owner
+# imposter ruling 2026-11-15 - words that remove a claim
+# outright (HARD) or lower its score (SCORED), channel-scoped
+# as priced: lead = caption + prose_before, body = grid text.
+# Exclusions of record: aoci assembly rows, commitments rows
+# (assembly-only family), furniture-only rows (genre seat),
+# and every dagger n-gram row (never re-priced).
+TERM_VETOES: tuple[VetoSpec, ...] = (
+    VetoSpec(
+        "balance_sheet",
+        "lead",
+        "hard",
+        (
+            "current assets",
+            "income tax",
+            "borrowings",
+            "credit facility",
+            "lease",
+            "segment",
+            "other comprehensive",
+            "unregistered sales",
+            "use of proceeds",
+            "controls and procedures",
+            "table of contents",
+            "form 10-k",
+            "commitments",
+            "contingencies",
+            "purchase obligation",
+            "square feet",
+            "issuer purchases",
+        ),
+    ),
+    VetoSpec(
+        "balance_sheet",
+        "body",
+        "hard",
+        (
+            "cash flow",
+            "cash flows",
+            "operating activities",
+            "investing activities",
+            "financing activities",
+            "net cash",
+            "net income",
+            "current assets",
+            "level 1",
+            "level 2",
+            "level 3",
+            "unobservable",
+            "quoted prices",
+            "actuarial",
+            "valuation allowance",
+            "senior notes",
+            "vesting",
+            "unregistered sales",
+            "use of proceeds",
+            "controls and procedures",
+            "risk factors",
+            "legal proceedings",
+            "discussion and analysis",
+            "market risk",
+            "signatures",
+        ),
+    ),
+    VetoSpec(
+        "balance_sheet",
+        "lead",
+        "scored",
+        (
+            "cash flow",
+            "cash flows",
+            "revenue",
+            "per share",
+            "total assets",
+            "common stock",
+            "risk factors",
+            "legal proceedings",
+            "form 10-q",
+            "guarantee",
+            "acquisition",
+        ),
+    ),
+    VetoSpec(
+        "balance_sheet",
+        "body",
+        "scored",
+        (
+            "revenue",
+            "per share",
+            "total assets",
+            "total liabilities",
+            "current assets",
+            "current liabilities",
+            "deferred tax",
+            "income tax",
+            "maturity",
+            "borrowings",
+            "lease",
+            "operating lease",
+            "dividends",
+            "common stock",
+            "preferred stock",
+            "inventories",
+            "intangible",
+            "goodwill",
+            "derivative",
+            "comprehensive income",
+            "comprehensive loss",
+            "acquisition",
+            "deposits",
+            "loans receivable",
+            "deferred revenue",
+        ),
+    ),
+    VetoSpec(
+        "income_statement",
+        "lead",
+        "hard",
+        (
+            "gross profit",
+            "premiums",
+            "sales and marketing",
+        ),
+    ),
+    VetoSpec(
+        "income_statement",
+        "lead",
+        "scored",
+        (
+            "revenue",
+            "revenues",
+            "segment",
+            "acquisition",
+            "research and development",
+        ),
+    ),
+    VetoSpec(
+        "income_statement",
+        "body",
+        "scored",
+        (
+            "net income",
+            "revenue",
+            "revenues",
+            "gross profit",
+            "per share",
+            "income tax",
+            "depreciation",
+            "amortization",
+            "derivative",
+            "acquisition",
+            "premiums",
+            "research and development",
+            "sales and marketing",
+        ),
+    ),
+    VetoSpec(
+        "comprehensive_income",
+        "lead",
+        "scored",
+        (
+            "net income",
+            "comprehensive income",
+            "comprehensive loss",
+            "other comprehensive",
+            "accumulated other comprehensive",
+            "reclassification",
+        ),
+    ),
+    VetoSpec(
+        "comprehensive_income",
+        "body",
+        "scored",
+        (
+            "cash flow",
+            "net income",
+            "pension",
+            "actuarial",
+            "income tax",
+            "amortization",
+            "derivative",
+            "comprehensive income",
+            "comprehensive loss",
+            "other comprehensive",
+            "accumulated other comprehensive",
+            "reclassification",
+        ),
+    ),
+    VetoSpec(
+        "cash_flow",
+        "lead",
+        "hard",
+        (
+            "proceeds from",
+            "per share",
+            "borrowings",
+            "lease",
+            "common stock",
+            "segment",
+            "reportable segment",
+            "issuer purchases",
+        ),
+    ),
+    VetoSpec(
+        "cash_flow",
+        "body",
+        "hard",
+        (
+            "per share",
+            "total assets",
+        ),
+    ),
+    VetoSpec(
+        "cash_flow",
+        "lead",
+        "scored",
+        (
+            "cash flow",
+            "cash flows",
+        ),
+    ),
+    VetoSpec(
+        "cash_flow",
+        "body",
+        "scored",
+        (
+            "cash flow",
+            "cash flows",
+            "operating activities",
+            "investing activities",
+            "financing activities",
+            "net cash",
+            "net income",
+            "net loss",
+            "revenue",
+            "income tax",
+            "lease",
+            "common stock",
+            "preferred stock",
+            "vesting",
+        ),
+    ),
+    VetoSpec(
+        "equity_statement",
+        "lead",
+        "hard",
+        (
+            "weighted average",
+            "discussion and analysis",
+            "issuer purchases",
+        ),
+    ),
+    VetoSpec(
+        "equity_statement",
+        "body",
+        "hard",
+        (
+            "total assets",
+            "exercisable",
+            "weighted average",
+        ),
+    ),
+    VetoSpec(
+        "equity_statement",
+        "lead",
+        "scored",
+        (
+            "per share",
+            "common stock",
+            "comprehensive income",
+            "other comprehensive",
+        ),
+    ),
+    VetoSpec(
+        "equity_statement",
+        "body",
+        "scored",
+        (
+            "cash flow",
+            "net income",
+            "per share",
+            "pension",
+            "postretirement",
+            "dividends",
+            "common stock",
+            "preferred stock",
+            "vesting",
+            "comprehensive income",
+            "other comprehensive",
+            "accumulated other comprehensive",
+        ),
+    ),
+    VetoSpec(
+        "aoci_rollforward",
+        "lead",
+        "hard",
+        (
+            "income tax",
+            "reclassification",
+        ),
+    ),
+    VetoSpec(
+        "aoci_rollforward",
+        "lead",
+        "scored",
+        (
+            "net income",
+            "comprehensive income",
+            "comprehensive loss",
+            "other comprehensive",
+            "accumulated other comprehensive",
+        ),
+    ),
+    VetoSpec(
+        "aoci_rollforward",
+        "body",
+        "scored",
+        (
+            "cash flow",
+            "pension",
+            "postretirement",
+            "actuarial",
+            "income tax",
+            "amortization",
+            "comprehensive income",
+            "comprehensive loss",
+            "other comprehensive",
+            "accumulated other comprehensive",
+            "reclassification",
+        ),
+    ),
+    VetoSpec(
+        "segment_reporting",
+        "lead",
+        "scored",
+        (
+            "revenue",
+            "gross profit",
+            "operating income",
+            "segment",
+        ),
+    ),
+    VetoSpec(
+        "eps_reconciliation",
+        "lead",
+        "hard",
+        (
+            "comprehensive loss",
+            "discussion and analysis",
+            "acquisition",
+            "issuer purchases",
+        ),
+    ),
+    VetoSpec(
+        "eps_reconciliation",
+        "body",
+        "hard",
+        (
+            "cash flow",
+            "operating activities",
+            "revenue",
+            "total assets",
+            "intangible",
+            "amortization",
+        ),
+    ),
+    VetoSpec(
+        "eps_reconciliation",
+        "lead",
+        "scored",
+        (
+            "net income",
+            "net loss",
+            "revenue",
+            "earnings per share",
+            "per share",
+            "income tax",
+            "shares outstanding",
+            "common stock",
+            "weighted average",
+            "dilutive",
+            "anti-dilutive",
+        ),
+    ),
+    VetoSpec(
+        "eps_reconciliation",
+        "body",
+        "scored",
+        (
+            "net income",
+            "per share",
+            "dividends",
+            "common stock",
+            "preferred stock",
+            "weighted average",
+            "dilutive",
+        ),
+    ),
+    VetoSpec("debt_maturity", "body", "hard", ("senior notes",)),
+    VetoSpec(
+        "debt_maturity",
+        "lead",
+        "scored",
+        (
+            "proceeds from",
+            "maturity",
+            "principal amount",
+            "borrowings",
+            "senior notes",
+            "credit facility",
+            "lease",
+            "amortization",
+            "letters of credit",
+            "guarantee",
+            "acquisition",
+        ),
+    ),
+    VetoSpec(
+        "lease_maturity",
+        "lead",
+        "hard",
+        (
+            "segment",
+            "legal proceedings",
+            "form 10-k",
+            "contingencies",
+        ),
+    ),
+    VetoSpec(
+        "lease_maturity",
+        "body",
+        "hard",
+        (
+            "per share",
+            "weighted average",
+        ),
+    ),
+    VetoSpec(
+        "lease_maturity",
+        "lead",
+        "scored",
+        (
+            "cash flow",
+            "cash flows",
+            "lease",
+            "operating lease",
+            "common stock",
+            "commitments",
+        ),
+    ),
+    VetoSpec(
+        "lease_maturity",
+        "body",
+        "scored",
+        (
+            "cash flow",
+            "cash flows",
+            "lease",
+            "operating lease",
+            "finance lease",
+        ),
+    ),
+    VetoSpec(
+        "deferred_tax",
+        "lead",
+        "hard",
+        (
+            "cash flow",
+            "revenue",
+            "depreciation",
+            "other comprehensive",
+            "allowance for credit losses",
+        ),
+    ),
+    VetoSpec(
+        "deferred_tax",
+        "body",
+        "hard",
+        (
+            "balance at beginning",
+            "balance at end",
+            "additions",
+        ),
+    ),
+    VetoSpec(
+        "deferred_tax",
+        "lead",
+        "scored",
+        (
+            "valuation allowance",
+            "deferred tax",
+            "income tax",
+            "acquisition",
+        ),
+    ),
+    VetoSpec(
+        "deferred_tax",
+        "body",
+        "scored",
+        (
+            "valuation allowance",
+            "deferred tax",
+            "income tax",
+            "lease",
+            "operating lease",
+        ),
+    ),
+    VetoSpec(
+        "tax_reconciliation",
+        "lead",
+        "hard",
+        (
+            "cash flow",
+            "cash flows",
+            "revenue",
+            "revenues",
+            "total assets",
+            "lease",
+            "preferred stock",
+            "segment",
+            "reportable segment",
+            "unregistered sales",
+            "form 10-k",
+            "issuer purchases",
+        ),
+    ),
+    VetoSpec(
+        "tax_reconciliation",
+        "body",
+        "hard",
+        (
+            "revenue",
+            "revenues",
+            "per share",
+        ),
+    ),
+    VetoSpec(
+        "tax_reconciliation",
+        "lead",
+        "scored",
+        (
+            "income tax",
+            "effective tax",
+            "provision for income taxes",
+        ),
+    ),
+    VetoSpec(
+        "tax_reconciliation",
+        "body",
+        "scored",
+        (
+            "income tax",
+            "provision for income taxes",
+        ),
+    ),
+    VetoSpec("ppe", "body", "hard", ("acquisition",)),
+    VetoSpec(
+        "ppe",
+        "lead",
+        "scored",
+        (
+            "lease",
+            "property, plant and equipment",
+            "depreciation",
+            "acquisition",
+        ),
+    ),
+    VetoSpec(
+        "intangibles",
+        "lead",
+        "hard",
+        (
+            "cash flow",
+            "revenue",
+            "revenues",
+            "gross profit",
+            "income tax",
+            "segment",
+        ),
+    ),
+    VetoSpec(
+        "intangibles",
+        "body",
+        "hard",
+        (
+            "net income",
+            "revenue",
+            "revenues",
+            "gross profit",
+        ),
+    ),
+    VetoSpec(
+        "intangibles",
+        "lead",
+        "scored",
+        (
+            "depreciation",
+            "intangible",
+            "amortization",
+            "goodwill",
+            "indefinite-lived",
+            "acquisition",
+            "purchase price allocation",
+        ),
+    ),
+    VetoSpec(
+        "intangibles",
+        "body",
+        "scored",
+        (
+            "amortization",
+            "goodwill",
+            "acquisition",
+        ),
+    ),
+    VetoSpec("inventory", "lead", "hard", ("property, plant and equipment",)),
+    VetoSpec(
+        "inventory",
+        "lead",
+        "scored",
+        (
+            "lease",
+            "inventories",
+        ),
+    ),
+    VetoSpec(
+        "pension",
+        "body",
+        "hard",
+        (
+            "cash flow",
+            "net income",
+            "income tax",
+            "hedging",
+            "reclassification",
+        ),
+    ),
+    VetoSpec(
+        "pension",
+        "lead",
+        "scored",
+        (
+            "pension",
+            "other comprehensive",
+        ),
+    ),
+    VetoSpec(
+        "pension",
+        "body",
+        "scored",
+        (
+            "benefit obligation",
+            "pension",
+            "postretirement",
+            "actuarial",
+            "amortization",
+            "comprehensive income",
+            "comprehensive loss",
+            "other comprehensive",
+            "accumulated other comprehensive",
+        ),
+    ),
+    VetoSpec(
+        "stock_comp_rollforward",
+        "lead",
+        "hard",
+        (
+            "revenue",
+            "sales and marketing",
+            "issuer purchases",
+        ),
+    ),
+    VetoSpec(
+        "stock_comp_rollforward",
+        "body",
+        "hard",
+        (
+            "income tax",
+            "amortization",
+        ),
+    ),
+    VetoSpec(
+        "stock_comp_rollforward",
+        "lead",
+        "scored",
+        (
+            "per share",
+            "lease",
+            "common stock",
+            "stock-based compensation",
+            "vesting",
+            "restricted stock",
+        ),
+    ),
+    VetoSpec(
+        "stock_comp_rollforward",
+        "body",
+        "scored",
+        (
+            "lease",
+            "restricted stock",
+            "weighted average",
+        ),
+    ),
+    VetoSpec("derivatives_hedging", "body", "hard", ("lease",)),
+    VetoSpec(
+        "derivatives_hedging",
+        "lead",
+        "scored",
+        (
+            "cash flow",
+            "cash flows",
+            "net income",
+            "revenue",
+            "derivative",
+        ),
+    ),
+    VetoSpec(
+        "derivatives_hedging",
+        "body",
+        "scored",
+        (
+            "cash flow",
+            "derivative",
+        ),
+    ),
+    VetoSpec(
+        "related_party",
+        "lead",
+        "scored",
+        (
+            "common stock",
+            "related party",
+            "related parties",
+        ),
+    ),
+)
+
 _HEADING_NOTE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
 _HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
 
@@ -196,6 +951,12 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
     return normalize_text(" ".join(lines))
 
 
+# The priced lead channel (Step 6 v2 veto re-price): caption +
+# prose_before, the prose tail-capped as the pricing packets cap
+# it (measurement TEXT_CAP).
+LEAD_TEXT_CAP = 6000
+
+
 @dataclass(frozen=True, slots=True)
 class GeometryText:
     """One geometry's text evidence, by channel, plus context."""
@@ -204,6 +965,7 @@ class GeometryText:
     leadin: str = ""
     notehead: str = ""
     lead_title: str = ""
+    lead: str = ""
     stubs: tuple[str, ...] = ()
     closure_closed: bool | None = None
     note_title: str | None = None
@@ -242,6 +1004,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
     headers = tuple(cell for row in context.rows[:zone] for cell in row if cell.strip())
     return GeometryText(
         caption=caption,
+        lead=caption + "\n" + (context.prose_before or "")[-LEAD_TEXT_CAP:],
         leadin=leadin_segment(context.prose_before or ""),
         notehead=heading_text(
             context.prose_before or "", context.prose_after or "", caption
@@ -317,6 +1080,32 @@ def detail_signatures(geometry: GeometryText) -> set[str]:
     if len(years) >= 2:
         found.add("year_columns")
     return found
+
+
+def term_veto_hits(geometry: GeometryText) -> dict[str, dict[str, str]]:
+    """First priced term-veto hit per family and tier.
+
+    Matching is the pricing's own: case-insensitive substring
+    over the channel text, normalized as every channel read
+    here is. The lead channel reads GeometryText.lead; the
+    body channel reads the grid text.
+    """
+    texts = {
+        "lead": normalize_text(geometry.lead),
+        "body": normalize_text(geometry.grid_text),
+    }
+    hits: dict[str, dict[str, str]] = {}
+    for spec in TERM_VETOES:
+        text = texts[spec.channel]
+        if not text:
+            continue
+        for term in spec.terms:
+            if normalize_text(term) in text:
+                tiers = hits.setdefault(spec.family, {})
+                if spec.tier not in tiers:
+                    tiers[spec.tier] = term
+                break
+    return hits
 
 
 def score_geometry(
@@ -397,6 +1186,22 @@ def score_geometry(
         scores[family] = FamilyScore(
             family, max(score.total - penalty, 0.0), channels, trail
         )
+    # Term vetoes, scored tier (Step 6 v2 re-price): any-hit —
+    # one VETO_POINTS penalty per family per claim, however
+    # many of the family's scored terms hit in either channel.
+    for family, tiers in term_veto_hits(geometry).items():
+        term = tiers.get("scored")
+        if term is None:
+            continue
+        score = scores.get(family)
+        if score is None:
+            continue
+        trail = score.evidence + (ClaimEvidence("veto", f"term:{term}", -VETO_POINTS),)
+        channels = dict(score.by_channel)
+        channels["veto"] = channels.get("veto", 0.0) - VETO_POINTS
+        scores[family] = FamilyScore(
+            family, max(score.total - VETO_POINTS, 0.0), channels, trail
+        )
     return scores
 
 
@@ -469,12 +1274,36 @@ def compete(
             dict(leader.by_channel),
             trail,
         )
+    # Term vetoes, hard tier (Step 6 v2 re-price; owner imposter
+    # ruling): a hit removes the family's claim outright. The
+    # score stays as foreign mass and carries the veto in its
+    # trail; the family is barred from claims, contested pairs,
+    # and reach below, and compete_filing re-applies this on
+    # every re-compete, so inheritance cannot resurrect it.
+    veto_hits = term_veto_hits(geometry)
+    hard_vetoed = {
+        family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
+    }
+    if hard_vetoed:
+        scores = dict(scores)
+        for family, term in hard_vetoed.items():
+            score = scores.get(family)
+            if score is None:
+                continue
+            scores[family] = FamilyScore(
+                family,
+                score.total,
+                dict(score.by_channel),
+                score.evidence + (ClaimEvidence("veto", f"hard:{term}", 0.0),),
+            )
     ranked = sorted(scores.values(), key=lambda s: -s.total)
     claims: list[str] = []
     contested: list[str] = []
     explained_all: dict[str, float] = {}
     explained_by: dict[str, dict[str, float]] = {}
     for candidate in ranked:
+        if candidate.family in hard_vetoed:
+            continue
         if candidate.total < CLAIM_FLOOR:
             continue
         foreign, explained = _explained_foreign(candidate.family, scores, edges)
@@ -485,7 +1314,11 @@ def compete(
         elif candidate.total >= DOMINANCE_RATIO * foreign:
             claims.append(candidate.family)
     if not claims:
-        floored = [c.family for c in ranked if c.total >= CLAIM_FLOOR]
+        floored = [
+            c.family
+            for c in ranked
+            if c.total >= CLAIM_FLOOR and c.family not in hard_vetoed
+        ]
         if len(floored) >= 2:
             top, second = scores[floored[0]].total, scores[floored[1]].total
             if top < DOMINANCE_RATIO * second:
@@ -595,6 +1428,8 @@ def compete(
             default=0.0,
         )
         for family, floor in REACH_FLOORS.items():
+            if family in hard_vetoed:
+                continue
             score = scores.get(family)
             if score is None:
                 continue
@@ -614,6 +1449,7 @@ def compete(
         # alone stays under the floor — the plain-listing misses.
         if (
             not claims
+            and "derivatives_hedging" not in hard_vetoed
             and deriv_evidence is not None
             and deriv_evidence.admitted
             and deriv_evidence.strong

@@ -60,6 +60,7 @@ def geometry_text(g: dict) -> GeometryText:
     )
     return GeometryText(
         caption=caption,
+        lead=caption + "\n" + prose_before[-TEXT_CAP:],
         leadin=leadin_segment(prose_before),
         notehead=heading_text(prose_before, prose_after, caption),
         lead_title=lead_title_text(prose_before),
