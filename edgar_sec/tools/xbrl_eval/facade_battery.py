@@ -23,10 +23,21 @@ from edgar_sec.apps.client.presentation import PresentationView, period_key_clas
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
+from edgar_sec.pipelines.xbrl_review.paths import FIXTURES_DIR
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 COHORT_NAMES = ("seed", "vintage", "sp100", "probe")
+
+#: The probe corpus is homed with the review fixtures, not discovery.
+PROBE_DIR = FIXTURES_DIR / "probe"
+
+
+def _cohort_root(cohort: str) -> Path:
+    """One cohort's bundle root; probe resolves to its fixtures home."""
+    return PROBE_DIR if cohort == "probe" else DISCOVERY_DIR / cohort
+
+
 MODES = ("standard", "detailed", "summary")
 TOLERANCE = 0.5
 
@@ -117,7 +128,7 @@ def _guard(fn: Callable[[], Any]) -> tuple[Any, str | None]:
 
 def cohort_folders(cohort: str, subset: Sequence[str] | None = None) -> list[str]:
     """Bundle folders of one cohort, in name order, optionally subset."""
-    root = DISCOVERY_DIR / cohort
+    root = _cohort_root(cohort)
     folders = sorted(
         path.name
         for path in root.iterdir()
@@ -444,7 +455,7 @@ def _filing_work(item: tuple[str, str, str | None]) -> tuple[str, str, dict[str,
     record: dict[str, Any] = {}
     peer_seconds = 0.0
     xbrl, error = _guard(
-        lambda: Xbrl.from_bundle(DISCOVERY_DIR / cohort / folder, _worker_taxonomy())
+        lambda: Xbrl.from_bundle(_cohort_root(cohort) / folder, _worker_taxonomy())
     )
     if error is not None:
         record["load_error"] = error
@@ -664,7 +675,7 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint: run the battery, write the JSON report, print a summary."""
     args = _build_parser().parse_args(argv)
     for cohort in args.cohorts:
-        if not (DISCOVERY_DIR / cohort).is_dir():
+        if not _cohort_root(cohort).is_dir():
             sys.stderr.write(f"cohort fixtures not found: {cohort}\n")
             return 2
     try:
