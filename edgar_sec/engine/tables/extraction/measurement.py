@@ -18,8 +18,7 @@ from edgar_sec.engine.tables.extraction.signature_profiles import (
 FAMILIES = tuple(sorted({term.family for term in SIGNATURE_TERMS}))
 # The adjudication brief judges the build-excluded
 # commitments_contingencies family on its face, and the
-# false-claim taxonomy priced its gold class — the gold
-# vocabulary is wider.
+# false-claim taxonomy priced its gold class wider.
 GOLD_FAMILIES = FAMILIES + ("commitments_contingencies",)
 VERDICTS = ("member", "not-member", "split-group")
 MECHANISMS = ("contested-twin", "stub-mass", "mixed")

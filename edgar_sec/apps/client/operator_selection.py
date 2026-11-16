@@ -716,8 +716,7 @@ def _gather_options(session: Any, options_type: type):
     """Prompt for one row's fields by dataclass type; the menu gather mechanism.
 
     Sequences prompt as separated lists, ints fall back to their default,
-    set-name fields default to the current set; the later
-    prompt rows reuse this mechanism.
+    set-name fields default to the current set; later rows reuse this.
     """
     hints = get_type_hints(options_type)
     values: dict[str, Any] = {}
