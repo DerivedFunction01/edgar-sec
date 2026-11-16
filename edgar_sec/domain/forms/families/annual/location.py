@@ -188,7 +188,7 @@ def location_priors(form: str) -> tuple[tuple[str, str, float], ...]:
 
 # The declared section map: (form base, part, Item, scope name).
 # Item 15/16 in a 10-K are financial-statement schedules / summary
-# by rule (Step 0 record), never an outside scope.
+# by rule, never an outside scope.
 SECTION_SCOPES: tuple[tuple[str, str | None, str, str], ...] = (
     ("10-K", None, "ITEM 8", "financial_statements"),
     ("10-K", None, "ITEM 15", "financial_statements"),

@@ -113,7 +113,7 @@ def extract_filing(
     )
     production = produce_contexts(tuple(documents))
 
-    # Overlap rule (Step 5): a delegating primary is a stub, so its
+    # Overlap rule: a delegating primary is a stub, so its
     # exhibit is the sole source and nothing is dropped; otherwise an
     # exhibit geometry duplicating a primary geometry is dropped, so
     # a complete primary is never double-counted.

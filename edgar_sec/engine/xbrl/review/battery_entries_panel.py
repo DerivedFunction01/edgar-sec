@@ -1,4 +1,4 @@
-"""Battery entries for the Step 5 vintage panel filings.
+"""Battery entries for the vintage panel filings.
 
 Every entry's expected value was verified against its filing's bundle
 facts; net income and revenue cross-checked against the bundle traces.

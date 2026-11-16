@@ -326,7 +326,7 @@ def test_repair_tax_vocabulary_wins_on_evidence() -> None:
     )
 
 
-def test_retired_note_title_claims_nothing() -> None:
+def test_undecidable_note_title_claims_nothing() -> None:
     table = _table(
         ("Alpha item", "Beta item"),
         note=NoteRef(None, None, "Subsequent Events"),

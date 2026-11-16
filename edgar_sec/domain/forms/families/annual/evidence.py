@@ -28,7 +28,7 @@ INCORPORATED_REFERENCE_TERMS: tuple[str, ...] = (
     "the following documents are incorporated by reference",
 )
 
-# Delegation verbs for the EX-13 judgement (refresh Step 2): a primary
+# Delegation verbs for the EX-13 judgement: a primary
 # delegates when one of these phrases sits inside an exhibit mention's
 # anchor window. A different, wider set than the reference terms above.
 EX13_DELEGATION_VERBS: tuple[str, ...] = (

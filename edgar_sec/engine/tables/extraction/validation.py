@@ -19,7 +19,7 @@ REL_TOLERANCE = 0.005
 _Matcher = Callable[[str], bool]
 
 
-# Closure tolerance is the Step 3 pricing tolerance — max(2 units,
+# Closure tolerance is the calibration pricing tolerance — max(2 units,
 # 0.5% of the target) — in the table's own stated units.
 def values_close(computed: float, target: float) -> bool:
     return abs(computed - target) <= max(ABS_TOLERANCE, REL_TOLERANCE * abs(target))

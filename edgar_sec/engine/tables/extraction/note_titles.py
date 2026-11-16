@@ -1,6 +1,6 @@
 """Note-title families: residual clusters whose home is a note title.
 
-Seeded by the Step 8c note census over the derivation residual pool
+Seeded by the note census over the derivation residual pool
 and confirmed by the context drive; the note's identity is the
 family's evidence — no companion label term covers the clusters.
 """

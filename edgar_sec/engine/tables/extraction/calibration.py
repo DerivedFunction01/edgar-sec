@@ -1,4 +1,4 @@
-"""Measured Step 3 tables: term patterns, prose patterns, locations."""
+"""Measured tables: term patterns, prose patterns, locations."""
 
 from __future__ import annotations
 

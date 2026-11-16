@@ -1,7 +1,7 @@
 """Measurement driver configuration: one JSON per protocol step.
 
 Drivers are step-parameterized, never step-named: every constant
-that differed between the Step 4 and Step 6 workspaces (seeds,
+that differed between the baseline and current workspaces (seeds,
 snapshot, exclusion dirs, file prefixes, caps, workdir) is config.
 """
 

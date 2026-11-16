@@ -10,9 +10,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.profiles import (
-    PROV_STEP3_FORM_TESTS,
-    PROV_STEP4_DERIVATIVES,
-    PROV_STEP6_VERDICT,
+    PROV_DECLARED_SPECS,
+    PROV_DERIVATIVES_EVIDENCE,
+    PROV_FAMILY_SUPPORT,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_LADDER,
@@ -35,7 +35,7 @@ class FormTestSpec:
     beginning: tuple[str, ...] = ()
     ending: tuple[str, ...] = ()
     excluded: tuple[str, ...] = ()
-    provenance: str = PROV_STEP3_FORM_TESTS
+    provenance: str = PROV_DECLARED_SPECS
 
 
 @dataclass(frozen=True, slots=True)
@@ -104,12 +104,12 @@ class CompositionSpec:
     period_columns: bool = False
     total_terms: tuple[str, ...] = ()
     refused_shapes: tuple[str, ...] = ()
-    provenance: str = PROV_STEP6_VERDICT
+    provenance: str = PROV_FAMILY_SUPPORT
 
 
-# The primary-statement seat (Step 3, class iv): a statement
-# table sits in the body region, outside the TOC and closing
-# spans — the seat facts Step 2's context production carries.
+# The primary-statement seat (class iv): a statement table
+# sits in the body region, outside the TOC and closing spans —
+# the seat facts the context production carries.
 SEAT_REGION_BODY = "body"
 
 
@@ -133,7 +133,7 @@ class SeatTestSpec:
     tolerance_rel: float = 0.005
 
 
-# Form-test specs (Step 3): every kind's declared specs, per family.
+# Form-test specs: every kind's declared specs, per family.
 # A walk passes when the table's own beginning balance plus its
 # movement rows reconciles to its ending balance within tolerance.
 FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
@@ -263,7 +263,7 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         TEST_DERIVATIVES_EVIDENCE,
         "derivatives_hedging_evidence_gate",
         0.0,
-        provenance=PROV_STEP4_DERIVATIVES,
+        provenance=PROV_DERIVATIVES_EVIDENCE,
     ),
 )
 
@@ -275,8 +275,8 @@ WALK_SPECS_BY_TEST_ID: dict[str, WalkSpec] = {
     "eps_numerator_denominator_walk": WalkSpec(min_columns=2),
 }
 
-# Year-ladder class specs (Step 3), keyed by family: the one
-# literal home of the ladder kind's parameters.
+# Year-ladder class specs, keyed by family: the one literal
+# home of the ladder kind's parameters.
 YEAR_LADDER_SPECS: dict[str, YearLadderSpec] = {
     "debt_maturity": YearLadderSpec(
         orientations=(ORIENT_COLUMNS, ORIENT_ROWS),
@@ -305,8 +305,8 @@ LADDER_SPECS_BY_TEST_ID: dict[str, YearLadderSpec] = {
     if spec.family in YEAR_LADDER_SPECS
 }
 
-# Percentage-form specs (Step 3 class (iii)): one per family
-# declaring TEST_PERCENTAGE_FORM, pinned from the Step 6
+# Percentage-form specs (class (iii)): one per family
+# declaring TEST_PERCENTAGE_FORM, pinned from the measured
 # directed sets and the adjudicated specimens in each note.
 PERCENTAGE_SPECS: tuple[PercentageFormSpec, ...] = (
     PercentageFormSpec(
@@ -330,8 +330,8 @@ PERCENTAGE_SPECS: tuple[PercentageFormSpec, ...] = (
 
 PERCENTAGE_SPECS_BY_FAMILY = {spec.family: spec for spec in PERCENTAGE_SPECS}
 
-# Primary-statement seat specs (Step 3 class (iv)), keyed by
-# family: the one literal home of the seat kind's parameters.
+# Primary-statement seat specs (class (iv)), keyed by family:
+# the one literal home of the seat kind's parameters.
 SEAT_TEST_SPECS_BY_FAMILY: dict[str, SeatTestSpec] = {
     "balance_sheet": SeatTestSpec(
         identity="balance_sheet_either_form",
@@ -376,7 +376,7 @@ def seat_test_spec_for(family: str) -> SeatTestSpec | None:
     return SEAT_TEST_SPECS_BY_FAMILY.get(family)
 
 
-# Composition-twin specs (Step 3 class (v)): one per family
+# Composition-twin specs (class (v)): one per family
 # declaring TEST_COMPOSITION_TWIN, pinned from the directed
 # sets and adjudicated specimens named in each provenance.
 COMPOSITION_SPECS: tuple[CompositionSpec, ...] = (
@@ -584,12 +584,12 @@ class DerivativesEvidenceSpec:
     effects_leadin_phrases: tuple[str, ...]
     offsetting_phrases: tuple[str, ...]
     min_period_rows: int = 2
-    provenance: str = PROV_STEP4_DERIVATIVES
+    provenance: str = PROV_DERIVATIVES_EVIDENCE
 
 
-# Derivatives-evidence gate specs (Step 4), keyed by family: the
-# one literal home of the gate kind's parameters, priced against
-# the Step 6 evidence-class split over the 58 specimens.
+# Derivatives-evidence gate specs, keyed by family: the one
+# literal home of the gate kind's parameters, priced against
+# the measured evidence-class split over the 58 specimens.
 DERIVATIVES_EVIDENCE_SPECS: dict[str, DerivativesEvidenceSpec] = {
     "derivatives_hedging": DerivativesEvidenceSpec(
         family="derivatives_hedging",

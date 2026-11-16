@@ -1,6 +1,6 @@
 """Processing profile for the ABS text reports (10-D / ABS-15G).
 
-Both faces register under the canonical ``ABS`` family — the Step 3
+Both faces register under the canonical ``ABS`` family — the
 alias map merges the two codes there — so one profile carries both;
 the analyzer dispatches fields by the filing's own form code.
 """

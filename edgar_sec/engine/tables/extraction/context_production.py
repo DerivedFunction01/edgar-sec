@@ -1,6 +1,6 @@
 """Context production: NormalizationResults in, TableContexts out.
 
-The single production path for filing contexts (refresh Step 2, R4):
+The single production path for filing contexts (R4):
 filing-level facts are computed once in document normalization and
 carried here; no consumer re-derives them.
 """
@@ -601,7 +601,7 @@ def produce_contexts(
 ) -> ProductionResult:
     """Produce contexts for one filing's documents from normalize results.
 
-    The one context-production function (refresh Step 2): every consumer
+    The one context-production function: every consumer
     calls this; none assembles a context of its own.
     """
     if isinstance(documents, DocumentInput):

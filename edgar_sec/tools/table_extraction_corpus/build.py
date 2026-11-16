@@ -33,7 +33,7 @@ from edgar_sec.tools.table_extraction_corpus.fetch import (
 _WORKER: dict[str, object] = {}
 
 
-# Exhibit coverage is the annual path only (refresh Step 5): the
+# Exhibit coverage is the annual path only: the
 # registry links exhibits on the annual stratum. No era gate applies.
 def annual_stratum(form: str) -> str | None:
     """The registry stratum a filing's form measures on, if annual."""

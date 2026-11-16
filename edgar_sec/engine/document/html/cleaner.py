@@ -382,7 +382,7 @@ def bound_formatting_element_scope(html: str) -> str:
     """Close still-open formatting elements at block boundaries.
 
     Placement is a contract: applied by the normalizer at the parse
-    seam, never inside :func:`clean_html_for_parsing` (Step 5A record).
+    seam, never inside :func:`clean_html_for_parsing`.
     """
     if not html or not _RE_FORMATTING_OPEN.search(html):
         return html

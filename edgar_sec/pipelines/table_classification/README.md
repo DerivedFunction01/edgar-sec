@@ -22,12 +22,12 @@ the published store tip read-only.
   translator emits from the registry and never imports the registry;
   planning and acquisition learn nothing about the classifier. The
   header's registry_state is the sha256 fingerprint over the canonical
-  serialization of the Step 1 registry (PROFILES + RETIRED_FAMILIES);
+  serialization of the registry (PROFILES);
   the planner carries it opaquely, so the store's provenance and both
   facade paths' stamps stay comparable under D2. The carried value is
   the translator's registry_state() string, "sha256:<hex>": sha256 over
-  json.dumps of the payload {"profiles", "retired_families"} — the
-  asdict serializations of PROFILES and RETIRED_FAMILIES — with sorted
+  json.dumps of the payload {"profiles"} — the asdict
+  serializations of PROFILES — with sorted
   keys and compact separators; the bare hex appears only inside facade
   stamp strings.
 - **Outputs, never plan content**: filing-level facts, contexts, and

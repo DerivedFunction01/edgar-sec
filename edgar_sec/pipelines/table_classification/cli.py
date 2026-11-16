@@ -191,7 +191,7 @@ def _delegate(kind: str, args: Any, options: SurfaceOptions) -> int:
             if callable(func):
                 return int(func(args, options))
     print(
-        f"{kind} is owned by a sibling Step 7 lane and is not present "
+        f"{kind} is owned by a sibling lane and is not present "
         "in this tree yet; the CLI seam is ready for it",
         file=sys.stderr,
     )

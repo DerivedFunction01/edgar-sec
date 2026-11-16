@@ -270,7 +270,7 @@ def scope_matches(fact: XbrlFact, scope: dict) -> bool:
 
 
 def near_guard_violation(facade_rec: dict, attributed: dict | None, facts) -> bool:
-    """Independent Step 5 guard check: divergent values inside the best tier group."""
+    """Independent guard check: divergent values inside the best tier group."""
     if attributed is None:
         return False
     best = facade_rec["equivalents"][0]

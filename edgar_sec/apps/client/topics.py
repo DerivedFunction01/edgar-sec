@@ -1,7 +1,7 @@
 """Topic views as coordinate-subspace presets over display facts.
 
 Debt and derivatives are per-fact coordinate scans: membership from
-the Step 3 display records (the tokenizer covers dimension axes and
+the display records (the tokenizer covers dimension axes and
 members), maxima and accumulations stated as preset rules below.
 """
 

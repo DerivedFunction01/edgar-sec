@@ -184,8 +184,8 @@ def extract_ascii_header_and_signatures(
     issuer_content = "\n".join(boxes["issuer"])
     period_content = "\n".join(boxes["period"] + boxes["amend"])
     relation_raw = "\n".join(boxes["relation"])
-    relation_step1 = canonicalize_filled_marks(relation_raw)
-    relation_content = _RE_FILL_BLANK.sub(f"{CANONICAL_UNCHECKED} ", relation_step1)
+    relation_filled = canonicalize_filled_marks(relation_raw)
+    relation_content = _RE_FILL_BLANK.sub(f"{CANONICAL_UNCHECKED} ", relation_filled)
 
     rows = (
         (f"1. {owner_content}", f"2. {issuer_content}"),

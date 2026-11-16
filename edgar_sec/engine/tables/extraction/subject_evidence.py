@@ -2,7 +2,7 @@
 
 The map beside this module (subject_evidence_map.json) is the improvement
 programme's shared contract — per-term subject evidence, measured edges,
-inheritance pricing, Step 0 weights; free-text only, closure never negative.
+inheritance pricing, channel weights; free-text only, closure never negative.
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ class TermSpec:
 
 @dataclass(frozen=True, slots=True)
 class ChannelSpec:
-    """One channel's Step 0 pricing: presence and decision counts."""
+    """One channel's pricing: presence and decision counts."""
 
     channel: str
     weight: float

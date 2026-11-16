@@ -1,6 +1,6 @@
 """Build one review run by replaying a fixture above the normalize line.
 
-Stored products rebuild each filing's contexts through the Step 2
+Stored products rebuild each filing's contexts through the
 production function; the cascade and assembly then re-run on those
 contexts — normalization never re-runs. Rows carry contract v1 shape.
 """

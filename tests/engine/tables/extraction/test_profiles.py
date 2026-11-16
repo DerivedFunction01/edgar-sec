@@ -7,14 +7,12 @@ from edgar_sec.engine.tables.extraction.profiles import (
     KIND_GENRE_SEAT,
     PROFILES,
     PROFILES_BY_FAMILY,
-    RETIRED_FAMILY_NAMES,
     TEST_COMPOSITION_TWIN,
     TEST_LADDER,
     TEST_PERCENTAGE_FORM,
     TEST_PRIMARY_STATEMENT_SEAT,
     TEST_WALK,
     competing_families,
-    is_retired,
     profile_for,
 )
 
@@ -63,9 +61,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
     assert len(PROFILES) == len(PROFILES_BY_FAMILY)
 
 
-def test_subsequent_events_is_retired_data_and_cannot_claim() -> None:
-    assert is_retired("subsequent_events")
-    assert RETIRED_FAMILY_NAMES == {"subsequent_events"}
+def test_subsequent_events_is_absent_and_cannot_claim() -> None:
     assert profile_for("subsequent_events") is None
     assert "subsequent_events" not in PROFILES_BY_FAMILY
     assert "subsequent_events" not in competing_families()

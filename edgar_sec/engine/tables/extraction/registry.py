@@ -1,4 +1,4 @@
-"""Classification registry: measured values with Step 3 provenance."""
+"""Classification registry: measured values with calibration provenance."""
 
 from __future__ import annotations
 

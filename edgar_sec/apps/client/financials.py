@@ -247,7 +247,7 @@ class XbrlFinancials(TtmServing):
 
     @property
     def free_cash_flow(self) -> float | None:
-        """Free cash flow as the composed chain cfo - capex (Step 7 preset)."""
+        """Free cash flow as the composed chain cfo - capex."""
         return self._free_cash_flow_served()[0]
 
     @property

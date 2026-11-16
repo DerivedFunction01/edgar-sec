@@ -116,8 +116,9 @@ classified tables into logical statements and arbitrates their relations.
   its measured support state per stratum, its vocabulary seat, its form-test
   declarations and specs (data only), its gate/seat bindings, its
   exhibit links, and its prose-window permission (none for every family: prose
-  windows are genre-layer only). A family outside the registry does not compete; a
-  retired family is registry data with no profile, never a code branch. Profiles
+  windows are genre-layer only). A family outside the registry does not compete:
+  absence is the whole mechanism, never a code branch — subsequent_events is an
+  adjudicated absence of exactly that kind. Profiles
   carry stratum codes, never form names — form enters only as detected context data.
 - **Form tests are registry data, evaluated by one stage**: `form_tests` evaluates
   the declared specs once per table, between context assembly and the vocabulary

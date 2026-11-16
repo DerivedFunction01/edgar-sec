@@ -1,4 +1,4 @@
-"""Population-first measurement protocol (improvement Step 4).
+"""Population-first measurement protocol.
 
 Adjudication records with the false claim's true class as a first-
 class field, per-stratum estimators that are never blended, the
@@ -17,14 +17,15 @@ from edgar_sec.engine.tables.extraction.signature_profiles import (
 
 FAMILIES = tuple(sorted({term.family for term in SIGNATURE_TERMS}))
 # The adjudication brief judges the build-excluded
-# commitments_contingencies family on its face, and the Step 2A
-# taxonomy priced its gold class — the gold vocabulary is wider.
+# commitments_contingencies family on its face, and the
+# false-claim taxonomy priced its gold class — the gold
+# vocabulary is wider.
 GOLD_FAMILIES = FAMILIES + ("commitments_contingencies",)
 VERDICTS = ("member", "not-member", "split-group")
 MECHANISMS = ("contested-twin", "stub-mass", "mixed")
 UNCLASSIFIED = "unclassified"
 
-# General (non-gold) classes of the Step 2A false-claim taxonomy
+# General (non-gold) classes of the false-claim taxonomy
 # (vocabulary of record: 2026-11-14-greenfield-step2a/taxonomy.json).
 PLAIN_CLASSES = (
     "acquisition-detail",

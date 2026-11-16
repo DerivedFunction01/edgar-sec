@@ -75,7 +75,6 @@ def test_registry_state_digest_is_stable_and_sensitive() -> None:
     assert first["exhibit_types"] == ["EX-13"]
     opaque = registry_state()
     assert opaque == f"sha256:{first['digest']}"
-    assert first["retired_families"] == ["subsequent_events"]
 
 
 def test_profile_application_rows_match_core_contract() -> None:

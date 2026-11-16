@@ -729,7 +729,7 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
     ) -> tuple["ClassifiedTable", ...]:
         """Classify one filing's free-text tables on demand (fast version).
 
-        The pipeline version over the Step 7 store serves many filings;
+        The pipeline version over the published store serves many filings;
         this one computes a single filing in the call, cached.
         """
         from edgar_sec.apps.client.classified_tables import (
@@ -742,7 +742,7 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
     def classified_tables_from_store(
         self, filing: FilingAggregate, *, store_root: Path | str | None = None
     ) -> "PipelineClassifiedTables":
-        """Serve one filing's classified tables from the Step 7 store.
+        """Serve one filing's classified tables from the published store.
 
         The pipeline version (D2): read-only over the published store,
         honest absence when missing; never a compute fallback.

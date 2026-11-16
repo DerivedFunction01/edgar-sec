@@ -40,7 +40,7 @@ PARTS: tuple[str, ...] = ()
 
 FORM_8K_DERIVED = build_taxonomy_derived(FORM_8K_ITEMS, PARTS)
 
-# Exhibit-anchored 6-K taxonomy, adopted under the Step 18 census bar
+# Exhibit-anchored 6-K taxonomy, adopted under the census bar
 # (.artifacts/run-logs/2026-11-08-sixk-census.md): the one drafted item
 # that cleared per-item precision and coverage on the held-out slice.
 FORM_6K_ITEMS: tuple[ItemDefinition, ...] = (

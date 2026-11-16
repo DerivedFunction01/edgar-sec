@@ -6,15 +6,14 @@ import hashlib
 import json
 from dataclasses import asdict, dataclass
 
-PROV_STEP6_VERDICT = "verdict:family_support"
-PROV_RETIREMENT = "retirement:structurally_undecidable"
+PROV_FAMILY_SUPPORT = "verdict:family_support"
 PROV_DEMOGRAPHICS = "measurement:demographics_profile"
 PROV_LABOR = "measurement:labor_capture_profile"
 PROV_EX13 = "census:ex13_exhibit_links"
 
-# Strata are the Step 6 measurement strata: B is the annual
-# stratum, D the quarterly stratum. Profiles carry stratum
-# codes, never form names (R5: no hardcoded forms).
+# Strata are the measurement strata: B is the annual stratum,
+# D the quarterly stratum. Profiles carry stratum codes, never
+# form names (R5: no hardcoded forms).
 STRATUM_ANNUAL = "B"
 STRATUM_QUARTERLY = "D"
 
@@ -34,11 +33,12 @@ SEAT_PROSE_CAPTURE = "prose_capture"
 SEAT_GENRE_REFUSAL = "genre_refusal"
 SEAT_REGION_GATED = "region_gated"
 
-PROV_STEP3_FORM_TESTS = "form-tests:declared_specs"
-PROV_STEP4_DERIVATIVES = "form-tests:derivatives_evidence"
+PROV_DECLARED_SPECS = "form-tests:declared_specs"
+PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
 
 # Form-test declarations (R1): names only, as registry data.
-# The stage and the test classes themselves build in Step 3.
+# The test classes themselves are implemented outside the
+# registry; only their names are data here.
 TEST_WALK = "beginning_ending_walk"
 TEST_LADDER = "year_ladder"
 TEST_PERCENTAGE_FORM = "percentage_form"
@@ -59,7 +59,7 @@ FORM_TESTS = (
 
 @dataclass(frozen=True, slots=True)
 class SupportState:
-    """Step 6 support for one family: precision/recall per stratum."""
+    """Measured support for one family: precision/recall per stratum."""
 
     annual_precision: float | None
     annual_recall: float | None
@@ -94,16 +94,7 @@ class FamilyProfile:
     region_gate: str | None = None
     shape: str | None = None
     note: str = ""
-    provenance: str = PROV_STEP6_VERDICT
-
-
-@dataclass(frozen=True, slots=True)
-class RetiredFamily:
-    """A family retired as registry data; it carries no profile."""
-
-    family: str
-    reason: str
-    provenance: str = PROV_RETIREMENT
+    provenance: str = PROV_FAMILY_SUPPORT
 
 
 def _support(
@@ -376,15 +367,6 @@ PROFILES: tuple[FamilyProfile, ...] = (
 
 PROFILES_BY_FAMILY = {profile.family: profile for profile in PROFILES}
 
-RETIRED_FAMILIES: tuple[RetiredFamily, ...] = (
-    RetiredFamily(
-        "subsequent_events",
-        "structurally undecidable from free text (Step 6 specimen "
-        "proof); retired at Step 0 — no profile, does not compete",
-    ),
-)
-RETIRED_FAMILY_NAMES = frozenset(entry.family for entry in RETIRED_FAMILIES)
-
 
 def profile_for(family: str) -> FamilyProfile | None:
     """The profile for a family, or None: no profile, no claims."""
@@ -398,21 +380,12 @@ def competing_families() -> tuple[str, ...]:
     )
 
 
-def is_retired(family: str) -> bool:
-    """Whether a family is retired as registry data."""
-    return family in RETIRED_FAMILY_NAMES
-
-
 def registry_fingerprint(
     profiles: tuple[FamilyProfile, ...] = PROFILES,
-    retired: tuple[RetiredFamily, ...] = RETIRED_FAMILIES,
 ) -> str:
     """Sha256 over the canonical serialization of the whole registry."""
     canonical = json.dumps(
-        {
-            "profiles": [asdict(profile) for profile in profiles],
-            "retired_families": [asdict(entry) for entry in retired],
-        },
+        {"profiles": [asdict(profile) for profile in profiles]},
         sort_keys=True,
         separators=(",", ":"),
     )
@@ -422,7 +395,6 @@ def registry_fingerprint(
 def registry_state(
     *,
     profiles: tuple[FamilyProfile, ...] = PROFILES,
-    retired: tuple[RetiredFamily, ...] = RETIRED_FAMILIES,
 ) -> str:
     """The registry-state value a plan's provenance carries."""
-    return f"sha256:{registry_fingerprint(profiles, retired)}"
+    return f"sha256:{registry_fingerprint(profiles)}"

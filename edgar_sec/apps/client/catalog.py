@@ -33,7 +33,7 @@ DISCLOSURE = "disclosure"
 _CATEGORY_SEGMENTS = frozenset({"statement", "disclosure", "document"})
 _DETAIL_SUFFIXES = frozenset({"detail", "details", "disclosure"})
 # Stop words admitted only as segmentation pieces; each was validated
-# on the seed-corpus title sweep (Step 5 addendum run-log).
+# on the seed-corpus title sweep.
 _STOP_WORDS = frozenset(
     {
         "a",

@@ -1,4 +1,4 @@
-"""Company-facts TTM comparison surface for item 19 Step 5.
+"""Company-facts TTM comparison surface for item 19.
 
 The landed cross-check-only posture binds: company-facts values are
 computed here solely to compare against the XBRL TTM surface; they

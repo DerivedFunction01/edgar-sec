@@ -11,9 +11,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.profiles import (
     PROFILES,
-    RETIRED_FAMILIES,
     FamilyProfile,
-    RetiredFamily,
     registry_fingerprint,
     registry_state,
 )
@@ -243,14 +241,12 @@ def plan_request_for(
 def registry_state_detail(
     *,
     profiles: tuple[FamilyProfile, ...] = PROFILES,
-    retired: tuple[RetiredFamily, ...] = RETIRED_FAMILIES,
 ) -> dict[str, object]:
     """Identity of the registry state a translation was made from."""
     return {
-        "digest": registry_fingerprint(profiles, retired),
+        "digest": registry_fingerprint(profiles),
         "profile_count": len(profiles),
         "families": [profile.family for profile in profiles],
-        "retired_families": [entry.family for entry in retired],
         "exhibit_types": sorted(
             {
                 link.exhibit_type.strip().upper()

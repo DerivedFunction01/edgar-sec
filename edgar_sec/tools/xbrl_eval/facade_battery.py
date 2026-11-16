@@ -1,4 +1,4 @@
-"""Step 10 facade verification battery over the archived XBRL cohorts.
+"""Facade verification battery over the archived XBRL cohorts.
 
 Loads full-fidelity fixture bundles, builds the client facade, and
 records per-filing check outcomes as JSON for adjudication.
@@ -635,7 +635,7 @@ def _print_summary(report: dict[str, Any]) -> None:
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Run the Step 10 facade verification battery over cohorts.",
+        description="Run the facade verification battery over cohorts.",
     )
     parser.add_argument(
         "--cohorts",

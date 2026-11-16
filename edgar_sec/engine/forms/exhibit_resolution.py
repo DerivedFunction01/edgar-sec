@@ -1,4 +1,4 @@
-"""Exhibit resolution per family profile (refresh Step 2, R3).
+"""Exhibit resolution per family profile (R3).
 
 One resolver ties a registry profile's exhibit links to a filing's
 document inventory: candidacy is metadata-decided, body confirmation

@@ -1,7 +1,7 @@
 """Sampling over the collect's returns (config step).
 
 Grouped-contract sample: per family per stratum, seeded, stratified
-across score bands, exactly the Step 4 sample plan; band population
+across score bands, exactly the baseline sample plan; band population
 counts ride along. Assembly sample: non-competition families, capped.
 """
 

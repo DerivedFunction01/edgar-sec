@@ -49,9 +49,9 @@ from edgar_sec.engine.tables.extraction.signature_profiles import (
     SignatureTerm,
 )
 
-# Calibration constants, derivation-priced by the Step 1 harness
-# over the adjudicated corpora (record: improvement Step 1; the
-# pin iteration re-prices them against the 1B map profile).
+# Calibration constants, derivation-priced by the calibration
+# harness over the adjudicated corpora; the pin iteration
+# re-prices them against the 1B map profile.
 CLAIM_FLOOR = 5.0
 DOMINANCE_RATIO = 1.25
 FOREIGN_ALLOWANCE = 0.25
@@ -61,8 +61,8 @@ INHERITANCE_MAX_DISTANCE = 3
 TIE_POINTS = 1.0
 FRAGMENT_MAX_STUBS = 8
 
-# Step 2A constants, derivation-priced (record: improvement
-# Step 2A). Vetoes are scored negative evidence only — the
+# False-claim constants, derivation-priced. Vetoes are
+# scored negative evidence only — the
 # Deliverable 1 pricing earned no hard veto anywhere.
 VETO_POINTS = 1.5
 AOCI_STUB_EVIDENCE_MIN = 6.0
@@ -494,7 +494,7 @@ def compete(
     # Cure 6 (derivatives gate): a derivatives claim requires U/A
     # evidence in the geometry itself; the gate is registry data
     # (form_test_specs.DERIVATIVES_EVIDENCE_SPECS), priced on the
-    # Step 6 evidence-class split: no-evidence claims are the
+    # The measured evidence-class split: no-evidence claims are the
     # false mass.
     deriv_spec = DERIVATIVES_EVIDENCE_SPECS.get("derivatives_hedging")
     deriv_evidence = (

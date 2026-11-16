@@ -248,7 +248,7 @@ def _share_leg_set(
 ) -> QuarterLegSet:
     """Weighted-share legs from reported spans, quarters day-differenced.
 
-    Un-accumulation never feeds a share leg (the Step 6 narrowing):
+    Un-accumulation never feeds a share leg (the narrowing rule):
     quarters difference the reported cumulative spans by day counts.
     """
     target = _SHARES_ATOMS[diluted]

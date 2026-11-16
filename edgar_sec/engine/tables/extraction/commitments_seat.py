@@ -1,7 +1,7 @@
 """Commitments seat: geometry-text claims in MD&A / note regions.
 
-The relocated seat for commitments_contingencies (refresh Step 4):
-the claim reads the geometry's own text, seated by the Step 2
+The relocated seat for commitments_contingencies:
+the claim reads the geometry's own text, seated by the
 context contract, never the note title alone.
 """
 
@@ -74,7 +74,7 @@ _REFUSED = SeatVerdict(False, None, 0.0, None, "")
 
 
 def seat_region(table: TypedTable) -> str | None:
-    """The claim region the Step 2 contract seats this table in."""
+    """The claim region the context contract seats this table in."""
     context = table.context
     if context.seat == SEAT_MDA:
         return "mda"

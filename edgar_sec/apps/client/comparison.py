@@ -54,7 +54,7 @@ DEFAULT_METRICS: tuple[SubspaceMetric, ...] = (
 
 # Metrics produced by statement-graph roots, computed rollups, or the
 # debt topic accumulation keep their accessor path as a documented
-# delegate (measured per metric over the cohort, Phase 4 Step 4).
+# delegate (measured per metric over the cohort).
 METRIC_DELEGATES: dict[str, str] = {
     "gross_profit": "accessor",
     "operating_income": "accessor",

@@ -2,7 +2,7 @@
 
 Per stratum, never blended: grouped precision, top-member rates,
 calibration, false-claim classes, band-weighted population precision;
-assembly precision; labelled recall; Step 4 deltas.
+assembly precision; labelled recall; baseline deltas.
 """
 
 from __future__ import annotations
@@ -86,9 +86,9 @@ def main() -> int:
         all_records.extend(records)
         for r in records:
             for p in r.problems():
-                # The Step 4 vocabulary predates the Step 3
+                # The baseline vocabulary predates the
                 # subsequent_events family; its gold class is
-                # legal Step 6 vocabulary, reported separately.
+                # legal current vocabulary, reported separately.
                 if "subsequent_events" in p:
                     vocab_notes.append(f"{r.specimen_id}: {p}")
                 else:
@@ -237,53 +237,57 @@ def main() -> int:
         if r.is_false_claim:
             totals[r.stratum][r.false_claim_true_class] += 1
     out["false_claim_class_totals"] = {s: dict(c) for s, c in totals.items()}
-    # Step 4 deltas
-    step4 = json.loads(Path(CONFIG["baseline_results"]).expanduser().read_text())
+    # Baseline deltas: the recorded baseline against this run.
+    baseline = json.loads(Path(CONFIG["baseline_results"]).expanduser().read_text())
     deltas: dict[str, dict] = {}
     for stratum in ("B", "D"):
         deltas[stratum] = {}
-        s4 = step4[stratum]["precision_by_family"]
-        s6 = out["strata"][stratum]["precision_by_family"]
-        s4top = {r["family"]: r["value"] for r in step4[stratum]["grouped_top_member"]}
-        s6top = {
+        base_precision = baseline[stratum]["precision_by_family"]
+        run_precision = out["strata"][stratum]["precision_by_family"]
+        base_top = {
+            r["family"]: r["value"] for r in baseline[stratum]["grouped_top_member"]
+        }
+        run_top = {
             r["family"]: r["value"]
             for r in out["strata"][stratum]["grouped_top_member"]
         }
-        for fam in sorted(set(s4) | set(s6)):
-            p4 = next(
+        for fam in sorted(set(base_precision) | set(run_precision)):
+            p_base = next(
                 (
                     r["value"]
-                    for r in s4.get(fam, [])
+                    for r in base_precision.get(fam, [])
                     if r["estimator"] == "precision-strict"
                 ),
                 None,
             )
-            p6 = next(
+            p_run = next(
                 (
                     r["value"]
-                    for r in s6.get(fam, [])
+                    for r in run_precision.get(fam, [])
                     if r["estimator"] == "precision-strict"
                 ),
                 None,
             )
             deltas[stratum][fam] = {
-                "precision_strict_step4": p4,
-                "precision_strict_step6": p6,
+                "precision_strict_baseline": p_base,
+                "precision_strict_current": p_run,
                 "delta_precision": (
-                    round(p6 - p4, 4) if p4 is not None and p6 is not None else None
+                    round(p_run - p_base, 4)
+                    if p_base is not None and p_run is not None
+                    else None
                 ),
-                "top_member_step4": s4top.get(fam),
-                "top_member_step6": s6top.get(fam),
+                "top_member_baseline": base_top.get(fam),
+                "top_member_current": run_top.get(fam),
                 "delta_top_member": (
-                    round(s6top[fam] - s4top[fam], 4)
-                    if fam in s4top
-                    and fam in s6top
-                    and s4top[fam] is not None
-                    and s6top[fam] is not None
+                    round(run_top[fam] - base_top[fam], 4)
+                    if fam in base_top
+                    and fam in run_top
+                    and base_top[fam] is not None
+                    and run_top[fam] is not None
                     else None
                 ),
             }
-    out["delta_vs_step4"] = deltas
+    out["delta_vs_baseline"] = deltas
     out["record_problems"] = problems
     out["vocabulary_notes"] = vocab_notes
     out["records_total"] = len(all_records)

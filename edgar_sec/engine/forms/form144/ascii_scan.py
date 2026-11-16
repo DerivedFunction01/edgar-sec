@@ -245,7 +245,7 @@ def extract_ascii_proposed_sales(
     """Extract proposed sale records across ASCII columnar, key-value, and block layouts."""
     cutoff = min(len(lines), max(40, int(len(lines) * 0.85)))
 
-    # Step 1: Columnar Data Rows (monospace / SGML tables)
+    # Columnar data rows (monospace / SGML tables)
     columnar_recs: list[ProposedSaleRecord] = []
     in_b3 = False
     divider_seen = False
@@ -383,7 +383,7 @@ def extract_ascii_proposed_sales(
     if columnar_recs:
         return columnar_recs
 
-    # Step 2: Key-Value forward scanning
+    # Key-value forward scanning
     current_rec: ProposedSaleRecord | None = None
     recs: list[ProposedSaleRecord] = []
     for idx in range(cutoff):
@@ -432,7 +432,7 @@ def extract_ascii_proposed_sales(
     if recs:
         return recs
 
-    # Step 3: Vertical Block scanning
+    # Vertical block scanning
     for idx in range(cutoff):
         line = strip_markup_tags(lines[idx])
         if not line or is_form144_instruction_line(line):

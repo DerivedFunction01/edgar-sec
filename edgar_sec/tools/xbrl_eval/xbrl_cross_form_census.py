@@ -175,7 +175,7 @@ _FOCUS_SHAPES = {
 def _transition_shape(facts: tuple[XbrlFact, ...], span_shape: str) -> str:
     """A transition filing's period shape, classified by its filed dei.
 
-    Dei period focus names the class (Step 5 authority comparison); the
+    Dei period focus names the class (the authority comparison); the
     span shape is the fallback where the focus names no class.
     """
     focus_class = focus_length_class(filed_metadata(facts).period_focus)
