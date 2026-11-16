@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
@@ -43,10 +42,6 @@ DEFAULT_SP100_COHORT_FILE = "sp100_cohort.json"
 
 PIPELINE_ROOT = Path(__file__).resolve().parent
 FIXTURES_DIR = PIPELINE_ROOT / "fixtures"
-
-
-def _validate_id(value: str, label: str) -> str:
-    return foundation_paths.validate_safe_id(value, label)
 
 
 class XbrlPaths:
@@ -92,7 +87,9 @@ class XbrlPaths:
         return foundation_paths.snapshots_root(self.artifacts_root, DATASET)
 
     def snapshot_root(self, snapshot_id: str) -> Path:
-        return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
+        return self.snapshots_root / foundation_paths.validate_safe_id(
+            snapshot_id, "snapshot_id"
+        )
 
     def snapshot_relation_dir(self, snapshot_id: str, relation: str) -> Path:
         return DAGPaths(self.snapshots_root).relation_dir(snapshot_id, relation)
@@ -163,7 +160,7 @@ class XbrlRunPaths:
 
     def __init__(self, artifacts_root: Path, run_id: str) -> None:
         self.artifacts_root = Path(artifacts_root)
-        self.run_id = _validate_id(run_id, "run_id")
+        self.run_id = foundation_paths.validate_safe_id(run_id, "run_id")
         self.run_root = foundation_paths.transient_dir(
             self.artifacts_root, DATASET, self.run_id
         )
@@ -188,13 +185,17 @@ class XbrlRunPaths:
         return self.run_root / PROJECTION_MANIFEST_FILE
 
     def chunk_dir(self, chunk_id: str) -> Path:
-        return self.run_root / CHUNKS_DIR / _validate_id(chunk_id, "chunk_id")
+        return (
+            self.run_root
+            / CHUNKS_DIR
+            / foundation_paths.validate_safe_id(chunk_id, "chunk_id")
+        )
 
     def chunk_pointer_path(self, chunk_id: str) -> Path:
         return self.chunk_dir(chunk_id) / POINTER_FILE
 
     def attempt_dir(self, chunk_id: str, attempt_id: str) -> Path:
-        safe_attempt = _validate_id(attempt_id, "attempt_id")
+        safe_attempt = foundation_paths.validate_safe_id(attempt_id, "attempt_id")
         return self.chunk_dir(chunk_id) / f"{ATTEMPT_PREFIX}{safe_attempt}"
 
     def attempt_solved_nodes_path(self, chunk_id: str, attempt_id: str) -> Path:
@@ -239,12 +240,6 @@ def default_sp100_cohort_path(artifacts_root: Path | str | None = None) -> Path:
     return xbrl_paths(artifacts_root).default_sp100_cohort_path
 
 
-def snapshot_id_for(parent_snapshot_id: str | None, digest: str) -> str:
-    """Derive an immutable snapshot id from its parent and content digest."""
-    content = f"{parent_snapshot_id or ''}:{digest}"
-    return f"snapshot-{hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]}"
-
-
 __all__ = [
     "ATTEMPT_PREFIX",
     "CALCULATION_ARCS_FILE",
@@ -271,7 +266,6 @@ __all__ = [
     "XbrlRunPaths",
     "default_sp100_cohort_path",
     "resolve_filing_catalog_paths",
-    "snapshot_id_for",
     "xbrl_paths",
     "xbrl_run_paths",
 ]

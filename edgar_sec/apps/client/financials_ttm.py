@@ -21,7 +21,7 @@ from edgar_sec.apps.client.financials_core import (
     REVENUE_EXCLUDED_MODS,
     _calc_distance,
 )
-from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
+from edgar_sec.apps.client.kernel import _span_length_class
 from edgar_sec.engine.xbrl.schema.models import XbrlFact, split_concept_qname
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.solve.statement import period_rank
@@ -155,15 +155,6 @@ _SHARE_METRICS = {
     "weighted_shares_diluted": True,
 }
 _EPS_METRICS = ("eps_basic", "eps_diluted")
-
-
-def _length_class(fact: XbrlFact) -> str | None:
-    """A duration fact's length class; None when it carries no span."""
-    if not fact.start_date or not fact.end_date:
-        return None
-    return normalize_time_coordinate(
-        fact.period_type, fact.instant_date, fact.start_date, fact.end_date
-    ).length_class
 
 
 def _next_day(iso: str) -> str:
@@ -369,7 +360,7 @@ class TtmServing(CashFlowServing):
                 continue
             if fact.unit in ("pure", "shares", "item", "ratio"):
                 continue
-            if _length_class(fact) not in _TTM_CLASSES:
+            if _span_length_class(fact) not in _TTM_CLASSES:
                 continue
             record = self._records.get(fact.concept_qname)
             if record is None:
@@ -417,7 +408,7 @@ class TtmServing(CashFlowServing):
             legs[span] = SpanLeg(
                 start=span[0],
                 end=span[1],
-                length_class=_length_class(winner) or "",
+                length_class=_span_length_class(winner) or "",
                 value=value,
                 accession=str(winner.accession),
                 concept_qname=winner.concept_qname,

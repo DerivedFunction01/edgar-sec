@@ -10,6 +10,8 @@ from __future__ import annotations
 from enum import StrEnum
 from pathlib import PurePosixPath
 
+from edgar_sec.domain.document.path_facts import normalized_suffix
+
 #: Flat suffixes carrying markup. Anything with a slash is HTML regardless of this.
 MARKUP_SUFFIXES = frozenset({".htm", ".html", ".xhtml"})
 
@@ -71,11 +73,6 @@ class DocumentRoute(StrEnum):
 _MARKUP_ROUTES = frozenset({DocumentRoute.MARKUP, DocumentRoute.RENDERED})
 
 
-def _normalized_suffix(document_path: str) -> str:
-    """Return the case-folded suffix of a path under EDGAR's separator spelling."""
-    return PurePosixPath(document_path.strip().replace("\\", "/")).suffix.casefold()
-
-
 def _route_for_suffix(suffix: str) -> DocumentRoute:
     """Classify an already-extracted suffix, with no directory consulted."""
     if suffix in MARKUP_SUFFIXES:
@@ -107,7 +104,7 @@ def document_route(document_path: str | None) -> DocumentRoute:
     if "/" in normalized:
         return DocumentRoute.RENDERED
 
-    return _route_for_suffix(_normalized_suffix(normalized))
+    return _route_for_suffix(normalized_suffix(normalized))
 
 
 def content_route(document_path: str | None) -> DocumentRoute:
@@ -118,7 +115,7 @@ def content_route(document_path: str | None) -> DocumentRoute:
     """
     if not document_path:
         return DocumentRoute.UNKNOWN
-    return _route_for_suffix(_normalized_suffix(document_path))
+    return _route_for_suffix(normalized_suffix(document_path))
 
 
 def mime_type_for_suffix(document_path: str | None) -> str:
@@ -131,7 +128,7 @@ def mime_type_for_suffix(document_path: str | None) -> str:
     normalized = document_path.strip().replace("\\", "/")
     if not normalized:
         return DEFAULT_MIME
-    return MIME_BY_SUFFIX.get(_normalized_suffix(normalized), DEFAULT_MIME)
+    return MIME_BY_SUFFIX.get(normalized_suffix(normalized), DEFAULT_MIME)
 
 
 def is_rendered_document_path(document_path: str | None) -> bool:

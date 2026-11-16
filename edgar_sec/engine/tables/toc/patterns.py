@@ -1,16 +1,27 @@
-"""Tabular table-of-contents row patterns.
-A contents row with a page suffix and a structural `PART`/`ITEM` heading both read as one prose line
-but must not be unwrapped into one; the vocabulary lives here so both consumers share it.
+"""Table-of-contents and section-reference patterns.
+The one home for the PART/ITEM/NOTE reference vocabulary: contents rows, headings,
+grouped lists, captions, and cross-reference cues, so every consumer shares one definition.
 """
 
 from __future__ import annotations
 
 import re
 
-from edgar_sec.foundation.text.patterns import PAGE_NUMBER_CORE, RE_DOT_LEADER
+from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.patterns import (
+    ITEM_REFERENCE_CORE,
+    PAGE_NUMBER_CORE,
+    PART_REFERENCE_CORE,
+    RE_DOT_LEADER,
+)
 
-RE_PART_REFERENCE = re.compile(r"\bPART\s+(?:[IVXLCDM]+|\d+)\b", re.IGNORECASE)
-RE_ITEM_REFERENCE = re.compile(r"\bITEM\s+\d+(?:\.\d+)*[A-Z]?\b", re.IGNORECASE)
+RE_PART_REFERENCE = re.compile(
+    rf"\b{PART_REFERENCE_CORE}(?:[IVXLCDM]+|\d+)\b", re.IGNORECASE
+)
+RE_ITEM_REFERENCE = re.compile(
+    rf"\b{ITEM_REFERENCE_CORE}(?:\.\d+)*[A-Z]?\b", re.IGNORECASE
+)
+RE_NOTE_REFERENCE = re.compile(r"\bNOTES?\s+\d+(?:\.\d+)*[A-Z]?\b", re.IGNORECASE)
 
 RE_TOC_ITEM_ROW = re.compile(
     r"^\s*(?:[\|+]\s*)?ITEMS?\s+(\d{1,2})([A-Z])?\b", re.IGNORECASE
@@ -21,6 +32,82 @@ RE_PAGE_SUFFIX = re.compile(
     rf"(?:\b[A-Z])?[\.\-\s]?{PAGE_NUMBER_CORE}(?:\s*[\|+])?\s*$",
     re.IGNORECASE,
 )
+
+# A TOC row listing one or more items, closed by a dot or a space: the
+# cover-TOC form of the item reference, distinct from the single-item row.
+_TOC_ITEM_CONJUNCTION = build_alternation(["and", "&", "-"], auto_escape=True)
+RE_TOC_ITEM = re.compile(
+    rf"^\s*(?:[\|+]\s*)?ITEMS?\s+\d+[A-Z]?(?:[\s,]+(?:{_TOC_ITEM_CONJUNCTION})?[\s,]*\d+[A-Z]?)*[\.\s]",
+    re.IGNORECASE,
+)
+
+# Anchored heading forms: a line-leading keyword and number, an optional
+# separator, an optional "(continued)" marker, and the captured title tail.
+RE_NOTE_HEADING = re.compile(
+    r"^\s*(?:[\|+•\t-]\s*)?NOTES?\s+(\d+)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    re.IGNORECASE,
+)
+ITEM_HEADING_CORE = r"ITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)"
+RE_ITEM_HEADING = re.compile(
+    rf"^\s*(?:[\|+•\t-]\s*)?{ITEM_HEADING_CORE}\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    re.IGNORECASE,
+)
+
+# The item-number grammar of exact cover headings: a decimal fused to a
+# title-case title, or a plain number with an optional short decimal tail.
+ITEM_NUMBER_PATTERN = r"(?:\d+\.\d{1,2}(?=[A-Z])|\d+[A-Z]?(?:\.\d{1,2})?\b)"
+RE_ITEM_EXACT = re.compile(
+    rf"^\s*ITEMS?\s+{ITEM_NUMBER_PATTERN}\s*(?:[.:;\-\u2013\u2014]+\s*)?"
+    r"(?:(?-i:[A-Z])[A-Za-z0-9,&'()\s-]*)?[:.]?\s*"
+    r"(?:\(\s*continued\s*\))?\s*$",
+    re.IGNORECASE,
+)
+RE_ITEM_SECTION_HEADING = re.compile(
+    rf"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+({ITEM_NUMBER_PATTERN})(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    re.IGNORECASE,
+)
+RE_ITEM_INLINE = re.compile(r"\bITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b", re.IGNORECASE)
+RE_SECTION_REFERENCE = re.compile(
+    r"\b(?:PART|ITEM)\s+(?:[IVX]+|[0-9]+[A-Z]?)\b\s*(.*)",
+    re.IGNORECASE,
+)
+
+# Grouped references: two or more numbers joined by commas and conjunctions,
+# the keyword optionally repeated before each later number.
+_REFERENCE_CONJUNCTION = build_alternation(
+    [r",\s*(?:and|&)", r"and", r"&", r","], auto_escape=False
+)
+RE_NOTE_GROUPED = re.compile(
+    rf"\bNOTES?\s+(\d+(?:(?:\s*{_REFERENCE_CONJUNCTION}\s*(?:NOTES?\s+)?)\d+)+)\b",
+    re.IGNORECASE,
+)
+RE_ITEM_GROUPED = re.compile(
+    rf"\bITEMS?\s+(\d+[A-Z]?(?:(?:\s*{_REFERENCE_CONJUNCTION}\s*(?:ITEMS?\s+)?)\d+[A-Z]?)+)\b",
+    re.IGNORECASE,
+)
+
+# Numeric and parenthesized heading forms: the numbered-section counterparts
+# of the keyword headings, with the number and title captured.
+RE_NUMERIC_LABEL = re.compile(
+    r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2}[A-Z]?)\.\s+([A-Z][A-Za-z0-9\s,&'-]+)$"
+)
+RE_NUMERIC_RUN_IN = re.compile(r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2}[A-Z]?)\.\s+(.+)$")
+RE_PAREN_LABEL = re.compile(r"^\((\d{1,2})\)\s*(.+)$")
+
+# Caption and cue forms: the shapes other routes use to veto or admit a line.
+RE_NOTE_CAPTION = re.compile(r"(?i)^\s*note\s+\d{1,3}(?:\s*[\.\):\-]\s*|\s+)[a-z]")
+_HEADING_LINE_ALT = build_alternation(
+    (
+        r"item\s+[0-9a-z]+[.:]?",
+        r"\(?[0-9]{1,2}\s*[\.\):]?",
+    ),
+    auto_escape=False,
+    compact=True,
+)
+RE_ITEM_OR_NUMBERED_HEADING = re.compile(rf"(?i)^\s*(?:{_HEADING_LINE_ALT})\s+[a-z]")
+RE_NOTE_HEADING_CUE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
+RE_ITEM_HEADING_MARKER = re.compile(r"(?i)\bITEM\s+\d+[A-Z]?\s*[.:]\s+[A-Z]")
+RE_SEE_REFERENCE = re.compile(r"(?i)\bsee\s+(?:item|row)\s+(\d+)")
 
 
 def is_toc_row(line: str) -> bool:
@@ -61,9 +148,27 @@ def looks_like_toc_tabular(line: str) -> bool:
 
 
 __all__ = [
+    "RE_ITEM_EXACT",
+    "RE_ITEM_GROUPED",
+    "RE_ITEM_HEADING",
+    "RE_ITEM_HEADING_MARKER",
+    "RE_ITEM_INLINE",
+    "RE_ITEM_OR_NUMBERED_HEADING",
     "RE_ITEM_REFERENCE",
+    "RE_ITEM_SECTION_HEADING",
+    "RE_NOTE_CAPTION",
+    "RE_NOTE_GROUPED",
+    "RE_NOTE_HEADING",
+    "RE_NOTE_HEADING_CUE",
+    "RE_NOTE_REFERENCE",
+    "RE_NUMERIC_LABEL",
+    "RE_NUMERIC_RUN_IN",
     "RE_PAGE_SUFFIX",
+    "RE_PAREN_LABEL",
     "RE_PART_REFERENCE",
+    "RE_SECTION_REFERENCE",
+    "RE_SEE_REFERENCE",
+    "RE_TOC_ITEM",
     "RE_TOC_ITEM_ROW",
     "RE_TOC_LEADER",
     "is_toc_row",

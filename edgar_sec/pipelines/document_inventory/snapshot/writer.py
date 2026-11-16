@@ -19,7 +19,10 @@ from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA_VERSION,
 )
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.foundation.runtime.paths import part_file_name
+from edgar_sec.foundation.runtime.paths import (
+    part_file_name,
+    snapshot_id_for,
+)
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.runtime.settings.parquet import (
@@ -47,7 +50,6 @@ from edgar_sec.pipelines.document_inventory.paths import (
     InventoryPaths,
     InventoryRunPaths,
     OUTCOMES_FILE,
-    snapshot_id_for,
 )
 from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     InventoryRunManifest,

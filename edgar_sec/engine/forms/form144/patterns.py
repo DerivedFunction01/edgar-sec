@@ -14,6 +14,7 @@ from edgar_sec.engine.forms.common.phrases import (
     match_phrase_rules,
 )
 from edgar_sec.engine.forms.common.tables import IGNORE_SUBBOX_MARKERS
+from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 
@@ -122,11 +123,11 @@ BOX_3C_UNITS_RE = re.compile(
     rf"(?:3\.?\s*\(\s*c\s*\)|\(\s*c\s*\))\s*(?:{_UNITS_ALT})", re.IGNORECASE
 )
 BOX_3C_TAIL_RE = re.compile(
-    r"(?:to be sold|\(c\)[^:]*):?\s*([0-9][0-9,]*(?:\.[0-9]+)?\s*[A-Za-z]*)",
+    rf"(?:to be sold|\(c\)[^:]*):?\s*({NUMERIC_TOKEN_RE.pattern}\s*[A-Za-z]*)",
     re.IGNORECASE,
 )
 BOX_3C_NEXT_LINE_RE = re.compile(
-    r"(?:instr\.\s*3\(c\):\s*)?([0-9][0-9,]*(?:\.[0-9]+)?\s*[A-Za-z]*)",
+    rf"(?:instr\.\s*3\(c\):\s*)?({NUMERIC_TOKEN_RE.pattern}\s*[A-Za-z]*)",
     re.IGNORECASE,
 )
 
@@ -134,7 +135,7 @@ BOX_3D_MARKET_VALUE_RE = re.compile(
     r"(?:3\.?\s*\(\s*d\s*\)|\(\s*d\s*\))\s*Aggregate\s+Market", re.IGNORECASE
 )
 BOX_3D_TAIL_RE = re.compile(
-    r"market\s+value[^:]*:?\s*([\$€£]?\s*[0-9][0-9,]*(?:\.[0-9]+)?\s*[A-Za-z]*)",
+    rf"market\s+value[^:]*:?\s*([\$€£]?\s*{NUMERIC_TOKEN_RE.pattern}\s*[A-Za-z]*)",
     re.IGNORECASE,
 )
 BOX_3B_BROKER_RE = re.compile(

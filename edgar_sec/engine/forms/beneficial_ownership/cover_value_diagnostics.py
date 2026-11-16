@@ -21,6 +21,7 @@ from edgar_sec.engine.forms.common.phrases import (
     compile_phrase_rules,
     match_phrase_rules,
 )
+from edgar_sec.engine.tables.toc.patterns import RE_ITEM_HEADING_MARKER
 from edgar_sec.foundation.regex.builder import build_alternation
 
 _CUSIP_PAGE_RESIDUE_RE = re.compile(r"(?i)\bSCHEDULE\s*13[DG]\b|\bPAGE\s*\d+\b")
@@ -46,7 +47,7 @@ _QUALIFIED_NUMERIC_PHRASES = (
     "including",
 )
 _SEPARATOR_RUN_RE = re.compile(r"[-_]{2,}|(?:\s*[:|]\s*){2,}")
-_COVER_ITEM_HEADING_RE = re.compile(r"(?i)\bITEM\s+\d+[A-Z]?\s*[.:]\s+[A-Z]")
+_COVER_ITEM_HEADING_RE = RE_ITEM_HEADING_MARKER
 _ROW_PREFIX_RE = {
     field: re.compile(rf"(?i)^\s*{row}\s+(?=\d|PERSON\b|SHARES\b)")
     for field, row in {

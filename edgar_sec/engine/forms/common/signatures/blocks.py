@@ -18,7 +18,6 @@ from edgar_sec.engine.forms.common.signatures.patterns import (
     SIG_NAME_RE,
     SIG_PERSON_PREFIX_RE,
     SIG_RULE_RUN_RE,
-    WHITESPACE_RE,
 )
 from edgar_sec.foundation.text.dates import (
     ISO_DATE_RE,
@@ -27,6 +26,7 @@ from edgar_sec.foundation.text.dates import (
     RE_FULL_DATE,
     parse_date,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 
 _TRAILING_DATE_WORD_RE = re.compile(r"\s+date\s*$", flags=re.IGNORECASE)
@@ -122,7 +122,7 @@ def extract_signature_candidate(sig_text: str) -> tuple[str | None, str | None]:
         if match:
             candidate = match.group(1).strip(" ,.-")
             candidate = MONTH_SUFFIX_RE.sub("", candidate).strip(" ,.-")
-            candidate = WHITESPACE_RE.sub(" ", candidate)
+            candidate = RE_WHITESPACE.sub(" ", candidate)
             if is_valid_signature_name(candidate):
                 sig_name = candidate
                 break

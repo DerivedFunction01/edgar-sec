@@ -14,16 +14,7 @@ from edgar_sec.engine.forms.common.extraction import (
     local_name,
     xml_element_text_or_none,
 )
-
-
-def _int(elem: ET.Element | None) -> int | None:
-    txt = xml_element_text_or_none(elem)
-    if not txt:
-        return None
-    try:
-        return int(txt.replace(",", ""))
-    except ValueError:
-        return None
+from edgar_sec.engine.forms.common.family_scaffold import element_int as _int
 
 
 def _parse_vote_row(row_elem: ET.Element) -> ProxyVoteRow:

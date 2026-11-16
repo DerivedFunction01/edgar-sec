@@ -9,6 +9,8 @@ import re
 from dataclasses import dataclass
 from enum import Enum
 
+from edgar_sec.foundation.text.patterns import RE_TABLE_OPEN, RE_TABLE_SPAN
+
 from ..ascii_html.converter import convert_html_table
 
 _MONOSPACE_DIVIDER_RE = re.compile(r"^[-=]{3,}\s*$")
@@ -23,13 +25,13 @@ class PreBlockKind(str, Enum):
     NARRATIVE_PROSE = "narrative_prose"
 
 
-_SGML_TABLE_RE = re.compile(r"<TABLE\b", re.IGNORECASE)
+_SGML_TABLE_RE = RE_TABLE_OPEN
 _S_MARKER_RE = re.compile(r"<S\b", re.IGNORECASE)
 _C_MARKER_RE = re.compile(r"<C\b", re.IGNORECASE)
-_HTML_TABLE_RE = re.compile(r"<table\b", re.IGNORECASE)
+_HTML_TABLE_RE = RE_TABLE_OPEN
 _TR_TD_RE = re.compile(r"<t[dh]\b", re.IGNORECASE)
 _PRE_BLOCK_RE = re.compile(r"(?is)<pre\b[^>]*>(?P<body>.*?)</pre\s*>")
-_TABLE_RE = re.compile(r"(?is)<table\b.*?</table\s*>")
+_TABLE_RE = RE_TABLE_SPAN
 _TOKEN_PREFIX = "__SEC_HYBRID_PRE_"
 
 

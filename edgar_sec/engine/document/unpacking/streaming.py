@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.document.canonical import normalize_form as _normalize_bundle_type
 from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 
 _NON_TEXT_TYPES = frozenset({"GRAPHIC", "COVER", "XML", "ZIP"})
@@ -356,11 +356,6 @@ def extract_bundle_sequence(
         expected_document_type=expected_document_type,
         expected_source_sha256=expected_source_sha256,
     )
-
-
-def _normalize_bundle_type(value: str) -> str:
-    normalized = " ".join(value.split()).upper()
-    return resolve_alias(normalized) or normalized
 
 
 def _type_is_selected(header: BundleDocumentHeader, wanted: str) -> bool:

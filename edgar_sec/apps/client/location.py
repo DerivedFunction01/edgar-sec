@@ -12,6 +12,7 @@ from typing import TYPE_CHECKING
 
 from edgar_sec.apps.client.catalog import CatalogEntry
 from edgar_sec.apps.client.facts import DisplayRecord, member_display_name
+from edgar_sec.apps.client.presentation import _children_by_parent
 from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
 from edgar_sec.engine.xbrl.schema.models import (
     FilingXbrl,
@@ -198,22 +199,6 @@ def _walk(
         if found is not None:
             return found
     return None
-
-
-def _children_by_parent(
-    arcs: tuple[PresentationArc, ...],
-) -> dict[str, list[PresentationArc]]:
-    children: dict[str, list[PresentationArc]] = {}
-    for arc in arcs:
-        children.setdefault(arc.parent_qname, []).append(arc)
-    for siblings in children.values():
-        siblings.sort(
-            key=lambda arc: (
-                arc.order if arc.order is not None else 0.0,
-                arc.child_qname,
-            )
-        )
-    return children
 
 
 def _calculation_parents(

@@ -20,18 +20,9 @@ from edgar_sec.engine.forms.common.extraction import (
     local_name,
     xml_element_text_or_none,
 )
+from edgar_sec.engine.forms.common.family_scaffold import element_int as _int
 
 _DOLLARS_ERA_START = (2023, 1, 1)
-
-
-def _int(elem: ET.Element | None) -> int | None:
-    txt = xml_element_text_or_none(elem)
-    if not txt:
-        return None
-    try:
-        return int(txt.replace(",", ""))
-    except ValueError:
-        return None
 
 
 def _bool(elem: ET.Element | None) -> bool | None:

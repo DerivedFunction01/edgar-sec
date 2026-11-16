@@ -14,6 +14,7 @@ from edgar_sec.foundation.text.dates import (
     is_year_token,
     parse_date,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE as _WHITESPACE_RE
 
 _CONTENT_SHAPE_RE = re.compile(
     build_alternation(
@@ -61,7 +62,6 @@ def is_statement_title(text: str) -> bool:
     return bool(_STATEMENT_TITLE_RE.search(text))
 
 
-_WHITESPACE_RE = re.compile(r"\s+")
 _DATE_QUALIFIER_RE = re.compile(r"\((?:unaudited|continued)\)", re.IGNORECASE)
 _NON_DATE_TOKEN_RE = re.compile(r"[\d,.\s]+")
 

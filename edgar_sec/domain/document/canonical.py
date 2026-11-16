@@ -15,7 +15,7 @@ from edgar_sec.domain.document_inventory.models import InventoryEntry
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 
 
-def _normalize_form(value: str) -> str:
+def normalize_form(value: str) -> str:
     normalized = " ".join(value.split()).upper()
     return resolve_alias(normalized) or normalized
 
@@ -32,7 +32,7 @@ def attachment_role(
         return "data_file"
     if doc_type == "GRAPHIC" and table_kind != "data_file":
         return "graphic"
-    if form and doc_type and _normalize_form(doc_type) == _normalize_form(form):
+    if form and doc_type and normalize_form(doc_type) == normalize_form(form):
         return "primary"
     if doc_type.startswith("EX-"):
         return "exhibit"
@@ -129,4 +129,5 @@ class CanonicalAttachmentRow:
 __all__ = [
     "CanonicalAttachmentRow",
     "attachment_role",
+    "normalize_form",
 ]

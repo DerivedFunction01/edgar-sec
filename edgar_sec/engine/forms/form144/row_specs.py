@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.extraction import FieldKind, FieldSpec
-from edgar_sec.engine.forms.common.row_extraction import ColumnSpec, RowSpec
-
-
-def _column(name: str, path: str, kind: FieldKind, **policy: object) -> ColumnSpec:
-    return ColumnSpec(name, FieldSpec(path, kind, **policy))
+from edgar_sec.engine.forms.common.extraction import FieldKind
+from edgar_sec.engine.forms.common.row_extraction import (
+    RowSpec,
+    column_spec as _column,
+)
 
 
 FORM144_TABLE_I_ROW_SPEC = RowSpec(

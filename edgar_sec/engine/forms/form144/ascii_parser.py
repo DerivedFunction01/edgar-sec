@@ -19,7 +19,6 @@ from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
 from edgar_sec.engine.forms.common.tables import (
-    WHITESPACE_COLUMN_SPLIT_RE,
     clean_field_candidate,
     is_horizontal_rule_line,
     strip_footnote_references,
@@ -57,6 +56,7 @@ from edgar_sec.engine.forms.form144.patterns import (
 )
 from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
 from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE_SPLIT
 
 _SUBBOX_LINE_RE = re.compile(r"^\s*(?:\d\s*)?\([a-e]\)")
 _TABLE_I_HEADING_RE = re.compile(r"^\s*table\s+i\b(?!i)", re.IGNORECASE)
@@ -110,7 +110,7 @@ def _split_line_columns(line: str) -> list[str]:
     if inner.count("|") >= 1:
         parts = inner.split("|")
     else:
-        parts = WHITESPACE_COLUMN_SPLIT_RE.split(inner)
+        parts = RE_WHITESPACE_SPLIT.split(inner)
     return [c.strip(" \t|") for c in parts if c.strip(" \t|")]
 
 

@@ -27,7 +27,10 @@ from .observations import (
     merge_observations,
 )
 from .units import classify_units
-from edgar_sec.foundation.text.patterns import RE_PAGE_REFERENCE
+from edgar_sec.foundation.text.patterns import (
+    RE_PAGE_REFERENCE,
+    RE_WHITESPACE as _WHITESPACE_RE,
+)
 
 _TRAILING_NUMBER_RE = re.compile(
     r"\s+(?:[a-z]-)?(?:\d{1,4}|[ivxlcdm]{1,8})\s*$",
@@ -37,7 +40,6 @@ _STANDALONE_PAGE_NUMBER_RE = re.compile(
     r"(?<=\s)(?:[a-z]-)?(?:\d{1,4}|[ivxlcdm]{1,8})(?=\s)",
     re.IGNORECASE,
 )
-_WHITESPACE_RE = re.compile(r"\s+")
 _PURE_ALPHA_TOKEN_RE = re.compile(r"^[A-Za-z]{2,}\.?$")
 
 LOCAL_DENSITY = 0.65

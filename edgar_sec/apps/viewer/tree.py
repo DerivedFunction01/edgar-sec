@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from edgar_sec.apps.viewer.paths import DATABASE_SUFFIXES
-from edgar_sec.apps.viewer.loaders import run_all
+from edgar_sec.apps.viewer.loaders import _mtime_ns, run_all
 from edgar_sec.apps.viewer.model import (
     ArtifactSummary,
     DatasetError,
@@ -90,13 +90,6 @@ def _file_format(path: Path) -> str | None:
     if _text_like(path):
         return "text"
     return None
-
-
-def _mtime_ns(path: Path) -> int:
-    try:
-        return path.stat().st_mtime_ns
-    except OSError:
-        return 0
 
 
 def _physical_entry(root: Path, path: Path) -> TreeEntry | None:

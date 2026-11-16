@@ -6,14 +6,24 @@ imports stay inside functions so this module loads standalone.
 
 from __future__ import annotations
 
+from functools import partial
 import json
 from collections.abc import Callable, Iterable
-from dataclasses import MISSING, dataclass, field, fields, replace
+from dataclasses import MISSING, dataclass, fields, replace
 from pathlib import Path
 from typing import Any, get_args, get_origin, get_type_hints
 
+from edgar_sec.apps.client.operator_kit import (
+    accession_text as _accession_text,
+    error_result as _error,
+    help_field as _f,
+    key_value_result,
+    make_module_getattr,
+    make_register,
+    split_tokens as _split,
+)
 from edgar_sec.foundation.runtime.interactive import prompt_confirm, prompt_text
-from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
+from edgar_sec.foundation.runtime.render import Grid, KeyValueRow
 
 __all__ = [
     "GATHERERS",
@@ -38,10 +48,6 @@ __all__ = [
     "result_accessions",
     "store_working_set",
 ]
-
-
-def _f(default: Any, help_text: str):
-    return field(default=default, metadata={"help": help_text})
 
 
 _INTO = "Names the target set; the seed makes it the current set."
@@ -162,11 +168,6 @@ class DiffOptions:
     sample_limit: int = _f(5, "Maximum sample accessions per side. Refused below 0.")
 
 
-def _accession_text(filing: Any) -> str:
-    accession = getattr(filing, "accession", filing)
-    return str(getattr(accession, "value", accession))
-
-
 def catalog_rows(result: Any) -> list[dict[str, Any]]:
     """Catalog-index rows for a retained result, from its catalog surface."""
     if result is None:
@@ -264,15 +265,7 @@ def store_working_set(
     return session.add_set(name, working.accessions, result=working.result)
 
 
-def _key_value(title: str, data: dict[str, Any], rows: Iterable[tuple[str, str]]):
-    from edgar_sec.apps.client.operator import OpResult
-
-    components = tuple(KeyValueRow(label, value) for label, value in rows)
-    values = {"kind": "key_value", "title": title, "components": components}
-    values["data"] = data
-    values["total"] = values["shown"] = len(components)
-    values["hints"] = ("vars", "peek")
-    return OpResult(**values)
+_key_value = partial(key_value_result, hints=("vars", "peek"))
 
 
 def _grid(
@@ -284,15 +277,6 @@ def _grid(
     values["components"] = (Grid(headers=headers, rows=rows),)
     values["shown"] = len(rows)
     values["hints"] = ("vars", "diff")
-    return OpResult(**values)
-
-
-def _error(kind: str, code: str, title: str, message: str):
-    from edgar_sec.apps.client.operator import OpResult
-
-    values = {"kind": kind, "title": title, "error_code": code}
-    values["components"] = (ProseRow(message),)
-    values["data"] = {"message": message}
     return OpResult(**values)
 
 
@@ -702,25 +686,10 @@ def build_specs() -> tuple:
     return tuple(_spec(row) for row in _SPEC_ROWS)
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
-
-def _split(raw: str) -> tuple[str, ...]:
-    return tuple(raw.replace(",", " ").split())
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 def _current(session: Any) -> str:

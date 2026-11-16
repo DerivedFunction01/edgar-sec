@@ -30,7 +30,6 @@ from edgar_sec.engine.forms.common.signatures.patterns import (
     SIG_TRAILING_PAREN_RE,
     SIGNATORY_ROLE_RE,
     TITLE_CASE_WORD_RE,
-    WHITESPACE_RE,
 )
 from edgar_sec.foundation.text.dates import (
     MONTH_NAME_RE,
@@ -38,6 +37,7 @@ from edgar_sec.foundation.text.dates import (
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 
 _NAME_INITIAL_END_RE = re.compile(r"(?:^|\s)[A-Z]\.$")
@@ -97,7 +97,7 @@ def clean_signature_name(raw_text: str) -> str:
     cleaned = SIG_BY_PREFIX_RE.sub("", cleaned.strip())
     cleaned = PREFIX_STRIP_RE.sub("", cleaned.strip())
     cleaned = SIG_TRAILING_PAREN_NUM_RE.sub("", cleaned.strip())
-    cleaned = WHITESPACE_RE.sub(" ", cleaned).strip()
+    cleaned = RE_WHITESPACE.sub(" ", cleaned).strip()
     cleaned = cleaned.strip(" ,-/")
     if cleaned.endswith(".") and not _NAME_INITIAL_END_RE.search(cleaned):
         cleaned = cleaned[:-1].strip(" ,-/")

@@ -17,13 +17,13 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.apps.client.catalog import STATEMENT, CatalogEntry
+from edgar_sec.apps.client.corpus_index import _worker_taxonomy
 from edgar_sec.apps.client.presentation import declared_breakdown_members
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.discovery.cohort import (
     canonical_probe_cohort_path,
     load_seed_cohort,
 )
-from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
@@ -509,17 +509,8 @@ def classify_record(record: dict[str, Any]) -> dict[str, Any]:
     return verdicts
 
 
-_WORKER_TAXONOMY: DomainTaxonomy | None = None
 _WORKER_REGISTRY: Path | None = None
 _WORKER_SEGMENT_CENSUS = False
-
-
-def _worker_taxonomy() -> DomainTaxonomy:
-    """This process's domain taxonomy, loaded lazily on first use."""
-    global _WORKER_TAXONOMY
-    if _WORKER_TAXONOMY is None:
-        _WORKER_TAXONOMY = load_domain_taxonomy()
-    return _WORKER_TAXONOMY
 
 
 def _filing_work(item: tuple[str, str]) -> tuple[str, dict[str, Any]]:

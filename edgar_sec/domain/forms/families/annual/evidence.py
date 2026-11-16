@@ -15,6 +15,11 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import CaseMode
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
 from edgar_sec.foundation.text.healing import PhraseSequenceRule
+from edgar_sec.foundation.text.patterns import (
+    FLOAT_SCALE_ALT,
+    GROUPED_AMOUNT_CORE,
+    LOOSE_FIGURE_CLASS,
+)
 
 INCORPORATED_REFERENCE_TERMS: tuple[str, ...] = (
     "documents incorporated by reference",
@@ -320,15 +325,15 @@ PUBLIC_FLOAT_ANCHOR_RE = re.compile(
     re.IGNORECASE,
 )
 
-_FLOAT_UNIT = (
-    rf"(?:{build_alternation(['billion', 'million', 'thousand'], auto_escape=True)})?"
-)
+_FLOAT_UNIT = rf"(?:{FLOAT_SCALE_ALT})?"
 _FLOAT_VALUE_INNER = (
-    rf"\$\s*[\d][\d,.]{{0,15}}\s*{_FLOAT_UNIT}"
-    rf"|\b\d[\d,.]{{0,15}}\s*{_FLOAT_UNIT}\s*dollars\b"
+    rf"\$\s*[\d]{LOOSE_FIGURE_CLASS}{{0,15}}\s*{_FLOAT_UNIT}"
+    rf"|\b\d{LOOSE_FIGURE_CLASS}{{0,15}}\s*{_FLOAT_UNIT}\s*dollars\b"
 )
 PUBLIC_FLOAT_VALUE_RE = re.compile(rf"({_FLOAT_VALUE_INNER})", re.IGNORECASE)
-PUBLIC_FLOAT_EXACT_RE = re.compile(r"(\$\s*[\d][\d,.]{3,})", re.IGNORECASE)
+PUBLIC_FLOAT_EXACT_RE = re.compile(
+    rf"(\$\s*[\d]{LOOSE_FIGURE_CLASS}{{3,}})", re.IGNORECASE
+)
 
 SHARES_ANCHOR_RE = re.compile(
     build_alternation(
@@ -339,7 +344,7 @@ SHARES_ANCHOR_RE = re.compile(
     re.IGNORECASE,
 )
 SHARES_VALUE_RE = re.compile(
-    r"\b(?:\d{1,3}(?:,\d{3})+|\d{5,12})\b\s*(?:shares\b)?", re.IGNORECASE
+    rf"\b(?:{GROUPED_AMOUNT_CORE}|\d{{5,12}})\b\s*(?:shares\b)?", re.IGNORECASE
 )
 
 _SHARES_RULES: list[PhraseSequenceRule] = list(COMMON_SHARES_RULES)

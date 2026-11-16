@@ -8,8 +8,13 @@ from dataclasses import dataclass
 
 from edgar_sec.foundation.regex.builder import build_alternation, compact_alternation
 from edgar_sec.foundation.text.dates import MONTH_RE
+from edgar_sec.foundation.text.normalize import RE_MULTI_SPACES
+from edgar_sec.foundation.text.patterns import (
+    ITEM_REFERENCE_CORE,
+    PART_REFERENCE_CORE,
+)
 
-_RE_MULTI_SPACE = re.compile(r"[ \t]+")
+_RE_MULTI_SPACE = RE_MULTI_SPACES
 _RE_WORD_TOKENS = re.compile(r"[a-zA-Z0-9'\-]+")
 _RE_LOWER_START = re.compile(r"^[a-z0-9\(\:\,\.\)]")
 _RE_ENDED_FROM = re.compile(r"\b(?:ended|from)\s*$", re.IGNORECASE)
@@ -19,8 +24,8 @@ _NEGATIVE_BOUNDARY_TERMS = [
     r"\([a-z]\)",
     r"\[[ xX_]\]",
     r"\([ xX_]\)",
-    r"Item\s+\d+",
-    r"Part\s+[IVX]+",
+    ITEM_REFERENCE_CORE,
+    PART_REFERENCE_CORE + r"[IVX]+",
     r"<TABLE",
     r"<S>",
     r"<C>",

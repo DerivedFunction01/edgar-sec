@@ -38,6 +38,7 @@ from edgar_sec.engine.forms.common.entities import (
     is_boilerplate_entity_name,
 )
 from edgar_sec.engine.forms.common.numbers import (
+    PERCENT_OF_CLASS_RE,
     _SCHEMA_UNIT_SUFFIX_ALT,
     normalize_schema_number,
 )
@@ -45,6 +46,7 @@ from edgar_sec.engine.forms.common.tables import (
     strip_markup_tags,
     strip_separator_runs,
 )
+from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 
 _ISSUER_ALIAS_ALT = build_alternation(
@@ -320,24 +322,7 @@ _CONNECTOR_ALT = build_alternation(
 )
 _RE_SHARE_COUNT = re.compile(
     rf"(?i)(?:(?:{_SHARE_PREFIX_ALT})\s*(?:{_CONNECTOR_ALT})?|^|\b)"
-    rf"([0-9][0-9,]*(?:\.[0-9]+)?)\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\b"
-)
-
-_PERCENT_PREFIX_ALT = build_alternation(
-    (
-        r"percentage(?:\s+of\s+class)?\s*[:.-]?",
-        r"representing(?:\s+approximately)?",
-        r"approximate\s+percentage",
-        r"percent\s+of\s+class\s*[:.-]?",
-    ),
-    auto_escape=False,
-)
-_PERCENT_SIGN_ALT = build_alternation(
-    ("%", r"percent\b"),
-    auto_escape=False,
-)
-_RE_PERCENT_OF_CLASS = re.compile(
-    rf"(?i)(?:(?:{_PERCENT_PREFIX_ALT})\s*|^|\b)([0-9]+(?:\.[0-9]+)?)\s*(?:{_PERCENT_SIGN_ALT})"
+    rf"({NUMERIC_TOKEN_RE.pattern})\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\b"
 )
 
 _RE_CHECKED_SUBPART_POST = re.compile(
@@ -398,7 +383,7 @@ def extract_prose_ownership(text: str) -> tuple[str | None, str | None]:
             strip_footnotes=True,
             extract_leading_number=True,
         )
-    m_p = _RE_PERCENT_OF_CLASS.search(clean_text)
+    m_p = PERCENT_OF_CLASS_RE.search(clean_text)
     if m_p:
         pct = normalize_schema_number(
             m_p.group(1),

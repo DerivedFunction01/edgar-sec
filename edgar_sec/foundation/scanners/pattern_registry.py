@@ -135,6 +135,13 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             "MONTH_NAME_RE",
             "MONTH_SUFFIX_RE",
             "MONTH_WORD_RE",
+            "PERIOD_ENDED_PAT",
+            "PERIOD_ENDED_RE",
+            "REPORTING_PERIOD_CAPTION_RE",
+            "REPORTING_PERIOD_FROM_PAT",
+            "REPORTING_PERIOD_LABEL_RE",
+            "REPORTING_PERIOD_VALUE_RE",
+            "REPORT_QUARTER_ENDED_RE",
         ),
         "shapes": (
             _year_shape,
@@ -155,7 +162,12 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
     {
         "family": "table-patterns",
         "home": "edgar_sec/engine/tables/patterns.py",
-        "names": ("SCALE_PATTERNS", "UNITS_LABEL_RE"),
+        "names": (
+            "SCALE_PATTERNS",
+            "UNITS_LABEL_RE",
+            "SCALE_SUFFIX_ALT",
+            "SCALE_SUFFIX_TOKENS",
+        ),
         "shapes": (),
         "shape_hint": "",
     },
@@ -182,6 +194,178 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "shapes": (),
         "shape_hint": "",
     },
+    {
+        "family": "identity",
+        "home": "edgar_sec/domain/identity.py",
+        "names": (
+            "ACCESSION_DIGITS_RE",
+            "ACCESSION_RE",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "numeric-cells",
+        "home": "edgar_sec/engine/tables/numeric_cells.py",
+        "names": (
+            "AMOUNT_RE",
+            "CURRENCY_TOKEN_RE",
+            "DECIMAL_AMOUNT_RE",
+            "DECIMAL_FIGURE_RE",
+            "EUROPEAN_COMMA_DECIMAL_RE",
+            "GROUPED_AMOUNT_RE",
+            "GROUPED_INTEGER_FRAGMENT",
+            "GROUPED_INTEGER_RE",
+            "NUMERIC_CELL_RE",
+            "UNICODE_NUMERIC_CORE",
+            "UNIT_TOKEN_RE",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "metadata-paths",
+        "home": "edgar_sec/pipelines/metadata_sync/paths.py",
+        "names": ("CIK_MEMBER_RE",),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "entities",
+        "home": "edgar_sec/engine/forms/common/entities.py",
+        "names": (
+            "COMMISSION_FILE_CAPTION_RE",
+            "COMMISSION_FILE_NUMBER_RE",
+            "COMMISSION_FILE_TOKEN_RE",
+            "CUSIP_RE",
+            "IRS_RE",
+            "SEC_FILE_NUMBER_RE",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "text-patterns",
+        "home": "edgar_sec/foundation/text/patterns.py",
+        "names": (
+            "FLOAT_SCALE_ALT",
+            "GROUPED_AMOUNT_CORE",
+            "ITEM_REFERENCE_CORE",
+            "LOOSE_FIGURE_CLASS",
+            "PAGE_NUMBER_CORE",
+            "PART_REFERENCE_CORE",
+            "RE_COLUMN_GAP",
+            "RE_NON_ALNUM",
+            "RE_PAGE_NUMBER_SUFFIX",
+            "RE_PAGE_REFERENCE",
+            "RE_TABLE_CLOSE",
+            "RE_TABLE_OPEN",
+            "RE_TABLE_SPAN",
+            "RE_WHITESPACE",
+            "RE_WHITESPACE_GAP",
+            "RE_WHITESPACE_SPLIT",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "toc-patterns",
+        "home": "edgar_sec/engine/tables/toc/patterns.py",
+        "names": (
+            "ITEM_HEADING_CORE",
+            "ITEM_NUMBER_PATTERN",
+            "RE_ITEM_EXACT",
+            "RE_ITEM_GROUPED",
+            "RE_ITEM_HEADING",
+            "RE_ITEM_HEADING_MARKER",
+            "RE_ITEM_INLINE",
+            "RE_ITEM_OR_NUMBERED_HEADING",
+            "RE_ITEM_REFERENCE",
+            "RE_ITEM_SECTION_HEADING",
+            "RE_NOTE_CAPTION",
+            "RE_NOTE_GROUPED",
+            "RE_NOTE_HEADING",
+            "RE_NOTE_HEADING_CUE",
+            "RE_NOTE_REFERENCE",
+            "RE_NUMERIC_LABEL",
+            "RE_NUMERIC_RUN_IN",
+            "RE_PAGE_SUFFIX",
+            "RE_PAREN_LABEL",
+            "RE_PART_REFERENCE",
+            "RE_SECTION_REFERENCE",
+            "RE_SEE_REFERENCE",
+            "RE_TOC_ITEM",
+            "RE_TOC_ITEM_ROW",
+            "RE_TOC_LEADER",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "schema-numbers",
+        "home": "edgar_sec/engine/forms/common/numbers.py",
+        "names": (
+            "PERCENT_OF_CLASS_RE",
+            "SCHEMA_CLOSING_PERCENT_RE",
+            "SCHEMA_LEADING_PERCENT_RE",
+            "SCHEMA_PERCENT_RE",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "typed-rows",
+        "home": "edgar_sec/engine/tables/extraction/typed_rows.py",
+        "names": ("TOTAL_ROW_RE",),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "operator-kit",
+        "home": "edgar_sec/apps/client/operator_kit.py",
+        "names": (
+            "artifacts_root",
+            "error_result",
+            "gather_options",
+            "json_native",
+            "make_build_specs",
+            "make_spec",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "row-extraction",
+        "home": "edgar_sec/engine/forms/common/row_extraction.py",
+        "names": (
+            "column_spec",
+            "row_field",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "family-scaffold",
+        "home": "edgar_sec/engine/forms/common/family_scaffold.py",
+        "names": (
+            "core_status",
+            "element_int",
+            "empty_report",
+            "first_group",
+            "merge_sections",
+            "name_before_label",
+            "qname",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
+        "family": "company-cohort",
+        "home": "edgar_sec/engine/company_family/cohort.py",
+        "names": ("dataset_path",),
+        "shapes": (),
+        "shape_hint": "",
+    },
 )
 
 # Derived name -> home view of the registry, kept for readers.
@@ -195,34 +379,30 @@ _DEF_RES: dict[str, re.Pattern[str]] = {}
 _ASSIGN_RES: dict[str, re.Pattern[str]] = {}
 
 
-def _is_definition(name: str, line: str, depth: int, def_only: bool = False) -> bool:
+def _is_definition(name: str, line: str) -> bool:
     if name not in _DEF_RES:
-        _DEF_RES[name] = re.compile(rf"^\s*def\s+{name}\s*\(")
-        _ASSIGN_RES[name] = re.compile(rf"^\s*{name}\s*(?::[^=\n]+)?=(?!=)")
-    if _DEF_RES[name].search(line):
-        return True
-    if not _ASSIGN_RES[name].search(line):
+        _DEF_RES[name] = re.compile(rf"^def\s+{name}\s*\(")
+        _ASSIGN_RES[name] = re.compile(rf"^{name}\s*(?::[^=\n]+)?=(?!=)")
+    # A registered name is copied only by a module-level definition:
+    # an indented def is a method or a nested function, and an
+    # indented assignment is a local, a field, or a keyword
+    # argument — uses of the name, never copies of the pattern.
+    if line[:1].isspace():
         return False
-    # An assignment inside brackets is a keyword argument, not a
-    # definition; a def-only (function) name is redefined by an
-    # assignment only at module level, never by an indented local.
-    if depth > 0:
-        return False
-    return not def_only or not line[0].isspace()
+    return bool(_DEF_RES[name].search(line) or _ASSIGN_RES[name].search(line))
 
 
 def _module_of(home: str) -> str:
     return home.removesuffix(".py").replace("/", ".")
 
 
-def _rule(path: str, number: int, line: str, depth: int = 0) -> ScannerFinding | None:
+def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     for family in RECOGNIZER_FAMILIES:
         if path == family["home"]:
             continue
-        named = [(name, False) for name in family["names"]]
-        named += [(name, True) for name in family.get("def_only", ())]
-        for name, def_only in named:
-            if _is_definition(name, line, depth, def_only):
+        named = list(family["names"]) + list(family.get("def_only", ()))
+        for name in named:
+            if _is_definition(name, line):
                 return finding(
                     "pattern-registry",
                     path,
@@ -244,51 +424,12 @@ def _rule(path: str, number: int, line: str, depth: int = 0) -> ScannerFinding |
     return None
 
 
-class _BracketTracker:
-    """Bracket depth at each line start, strings and comments aside."""
-
-    def __init__(self) -> None:
-        self.depth = 0
-        self._quote: str | None = None
-        self._triple = False
-
-    def depth_at(self, line: str) -> int:
-        start = self.depth
-        index = 0
-        while index < len(line):
-            char = line[index]
-            if self._quote is not None:
-                if char == "\\":
-                    index += 1
-                elif line.startswith(
-                    self._quote * 3 if self._triple else self._quote, index
-                ):
-                    index += 3 if self._triple else 1
-                    self._quote = None
-                    continue
-            elif char == "#":
-                break
-            elif char in "'\"":
-                self._triple = line.startswith(char * 3, index)
-                self._quote = char
-                index += 3 if self._triple else 1
-                continue
-            elif char in "([{":
-                self.depth += 1
-            elif char in ")]}":
-                self.depth -= 1
-            index += 1
-        return start
-
-
 def _scan_lines(path: str, lines: list[str]) -> list[ScannerFinding]:
     findings: list[ScannerFinding] = []
-    tracker = _BracketTracker()
     for number, line in enumerate(lines, start=1):
-        depth = tracker.depth_at(line)
         if is_noise(line):
             continue
-        found = _rule(path, number, line, depth)
+        found = _rule(path, number, line)
         if found is not None:
             findings.append(found)
     return findings

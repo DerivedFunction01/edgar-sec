@@ -23,7 +23,10 @@ from edgar_sec.engine.xbrl.solve.evidence_index import build_evidence_index
 from edgar_sec.engine.xbrl.solve.solver import SOLVER_FINGERPRINT
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
-from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.foundation.runtime.paths import (
+    resolve_paths,
+    snapshot_id_for,
+)
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
@@ -49,7 +52,6 @@ from edgar_sec.pipelines.xbrl_review.paths import (
     QUARANTINE_FILE,
     RULE_TRACE_FILE,
     SOLVED_NODES_FILE,
-    snapshot_id_for,
     xbrl_paths,
     xbrl_run_paths,
 )

@@ -70,7 +70,6 @@ __all__ = [
     "WORK_ORDER_FILE",
     "inventory_run_paths",
     "inventory_paths",
-    "snapshot_id_for",
     "form_partition_name",
     "form_partition_directory",
     "plan_target_file_path",
@@ -117,10 +116,6 @@ PROJECTION_MANIFEST_FILE = "projection_manifest.json"
 PROJECTION_STAGING_DIR = "projection-staging"
 
 
-def _validate_id(value: str, label: str) -> str:
-    return foundation_paths.validate_safe_id(value, label)
-
-
 class InventoryPaths:
     """Validated paths for inventory-owned fixture and snapshot artifacts."""
 
@@ -152,7 +147,9 @@ class InventoryPaths:
         return self.index_fixture_paths(fixture_id).storage_path
 
     def snapshot_root(self, snapshot_id: str) -> Path:
-        return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
+        return self.snapshots_root / foundation_paths.validate_safe_id(
+            snapshot_id, "snapshot_id"
+        )
 
     @property
     def review_runs_root(self) -> Path:
@@ -183,7 +180,7 @@ class InventoryPaths:
 
     def broker_socket_path(self, socket_id: str) -> Path:
         """Out-of-tree runtime socket; intentionally omitted. :no-docgen:"""
-        safe_id = _validate_id(socket_id, "socket_id")
+        safe_id = foundation_paths.validate_safe_id(socket_id, "socket_id")
         identity = hashlib.sha256(
             f"{self.artifacts_root}:{safe_id}".encode("utf-8")
         ).hexdigest()[:24]
@@ -205,7 +202,7 @@ class InventoryRunPaths:
 
     def __init__(self, artifacts_root: Path, run_id: str) -> None:
         self.artifacts_root = Path(artifacts_root)
-        self.run_id = _validate_id(run_id, "run_id")
+        self.run_id = foundation_paths.validate_safe_id(run_id, "run_id")
         self.run_root = foundation_paths.transient_dir(
             self.artifacts_root, DATASET, self.run_id
         )
@@ -245,7 +242,11 @@ class InventoryRunPaths:
     # --- chunk-level -----------------------------------------------------
 
     def chunk_dir(self, chunk_id: str) -> Path:
-        return self.run_root / CHUNKS_DIR / _validate_id(chunk_id, "chunk_id")
+        return (
+            self.run_root
+            / CHUNKS_DIR
+            / foundation_paths.validate_safe_id(chunk_id, "chunk_id")
+        )
 
     def chunk_pointer_path(self, chunk_id: str) -> Path:
         return self.chunk_dir(chunk_id) / POINTER_FILE
@@ -257,11 +258,11 @@ class InventoryRunPaths:
         return self.progress_dir(chunk_id) / PROGRESS_POINTER_FILE
 
     def progress_database_path(self, chunk_id: str, attempt_id: str) -> Path:
-        safe_attempt = _validate_id(attempt_id, "attempt_id")
+        safe_attempt = foundation_paths.validate_safe_id(attempt_id, "attempt_id")
         return self.progress_dir(chunk_id) / f"progress-{safe_attempt}.duckdb"
 
     def attempt_dir(self, chunk_id: str, attempt_id: str) -> Path:
-        safe_attempt = _validate_id(attempt_id, "attempt_id")
+        safe_attempt = foundation_paths.validate_safe_id(attempt_id, "attempt_id")
         return self.chunk_dir(chunk_id) / f"{ATTEMPT_PREFIX}{safe_attempt}"
 
     def attempt_outcomes_path(self, chunk_id: str, attempt_id: str) -> Path:
@@ -282,12 +283,6 @@ def inventory_run_paths(artifacts_root: Path | str, run_id: str) -> InventoryRun
 def inventory_paths(artifacts_root: Path | str) -> InventoryPaths:
     """Construct inventory artifact paths from the selected artifacts root."""
     return InventoryPaths(artifacts_root)
-
-
-def snapshot_id_for(parent_snapshot_id: str | None, digest: str) -> str:
-    """Derive an immutable snapshot id from its parent and content digest."""
-    content = f"{parent_snapshot_id or ''}:{digest}"
-    return f"snapshot-{hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]}"
 
 
 def resolve_index_fixture_paths(

@@ -5,6 +5,7 @@ consumers stop describing the same concept.
 
 from __future__ import annotations
 
+import ast
 from pathlib import Path
 
 import pytest
@@ -247,6 +248,67 @@ def test_keyword_arguments_are_not_definitions(synthetic_repo: Path) -> None:
     assert pattern_registry.scan_pattern_registry() == []
 
 
+def test_method_def_of_a_registered_name_is_not_a_copy(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "class Thing:\n    def qname(self, tag):\n        return tag\n"
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_nested_def_of_a_registered_name_is_not_a_copy(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "def build():\n"
+                "    def qname(tag):\n"
+                "        return tag\n"
+                "    return qname\n"
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_indented_local_assignment_is_not_a_copy(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "def build(row):\n    qname = row['concept_qname']\n    return qname\n"
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_dataclass_field_named_like_a_registered_helper_is_not_a_copy(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "from dataclasses import dataclass\n"
+                "\n"
+                "@dataclass\n"
+                "class Options:\n"
+                "    artifacts_root: str = ''\n"
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
 def test_private_def_of_a_def_only_name_is_flagged(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
@@ -461,3 +523,37 @@ def test_allows_format_shapes_and_homed_compositions(
         },
     )
     assert pattern_registry.scan_pattern_registry() == []
+
+
+def _module_level_names(path: Path) -> set[str]:
+    tree = ast.parse(path.read_text(encoding="utf-8"))
+    names: set[str] = set()
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            names.add(node.name)
+        elif isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    names.add(target.id)
+        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            names.add(node.target.id)
+    return names
+
+
+def test_every_registered_name_is_defined_in_its_home() -> None:
+    # Registry integrity: a registered name its home does not define is
+    # enforcement over a surface that does not exist — the scanner flags
+    # copies of it while the home itself carries nothing to compose from.
+    # The pin is the empty remainder: every registered name is defined at
+    # module level in its stated home.
+    root = Path(pattern_registry.__file__).parents[3]
+    undefined = []
+    for family in pattern_registry.RECOGNIZER_FAMILIES:
+        defined = _module_level_names(root / family["home"])
+        for name in family["names"] + tuple(family.get("def_only", ())):
+            if name not in defined:
+                undefined.append(f"{family['family']}:{name}")
+    assert undefined == [], (
+        "registered names not defined at module level in their home: "
+        + ", ".join(sorted(undefined))
+    )

@@ -5,12 +5,12 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-_ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")
-_ACCESSION_DIGITS_RE = re.compile(r"^\d{18}$")
+ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")
+ACCESSION_DIGITS_RE = re.compile(r"^\d{18}$")
 
 
 def is_hyphenated_accession(value: str) -> bool:
-    return _ACCESSION_RE.fullmatch(value) is not None
+    return ACCESSION_RE.fullmatch(value) is not None
 
 
 def accession_year(raw: str) -> int | None:
@@ -82,7 +82,7 @@ class AccessionNumber:
         text = str(raw).strip()
         if not is_hyphenated_accession(text):
             digits = text.replace("-", "")
-            if _ACCESSION_DIGITS_RE.match(digits):
+            if ACCESSION_DIGITS_RE.match(digits):
                 text = f"{digits[:10]}-{digits[10:12]}-{digits[12:]}"
         return cls(text)
 

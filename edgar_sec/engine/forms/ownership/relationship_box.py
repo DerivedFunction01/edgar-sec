@@ -22,6 +22,7 @@ from edgar_sec.engine.forms.common.mark_association import (
     select_unique_nearest,
 )
 from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
+from edgar_sec.engine.forms.cover.boundary.corridor import line_at_offset
 from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -166,10 +167,6 @@ def _label_matches(
     return sorted(matches)
 
 
-def _line_of(text: str, offset: int) -> int:
-    return text.count("\n", 0, offset)
-
-
 def _is_collapsed(text: str) -> bool:
     """Report whether one cell holds several role labels and their marks."""
     if not _checked_marks(text):
@@ -249,7 +246,7 @@ def _cell_tokens(row: int, column: int, text: str) -> list[Token]:
                     kind=TokenKind.LABEL,
                     row=row,
                     column=column,
-                    line=_line_of(text, start),
+                    line=line_at_offset(text, start),
                     offset=start,
                     end=end,
                     key=key,
@@ -272,7 +269,7 @@ def _mark_tokens(
             kind=TokenKind.MARK,
             row=row,
             column=column,
-            line=_line_of(text, match.start()),
+            line=line_at_offset(text, match.start()),
             offset=match.start(),
             end=match.end(),
             checked=mark_token_state(match.group(0).strip(), allow_bare=True)
@@ -468,7 +465,7 @@ def _collapsed_value(rows: Sequence[Sequence[str]], anchor: Token) -> str | None
         value = _clean_value(text[region_end:])
         if value:
             return value
-    mark_lines = {_line_of(text, match.start()) for match in _all_marks(text)}
+    mark_lines = {line_at_offset(text, match.start()) for match in _all_marks(text)}
     if mark_lines:
         lines = text.split("\n")
         for line in lines[max(mark_lines) + 1 :]:

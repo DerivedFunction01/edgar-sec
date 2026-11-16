@@ -31,6 +31,7 @@ from edgar_sec.apps.client.operator_drill import (
     _sequence_context,
     _sole_context,
 )
+from edgar_sec.apps.client.operator_kit import make_module_getattr, make_register
 from edgar_sec.foundation.runtime.interactive import (
     PickItem,
     prompt_paginated_choice,
@@ -483,21 +484,10 @@ def build_specs() -> tuple:
     return tuple(specs)
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 def _gather_read_exhibit(session: Any) -> ReadExhibitOptions:

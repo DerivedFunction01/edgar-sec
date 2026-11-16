@@ -39,7 +39,8 @@ ORDER BY ordinal
 """
 
 
-def _dataset(path: Path | str) -> str:
+def dataset_path(path: Path | str) -> str:
+    """The resolved string form of an existing dataset file path."""
     source = Path(path).resolve()
     if not source.is_file():
         raise FileNotFoundError(source)
@@ -56,7 +57,10 @@ def execute_delta_roster(
             con,
             _DELTA_QUERY,
             output_dataset,
-            params=[_dataset(requested_dataset), _dataset(base_cik_map_dataset)],
+            params=[
+                dataset_path(requested_dataset),
+                dataset_path(base_cik_map_dataset),
+            ],
             schema=_ROSTER_SCHEMA,
         )
 

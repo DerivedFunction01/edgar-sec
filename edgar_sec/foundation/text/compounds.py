@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 import itertools
-import re
 from enum import Enum
 from typing import Any
 
-_RE_WHITESPACE = re.compile(r"\s+")
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 
 def _to_str_list(items: Any) -> list[str]:
@@ -55,7 +54,7 @@ def expand_alternations(
     seen: set[str] = set()
     unique: list[str] = []
     for term in flat:
-        norm = _RE_WHITESPACE.sub(" ", term).strip().lower()
+        norm = RE_WHITESPACE.sub(" ", term).strip().lower()
         if norm and norm not in seen:
             seen.add(norm)
             unique.append(norm)

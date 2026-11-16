@@ -11,8 +11,12 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.document.html.tags import BLOCK_TAGS
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
+from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
+from edgar_sec.foundation.text.patterns import (
+    RE_TABLE_OPEN as _RE_TABLE_TAG,
+    RE_WHITESPACE as _RE_WHITESPACE_RUN,
+)
 
-_RE_TABLE_TAG = re.compile(r"<table\b", re.IGNORECASE)
 _RE_ANY_TAG = re.compile(r"<(/?)([a-zA-Z][\w:-]*)\b[^>]*?(/?)>", re.DOTALL)
 _RE_STYLE_ATTR = re.compile(r"""style\s*=\s*(["'])(.*?)\1""", re.IGNORECASE | re.DOTALL)
 _RE_PAGE_CONTAINER_OPEN = re.compile(
@@ -22,7 +26,6 @@ _RE_PAGE_CONTAINER_OPEN = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 _RE_COORDINATE = re.compile(r"^(-?[\d.]+)(px|pt)?$", re.IGNORECASE)
-_RE_WHITESPACE_RUN = re.compile(r"\s+")
 
 _PT_TO_PX = 96.0 / 72.0
 _MIN_DOCUMENT_FRAGMENTS = 20
@@ -285,7 +288,7 @@ class FlowLine:
 
 PageBlock = TableBand | FlowLine
 
-_RE_NUMERIC_FRAGMENT = re.compile(r"^\$?\s?\(?-?\d[\d,]*(\.\d+)?\)?\s?%?$")
+_RE_NUMERIC_FRAGMENT = re.compile(rf"^\$?\s?\(?-?{NUMERIC_TOKEN_RE.pattern}\)?\s?%?$")
 _DASH_FRAGMENTS = frozenset({"-", "—", "–"})
 _MAX_PITCH_DELTA = 60.0
 _TABULAR_SPAN = 150.0

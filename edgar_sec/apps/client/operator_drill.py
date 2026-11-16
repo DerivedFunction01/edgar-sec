@@ -7,9 +7,17 @@ imports stay inside functions so this module loads standalone.
 from __future__ import annotations
 
 from collections.abc import Callable, Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
+from edgar_sec.apps.client.operator_kit import (
+    accession_text as _accession_text,
+    error_result as _error,
+    help_field as _f,
+    key_value_result as _key_value,
+    make_module_getattr,
+    make_register,
+)
 from edgar_sec.domain.forms.families.current.processing import (
     PROFILE as _CURRENT_PROFILE,
 )
@@ -36,10 +44,6 @@ __all__ = [
     "build_specs",
     "register",
 ]
-
-
-def _f(default: Any, help_text: str):
-    return field(default=default, metadata={"help": help_text})
 
 
 DETAIL_LEVELS = ("minimal", "standard", "full")
@@ -109,40 +113,8 @@ class TocOptions:
     """Options for showing the current filing's table of contents span."""
 
 
-def _error(kind: str, code: str, title: str, message: str, data: dict | None = None):
-    from edgar_sec.apps.client.operator import OpResult
-
-    return OpResult(
-        kind=kind,
-        title=title,
-        components=(ProseRow(message),),
-        data={**(data or {}), "message": message},
-        error_code=code,
-    )
-
-
 def _absent(kind: str, title: str, message: str, data: dict | None = None):
     return _error(kind, "absent", title, message, {**(data or {}), "present": False})
-
-
-def _key_value(title: str, data: dict, rows: Iterable[tuple[str, str]], **extra: Any):
-    from edgar_sec.apps.client.operator import OpResult
-
-    components = tuple(KeyValueRow(k, v) for k, v in rows)
-    return OpResult(
-        kind="key_value",
-        title=title,
-        components=components,
-        data=data,
-        total=len(components),
-        shown=len(components),
-        **extra,
-    )
-
-
-def _accession_text(filing: Any) -> str:
-    accession = getattr(filing, "accession", filing)
-    return str(getattr(accession, "value", accession))
 
 
 def _find_aggregate(result: Any, accession: str) -> Any:
@@ -640,21 +612,10 @@ def build_specs() -> tuple:
     return tuple(specs)
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 _DETAIL_CHOICES = [("minimal", "minimal"), ("standard", "standard"), ("full", "full")]

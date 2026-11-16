@@ -28,7 +28,7 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import arrow_table, connect
 from edgar_sec.infra.storage.parquet import read_parquet_schema, write_parquet_table
 
-from .paths import RunPaths
+from .paths import CIK_MEMBER_RE, RunPaths
 from .roster import (
     ROSTER_SCHEMA,
     Roster,
@@ -44,7 +44,7 @@ if TYPE_CHECKING:
 PLAN_FORMAT_VERSION = "2.1.0"
 PLAN_MANIFEST_KIND = "metadata_plan"
 
-_MAIN_MEMBER_RE = re.compile(r"^CIK(\d{10})\.json$")
+_MAIN_MEMBER_RE = CIK_MEMBER_RE
 _SHARD_MEMBER_RE = re.compile(r"^CIK(\d{10})-submissions-(\d+)\.json$")
 FINGERPRINTS_SCHEMA = pa.schema(
     [("cik_padded", pa.string(), False), ("fingerprint", pa.string(), False)]

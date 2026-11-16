@@ -18,6 +18,10 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
+from edgar_sec.engine.forms.common.family_scaffold import (
+    first_group as _first_group,
+    name_before_label as _name_before_label,
+)
 from edgar_sec.engine.forms.cover.registrant import (
     parse_registrant_identity,
     previous_content_line,
@@ -115,28 +119,6 @@ _DEPOSITOR_NAME_LABEL_RE = re.compile(r"exact name of depositor", re.IGNORECASE)
 _TABLE_HEADER_TERMS = ("name of originator", "total assets")
 
 
-def _name_before_label(lines: list[str], label_re: re.Pattern[str]) -> str | None:
-    for index, line in enumerate(lines):
-        match = label_re.search(line)
-        if match is None:
-            continue
-        prefix = line[: match.start()].strip(" ,-(")
-        if len(prefix) >= 3:
-            name = parse_registrant_identity(prefix).name
-            if name is not None:
-                return name
-        cursor = index
-        for _ in range(4):
-            previous = previous_content_line(lines, cursor)
-            if previous is None:
-                break
-            cursor, text = previous
-            name = parse_registrant_identity(text).name
-            if name is not None:
-                return name
-    return None
-
-
 _LETTER_DIGIT_RE = re.compile(r"([a-z])(\d)")
 
 
@@ -152,11 +134,6 @@ def _normalize_report_date(value: str) -> str:
     Era faces print the day/year separator as a period ("February 12. 2016").
     """
     return _DATE_PERIOD_SEP_RE.sub(", ", _normalize_period_date(value.strip()))
-
-
-def _first_group(pattern: re.Pattern[str], text: str) -> str | None:
-    match = pattern.search(text)
-    return match.group(1) if match else None
 
 
 def _first_cik(pattern: re.Pattern[str], text: str) -> str | None:

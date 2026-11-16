@@ -8,18 +8,22 @@ from __future__ import annotations
 
 import uuid
 from collections.abc import Callable, Iterable
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
-from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.runtime.interactive import prompt_confirm, prompt_text
-from edgar_sec.foundation.runtime.render import (
-    Grid,
-    KeyValueRow,
-    ProseRow,
-    render_output,
+from edgar_sec.apps.client.operator_kit import (
+    error_result as _error,
+    help_field as _f,
+    json_native as _json_native,
+    key_value_result as _key_value,
+    make_module_getattr,
+    make_register,
+    make_spec,
+    split_tokens as _split,
 )
+from edgar_sec.foundation.runtime.interactive import prompt_confirm, prompt_text
+from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, render_output
 
 __all__ = [
     "GATHERERS",
@@ -33,10 +37,6 @@ __all__ = [
     "build_specs",
     "register",
 ]
-
-
-def _f(default: Any, help_text: str):
-    return field(default=default, metadata={"help": help_text})
 
 
 _MODES = ("fast", "pipeline", "snapshot")
@@ -102,45 +102,8 @@ class SnapshotCheckoutOptions:
     )
 
 
-def _key_value(title: str, data: dict, rows: Iterable[tuple[str, str]], **extra: Any):
-    from edgar_sec.apps.client.operator import OpResult
-
-    components = tuple(KeyValueRow(k, v) for k, v in rows)
-    return OpResult(
-        kind="key_value",
-        title=title,
-        components=components,
-        data=data,
-        total=len(components),
-        shown=len(components),
-        **extra,
-    )
-
-
-def _error(kind: str, code: str, title: str, message: str, data: dict | None = None):
-    from edgar_sec.apps.client.operator import OpResult
-
-    return OpResult(
-        kind=kind,
-        title=title,
-        components=(ProseRow(message),),
-        data={**(data or {}), "message": message},
-        error_code=code,
-    )
-
-
 def _absent(kind: str, title: str, message: str, data: dict):
     return _error(kind, "absent", title, message, {**data, "present": False})
-
-
-def _json_native(value: Any) -> Any:
-    if isinstance(value, dict):
-        return {str(k): _json_native(v) for k, v in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [_json_native(v) for v in value]
-    if isinstance(value, Path):
-        return str(value)
-    return value
 
 
 def _has_seed(options: FetchOptions) -> bool:
@@ -481,19 +444,7 @@ def _checkout(options: SnapshotCheckoutOptions, session: Any):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator import OperationSpec
-
-    def spec(op_id, label, options_type, effect, kind, executor):
-        return OperationSpec(
-            id=op_id,
-            label=label,
-            options_type=options_type,
-            effect=effect,
-            requires="none",
-            result_kind=kind,
-            hints=("session_summary",),
-            executor=executor,
-        )
+    spec = make_spec()
 
     return (
         spec(
@@ -548,25 +499,10 @@ def build_specs() -> tuple:
     )
 
 
-def register(registry: dict) -> dict:
-    """Add this module's rows to ``registry``, refusing duplicate ids."""
-    from edgar_sec.apps.client.operator import assemble_registry
-
-    specs = build_specs()
-    assemble_registry(registry.values(), specs)
-    for spec in specs:
-        registry[spec.id] = spec
-    return registry
+register = make_register(build_specs)
 
 
-def __getattr__(name: str):
-    if name == "SPECS":
-        return build_specs()
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
-
-def _split(raw: str) -> tuple[str, ...]:
-    return tuple(raw.replace(",", " ").split())
+__getattr__ = make_module_getattr(build_specs, __name__)
 
 
 def _gather_fetch(session: Any) -> FetchOptions:

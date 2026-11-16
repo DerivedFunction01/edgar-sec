@@ -16,11 +16,11 @@ from edgar_sec.engine.document.signatures import (
     RE_CONFORMED_SIGNER_NAME,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 
 CLEAN_LINE_RE = re.compile(r"[_=\-\*]{2,}")
 
-WHITESPACE_RE = re.compile(r"\s+")
 
 PREFIX_STRIP_TERMS = (
     r"by\s*:?",
@@ -290,7 +290,6 @@ SIG_NAME_TRIM_CHARS_NO_DOT = " ,-*()_\u2013\u2014/\"'\u201c\u201d\u2018\u2019"
 
 __all__ = [
     "CLEAN_LINE_RE",
-    "WHITESPACE_RE",
     "PREFIX_STRIP_TERMS",
     "PREFIX_STRIP_ALT",
     "PREFIX_STRIP_RE",

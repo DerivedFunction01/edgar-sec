@@ -19,6 +19,7 @@ from edgar_sec.engine.forms.common.entities import (
     NAME_FORM_TOKENS,
     extract_cusip_near_caption,
 )
+from edgar_sec.engine.forms.common.family_scaffold import first_group
 from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -169,11 +170,6 @@ def _cusip(cover_text: str) -> str | None:
     return extract_cusip_near_caption(cover_text)
 
 
-def _first_group(pattern: re.Pattern[str], text: str) -> str | None:
-    match = pattern.search(text)
-    return match.group(1) if match else None
-
-
 def _form_424b_fields(cover_text: str, lines: list[str]) -> dict[str, Any]:
     header_text = cover_text if len(cover_text.splitlines()) >= 4 else ""
     head_text = "\n".join(lines[:120])
@@ -184,8 +180,8 @@ def _form_424b_fields(cover_text: str, lines: list[str]) -> dict[str, Any]:
         or _registration_number(head_text),
         "document_kind": _document_kind(lines),
         "registrant_name": _registrant_name(lines),
-        "offering_amount": _first_group(_AMOUNT_RE, primary),
-        "share_count": _first_group(_SHARES_RE, primary),
+        "offering_amount": first_group(_AMOUNT_RE, primary),
+        "share_count": first_group(_SHARES_RE, primary),
         "cusip": _cusip(primary),
     }
 

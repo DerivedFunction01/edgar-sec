@@ -17,12 +17,12 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.apps.client.catalog import CatalogEntry
+from edgar_sec.apps.client.corpus_index import _worker_taxonomy
 from edgar_sec.apps.client.fiscal import duration_length_class
 from edgar_sec.apps.client.presentation import PresentationView, period_key_class
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
-from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
@@ -435,17 +435,6 @@ def check_peer_search(source_qname: str | None, peer: Xbrl) -> dict[str, Any]:
         "top_rule": top.rule,
         "hit_count": len(result.hits),
     }
-
-
-_WORKER_TAXONOMY: DomainTaxonomy | None = None
-
-
-def _worker_taxonomy() -> DomainTaxonomy:
-    """This process's domain taxonomy, loaded lazily on first use."""
-    global _WORKER_TAXONOMY
-    if _WORKER_TAXONOMY is None:
-        _WORKER_TAXONOMY = load_domain_taxonomy()
-    return _WORKER_TAXONOMY
 
 
 def _filing_work(item: tuple[str, str, str | None]) -> tuple[str, str, dict[str, Any]]:

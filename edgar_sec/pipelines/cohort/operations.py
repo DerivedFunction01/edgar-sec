@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
+from edgar_sec.engine.company_family.cohort import dataset_path as _dataset
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -207,13 +208,6 @@ _ELIGIBLE = {
         FROM left_rows l ANTI JOIN right_rows r USING (cik_padded)
     """,
 }
-
-
-def _dataset(path: Path | str) -> str:
-    source = Path(path).resolve()
-    if not source.is_file():
-        raise FileNotFoundError(source)
-    return str(source)
 
 
 def execute_set_operation(

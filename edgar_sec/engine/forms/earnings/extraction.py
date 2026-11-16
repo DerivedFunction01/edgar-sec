@@ -35,8 +35,9 @@ from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_docu
 from edgar_sec.engine.forms.plugins.exhibit_selection import evaluate_exhibit_body
 from edgar_sec.engine.tables.ascii_html.model import TableGeometry
 from edgar_sec.foundation.text.normalize import fold_smart_quotes
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
-_WS_RE = re.compile(r"\s+")
+_WS_RE = RE_WHITESPACE
 _REVENUE_RE = re.compile(r"^(total\s+)?(net\s+)?(revenues?|sales)\b")
 _NET_INCOME_RE = re.compile(r"^net\s+(income|loss|earnings)\b")
 

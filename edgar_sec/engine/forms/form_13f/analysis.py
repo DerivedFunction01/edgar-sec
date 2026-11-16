@@ -8,6 +8,7 @@ from typing import Any
 
 from edgar_sec.domain.forms.families.form_13f.models import Form13FDocument
 from edgar_sec.engine.forms.common.entities import is_valid_cusip
+from edgar_sec.engine.forms.common.family_scaffold import empty_report
 from edgar_sec.engine.forms.form_13f.xml_parser import parse_form_13f_xml
 
 _CORE_FIELDS = (
@@ -24,20 +25,6 @@ def _core_status(doc: Form13FDocument) -> dict[str, bool]:
         "report_type": bool(doc.report_type),
         "period_of_report": bool(doc.period_of_report),
         "table_entry_total": doc.table_entry_total is not None,
-    }
-
-
-def _empty_report(case_dir: Path, accession: str, anomaly: str) -> dict[str, Any]:
-    return {
-        "case_id": case_dir.name,
-        "accession_number": accession,
-        "core_fields": {f: False for f in _CORE_FIELDS},
-        "anomalies": [anomaly],
-        "review_signals": [
-            "xml_missing" if anomaly == "missing_extracted_xml" else "corrupt_xml"
-        ],
-        "blank_fields": {},
-        "unparsed_sections": [],
     }
 
 
@@ -58,12 +45,14 @@ def analyze_case(
         else case_dir.name.split("--")[0]
     )
     if not target_xml.exists():
-        return _empty_report(case_dir, accession, "missing_extracted_xml")
+        return empty_report(case_dir, accession, "missing_extracted_xml", _CORE_FIELDS)
 
     try:
         doc = parse_form_13f_xml(target_xml.read_bytes(), normalize_values=False)
     except Exception as exc:
-        return _empty_report(case_dir, accession, f"xml_parse_error: {exc}")
+        return empty_report(
+            case_dir, accession, f"xml_parse_error: {exc}", _CORE_FIELDS
+        )
 
     anomalies: list[str] = []
     signals: list[str] = []

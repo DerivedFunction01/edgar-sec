@@ -22,6 +22,7 @@ from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.streaming import StreamFailure
 from edgar_sec.infra.storage.bulk_archive import ArchiveReference, BulkArchiveStore
 from edgar_sec.infra.storage.member_index import MemberIndex, ensure_member_index
+from edgar_sec.pipelines.metadata_sync.paths import CIK_MEMBER_RE
 
 __all__ = [
     "COMPANYFACTS_BULK_SOURCE_ID",
@@ -35,7 +36,7 @@ __all__ = [
 
 COMPANYFACTS_BULK_SOURCE_ID = "companyfacts_bulk"
 
-_MEMBER_RE = re.compile(r"^CIK(\d{10})\.json$")
+_MEMBER_RE = CIK_MEMBER_RE
 
 FACTS_SCHEMA = pa.schema(
     [

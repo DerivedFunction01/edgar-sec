@@ -8,7 +8,7 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 from types import TracebackType
-from typing import Any, Self
+from typing import Any, Protocol, Self
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.foundation.runtime.paths import PUBLICATION_LOCK_FILE
@@ -131,6 +131,22 @@ def read_pointer(
     }
 
 
+class CatalogPaths(Protocol):
+    """The paths surface the branch-tip read needs: a catalog file and
+    the snapshots root holding the branch pointers."""
+
+    catalog_file: Path
+    snapshots_root: Path
+
+
+def snapshot_tip(paths: CatalogPaths, branch: str = "main") -> str | None:
+    """The current tip snapshot id on a branch, or None when unpublished."""
+    if not paths.catalog_file.is_file():
+        return None
+    pointer = read_pointer(paths.snapshots_root, branch)
+    return str(pointer["snapshot_id"]) if pointer else None
+
+
 def checkout_tip(
     snapshots_root: Path | str,
     target_snapshot_id: str,
@@ -176,6 +192,7 @@ def delete_branch(snapshots_root: Path | str, branch_name: str) -> bool:
 
 
 __all__ = [
+    "CatalogPaths",
     "PublicationLock",
     "PublicationLockError",
     "StaleParentError",
@@ -186,4 +203,5 @@ __all__ = [
     "publish_node",
     "read_pointer",
     "read_pointer_id",
+    "snapshot_tip",
 ]

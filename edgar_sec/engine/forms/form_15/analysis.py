@@ -12,6 +12,10 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
+from edgar_sec.engine.forms.common.entities import (
+    COMMISSION_FILE_CAPTION_RE,
+    COMMISSION_FILE_NUMBER_RE,
+)
 from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_anchored_signature,
 )
@@ -29,11 +33,8 @@ _RULE_KEYS = (
     "rule_15d6",
 )
 
-_FILE_NUMBER_RE = re.compile(
-    r"commission file (?:numbers?|no\.?)[:\s]*([0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+)",
-    re.IGNORECASE,
-)
-_FILE_CAPTION_RE = re.compile(r"commission file (?:numbers?|no\.?)", re.IGNORECASE)
+_FILE_NUMBER_RE = COMMISSION_FILE_NUMBER_RE
+_FILE_CAPTION_RE = COMMISSION_FILE_CAPTION_RE
 _REGISTRANT_LABEL_RE = re.compile(r"exact name of registrant", re.IGNORECASE)
 _HOLDERS_RE = re.compile(r"holders of record", re.IGNORECASE)
 _HOLDER_WORDS = (

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 
-from edgar_sec.domain.sec_urls import SEC_EDGAR_BASE
+from edgar_sec.domain.sec_urls import SEC_EDGAR_BASE, _feed_quarter as _index_quarter
 
 
 FULL_INDEX_FLAVOURS: tuple[str, ...] = (
@@ -20,12 +20,6 @@ FULL_INDEX_FLAVOURS: tuple[str, ...] = (
 )
 DAILY_INDEX_FLAVOURS: tuple[str, ...] = ("master", "company", "form", "crawler")
 _INDEX_EXTENSIONS: tuple[str, ...] = ("idx", "gz", "zip", "Z")
-
-
-def _index_quarter(year: int, quarter: int) -> str:
-    if not 1 <= int(quarter) <= 4:
-        raise ValueError(f"quarter must be in 1..4, got {quarter!r}")
-    return f"{int(year):04d}/QTR{int(quarter)}"
 
 
 def full_index_url(

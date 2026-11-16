@@ -21,10 +21,11 @@ from edgar_sec.foundation.text.dates import (
     MONTH_WORD_RE,
     NUMERIC_DATE_RE,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 _CIK_MASK_RE = re.compile(r"\bCIK\s*[:#]?\s*\d{1,10}\b", re.IGNORECASE)
 _DIGIT_RUN_RE = re.compile(r"\d+")
-_WHITESPACE_RE = re.compile(r"\s+")
+_WHITESPACE_RE = RE_WHITESPACE
 _WORD_NGRAM_RE = re.compile(r"[A-Za-z0-9#_]+")
 
 

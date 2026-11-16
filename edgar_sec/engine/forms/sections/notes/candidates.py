@@ -6,20 +6,9 @@ import re
 
 from edgar_sec.engine.forms.cover.structure import is_preceding_continuation
 from edgar_sec.engine.forms.sections.models import CandidateKind, SectionCandidate
-from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.engine.tables.toc.patterns import RE_NOTE_GROUPED, RE_NOTE_HEADING
 
-_RE_NOTE_SINGLE = re.compile(
-    r"^\s*(?:[\|+•\t-]\s*)?NOTES?\s+(\d+)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
-    re.IGNORECASE,
-)
-
-_CONJUNCTION = build_alternation(
-    [r",\s*(?:and|&)", r"and", r"&", r","], auto_escape=False
-)
-_RE_NOTE_GROUPED = re.compile(
-    rf"\bNOTES?\s+(\d+(?:(?:\s*{_CONJUNCTION}\s*(?:NOTES?\s+)?)\d+)+)\b",
-    re.IGNORECASE,
-)
+_RE_NOTE_SINGLE = RE_NOTE_HEADING
 
 _RE_NOTE_NUMERIC = re.compile(
     r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2})\.\s+([A-Z][A-Za-z0-9\s,&'-]+)$"
@@ -47,7 +36,7 @@ def extract_note_candidates(
         prev_line = lines[line_no - 1] if line_no > 0 else ""
         preceded = is_preceding_continuation(prev_line)
 
-        grouped_match = _RE_NOTE_GROUPED.search(stripped)
+        grouped_match = RE_NOTE_GROUPED.search(stripped)
         if grouped_match:
             raw_ids = grouped_match.group(0)
             raw_title = stripped[grouped_match.end() :].strip()

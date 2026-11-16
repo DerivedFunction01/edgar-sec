@@ -13,6 +13,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from edgar_sec.domain.sec_urls import normalize_cik
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
+from edgar_sec.engine.index_pages.parser import _direct_cells
 from edgar_sec.foundation.hashing import sha256_bytes
 
 __all__ = [
@@ -230,16 +231,6 @@ def _link_params(anchor: FastHtmlNode) -> tuple[str | None, str]:
 
 def _text(node: FastHtmlNode) -> str:
     return " ".join(node.text().split())
-
-
-def _direct_cells(row: FastHtmlNode) -> tuple[FastHtmlNode, ...]:
-    cells = []
-    child = row.raw_node.child
-    while child is not None:
-        if child.tag in {"th", "td"}:
-            cells.append(FastHtmlNode(child))
-        child = child.next
-    return tuple(cells)
 
 
 class _DiagnosticCollector:

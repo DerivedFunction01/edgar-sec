@@ -85,7 +85,7 @@ _PERCENT_TAIL_ALT = build_alternation(
     auto_escape=False,
     compact=False,
 )
-_SCHEMA_PERCENT_RE = re.compile(
+SCHEMA_PERCENT_RE = re.compile(
     rf"(?i)(?:%|\s+percent)(?:\s*(?:{_PERCENT_TAIL_ALT}))?\s*$"
 )
 _SCHEMA_TRAILING_MARKS_RE = re.compile(r"[*†‡.;+\-]+\s*$")
@@ -177,7 +177,7 @@ _SCHEMA_APPROX_ALT = build_alternation(
     compact=True,
 )
 _SCHEMA_APPROX_RE = re.compile(rf"(?is)^\s*(?:{_SCHEMA_APPROX_ALT})\s*")
-_SCHEMA_LEADING_PERCENT_RE = re.compile(
+SCHEMA_LEADING_PERCENT_RE = re.compile(
     r"(?is)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)\s*%(?:(?:[*†‡.,;]|\s*\(.*?\))*(?:\s+.*)?)$"
 )
 _CLOSING_PERCENT_ALT = build_alternation(
@@ -191,8 +191,24 @@ _CLOSING_PERCENT_ALT = build_alternation(
     auto_escape=False,
     compact=True,
 )
-_SCHEMA_CLOSING_PERCENT_RE = re.compile(
+SCHEMA_CLOSING_PERCENT_RE = re.compile(
     rf"(?i)^\s*(?:{_CLOSING_PERCENT_ALT})(?:\b|(?<=%))"
+)
+_PERCENT_OF_CLASS_PREFIX_ALT = build_alternation(
+    (
+        r"percentage(?:\s+of\s+class)?\s*[:.-]?",
+        r"representing(?:\s+approximately)?",
+        r"approximate\s+percentage",
+        r"percent\s+of\s+class\s*[:.-]?",
+    ),
+    auto_escape=False,
+)
+_PERCENT_OF_CLASS_SIGN_ALT = build_alternation(
+    ("%", r"percent\b"),
+    auto_escape=False,
+)
+PERCENT_OF_CLASS_RE = re.compile(
+    rf"(?i)(?:(?:{_PERCENT_OF_CLASS_PREFIX_ALT})\s*|^|\b)([0-9]+(?:\.[0-9]+)?)\s*(?:{_PERCENT_OF_CLASS_SIGN_ALT})"
 )
 _SCHEMA_LEADING_NUMERIC_RE = re.compile(
     r"(?s)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)(?:\s+.*)?$"
@@ -390,9 +406,9 @@ def _strip_schema_policy(
     if strip_units:
         value = _SCHEMA_UNIT_SUFFIX_RE.sub("", value).strip()
     if strip_percent:
-        if _SCHEMA_CLOSING_PERCENT_RE.search(value):
+        if SCHEMA_CLOSING_PERCENT_RE.search(value):
             return "0"
-        value = _SCHEMA_PERCENT_RE.sub("", value).strip()
+        value = SCHEMA_PERCENT_RE.sub("", value).strip()
         if _EUROPEAN_COMMA_DECIMAL_RE.search(value):
             value = value.replace(",", ".")
     if strip_currency:
@@ -494,7 +510,7 @@ def normalize_schema_number(
             if normalized is None:
                 value = v_val
         if normalized is None and strip_percent:
-            m_pct = _SCHEMA_LEADING_PERCENT_RE.match(
+            m_pct = SCHEMA_LEADING_PERCENT_RE.match(
                 value
             ) or _SCHEMA_PERCENT_IN_TEXT_RE.search(text)
             if m_pct:

@@ -21,7 +21,10 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node, read_pointer
+from edgar_sec.infra.storage.dag.publication import (
+    publish_node,
+    snapshot_tip as store_tip,
+)
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
 
 from .paths import DatasetsPaths
@@ -38,14 +41,6 @@ class PublishOutcome:
     published: bool
     snapshot_id: str | None
     tip_before: str | None
-
-
-def store_tip(paths: DatasetsPaths, branch: str = "main") -> str | None:
-    """The current index snapshot id on a branch, or None."""
-    if not paths.catalog_file.is_file():
-        return None
-    pointer = read_pointer(paths.snapshots_root, branch)
-    return str(pointer["snapshot_id"]) if pointer else None
 
 
 def publish_index(

@@ -26,7 +26,10 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node, read_pointer
+from edgar_sec.infra.storage.dag.publication import (
+    publish_node,
+    snapshot_tip as ledger_tip,
+)
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 from edgar_sec.infra.storage.parquet import (
     read_parquet_key_bounds,
@@ -69,14 +72,6 @@ class LedgerStats:
     total_rows: int
     distinct_accessions: int
     per_source: tuple[SourceStats, ...]
-
-
-def ledger_tip(paths: FeedsPaths, branch: str = "main") -> str | None:
-    """The branch tip snapshot id, or ``None`` when no ledger is published."""
-    if not paths.catalog_file.is_file():
-        return None
-    pointer = read_pointer(paths.snapshots_root, branch)
-    return str(pointer["snapshot_id"]) if pointer else None
 
 
 def active_part_paths(paths: FeedsPaths, tip_snapshot_id: str) -> tuple[Path, ...]:
