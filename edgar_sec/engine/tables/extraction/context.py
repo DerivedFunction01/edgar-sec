@@ -87,6 +87,15 @@ class TableContext:
     closing_kind: str | None = None
     source_document: str | None = None
     seat: str | None = None
+    front_matter: bool = False
+    numeric_cells: int = 0
+    data_rows: int = 0
+    grid_rows: int = 0
+    max_row_cells: int = 0
+    index_named_share: float = 0.0
+    page_ref_share: float = 0.0
+    page_ref_only: bool = False
+    exhibit_stub_share: float = 0.0
 
     @property
     def table_index(self) -> int:
@@ -164,4 +173,13 @@ class TableContext:
             closing_kind=record.get("closing_kind"),
             source_document=record.get("source_document"),
             seat=record.get("seat"),
+            front_matter=bool(record.get("front_matter")),
+            numeric_cells=int(record.get("numeric_cells") or 0),
+            data_rows=int(record.get("data_rows") or 0),
+            grid_rows=int(record.get("grid_rows") or 0),
+            max_row_cells=int(record.get("max_row_cells") or 0),
+            index_named_share=float(record.get("index_named_share") or 0.0),
+            page_ref_share=float(record.get("page_ref_share") or 0.0),
+            page_ref_only=bool(record.get("page_ref_only")),
+            exhibit_stub_share=float(record.get("exhibit_stub_share") or 0.0),
         )

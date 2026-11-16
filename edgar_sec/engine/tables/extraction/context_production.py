@@ -20,9 +20,18 @@ from edgar_sec.engine.tables.extraction.context import (
     SectionRef,
     TableContext,
 )
+from edgar_sec.engine.tables.extraction.genre_seat import (
+    exhibit_stub_cell,
+    index_named_label,
+)
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.regions import RegionPath, derive_regions
+from edgar_sec.engine.tables.extraction.toc_gate import (
+    grid_page_ref_share,
+    page_ref_cell,
+)
 from edgar_sec.engine.tables.extraction.typed_rows import parse_caption_stack
+from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.engine.tables.patterns import SCALE_PATTERNS
 
 _TOKEN_RE = re.compile(r"\[\[SEC:([A-Z_]+) id=(\d+)\]\]")
@@ -385,6 +394,46 @@ def _break_ref(item: dict | None) -> BreakRef | None:
     )
 
 
+def _grid_facts(rows: list[list[str]]) -> dict:
+    """One geometry's genre facts, measured once over its raw grid."""
+    grid_rows = 0
+    max_row_cells = 0
+    numeric_cells = 0
+    data_rows = 0
+    named = 0
+    exhibit = 0
+    page_ref_only = True
+    for row in rows:
+        cells = [cell.strip() for cell in row if cell.strip()]
+        if not cells:
+            continue
+        grid_rows += 1
+        max_row_cells = max(max_row_cells, len(cells))
+        row_numeric = 0
+        for cell in cells:
+            if is_numeric_cell(cell):
+                row_numeric += 1
+                if not page_ref_cell(cell):
+                    page_ref_only = False
+        numeric_cells += row_numeric
+        if row_numeric:
+            data_rows += 1
+        if index_named_label(cells[0]):
+            named += 1
+        if exhibit_stub_cell(cells[0]):
+            exhibit += 1
+    return {
+        "numeric_cells": numeric_cells,
+        "data_rows": data_rows,
+        "grid_rows": grid_rows,
+        "max_row_cells": max_row_cells,
+        "index_named_share": named / grid_rows if grid_rows else 0.0,
+        "page_ref_share": grid_page_ref_share(tuple(tuple(row) for row in rows)),
+        "page_ref_only": page_ref_only,
+        "exhibit_stub_share": exhibit / grid_rows if grid_rows else 0.0,
+    }
+
+
 def _produce_document(document: DocumentInput) -> ProducedDocument:
     """Produce one document's contexts and their serialized records."""
     result = document.result
@@ -482,6 +531,12 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
             and closing_start is not None
             and location["start_line"] >= closing_start
         )
+        front_matter = bool(
+            location is not None
+            and facts.region_map
+            and location["start_line"] < facts.region_map[0].start_line
+        )
+        grid_facts = _grid_facts(rows)
         section_ref = (
             SectionRef(
                 section.item_identifier,
@@ -528,6 +583,8 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
                 closing_kind=facts.closing_kind if in_closing else None,
                 source_document=document.source_document,
                 seat=seat_name,
+                front_matter=front_matter,
+                **grid_facts,
             )
         )
         records.append(
@@ -546,6 +603,8 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
                 "closing_kind": facts.closing_kind if in_closing else None,
                 "source_document": document.source_document,
                 "seat": seat_name,
+                "front_matter": front_matter,
+                **grid_facts,
                 "preceding": {
                     "section": (
                         {"item": section.item_identifier, "title": section.title}

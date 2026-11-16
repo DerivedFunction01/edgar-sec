@@ -16,6 +16,7 @@ import sys
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+from edgar_sec.domain.forms.families.annual.location import section_scopes
 from edgar_sec.engine.tables.ascii_html.model import (
     ResolvedGrid,
     TableGeometry,
@@ -58,6 +59,8 @@ def geometry_text(g: dict) -> GeometryText:
     grid_text = " ".join(
         str(cell) for row in g.get("rows") or [] for cell in row if str(cell).strip()
     )
+    preceding = g.get("preceding") or {}
+    section = preceding.get("section") or {}
     return GeometryText(
         caption=caption,
         lead=caption + "\n" + prose_before[-TEXT_CAP:],
@@ -68,6 +71,20 @@ def geometry_text(g: dict) -> GeometryText:
         note_title=note if isinstance(note, str) else None,
         section_item=loc.get("item") if isinstance(loc.get("item"), str) else None,
         grid_text=grid_text,
+        in_toc_span=bool(g.get("in_toc_span")),
+        in_closing_span=bool(g.get("in_closing_span")),
+        closing_kind=g.get("closing_kind"),
+        front_matter=bool(g.get("front_matter")),
+        note_seated=preceding.get("note") is not None,
+        numeric_cells=int(g.get("numeric_cells") or 0),
+        data_rows=int(g.get("data_rows") or 0),
+        grid_rows=int(g.get("grid_rows") or 0),
+        max_row_cells=int(g.get("max_row_cells") or 0),
+        index_named_share=float(g.get("index_named_share") or 0.0),
+        page_ref_share=float(g.get("page_ref_share") or 0.0),
+        page_ref_only=bool(g.get("page_ref_only")),
+        exhibit_stub_share=float(g.get("exhibit_stub_share") or 0.0),
+        section_title=section.get("title"),
     )
 
 
@@ -111,7 +128,7 @@ def run_filing(path: Path) -> tuple[list, list, list, list, dict]:
     accession = doc["accession"]
     geoms = sorted(doc.get("geometries") or [], key=lambda g: g.get("table_index") or 0)
     texts = [geometry_text(g) for g in geoms]
-    results = compete_filing(texts)
+    results = compete_filing(texts, scopes=section_scopes())
     returns: list[dict] = []
     packets: dict[str, dict] = {}
     for g, result in zip(geoms, results):

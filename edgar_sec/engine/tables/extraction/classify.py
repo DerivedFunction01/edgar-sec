@@ -16,6 +16,10 @@ from edgar_sec.engine.tables.extraction.commitments_seat import (
     evaluate_commitments_seat,
 )
 from edgar_sec.engine.tables.extraction.competition import geometry_text_from_table
+from edgar_sec.engine.tables.extraction.genre_seat import (
+    FULL_REFUSAL_PREFIXES,
+    table_refusal,
+)
 from edgar_sec.engine.tables.extraction.form_tests import (
     FormTestOutcome,
     cascade_family,
@@ -75,7 +79,6 @@ from edgar_sec.engine.tables.extraction.section_gate import (
     GenreRefusal,
     genre_refusal,
 )
-from edgar_sec.engine.tables.extraction.toc_gate import toc_refusal
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.validation import (
     IdentityOutcome,
@@ -484,21 +487,16 @@ def classify_table(
     policy: ClassificationPolicy | None = None,
     math_outcomes: tuple[IdentityOutcome, ...] | None = None,
 ) -> Classification:
-    """Classify one table: TOC and closing elimination, then the cascade.
+    """Classify one table: the genre seat, then the cascade.
 
-    A TOC-shaped table or one inside the closing span is genre-refused
-    before any family scoring; an MD&A-seated claim is refused after.
+    A furniture table is genre-refused at the seat before any
+    family scoring; a section-refused claim is refused after.
     """
     policy = policy if policy is not None else default_policy()
-    toc = toc_refusal(table)
-    if toc is not None:
+    seat = table_refusal(table)
+    if seat is not None:
         labels = [normalize_text(row.label) for row in table.rows]
-        evidence = _context_base(table) + [Evidence("genre_refusal", toc.detail, 0.0)]
-        return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
-    if table.context.in_closing_span:
-        labels = [normalize_text(row.label) for row in table.rows]
-        detail = f"closing refused: {table.context.closing_kind or 'closing'} region"
-        evidence = _context_base(table) + [Evidence("genre_refusal", detail, 0.0)]
+        evidence = _context_base(table) + [Evidence("genre_refusal", seat.detail, 0.0)]
         return _finish(RESIDUAL_FAMILY, "genre_refusal", 0.0, evidence, labels, table)
     result = _cascade(table, policy, math_outcomes)
     refusal = _section_refusal(table, result.family, policy)
@@ -618,7 +616,7 @@ def classify_filing(
         entry = candidate_scores(table, policy, math_outcomes=outcomes)
         if result.tier == "genre_refusal":
             if any(
-                ev.detail.startswith(("toc refused", "closing refused"))
+                ev.detail.startswith(FULL_REFUSAL_PREFIXES)
                 for ev in result.evidence
                 if ev.group == "genre_refusal"
             ):

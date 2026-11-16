@@ -16,6 +16,11 @@ from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     _term_pattern,
     evaluate_derivatives_evidence,
 )
+from edgar_sec.engine.tables.extraction.genre_seat import (
+    apply_section_refusals,
+    geometry_refusal,
+)
+from edgar_sec.engine.tables.extraction.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.form_tests import (
     FormTestOutcome,
     evaluate_form_tests,
@@ -115,6 +120,22 @@ class GeometryText:
     form_tests: tuple[FormTestOutcome, ...] = ()
     grid_text: str = ""
     headers: tuple[str, ...] = ()
+    in_toc_span: bool = False
+    in_closing_span: bool = False
+    closing_kind: str | None = None
+    front_matter: bool = False
+    note_seated: bool = False
+    numeric_cells: int = 0
+    data_rows: int = 0
+    grid_rows: int = 0
+    max_row_cells: int = 0
+    index_named_share: float = 0.0
+    page_ref_share: float = 0.0
+    page_ref_only: bool = False
+    exhibit_stub_share: float = 0.0
+    section_form: str | None = None
+    section_part: str | None = None
+    section_title: str | None = None
 
     @property
     def stub_text(self) -> str:
@@ -158,6 +179,22 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         form_tests=evaluate_form_tests(table) if evaluate_stage else (),
         grid_text=grid_text,
         headers=headers,
+        in_toc_span=context.in_toc_span,
+        in_closing_span=context.in_closing_span,
+        closing_kind=context.closing_kind,
+        front_matter=context.front_matter,
+        note_seated=note is not None,
+        numeric_cells=context.numeric_cells,
+        data_rows=context.data_rows,
+        grid_rows=context.grid_rows,
+        max_row_cells=context.max_row_cells,
+        index_named_share=context.index_named_share,
+        page_ref_share=context.page_ref_share,
+        page_ref_only=context.page_ref_only,
+        exhibit_stub_share=context.exhibit_stub_share,
+        section_form=section.form if section else None,
+        section_part=section.part if section else None,
+        section_title=section.title if section else None,
     )
 
 
@@ -361,8 +398,11 @@ def compete(
     edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
     scores: dict[str, FamilyScore] | None = None,
     ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
+    scopes: tuple[ScopeRow, ...] = (),
 ) -> CompetitionResult:
     """Issue claims for one geometry under the dominance rule."""
+    if geometry_refusal(geometry) is not None:
+        return CompetitionResult(claims=(), contested=(), scores={})
     scores = scores if scores is not None else score_geometry(geometry, terms)
     if geometry.closure_closed and scores:
         leader = max(scores.values(), key=lambda s: s.total)
@@ -579,6 +619,11 @@ def compete(
                 )
             claims.append("derivatives_hedging")
             reach.append("derivatives_hedging")
+    if scopes:
+        kept, kept_contested = apply_section_refusals(
+            claims, contested, geometry, scopes
+        )
+        claims, contested = kept, kept_contested
     role = (
         "continuation"
         if geometry.is_fragment
@@ -637,13 +682,17 @@ def compete_filing(
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
     edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
     ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
+    scopes: tuple[ScopeRow, ...] = (),
 ) -> list[CompetitionResult]:
     """Compete one filing's geometries with context fed back.
 
     Context lends evidence to unclaimed geometries only; it never
     overrides a geometry's own scored claim.
     """
-    results = [compete(g, terms, edges, ladder_terms=ladder_terms) for g in geometries]
+    results = [
+        compete(g, terms, edges, ladder_terms=ladder_terms, scopes=scopes)
+        for g in geometries
+    ]
     claimed_by_title: dict[str, dict[str, int]] = {}
     for geometry, result in zip(geometries, results, strict=True):
         if geometry.note_title and result.claims:
@@ -714,5 +763,6 @@ def compete_filing(
             edges,
             scores=adjusted,
             ladder_terms=ladder_terms,
+            scopes=scopes,
         )
     return results

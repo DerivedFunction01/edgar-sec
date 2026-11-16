@@ -195,6 +195,7 @@ SECTION_SCOPES: tuple[tuple[str, str | None, str, str], ...] = (
     ("10-K", None, "ITEM 16", "financial_statements"),
     ("10-K", None, "ITEM 7", "mda"),
     ("10-K", None, "ITEM 7A", "mda"),
+    ("10-K", None, "ITEM 10", "directors"),
     ("10-Q", "PART I", "ITEM 1", "financial_statements"),
     ("10-Q", "PART I", "ITEM 2", "mda"),
 )

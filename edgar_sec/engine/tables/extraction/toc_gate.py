@@ -16,6 +16,7 @@ from edgar_sec.engine.tables.extraction.typed_rows import TypedRow, TypedTable
 from edgar_sec.engine.tables.numeric_cells import (
     CURRENCY_TOKEN_RE,
     DECIMAL_AMOUNT_RE,
+    is_numeric_cell,
 )
 from edgar_sec.engine.tables.toc.patterns import (
     RE_PART_REFERENCE,
@@ -157,6 +158,41 @@ def toc_signals(table: TypedTable) -> TocSignals:
         currency_present=currency,
         families=families,
     )
+
+
+def page_ref_cell(cell: str) -> bool:
+    """One cell that carries only a page or section reference."""
+    cell = cell.strip()
+    return bool(_BARE_INT_RE.match(cell) or _REF_CELL_RE.match(cell))
+
+
+def grid_page_ref_share(rows: tuple[tuple[str, ...], ...]) -> float:
+    """The page-reference row share over raw grid rows.
+
+    The grid-level mirror of :func:`toc_signals`: strong rows and
+    weak rows whose page numbers increase, over nonblank rows.
+    """
+    strong = 0
+    weak_pages: list[int] = []
+    total = 0
+    for row in rows:
+        cells = [cell.strip() for cell in row if cell.strip()]
+        if not cells:
+            continue
+        total += 1
+        if _strong_page_ref(cells):
+            strong += 1
+            continue
+        if RE_PART_REFERENCE.search(cells[0]) and not any(
+            is_numeric_cell(cell) for cell in cells[1:]
+        ):
+            strong += 1
+            continue
+        page = _weak_page_ref(cells)
+        if page is not None:
+            weak_pages.append(page)
+    weak = len(weak_pages) if _increasing(weak_pages) else 0
+    return (strong + weak) / total if total else 0.0
 
 
 def toc_refusal(table: TypedTable) -> TocRefusal | None:

@@ -76,9 +76,19 @@ classified tables into logical statements and arbitrates their relations.
   with their source document; there is no second resolver.
 - **Section position is a genre gate, not evidence**: the declared section
   map rides the classification policy from the forms layer and is applied
-  by `section_gate`; a statement-family claim seated in an MD&A section is
-  refused by position alone, with the refusal recorded in the evidence
-  trail, and every other position is silent — location never scores.
+  by `section_gate`; a statement-family claim seated in an MD&A or
+  directors section is refused by position alone, with the refusal
+  recorded in the evidence trail, and every other position is silent —
+  location never scores.
+- **Document furniture is refused at the genre seat, upstream of all
+  claiming**: `genre_seat` consumes the facts context production
+  carries (span membership, the front-matter band, per-geometry
+  shape and index measurements) and refuses furniture — contents
+  and index pages, closing-span and exhibit-index tables, empty
+  bodies, folios, and unseated zero-numeric fragments — before the
+  cascade scores or the competition claims; furniture is never
+  carried as per-family imposters. Both claiming paths consult
+  the same seat on the same facts.
 - **Table-of-contents shape is a genre refusal, seated before scoring**:
   `toc_gate` measures page-reference rows (the shared TOC row vocabulary,
   explicit page tokens, and increasing bare page numbers) against the

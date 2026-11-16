@@ -1,7 +1,8 @@
 """Section-position gating: the declared section map as genre reach.
 
-Statement-family claims at MD&A position are refused by position
-alone, with the refusal recorded; every other position is silent.
+Statement-family claims at MD&A or directors position are refused
+by position alone, with the refusal recorded; other positions are
+silent.
 """
 
 from __future__ import annotations
@@ -34,6 +35,7 @@ class SectionScope(Enum):
 
     FINANCIAL_STATEMENTS = "financial_statements"
     MDA = "mda"
+    DIRECTORS = "directors"
     OTHER = "other"
     UNKNOWN = "unknown"
 
@@ -92,6 +94,12 @@ def section_scope(
     return SectionScope.OTHER
 
 
+_REFUSING_SCOPES = {
+    SectionScope.MDA: "MD&A",
+    SectionScope.DIRECTORS: "a directors section",
+}
+
+
 def genre_refusal(
     scopes: tuple[ScopeRow, ...],
     family: str,
@@ -100,21 +108,24 @@ def genre_refusal(
     item: str | None,
     title: str | None = None,
 ) -> GenreRefusal | None:
-    """Refuse a statement-family claim seated at MD&A position.
+    """Refuse a statement-family claim at a refusing position.
 
-    Only statement families refuse, and only at MD&A: any other
-    position is silent — location does not decide there.
+    Only statement families refuse, and only at MD&A or a directors section.
     """
     if family not in STATEMENT_FAMILIES:
         return None
-    if section_scope(scopes, form, part, item, title) is not SectionScope.MDA:
+    scope = section_scope(scopes, form, part, item, title)
+    if scope not in _REFUSING_SCOPES:
         return None
     where = " ".join(part for part in (form, part, item) if part)
     return GenreRefusal(
         family=family,
-        scope=SectionScope.MDA,
+        scope=scope,
         form=form,
         part=part,
         item=item,
-        detail=f"{family} refused by section position: {where} is MD&A",
+        detail=(
+            f"{family} refused by section position: "
+            f"{where} is {_REFUSING_SCOPES[scope]}"
+        ),
     )
