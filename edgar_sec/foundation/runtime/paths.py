@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -74,6 +75,12 @@ def validate_safe_id(
         if not (char.isalnum() or char in "_.-"):
             raise ValueError(f"invalid {label}: {value!r}")
     return value
+
+
+def snapshot_id_for(parent_snapshot_id: str | None, digest: str) -> str:
+    """Derive an immutable snapshot id from its parent and content digest."""
+    content = f"{parent_snapshot_id or ''}:{digest}"
+    return f"snapshot-{hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]}"
 
 
 def transient_dir(artifacts_root: Path, dataset: str, run_id: str) -> Path:
@@ -274,6 +281,7 @@ __all__ = [
     "package_taxonomy_dir",
     "resolve_paths",
     "runtime_root",
+    "snapshot_id_for",
     "snapshots_root",
     "transient_dataset_root",
     "transient_dir",

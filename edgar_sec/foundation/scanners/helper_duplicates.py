@@ -29,10 +29,6 @@ _HOMES = (
 _SANCTIONED_DIVERGENCES = (
     ("edgar_sec/apps/client/operator_config.py", "_error_result"),
     ("edgar_sec/apps/client/operator.py", "_error_result"),
-    # Census KEEP (paths-template class): KEEP unless the paths classes
-    # get a base — the priced condition for this pair's cure.
-    ("edgar_sec/pipelines/document_inventory/paths.py", "snapshot_id_for"),
-    ("edgar_sec/pipelines/xbrl_review/paths.py", "snapshot_id_for"),
 )
 
 # Census scope statement (coordinator ruling, 2026-11-16; full text in

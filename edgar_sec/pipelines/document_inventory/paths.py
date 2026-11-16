@@ -70,7 +70,6 @@ __all__ = [
     "WORK_ORDER_FILE",
     "inventory_run_paths",
     "inventory_paths",
-    "snapshot_id_for",
     "form_partition_name",
     "form_partition_directory",
     "plan_target_file_path",
@@ -284,12 +283,6 @@ def inventory_run_paths(artifacts_root: Path | str, run_id: str) -> InventoryRun
 def inventory_paths(artifacts_root: Path | str) -> InventoryPaths:
     """Construct inventory artifact paths from the selected artifacts root."""
     return InventoryPaths(artifacts_root)
-
-
-def snapshot_id_for(parent_snapshot_id: str | None, digest: str) -> str:
-    """Derive an immutable snapshot id from its parent and content digest."""
-    content = f"{parent_snapshot_id or ''}:{digest}"
-    return f"snapshot-{hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]}"
 
 
 def resolve_index_fixture_paths(
