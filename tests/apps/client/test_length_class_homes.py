@@ -30,5 +30,5 @@ def test_fact_adapter_divergence_pin() -> None:
         start_date=None,
         end_date=None,
     )
-    assert financials_ttm._length_class(fact) is None
+    assert financials_ttm._span_length_class(fact) is None
     assert fiscal.fact_length_class(fact) == "INSTANT"

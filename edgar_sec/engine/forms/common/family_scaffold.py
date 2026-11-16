@@ -74,7 +74,7 @@ def name_before_label(lines: list[str], label_re: re.Pattern[str]) -> str | None
         if match is None:
             continue
         prefix = line[: match.start()].strip(" ,-(")
-        if len(prefix) >= 3:
+        if len(prefix) >= 3 and any(char.isalpha() for char in prefix):
             name = parse_registrant_identity(prefix).name
             if name is not None:
                 return name
@@ -84,6 +84,8 @@ def name_before_label(lines: list[str], label_re: re.Pattern[str]) -> str | None
             if previous is None:
                 break
             cursor, text = previous
+            if not any(char.isalpha() for char in text):
+                continue
             name = parse_registrant_identity(text).name
             if name is not None:
                 return name

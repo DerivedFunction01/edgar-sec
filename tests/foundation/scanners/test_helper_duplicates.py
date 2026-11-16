@@ -86,16 +86,20 @@ def test_allows_a_lone_parameterized_get(synthetic_repo: Path) -> None:
 
 
 def test_flags_duplicated_parameterized_get_bodies(synthetic_repo: Path) -> None:
-    nested = (
-        "    def fields_of(rep):\n"
-        '        return rep.get("form_a", {})\n'
-        "    return fields_of(case_reports[0])\n"
-    )
+    inner = '    def fields_of(rep):\n        return rep.get("form_a", {})\n'
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/engine/a.py": "def summarize_a(case_reports):\n" + nested,
-            "edgar_sec/engine/b.py": "def summarize_b(case_reports):\n" + nested,
+            "edgar_sec/engine/a.py": (
+                "def summarize_a(case_reports):\n"
+                + inner
+                + "    return fields_of(case_reports[0])\n"
+            ),
+            "edgar_sec/engine/b.py": (
+                "def summarize_b(case_reports):\n"
+                + inner
+                + "    return [fields_of(case_reports[0])]\n"
+            ),
         },
     )
     findings = helper_duplicates.scan_helper_duplicates()

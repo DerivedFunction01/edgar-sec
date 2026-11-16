@@ -252,7 +252,7 @@ def _body_key(node: ast.FunctionDef | ast.AsyncFunctionDef) -> str | None:
         return None
     module = ast.Module(body=body, type_ignores=[])
     node_count = sum(1 for _ in ast.walk(module))
-    if len(body) < 2 and node_count < _MIN_NODES:
+    if len(body) < 2 and node_count <= _MIN_NODES:
         return None
     return ast.dump(module)
 

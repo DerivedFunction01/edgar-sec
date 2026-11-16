@@ -30,7 +30,7 @@ def test_flags_plain_page_reference_definition(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                '_PAGE_REF_RE = re.compile(r"\\bpage\\\\s+\\\\d+", re.IGNORECASE)\n'
+                r'_PAGE_REF_RE = re.compile(r"\bpage\s+\d+", re.IGNORECASE)' "\n"
             )
         },
     )
@@ -44,7 +44,7 @@ def test_flags_page_no_form_definition(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                '_PAGE_REF_RE = re.compile(r"page\\\\s*(?:no\\\\.?\\\\s*)?\\\\d+")\n'
+                r'_PAGE_REF_RE = re.compile(r"page\s*(?:no\.?\s*)?\d+")' "\n"
             )
         },
     )
@@ -57,7 +57,7 @@ def test_flags_letter_dash_form_definition(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                '_PAGE_REF_RE = re.compile(r"\\bpage\\\\s+[A-Z]-\\\\d+")\n'
+                r'_PAGE_REF_RE = re.compile(r"\bpage\s+[A-Z]-\d+")' "\n"
             )
         },
     )

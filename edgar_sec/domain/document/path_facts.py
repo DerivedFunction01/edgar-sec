@@ -70,7 +70,7 @@ class DocumentPathShape(StrEnum):
     NESTED = "nested"
 
 
-def _normalized_suffix(document_path: str) -> str:
+def normalized_suffix(document_path: str) -> str:
     """Return the case-folded suffix of a path under EDGAR's separator spelling."""
     return PurePosixPath(document_path.strip().replace("\\", "/")).suffix.casefold()
 
@@ -121,7 +121,7 @@ class DocumentPathFacts:
                 suffix="",
                 suffix_class=DocumentSuffixClass.UNKNOWN,
             )
-        suffix = _normalized_suffix(normalized)
+        suffix = normalized_suffix(normalized)
         if "/" in normalized:
             return cls(
                 path_context=normalized,
@@ -151,7 +151,7 @@ class DocumentPathFacts:
                 suffix="",
                 suffix_class=DocumentSuffixClass.UNKNOWN,
             )
-        suffix = _normalized_suffix(normalized)
+        suffix = normalized_suffix(normalized)
         return cls(
             path_context=normalized,
             path_shape=DocumentPathShape.FLAT,
@@ -184,7 +184,7 @@ def mime_type_for_suffix(path: str | None) -> str:
     normalized = path.strip().replace("\\", "/")
     if not normalized:
         return DEFAULT_MIME
-    return MIME_BY_SUFFIX.get(_normalized_suffix(normalized), DEFAULT_MIME)
+    return MIME_BY_SUFFIX.get(normalized_suffix(normalized), DEFAULT_MIME)
 
 
 __all__ = [
@@ -201,4 +201,5 @@ __all__ = [
     "XML_SUFFIXES",
     "archive_root_candidate",
     "mime_type_for_suffix",
+    "normalized_suffix",
 ]
