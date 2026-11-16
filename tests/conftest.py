@@ -23,10 +23,7 @@ def sample_source() -> Path:
 def regenerable_fixtures_seeded() -> None:
     """Seed regenerated fixture data when any of it is absent (fresh clone).
 
-    The taxonomy archive slices and the catalog authoring outputs are
-    regenerated data (Step 13): untracked, rebuilt on demand only. Each
-    inventory is its generator's own — the builder's release list, the
-    catalog generator's manifests — so the seed tracks what they publish.
+    Archive slices and catalog outputs are untracked regenerated data.
     """
     import fcntl
 

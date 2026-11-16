@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Verify the untracked fixture sets regenerate faithfully (Step 13).
 
-Rebuilds the catalog cohort fixtures and the taxonomy archive slices
-twice into scratch; checks determinism, manifest self-parity, the
-retired-table content pin, and content parity with the tree sets.
+Rebuilds both fixture sets twice into scratch; checks determinism,
+manifest parity, the retired-table pin, and parity with the tree.
 """
 
 from __future__ import annotations
