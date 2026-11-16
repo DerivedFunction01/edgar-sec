@@ -40,12 +40,12 @@ CATALOG_PARQUET = tuple(name for name in CATALOG_OUTPUTS if name.endswith(".parq
 
 # The Step 10 proof's archive total: the builder's row count is pinned.
 EXPECTED_ARCHIVE_ROWS = 357_957
-# The content pin from tests/engine/xbrl/taxonomy/test_archive.py: the
-# retired standard_item_types.json union, entry for entry.
-RETIRED_TABLE_SHA256 = (
-    "1027f18d536540b1af00354a09c2f69c96eb5e53310da10ae93cb77a5634591b"
-)
-RETIRED_TABLE_SIZE = 18130
+# The retired-table content pin is homed in tests.support; both the
+# archive test and this harness read it from there.
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+from tests.support import RETIRED_TABLE_SHA256, RETIRED_TABLE_SIZE  # noqa: E402
+
 _PIN_EXCLUDED = ("ifrs", "ffd", "rxp", "cef", "us-gaap-ebp", "invest", "oef", "fnd")
 
 

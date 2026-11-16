@@ -17,12 +17,7 @@ from edgar_sec.engine.xbrl.taxonomy.archive import (
     table_for_namespaces,
 )
 
-# Canonical serialization of the retired standard_item_types.json, hashed
-# the day the archive replaced it; see the Step 4 batch log.
-_RETIRED_TABLE_SHA256 = (
-    "1027f18d536540b1af00354a09c2f69c96eb5e53310da10ae93cb77a5634591b"
-)
-_RETIRED_TABLE_SIZE = 18130
+from tests.support import RETIRED_TABLE_SHA256, RETIRED_TABLE_SIZE
 
 
 def test_namespace_key_reads_each_host_pattern() -> None:
@@ -74,16 +69,16 @@ def test_archive_reproduces_the_retired_table_exactly() -> None:
         ):
             continue
         table.update(slice_table(taxonomy, version))
-    assert len(table) == _RETIRED_TABLE_SIZE
+    assert len(table) == RETIRED_TABLE_SIZE
     canonical = json.dumps(table, indent=1, sort_keys=True) + "\n"
-    assert hashlib.sha256(canonical.encode()).hexdigest() == _RETIRED_TABLE_SHA256
+    assert hashlib.sha256(canonical.encode()).hexdigest() == RETIRED_TABLE_SHA256
 
 
 def test_current_table_resolves_ifrs_item_types() -> None:
     """The default table now carries the current IFRS slice's item types."""
     table = current_table()
     assert table["ifrs-full:Assets"] == "xbrli:monetaryItemType"
-    assert len(table) > _RETIRED_TABLE_SIZE
+    assert len(table) > RETIRED_TABLE_SIZE
 
 
 def test_current_table_resolves_ffd_item_types() -> None:

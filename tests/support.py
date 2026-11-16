@@ -40,6 +40,14 @@ TESTS_ROOT = Path(__file__).resolve().parent
 FIXTURES = TESTS_ROOT / "fixtures"
 CATALOG_FIXTURES = FIXTURES / "catalog"
 
+#: Canonical serialization of the retired standard_item_types.json, hashed
+#: the day the archive replaced it; see the Step 4 batch log. The archive
+#: test and the regeneration harness both read the pin from here.
+RETIRED_TABLE_SHA256 = (
+    "1027f18d536540b1af00354a09c2f69c96eb5e53310da10ae93cb77a5634591b"
+)
+RETIRED_TABLE_SIZE = 18130
+
 
 _CORPUS_DIRS = ("seed", "vintage", "sp100")
 
