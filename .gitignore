@@ -408,6 +408,15 @@ uploads/*
 !tests/fixtures/*.xml
 !tests/fixtures/catalog/
 !tests/fixtures/catalog/**
+# The eight catalog outputs below are regenerated deterministically by
+# tests/fixtures/catalog/_author_cohort_fixtures.py, so untracked (Step 13,
+# R7); run the authoring script to rebuild them in a fresh clone.
+tests/fixtures/catalog/cohort_observations.parquet
+tests/fixtures/catalog/cohort_observations_conflicting.parquet
+tests/fixtures/catalog/cohort_observations_malformed.parquet
+tests/fixtures/catalog/cohort_observations.json.sha256
+tests/fixtures/catalog/cohort_observations_plan_fixture.sha256
+tests/fixtures/catalog/s1_plan/**
 !tests/fixtures/client/
 !tests/fixtures/client/**
 !tests/fixtures/company_family/
@@ -443,10 +452,10 @@ tests/fixtures/**/__pycache__/
 # tracked set, regenerated on demand; never tracked (R7).
 /tracked-files.txt
 # edgar_sec/engine/xbrl/taxonomy/archive/ holds the derived per-vintage
-# taxonomy slices (Step 4): tracked reference data a fresh clone needs,
-# rebuilt by edgar_sec/tools/build_taxonomy_archive.py.
-!edgar_sec/engine/xbrl/taxonomy/archive/
-!edgar_sec/engine/xbrl/taxonomy/archive/**
+# taxonomy slices: regenerated from the pinned releases by the archive
+# builder (edgar_sec/tools/xbrl_discovery/), so untracked (Step 13, R7
+# re-baseline); tests/conftest.py seeds them on demand in a fresh clone.
+edgar_sec/engine/xbrl/taxonomy/archive/**
 # edgar_sec/engine/xbrl/discovery/<stem>/ holds the cohort bundle corpora:
 # production-consumed reference data beside the canonical registries, a
 # fresh clone needs them for the review pipeline and its replays. They are

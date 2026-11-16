@@ -20,6 +20,69 @@ def sample_source() -> Path:
 
 
 @pytest.fixture(scope="session", autouse=True)
+def regenerable_fixtures_seeded() -> None:
+    """Seed regenerated fixture data when any of it is absent (fresh clone).
+
+    The taxonomy archive slices and the catalog authoring outputs are
+    regenerated data (Step 13): untracked, rebuilt on demand only. Each
+    inventory is its generator's own — the builder's release list, the
+    catalog generator's manifests — so the seed tracks what they publish.
+    """
+    from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+    from edgar_sec.tools.xbrl_discovery.build_taxonomy_archive import (
+        _releases,
+        build,
+    )
+
+    archive_dir = resolve_xbrl_paths().default_taxonomy_archive_dir
+    missing = [
+        (taxonomy, version)
+        for taxonomy, version, _url in _releases()
+        if not (archive_dir / taxonomy / f"{version}.parquet").is_file()
+    ]
+    if missing:
+        # The cache dir mirrors the builder CLI's --cache-dir default.
+        cache_dir = Path.home() / "workspace" / "xbrl-triage" / "taxonomy-archive-src"
+        build(cache_dir, archive_dir)
+    _seed_catalog_fixtures()
+
+
+def _seed_catalog_fixtures() -> None:
+    import importlib.util
+    import json
+
+    fixtures_dir = Path(__file__).resolve().parent / "fixtures" / "catalog"
+    expected = [
+        fixtures_dir / "cohort_observations.json.sha256",
+        fixtures_dir / "cohort_observations_plan_fixture.sha256",
+        fixtures_dir / "s1_plan" / "plan.json",
+    ]
+    cohort_manifest = fixtures_dir / "cohort_observations.json.sha256"
+    if cohort_manifest.is_file():
+        entries = json.loads(cohort_manifest.read_text(encoding="utf-8"))["fixtures"]
+        expected += [fixtures_dir / f"{entry['name']}.parquet" for entry in entries]
+        plan_manifest = json.loads(
+            (fixtures_dir / "cohort_observations_plan_fixture.sha256").read_text(
+                encoding="utf-8"
+            )
+        )
+        expected += [
+            fixtures_dir / "s1_plan" / "targets" / form / "data.parquet"
+            for form in plan_manifest
+        ]
+    if all(path.is_file() for path in expected):
+        return
+    spec = importlib.util.spec_from_file_location(
+        "_author_cohort_fixtures", fixtures_dir / "_author_cohort_fixtures.py"
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("catalog fixture generator could not be loaded")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.main()
+
+
+@pytest.fixture(scope="session", autouse=True)
 def no_production_artifact_writes() -> Iterator[None]:
     """Fail session if tests write to this repository's own artifacts tree."""
     guarded = ("cohorts", "cache", "document_planning")
