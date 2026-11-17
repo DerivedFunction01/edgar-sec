@@ -13,9 +13,11 @@ from edgar_sec.engine.tables.extraction.classify import (
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.detail_agreement import (
+    DETAIL_AGREEMENT_FLOOR,
     DETAIL_AGREEMENT_POINTS,
     find_detail_agreement,
 )
+from edgar_sec.engine.tables.extraction.registry import ASSIGNMENT_FLOOR
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable, structure_table
 
 
@@ -108,3 +110,30 @@ def test_filing_pass_adds_the_agreement_evidence() -> None:
     assert scores[1]["income_statement"] == before + DETAIL_AGREEMENT_POINTS
     trail = results[1].evidence
     assert any("detail agreement" in ev.detail for ev in trail)
+
+
+def test_detail_seat_clears_the_detail_floor_not_the_assignment_floor() -> None:
+    before = candidate_scores(_DETAIL)["income_statement"][0]
+    assert before == 0.0
+    results, scores = classify_filing([_HOST, _DETAIL])
+    assert scores[1]["income_statement"] == DETAIL_AGREEMENT_FLOOR
+    assert DETAIL_AGREEMENT_FLOOR < ASSIGNMENT_FLOOR
+    assert results[1].family == "income_statement"
+    assert results[1].tier == "evidence"
+    assert results[1].score == DETAIL_AGREEMENT_FLOOR
+
+
+def test_detail_seat_keeps_score_arbitration() -> None:
+    detail = _table(
+        (
+            ("Depreciation", "250"),
+            ("Amortization", "350"),
+            ("Total product revenue", "600"),
+        )
+    )
+    assert find_detail_agreement(detail, [("income_statement", _HOST)]) is not None
+    results, scores = classify_filing([_HOST, detail])
+    assert scores[1]["income_statement"] == DETAIL_AGREEMENT_FLOOR
+    assert scores[1]["deferred_tax"] > scores[1]["income_statement"]
+    assert results[1].family != "income_statement"
+    assert results[1].tier == "residual"

@@ -12,6 +12,10 @@ from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 
 DETAIL_AGREEMENT_POINTS = 3.0
+# A detail seat is an attributed claim, not evidence seating:
+# the agreement points alone clear this floor, reached exactly
+# when the host's own scored evidence is non-negative.
+DETAIL_AGREEMENT_FLOOR = 3.0
 _AGREEMENT_REL_TOLERANCE = 0.005
 _AGREEMENT_MIN_VALUE = 100.0
 _MIN_COMPONENTS = 2

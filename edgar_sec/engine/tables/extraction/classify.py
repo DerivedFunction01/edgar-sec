@@ -22,6 +22,7 @@ from edgar_sec.engine.tables.extraction.genre_seat import (
 )
 from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
 from edgar_sec.engine.tables.extraction.detail_agreement import (
+    DETAIL_AGREEMENT_FLOOR,
     DETAIL_AGREEMENT_POINTS,
     find_detail_agreement,
 )
@@ -586,6 +587,7 @@ def _refinish(
     scores: dict[str, float],
     evidence: dict[str, tuple[Evidence, ...]],
     marker: Evidence,
+    floor: float = ASSIGNMENT_FLOOR,
 ) -> Classification:
     """Re-arbitrate one table over adjusted filing-level scores."""
     labels = [normalize_text(row.label) for row in table.rows]
@@ -595,13 +597,13 @@ def _refinish(
     )
     score = scores[winner]
     base = _context_base(table)
-    if score >= ASSIGNMENT_FLOOR:
+    if score >= floor:
         trail = base + list(evidence.get(winner, ())) + [marker]
         return _finish(winner, "evidence", score, trail, labels, table)
     trail = base + [
         Evidence(
             "residual",
-            f"best {winner} at {score:.2f} below floor {ASSIGNMENT_FLOOR}",
+            f"best {winner} at {score:.2f} below floor {floor}",
             0.0,
         ),
         marker,
@@ -698,7 +700,17 @@ def _apply_detail_agreement(
         )
         evidence[agreement.host_family] = tuple(trail)
         marker = Evidence("context", "detail agreement from filing constellation", 0.0)
-        results[position] = _refinish(table, adjusted, evidence, marker)
+        winner = min(
+            adjusted,
+            key=lambda family: (-adjusted[family], FAMILY_PRIORITY.index(family)),
+        )
+        floor = ASSIGNMENT_FLOOR
+        if (
+            winner == agreement.host_family
+            and adjusted[winner] >= DETAIL_AGREEMENT_FLOOR
+        ):
+            floor = DETAIL_AGREEMENT_FLOOR
+        results[position] = _refinish(table, adjusted, evidence, marker, floor=floor)
         scores[position] = adjusted
 
 
