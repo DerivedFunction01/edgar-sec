@@ -30,10 +30,18 @@ from edgar_sec.engine.tables.extraction.typed_rows import (
 
 # (family, term, kind, support, share, labelled exclusivity, provenance)
 ADMITTED_PATTERNS = (
-    ("aoci", "amounts reclassified", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED),
-    ("aoci", "aoci", "label", 3, 0.375, 1.0, PROV_COVERAGE_SEED),
     (
-        "aoci",
+        "aoci_rollforward",
+        "amounts reclassified",
+        "token",
+        4,
+        0.5,
+        1.0,
+        PROV_COVERAGE_SEED,
+    ),
+    ("aoci_rollforward", "aoci", "label", 3, 0.375, 1.0, PROV_COVERAGE_SEED),
+    (
+        "aoci_rollforward",
         "balance at beginning of period",
         "label",
         3,
@@ -42,7 +50,7 @@ ADMITTED_PATTERNS = (
         PROV_COVERAGE_DISCOVERY,
     ),
     (
-        "aoci",
+        "aoci_rollforward",
         "balance at end of period",
         "label",
         4,
@@ -50,9 +58,17 @@ ADMITTED_PATTERNS = (
         0.571,
         PROV_COVERAGE_DISCOVERY,
     ),
-    ("aoci", "before reclassifications", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED),
-    ("aoci", "reclassifications", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED),
-    ("aoci", "reclassified", "token", 4, 0.5, 0.667, PROV_COVERAGE_SEED),
+    (
+        "aoci_rollforward",
+        "before reclassifications",
+        "token",
+        4,
+        0.5,
+        1.0,
+        PROV_COVERAGE_SEED,
+    ),
+    ("aoci_rollforward", "reclassifications", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED),
+    ("aoci_rollforward", "reclassified", "token", 4, 0.5, 0.667, PROV_COVERAGE_SEED),
     (
         "equity_statement",
         "foreign currency translation adjustments",
@@ -182,7 +198,7 @@ def test_admitted_prose_patterns_carry_their_measured_figures() -> None:
 
 
 def test_admitted_landmarks_and_sequences_are_registered() -> None:
-    assert LANDMARKS["aoci"] == (
+    assert LANDMARKS["aoci_rollforward"] == (
         "balance at end of period",
         "balance at beginning of period",
         "beginning balance",
@@ -194,7 +210,9 @@ def test_admitted_landmarks_and_sequences_are_registered() -> None:
     assert LANDMARKS["stock_comp_rollforward"] == ("granted", "exercised")
     sequences = {(spec.family, spec.terms): spec for spec in SEQUENCES}
     assert sequences[("stock_comp_rollforward", ("granted", "exercised"))].support == 6
-    aoci_pairs = {terms for (family, terms) in sequences if family == "aoci"}
+    aoci_pairs = {
+        terms for (family, terms) in sequences if family == "aoci_rollforward"
+    }
     assert aoci_pairs == {
         ("balance at beginning of period", "balance at end of period"),
         ("beginning balance", "ending balance"),
@@ -202,13 +220,13 @@ def test_admitted_landmarks_and_sequences_are_registered() -> None:
     assert all(
         spec.provenance == PROV_COVERAGE_DISCOVERY
         for spec in sequences.values()
-        if spec.family in ("aoci", "stock_comp_rollforward")
+        if spec.family in ("aoci_rollforward", "stock_comp_rollforward")
     )
 
 
 def test_priority_places_schedule_families_ahead_of_balance_sheet() -> None:
     inserts = (
-        "aoci",
+        "aoci_rollforward",
         "cover_layout",
         "debt_maturity",
         "derivatives_hedging",
@@ -243,7 +261,7 @@ def test_aoci_rollforward_classifies() -> None:
             "Balance at end of period",
         )
     )
-    assert classify_table(table).family == "aoci"
+    assert classify_table(table).family == "aoci_rollforward"
 
 
 def test_patents_alone_stays_below_the_assignment_floor() -> None:

@@ -163,7 +163,7 @@ def schedule_family(group: str, rows: tuple[tuple[str, ...], ...]) -> str | None
     if group == "derivatives":
         return "derivatives_hedging"
     if group == "aoci":
-        return "aoci"
+        return "aoci_rollforward"
     if group == "pension":
         keys = ("benefit obligation", "plan assets", "funded status", "net periodic")
         return "pension" if any(k in text for k in keys) else None

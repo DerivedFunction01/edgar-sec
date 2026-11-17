@@ -76,24 +76,36 @@ _REPAIR_ROWS: tuple[tuple[str, str, float], ...] = (
     ("income_statement", "net revenue", 0.019481),
     ("income_statement", "repair and maintenance", 0.0),
     ("income_statement", "total stock-based compensation expense", 0.0),
-    ("aoci", "recoveries", 0.0),
-    ("aoci", "charge-offs", 0.0),
-    ("aoci", "provision for credit losses", 0.0),
-    ("aoci", "changes in fair value, net", 0.0),
+    ("aoci_rollforward", "recoveries", 0.0),
+    ("aoci_rollforward", "charge-offs", 0.0),
+    ("aoci_rollforward", "provision for credit losses", 0.0),
+    ("aoci_rollforward", "changes in fair value, net", 0.0),
 )
 
 
 NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
-    NegativeSpec("balance_sheet", "accumulated deficit", "aoci", 0.0),
-    NegativeSpec("balance_sheet", "stockholders’ equity", "aoci", 0.0),
-    NegativeSpec("balance_sheet", "total stockholders’ equity", "aoci", 0.0),
-    NegativeSpec("balance_sheet", "liabilities and stockholders’ equity", "aoci", 0.0),
+    NegativeSpec("balance_sheet", "accumulated deficit", "aoci_rollforward", 0.0),
+    NegativeSpec("balance_sheet", "stockholders’ equity", "aoci_rollforward", 0.0),
     NegativeSpec(
-        "balance_sheet", "total liabilities and stockholders’ equity", "aoci", 0.0
+        "balance_sheet", "total stockholders’ equity", "aoci_rollforward", 0.0
     ),
-    NegativeSpec("balance_sheet", "commitments and contingencies", "aoci", 0.0),
     NegativeSpec(
-        "balance_sheet", "accumulated other comprehensive income (loss)", "aoci", 0.0
+        "balance_sheet", "liabilities and stockholders’ equity", "aoci_rollforward", 0.0
+    ),
+    NegativeSpec(
+        "balance_sheet",
+        "total liabilities and stockholders’ equity",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec(
+        "balance_sheet", "commitments and contingencies", "aoci_rollforward", 0.0
+    ),
+    NegativeSpec(
+        "balance_sheet",
+        "accumulated other comprehensive income (loss)",
+        "aoci_rollforward",
+        0.0,
     ),
     NegativeSpec("balance_sheet", "accumulated deficit", "cash_flow", 0.0),
     NegativeSpec("balance_sheet", "stockholders’ equity", "cash_flow", 0.0),
@@ -187,50 +199,97 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
         "derivatives_hedging",
         0.0,
     ),
-    NegativeSpec("cash_flow", "investing activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "cash flows from financing activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "cash flows from operating activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "cash flows from investing activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "net increase", "aoci", 0.0),
-    NegativeSpec("cash_flow", "net cash used in investing activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "net cash provided by financing activities", "aoci", 0.0),
+    NegativeSpec("cash_flow", "investing activities", "aoci_rollforward", 0.0),
     NegativeSpec(
-        "cash_flow", "changes in operating assets and liabilities", "aoci", 0.0
-    ),
-    NegativeSpec("cash_flow", "net cash used in operating activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "repayment", "aoci", 0.0),
-    NegativeSpec(
-        "cash_flow", "cash and cash equivalents at end of period", "aoci", 0.0
+        "cash_flow", "cash flows from financing activities", "aoci_rollforward", 0.0
     ),
     NegativeSpec(
-        "cash_flow", "net cash provided by (used in) operating activities", "aoci", 0.0
+        "cash_flow", "cash flows from operating activities", "aoci_rollforward", 0.0
     ),
     NegativeSpec(
-        "cash_flow", "net cash provided by (used in) financing activities", "aoci", 0.0
+        "cash_flow", "cash flows from investing activities", "aoci_rollforward", 0.0
+    ),
+    NegativeSpec("cash_flow", "net increase", "aoci_rollforward", 0.0),
+    NegativeSpec(
+        "cash_flow", "net cash used in investing activities", "aoci_rollforward", 0.0
     ),
     NegativeSpec(
-        "cash_flow", "cash and cash equivalents at beginning of period", "aoci", 0.0
+        "cash_flow",
+        "net cash provided by financing activities",
+        "aoci_rollforward",
+        0.0,
     ),
     NegativeSpec(
-        "cash_flow", "net increase (decrease) in cash and cash equivalents", "aoci", 0.0
+        "cash_flow",
+        "changes in operating assets and liabilities",
+        "aoci_rollforward",
+        0.0,
     ),
-    NegativeSpec("cash_flow", "supplemental disclosures", "aoci", 0.0),
-    NegativeSpec("cash_flow", "principal payments", "aoci", 0.0),
     NegativeSpec(
-        "cash_flow", "supplemental disclosures of cash flow information", "aoci", 0.0
+        "cash_flow", "net cash used in operating activities", "aoci_rollforward", 0.0
+    ),
+    NegativeSpec("cash_flow", "repayment", "aoci_rollforward", 0.0),
+    NegativeSpec(
+        "cash_flow",
+        "cash and cash equivalents at end of period",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec(
+        "cash_flow",
+        "net cash provided by (used in) operating activities",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec(
+        "cash_flow",
+        "net cash provided by (used in) financing activities",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec(
+        "cash_flow",
+        "cash and cash equivalents at beginning of period",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec(
+        "cash_flow",
+        "net increase (decrease) in cash and cash equivalents",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec("cash_flow", "supplemental disclosures", "aoci_rollforward", 0.0),
+    NegativeSpec("cash_flow", "principal payments", "aoci_rollforward", 0.0),
+    NegativeSpec(
+        "cash_flow",
+        "supplemental disclosures of cash flow information",
+        "aoci_rollforward",
+        0.0,
     ),
     NegativeSpec(
         "cash_flow",
         "effect of exchange rate changes on cash and cash equivalents",
-        "aoci",
+        "aoci_rollforward",
         0.0,
     ),
-    NegativeSpec("cash_flow", "effect of exchange rate changes on cash", "aoci", 0.0),
-    NegativeSpec("cash_flow", "proceeds from issuance of common stock", "aoci", 0.0),
-    NegativeSpec("cash_flow", "net change in cash", "aoci", 0.0),
-    NegativeSpec("cash_flow", "net cash provided by investing activities", "aoci", 0.0),
-    NegativeSpec("cash_flow", "cash at end of period", "aoci", 0.0),
-    NegativeSpec("cash_flow", "net increase (decrease) in cash", "aoci", 0.0),
+    NegativeSpec(
+        "cash_flow", "effect of exchange rate changes on cash", "aoci_rollforward", 0.0
+    ),
+    NegativeSpec(
+        "cash_flow", "proceeds from issuance of common stock", "aoci_rollforward", 0.0
+    ),
+    NegativeSpec("cash_flow", "net change in cash", "aoci_rollforward", 0.0),
+    NegativeSpec(
+        "cash_flow",
+        "net cash provided by investing activities",
+        "aoci_rollforward",
+        0.0,
+    ),
+    NegativeSpec("cash_flow", "cash at end of period", "aoci_rollforward", 0.0),
+    NegativeSpec(
+        "cash_flow", "net increase (decrease) in cash", "aoci_rollforward", 0.0
+    ),
     NegativeSpec("cash_flow", "investing activities", "balance_sheet", 0.0),
     NegativeSpec(
         "cash_flow", "cash flows from financing activities", "balance_sheet", 0.0
@@ -282,12 +341,12 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
         "balance_sheet",
         0.0,
     ),
-    NegativeSpec("income_statement", "collaboration revenue", "aoci", 0.0),
-    NegativeSpec("income_statement", "other (income) expense", "aoci", 0.0),
+    NegativeSpec("income_statement", "collaboration revenue", "aoci_rollforward", 0.0),
+    NegativeSpec("income_statement", "other (income) expense", "aoci_rollforward", 0.0),
     NegativeSpec(
         "income_statement",
         "cost of services (exclusive of depreciation and amortization)",
-        "aoci",
+        "aoci_rollforward",
         0.0,
     ),
     NegativeSpec("income_statement", "collaboration revenue", "balance_sheet", 0.0),
@@ -395,7 +454,7 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
         0.0,
     ),
     NegativeSpec("income_statement", "collaboration revenue", "other", 0.0),
-    NegativeSpec("lease_maturity", "less: imputed interest", "aoci", 0.0),
+    NegativeSpec("lease_maturity", "less: imputed interest", "aoci_rollforward", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "balance_sheet", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "cash_flow", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "cover_layout", 0.0),
@@ -417,46 +476,46 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
     ),
     NegativeSpec("lease_maturity", "less: imputed interest", "tax_reconciliation", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "other", 0.0005),
-    NegativeSpec("other", "total", "aoci", 0.0),
-    NegativeSpec("other", "and", "aoci", 0.0),
-    NegativeSpec("other", "other", "aoci", 0.0),
-    NegativeSpec("other", "net", "aoci", 0.0),
-    NegativeSpec("other", "income", "aoci", 0.0),
-    NegativeSpec("other", "interest", "aoci", 0.0),
-    NegativeSpec("other", "assets", "aoci", 0.0),
-    NegativeSpec("other", "loss", "aoci", 0.0),
-    NegativeSpec("other", "cash", "aoci", 0.0),
-    NegativeSpec("other", "operating", "aoci", 0.0),
-    NegativeSpec("other", "liabilities", "aoci", 0.0),
-    NegativeSpec("other", "expense", "aoci", 0.0),
-    NegativeSpec("other", "expenses", "aoci", 0.0),
-    NegativeSpec("other", "common", "aoci", 0.0),
-    NegativeSpec("other", "equity", "aoci", 0.0),
-    NegativeSpec("other", "securities", "aoci", 0.0),
-    NegativeSpec("other", "loans", "aoci", 0.0),
-    NegativeSpec("other", "debt", "aoci", 0.0),
-    NegativeSpec("other", "december", "aoci", 0.0),
-    NegativeSpec("other", "revenue", "aoci", 0.0),
-    NegativeSpec("other", "taxes", "aoci", 0.0),
-    NegativeSpec("other", "net income", "aoci", 0.0),
-    NegativeSpec("other", "amortization", "aoci", 0.0),
-    NegativeSpec("other", "current", "aoci", 0.0),
-    NegativeSpec("other", "cost", "aoci", 0.0),
-    NegativeSpec("other", "sales", "aoci", 0.0),
-    NegativeSpec("other", "equipment", "aoci", 0.0),
-    NegativeSpec("other", "rate", "aoci", 0.0),
-    NegativeSpec("other", "costs", "aoci", 0.0),
-    NegativeSpec("other", "average", "aoci", 0.0),
-    NegativeSpec("other", "beginning", "aoci", 0.0),
-    NegativeSpec("other", "compensation", "aoci", 0.0),
-    NegativeSpec("other", "deferred", "aoci", 0.0),
-    NegativeSpec("other", "common stock", "aoci", 0.0),
-    NegativeSpec("other", "depreciation", "aoci", 0.0),
-    NegativeSpec("other", "outstanding", "aoci", 0.0),
-    NegativeSpec("other", "income taxes", "aoci", 0.0),
-    NegativeSpec("other", "credit", "aoci", 0.0),
-    NegativeSpec("other", "less", "aoci", 0.0),
-    NegativeSpec("other", "period", "aoci", 0.0),
+    NegativeSpec("other", "total", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "and", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "other", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "net", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "income", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "interest", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "assets", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "loss", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "cash", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "operating", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "liabilities", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "expense", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "expenses", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "common", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "equity", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "securities", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "loans", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "debt", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "december", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "revenue", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "taxes", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "net income", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "amortization", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "current", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "cost", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "sales", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "equipment", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "rate", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "costs", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "average", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "beginning", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "compensation", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "deferred", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "common stock", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "depreciation", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "outstanding", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "income taxes", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "credit", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "less", "aoci_rollforward", 0.0),
+    NegativeSpec("other", "period", "aoci_rollforward", 0.0),
     *(
         NegativeSpec(family, term, family, rate, PROV_REPAIR_NEGATIVE)
         for family, term, rate in _REPAIR_ROWS

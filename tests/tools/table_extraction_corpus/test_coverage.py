@@ -59,7 +59,7 @@ def _inventory() -> dict:
 def _full_inventory() -> dict:
     inventory = _inventory()
     for family in (
-        "aoci",
+        "aoci_rollforward",
         "cover_layout",
         "debt_maturity",
         "derivatives_hedging",

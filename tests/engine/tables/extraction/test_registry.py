@@ -49,7 +49,7 @@ def test_no_identity_alone_reaches_the_assignment_floor() -> None:
 
 def test_only_the_measured_containment_edge_carries_standing() -> None:
     assert [(e.subset, e.parent) for e in CONTAINMENT_EDGES] == [
-        ("aoci", "equity_statement")
+        ("aoci_rollforward", "equity_statement")
     ]
     assert [s.families for s in CO_NOTE_SIBLINGS] == [
         ("deferred_tax", "tax_reconciliation")

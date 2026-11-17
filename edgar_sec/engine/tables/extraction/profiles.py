@@ -36,6 +36,7 @@ SEAT_REGION_GATED = "region_gated"
 PROV_DECLARED_SPECS = "form-tests:declared_specs"
 PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
 PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
+PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -50,6 +51,7 @@ TEST_DERIVATIVES_EVIDENCE = "derivatives_evidence_gate"
 TEST_ROW_BOUND = "row_bound"
 TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
+TEST_MEASURE_SET = "measure_set"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -61,6 +63,7 @@ FORM_TESTS = (
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_PLACEMENT_CONSISTENCY,
+    TEST_MEASURE_SET,
 )
 
 
@@ -349,6 +352,66 @@ PROFILES: tuple[FamilyProfile, ...] = (
         provenance=PROV_LABOR,
     ),
     FamilyProfile(
+        "combined_operations_ci",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated Step 3 on the priced combined-form measure "
+            "set; sealed-protocol precision/recall unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_MEASURE_SET,),
+        note="the combined statement as filed: one table carrying "
+        "the operating descent, the OCI components and the "
+        "comprehensive total (11 imposter pairs + 5 unclaimed on "
+        "the composition fill); a standalone comprehensive income "
+        "statement starts at net income and is not this form",
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FamilyProfile(
+        "valuation_model_assumptions",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated Step 3 on the priced input-group measure "
+            "set with the Level 3 refusal; sealed-protocol "
+            "precision/recall unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_MEASURE_SET,),
+        note="the option-pricing input set as filed (volatility, "
+        "dividends, term, risk-free rate, prices, discount rate) "
+        "under any model name; ASC 820 Level 3 unobservable-input "
+        "tables are fair_value content and are refused by term",
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FamilyProfile(
+        "warrant_activity",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated Step 3 on the priced warrant measure sets; "
+            "sealed-protocol precision/recall unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_MEASURE_SET,),
+        note="the warrant activity rollforward and the outstanding "
+        "listing, separated from the seated stock_comp activity "
+        "form by the warrant subject; Reg S-K 201(d) plan tables "
+        "are the listing variant's sharpest false class; warrant "
+        "classification itself stays a determination, not a family",
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FamilyProfile(
         "demographics",
         KIND_FAMILY,
         None,
@@ -369,10 +432,24 @@ PROFILES: tuple[FamilyProfile, ...] = (
     ),
     FamilyProfile(
         "shares_purchased",
-        KIND_GENRE_SEAT,
-        None,
-        SEAT_GENRE_REFUSAL,
-        note="genre claimant in the measured vocabulary; no Step 6 family verdict row",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated Step 3 on the priced Item 703 measure set; "
+            "sealed-protocol precision/recall unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_MEASURE_SET,),
+        note="the Item 703 form seats on its filed measures "
+        "(>= 2 of average price paid / may yet be purchased / "
+        "publicly announced / total shares purchased: 12 specimens "
+        "over 12 accessions, 0 trues against 5 falses, 7 unclaimed); "
+        "repurchase lines inside equity and cash-flow hosts stay "
+        "host content (the priced split verdict)",
+        provenance=PROV_STEP3_PRICING,
     ),
     FamilyProfile(
         "other",

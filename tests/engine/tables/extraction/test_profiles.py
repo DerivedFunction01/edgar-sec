@@ -56,6 +56,9 @@ def test_registry_covers_exactly_the_supported_set() -> None:
         "demographics",
         "cover_layout",
         "shares_purchased",
+        "combined_operations_ci",
+        "valuation_model_assumptions",
+        "warrant_activity",
         "other",
     }
     assert len(PROFILES) == len(PROFILES_BY_FAMILY)
@@ -73,6 +76,10 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
     assert set(competing_families()) == OPEN_FAMILIES | {
         "labor_capture",
         "demographics",
+        "shares_purchased",
+        "combined_operations_ci",
+        "valuation_model_assumptions",
+        "warrant_activity",
     }
 
 
@@ -142,5 +149,5 @@ def test_admitted_and_genre_profiles() -> None:
     assert labor.kind == "prose_profile"
     assert labor.shape == "employee group x contract x union"
     genre = [p for p in PROFILES if p.kind == KIND_GENRE_SEAT]
-    assert {p.family for p in genre} == {"cover_layout", "shares_purchased", "other"}
+    assert {p.family for p in genre} == {"cover_layout", "other"}
     assert all(p.support is None and not p.form_tests for p in genre)

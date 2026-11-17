@@ -25,6 +25,7 @@ PROV_NOTE_CENSUS_DRIVE = "note-census:context_drive"
 PROV_STRUCTURE_CENSUS = "structure-census:structure_specs"
 PROV_STRUCTURE_CENSUS_DRIVE = "structure-census:context_drive"
 PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
+PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 
 RESIDUAL_FAMILY = "other"
 # The five primary statement families, in canonical order: the
@@ -50,7 +51,7 @@ SATELLITE_FAMILIES = (
     "lease_maturity",
     "inventory",
     "tax_reconciliation",
-    "aoci",
+    "aoci_rollforward",
     "pension",
     "stock_comp_rollforward",
     "intangibles",
@@ -63,9 +64,11 @@ FAMILY_PRIORITY = (
     "tax_reconciliation",
     "deferred_tax",
     "fair_value",
+    "valuation_model_assumptions",
+    "warrant_activity",
     "inventory",
     "lease_maturity",
-    "aoci",
+    "aoci_rollforward",
     "cover_layout",
     "debt_maturity",
     "derivatives_hedging",
@@ -78,6 +81,7 @@ FAMILY_PRIORITY = (
     "cash_flow",
     "income_statement",
     "comprehensive_income",
+    "combined_operations_ci",
     "equity_statement",
     "subsequent_events",
     "segment_reporting",
@@ -247,7 +251,7 @@ STRUCTURE_SPECS: tuple[StructureSpec, ...] = (
 
 
 SHAPE_BOUNDS: tuple[ShapeBound, ...] = (
-    ShapeBound("aoci", 8, 4, 11, 8, 8, 4, 14),
+    ShapeBound("aoci_rollforward", 8, 4, 11, 8, 8, 4, 14),
     ShapeBound("balance_sheet", 117, 7, 39, 5, 8, 13, 45),
     ShapeBound("cash_flow", 151, 4, 45, 4, 5, 12, 66),
     ShapeBound("cover_layout", 1, 1, 1, 1, 1, 1, 1),
@@ -325,7 +329,7 @@ LANDMARKS: dict[str, tuple[str, ...]] = {
         "net loss",
         "operating activities",
     ),
-    "aoci": (
+    "aoci_rollforward": (
         "balance at end of period",
         "balance at beginning of period",
         "beginning balance",
@@ -688,13 +692,13 @@ SEQUENCES: tuple[SequenceSpec, ...] = (
         PROV_COVERAGE_DISCOVERY,
     ),
     SequenceSpec(
-        "aoci",
+        "aoci_rollforward",
         ("balance at beginning of period", "balance at end of period"),
         3,
         PROV_COVERAGE_DISCOVERY,
     ),
     SequenceSpec(
-        "aoci",
+        "aoci_rollforward",
         ("beginning balance", "ending balance"),
         3,
         PROV_COVERAGE_DISCOVERY,
@@ -754,7 +758,7 @@ class ContainmentSpec:
 # sections inside equity statements (4 of 9 labelled parents, lift 66x);
 # stock_comp and shares_purchased into equity measured 0 of 9 — absent.
 CONTAINMENT_EDGES: tuple[ContainmentSpec, ...] = (
-    ContainmentSpec("aoci", "equity_statement", 4, 9, 0.007, 66.1),
+    ContainmentSpec("aoci_rollforward", "equity_statement", 4, 9, 0.007, 66.1),
 )
 CONTAINMENT_PARENTS = {spec.subset: spec.parent for spec in CONTAINMENT_EDGES}
 CONTAINMENT_SUBSETS: dict[str, tuple[str, ...]] = {}

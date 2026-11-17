@@ -15,7 +15,6 @@ from edgar_sec.engine.tables.extraction.classify import (
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
-from edgar_sec.engine.tables.extraction.form_tests import cascade_family
 from edgar_sec.engine.tables.extraction.registry import FAMILY_PRIORITY
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable, structure_table
 
@@ -43,7 +42,7 @@ def test_scored_set_covers_every_form_tested_family() -> None:
     table = _table((("Caption", "1"),))
     scored = candidate_scores(table)
     for spec in FORM_TEST_SPECS:
-        assert cascade_family(spec.family) in scored, spec.family
+        assert spec.family in scored, spec.family
     for family in FOUR:
         assert family in scored
 

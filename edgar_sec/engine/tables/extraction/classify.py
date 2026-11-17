@@ -21,9 +21,12 @@ from edgar_sec.engine.tables.extraction.genre_seat import (
     table_refusal,
 )
 from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
+from edgar_sec.engine.tables.extraction.detail_agreement import (
+    DETAIL_AGREEMENT_POINTS,
+    find_detail_agreement,
+)
 from edgar_sec.engine.tables.extraction.form_tests import (
     FormTestOutcome,
-    cascade_family,
     evaluate_form_tests,
 )
 from edgar_sec.engine.tables.extraction.placement import placement_facts
@@ -64,6 +67,7 @@ from edgar_sec.engine.tables.extraction.registry import (
     NEGATIVE_ZERO_RATE_POINTS,
     NOTE_GROUP_QUOTA,
     PAIR_POINTS,
+    PRIMARY_STATEMENT_FAMILIES,
     PROSE_GROUP_QUOTA,
     PROSE_POINTS,
     RESIDUAL_FAMILY,
@@ -426,7 +430,7 @@ def _evidence_scores(
     # A family the stage form-tests is a family the stage scores:
     # without a scored seat its form-test outcomes are dropped and
     # it can never be named (Step 2 assignment-stage cure).
-    families.update(cascade_family(spec.family) for spec in FORM_TEST_SPECS)
+    families.update(spec.family for spec in FORM_TEST_SPECS)
     signatures = grouping_signatures(table)
     outcomes = evaluate_math(table) if math_outcomes is None else math_outcomes
     math_by_family: dict[str, list[IdentityOutcome]] = {}
@@ -434,7 +438,7 @@ def _evidence_scores(
         math_by_family.setdefault(outcome.family, []).append(outcome)
     form_by_family: dict[str, list[FormTestOutcome]] = {}
     for outcome in evaluate_form_tests(table):
-        form_by_family.setdefault(cascade_family(outcome.family), []).append(outcome)
+        form_by_family.setdefault(outcome.family, []).append(outcome)
     return {
         family: _score_family(
             family,
@@ -632,7 +636,7 @@ def _apply_placement(
         for outcome in evaluate_form_tests(table, specs=specs, placement=facts):
             if not outcome.evaluable or outcome.passed:
                 continue
-            family = cascade_family(outcome.family)
+            family = outcome.family
             if family not in adjusted or adjusted[family] == 0.0:
                 continue
             adjusted[family] = 0.0
@@ -644,6 +648,58 @@ def _apply_placement(
             marker = Evidence("context", "placement facts from first-pass reads", 0.0)
             results[position] = _refinish(table, adjusted, evidence, marker)
             scores[position] = adjusted
+
+
+def _apply_detail_agreement(
+    tables: list[TypedTable] | tuple[TypedTable, ...],
+    results: list[Classification],
+    scored: list[dict[str, tuple[float, tuple[Evidence, ...]]]],
+    scores: list[dict[str, float]],
+) -> None:
+    """Claim breakdown tables for their host family on agreement.
+    A candidate's components close to one primary statement line;
+    its points join the scored evidence and re-arbitration."""
+
+    def seated(result: Classification) -> bool:
+        return (
+            result.family in PRIMARY_STATEMENT_FAMILIES
+            and result.score >= ASSIGNMENT_FLOOR
+            and result.tier not in ("genre_refusal", "region")
+        )
+
+    hosts = [
+        (result.family, tables[position])
+        for position, result in enumerate(results)
+        if seated(result)
+    ]
+    if not hosts:
+        return
+    for position, table in enumerate(tables):
+        result = results[position]
+        if result.tier in ("genre_refusal", "region"):
+            continue
+        if seated(result):
+            continue
+        agreement = find_detail_agreement(table, hosts)
+        if agreement is None:
+            continue
+        adjusted = dict(scores[position])
+        adjusted[agreement.host_family] = (
+            adjusted.get(agreement.host_family, 0.0) + DETAIL_AGREEMENT_POINTS
+        )
+        evidence = {family: trail for family, (_, trail) in scored[position].items()}
+        trail = list(evidence.get(agreement.host_family, ()))
+        trail.append(
+            Evidence(
+                "form_test",
+                f"detail value agreement: {agreement.host_label}",
+                DETAIL_AGREEMENT_POINTS,
+            )
+        )
+        evidence[agreement.host_family] = tuple(trail)
+        marker = Evidence("context", "detail agreement from filing constellation", 0.0)
+        results[position] = _refinish(table, adjusted, evidence, marker)
+        scores[position] = adjusted
 
 
 def classify_filing(
@@ -698,6 +754,7 @@ def classify_filing(
         {family: score for family, (score, _) in entry.items()} for entry in scored
     ]
     _apply_placement(tables, results, scored, scores)
+    _apply_detail_agreement(tables, results, scored, scores)
     anchors = [
         position
         for position, result in enumerate(results)

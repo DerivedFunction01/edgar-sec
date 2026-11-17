@@ -262,7 +262,7 @@ def test_stage_feeds_the_signature_competition() -> None:
 
 
 def test_stage_feeds_the_cascade_for_seated_families() -> None:
-    score, evidence = candidate_scores(_table(_AOCI_WALK))["aoci"]
+    score, evidence = candidate_scores(_table(_AOCI_WALK))["aoci_rollforward"]
     assert any(entry.group == "form_test" and entry.points == 3.0 for entry in evidence)
     assert score >= 3.0
     twin = _table(
@@ -271,5 +271,5 @@ def test_stage_feeds_the_cascade_for_seated_families() -> None:
             ("Total accumulated other comprehensive income", (30.0,)),
         ]
     )
-    _, twin_evidence = candidate_scores(twin)["aoci"]
+    _, twin_evidence = candidate_scores(twin)["aoci_rollforward"]
     assert not any(entry.group == "form_test" for entry in twin_evidence)

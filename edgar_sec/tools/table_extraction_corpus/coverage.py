@@ -24,7 +24,7 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 RETIRED_REF = "06af1209"
 
 TARGET_FAMILIES = (
-    "aoci",
+    "aoci_rollforward",
     "cover_layout",
     "debt_maturity",
     "derivatives_hedging",

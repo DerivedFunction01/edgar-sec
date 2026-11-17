@@ -7,12 +7,14 @@ from edgar_sec.engine.tables.extraction.registry import (
     PROV_COVERAGE_SEED,
     PROV_REPAIR_DISCOVERY,
     PROV_STEP2_PRICING,
+    PROV_STEP3_PRICING,
     LocationSpec,
     PatternSpec,
     ProsePatternSpec,
 )
 from edgar_sec.engine.tables.extraction.subject_vocabulary import (
     STEP2_PATTERN_ENTRIES,
+    STEP3_PATTERN_ENTRIES,
 )
 
 PATTERNS: tuple[PatternSpec, ...] = (
@@ -286,11 +288,17 @@ PATTERNS: tuple[PatternSpec, ...] = (
     PatternSpec("tax_reconciliation", "local taxes", "token", 6, 0.273, 0.545),
     PatternSpec("tax_reconciliation", "statutory tax", "token", 6, 0.273, 0.6),
     PatternSpec(
-        "aoci", "amounts reclassified", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED
+        "aoci_rollforward",
+        "amounts reclassified",
+        "token",
+        4,
+        0.5,
+        1.0,
+        PROV_COVERAGE_SEED,
     ),
-    PatternSpec("aoci", "aoci", "label", 3, 0.375, 1.0, PROV_COVERAGE_SEED),
+    PatternSpec("aoci_rollforward", "aoci", "label", 3, 0.375, 1.0, PROV_COVERAGE_SEED),
     PatternSpec(
-        "aoci",
+        "aoci_rollforward",
         "balance at beginning of period",
         "label",
         3,
@@ -299,7 +307,7 @@ PATTERNS: tuple[PatternSpec, ...] = (
         PROV_COVERAGE_DISCOVERY,
     ),
     PatternSpec(
-        "aoci",
+        "aoci_rollforward",
         "balance at end of period",
         "label",
         4,
@@ -308,10 +316,26 @@ PATTERNS: tuple[PatternSpec, ...] = (
         PROV_COVERAGE_DISCOVERY,
     ),
     PatternSpec(
-        "aoci", "before reclassifications", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED
+        "aoci_rollforward",
+        "before reclassifications",
+        "token",
+        4,
+        0.5,
+        1.0,
+        PROV_COVERAGE_SEED,
     ),
-    PatternSpec("aoci", "reclassifications", "token", 4, 0.5, 1.0, PROV_COVERAGE_SEED),
-    PatternSpec("aoci", "reclassified", "token", 4, 0.5, 0.667, PROV_COVERAGE_SEED),
+    PatternSpec(
+        "aoci_rollforward",
+        "reclassifications",
+        "token",
+        4,
+        0.5,
+        1.0,
+        PROV_COVERAGE_SEED,
+    ),
+    PatternSpec(
+        "aoci_rollforward", "reclassified", "token", 4, 0.5, 0.667, PROV_COVERAGE_SEED
+    ),
     PatternSpec(
         "equity_statement",
         "foreign currency translation adjustments",
@@ -494,6 +518,8 @@ PATTERNS: tuple[PatternSpec, ...] = (
     # Step 2 (followup): the four families the cascade could not
     # name; entries homed in subject_vocabulary, composed here.
     *(PatternSpec(*entry, PROV_STEP2_PRICING) for entry in STEP2_PATTERN_ENTRIES),
+    # Step 3 (followup): valuation_model_assumptions' mined set.
+    *(PatternSpec(*entry, PROV_STEP3_PRICING) for entry in STEP3_PATTERN_ENTRIES),
 )
 
 PROSE_PATTERNS: tuple[ProsePatternSpec, ...] = (
@@ -568,7 +594,9 @@ PROSE_PATTERNS: tuple[ProsePatternSpec, ...] = (
 )
 
 LOCATION_STRENGTHS: tuple[LocationSpec, ...] = (
-    LocationSpec("aoci", 8, ((None, 4), ("ITEM 16", 2), ("ITEM 1", 2)), 0.875, 0.125),
+    LocationSpec(
+        "aoci_rollforward", 8, ((None, 4), ("ITEM 16", 2), ("ITEM 1", 2)), 0.875, 0.125
+    ),
     LocationSpec(
         "balance_sheet",
         117,

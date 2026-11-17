@@ -1,8 +1,8 @@
-"""Cascade vocabulary entries for the Step 2 families.
+"""Cascade vocabulary entries for the Step 2 and Step 3 families.
 
-Terms derive from the subject-evidence map's stub channel,
-re-priced on the v3 base; composed into calibration's
-PATTERNS with the Step 2 pricing provenance.
+Terms derive from the subject-evidence map's stub channel or
+from priced member sets, re-priced on the v3 base; composed
+into calibration's PATTERNS with each step's provenance.
 """
 
 from __future__ import annotations
@@ -71,4 +71,21 @@ STEP2_PATTERN_ENTRIES: tuple[tuple[str, str, str, int, float, float], ...] = (
     ("derivatives_hedging", "swaps", "token", 9, 0.257, 0.6),
     ("derivatives_hedging", "hedging", "token", 7, 0.2, 0.412),
     ("debt_maturity", "thereafter", "label", 9, 0.6, 0.243),
+)
+
+# Step 3: valuation_model_assumptions, mined over the priced
+# member set (the measure-set passes among false claims + sweep
+# on the v3 base, 17 members) with production term semantics.
+STEP3_PATTERN_ENTRIES: tuple[tuple[str, str, str, int, float, float], ...] = (
+    ("valuation_model_assumptions", "volatility", "label", 17, 1.0, 0.81),
+    (
+        "valuation_model_assumptions",
+        "expected volatility",
+        "label",
+        12,
+        0.706,
+        0.923,
+    ),
+    ("valuation_model_assumptions", "risk free", "token", 16, 0.941, 0.842),
+    ("valuation_model_assumptions", "free interest", "token", 15, 0.882, 0.938),
 )

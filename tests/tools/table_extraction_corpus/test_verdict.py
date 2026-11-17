@@ -54,11 +54,11 @@ def test_error_classes_match_the_verdict_decomposition():
     )
     assert error_classes(_row("other", "cash_flow")) == (None, "fp_residual_gold")
     assert error_classes(_row(None, "cash_flow")) == (None, "fp_unlabelled")
-    assert error_classes(_row("equity_statement", "aoci")) == (
+    assert error_classes(_row("equity_statement", "aoci_rollforward")) == (
         "fn_to_related",
         "fp_containment_consistent",
     )
-    assert error_classes(_row("aoci", "equity_statement")) == (
+    assert error_classes(_row("aoci_rollforward", "equity_statement")) == (
         "fn_to_related",
         "fp_parent_over_subset",
     )
@@ -90,8 +90,8 @@ def test_placement_categories_cover_the_positions():
     assert (
         placement_category(
             _row(
-                "aoci",
-                "aoci",
+                "aoci_rollforward",
+                "aoci_rollforward",
                 mechanism="section",
                 group_family="equity_statement",
                 section_member=True,
@@ -109,7 +109,7 @@ def test_placement_categories_cover_the_positions():
         placement_category(
             _row(
                 "equity_statement",
-                "aoci",
+                "aoci_rollforward",
                 mechanism="section",
                 group_family="equity_statement",
                 section_member=True,
@@ -117,8 +117,14 @@ def test_placement_categories_cover_the_positions():
         )
         == "section_of_gold"
     )
-    assert placement_category(_row("equity_statement", "aoci")) == "contained_subset"
-    assert placement_category(_row("aoci", "equity_statement")) == "contained_parent"
+    assert (
+        placement_category(_row("equity_statement", "aoci_rollforward"))
+        == "contained_subset"
+    )
+    assert (
+        placement_category(_row("aoci_rollforward", "equity_statement"))
+        == "contained_parent"
+    )
     assert (
         placement_category(
             _row(

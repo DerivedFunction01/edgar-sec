@@ -42,7 +42,9 @@ class NamespaceExpectation:
 
 
 FAMILY_LOCATIONS: tuple[FamilyLocation, ...] = (
-    FamilyLocation("aoci", 8, ((None, 4), ("ITEM 16", 2), ("ITEM 1", 2)), 0.875, 0.125),
+    FamilyLocation(
+        "aoci_rollforward", 8, ((None, 4), ("ITEM 16", 2), ("ITEM 1", 2)), 0.875, 0.125
+    ),
     FamilyLocation(
         "balance_sheet",
         117,

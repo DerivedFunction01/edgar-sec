@@ -237,10 +237,10 @@ def test_slot_ranking_names_one_main_and_a_variant() -> None:
 
 def test_containment_section_inside_a_parent_assignment() -> None:
     assembly = assemble([_context(3, _EQUITY_AOCI)])
-    assert _tables(assembly, "aoci") == []
+    assert _tables(assembly, "aoci_rollforward") == []
     (table,) = _tables(assembly, "equity_statement")
-    assert table.sections == ("aoci",)
-    assert "aoci" in table.tags
+    assert table.sections == ("aoci_rollforward",)
+    assert "aoci_rollforward" in table.tags
 
 
 def test_note_colocated_subset_is_consumed_as_a_section() -> None:
@@ -248,19 +248,19 @@ def test_note_colocated_subset_is_consumed_as_a_section() -> None:
     assembly = assemble(
         [_context(3, _EQUITY_NOTE, note=note), _context(4, _AOCI_NOTE, note=note)]
     )
-    assert _tables(assembly, "aoci") == []
+    assert _tables(assembly, "aoci_rollforward") == []
     (table,) = _tables(assembly, "equity_statement")
-    assert table.sections == ("aoci",)
+    assert table.sections == ("aoci_rollforward",)
     assert table.section_members == (4,)
     assignment = {a.table_index: a for a in assembly.assignments}
-    assert assignment[4].family == "aoci"
+    assert assignment[4].family == "aoci_rollforward"
     assert assignment[4].mechanism == "section"
 
 
 def test_subset_without_a_parent_stays_its_own_table() -> None:
     note = NoteRef(number=5, label=None, title="Equity")
     assembly = assemble([_context(4, _AOCI_NOTE, note=note)])
-    (table,) = _tables(assembly, "aoci")
+    (table,) = _tables(assembly, "aoci_rollforward")
     assert table.role == "main"
     assert table.members == (4,)
 
