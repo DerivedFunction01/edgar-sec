@@ -96,6 +96,13 @@ tests — run `--fast`; untracked/unparsable/missing-baseline counts as logic. A
 module change runs its mirrored test plus downstream dependents. Never run
 `pytest` on the `test/` directory (= `--all`).
 
+**`--all` only on the owner's explicit consent, under exactly one conditional
+(owner, 2026-11-17):** a full run is permitted only when the proof's subject is
+itself a tree-wide condition; every other gate is change-aware scoped to the
+delta's affected modules, per worktree, whatever the delta's size or the
+worktree's status. A gate template or skeleton whose default is a full run is
+a defect of the template, not of the lane that fired it.
+
 ### Registered Policy Scanners
 
 The catalog of registered scanners lives in `docs/scanners.md`, normative there.
