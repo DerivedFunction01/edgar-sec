@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import replace
 
+from edgar_sec.domain.world.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_TABLE_I_DECISIVE_PHRASES,
     FORM144_TABLE_I_SUPPORT_TERMS,
@@ -41,7 +42,6 @@ from edgar_sec.engine.forms.form144.row_specs import (
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
-from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 
 

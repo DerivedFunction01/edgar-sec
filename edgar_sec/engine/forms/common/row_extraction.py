@@ -6,13 +6,13 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
 from typing import TypeVar
 
+from edgar_sec.domain.world.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.engine.forms.common.extraction import (
     ExtractedValue,
     FieldKind,
     FieldSpec,
     extract_value,
 )
-from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
 

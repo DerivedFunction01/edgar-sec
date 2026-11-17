@@ -52,7 +52,7 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
                 ├── axis_families.json  # Default path to axis families taxonomy file.
                 ├── commodity_graph.json  # Default path to commodity graph taxonomy file.
                 ├── default_coordinates.json  # Default path to presumed-coordinate defaults taxonomy file.
-                ├── geography_dag.json  # Default path to geography DAG taxonomy file.
+                ├── geography_dag.json  # Optional override file; the DAG itself stands in edgar_sec.domain.world.
                 ├── grammatical_frames.json  # Default path to grammatical frames taxonomy file.
                 ├── human_capital_graph.json  # Default path to human capital graph taxonomy file.
                 ├── industries.json  # Default path to industry profiles taxonomy file.

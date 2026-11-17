@@ -8,6 +8,7 @@ from edgar_sec.domain.forms.families.form144.models import (
     BrokerDetails,
     ProposedSaleItem,
 )
+from edgar_sec.domain.world.currencies import ALL_CURRENCY_SYMBOLS, currency
 from edgar_sec.engine.forms.common.alignment import (
     CanonicalColumn,
     TableSchema,
@@ -29,7 +30,6 @@ from edgar_sec.engine.forms.common.numbers import (
 )
 from edgar_sec.engine.forms.form144.patterns import SEC_FILE_BARE_RE
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
-from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE, parse_date
@@ -38,8 +38,25 @@ _SPLIT_EXPLANATION_RE = re.compile(
     r"(?:\s+(?:as of|based on)\b|(?:\s+|(?<=\d))\((?:based on|as of)\b)",
     flags=re.IGNORECASE,
 )
+
+
+def _usd_prefix_spellings() -> tuple[str, ...]:
+    """USD prefix spellings derived from the currency record.
+    The code alone, plus its country stem joined to each symbol —
+    bare, spaced, and dotted-letter ("US$", "US $", "U.S.$").
+    """
+    record = currency("USD")
+    stem = record.country or record.code
+    spellings = {record.code}
+    for symbol in record.symbols:
+        dotted = ".".join(stem) + "."
+        spellings.update({f"{stem}{symbol}", f"{stem} {symbol}", f"{dotted}{symbol}"})
+    return tuple(sorted(spellings))
+
+
+_USD_PREFIX_SPELLINGS = _usd_prefix_spellings()
 _CURRENCY_CODE_ALT = build_alternation(
-    tuple(re.escape(code) for code in ("U.S.$", "US $", "US$", "USD"))
+    tuple(re.escape(code) for code in _USD_PREFIX_SPELLINGS)
 )
 _CURRENCY_CODE_PREFIX_RE = re.compile(rf"^(?:{_CURRENCY_CODE_ALT})\s*", re.I)
 _APPROX_TILDE_RE = re.compile(r"^~+\s*")

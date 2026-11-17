@@ -8,8 +8,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.world import geography as world_geography
+from edgar_sec.domain.world.geography_edges import GeoEdge as WorldGeoEdge
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.schema.models import qname_local, split_concept_qname
+from edgar_sec.engine.xbrl.schema.models import qname_local
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.normalize.temporal import TemporalInterval
 from edgar_sec.engine.xbrl.schema.relations import AtomRelationGraph
@@ -44,6 +46,7 @@ from edgar_sec.engine.xbrl.taxonomy.records import (
     load_member_roles,
     load_query_aliases,
     load_subspace_invariants,
+    load_substrate_geography,
     load_units,
     load_valuation_rules,
 )
@@ -133,6 +136,9 @@ class DomainTaxonomy:
     _member_role_memo: dict[str, str] = field(
         default_factory=dict, init=False, repr=False, compare=False
     )
+    _world_geo_edges: tuple[WorldGeoEdge, ...] = field(
+        default=(), init=False, repr=False, compare=False
+    )
 
     def __post_init__(self) -> None:
         table = tuple(
@@ -157,6 +163,20 @@ class DomainTaxonomy:
             self,
             "_member_role_table",
             tuple((m.pattern, m.role) for m in self.member_roles),
+        )
+        object.__setattr__(
+            self,
+            "_world_geo_edges",
+            tuple(
+                WorldGeoEdge(
+                    child=edge.child_geo_node,
+                    parent=edge.parent_geo_node,
+                    scheme=edge.decomposition_scheme,
+                    relation=edge.relation_type,
+                    notes=edge.notes,
+                )
+                for edge in self.geography_edges
+            ),
         )
 
     def prime_head(self, head_id: str) -> PrimeHead | None:
@@ -252,22 +272,13 @@ class DomainTaxonomy:
                 if not mapping.default_axis_qname:
                     return None
                 return mapping.axis_family, mapping.default_axis_qname
-        for geo in self.geography_edges:
-            child_low = qname_local(geo.child_geo_node).lower()
-            parent_low = qname_local(geo.parent_geo_node).lower()
-            if tok_low in (child_low, parent_low):
-                return "GEOGRAPHY", "us-gaap:StatementGeographicalAxis"
+        if world_geography.match_node(self._world_geo_edges, token) is not None:
+            return "GEOGRAPHY", "us-gaap:StatementGeographicalAxis"
         return None
 
     def _domicile_node(self, firm_domicile: str) -> str | None:
         """Find the declared geography node for a domicile country code."""
-        code = firm_domicile.upper()
-        for edge in self.geography_edges:
-            for node in (edge.child_geo_node, edge.parent_geo_node):
-                prefix, local = split_concept_qname(node)
-                if prefix == "country" and local == code:
-                    return node
-        return None
+        return world_geography.domicile_node_for(self._world_geo_edges, firm_domicile)
 
     def resolve_geography(
         self,
@@ -276,25 +287,9 @@ class DomainTaxonomy:
     ) -> GeoResolution | None:
         """Resolve raw token or node against geography DAG and firm domicile."""
         t_clean = token_or_qname.strip()
-        t_low = qname_local(t_clean).lower()
         domicile_node = self._domicile_node(firm_domicile)
 
-        target_node: str | None = None
-        for edge in self.geography_edges:
-            c_low = qname_local(edge.child_geo_node).lower()
-            p_low = qname_local(edge.parent_geo_node).lower()
-            if t_clean in (edge.child_geo_node, edge.parent_geo_node):
-                target_node = (
-                    edge.child_geo_node
-                    if t_clean == edge.child_geo_node
-                    else edge.parent_geo_node
-                )
-                break
-            if t_low in (c_low, p_low):
-                target_node = (
-                    edge.child_geo_node if t_low == c_low else edge.parent_geo_node
-                )
-                break
+        target_node = world_geography.match_node(self._world_geo_edges, t_clean)
 
         if target_node is None and self.token_lexicon is not None:
             matches, _ = self.token_lexicon.scan_tokens((t_clean,))
@@ -310,30 +305,15 @@ class DomainTaxonomy:
         if target_node is None:
             return None
 
-        is_domestic = target_node == domicile_node
-        is_foreign = not is_domestic
-
-        ancestors: list[str] = []
-        schemes: list[str] = []
-        frontier = [target_node]
-        visited = {target_node}
-        while frontier:
-            curr = frontier.pop(0)
-            for edge in self.geography_edges:
-                if edge.child_geo_node == curr:
-                    if edge.parent_geo_node not in visited:
-                        visited.add(edge.parent_geo_node)
-                        frontier.append(edge.parent_geo_node)
-                        ancestors.append(edge.parent_geo_node)
-                    if edge.decomposition_scheme not in schemes:
-                        schemes.append(edge.decomposition_scheme)
-
+        resolved = world_geography.resolve_node(
+            target_node, firm_domicile, self._world_geo_edges
+        )
         return GeoResolution(
-            canonical_node=target_node,
-            is_domestic=is_domestic,
-            is_foreign=is_foreign,
-            ancestor_regions=tuple(ancestors),
-            decomposition_schemes=tuple(schemes),
+            canonical_node=resolved.canonical_node,
+            is_domestic=resolved.is_domestic,
+            is_foreign=resolved.is_foreign,
+            ancestor_regions=resolved.ancestor_regions,
+            decomposition_schemes=resolved.decomposition_schemes,
         )
 
     def match_grammatical_frame(
@@ -622,7 +602,9 @@ def load_domain_taxonomy(
         subatomic_modifiers=load_subatomic_modifiers(mods_p),
         token_lexicon=token_lexicon,
         atom_relations=atom_relations,
-        geography_edges=load_geography_dag(geo_p) if geo_p.is_file() else (),
+        geography_edges=(
+            load_geography_dag(geo_p) if geo_p.is_file() else load_substrate_geography()
+        ),
         industry_profiles=load_industry_profiles(ind_p) if ind_p.is_file() else (),
         axis_families=load_axis_families(axis_p) if axis_p.is_file() else (),
         valences=load_valences(valence_p) if valence_p.is_file() else (),
