@@ -20,10 +20,15 @@ from edgar_sec.engine.tables.extraction.genre_seat import (
     FULL_REFUSAL_PREFIXES,
     table_refusal,
 )
+from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
 from edgar_sec.engine.tables.extraction.form_tests import (
     FormTestOutcome,
     cascade_family,
     evaluate_form_tests,
+)
+from edgar_sec.engine.tables.extraction.placement import placement_facts
+from edgar_sec.engine.tables.extraction.profiles import (
+    TEST_PLACEMENT_CONSISTENCY,
 )
 from edgar_sec.engine.tables.extraction.residue_families import (
     CONTENT_GATED_FAMILIES,
@@ -418,6 +423,10 @@ def _evidence_scores(
     families.update(spec.family for spec in LANDMARK_SPECS)
     families.update(spec.family for spec in NOTE_TITLE_SPECS)
     families.update(spec.family for spec in STRUCTURE_SPECS)
+    # A family the stage form-tests is a family the stage scores:
+    # without a scored seat its form-test outcomes are dropped and
+    # it can never be named (Step 2 assignment-stage cure).
+    families.update(cascade_family(spec.family) for spec in FORM_TEST_SPECS)
     signatures = grouping_signatures(table)
     outcomes = evaluate_math(table) if math_outcomes is None else math_outcomes
     math_by_family: dict[str, list[IdentityOutcome]] = {}
@@ -596,6 +605,47 @@ def _refinish(
     return _finish(RESIDUAL_FAMILY, "residual", score, trail, labels, table)
 
 
+def _apply_placement(
+    tables: list[TypedTable] | tuple[TypedTable, ...],
+    results: list[Classification],
+    scored: list[dict[str, tuple[float, tuple[Evidence, ...]]]],
+    scores: list[dict[str, float]],
+) -> None:
+    """Apply placement-kind form tests over first-pass reads.
+    A fired conjunction disqualifies its family for the table
+    (the satellite precedent); a pass changes nothing."""
+    specs = tuple(
+        spec for spec in FORM_TEST_SPECS if spec.kind == TEST_PLACEMENT_CONSISTENCY
+    )
+    if not specs:
+        return
+    sequence = tuple(result.family for result in results)
+    for position, table in enumerate(tables):
+        if not scored[position]:
+            continue
+        if results[position].tier in ("specific", "genre_refusal"):
+            continue
+        facts = placement_facts(sequence, position)
+        adjusted = dict(scores[position])
+        evidence = {family: trail for family, (_, trail) in scored[position].items()}
+        touched = False
+        for outcome in evaluate_form_tests(table, specs=specs, placement=facts):
+            if not outcome.evaluable or outcome.passed:
+                continue
+            family = cascade_family(outcome.family)
+            if family not in adjusted or adjusted[family] == 0.0:
+                continue
+            adjusted[family] = 0.0
+            touched = True
+            trail = list(evidence.get(family, ()))
+            trail.append(Evidence("form_test", f"{outcome.test_id} fired", 0.0))
+            evidence[family] = tuple(trail)
+        if touched:
+            marker = Evidence("context", "placement facts from first-pass reads", 0.0)
+            results[position] = _refinish(table, adjusted, evidence, marker)
+            scores[position] = adjusted
+
+
 def classify_filing(
     tables: list[TypedTable] | tuple[TypedTable, ...],
     policy: ClassificationPolicy | None = None,
@@ -603,8 +653,8 @@ def classify_filing(
 ) -> tuple[list[Classification], list[dict[str, float]]]:
     """Classify one filing's tables with the constellation pass.
 
-    A satellite family's win before the filing's first confident core
-    anchor loses that candidacy and is re-arbitrated without it.
+    Placement-kind form tests are applied over the first-pass reads;
+    satellite wins before the first core anchor are re-arbitrated.
     """
     policy = policy if policy is not None else default_policy()
     results: list[Classification] = []
@@ -644,14 +694,15 @@ def classify_filing(
             table,
         )
         scored[position] = {}
+    scores: list[dict[str, float]] = [
+        {family: score for family, (score, _) in entry.items()} for entry in scored
+    ]
+    _apply_placement(tables, results, scored, scores)
     anchors = [
         position
         for position, result in enumerate(results)
         if result.family in CORE_FAMILIES
         and (result.tier == "specific" or result.score >= CONTEXT_ANCHOR_MIN_SCORE)
-    ]
-    scores: list[dict[str, float]] = [
-        {family: score for family, (score, _) in entry.items()} for entry in scored
     ]
     if anchors:
         first_anchor = min(anchors)

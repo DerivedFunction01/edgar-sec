@@ -14,15 +14,22 @@ from edgar_sec.domain.commodity_terms import (
     COMMERCIAL_TERMS,
     NPNS_PHRASES,
 )
+from edgar_sec.engine.tables.extraction.form_signal_specs import (
+    FORM_SIGNAL_TEST_ENTRIES,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_DECLARED_SPECS,
     PROV_DERIVATIVES_EVIDENCE,
     PROV_FAMILY_SUPPORT,
+    PROV_STEP2_PRICING,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_LADDER,
     TEST_PERCENTAGE_FORM,
+    TEST_PLACEMENT_CONSISTENCY,
     TEST_PRIMARY_STATEMENT_SEAT,
+    TEST_ROW_BOUND,
+    TEST_SIGNATURE_ABSENCE,
     TEST_WALK,
 )
 
@@ -269,6 +276,10 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "derivatives_hedging_evidence_gate",
         0.0,
         provenance=PROV_DERIVATIVES_EVIDENCE,
+    ),
+    *(
+        FormTestSpec(family, kind, test_id, points, provenance=PROV_STEP2_PRICING)
+        for family, kind, test_id, points in FORM_SIGNAL_TEST_ENTRIES
     ),
 )
 

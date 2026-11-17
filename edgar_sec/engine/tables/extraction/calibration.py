@@ -6,9 +6,13 @@ from edgar_sec.engine.tables.extraction.registry import (
     PROV_COVERAGE_DISCOVERY,
     PROV_COVERAGE_SEED,
     PROV_REPAIR_DISCOVERY,
+    PROV_STEP2_PRICING,
     LocationSpec,
     PatternSpec,
     ProsePatternSpec,
+)
+from edgar_sec.engine.tables.extraction.subject_vocabulary import (
+    STEP2_PATTERN_ENTRIES,
 )
 
 PATTERNS: tuple[PatternSpec, ...] = (
@@ -487,6 +491,9 @@ PATTERNS: tuple[PatternSpec, ...] = (
     ),
     PatternSpec("inventory", "raw", "token", 14, 0.778, 0.538, PROV_REPAIR_DISCOVERY),
     PatternSpec("inventory", "work", "token", 16, 0.889, 0.516, PROV_REPAIR_DISCOVERY),
+    # Step 2 (followup): the four families the cascade could not
+    # name; entries homed in subject_vocabulary, composed here.
+    *(PatternSpec(*entry, PROV_STEP2_PRICING) for entry in STEP2_PATTERN_ENTRIES),
 )
 
 PROSE_PATTERNS: tuple[ProsePatternSpec, ...] = (
@@ -556,6 +563,8 @@ PROSE_PATTERNS: tuple[ProsePatternSpec, ...] = (
         1.0,
         PROV_COVERAGE_SEED,
     ),
+    # Step 2: debt_maturity's measured lead-in phrase (the map's
+    # leadin channel), re-priced on the v3 base's prose window.
 )
 
 LOCATION_STRENGTHS: tuple[LocationSpec, ...] = (

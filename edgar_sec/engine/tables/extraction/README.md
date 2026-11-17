@@ -35,8 +35,11 @@ classified tables into logical statements and arbitrates their relations.
   to the calibration record it came from. Negative evidence scores as a
   cross-family term, never a gate. Arithmetic identities priced in the registry
   contribute confirmation evidence on closure and a zero-point signal on
-  failure — never a gate, veto, or standalone assignment. Row bounds bind at
-  the assembled level only.
+  failure — never a gate, veto, or standalone assignment. Shape row bounds
+  bind at the assembled level only; the form-test stage's per-family row
+  envelope is a separate scored signal. The scored set is every family with
+  measured vocabulary plus every family the form-test stage tests, so a
+  tested family can always be named by the cascade.
 - **The engine owns no form vocabulary**: anchors, label rules, and location
   expectations are injected through the classification policy; with no location
   priors injected, the location tier contributes nothing.
@@ -138,6 +141,16 @@ classified tables into logical statements and arbitrates their relations.
   over; the test itself is arithmetic. A passed test scores as evidence in both
   competitions (the `form_test` channel and evidence group); a failed evaluable
   test records a zero-point signal, never a veto or a standalone assignment.
+  Three kinds score measured form signals rather than arithmetic: `row_bound`
+  (the family's member row envelope, per family, orientation per the measured
+  fixed/free map), `signature_absence` (at least one of the family's core
+  signature labels present; total absence is the imposter signature), and
+  `placement_consistency` (the priced placement conjunctions over the table's
+  position in the filing's geometry sequence, `placement`). The three kinds'
+  parameter tables live in `form_signal_specs`, keyed by test_id. Placement
+  facts are computed from the filing's own first-pass reads inside
+  `classify_filing` and applied by re-arbitration; unstamped, placement
+  tests are unevaluable.
 - **Labor capture is schema-led prose-to-table**: linkage terms generate
   candidate spans and the employee group x contract x union fields bind
   inside a linked span only (`labor_capture`); schedule-header terms are

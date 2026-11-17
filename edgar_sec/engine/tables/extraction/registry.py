@@ -24,8 +24,19 @@ PROV_NOTE_CENSUS = "note-census:note_title_specs"
 PROV_NOTE_CENSUS_DRIVE = "note-census:context_drive"
 PROV_STRUCTURE_CENSUS = "structure-census:structure_specs"
 PROV_STRUCTURE_CENSUS_DRIVE = "structure-census:context_drive"
+PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 
 RESIDUAL_FAMILY = "other"
+# The five primary statement families, in canonical order: the
+# one home for the set the placement span and the section gate
+# both read (Step 2 duplication cure).
+PRIMARY_STATEMENT_FAMILIES = (
+    "balance_sheet",
+    "income_statement",
+    "comprehensive_income",
+    "equity_statement",
+    "cash_flow",
+)
 CORE_FAMILIES = (
     "income_statement",
     "balance_sheet",
@@ -66,6 +77,7 @@ FAMILY_PRIORITY = (
     "balance_sheet",
     "cash_flow",
     "income_statement",
+    "comprehensive_income",
     "equity_statement",
     "subsequent_events",
     "segment_reporting",

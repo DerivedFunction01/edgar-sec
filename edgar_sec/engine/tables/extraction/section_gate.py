@@ -11,16 +11,11 @@ from dataclasses import dataclass
 from enum import Enum
 
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
-
-STATEMENT_FAMILIES = frozenset(
-    {
-        "balance_sheet",
-        "income_statement",
-        "cash_flow",
-        "comprehensive_income",
-        "equity_statement",
-    }
+from edgar_sec.engine.tables.extraction.registry import (
+    PRIMARY_STATEMENT_FAMILIES,
 )
+
+STATEMENT_FAMILIES = frozenset(PRIMARY_STATEMENT_FAMILIES)
 
 _MDA_TITLE = "management's discussion and analysis"
 _FS_TITLE = "financial statements"

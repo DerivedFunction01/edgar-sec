@@ -35,6 +35,7 @@ SEAT_REGION_GATED = "region_gated"
 
 PROV_DECLARED_SPECS = "form-tests:declared_specs"
 PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
+PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -46,6 +47,9 @@ TEST_PRIMARY_STATEMENT_SEAT = "primary_statement_seat"
 TEST_COMPOSITION_TWIN = "composition_twin"
 TEST_SEGMENT_FORM = "segment_form"
 TEST_DERIVATIVES_EVIDENCE = "derivatives_evidence_gate"
+TEST_ROW_BOUND = "row_bound"
+TEST_SIGNATURE_ABSENCE = "signature_absence"
+TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -54,6 +58,9 @@ FORM_TESTS = (
     TEST_COMPOSITION_TWIN,
     TEST_SEGMENT_FORM,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_ROW_BOUND,
+    TEST_SIGNATURE_ABSENCE,
+    TEST_PLACEMENT_CONSISTENCY,
 )
 
 
@@ -125,7 +132,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.231, 1.000, 0.381, 0.962),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
+        form_tests=(
+            TEST_PRIMARY_STATEMENT_SEAT,
+            TEST_ROW_BOUND,
+            TEST_PLACEMENT_CONSISTENCY,
+        ),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
         note="the residual claimant: recall is done, precision "
@@ -137,7 +148,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.576, 0.833, 0.218, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
+        form_tests=(
+            TEST_PRIMARY_STATEMENT_SEAT,
+            TEST_ROW_BOUND,
+            TEST_SIGNATURE_ABSENCE,
+        ),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
         note="quarterly precision collapse (.218) is the target: "
@@ -149,7 +164,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.623, 0.750, 0.871, 0.625),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK,),
+        form_tests=(TEST_WALK, TEST_ROW_BOUND, TEST_PLACEMENT_CONSISTENCY),
         gate_bindings=("section_gate",),
         exhibit_links=_EX13_ANNUAL,
     ),
@@ -169,7 +184,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.589, 1.000, 0.519, None, quarterly_directed_recall=0.942),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_SIGNATURE_ABSENCE),
         note="quarterly recall unmeasured on the sealed sweep (n=0); "
         "the directed rate is the recall evidence of record. "
         "Step 3 union disposition: the Step 1 TEST_WALK declaration "
@@ -190,14 +205,14 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.041, 1.000, 0.477, 0.800),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK,),
+        form_tests=(TEST_WALK, TEST_PLACEMENT_CONSISTENCY),
     ),
     FamilyProfile(
         "equity_statement",
         KIND_FAMILY,
         _support(0.316, 1.000, 0.315, 0.769),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
+        form_tests=(TEST_PRIMARY_STATEMENT_SEAT, TEST_ROW_BOUND),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
         note="thinnest directed coverage of the four; the directed "
@@ -217,7 +232,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.000, 0.733, 0.112, 0.862),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PRIMARY_STATEMENT_SEAT,),
+        form_tests=(
+            TEST_PRIMARY_STATEMENT_SEAT,
+            TEST_ROW_BOUND,
+            TEST_PLACEMENT_CONSISTENCY,
+        ),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
         note="annual precision .000: the seat claimed everything "
@@ -236,7 +255,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.710, 0.714, 0.829, 0.667),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_ROW_BOUND),
     ),
     FamilyProfile(
         "lease_maturity",
@@ -257,7 +276,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.539, 0.800, 0.562, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_ROW_BOUND, TEST_SIGNATURE_ABSENCE),
     ),
     FamilyProfile(
         "related_party",
@@ -274,7 +293,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.866, 0.276, 0.625, 0.241),
         SEAT_NOTE_TITLE_CONTENT,
-        form_tests=(TEST_SEGMENT_FORM,),
+        form_tests=(TEST_SEGMENT_FORM, TEST_PLACEMENT_CONSISTENCY),
         gate_bindings=("content_gate",),
     ),
     FamilyProfile(
@@ -282,14 +301,14 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.234, 1.000, 0.255, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK,),
+        form_tests=(TEST_WALK, TEST_ROW_BOUND, TEST_SIGNATURE_ABSENCE),
     ),
     FamilyProfile(
         "tax_reconciliation",
         KIND_FAMILY,
         _support(0.432, 1.000, 0.000, None, quarterly_directed_recall=0.758),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PERCENTAGE_FORM,),
+        form_tests=(TEST_PERCENTAGE_FORM, TEST_ROW_BOUND, TEST_SIGNATURE_ABSENCE),
         shape="statutory-rate anchor row, then adjustment rows, then an "
         "effective-rate row; every row in the block is percentage-valued "
         "per period column and anchor + adjustments close to the "
