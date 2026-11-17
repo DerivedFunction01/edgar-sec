@@ -134,6 +134,32 @@ _SANCTIONED_SITES = (
     ("edgar_sec/foundation/text/grammar.py", "RE_WORD_TOKEN"),
     ("edgar_sec/engine/forms/form144/patterns.py", "BOX_3C_UNITS_RE"),
     ("edgar_sec/engine/forms/form_424b/analysis.py", "_SHARES_RE"),
+    # Priced scale-phrase substring data in the term-veto modules
+    # (term_vetoes.py and its decomposed data modules): the terms are
+    # evidence data matched as substrings, not recognizers or pattern
+    # text — the grouping.py class above. Disposition-sanctioned on
+    # priced evidence (main's revisited disposition, 2026-11-17, on
+    # the Ruling 3 precedent): the fire selected 1 of 6 identical-kind
+    # priced terms by its first word, a scanner precision gap on this
+    # class, not a duplication; main's disposition is the
+    # reconciliation record, read by the duplication watch as
+    # mandated. Class-wide over the scale-word stems, so the next
+    # identical datum does not re-fire.
+    ("edgar_sec/engine/tables/extraction/term_vetoes.py", "in thousand"),
+    ("edgar_sec/engine/tables/extraction/term_vetoes.py", "in million"),
+    ("edgar_sec/engine/tables/extraction/term_vetoes.py", "in billion"),
+    ("edgar_sec/engine/tables/extraction/term_vetoes.py", "in trillion"),
+    ("edgar_sec/engine/tables/extraction/term_vetoes.py", "in hundred"),
+    ("edgar_sec/engine/tables/extraction/term_veto_statements.py", "in thousand"),
+    ("edgar_sec/engine/tables/extraction/term_veto_statements.py", "in million"),
+    ("edgar_sec/engine/tables/extraction/term_veto_statements.py", "in billion"),
+    ("edgar_sec/engine/tables/extraction/term_veto_statements.py", "in trillion"),
+    ("edgar_sec/engine/tables/extraction/term_veto_statements.py", "in hundred"),
+    ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in thousand"),
+    ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in million"),
+    ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in billion"),
+    ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in trillion"),
+    ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in hundred"),
 )
 
 _MONEY_HINT = (
