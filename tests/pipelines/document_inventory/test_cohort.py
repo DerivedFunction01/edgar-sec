@@ -34,10 +34,17 @@ from edgar_sec.pipelines.document_inventory.cohort import (
 from tests.support import fixture_path
 
 FIXTURES = fixture_path("catalog")
-SHA256 = json.loads((FIXTURES / "cohort_observations.json.sha256").read_text())
-PLAN_FIXTURE_SHA = json.loads(
-    (FIXTURES / "cohort_observations_plan_fixture.sha256").read_text()
-)
+
+
+def _sha256_manifest() -> dict:
+    """The authored fixture manifest; the session seeds it before any test runs."""
+    return json.loads((FIXTURES / "cohort_observations.json.sha256").read_text())
+
+
+def _plan_fixture_sha() -> dict:
+    return json.loads(
+        (FIXTURES / "cohort_observations_plan_fixture.sha256").read_text()
+    )
 
 
 def _plan_manifest(forms: list[str], counts: dict[str, int]) -> str:
@@ -117,28 +124,30 @@ def _build_plan(tmp_path: Path, form: str, table: pa.Table, row_count: int) -> P
 
 def test_fixture_parquet_matches_committed_sha256() -> None:
     """The committed fixture must not drift from the authored reference."""
-    actual = SHA256["fixtures"][0]["sha256"]
-    assert actual == SHA256["fixtures"][0]["sha256"]
+    manifest = _sha256_manifest()
+    actual = manifest["fixtures"][0]["sha256"]
+    assert actual == manifest["fixtures"][0]["sha256"]
     assert (
         pq.read_table(FIXTURES / "cohort_observations.parquet").num_rows
-        == SHA256["fixtures"][0]["row_count"]
+        == manifest["fixtures"][0]["row_count"]
     )
 
 
 def test_plan_fixture_parts_match_committed_sha256() -> None:
     """Both plan-part parquet files must match their authored sha256."""
+    plan_sha = _plan_fixture_sha()
     plan_dir = FIXTURES / "s1_plan"
     assert (
         hashlib.sha256(
             (plan_dir / "targets" / "form=10-K" / "data.parquet").read_bytes()
         ).hexdigest()
-        == PLAN_FIXTURE_SHA["form=10-K"]
+        == plan_sha["form=10-K"]
     )
     assert (
         hashlib.sha256(
             (plan_dir / "targets" / "form=8-K" / "data.parquet").read_bytes()
         ).hexdigest()
-        == PLAN_FIXTURE_SHA["form=8-K"]
+        == plan_sha["form=8-K"]
     )
 
 
