@@ -26,11 +26,7 @@ from edgar_sec.engine.tables.extraction.assembly import assemble
 from edgar_sec.engine.tables.extraction.competition import (
     GeometryText,
     compete_filing,
-    heading_text,
-)
-from edgar_sec.engine.tables.extraction.leadin_segmentation import (
-    lead_title_text,
-    leadin_segment,
+    geometry_text_from_table,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.toc_gate import toc_refusal
@@ -47,45 +43,7 @@ PREFIX = CONFIG["prefix"]
 
 def geometry_text(g: dict) -> GeometryText:
     """One fixture geometry's channel text, mirroring the TypedTable seam."""
-    caption = " | ".join(str(c) for c in g.get("caption_stack") or [])
-    prose_before = g.get("prose_before") or ""
-    prose_after = g.get("prose_after") or ""
-    stubs = []
-    for row in g.get("rows") or []:
-        if row and str(row[0]).strip():
-            stubs.append(str(row[0]))
-    loc = g.get("structured_location") or {}
-    note = loc.get("note")
-    grid_text = " ".join(
-        str(cell) for row in g.get("rows") or [] for cell in row if str(cell).strip()
-    )
-    preceding = g.get("preceding") or {}
-    section = preceding.get("section") or {}
-    return GeometryText(
-        caption=caption,
-        lead=caption + "\n" + prose_before[-TEXT_CAP:],
-        leadin=leadin_segment(prose_before),
-        notehead=heading_text(prose_before, prose_after, caption),
-        lead_title=lead_title_text(prose_before),
-        stubs=tuple(stubs),
-        note_title=note if isinstance(note, str) else None,
-        section_item=loc.get("item") if isinstance(loc.get("item"), str) else None,
-        grid_text=grid_text,
-        in_toc_span=bool(g.get("in_toc_span")),
-        in_closing_span=bool(g.get("in_closing_span")),
-        closing_kind=g.get("closing_kind"),
-        front_matter=bool(g.get("front_matter")),
-        note_seated=preceding.get("note") is not None,
-        numeric_cells=int(g.get("numeric_cells") or 0),
-        data_rows=int(g.get("data_rows") or 0),
-        grid_rows=int(g.get("grid_rows") or 0),
-        max_row_cells=int(g.get("max_row_cells") or 0),
-        index_named_share=float(g.get("index_named_share") or 0.0),
-        page_ref_share=float(g.get("page_ref_share") or 0.0),
-        page_ref_only=bool(g.get("page_ref_only")),
-        exhibit_stub_share=float(g.get("exhibit_stub_share") or 0.0),
-        section_title=section.get("title"),
-    )
+    return geometry_text_from_table(structure_table(_context(g)))
 
 
 def packet(accession: str, g: dict) -> dict:
