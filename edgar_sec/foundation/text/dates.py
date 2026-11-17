@@ -90,6 +90,11 @@ _DATE_OR_YEAR_PAT = build_alternation(
 )
 RE_DATE_OR_YEAR = re.compile(rf"\b(?:{_DATE_OR_YEAR_PAT})\b", re.IGNORECASE)
 
+_MONTH_NAME_PATTERN = build_alternation(MONTH_NAMES, auto_escape=True, compact=True)
+# A lone full-date label ("December 31, 2023"), whole string: the
+# dated-stub shape rollforward walks read as a balance anchor.
+FULL_DATE_STUB_RE = re.compile(rf"(?i)^(?:{_MONTH_NAME_PATTERN}) \d{{1,2}}, \d{{4}}$")
+
 
 _Q_TOKEN_PAT = rf"Q[1-4]\s+{YEAR_TOKEN_PATTERN}"
 _PERIOD_TOKEN_PAT = build_alternation(
@@ -738,6 +743,7 @@ __all__ = [
     "REPORT_QUARTER_ENDED_RE",
     "RE_DATE_OR_YEAR",
     "RE_FULL_DATE",
+    "FULL_DATE_STUB_RE",
     "SEC_DATE_FORMATS",
     "TABLE_YEAR_RE",
     "YEAR_IN_TEXT_RE",

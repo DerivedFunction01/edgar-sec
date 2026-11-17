@@ -17,6 +17,7 @@ from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
     _is_period_label,
     derivatives_evidence_for_geometry,
+    derivatives_subject_for_geometry,
     evaluate_derivatives_evidence,
     evaluate_form_test_derivatives,
 )
@@ -381,6 +382,143 @@ def test_gate_keeps_u_evidence_claim_in_competition():
     )
     result = compete(geometry, terms)
     assert result.claims == ("derivatives_hedging",)
+
+
+def _subject(geometry: GeometryText):
+    return derivatives_subject_for_geometry(geometry)
+
+
+def test_subject_caption_names_the_subject():
+    verdict = _subject(
+        GeometryText(
+            caption="Derivative Instruments and Hedging Activities",
+            stubs=("Cost of revenue", "Gross margin"),
+            headers=("2024", "2023"),
+        )
+    )
+    assert verdict.subject
+
+
+def test_subject_final_paragraph_designation_admits():
+    """Priced shape 0001713683-24-000041:29: the introducing
+    paragraph itself names the cash flow hedges."""
+    verdict = _subject(
+        GeometryText(
+            leadin="(1) (Gains) losses related to our cash flow hedges "
+            "reclassified from AOCI into the condensed consolidated "
+            "statement of operations consisted of the following:",
+            stubs=("Cost of revenue",),
+            headers=("Three Months Ended January 31,", "2024", "2023"),
+        )
+    )
+    assert verdict.subject
+
+
+def test_subject_background_narrative_only_refuses():
+    """Priced shape 0001504461-23-000010:67: derivative prose in an
+    earlier paragraph; the introducing paragraph names EBITDA."""
+    verdict = _subject(
+        GeometryText(
+            lead_title="Derivative Instruments",
+            leadin="We entered into derivative instrument positions to "
+            "secure a margin on barrels per month. The gains and losses "
+            "from the derivative instrument positions are recognized in "
+            "Adjusted EBITDA.\n"
+            "The following table reconciles net income (loss) to EBITDA "
+            "and Adjusted EBITDA for the periods indicated:",
+            stubs=("Net income (loss)", "Depreciation and amortization"),
+            headers=("Three Months Ended December 31,", "2022", "2021"),
+        )
+    )
+    assert not verdict.subject
+
+
+def test_subject_earlier_section_prose_only_refuses():
+    """Priced shape 0001193125-15-089251:32: risk prose in the
+    section above; the introducing paragraph names cash flows."""
+    verdict = _subject(
+        GeometryText(
+            leadin="Interest Rate Risk\n"
+            "Our exposure to market risk for a change in interest rates "
+            "is concentrated in our investment portfolio. Generally, we "
+            "do not hedge our exposure to interest rate risk.\n"
+            "Principal cash flows and related weighted-average interest "
+            "rates by stated maturity dates for the financial instruments "
+            "we hold that are sensitive to interest rates at December 31, "
+            "2014 are as follows:",
+            stubs=("Fixed-maturity and short-term investments:", "2015", "2016"),
+            headers=("Principal Cash Flows", "Weighted-Average Interest Rate"),
+        )
+    )
+    assert not verdict.subject
+
+
+def test_subject_offsetting_form_admits():
+    """Priced shape 0000818479-16-000056:123: offsetting framing
+    with instrument rows, no derivative word in the framing."""
+    verdict = _subject(
+        GeometryText(
+            caption="Gross Amounts Not Offset in the Consolidated Balance Sheets",
+            stubs=(
+                "Liabilities",
+                "Foreign exchange forward contracts",
+                "Commodity contracts",
+            ),
+            headers=(
+                "Gross Amounts Recognized",
+                "Gross Amounts Offset in the Consolidated Balance Sheets",
+                "Net Amounts Presented",
+            ),
+        )
+    )
+    assert verdict.subject and "offsetting" in verdict.detail
+
+
+def test_subject_notional_header_admits():
+    verdict = _subject(
+        GeometryText(
+            stubs=("Euros", "Pounds sterling"),
+            headers=("Notional Amounts", "Fair Market Value"),
+        )
+    )
+    assert verdict.subject
+
+
+def test_subject_gate_removes_framingless_claim_in_competition():
+    terms = (
+        SignatureTerm("derivatives_hedging", "stub", "interest rate swaps", 4.0, 5, 0),
+        SignatureTerm(
+            "derivatives_hedging", "stub", "foreign exchange contracts", 4.0, 5, 0
+        ),
+    )
+    geometry = GeometryText(
+        caption="Condensed Consolidated Statements of Operations",
+        leadin="The following table presents revenues and expenses "
+        "for the periods indicated:",
+        stubs=("Interest rate swaps", "Foreign exchange contracts"),
+        headers=("2024", "2023"),
+    )
+    result = compete(geometry, terms)
+    assert result.claims == ()
+    gated = result.scores["derivatives_hedging"]
+    assert any(item.detail.startswith("derivatives subject") for item in gated.evidence)
+
+
+def test_subject_gate_blocks_reach_without_subject():
+    terms = (SignatureTerm("derivatives_hedging", "stub", "swaps", 1.0, 5, 0),)
+    geometry = GeometryText(
+        caption="Quarterly Operating Results",
+        stubs=(
+            "Natural Gas Basis Swaps:",
+            "April - December 2026",
+            "January - December 2027",
+            "January - December 2028",
+            "Total",
+        ),
+        headers=("Average Fixed Price", "Volume"),
+    )
+    result = compete(geometry, terms)
+    assert result.claims == ()
 
 
 def test_reach_admits_period_listing_in_competition():

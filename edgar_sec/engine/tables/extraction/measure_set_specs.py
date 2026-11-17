@@ -8,34 +8,58 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.profiles import PROV_STEP3_PRICING
+from edgar_sec.engine.tables.extraction.profiles import (
+    PROV_CI_STEP6_PRICING,
+    PROV_STEP3_PRICING,
+)
 
 
 @dataclass(frozen=True, slots=True)
 class MeasureSetSpec:
     """Measure-set parameters for one test, keyed by test_id below.
-    Each group is one filed measure's phrasings; a pass needs
-    min_groups groups present and no refused term (Step 3 pricing)."""
+    A pass needs min_groups groups present, every required group
+    present, and no refused term (Step 3; required groups CI Step 6)."""
 
     groups: tuple[tuple[str, ...], ...]
     min_groups: int
     subject_terms: tuple[str, ...] = ()
     refused_terms: tuple[str, ...] = ()
     provenance: str = PROV_STEP3_PRICING
+    required_groups: tuple[int, ...] = ()
 
 
 # Measure-set parameters, keyed by test_id (the per-kind table).
 # Phrasings are normalized text, matched over the table's stub,
 # header and caption text, orientation-free (Step 3 pricing).
 MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
+    # Item 703 columns in core order (CI Step 6 re-derivation,
+    # population-priced): (a) and (b) are the rank-1 purchase pair
+    # and are required; a pass needs the pair plus one of (c)/(d).
     "shares_purchased_measure_set": MeasureSetSpec(
         groups=(
-            ("average price paid per share", "average price paid"),
-            ("may yet be purchased",),
+            (
+                "total number of shares purchased",
+                "total shares purchased",
+                "number of shares purchased",
+                "total number of shares",
+                "common shares repurchased",
+            ),
+            (
+                "average price paid per share",
+                "average price paid",
+                "average price per share",
+                "average price per common share",
+            ),
             ("publicly announced plans or programs", "publicly announced"),
-            ("total number of shares purchased", "total shares purchased"),
+            (
+                "may yet be purchased",
+                "still available under",
+                "still available for purchase",
+            ),
         ),
-        min_groups=2,
+        min_groups=3,
+        provenance=PROV_CI_STEP6_PRICING,
+        required_groups=(0, 1),
     ),
     "valuation_model_assumptions_measure_set": MeasureSetSpec(
         groups=(
@@ -96,17 +120,27 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         min_groups=2,
         subject_terms=("warrant",),
     ),
+    # ASC 220 single continuous statement, typed groups in rank
+    # order (CI Step 6 re-derivation, population-priced): descent,
+    # terminus, OCI element, comprehensive total — all four, so a
+    # balance sheet's AOCI line or a standalone CI statement (no
+    # descent) cannot fire. The joint-total form is the test below.
     "combined_operations_ci_measure_set": MeasureSetSpec(
         groups=(
             (
-                "revenue",
-                "gross profit",
                 "operating income",
                 "income from operations",
                 "operating expenses",
+                "operating loss",
+                "loss from operations",
+                "gross profit",
+                "gross margin",
                 "cost of revenues",
                 "cost of revenue",
+                "cost of goods sold",
+                "total operating expenses",
             ),
+            ("net income", "net loss", "net earnings"),
             (
                 "other comprehensive income",
                 "other comprehensive loss",
@@ -114,9 +148,36 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "unrealized gain",
                 "unrealized loss",
                 "net unrealized",
+                "available for sale",
             ),
             ("comprehensive income", "comprehensive loss", "total comprehensive"),
         ),
-        min_groups=3,
+        min_groups=4,
+        provenance=PROV_CI_STEP6_PRICING,
+    ),
+    "combined_operations_ci_joint_measure_set": MeasureSetSpec(
+        groups=(
+            (
+                "operating income",
+                "income from operations",
+                "operating expenses",
+                "operating loss",
+                "loss from operations",
+                "gross profit",
+                "gross margin",
+                "cost of revenues",
+                "cost of revenue",
+                "cost of goods sold",
+                "total operating expenses",
+            ),
+            (
+                "net income and comprehensive",
+                "net loss and comprehensive",
+                "income and comprehensive income",
+                "loss and comprehensive loss",
+            ),
+        ),
+        min_groups=2,
+        provenance=PROV_CI_STEP6_PRICING,
     ),
 }

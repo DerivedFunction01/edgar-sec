@@ -260,6 +260,69 @@ def test_aoci_claim_needs_rollforward_evidence() -> None:
     assert "aoci_rollforward" in result.claims
 
 
+def test_aoci_standalone_claim_needs_core_shape() -> None:
+    terms = (
+        SignatureTerm(
+            "aoci_rollforward",
+            "stub",
+            "accumulated other comprehensive",
+            4.0,
+            30,
+            0,
+        ),
+        SignatureTerm(
+            "aoci_rollforward",
+            "leadin",
+            "accumulated other comprehensive income",
+            6.0,
+            30,
+            0,
+        ),
+        SignatureTerm(
+            "aoci_rollforward",
+            "caption",
+            "accumulated other comprehensive",
+            2.5,
+            30,
+            0,
+        ),
+    )
+    leadin = "The changes in accumulated other comprehensive income follow."
+    walk = GeometryText(
+        caption="Accumulated Other Comprehensive Income",
+        leadin=leadin,
+        stubs=(
+            "Beginning balance",
+            "Other comprehensive income before reclassifications",
+            "Amounts reclassified from accumulated other comprehensive income",
+            "Ending balance",
+        ),
+    )
+    assert "aoci_rollforward" in compete(walk, terms=terms, edges=_EDGES).claims
+    composition = GeometryText(
+        caption="Accumulated Other Comprehensive Income",
+        leadin=leadin,
+        stubs=("Net actuarial gain", "Prior service cost"),
+    )
+    gated = compete(composition, terms=terms, edges=_EDGES)
+    assert "aoci_rollforward" not in gated.claims
+    assert any(
+        e.channel == "gate" and "claim shape" in e.detail
+        for e in gated.scores["aoci_rollforward"].evidence
+    )
+    generic_walk = GeometryText(
+        caption="Accumulated Other Comprehensive Income",
+        leadin=leadin,
+        stubs=("Beginning balance", "Additions", "Ending balance"),
+    )
+    gated = compete(generic_walk, terms=terms, edges=_EDGES)
+    assert "aoci_rollforward" not in gated.claims
+    assert any(
+        e.channel == "gate" and "claim shape" in e.detail
+        for e in gated.scores["aoci_rollforward"].evidence
+    )
+
+
 def test_ladder_edge_terms_attribute_a_contested_pair() -> None:
     from edgar_sec.engine.tables.extraction.signature_profiles import LadderTerm
 

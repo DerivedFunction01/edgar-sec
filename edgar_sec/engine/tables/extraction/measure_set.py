@@ -67,10 +67,14 @@ def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetRes
     )
     if missing is not None:
         return MeasureSetResult(False, True, f"subject absent: {missing}")
-    hits = sum(1 for group in params.groups if _present(texts, group))
-    admitted = hits >= params.min_groups
+    present = [_present(texts, group) for group in params.groups]
+    hits = sum(present)
+    missing_required = next((i for i in params.required_groups if not present[i]), None)
+    admitted = hits >= params.min_groups and missing_required is None
     detail = (
         f"{hits} of {len(params.groups)} measure groups present"
         f" (needs {params.min_groups})"
     )
+    if missing_required is not None:
+        detail += f"; required group {missing_required} absent"
     return MeasureSetResult(admitted, True, detail)

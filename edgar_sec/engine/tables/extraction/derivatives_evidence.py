@@ -11,6 +11,7 @@ import re
 from dataclasses import dataclass
 from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.leadin_segmentation import leadin_segment
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
@@ -315,6 +316,61 @@ def derivatives_evidence_for_geometry(
     if spec is None:
         return _REFUSED_N
     return evaluate_derivatives_evidence(DerivativesText.from_geometry(geometry), spec)
+
+
+@dataclass(frozen=True, slots=True)
+class DerivativesSubject:
+    """The rank-1 subject verdict for one geometry."""
+
+    subject: bool
+    detail: str
+
+
+_NO_SUBJECT = DerivativesSubject(False, "no subject evidence in framing")
+_SUBJECT_ANCHORS = ("notional", "risk management")
+
+
+def _subject_framing(text: DerivativesText, leadin: str) -> tuple[str, ...]:
+    """Framing lines: caption, headers, the lead-in's final paragraph.
+
+    The lead title and the notehead are not framing.
+    """
+    segment = leadin_segment(leadin or "")
+    paragraphs = [line for line in segment.split("\n") if line.strip()]
+    final = normalize_text(paragraphs[-1]) if paragraphs else ""
+    return tuple(part for part in (text.caption, final, *text.headers) if part)
+
+
+def derivatives_subject_for_geometry(
+    geometry, family: str = "derivatives_hedging"
+) -> DerivativesSubject:
+    """Rank-1 core verdict: a derivative subject in the framing.
+
+    A1: a spec base, designation phrase, hedge stem, or anchor in
+    the framing. A2: offsetting framing plus instrument rows.
+    """
+    spec = DERIVATIVES_EVIDENCE_SPECS.get(family)
+    if spec is None:
+        return _NO_SUBJECT
+    text = DerivativesText.from_geometry(geometry)
+    lines = _subject_framing(text, geometry.leadin or "")
+    framing = " ".join(lines)
+    unambiguous = _unambiguous(spec, lines)
+    if unambiguous:
+        return DerivativesSubject(True, "subject: " + ", ".join(unambiguous))
+    designation = tuple(p for p in spec.designation_phrases if p in framing)
+    if designation:
+        return DerivativesSubject(True, "subject: " + ", ".join(designation))
+    if "hedg" in framing:
+        return DerivativesSubject(True, "subject: hedging")
+    anchors = tuple(term for term in _SUBJECT_ANCHORS if term in framing)
+    if anchors:
+        return DerivativesSubject(True, "subject: " + ", ".join(anchors))
+    if any(phrase in framing for phrase in spec.offsetting_phrases) and (
+        _instrument_row(spec, text.stubs)
+    ):
+        return DerivativesSubject(True, "subject: offsetting form")
+    return _NO_SUBJECT
 
 
 def evaluate_form_test_derivatives(

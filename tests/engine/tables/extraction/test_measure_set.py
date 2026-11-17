@@ -147,6 +147,54 @@ def test_warrant_listing_passes_and_plan_tables_do_not() -> None:
     assert not _outcome(plan, "warrant_outstanding_listing").passed
 
 
+def test_item_703_completing_columns_alone_do_not_pass() -> None:
+    table = _table(
+        (
+            (
+                "Period",
+                "Total Number of Shares Purchased as Part of Publicly "
+                "Announced Plans or Programs",
+                "Maximum Number of Shares that May Yet Be Purchased "
+                "Under the Plans or Programs",
+            ),
+            ("October 1 - 31", "10,000", "1,000,000"),
+        )
+    )
+    outcome = _outcome(table, "shares_purchased_measure_set")
+    assert not outcome.passed
+    assert "required group" in outcome.detail
+
+
+def test_item_703_variant_phrasings_pass_on_the_pair_plus_one() -> None:
+    table = _table(
+        (
+            (
+                "Period",
+                "Number of Shares Purchased",
+                "Average Price per Share",
+                "Maximum Dollar Amount Still Available Under Share Repurchase Plan",
+            ),
+            ("July 1 - 31, 2024", "—", "$ —", "$ 25,000,000"),
+            ("August 1 - 31, 2024", "273,202", "$ 13.35", "$ 21,351,540"),
+        )
+    )
+    assert _outcome(table, "shares_purchased_measure_set").passed
+
+
+def test_item_703_pair_without_any_completing_column_does_not_pass() -> None:
+    table = _table(
+        (
+            (
+                "Period",
+                "Total Number of Shares Purchased",
+                "Average Price Paid per Share",
+            ),
+            ("July 1 - 31, 2024", "1,000", "$ 6.03"),
+        )
+    )
+    assert not _outcome(table, "shares_purchased_measure_set").passed
+
+
 def test_combined_statement_passes_all_three_classes() -> None:
     table = _table(
         (
@@ -171,6 +219,34 @@ def test_standalone_comprehensive_income_is_not_the_combined_form() -> None:
         )
     )
     assert not _outcome(table, "combined_operations_ci_measure_set").passed
+
+
+def test_combined_joint_total_form_passes_the_joint_test_only() -> None:
+    table = _table(
+        (
+            ("Research and development", "$ 63,104"),
+            ("General and administrative", "20,779"),
+            ("Total operating expenses", "83,883"),
+            ("Loss from operations", "(83,883)"),
+            ("Net loss and comprehensive loss", "$ (75,801)"),
+        )
+    )
+    assert _outcome(table, "combined_operations_ci_joint_measure_set").passed
+    assert not _outcome(table, "combined_operations_ci_measure_set").passed
+
+
+def test_balance_sheet_aoci_lines_are_not_the_combined_form() -> None:
+    table = _table(
+        (
+            ("Cash and cash equivalents", "$ 34,367"),
+            ("Deferred revenue", "4,056"),
+            ("Total assets", "$ 203,489"),
+            ("Accumulated other comprehensive income (loss)", "(1,200)"),
+            ("Total liabilities and stockholders' equity", "$ 203,489"),
+        )
+    )
+    assert not _outcome(table, "combined_operations_ci_measure_set").passed
+    assert not _outcome(table, "combined_operations_ci_joint_measure_set").passed
 
 
 def test_income_statement_alone_is_not_the_combined_form() -> None:

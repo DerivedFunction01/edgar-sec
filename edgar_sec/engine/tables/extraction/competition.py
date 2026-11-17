@@ -11,9 +11,11 @@ import math
 import re
 from dataclasses import dataclass, field
 
+from edgar_sec.engine.tables.extraction.aoci_gate import aoci_gate_detail
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
     _term_pattern,
+    derivatives_subject_for_geometry,
     evaluate_derivatives_evidence,
 )
 from edgar_sec.engine.tables.extraction.genre_seat import (
@@ -42,7 +44,6 @@ from edgar_sec.engine.tables.extraction.term_vetoes import (
     term_veto_hits,
 )
 from edgar_sec.engine.tables.toc.patterns import RE_NOTE_HEADING_CUE
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
     CONTAINMENT_EDGES,
@@ -70,8 +71,6 @@ FRAGMENT_MAX_STUBS = 8
 # scored negative evidence only — the
 # Deliverable 1 pricing earned no hard veto anywhere.
 VETO_POINTS = 1.5
-AOCI_STUB_EVIDENCE_MIN = 6.0
-AOCI_GATE_MODE = "seat"
 LADDER_MARGIN = 1.0
 LADDER_SINGLE_MODE = "contest"
 REACH_DOMINANCE = 1.25
@@ -369,14 +368,6 @@ def _explained_foreign(
     return effective, explained
 
 
-def _aoci_rollforward_evidence(score: FamilyScore) -> bool:
-    """Rollforward evidence: framing mass, or a movement-shaped stub."""
-    framing = sum(
-        score.by_channel.get(c, 0.0) for c in ("caption", "notehead", "lead_title")
-    )
-    return framing > 0 or score.by_channel.get("stub", 0.0) >= (AOCI_STUB_EVIDENCE_MIN)
-
-
 def _ladder_direction(
     geometry: GeometryText,
     ladder_terms: tuple[LadderTerm, ...],
@@ -471,16 +462,9 @@ def compete(
         second = scores[claims[1]].total
         if top < DOMINANCE_RATIO * second:
             contested = claims[:2]
-    # Cure 1 (aoci bleed): an equity-seated aoci claim without
-    # rollforward evidence spawns from its column alone — gated.
-    aoci_seated = AOCI_GATE_MODE == "any" or (
-        AOCI_GATE_MODE == "seat" and "equity_statement" in claims
-    )
-    if (
-        aoci_seated
-        and "aoci_rollforward" in claims
-        and not _aoci_rollforward_evidence(scores["aoci_rollforward"])
-    ):
+    # Cure 1 + Step 9 AOCI gates: the verdict is aoci_gate's.
+    aoci_detail = aoci_gate_detail(claims, scores, geometry)
+    if aoci_detail is not None:
         claims.remove("aoci_rollforward")
         if "aoci_rollforward" in contested:
             contested.remove("aoci_rollforward")
@@ -490,8 +474,7 @@ def compete(
             gated.family,
             gated.total,
             dict(gated.by_channel),
-            gated.evidence
-            + (ClaimEvidence("gate", "aoci: no rollforward evidence", 0.0),),
+            gated.evidence + (ClaimEvidence("gate", aoci_detail, 0.0),),
         )
     # Cure 2 (ladder attribution): the map's priced edge terms
     # decide debt vs lease before the pair stays contested.
@@ -561,6 +544,33 @@ def compete(
             gated.evidence
             + (ClaimEvidence("gate", f"derivatives: {deriv_evidence.detail}", 0.0),),
         )
+    # Cure 7 (derivatives subject gate): a derivatives claim also
+    # requires the rank-1 subject verdict — derivative evidence in
+    # the geometry's own framing, not only its body content.
+    deriv_subject = (
+        derivatives_subject_for_geometry(geometry) if deriv_spec is not None else None
+    )
+    if (
+        deriv_subject is not None
+        and not deriv_subject.subject
+        and "derivatives_hedging" in claims
+    ):
+        claims.remove("derivatives_hedging")
+        if "derivatives_hedging" in contested:
+            contested.remove("derivatives_hedging")
+        gated = scores["derivatives_hedging"]
+        scores = dict(scores)
+        scores["derivatives_hedging"] = FamilyScore(
+            gated.family,
+            gated.total,
+            dict(gated.by_channel),
+            gated.evidence
+            + (
+                ClaimEvidence(
+                    "gate", f"derivatives subject: {deriv_subject.detail}", 0.0
+                ),
+            ),
+        )
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -595,6 +605,8 @@ def compete(
             and deriv_evidence is not None
             and deriv_evidence.admitted
             and deriv_evidence.strong
+            and deriv_subject is not None
+            and deriv_subject.subject
         ):
             existing = scores.get("derivatives_hedging")
             if existing is None:

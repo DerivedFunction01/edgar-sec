@@ -18,6 +18,7 @@ from edgar_sec.engine.tables.extraction.form_signal_specs import (
     FORM_SIGNAL_TEST_ENTRIES,
 )
 from edgar_sec.engine.tables.extraction.profiles import (
+    PROV_CI_STEP6_PRICING,
     PROV_DECLARED_SPECS,
     PROV_DERIVATIVES_EVIDENCE,
     PROV_FAMILY_SUPPORT,
@@ -312,13 +313,53 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         TEST_MEASURE_SET,
         "combined_operations_ci_measure_set",
         3.0,
-        provenance=PROV_STEP3_PRICING,
+        provenance=PROV_CI_STEP6_PRICING,
+    ),
+    FormTestSpec(
+        "combined_operations_ci",
+        TEST_MEASURE_SET,
+        "combined_operations_ci_joint_measure_set",
+        3.0,
+        provenance=PROV_CI_STEP6_PRICING,
     ),
     *(
         FormTestSpec(family, kind, test_id, points, provenance=PROV_STEP2_PRICING)
         for family, kind, test_id, points in FORM_SIGNAL_TEST_ENTRIES
     ),
 )
+
+
+@dataclass(frozen=True, slots=True)
+class AociClaimShapeSpec:
+    """AOCI claim shape (Step 9 pricing): the subject leg's terms.
+    A standalone aoci_rollforward claim requires the family's core
+    shape: a beginning-to-ending walk plus an AOCI subject."""
+
+    component_terms: tuple[str, ...]
+    min_components: int = 2
+    subject_phrase: str = "other comprehensive"
+    lead_phrase: str = "accumulated other comprehensive"
+    provenance: str = "step9:aoci-claim-shape-pricing"
+
+
+AOCI_CLAIM_SHAPE_SPEC = AociClaimShapeSpec(
+    component_terms=(
+        "foreign currency",
+        "cash flow hedge",
+        "derivative",
+        "defined benefit",
+        "pension",
+        "postretirement",
+        "available-for-sale",
+        "available for sale",
+        "debt securities",
+        "securities",
+        "unrealized",
+        "translation",
+        "hedg",
+    ),
+)
+
 
 # Walk-kind parameters, keyed by test_id (the per-kind table).
 WALK_SPECS_BY_TEST_ID: dict[str, WalkSpec] = {

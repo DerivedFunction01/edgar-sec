@@ -124,6 +124,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "home": "edgar_sec/foundation/text/dates.py",
         "names": (
             "RE_FULL_DATE",
+            "FULL_DATE_STUB_RE",
             "RE_DATE_OR_YEAR",
             "TABLE_YEAR_RE",
             "YEAR_TOKEN_PATTERN",
