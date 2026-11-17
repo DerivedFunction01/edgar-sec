@@ -16,6 +16,7 @@ from edgar_sec.engine.tables.extraction.context import NoteRef, TableContext
 from edgar_sec.engine.tables.extraction.residue_families import (
     content_score,
     corroborates,
+    geographic_terms_present,
     segment_grid,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import structure_table
@@ -129,6 +130,30 @@ def test_segment_grid_admits_geographic_framing() -> None:
         leadin="the company's reportable segments earn revenues worldwide",
     )
     assert segment_grid(grid)
+
+
+def test_segment_grid_admits_place_vocabulary() -> None:
+    # The measure sits in the framing only; the grid itself is a
+    # place breakdown with a total. No older arm admits this: the
+    # substrate place-vocabulary arm does.
+    grid = GeometryText(
+        stubs=("united states", "europe", "total"),
+        leadin="segment revenues were as follows",
+    )
+    assert segment_grid(grid)
+
+
+def test_segment_grid_refuses_place_vocabulary_without_total() -> None:
+    grid = GeometryText(
+        stubs=("united states", "europe", "revenues"),
+        leadin="the company's segments",
+    )
+    assert not segment_grid(grid)
+
+
+def test_geographic_terms_present_reads_the_grid_channel() -> None:
+    grid = GeometryText(stubs=("united states", "europe", "total"))
+    assert set(geographic_terms_present(grid)) >= {"united states", "europe"}
 
 
 def test_segment_grid_admits_segment_measure_heading() -> None:

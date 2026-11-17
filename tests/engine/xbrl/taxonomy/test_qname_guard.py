@@ -12,8 +12,8 @@ from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 QNAME = re.compile(r"^[a-z][a-z0-9-]*:[A-Z][A-Za-z0-9]+$")
 
 # Sanctioned qname-shaped values in taxonomy data (Phase 0 sweep S5/S6).
+# The geography DAG's entry retired with its file; the DAG stands in domain.world.
 JSON_FIELD_ALLOWLIST = {
-    "geography_dag.json": None,  # None: every field is member ontology data.
     "axis_families.json": {"default_axis_qname"},
 }
 

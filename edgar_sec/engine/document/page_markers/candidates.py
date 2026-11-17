@@ -13,7 +13,7 @@ from itertools import pairwise
 from statistics import median
 from typing import Any, Protocol
 
-from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
+from edgar_sec.domain.world.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.engine.tables.numeric_cells import (
     DECIMAL_FIGURE_RE,
     GROUPED_AMOUNT_RE,

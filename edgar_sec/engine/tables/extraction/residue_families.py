@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.world.geography import place_terms
 from edgar_sec.engine.tables.extraction.competition import GeometryText
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 
@@ -149,6 +150,15 @@ def segment_terms_present(geometry: GeometryText) -> tuple[str, ...]:
     return tuple(term for term in CONTENT_TERMS["segment_reporting"] if term in full)
 
 
+_PLACE_TERMS = place_terms()
+
+
+def geographic_terms_present(geometry: GeometryText) -> tuple[str, ...]:
+    """The world substrate's place terms present in the grid channel."""
+    _, grid, _ = _segment_channels(geometry)
+    return tuple(term for term in _PLACE_TERMS if term in grid)
+
+
 def segment_grid(geometry: GeometryText) -> bool:
     """A by-segment measure grid, admitted on any priced arm."""
     _, grid, framing = _segment_channels(geometry)
@@ -169,6 +179,8 @@ def segment_grid(geometry: GeometryText) -> bool:
     if framed and measure_grid and "total" in grid:
         return True
     if framed and "disaggregat" in framing and measure_grid:
+        return True
+    if framed and geographic_terms_present(geometry) and "total" in grid:
         return True
     return bool(framed and "geographic" in framing and "total" in grid)
 

@@ -7,6 +7,7 @@ from functools import lru_cache, partial
 import re
 
 from edgar_sec.domain.forms.common.missing_values import COMMON_NUMERIC_NULL_POLICY
+from edgar_sec.domain.world.currencies import SINGLE_CHARACTER_SYMBOL_CLASS
 from edgar_sec.engine.tables.numeric_cells import CURRENCY_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -30,8 +31,11 @@ _SCALE_MULTIPLIERS: dict[str, int] = {
 
 _SCALE_ALT = build_alternation(tuple(_SCALE_MULTIPLIERS.keys()))
 
+# The scaled-numeric grammar admits the substrate's homed
+# single-character currency symbol class (domain.world); it does
+# not derive a class of its own.
 _SCALED_NUMERIC_RE = re.compile(
-    rf"^\s*([\$€£]?)\s*([\d,]+(?:\.\d+)?)\s*({_SCALE_ALT})?\s*$",
+    rf"^\s*([{SINGLE_CHARACTER_SYMBOL_CLASS}]?)\s*([\d,]+(?:\.\d+)?)\s*({_SCALE_ALT})?\s*$",
     re.IGNORECASE,
 )
 _SCHEMA_DECIMAL_RE = re.compile(

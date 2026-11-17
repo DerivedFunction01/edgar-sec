@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.world import geography_edges as world_geography_edges
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 
 
@@ -263,6 +264,24 @@ def load_geography_dag(source: Path) -> tuple[GeoHierarchyEdge, ...]:
     """Load geography hierarchy edges from CSV or JSON file."""
     records = read_records(source)
     return tuple(GeoHierarchyEdge.from_dict(row) for row in records)
+
+
+def load_substrate_geography() -> tuple[GeoHierarchyEdge, ...]:
+    """The geography hierarchy from the domain.world substrate, converted.
+
+    A taxonomy directory carrying its own geography file keeps
+    loading that file instead (see load_domain_taxonomy).
+    """
+    return tuple(
+        GeoHierarchyEdge(
+            child_geo_node=edge.child,
+            parent_geo_node=edge.parent,
+            decomposition_scheme=edge.scheme,
+            relation_type=edge.relation,
+            notes=edge.notes,
+        )
+        for edge in world_geography_edges.EDGES
+    )
 
 
 def load_industry_profiles(source: Path) -> tuple[IndustryProfile, ...]:

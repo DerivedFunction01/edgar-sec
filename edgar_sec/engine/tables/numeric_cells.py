@@ -7,25 +7,15 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.world.currencies import (
+    ALL_CURRENCY_SYMBOLS,
+    PREFIX_SYMBOLS,
+    SUFFIX_SYMBOLS,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.patterns import GROUPED_AMOUNT_CORE
 
-from .currencies import MAJOR_CURRENCIES
 from .units import MEASUREMENT_UNITS
-
-PREFIX_SYMBOLS = frozenset(
-    symbol
-    for data in MAJOR_CURRENCIES.values()
-    if data.get("prefix")
-    for symbol in data.get("symbols", [])
-)
-SUFFIX_SYMBOLS = frozenset(
-    symbol
-    for data in MAJOR_CURRENCIES.values()
-    if data.get("suffix")
-    for symbol in data.get("symbols", [])
-)
-ALL_CURRENCY_SYMBOLS = PREFIX_SYMBOLS | SUFFIX_SYMBOLS
 
 UNIT_SYMBOLS: set[str] = set()
 for _unit_data in MEASUREMENT_UNITS.values():
