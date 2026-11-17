@@ -16,7 +16,7 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.tools.measurement.config import BANDS, load_config, workdir
 
 
-from edgar_sec.engine.tables.extraction.measurement import (  # noqa: E402
+from edgar_sec.tools.measurement.measurement import (  # noqa: E402
     AdjudicationRecord,
     GroupReturn,
     calibration_rows,

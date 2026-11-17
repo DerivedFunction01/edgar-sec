@@ -119,11 +119,6 @@ classified tables into logical statements and arbitrates their relations.
   exception lists carve their subjects out); strong U/A evidence also reaches
   an otherwise unclaimed plain listing. The same spec evaluates over a typed
   table's full grid through the `derivatives_evidence_gate` form-test kind.
-- **Prose-window grain decides what the geometry cannot**: a filer-status
-  checkbox fragment is decided from the bounded prose window framing it
-  (`prose_window`), never from the fragment's own grid; the window's
-  checkbox block is the discriminating grid and the reading carries its
-  grain as provenance.
 - **Family profiles live once, as data, in the profile registry**: `profiles` is the
   single home of family profiles for exactly the supported set — each profile carries
   its measured support state per stratum, its vocabulary seat, its form-test
@@ -151,11 +146,6 @@ classified tables into logical statements and arbitrates their relations.
   facts are computed from the filing's own first-pass reads inside
   `classify_filing` and applied by re-arbitration; unstamped, placement
   tests are unevaluable.
-- **Labor capture is schema-led prose-to-table**: linkage terms generate
-  candidate spans and the employee group x contract x union fields bind
-  inside a linked span only (`labor_capture`); schedule-header terms are
-  field evidence, never generators, rows are text-valued, and an explicit
-  negation binds as a zero fact, not a carrier.
 - **Residue families claim on content, not title alone**: segment,
   commitments and related-party note-title points land only on grids
   whose own content corroborates the family (`residue_families`); an

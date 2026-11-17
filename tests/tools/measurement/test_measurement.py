@@ -2,7 +2,7 @@
 
 import pytest
 
-from edgar_sec.engine.tables.extraction.measurement import (
+from edgar_sec.tools.measurement.measurement import (
     AdjudicationRecord,
     GroupReturn,
     SealRecord,
