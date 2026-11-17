@@ -1,7 +1,7 @@
-"""Term vetoes: specimen tests for the Step 6 v2 re-priced sets.
+"""Term vetoes: specimen tests for the priced veto sets.
 
 Removal semantics, any-hit scored composition, and the
-set-completeness pin as ruled (gap record, plan re-scope).
+set-completeness pin as ruled (Step 6 record; Step 4 build act).
 """
 
 from __future__ import annotations
@@ -202,65 +202,77 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# re-price record after the ruled exclusions; 350 rows total.
+# priced records after the ruled holds; 555 rows total.
 _GROUP_COUNTS = {
-    ("aoci_rollforward", "body", "scored"): 11,
+    ("aoci_rollforward", "body", "hard"): 4,
+    ("aoci_rollforward", "body", "scored"): 13,
     ("aoci_rollforward", "lead", "hard"): 2,
     ("aoci_rollforward", "lead", "scored"): 5,
-    ("balance_sheet", "body", "hard"): 25,
-    ("balance_sheet", "body", "scored"): 25,
-    ("balance_sheet", "lead", "hard"): 17,
-    ("balance_sheet", "lead", "scored"): 11,
-    ("cash_flow", "body", "hard"): 2,
-    ("cash_flow", "body", "scored"): 14,
-    ("cash_flow", "lead", "hard"): 8,
-    ("cash_flow", "lead", "scored"): 2,
-    ("comprehensive_income", "body", "scored"): 12,
-    ("comprehensive_income", "lead", "scored"): 6,
+    ("balance_sheet", "body", "hard"): 34,
+    ("balance_sheet", "body", "scored"): 28,
+    ("balance_sheet", "lead", "hard"): 26,
+    ("balance_sheet", "lead", "scored"): 16,
+    ("cash_flow", "body", "hard"): 4,
+    ("cash_flow", "body", "scored"): 20,
+    ("cash_flow", "lead", "hard"): 12,
+    ("cash_flow", "lead", "scored"): 14,
+    ("comprehensive_income", "body", "hard"): 1,
+    ("comprehensive_income", "body", "scored"): 13,
+    ("comprehensive_income", "lead", "scored"): 11,
     ("debt_maturity", "body", "hard"): 1,
+    ("debt_maturity", "lead", "hard"): 1,
     ("debt_maturity", "lead", "scored"): 11,
-    ("deferred_tax", "body", "hard"): 3,
-    ("deferred_tax", "body", "scored"): 5,
-    ("deferred_tax", "lead", "hard"): 5,
-    ("deferred_tax", "lead", "scored"): 4,
-    ("derivatives_hedging", "body", "hard"): 1,
-    ("derivatives_hedging", "body", "scored"): 2,
+    ("deferred_tax", "body", "hard"): 5,
+    ("deferred_tax", "body", "scored"): 7,
+    ("deferred_tax", "lead", "hard"): 7,
+    ("deferred_tax", "lead", "scored"): 5,
+    ("derivatives_hedging", "body", "hard"): 4,
+    ("derivatives_hedging", "body", "scored"): 4,
+    ("derivatives_hedging", "lead", "hard"): 2,
     ("derivatives_hedging", "lead", "scored"): 5,
-    ("eps_reconciliation", "body", "hard"): 6,
-    ("eps_reconciliation", "body", "scored"): 7,
-    ("eps_reconciliation", "lead", "hard"): 4,
-    ("eps_reconciliation", "lead", "scored"): 11,
-    ("equity_statement", "body", "hard"): 3,
-    ("equity_statement", "body", "scored"): 12,
-    ("equity_statement", "lead", "hard"): 3,
-    ("equity_statement", "lead", "scored"): 4,
-    ("income_statement", "body", "scored"): 13,
-    ("income_statement", "lead", "hard"): 3,
-    ("income_statement", "lead", "scored"): 5,
-    ("intangibles", "body", "hard"): 4,
+    ("eps_reconciliation", "body", "hard"): 10,
+    ("eps_reconciliation", "body", "scored"): 9,
+    ("eps_reconciliation", "lead", "hard"): 7,
+    ("eps_reconciliation", "lead", "scored"): 23,
+    ("equity_statement", "body", "hard"): 9,
+    ("equity_statement", "body", "scored"): 16,
+    ("equity_statement", "lead", "hard"): 7,
+    ("equity_statement", "lead", "scored"): 15,
+    ("fair_value", "body", "scored"): 2,
+    ("income_statement", "body", "hard"): 1,
+    ("income_statement", "body", "scored"): 23,
+    ("income_statement", "lead", "hard"): 4,
+    ("income_statement", "lead", "scored"): 12,
+    ("intangibles", "body", "hard"): 6,
     ("intangibles", "body", "scored"): 3,
     ("intangibles", "lead", "hard"): 6,
-    ("intangibles", "lead", "scored"): 7,
+    ("intangibles", "lead", "scored"): 10,
     ("inventory", "lead", "hard"): 1,
     ("inventory", "lead", "scored"): 2,
-    ("lease_maturity", "body", "hard"): 2,
-    ("lease_maturity", "body", "scored"): 5,
-    ("lease_maturity", "lead", "hard"): 4,
+    ("lease_maturity", "body", "hard"): 5,
+    ("lease_maturity", "body", "scored"): 6,
+    ("lease_maturity", "lead", "hard"): 5,
     ("lease_maturity", "lead", "scored"): 6,
-    ("pension", "body", "hard"): 5,
-    ("pension", "body", "scored"): 9,
-    ("pension", "lead", "scored"): 2,
+    ("pension", "body", "hard"): 6,
+    ("pension", "body", "scored"): 13,
+    ("pension", "lead", "hard"): 5,
+    ("pension", "lead", "scored"): 9,
     ("ppe", "body", "hard"): 1,
     ("ppe", "lead", "scored"): 4,
-    ("related_party", "lead", "scored"): 3,
+    ("related_party", "body", "hard"): 2,
+    ("related_party", "body", "scored"): 2,
+    ("related_party", "lead", "hard"): 3,
+    ("related_party", "lead", "scored"): 5,
+    ("segment_reporting", "body", "hard"): 2,
+    ("segment_reporting", "body", "scored"): 2,
     ("segment_reporting", "lead", "scored"): 4,
-    ("stock_comp_rollforward", "body", "hard"): 2,
-    ("stock_comp_rollforward", "body", "scored"): 3,
-    ("stock_comp_rollforward", "lead", "hard"): 3,
-    ("stock_comp_rollforward", "lead", "scored"): 6,
-    ("tax_reconciliation", "body", "hard"): 3,
-    ("tax_reconciliation", "body", "scored"): 2,
-    ("tax_reconciliation", "lead", "hard"): 12,
+    ("stock_comp_rollforward", "body", "hard"): 5,
+    ("stock_comp_rollforward", "body", "scored"): 5,
+    ("stock_comp_rollforward", "lead", "hard"): 4,
+    ("stock_comp_rollforward", "lead", "scored"): 10,
+    ("tax_reconciliation", "body", "hard"): 8,
+    ("tax_reconciliation", "body", "scored"): 4,
+    ("tax_reconciliation", "lead", "hard"): 15,
     ("tax_reconciliation", "lead", "scored"): 3,
 }
 
@@ -273,25 +285,26 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
     }
 
 
-def test_transcription_set_is_complete_as_ruled() -> None:
+def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 350
+    assert len(rows) == 555
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 126
-    assert tiers.count("scored") == 224
+    assert tiers.count("hard") == 215
+    assert tiers.count("scored") == 340
 
 
-def test_transcription_exclusions_of_record() -> None:
+def test_build_act_exclusions_of_record() -> None:
     rows = _all_rows()
     families = {family for family, _t, _c, _tier in rows}
+    # The 12 aoci HARD additions are held: their true base is
+    # empty (the two-spelling defect), so no aoci row lands.
     assert "aoci" not in families
     assert "commitments_contingencies" not in families
-    assert "fair_value" not in families
     furniture_only = {
         ("intangibles", "reportable segment"),
         ("segment_reporting", "form 10-k"),
@@ -300,18 +313,35 @@ def test_transcription_exclusions_of_record() -> None:
         ("balance_sheet", "index to"),
     }
     assert not any((f, t) in furniture_only for f, t, _c, _tier in rows)
-    dagger_terms = {
-        "products and",
-        "share of",
-        "three months",
-        "months ended",
-        "year ended",
-        "credit losses",
-        "benefit plans",
-        "tax benefit",
-        "senior secured",
+    # The eps sensitivity row is not admitted at HARD: it touches
+    # one sweep-all true; the firm-named row was rejected outright.
+    assert ("eps_reconciliation", "total", "body", "hard") not in rows
+    assert not any(t == "cpas, pllc" for _f, t, _c, _tier in rows)
+
+
+def test_dagger_rows_landed_hard_as_priced() -> None:
+    rows = _all_rows()
+    dagger_rows = {
+        ("income_statement", "products and", "lead"),
+        ("eps_reconciliation", "share of", "lead"),
+        ("tax_reconciliation", "three months", "body"),
+        ("tax_reconciliation", "months ended", "body"),
+        ("stock_comp_rollforward", "year ended", "body"),
+        ("deferred_tax", "credit losses", "lead"),
+        ("aoci_rollforward", "benefit plans", "body"),
+        ("aoci_rollforward", "tax benefit", "body"),
+        ("debt_maturity", "senior secured", "lead"),
     }
-    assert not any(t in dagger_terms for _f, t, _c, _tier in rows)
+    assert all((*row, "hard") in rows for row in dagger_rows)
+
+
+def test_current_assets_body_row_retiered_to_scored() -> None:
+    rows = _all_rows()
+    # On the body channel the term is the family's own grid
+    # vocabulary (42 true touches on v3); the lead row stands.
+    assert ("balance_sheet", "current assets", "body", "hard") not in rows
+    assert ("balance_sheet", "current assets", "body", "scored") in rows
+    assert ("balance_sheet", "current assets", "lead", "hard") in rows
 
 
 def test_issuer_purchases_rows_exactly_the_six_measured_families() -> None:
