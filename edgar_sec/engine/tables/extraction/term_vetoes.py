@@ -32,7 +32,7 @@ class VetoSpec:
 
 # Step 6 v2 sets (record: 2026-11-16-greenfield-step6-v2-
 # measurement-record) plus the Step 4 v3 build-act rows (record:
-# greenfield-followup-discovery/step4). Held rows named there.
+# greenfield-followup-discovery/step4) and the AOCI held-row release.
 TERM_VETOES: tuple[VetoSpec, ...] = tuple(
     VetoSpec(*entry) for entry in STATEMENT_VETO_ENTRIES + NOTE_VETO_ENTRIES
 )

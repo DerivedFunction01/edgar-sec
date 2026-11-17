@@ -437,6 +437,8 @@ STATEMENT_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "tax benefit",
             "equity securities",
             "years",
+            "net sales",
+            "three months ended march",
         ),
     ),
 )

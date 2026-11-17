@@ -202,9 +202,9 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds; 555 rows total.
+# priced records after the ruled holds and release; 557 rows.
 _GROUP_COUNTS = {
-    ("aoci_rollforward", "body", "hard"): 4,
+    ("aoci_rollforward", "body", "hard"): 6,
     ("aoci_rollforward", "body", "scored"): 13,
     ("aoci_rollforward", "lead", "hard"): 2,
     ("aoci_rollforward", "lead", "scored"): 5,
@@ -287,22 +287,22 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 555
+    assert len(rows) == 557
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 215
+    assert tiers.count("hard") == 217
     assert tiers.count("scored") == 340
 
 
 def test_build_act_exclusions_of_record() -> None:
     rows = _all_rows()
     families = {family for family, _t, _c, _tier in rows}
-    # The 12 aoci HARD additions are held: their true base is
-    # empty (the two-spelling defect), so no aoci row lands.
+    # No row keys under the retired short spelling: the family
+    # lands only as aoci_rollforward (Step 3's spelling fix).
     assert "aoci" not in families
     assert "commitments_contingencies" not in families
     furniture_only = {
@@ -317,6 +317,32 @@ def test_build_act_exclusions_of_record() -> None:
     # one sweep-all true; the firm-named row was rejected outright.
     assert ("eps_reconciliation", "total", "body", "hard") not in rows
     assert not any(t == "cpas, pllc" for _f, t, _c, _tier in rows)
+
+
+def test_aoci_held_rows_released_hard_as_repriced() -> None:
+    rows = _all_rows()
+    # Of the 12 held AOCI additions, re-priced under the single
+    # spelling only the two zero-touch rows land at HARD.
+    released = {
+        ("aoci_rollforward", "net sales", "body"),
+        ("aoci_rollforward", "three months ended march", "body"),
+    }
+    assert all((*row, "hard") in rows for row in released)
+    # The other ten touch measured aoci_rollforward trues on the
+    # unified base (release record) and stay out of HARD.
+    held_back = {
+        ("aoci_rollforward", "assets", "lead"),
+        ("aoci_rollforward", "ended march", "lead"),
+        ("aoci_rollforward", "months ended", "lead"),
+        ("aoci_rollforward", "three months", "lead"),
+        ("aoci_rollforward", "balance at end of period", "body"),
+        ("aoci_rollforward", "beginning balance", "body"),
+        ("aoci_rollforward", "change", "body"),
+        ("aoci_rollforward", "interest expense", "body"),
+        ("aoci_rollforward", "period", "body"),
+        ("aoci_rollforward", "total", "body"),
+    }
+    assert all((*row, "hard") not in rows for row in held_back)
 
 
 def test_dagger_rows_landed_hard_as_priced() -> None:
