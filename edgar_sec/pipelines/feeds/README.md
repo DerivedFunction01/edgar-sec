@@ -1,8 +1,9 @@
 # feeds
 
 Publishes the SEC structured-disclosure RSS feeds as an append-only
-event ledger: the four live feeds and their monthly archives land as
-one Parquet relation in a DAG store of their own, one row per accession
+event ledger: the live feeds named by `STRUCTURED_FEED_SOURCES`
+(`edgar_sec/domain/feeds/models.py`) and their monthly archives land
+as one Parquet relation in a DAG store of their own, one row per accession
 and source, stamped with the publishing snapshot and fetch time.
 
 ## Purpose
@@ -55,7 +56,7 @@ metadata DAG or manufactures canonical submission rows.
 ### Usage examples
 
 ```bash
-# Publish the four live feeds as the next ledger snapshot
+# Publish the live feeds as the next ledger snapshot
 python run.py feeds run
 
 # Backfill the monthly archives for one quarter

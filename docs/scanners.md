@@ -3,7 +3,13 @@
 The catalog of the repository's registered policy scanners. `AGENTS.md`
 points here for the per-scanner rules; this file is their authority.
 
-Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected via `ALL_SCANNERS`:
+Scanners are defined modularly in `edgar_sec/foundation/scanners/`. The
+roster itself is owned by `ALL_SCANNERS` in
+`edgar_sec/foundation/scanners/__init__.py` — the entries below are this
+catalog's per-scanner rules for that roster, and a registered scanner
+with no entry here is a catalog defect, not an unregistered scanner.
+
+Roster: `ALL_SCANNERS` in `edgar_sec/foundation/scanners/__init__.py`:
 
 - `environment-access`: Bans direct `os.environ` / `os.getenv` outside `edgar_sec.foundation.runtime.env`.
 - `artifact-paths`: Bans hardcoded `".artifacts"` path literals outside path resolvers.
@@ -75,6 +81,10 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
   ordering, discovery mining, `facts.py` carriage). Equivalence is computed from
   atom coordinates; residuals are a vocabulary-gap report, never a decision
   input. The Atom constructor's own symbol-prefix normalization is exempt.
+- `form-isolation`: Bans hardcoded SEC form-type literals — quoted form
+  names and `form ==` comparisons — in generic code, so form-specific
+  code stays confined to the form packages (`edgar_sec/domain/forms/`,
+  the form-specific `engine/forms/` packages, and their tests).
 - `form-vocabulary`: Bans private CUSIP regexes outside `engine/forms/common/entities.py`,
   DOM table markup regexes outside legacy ASCII table unwrappers, and duplicate unit
   suffix literals outside `engine/forms/common/numbers.py`.

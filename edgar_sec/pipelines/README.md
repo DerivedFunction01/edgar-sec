@@ -9,7 +9,9 @@ in a lower layer and consumed here.
 ## Purpose
 
 Data pipelines and the cohort-management command surface each own a package README;
-the details below are the layer-level contracts only.
+the details below are the layer-level contracts only. The roster of pipeline
+packages is owned by the tree — the packages under `edgar_sec/pipelines/` are
+the pipelines — and each entry below points at its package's own README.
 
 - [`metadata_sync/`](metadata_sync/README.md) — Phase 1. Turns a
   shared CIK cohort into a manifest-described Parquet dataset snapshot. Plans
@@ -45,6 +47,10 @@ the details below are the layer-level contracts only.
   oracle posture: BDC, N-MFP, MFRR, and FSDS vintage ZIPs into a DuckDB store keyed
   by content hash, the BDC Report population reference, and a DAG-published
   index of the store.
+- [`feeds/`](feeds/README.md) — Publishes the SEC structured-disclosure
+  RSS feeds as an append-only event ledger in a DAG store of its own: one
+  row per accession and source, the discovery record for structured
+  disclosures, joined to the catalog by accession at read time.
 - [`xbrl_review/`](xbrl_review/README.md) — Multi-firm semantic lattice review,
   cohort staging, objective case comparison, and hypothesis rule promotion into the DuckDB knowledge base.
 - [`text_search/`](text_search/README.md) — Builds the materialized

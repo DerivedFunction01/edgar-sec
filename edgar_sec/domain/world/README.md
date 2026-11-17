@@ -73,6 +73,6 @@ import; consumers import the submodule directly
 - The hierarchy is disclosure geography, not a domicile registry:
   domicile codes with no DAG country node (CW, CY, IE, JE, LR, MC,
   PA, UY) resolve to no node rather than to an invented one.
-- The currency code set is the attested set (18 codes), not the
-  full ISO list and not the union programme's wider declaration;
-  extension is attestation-gated.
+- The currency code set is the attested set (`CURRENCIES` in
+  `currencies.py`), not the full ISO list and not the union
+  programme's wider declaration; extension is attestation-gated.

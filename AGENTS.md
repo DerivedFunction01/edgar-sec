@@ -67,9 +67,9 @@ the `resource-allocation` scanner blocks hardcoded `threads=` / `max_workers=` /
 ## Settings & Configuration Management
 
 Settings are a modular registry under one environment seam — the generic pattern
-(Code and documentation patterns). Bindings: providers under `edgar_sec/foundation/runtime/settings/`
-(`sec.py`, `paths.py`, `runtime.py`, `parquet.py`, `sql.py`); dotted paths map to
-env vars via `environment_name(path)`; the seam module is
+(Code and documentation patterns). Bindings: providers under
+`edgar_sec/foundation/runtime/settings/`; dotted paths map to env vars via
+`environment_name(path)`; the seam module is
 `edgar_sec.foundation.runtime.env` — direct `os.environ` /
 `os.getenv` outside it is prohibited (the `environment-access` scanner);
 `secret=True` settings are stripped by `flatten_settings()` before persisting;
