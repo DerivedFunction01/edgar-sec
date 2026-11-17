@@ -27,7 +27,7 @@ from edgar_sec.engine.tables.extraction.typed_rows import (
 )
 
 SPECS = form_test_specs_for("tax_reconciliation")
-SPEC = SPECS[0]
+SPEC = next(spec for spec in SPECS if spec.kind == TEST_PERCENTAGE_FORM)
 
 
 def _table(rows: tuple[tuple[str, ...], ...]) -> TypedTable:
@@ -110,8 +110,9 @@ TWO_RATES_NO_ADJUSTMENT = _table(
 
 def test_percentage_spec_is_registry_data() -> None:
     profile = PROFILES_BY_FAMILY["tax_reconciliation"]
-    assert profile.form_tests == (TEST_PERCENTAGE_FORM,)
-    assert len(SPECS) == 1 and SPEC in FORM_TEST_SPECS
+    assert TEST_PERCENTAGE_FORM in profile.form_tests
+    assert [spec for spec in SPECS if spec.kind == TEST_PERCENTAGE_FORM] == [SPEC]
+    assert SPEC in FORM_TEST_SPECS
     assert SPEC.kind == TEST_PERCENTAGE_FORM and SPEC.points == 3.0
     params = PERCENTAGE_SPECS_BY_FAMILY["tax_reconciliation"]
     assert params in PERCENTAGE_SPECS and params.family == SPEC.family
