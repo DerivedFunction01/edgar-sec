@@ -16,6 +16,8 @@ repo's bindings of them and its local residue only.
 - Only a measure clears: an acknowledgement never clears a staffing or routing row — only a later measure showing the condition resolved does.
 - Supervision is registry-driven and programme-agnostic: cadence, staffing band, escalation bound, venue, and standing rule text are per-programme declarations in the supervision registry, never evaluator constants; a work item's doing transition arms its registry row and a terminal transition retires it; worktree presence is ground truth — a standing worktree is unfinished work whatever the posts claim, and a terminal claim does not clear a lane whose trees stand unlanded.
 
+- Gates scope to the change: a gate runs the tests for its delta's affected modules — the full suite is never a gate requirement, and a full run, where owed, is a proof instrument that runs last — and gate work shards across the available parallel capacity, venues first, then workers within a venue; serial only for a named shared-state dependency.
+
 The full generic supervision text lives in `docs/supervision-rules.md`; read it at task start.
 
 <!-- /spec-sync:supervision-rules -->
