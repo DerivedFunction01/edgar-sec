@@ -43,6 +43,7 @@ PROV_ARO_BASE = "measurement:aro-adjudication-base"
 PROV_WARRANTY_PRICING = "calibration:warranty-seat-pricing"
 PROV_R18_SEAT_PRICING = "calibration:r18-seat-pricing"
 PROV_STEP7_PRICING = "step7:discovery-pricing"
+PROV_S1_PRICING = "calibration:s1-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the

@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.profiles import (
+    PROV_S1_PRICING,
     PROV_STEP2_PRICING,
     TEST_PLACEMENT_CONSISTENCY,
     TEST_ROW_BOUND,
@@ -218,4 +219,264 @@ PLACEMENT_SPECS: tuple[PlacementSpec, ...] = (
 
 PLACEMENT_SPECS_BY_TEST_ID: dict[str, PlacementSpec] = {
     f"{spec.family}_placement": spec for spec in PLACEMENT_SPECS
+}
+
+
+@dataclass(frozen=True, slots=True)
+class SummarySeparatorSpec:
+    """One priced statement-summary separator rule (S1 pricing).
+    A conjunction of feature atoms over a table's context; a fire
+    denies every family claim on the geometry."""
+
+    rule_id: str
+    sub_mass: str
+    atoms: tuple[str, ...]
+    kills_f: int
+    touches_f: int
+    kills_s: int
+    touches_s: int
+    provenance: str = PROV_S1_PRICING
+
+
+# The S1 covers of record: SELECTED-DATA pooled cap-0, MD&A-SUMMARY
+# leg cap-0 covers plus the composed loc_item7/rows<=12 cell, and
+# the QUARTERLY named rule (s1price run 2, 2026-11-18).
+SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
+    SummarySeparatorSpec(
+        "selected_data_present_data_years4",
+        "SELECTED-DATA",
+        ("present[data]", "years>=4"),
+        3,
+        0,
+        6,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "selected_data_total_assets_years3",
+        "SELECTED-DATA",
+        ("present[total assets]", "years>=3"),
+        2,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "selected_data_last_total_item6",
+        "SELECTED-DATA",
+        ("last_stub_total", "loc_item6"),
+        1,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_rows12_years3",
+        "MD&A-SUMMARY",
+        ("loc_item7", "rows<=12", "years>=3"),
+        4,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_data",
+        "MD&A-SUMMARY",
+        ("loc_item2", "present[data]"),
+        3,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_sales",
+        "MD&A-SUMMARY",
+        ("loc_item2", "present[sales]"),
+        3,
+        0,
+        4,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_cols6_activities_rows12",
+        "MD&A-SUMMARY",
+        ("cols<=6", "present[activities]", "rows<=12", "loc_item2"),
+        3,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_summar_lead",
+        "MD&A-SUMMARY",
+        ("loc_item7", "summar_lead"),
+        2,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_income_tax_rows12",
+        "MD&A-SUMMARY",
+        ("loc_item2", "present[income tax]", "rows<=12"),
+        2,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_net_loss",
+        "MD&A-SUMMARY",
+        ("loc_item2", "present[net loss]"),
+        1,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_income_tax_rows12",
+        "MD&A-SUMMARY",
+        ("loc_item7", "present[income tax]", "rows<=12"),
+        1,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_net_income_rows12",
+        "MD&A-SUMMARY",
+        ("loc_item7", "present[net income]", "rows<=12"),
+        1,
+        0,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_financing_operating_rows12",
+        "MD&A-SUMMARY",
+        (
+            "present[financing activities]",
+            "present[operating activities]",
+            "rows<=12",
+        ),
+        0,
+        0,
+        12,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_sales",
+        "MD&A-SUMMARY",
+        ("loc_item7", "present[sales]"),
+        0,
+        0,
+        5,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_total_row_item2_net_loss",
+        "MD&A-SUMMARY",
+        ("has_total_row", "loc_item2", "present[net loss]"),
+        0,
+        0,
+        3,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_financing_activities",
+        "MD&A-SUMMARY",
+        ("loc_item2", "present[financing activities]"),
+        0,
+        0,
+        2,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_operating_activities",
+        "MD&A-SUMMARY",
+        ("loc_item2", "present[operating activities]"),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_condensed",
+        "MD&A-SUMMARY",
+        ("loc_item7", "present[condensed]"),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_income_tax",
+        "MD&A-SUMMARY",
+        ("loc_item7", "present[income tax]"),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_investing_activities",
+        "MD&A-SUMMARY",
+        ("loc_item7", "present[investing activities]"),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_gross_profit_rows12",
+        "MD&A-SUMMARY",
+        ("present[gross profit]", "rows<=12"),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_net_loss_summar_lead",
+        "MD&A-SUMMARY",
+        ("present[net loss]", "summar_lead"),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item2_cash_equivalents_data",
+        "MD&A-SUMMARY",
+        (
+            "loc_item2",
+            "present[cash and cash equivalents]",
+            "present[data]",
+        ),
+        0,
+        0,
+        1,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "mda_item7_rows12",
+        "MD&A-SUMMARY",
+        ("loc_item7", "rows<=12"),
+        2,
+        1,
+        0,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "quarterly_item8_total_revenues",
+        "QUARTERLY",
+        ("loc_item8", "present[total revenues]"),
+        0,
+        0,
+        2,
+        0,
+    ),
+)
+
+SUMMARY_SEPARATOR_SPECS_BY_ID: dict[str, SummarySeparatorSpec] = {
+    spec.rule_id: spec for spec in SUMMARY_SEPARATOR_SPECS
 }

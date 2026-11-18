@@ -31,6 +31,10 @@ from edgar_sec.engine.tables.extraction.form_tests import (
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
 )
+from edgar_sec.engine.tables.extraction.summary_separator import (
+    SummarySeparatorResult,
+    evaluate_summary_separator,
+)
 from edgar_sec.engine.tables.extraction.leadin_segmentation import (
     lead_title_text,
     leadin_segment,
@@ -118,6 +122,7 @@ class GeometryText:
     note_title: str | None = None
     section_item: str | None = None
     form_tests: tuple[FormTestOutcome, ...] = ()
+    summary_separator: SummarySeparatorResult | None = None
     grid_text: str = ""
     headers: tuple[str, ...] = ()
     in_toc_span: bool = False
@@ -177,6 +182,9 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         note_title=note.title if note else None,
         section_item=section.item if section else None,
         form_tests=evaluate_form_tests(table) if evaluate_stage else (),
+        summary_separator=(
+            evaluate_summary_separator(table) if evaluate_stage else None
+        ),
         grid_text=grid_text,
         headers=headers,
         in_toc_span=context.in_toc_span,
@@ -648,6 +656,27 @@ def compete(
             claims, contested, geometry, scopes
         )
         claims, contested = kept, kept_contested
+    # S1 separator gate: a fired statement-summary rule denies
+    # every claim — the priced mass is a composition (a summary
+    # of a statement), claimed by no family (S1 pricing covers).
+    separator = geometry.summary_separator
+    if separator is not None and separator.fired and claims:
+        removed, claims, contested = tuple(claims), [], []
+        reach = [family for family in reach if family not in removed]
+        scores = dict(scores)
+        for family in removed:
+            gated = scores[family]
+            scores[family] = FamilyScore(
+                gated.family,
+                gated.total,
+                dict(gated.by_channel),
+                gated.evidence
+                + (
+                    ClaimEvidence(
+                        "gate", f"summary separator: {separator.detail}", 0.0
+                    ),
+                ),
+            )
     role = (
         "continuation"
         if geometry.is_fragment
