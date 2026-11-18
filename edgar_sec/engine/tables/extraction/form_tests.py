@@ -32,6 +32,9 @@ from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.percentage_form import (
     evaluate_percentage_form,
 )
+from edgar_sec.engine.tables.extraction.ppe_evidence import (
+    evaluate_form_test_ppe,
+)
 from edgar_sec.engine.tables.extraction.form_signal_specs import (
     ORIENT_EITHER_AXIS,
     PLACEMENT_SPECS_BY_TEST_ID,
@@ -63,6 +66,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_STOCK_COMP_EVIDENCE,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
+    TEST_PPE_EVIDENCE,
     TEST_PRIMARY_STATEMENT_SEAT,
     TEST_RESTRUCTURING_EVIDENCE,
     TEST_ROW_BOUND,
@@ -330,6 +334,20 @@ def _evaluate_derivatives(table: TypedTable, spec: FormTestSpec) -> FormTestOutc
     )
 
 
+def _evaluate_ppe(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_ppe(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_restructuring(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_restructuring(table, spec)
     return FormTestOutcome(
@@ -580,6 +598,7 @@ _EVALUATORS = {
     TEST_PRIMARY_STATEMENT_SEAT: _evaluate_seat,
     TEST_COMPOSITION_TWIN: _evaluate_composition,
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
+    TEST_PPE_EVIDENCE: _evaluate_ppe,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_ARO_EVIDENCE: _evaluate_aro,
     TEST_WARRANTY_EVIDENCE: _evaluate_warranty,

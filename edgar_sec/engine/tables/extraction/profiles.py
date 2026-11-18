@@ -62,6 +62,7 @@ TEST_ROW_BOUND = "row_bound"
 TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 TEST_MEASURE_SET = "measure_set"
+TEST_PPE_EVIDENCE = "ppe_evidence"
 TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
 TEST_INVENTORY_EVIDENCE = "inventory_evidence"
@@ -89,6 +90,7 @@ FORM_TESTS = (
     TEST_LEASE_EVIDENCE,
     TEST_TAX_EVIDENCE,
     TEST_STOCK_COMP_EVIDENCE,
+    TEST_PPE_EVIDENCE,
 )
 
 
@@ -321,7 +323,15 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.539, 0.800, 0.562, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_ROW_BOUND, TEST_SIGNATURE_ABSENCE),
+        form_tests=(
+            TEST_COMPOSITION_TWIN,
+            TEST_ROW_BOUND,
+            TEST_SIGNATURE_ABSENCE,
+            TEST_PPE_EVIDENCE,
+        ),
+        note="seated additionally on the re-derived vocabulary "
+        "priced over the R18 fresh population (P .926 / "
+        "R 1.000; sparse recall 1.000)",
     ),
     FamilyProfile(
         "related_party",

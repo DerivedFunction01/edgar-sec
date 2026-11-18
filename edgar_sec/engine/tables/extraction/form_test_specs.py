@@ -40,6 +40,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_MEASURE_SET,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
+    TEST_PPE_EVIDENCE,
     TEST_PRIMARY_STATEMENT_SEAT,
     TEST_RESTRUCTURING_EVIDENCE,
     TEST_ROW_BOUND,
@@ -299,6 +300,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
     ),
     FormTestSpec("pension", TEST_COMPOSITION_TWIN, "pension_composition", 3.0),
     FormTestSpec("ppe", TEST_COMPOSITION_TWIN, "ppe_composition", 3.0),
+    FormTestSpec(
+        "ppe",
+        TEST_PPE_EVIDENCE,
+        "ppe_evidence",
+        3.0,
+        provenance=PROV_R18_SEAT_PRICING,
+    ),
     FormTestSpec("intangibles", TEST_COMPOSITION_TWIN, "intangibles_composition", 3.0),
     FormTestSpec(
         "deferred_tax", TEST_COMPOSITION_TWIN, "deferred_tax_composition", 3.0
