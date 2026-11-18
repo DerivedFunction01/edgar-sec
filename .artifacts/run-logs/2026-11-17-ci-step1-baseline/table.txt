@@ -1,0 +1,36 @@
+| family | B prec (n) | B rec (n) | D prec (n) | D rec (n) | bar |
+|---|---|---|---|---|---|
+| aoci_rollforward | 0.417 (12) | 0.25 (4) | 0.417 (12) | 0.4 (10) | below |
+| balance_sheet | 0.188 (48) | 0.647 (17) | 0.292 (48) | 0.905 (21) | below |
+| cash_flow | 0.25 (12) | 0.6 (15) | 0.167 (12) | 1.000 (34) | below |
+| combined_operations_ci | — (0) | 0 (5) | — (0) | 0 (3) | below |
+| commitments_contingencies | — (0) | 0.125 (8) | — (0) | 0.375 (8) | below |
+| comprehensive_income | 0.25 (12) | 0 (1) | 0.333 (12) | 0.778 (9) | below |
+| debt_maturity | 0.333 (12) | 0 (9) | 0.25 (12) | 0.25 (8) | below |
+| deferred_tax | 0.333 (12) | 0.667 (15) | 0.083 (12) | — (0) | below |
+| derivatives_hedging | 0.25 (12) | 0.765 (17) | 0.5 (12) | 0.864 (22) | below |
+| eps_reconciliation | 0.167 (12) | 0.273 (11) | 0.417 (12) | 0.714 (14) | below |
+| equity_statement | 0.083 (12) | 0.562 (16) | 0.417 (12) | 0.885 (26) | below |
+| fair_value | 0.75 (12) | 0.518 (27) | 0.333 (12) | 0.7 (40) | below |
+| income_statement | 0.167 (12) | 0.091 (11) | 0.25 (12) | 0.692 (26) | below |
+| intangibles | 0.667 (12) | 0.389 (18) | 0.333 (12) | 0.438 (16) | below |
+| inventory | 0.333 (12) | 0.25 (4) | 0.417 (12) | 0.875 (8) | below |
+| lease_maturity | 0.25 (12) | 0.5 (10) | 0.25 (12) | 0.875 (8) | below |
+| pension | 0.833 (12) | 0.385 (13) | 0.25 (12) | 0.6 (5) | below |
+| ppe | 0.167 (12) | 0.5 (12) | 0.333 (12) | 1.000 (7) | below |
+| related_party | 0.333 (12) | 0.125 (8) | 0.583 (12) | 0 (4) | below |
+| segment_reporting | 0.333 (12) | 0.222 (18) | 0.417 (12) | 0.245 (49) | below |
+| shares_purchased | — (0) | 0 (1) | — (0) | 0 (5) | below |
+| stock_comp_rollforward | 0.083 (12) | 0.455 (11) | 0.333 (12) | 0.952 (21) | below |
+| tax_reconciliation | 0.25 (12) | 0.4 (10) | 0 (12) | 0 (2) | below |
+| valuation_model_assumptions | — (0) | 0.5 (10) | — (0) | 0.8 (5) | below |
+| warrant_activity | — (0) | 0 (1) | 1.000 (5) | 0 (2) | below |
+| combined_operations_ci (extension, pooled) | P — (0) | R 0 (7) | — | — | below |
+| shares_purchased (extension, pooled) | P — (0) | R 0 (6) | — | — | below |
+| valuation_model_assumptions (extension, pooled) | P 1.000 (24) | R 0.615 (13) | — | — | below |
+| warrant_activity (extension, pooled) | P 1.000 (6) | R 0 (3) | — | — | below |
+
+at bar: 0 []
+below bar: 29 ['aoci_rollforward', 'balance_sheet', 'cash_flow', 'combined_operations_ci', 'commitments_contingencies', 'comprehensive_income', 'debt_maturity', 'deferred_tax', 'derivatives_hedging', 'eps_reconciliation', 'equity_statement', 'fair_value', 'income_statement', 'intangibles', 'inventory', 'lease_maturity', 'pension', 'ppe', 'related_party', 'segment_reporting', 'shares_purchased', 'stock_comp_rollforward', 'tax_reconciliation', 'valuation_model_assumptions', 'warrant_activity', 'combined_operations_ci (ext)', 'shares_purchased (ext)', 'valuation_model_assumptions (ext)', 'warrant_activity (ext)']
+unclassified remainder: {'B': {'estimator': 'unclassified-remainder', 'stratum': 'B', 'family': '', 'value': 0.125, 'n': 192}, 'D': {'estimator': 'unclassified-remainder', 'stratum': 'D', 'family': '', 'value': 0.1164, 'n': 189}}
+record problems: 337 | vocabulary notes: 13

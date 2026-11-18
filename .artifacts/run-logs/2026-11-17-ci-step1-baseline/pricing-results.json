@@ -1,0 +1,2453 @@
+{
+ "strata": {
+  "B": {
+   "precision_by_family": {
+    "aoci_rollforward": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "aoci_rollforward",
+      "value": 0.4167,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "aoci_rollforward",
+      "value": 0.4167,
+      "n": 12
+     }
+    ],
+    "balance_sheet": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "balance_sheet",
+      "value": 0.1875,
+      "n": 48
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "balance_sheet",
+      "value": 0.1875,
+      "n": 48
+     }
+    ],
+    "cash_flow": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "cash_flow",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "cash_flow",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "comprehensive_income": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "comprehensive_income",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "comprehensive_income",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "debt_maturity": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "debt_maturity",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "debt_maturity",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "deferred_tax": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "deferred_tax",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "deferred_tax",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "derivatives_hedging": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "derivatives_hedging",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "derivatives_hedging",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "eps_reconciliation": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "eps_reconciliation",
+      "value": 0.1667,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "eps_reconciliation",
+      "value": 0.1667,
+      "n": 12
+     }
+    ],
+    "equity_statement": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "equity_statement",
+      "value": 0.0833,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "equity_statement",
+      "value": 0.0833,
+      "n": 12
+     }
+    ],
+    "fair_value": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "fair_value",
+      "value": 0.75,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "fair_value",
+      "value": 0.75,
+      "n": 12
+     }
+    ],
+    "income_statement": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "income_statement",
+      "value": 0.1667,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "income_statement",
+      "value": 0.1667,
+      "n": 12
+     }
+    ],
+    "intangibles": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "intangibles",
+      "value": 0.6667,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "intangibles",
+      "value": 0.6667,
+      "n": 12
+     }
+    ],
+    "inventory": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "inventory",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "inventory",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "lease_maturity": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "lease_maturity",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "lease_maturity",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "pension": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "pension",
+      "value": 0.8333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "pension",
+      "value": 0.8333,
+      "n": 12
+     }
+    ],
+    "ppe": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "ppe",
+      "value": 0.1667,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "ppe",
+      "value": 0.1667,
+      "n": 12
+     }
+    ],
+    "related_party": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "related_party",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "related_party",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "segment_reporting": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "segment_reporting",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "segment_reporting",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "stock_comp_rollforward": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "stock_comp_rollforward",
+      "value": 0.0833,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "stock_comp_rollforward",
+      "value": 0.0833,
+      "n": 12
+     }
+    ],
+    "tax_reconciliation": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "B",
+      "family": "tax_reconciliation",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "B",
+      "family": "tax_reconciliation",
+      "value": 0.25,
+      "n": 12
+     }
+    ]
+   },
+   "weighted_population_precision": {
+    "aoci_rollforward": {
+     "strict": 0.4751,
+     "form_present": 0.4751,
+     "population_claims": 87,
+     "strict_covered_population": 87,
+     "form_present_covered_population": 87
+    },
+    "balance_sheet": {
+     "strict": 0.4252,
+     "form_present": 0.4252,
+     "population_claims": 778,
+     "strict_covered_population": 778,
+     "form_present_covered_population": 778
+    },
+    "cash_flow": {
+     "strict": 0.7623,
+     "form_present": 0.7623,
+     "population_claims": 1018,
+     "strict_covered_population": 1018,
+     "form_present_covered_population": 1018
+    },
+    "comprehensive_income": {
+     "strict": 0.4971,
+     "form_present": 0.4971,
+     "population_claims": 291,
+     "strict_covered_population": 291,
+     "form_present_covered_population": 291
+    },
+    "debt_maturity": {
+     "strict": 0.3143,
+     "form_present": 0.3143,
+     "population_claims": 35,
+     "strict_covered_population": 35,
+     "form_present_covered_population": 35
+    },
+    "deferred_tax": {
+     "strict": 0.6136,
+     "form_present": 0.6136,
+     "population_claims": 546,
+     "strict_covered_population": 546,
+     "form_present_covered_population": 546
+    },
+    "derivatives_hedging": {
+     "strict": 0.1328,
+     "form_present": 0.1328,
+     "population_claims": 2407,
+     "strict_covered_population": 2407,
+     "form_present_covered_population": 2407
+    },
+    "eps_reconciliation": {
+     "strict": 0.2749,
+     "form_present": 0.2749,
+     "population_claims": 314,
+     "strict_covered_population": 314,
+     "form_present_covered_population": 314
+    },
+    "equity_statement": {
+     "strict": 0.1711,
+     "form_present": 0.1711,
+     "population_claims": 752,
+     "strict_covered_population": 752,
+     "form_present_covered_population": 752
+    },
+    "fair_value": {
+     "strict": 0.8855,
+     "form_present": 0.8855,
+     "population_claims": 1019,
+     "strict_covered_population": 1019,
+     "form_present_covered_population": 1019
+    },
+    "income_statement": {
+     "strict": 0.2255,
+     "form_present": 0.2255,
+     "population_claims": 674,
+     "strict_covered_population": 674,
+     "form_present_covered_population": 674
+    },
+    "intangibles": {
+     "strict": 0.7019,
+     "form_present": 0.7019,
+     "population_claims": 511,
+     "strict_covered_population": 511,
+     "form_present_covered_population": 511
+    },
+    "inventory": {
+     "strict": 0.4974,
+     "form_present": 0.4974,
+     "population_claims": 191,
+     "strict_covered_population": 191,
+     "form_present_covered_population": 191
+    },
+    "lease_maturity": {
+     "strict": 0.2971,
+     "form_present": 0.2971,
+     "population_claims": 580,
+     "strict_covered_population": 580,
+     "form_present_covered_population": 580
+    },
+    "pension": {
+     "strict": 0.7213,
+     "form_present": 0.7213,
+     "population_claims": 1116,
+     "strict_covered_population": 1116,
+     "form_present_covered_population": 1116
+    },
+    "ppe": {
+     "strict": 0.2414,
+     "form_present": 0.2414,
+     "population_claims": 591,
+     "strict_covered_population": 591,
+     "form_present_covered_population": 591
+    },
+    "related_party": {
+     "strict": 0.2826,
+     "form_present": 0.2826,
+     "population_claims": 23,
+     "strict_covered_population": 23,
+     "form_present_covered_population": 23
+    },
+    "segment_reporting": {
+     "strict": 0.3107,
+     "form_present": 0.3107,
+     "population_claims": 486,
+     "strict_covered_population": 486,
+     "form_present_covered_population": 486
+    },
+    "stock_comp_rollforward": {
+     "strict": 0.0569,
+     "form_present": 0.0569,
+     "population_claims": 1563,
+     "strict_covered_population": 1563,
+     "form_present_covered_population": 1563
+    },
+    "tax_reconciliation": {
+     "strict": 0.6837,
+     "form_present": 0.6837,
+     "population_claims": 449,
+     "strict_covered_population": 449,
+     "form_present_covered_population": 449
+    }
+   },
+   "grouped_top_member": [
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "aoci_rollforward",
+     "value": 0.4545,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "balance_sheet",
+     "value": 0.2143,
+     "n": 42
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "cash_flow",
+     "value": 0.4286,
+     "n": 7
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "comprehensive_income",
+     "value": 0.375,
+     "n": 8
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "debt_maturity",
+     "value": 0.3636,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "deferred_tax",
+     "value": 0.4444,
+     "n": 9
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "derivatives_hedging",
+     "value": 0.25,
+     "n": 12
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "eps_reconciliation",
+     "value": 0.0909,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "equity_statement",
+     "value": 0.1,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "fair_value",
+     "value": 0.7273,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "income_statement",
+     "value": 0.1667,
+     "n": 12
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "intangibles",
+     "value": 0.7273,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "inventory",
+     "value": 0.3636,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "lease_maturity",
+     "value": 0.2727,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "pension",
+     "value": 0.8333,
+     "n": 12
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "ppe",
+     "value": 0.1818,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "related_party",
+     "value": 0.3333,
+     "n": 12
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "segment_reporting",
+     "value": 0.4444,
+     "n": 9
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "stock_comp_rollforward",
+     "value": 0.0909,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "B",
+     "family": "tax_reconciliation",
+     "value": 0.25,
+     "n": 8
+    }
+   ],
+   "calibration": [
+    {
+     "estimator": "calibration[5,7.5)",
+     "stratum": "B",
+     "family": "",
+     "value": 0.1714,
+     "n": 70
+    },
+    {
+     "estimator": "calibration[7.5,10)",
+     "stratum": "B",
+     "family": "",
+     "value": 0.1389,
+     "n": 72
+    },
+    {
+     "estimator": "calibration[10,15)",
+     "stratum": "B",
+     "family": "",
+     "value": 0.3239,
+     "n": 71
+    },
+    {
+     "estimator": "calibration[15,inf)",
+     "stratum": "B",
+     "family": "",
+     "value": 0.619,
+     "n": 63
+    },
+    {
+     "estimator": "calibration[5,7.5)",
+     "stratum": "D",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[7.5,10)",
+     "stratum": "D",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[10,15)",
+     "stratum": "D",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[15,inf)",
+     "stratum": "D",
+     "family": "",
+     "value": null,
+     "n": 0
+    }
+   ],
+   "assembly_precision": {
+    "valuation_model_assumptions": {
+     "n": 12,
+     "member": 12,
+     "split": 0,
+     "precision_strict": 1.0
+    },
+    "commitments_contingencies": {
+     "n": 12,
+     "member": 9,
+     "split": 0,
+     "precision_strict": 0.75
+    },
+    "warrant_activity": {
+     "n": 1,
+     "member": 1,
+     "split": 0,
+     "precision_strict": 1.0
+    }
+   },
+   "recall": {
+    "aoci_rollforward": {
+     "recall": 0.25,
+     "n": 4,
+     "claimed": 1,
+     "sweep_n": 3,
+     "cross_n": 1
+    },
+    "balance_sheet": {
+     "recall": 0.6471,
+     "n": 17,
+     "claimed": 11,
+     "sweep_n": 17,
+     "cross_n": 0
+    },
+    "cash_flow": {
+     "recall": 0.6,
+     "n": 15,
+     "claimed": 9,
+     "sweep_n": 15,
+     "cross_n": 0
+    },
+    "combined_operations_ci": {
+     "recall": 0.0,
+     "n": 5,
+     "claimed": 0,
+     "sweep_n": 5,
+     "cross_n": 0
+    },
+    "commitments_contingencies": {
+     "recall": 0.125,
+     "n": 8,
+     "claimed": 1,
+     "sweep_n": 4,
+     "cross_n": 4
+    },
+    "comprehensive_income": {
+     "recall": 0.0,
+     "n": 1,
+     "claimed": 0,
+     "sweep_n": 1,
+     "cross_n": 0
+    },
+    "debt_maturity": {
+     "recall": 0.0,
+     "n": 9,
+     "claimed": 0,
+     "sweep_n": 8,
+     "cross_n": 1
+    },
+    "deferred_tax": {
+     "recall": 0.6667,
+     "n": 15,
+     "claimed": 10,
+     "sweep_n": 14,
+     "cross_n": 1
+    },
+    "derivatives_hedging": {
+     "recall": 0.7647,
+     "n": 17,
+     "claimed": 13,
+     "sweep_n": 16,
+     "cross_n": 1
+    },
+    "eps_reconciliation": {
+     "recall": 0.2727,
+     "n": 11,
+     "claimed": 3,
+     "sweep_n": 7,
+     "cross_n": 4
+    },
+    "equity_statement": {
+     "recall": 0.5625,
+     "n": 16,
+     "claimed": 9,
+     "sweep_n": 15,
+     "cross_n": 1
+    },
+    "fair_value": {
+     "recall": 0.5185,
+     "n": 27,
+     "claimed": 14,
+     "sweep_n": 27,
+     "cross_n": 0
+    },
+    "income_statement": {
+     "recall": 0.0909,
+     "n": 11,
+     "claimed": 1,
+     "sweep_n": 9,
+     "cross_n": 2
+    },
+    "intangibles": {
+     "recall": 0.3889,
+     "n": 18,
+     "claimed": 7,
+     "sweep_n": 18,
+     "cross_n": 0
+    },
+    "inventory": {
+     "recall": 0.25,
+     "n": 4,
+     "claimed": 1,
+     "sweep_n": 4,
+     "cross_n": 0
+    },
+    "lease_maturity": {
+     "recall": 0.5,
+     "n": 10,
+     "claimed": 5,
+     "sweep_n": 7,
+     "cross_n": 3
+    },
+    "pension": {
+     "recall": 0.3846,
+     "n": 13,
+     "claimed": 5,
+     "sweep_n": 12,
+     "cross_n": 1
+    },
+    "ppe": {
+     "recall": 0.5,
+     "n": 12,
+     "claimed": 6,
+     "sweep_n": 12,
+     "cross_n": 0
+    },
+    "related_party": {
+     "recall": 0.125,
+     "n": 8,
+     "claimed": 1,
+     "sweep_n": 8,
+     "cross_n": 0
+    },
+    "segment_reporting": {
+     "recall": 0.2222,
+     "n": 18,
+     "claimed": 4,
+     "sweep_n": 16,
+     "cross_n": 2
+    },
+    "shares_purchased": {
+     "recall": 0.0,
+     "n": 1,
+     "claimed": 0,
+     "sweep_n": 1,
+     "cross_n": 0
+    },
+    "stock_comp_rollforward": {
+     "recall": 0.4545,
+     "n": 11,
+     "claimed": 5,
+     "sweep_n": 11,
+     "cross_n": 0
+    },
+    "tax_reconciliation": {
+     "recall": 0.4,
+     "n": 10,
+     "claimed": 4,
+     "sweep_n": 9,
+     "cross_n": 1
+    },
+    "valuation_model_assumptions": {
+     "recall": 0.5,
+     "n": 10,
+     "claimed": 5,
+     "sweep_n": 9,
+     "cross_n": 1
+    },
+    "warrant_activity": {
+     "recall": 0.0,
+     "n": 1,
+     "claimed": 0,
+     "sweep_n": 1,
+     "cross_n": 0
+    }
+   },
+   "false_classes_by_family": {
+    "aoci_rollforward": {
+     "B:percentage-rows": 1,
+     "B:provision-detail": 1,
+     "B:composition": 3,
+     "B:movement-detail": 1,
+     "B:unclassified": 1
+    },
+    "balance_sheet": {
+     "B:composition": 13,
+     "B:gold:deferred_tax": 1,
+     "B:supplemental-schedule": 2,
+     "B:statement-summary": 13,
+     "B:acquisition-detail": 4,
+     "B:movement-detail": 1,
+     "B:shape:balance_sheet": 1,
+     "B:gold:income_statement": 1,
+     "B:percentage-rows": 1,
+     "B:restatement-recast": 2
+    },
+    "cash_flow": {
+     "B:composition": 1,
+     "B:movement-detail": 3,
+     "B:statement-summary": 3,
+     "B:gold:fair_value": 1,
+     "B:percentage-rows": 1
+    },
+    "comprehensive_income": {
+     "B:movement-detail": 3,
+     "B:gold:equity_statement": 1,
+     "B:gold:derivatives_hedging": 1,
+     "B:acquisition-detail": 1,
+     "B:gold:aoci_rollforward": 1,
+     "B:unclassified": 1,
+     "B:host-variant:comprehensive_income": 1
+    },
+    "debt_maturity": {
+     "B:provision-detail": 1,
+     "B:composition": 5,
+     "B:statement-summary": 2
+    },
+    "deferred_tax": {
+     "B:acquisition-detail": 2,
+     "B:composition": 3,
+     "B:gold:tax_reconciliation": 1,
+     "B:unclassified": 1,
+     "B:gold:segment_reporting": 1
+    },
+    "derivatives_hedging": {
+     "B:unclassified": 2,
+     "B:gold:pension": 1,
+     "B:composition": 1,
+     "B:summary-columns": 1,
+     "B:provision-detail": 1,
+     "B:statement-summary": 1,
+     "B:ladder-detail": 1,
+     "B:supplemental-schedule": 1
+    },
+    "eps_reconciliation": {
+     "B:statement-summary": 3,
+     "B:unclassified": 5,
+     "B:composition": 1,
+     "B:gold:warrant_activity": 1
+    },
+    "equity_statement": {
+     "B:gold:eps_reconciliation": 4,
+     "B:supplemental-schedule": 1,
+     "B:unclassified": 1,
+     "B:composition": 2,
+     "B:statement-summary": 1,
+     "B:acquisition-detail": 1,
+     "B:movement-detail": 1
+    },
+    "fair_value": {
+     "B:unclassified": 1,
+     "B:composition": 2
+    },
+    "income_statement": {
+     "B:segment-detail": 1,
+     "B:gold:segment_reporting": 2,
+     "B:percentage-rows": 1,
+     "B:summary-columns": 1,
+     "B:composition": 5
+    },
+    "intangibles": {
+     "B:movement-detail": 2,
+     "B:composition": 2
+    },
+    "inventory": {
+     "B:composition": 3,
+     "B:percentage-rows": 1,
+     "B:provision-detail": 1,
+     "B:statement-summary": 3
+    },
+    "lease_maturity": {
+     "B:gold:commitments_contingencies": 3,
+     "B:composition": 3,
+     "B:gold:debt_maturity": 1,
+     "B:unclassified": 1,
+     "B:gold:valuation_model_assumptions": 1
+    },
+    "pension": {
+     "B:unclassified": 1,
+     "B:gold:commitments_contingencies": 1
+    },
+    "ppe": {
+     "B:acquisition-detail": 2,
+     "B:unclassified": 1,
+     "B:composition": 3,
+     "B:summary-columns": 2,
+     "B:percentage-rows": 2
+    },
+    "related_party": {
+     "B:composition": 1,
+     "B:percentage-rows": 1,
+     "B:unclassified": 5,
+     "B:gold:lease_maturity": 1
+    },
+    "segment_reporting": {
+     "B:segment-detail": 3,
+     "B:percentage-rows": 1,
+     "B:unclassified": 3,
+     "B:gold:income_statement": 1
+    },
+    "stock_comp_rollforward": {
+     "B:gold:eps_reconciliation": 1,
+     "B:composition": 4,
+     "B:grant-activity": 4,
+     "B:unclassified": 1,
+     "B:movement-detail": 1
+    },
+    "tax_reconciliation": {
+     "B:composition": 1,
+     "B:movement-detail": 1,
+     "B:statement-summary": 3,
+     "B:percentage-rows": 1,
+     "B:provision-detail": 3
+    }
+   }
+  },
+  "D": {
+   "precision_by_family": {
+    "aoci_rollforward": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "aoci_rollforward",
+      "value": 0.4167,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "aoci_rollforward",
+      "value": 0.4167,
+      "n": 12
+     }
+    ],
+    "balance_sheet": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "balance_sheet",
+      "value": 0.2917,
+      "n": 48
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "balance_sheet",
+      "value": 0.2917,
+      "n": 48
+     }
+    ],
+    "cash_flow": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "cash_flow",
+      "value": 0.1667,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "cash_flow",
+      "value": 0.1667,
+      "n": 12
+     }
+    ],
+    "comprehensive_income": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "comprehensive_income",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "comprehensive_income",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "debt_maturity": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "debt_maturity",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "debt_maturity",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "deferred_tax": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "deferred_tax",
+      "value": 0.0833,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "deferred_tax",
+      "value": 0.0833,
+      "n": 12
+     }
+    ],
+    "derivatives_hedging": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "derivatives_hedging",
+      "value": 0.5,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "derivatives_hedging",
+      "value": 0.5,
+      "n": 12
+     }
+    ],
+    "eps_reconciliation": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "eps_reconciliation",
+      "value": 0.4167,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "eps_reconciliation",
+      "value": 0.4167,
+      "n": 12
+     }
+    ],
+    "equity_statement": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "equity_statement",
+      "value": 0.4167,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "equity_statement",
+      "value": 0.4167,
+      "n": 12
+     }
+    ],
+    "fair_value": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "fair_value",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "fair_value",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "income_statement": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "income_statement",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "income_statement",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "intangibles": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "intangibles",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "intangibles",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "inventory": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "inventory",
+      "value": 0.4167,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "inventory",
+      "value": 0.4167,
+      "n": 12
+     }
+    ],
+    "lease_maturity": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "lease_maturity",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "lease_maturity",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "pension": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "pension",
+      "value": 0.25,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "pension",
+      "value": 0.25,
+      "n": 12
+     }
+    ],
+    "ppe": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "ppe",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "ppe",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "related_party": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "related_party",
+      "value": 0.5833,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "related_party",
+      "value": 0.5833,
+      "n": 12
+     }
+    ],
+    "segment_reporting": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "segment_reporting",
+      "value": 0.4167,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "segment_reporting",
+      "value": 0.4167,
+      "n": 12
+     }
+    ],
+    "stock_comp_rollforward": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "stock_comp_rollforward",
+      "value": 0.3333,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "stock_comp_rollforward",
+      "value": 0.3333,
+      "n": 12
+     }
+    ],
+    "tax_reconciliation": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "tax_reconciliation",
+      "value": 0.0,
+      "n": 12
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "tax_reconciliation",
+      "value": 0.0,
+      "n": 12
+     }
+    ],
+    "warrant_activity": [
+     {
+      "estimator": "precision-strict",
+      "stratum": "D",
+      "family": "warrant_activity",
+      "value": 1.0,
+      "n": 5
+     },
+     {
+      "estimator": "precision-form-present",
+      "stratum": "D",
+      "family": "warrant_activity",
+      "value": 1.0,
+      "n": 5
+     }
+    ]
+   },
+   "weighted_population_precision": {
+    "aoci_rollforward": {
+     "strict": 0.5139,
+     "form_present": 0.5139,
+     "population_claims": 192,
+     "strict_covered_population": 192,
+     "form_present_covered_population": 192
+    },
+    "balance_sheet": {
+     "strict": 0.72,
+     "form_present": 0.72,
+     "population_claims": 1291,
+     "strict_covered_population": 1291,
+     "form_present_covered_population": 1291
+    },
+    "cash_flow": {
+     "strict": 0.532,
+     "form_present": 0.532,
+     "population_claims": 2168,
+     "strict_covered_population": 2168,
+     "form_present_covered_population": 2168
+    },
+    "comprehensive_income": {
+     "strict": 0.5501,
+     "form_present": 0.5501,
+     "population_claims": 715,
+     "strict_covered_population": 715,
+     "form_present_covered_population": 715
+    },
+    "debt_maturity": {
+     "strict": 0.2443,
+     "form_present": 0.2443,
+     "population_claims": 44,
+     "strict_covered_population": 44,
+     "form_present_covered_population": 44
+    },
+    "deferred_tax": {
+     "strict": 0.2068,
+     "form_present": 0.2068,
+     "population_claims": 166,
+     "strict_covered_population": 166,
+     "form_present_covered_population": 166
+    },
+    "derivatives_hedging": {
+     "strict": 0.4538,
+     "form_present": 0.4538,
+     "population_claims": 3481,
+     "strict_covered_population": 3481,
+     "form_present_covered_population": 3481
+    },
+    "eps_reconciliation": {
+     "strict": 0.8614,
+     "form_present": 0.8614,
+     "population_claims": 856,
+     "strict_covered_population": 856,
+     "form_present_covered_population": 856
+    },
+    "equity_statement": {
+     "strict": 0.5451,
+     "form_present": 0.5451,
+     "population_claims": 1812,
+     "strict_covered_population": 1812,
+     "form_present_covered_population": 1812
+    },
+    "fair_value": {
+     "strict": 0.723,
+     "form_present": 0.723,
+     "population_claims": 2047,
+     "strict_covered_population": 2047,
+     "form_present_covered_population": 2047
+    },
+    "income_statement": {
+     "strict": 0.3476,
+     "form_present": 0.3476,
+     "population_claims": 1312,
+     "strict_covered_population": 1312,
+     "form_present_covered_population": 1312
+    },
+    "intangibles": {
+     "strict": 0.3629,
+     "form_present": 0.3629,
+     "population_claims": 857,
+     "strict_covered_population": 857,
+     "form_present_covered_population": 857
+    },
+    "inventory": {
+     "strict": 0.6394,
+     "form_present": 0.6394,
+     "population_claims": 526,
+     "strict_covered_population": 526,
+     "form_present_covered_population": 526
+    },
+    "lease_maturity": {
+     "strict": 0.2978,
+     "form_present": 0.2978,
+     "population_claims": 581,
+     "strict_covered_population": 581,
+     "form_present_covered_population": 581
+    },
+    "pension": {
+     "strict": 0.3423,
+     "form_present": 0.3423,
+     "population_claims": 446,
+     "strict_covered_population": 446,
+     "form_present_covered_population": 446
+    },
+    "ppe": {
+     "strict": 0.6591,
+     "form_present": 0.6591,
+     "population_claims": 663,
+     "strict_covered_population": 663,
+     "form_present_covered_population": 663
+    },
+    "related_party": {
+     "strict": 0.6371,
+     "form_present": 0.6371,
+     "population_claims": 31,
+     "strict_covered_population": 31,
+     "form_present_covered_population": 31
+    },
+    "segment_reporting": {
+     "strict": 0.4385,
+     "form_present": 0.4385,
+     "population_claims": 713,
+     "strict_covered_population": 713,
+     "form_present_covered_population": 713
+    },
+    "stock_comp_rollforward": {
+     "strict": 0.3521,
+     "form_present": 0.3521,
+     "population_claims": 2144,
+     "strict_covered_population": 2144,
+     "form_present_covered_population": 2144
+    },
+    "tax_reconciliation": {
+     "strict": 0.0,
+     "form_present": 0.0,
+     "population_claims": 43,
+     "strict_covered_population": 43,
+     "form_present_covered_population": 43
+    },
+    "warrant_activity": {
+     "strict": 1.0,
+     "form_present": 1.0,
+     "population_claims": 5,
+     "strict_covered_population": 5,
+     "form_present_covered_population": 5
+    }
+   },
+   "grouped_top_member": [
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "aoci_rollforward",
+     "value": 0.4,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "balance_sheet",
+     "value": 0.35,
+     "n": 40
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "cash_flow",
+     "value": 0.2,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "comprehensive_income",
+     "value": 0.4,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "debt_maturity",
+     "value": 0.3,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "deferred_tax",
+     "value": 0.1,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "derivatives_hedging",
+     "value": 0.6,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "eps_reconciliation",
+     "value": 0.5,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "equity_statement",
+     "value": 0.4545,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "fair_value",
+     "value": 0.3333,
+     "n": 12
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "income_statement",
+     "value": 0.3333,
+     "n": 9
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "intangibles",
+     "value": 0.4444,
+     "n": 9
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "inventory",
+     "value": 0.5,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "lease_maturity",
+     "value": 0.3,
+     "n": 10
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "pension",
+     "value": 0.25,
+     "n": 12
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "ppe",
+     "value": 0.3636,
+     "n": 11
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "related_party",
+     "value": 0.7143,
+     "n": 7
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "segment_reporting",
+     "value": 0.4286,
+     "n": 7
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "stock_comp_rollforward",
+     "value": 0.4444,
+     "n": 9
+    },
+    {
+     "estimator": "grouped-top-member",
+     "stratum": "D",
+     "family": "tax_reconciliation",
+     "value": 0.0,
+     "n": 9
+    }
+   ],
+   "calibration": [
+    {
+     "estimator": "calibration[5,7.5)",
+     "stratum": "B",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[7.5,10)",
+     "stratum": "B",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[10,15)",
+     "stratum": "B",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[15,inf)",
+     "stratum": "B",
+     "family": "",
+     "value": null,
+     "n": 0
+    },
+    {
+     "estimator": "calibration[5,7.5)",
+     "stratum": "D",
+     "family": "",
+     "value": 0.1711,
+     "n": 76
+    },
+    {
+     "estimator": "calibration[7.5,10)",
+     "stratum": "D",
+     "family": "",
+     "value": 0.1831,
+     "n": 71
+    },
+    {
+     "estimator": "calibration[10,15)",
+     "stratum": "D",
+     "family": "",
+     "value": 0.338,
+     "n": 71
+    },
+    {
+     "estimator": "calibration[15,inf)",
+     "stratum": "D",
+     "family": "",
+     "value": 0.6667,
+     "n": 63
+    }
+   ],
+   "assembly_precision": {
+    "commitments_contingencies": {
+     "n": 12,
+     "member": 10,
+     "split": 0,
+     "precision_strict": 0.8333
+    },
+    "valuation_model_assumptions": {
+     "n": 12,
+     "member": 12,
+     "split": 0,
+     "precision_strict": 1.0
+    }
+   },
+   "recall": {
+    "aoci_rollforward": {
+     "recall": 0.4,
+     "n": 10,
+     "claimed": 4,
+     "sweep_n": 5,
+     "cross_n": 5
+    },
+    "balance_sheet": {
+     "recall": 0.9048,
+     "n": 21,
+     "claimed": 19,
+     "sweep_n": 18,
+     "cross_n": 3
+    },
+    "cash_flow": {
+     "recall": 1.0,
+     "n": 34,
+     "claimed": 34,
+     "sweep_n": 34,
+     "cross_n": 0
+    },
+    "combined_operations_ci": {
+     "recall": 0.0,
+     "n": 3,
+     "claimed": 0,
+     "sweep_n": 2,
+     "cross_n": 1
+    },
+    "commitments_contingencies": {
+     "recall": 0.375,
+     "n": 8,
+     "claimed": 3,
+     "sweep_n": 3,
+     "cross_n": 5
+    },
+    "comprehensive_income": {
+     "recall": 0.7778,
+     "n": 9,
+     "claimed": 7,
+     "sweep_n": 9,
+     "cross_n": 0
+    },
+    "debt_maturity": {
+     "recall": 0.25,
+     "n": 8,
+     "claimed": 2,
+     "sweep_n": 3,
+     "cross_n": 5
+    },
+    "derivatives_hedging": {
+     "recall": 0.8636,
+     "n": 22,
+     "claimed": 19,
+     "sweep_n": 21,
+     "cross_n": 1
+    },
+    "eps_reconciliation": {
+     "recall": 0.7143,
+     "n": 14,
+     "claimed": 10,
+     "sweep_n": 12,
+     "cross_n": 2
+    },
+    "equity_statement": {
+     "recall": 0.8846,
+     "n": 26,
+     "claimed": 23,
+     "sweep_n": 25,
+     "cross_n": 1
+    },
+    "fair_value": {
+     "recall": 0.7,
+     "n": 40,
+     "claimed": 28,
+     "sweep_n": 34,
+     "cross_n": 6
+    },
+    "income_statement": {
+     "recall": 0.6923,
+     "n": 26,
+     "claimed": 18,
+     "sweep_n": 24,
+     "cross_n": 2
+    },
+    "intangibles": {
+     "recall": 0.4375,
+     "n": 16,
+     "claimed": 7,
+     "sweep_n": 16,
+     "cross_n": 0
+    },
+    "inventory": {
+     "recall": 0.875,
+     "n": 8,
+     "claimed": 7,
+     "sweep_n": 7,
+     "cross_n": 1
+    },
+    "lease_maturity": {
+     "recall": 0.875,
+     "n": 8,
+     "claimed": 7,
+     "sweep_n": 8,
+     "cross_n": 0
+    },
+    "pension": {
+     "recall": 0.6,
+     "n": 5,
+     "claimed": 3,
+     "sweep_n": 4,
+     "cross_n": 1
+    },
+    "ppe": {
+     "recall": 1.0,
+     "n": 7,
+     "claimed": 7,
+     "sweep_n": 7,
+     "cross_n": 0
+    },
+    "related_party": {
+     "recall": 0.0,
+     "n": 4,
+     "claimed": 0,
+     "sweep_n": 3,
+     "cross_n": 1
+    },
+    "segment_reporting": {
+     "recall": 0.2449,
+     "n": 49,
+     "claimed": 12,
+     "sweep_n": 44,
+     "cross_n": 5
+    },
+    "shares_purchased": {
+     "recall": 0.0,
+     "n": 5,
+     "claimed": 0,
+     "sweep_n": 5,
+     "cross_n": 0
+    },
+    "stock_comp_rollforward": {
+     "recall": 0.9524,
+     "n": 21,
+     "claimed": 20,
+     "sweep_n": 21,
+     "cross_n": 0
+    },
+    "tax_reconciliation": {
+     "recall": 0.0,
+     "n": 2,
+     "claimed": 0,
+     "sweep_n": 1,
+     "cross_n": 1
+    },
+    "valuation_model_assumptions": {
+     "recall": 0.8,
+     "n": 5,
+     "claimed": 4,
+     "sweep_n": 4,
+     "cross_n": 1
+    },
+    "warrant_activity": {
+     "recall": 0.0,
+     "n": 2,
+     "claimed": 0,
+     "sweep_n": 2,
+     "cross_n": 0
+    }
+   },
+   "false_classes_by_family": {
+    "aoci_rollforward": {
+     "D:composition": 4,
+     "D:movement-detail": 3
+    },
+    "balance_sheet": {
+     "D:composition": 19,
+     "D:shape:balance_sheet": 1,
+     "D:movement-detail": 2,
+     "D:statement-summary": 3,
+     "D:gold:related_party": 1,
+     "D:supplemental-schedule": 1,
+     "D:gold:fair_value": 3,
+     "D:restatement-recast": 1,
+     "D:percentage-rows": 1,
+     "D:gold:derivatives_hedging": 1,
+     "D:acquisition-detail": 1
+    },
+    "cash_flow": {
+     "D:movement-detail": 1,
+     "D:gold:fair_value": 1,
+     "D:gold:segment_reporting": 1,
+     "D:composition": 3,
+     "D:statement-summary": 2,
+     "D:gold:debt_maturity": 1,
+     "D:unclassified": 1
+    },
+    "comprehensive_income": {
+     "D:gold:aoci_rollforward": 3,
+     "D:gold:combined_operations_ci": 1,
+     "D:composition": 2,
+     "D:unclassified": 1,
+     "D:gold:income_statement": 1
+    },
+    "debt_maturity": {
+     "D:unclassified": 2,
+     "D:composition": 6,
+     "D:gold:aoci_rollforward": 1
+    },
+    "deferred_tax": {
+     "D:gold:tax_reconciliation": 1,
+     "D:composition": 3,
+     "D:gold:balance_sheet": 3,
+     "D:ladder-detail": 1,
+     "D:acquisition-detail": 1,
+     "D:gold:pension": 1,
+     "D:shape:balance_sheet": 1
+    },
+    "derivatives_hedging": {
+     "D:provision-detail": 1,
+     "D:unclassified": 1,
+     "D:composition": 2,
+     "D:gold:fair_value": 2
+    },
+    "eps_reconciliation": {
+     "D:movement-detail": 1,
+     "D:composition": 3,
+     "D:gold:debt_maturity": 1,
+     "D:unclassified": 2
+    },
+    "equity_statement": {
+     "D:unclassified": 1,
+     "D:composition": 3,
+     "D:summary-columns": 1,
+     "D:acquisition-detail": 1,
+     "D:gold:segment_reporting": 1
+    },
+    "fair_value": {
+     "D:ladder-detail": 1,
+     "D:gold:debt_maturity": 2,
+     "D:composition": 5
+    },
+    "income_statement": {
+     "D:unclassified": 2,
+     "D:statement-summary": 6,
+     "D:gold:segment_reporting": 1
+    },
+    "intangibles": {
+     "D:movement-detail": 2,
+     "D:composition": 5,
+     "D:gold:inventory": 1
+    },
+    "inventory": {
+     "D:gold:segment_reporting": 1,
+     "D:composition": 3,
+     "D:statement-summary": 1,
+     "D:acquisition-detail": 1,
+     "D:provision-detail": 1
+    },
+    "lease_maturity": {
+     "D:gold:debt_maturity": 1,
+     "D:composition": 7,
+     "D:summary-columns": 1
+    },
+    "pension": {
+     "D:gold:commitments_contingencies": 2,
+     "D:movement-detail": 1,
+     "D:unclassified": 4,
+     "D:gold:segment_reporting": 1,
+     "D:statement-summary": 1
+    },
+    "ppe": {
+     "D:composition": 5,
+     "D:provision-detail": 1,
+     "D:gold:inventory": 1,
+     "D:gold:commitments_contingencies": 1
+    },
+    "related_party": {
+     "D:segment-detail": 2,
+     "D:gold:eps_reconciliation": 1,
+     "D:statement-summary": 1,
+     "D:unclassified": 1
+    },
+    "segment_reporting": {
+     "D:segment-detail": 4,
+     "D:gold:income_statement": 1,
+     "D:unclassified": 1,
+     "D:summary-columns": 1
+    },
+    "stock_comp_rollforward": {
+     "D:gold:valuation_model_assumptions": 1,
+     "D:unclassified": 3,
+     "D:composition": 2,
+     "D:gold:equity_statement": 1,
+     "D:statement-summary": 1
+    },
+    "tax_reconciliation": {
+     "D:unclassified": 3,
+     "D:gold:commitments_contingencies": 2,
+     "D:percentage-rows": 2,
+     "D:summary-columns": 2,
+     "D:gold:eps_reconciliation": 1,
+     "D:provision-detail": 1,
+     "D:ladder-detail": 1
+    },
+    "warrant_activity": {}
+   }
+  }
+ },
+ "unclassified_remainder": {
+  "B": {
+   "estimator": "unclassified-remainder",
+   "stratum": "B",
+   "family": "",
+   "value": 0.125,
+   "n": 192
+  },
+  "D": {
+   "estimator": "unclassified-remainder",
+   "stratum": "D",
+   "family": "",
+   "value": 0.1164,
+   "n": 189
+  }
+ },
+ "false_claim_class_totals": {
+  "B": {
+   "statement-summary": 29,
+   "composition": 53,
+   "unclassified": 24,
+   "gold:eps_reconciliation": 5,
+   "acquisition-detail": 10,
+   "percentage-rows": 10,
+   "segment-detail": 4,
+   "provision-detail": 7,
+   "gold:deferred_tax": 1,
+   "supplemental-schedule": 4,
+   "movement-detail": 13,
+   "gold:commitments_contingencies": 4,
+   "gold:equity_statement": 1,
+   "gold:debt_maturity": 1,
+   "shape:balance_sheet": 1,
+   "gold:segment_reporting": 3,
+   "gold:pension": 1,
+   "summary-columns": 4,
+   "gold:derivatives_hedging": 1,
+   "gold:warrant_activity": 1,
+   "gold:tax_reconciliation": 1,
+   "gold:income_statement": 2,
+   "gold:fair_value": 1,
+   "grant-activity": 4,
+   "gold:aoci_rollforward": 1,
+   "ladder-detail": 1,
+   "gold:lease_maturity": 1,
+   "gold:valuation_model_assumptions": 1,
+   "restatement-recast": 2,
+   "host-variant:comprehensive_income": 1
+  },
+  "D": {
+   "ladder-detail": 3,
+   "gold:commitments_contingencies": 5,
+   "composition": 72,
+   "segment-detail": 6,
+   "provision-detail": 4,
+   "movement-detail": 10,
+   "gold:debt_maturity": 5,
+   "gold:aoci_rollforward": 4,
+   "unclassified": 22,
+   "gold:fair_value": 6,
+   "gold:segment_reporting": 5,
+   "shape:balance_sheet": 2,
+   "percentage-rows": 3,
+   "summary-columns": 5,
+   "gold:income_statement": 2,
+   "statement-summary": 15,
+   "gold:tax_reconciliation": 1,
+   "gold:related_party": 1,
+   "gold:valuation_model_assumptions": 1,
+   "gold:combined_operations_ci": 1,
+   "gold:balance_sheet": 3,
+   "supplemental-schedule": 1,
+   "acquisition-detail": 4,
+   "restatement-recast": 1,
+   "gold:eps_reconciliation": 2,
+   "gold:equity_statement": 1,
+   "gold:inventory": 2,
+   "gold:pension": 1,
+   "gold:derivatives_hedging": 1
+  }
+ },
+ "delta_vs_step4": {},
+ "record_problems": [
+  "0000024090-24-000031:192: false claim without false_claim_mechanism",
+  "0000059558-19-000010:95: unknown mechanism 'caption-echo'",
+  "0000095953-14-000014:30: false claim without false_claim_mechanism",
+  "0000095953-14-000014:30: false claim without false_claim_mechanism",
+  "0000100493-24-000119:39: false claim without false_claim_mechanism",
+  "0000105770-25-000013:38: false claim without false_claim_mechanism",
+  "0000310522-26-000015:147: false claim without false_claim_mechanism",
+  "0000352541-13-000007:102: false claim without false_claim_mechanism",
+  "0000352541-13-000007:229: false claim without false_claim_mechanism",
+  "0000352541-13-000007:37: false claim without false_claim_mechanism",
+  "0000717538-08-000023:61: unknown mechanism 'prose-adjacency'",
+  "0000824142-14-000015:6: unknown mechanism 'plan-summary'",
+  "0000824142-14-000015:9: unknown mechanism 'selected-data'",
+  "0000875320-15-000012:50: unknown mechanism 'line-detail'",
+  "0000895417-19-000012:26: unknown mechanism 'portfolio-detail'",
+  "0000895417-19-000012:58: unknown mechanism 'per-share-echo'",
+  "0000908311-23-000020:41: unknown mechanism 'purchase-allocation'",
+  "0000908311-23-000020:41: unknown mechanism 'purchase-allocation'",
+  "0000914760-08-000059:12: unknown mechanism 'selected-data'",
+  "0000950123-10-079962:30: unknown mechanism 'caption-echo'",
+  "0000950123-10-079962:40: false claim without false_claim_mechanism",
+  "0000950123-10-079962:40: false claim without false_claim_mechanism",
+  "0000950123-11-018077:114: false claim without false_claim_mechanism",
+  "0000950123-11-018077:114: false claim without false_claim_mechanism",
+  "0000950123-11-018077:119: false claim without false_claim_mechanism",
+  "0000950123-11-018077:80: false claim without false_claim_mechanism",
+  "0000950123-12-004309:68: false claim without false_claim_mechanism",
+  "0000950135-07-001271:45: unknown mechanism 'caption-echo'",
+  "0000950135-07-001271:66: unknown mechanism 'caption-echo'",
+  "0000950152-07-009267:27: false claim without false_claim_mechanism",
+  "0000950170-22-001814:7: unknown mechanism 'caption-echo'",
+  "0000950170-22-025352:42: false claim without false_claim_mechanism",
+  "0000950170-22-025352:65: false claim without false_claim_mechanism",
+  "0000950170-23-002852:37: unknown mechanism 'caption-echo'",
+  "0000950170-23-002852:37: unknown mechanism 'caption-echo'",
+  "0000950170-23-006232:23: false claim without false_claim_mechanism",
+  "0000950170-24-018793:39: unknown mechanism 'caption-echo'",
+  "0000950170-25-031322:22: unknown mechanism 'caption-echo'",
+  "0000950170-25-040254:29: false claim without false_claim_mechanism",
+  "0001002014-13-000141:27: unknown mechanism 'caption-echo'",
+  "0001003297-09-000203:32: false claim without false_claim_mechanism",
+  "0001019687-16-005474:32: false claim without false_claim_mechanism",
+  "0001019687-16-005474:35: unknown mechanism 'caption-echo'",
+  "0001019687-16-005474:40: unknown mechanism 'ladder-of-the-other-subject'",
+  "0001023128-23-000053:48: false claim without false_claim_mechanism",
+  "0001025835-15-000012:11: false claim without false_claim_mechanism",
+  "0001047469-10-001476:46: false claim without false_claim_mechanism",
+  "0001047469-12-001474:34: false claim without false_claim_mechanism",
+  "0001047469-12-002276:36: false claim without false_claim_mechanism",
+  "0001050441-25-000051:45: false claim without false_claim_mechanism",
+  "0001058290-18-000009:26: false claim without false_claim_mechanism",
+  "0001084048-13-000002:60: unknown mechanism 'caption-echo'",
+  "0001104659-05-009425:35: false claim without false_claim_mechanism",
+  "0001104659-05-019334:51: false claim without false_claim_mechanism",
+  "0001104659-07-024236:14: false claim without false_claim_mechanism",
+  "0001104659-07-024236:19: false claim without false_claim_mechanism",
+  "0001108205-26-000043:16: unknown mechanism 'caption-echo'",
+  "0001144204-12-014863:26: unknown mechanism 'caption-echo'",
+  "0001144204-15-012949:16: false claim without false_claim_mechanism",
+  "0001156375-14-000012:64: unknown mechanism 'caption-echo'",
+  "0001166928-21-000018:60: false claim without false_claim_mechanism",
+  "0001171843-15-001398:31: unknown mechanism 'caption-echo'",
+  "0001171843-20-001710:17: unknown mechanism 'caption-echo'",
+  "0001174947-18-001521:21: unknown mechanism 'caption-echo'",
+  "0001193125-05-042628:89: false claim without false_claim_mechanism",
+  "0001193125-05-042628:94: false claim without false_claim_mechanism",
+  "0001193125-07-037015:33: unknown mechanism 'caption-echo'",
+  "0001193125-07-037015:33: unknown mechanism 'caption-echo'",
+  "0001193125-08-043772:8: unknown mechanism 'caption-echo'",
+  "0001193125-08-043772:86: unknown mechanism 'caption-echo'",
+  "0001193125-09-041050:100: unknown mechanism 'caption-echo'",
+  "0001193125-09-067796:60: unknown mechanism 'caption-echo'",
+  "0001193125-11-068739:59: unknown mechanism 'caption-echo'",
+  "0001193125-12-075633:53: unknown mechanism 'caption-echo'",
+  "0001193125-12-249202:13: unknown mechanism 'caption-echo'",
+  "0001193125-12-408603:20: unknown mechanism 'caption-echo'",
+  "0001193125-13-072822:33: unknown mechanism 'caption-echo'",
+  "0001193125-15-085094:19: unknown mechanism 'caption-echo'",
+  "0001193125-15-085094:19: unknown mechanism 'caption-echo'",
+  "0001193125-18-077161:136: unknown mechanism 'caption-echo'",
+  "0001193125-18-303041:55: unknown mechanism 'caption-echo'",
+  "0001193125-22-061038:55: unknown mechanism 'caption-echo'",
+  "0001193125-22-078463:18: unknown mechanism 'caption-echo'",
+  "0001193125-24-051772:71: unknown mechanism 'caption-echo'",
+  "0001193125-24-051772:87: false claim without false_claim_mechanism",
+  "0001213900-17-003009:7: unknown mechanism 'caption-echo'",
+  "0001213900-23-026399:71: unknown mechanism 'caption-echo'",
+  "0001213900-24-027863:8: false claim without false_claim_mechanism",
+  "0001213900-26-044078:18: unknown mechanism 'caption-echo'",
+  "0001264931-12-000735:20: false claim without false_claim_mechanism",
+  "0001289419-24-000010:75: false claim without false_claim_mechanism",
+  "0001307748-25-000028:74: false claim without false_claim_mechanism",
+  "0001327567-14-000028:38: false claim without false_claim_mechanism",
+  "0001327567-14-000028:54: false claim without false_claim_mechanism",
+  "0001333986-21-000011:186: false claim without false_claim_mechanism",
+  "0001395942-16-000261:14: false claim without false_claim_mechanism",
+  "0001395942-16-000261:75: false claim without false_claim_mechanism",
+  "0001396009-20-000006:223: unknown mechanism 'caption-echo'",
+  "0001403528-13-000008:92: false claim without false_claim_mechanism",
+  "0001403528-13-000008:92: false claim without false_claim_mechanism",
+  "0001408075-13-000011:95: unknown mechanism 'purchase-commitment-ladder'",
+  "0001437749-14-004497:17: unknown mechanism 'caption-echo'",
+  "0001437749-14-004497:19: unknown mechanism 'caption-echo'",
+  "0001437749-19-017573:12: unknown mechanism 'grant-listing'",
+  "0001437749-23-004492:97: unknown mechanism 'caption-echo'",
+  "0001437749-23-004492:98: unknown mechanism 'caption-echo'",
+  "0001443646-21-000079:79: unknown mechanism 'outstanding-snapshot-not-rollforward'",
+  "0001493152-17-015273:14: unknown mechanism 'caption-echo'",
+  "0001493152-22-017952:9: unknown mechanism 'caption-echo'",
+  "0001493152-23-010336:11: unknown mechanism 'caption-echo'",
+  "0001493152-26-017069:12: unknown mechanism 'caption-echo'",
+  "0001495240-25-000005:24: unknown mechanism 'atm-activity'",
+  "0001504008-21-000007:21: unknown mechanism 'caption-echo'",
+  "0001504008-21-000007:98: unknown mechanism 'caption-echo'",
+  "0001514281-20-000018:95: unknown mechanism 'vie-detail'",
+  "0001520006-19-000048:49: false claim without false_claim_mechanism",
+  "0001527469-22-000018:166: false claim without false_claim_mechanism",
+  "0001527469-22-000018:180: false claim without false_claim_mechanism",
+  "0001534254-21-000003:44: false claim without false_claim_mechanism",
+  "0001544206-25-000011:134: false claim without false_claim_mechanism",
+  "0001558370-22-001740:124: false claim without false_claim_mechanism",
+  "0001558370-22-001740:25: false claim without false_claim_mechanism",
+  "0001558370-24-001192:51: false claim without false_claim_mechanism",
+  "0001560672-17-000008:19: false claim without false_claim_mechanism",
+  "0001562088-23-000052:7: false claim without false_claim_mechanism",
+  "0001562463-18-000035:79: false claim without false_claim_mechanism",
+  "0001562762-14-000077:7: false claim without false_claim_mechanism",
+  "0001564590-15-000905:13: false claim without false_claim_mechanism",
+  "0001564590-16-014433:23: false claim without false_claim_mechanism",
+  "0001564590-17-003681:51: false claim without false_claim_mechanism",
+  "0001564590-17-003681:63: false claim without false_claim_mechanism",
+  "0001564590-17-004562:38: unknown mechanism 'caption-echo'",
+  "0001564590-18-029997:12: false claim without false_claim_mechanism",
+  "0001564590-19-007097:47: false claim without false_claim_mechanism",
+  "0001564590-20-006520:50: false claim without false_claim_mechanism",
+  "0001564590-20-006520:83: false claim without false_claim_mechanism",
+  "0001564590-20-012167:25: false claim without false_claim_mechanism",
+  "0001564590-21-008442:74: false claim without false_claim_mechanism",
+  "0001564590-21-008442:74: false claim without false_claim_mechanism",
+  "0001564590-22-012778:45: false claim without false_claim_mechanism",
+  "0001564590-23-001729:26: false claim without false_claim_mechanism",
+  "0001569994-15-000009:98: unknown mechanism 'caption-echo'",
+  "0001587987-24-000054:28: false claim without false_claim_mechanism",
+  "0001628280-17-002652:121: unknown mechanism 'caption-echo'",
+  "0001628280-17-002652:188: unknown mechanism 'caption-echo'",
+  "0001628280-18-001552:54: unknown mechanism 'caption-echo'",
+  "0001628280-18-002519:18: false claim without false_claim_mechanism",
+  "0001628280-19-001107:56: false claim without false_claim_mechanism",
+  "0001628280-19-001107:68: false claim without false_claim_mechanism",
+  "0001628280-19-001107:90: unknown mechanism 'caption-echo'",
+  "0001628280-22-008031:12: false claim without false_claim_mechanism",
+  "0001628280-25-054103:133: unknown mechanism 'recast-presentation'",
+  "0001628280-26-008665:58: unknown mechanism 'caption-echo'",
+  "0001628280-26-008665:58: unknown mechanism 'caption-echo'",
+  "0001628280-26-011125:45: unknown mechanism 'caption-echo'",
+  "0001628280-26-021504:62: false claim without false_claim_mechanism",
+  "0001641172-25-000737:82: false claim without false_claim_mechanism",
+  "0001641172-25-001448:14: false claim without false_claim_mechanism",
+  "0001641172-25-001448:8: unknown mechanism 'prose-echo'",
+  "0001641172-25-001448:8: unknown mechanism 'prose-echo'",
+  "0001641172-25-006650:11: false claim without false_claim_mechanism",
+  "0001642896-25-000022:62: false claim without false_claim_mechanism",
+  "0001660280-22-000035:46: false claim without false_claim_mechanism",
+  "0001673985-18-000014:15: false claim without false_claim_mechanism",
+  "0001673985-18-000014:33: unknown mechanism 'caption-echo'",
+  "0001710366-18-000006:95: unknown mechanism 'guarantor-columns'",
+  "0001737953-22-000010:7: false claim without false_claim_mechanism",
+  "0001751788-20-000007:88: unknown mechanism 'affiliate-summary'",
+  "0000004904-23-000072:186: unknown mechanism 'caption-echo'",
+  "0000018230-09-000175:59: false claim without false_claim_mechanism",
+  "0000021344-24-000060:18: unknown mechanism 'caption-echo'",
+  "0000021344-24-000060:53: false claim without false_claim_mechanism",
+  "0000037785-16-000099:17: false claim without false_claim_mechanism",
+  "0000037785-16-000099:31: false claim without false_claim_mechanism",
+  "0000049196-15-000023:30: false claim without false_claim_mechanism",
+  "0000066740-22-000065:27: false claim without false_claim_mechanism",
+  "0000076334-23-000064:27: false claim without false_claim_mechanism",
+  "0000076334-23-000064:27: false claim without false_claim_mechanism",
+  "0000076334-23-000064:31: unknown mechanism 'caption-echo'",
+  "0000076334-23-000064:31: false claim without false_claim_mechanism",
+  "0000078239-17-000017:14: unknown mechanism 'caption-echo'",
+  "0000320017-26-000032:29: false claim without false_claim_mechanism",
+  "0000352541-24-000058:65: unknown mechanism 'caption-echo'",
+  "0000352541-24-000089:77: unknown mechanism 'caption-echo'",
+  "0000711404-20-000021:21: unknown mechanism 'maturity-date-column'",
+  "0000719220-22-000079:15: false claim without false_claim_mechanism",
+  "0000730263-21-000004:34: unknown mechanism 'subset-lines'",
+  "0000732717-21-000067:16: false claim without false_claim_mechanism",
+  "0000732717-21-000067:30: false claim without false_claim_mechanism",
+  "0000732717-21-000067:30: unknown mechanism 'prose-echo'",
+  "0000753308-14-000112:57: unknown mechanism 'subset-lines'",
+  "0000795266-14-000056:15: unknown mechanism 'note-detail'",
+  "0000811156-25-000077:24: unknown mechanism 'income-bridge'",
+  "0000827054-20-000278:36: unknown mechanism 'line-detail'",
+  "0000832988-19-000030:34: unknown mechanism 'no-statutory-anchor'",
+  "0000837465-25-000049:55: unknown mechanism 'liability-rollforward'",
+  "0000860546-25-000038:50: unknown mechanism 'antidilutive-detail'",
+  "0000883569-16-000023:13: unknown mechanism 'no-statutory-anchor'",
+  "0000896878-26-000025:54: unknown mechanism 'classification-detail'",
+  "0000899051-25-000042:95: false claim without false_claim_mechanism",
+  "0000914475-22-000044:27: unknown mechanism 'liquidity-summary'",
+  "0000921082-12-000063:32: unknown mechanism 'held-for-sale-detail'",
+  "0000922224-13-000044:49: false claim without false_claim_mechanism",
+  "0000931148-21-000131:24: unknown mechanism 'balance-only'",
+  "0000950123-10-101055:27: unknown mechanism 'caption-echo'",
+  "0000950170-22-014903:35: unknown mechanism 'caption-echo'",
+  "0000950170-24-042963:57: false claim without false_claim_mechanism",
+  "0000950170-24-042963:57: false claim without false_claim_mechanism",
+  "0000950170-24-086379:43: false claim without false_claim_mechanism",
+  "0000950170-24-090782:26: false claim without false_claim_mechanism",
+  "0000950170-24-094324:29: unknown mechanism 'caption-echo'",
+  "0000950170-24-115455:34: false claim without false_claim_mechanism",
+  "0000950170-24-126268:26: false claim without false_claim_mechanism",
+  "0000950170-25-083079:14: false claim without false_claim_mechanism",
+  "0000950170-25-108063:11: unknown mechanism 'caption-echo'",
+  "0001000228-25-000066:106: false claim without false_claim_mechanism",
+  "0001003297-10-000101:25: false claim without false_claim_mechanism",
+  "0001007587-20-000022:15: false claim without false_claim_mechanism",
+  "0001024305-25-000018:59: false claim without false_claim_mechanism",
+  "0001024305-25-000018:59: false claim without false_claim_mechanism",
+  "0001047469-09-009742:43: false claim without false_claim_mechanism",
+  "0001047469-13-002541:15: false claim without false_claim_mechanism",
+  "0001082554-26-000020:18: false claim without false_claim_mechanism",
+  "0001090872-25-000036:50: false claim without false_claim_mechanism",
+  "0001104659-11-026837:25: false claim without false_claim_mechanism",
+  "0001104659-12-056452:6: false claim without false_claim_mechanism",
+  "0001104659-12-073441:11: false claim without false_claim_mechanism",
+  "0001104659-13-079916:9: false claim without false_claim_mechanism",
+  "0001104659-14-061064:10: false claim without false_claim_mechanism",
+  "0001104659-15-059280:12: false claim without false_claim_mechanism",
+  "0001104659-18-047226:24: false claim without false_claim_mechanism",
+  "0001104659-18-066115:14: false claim without false_claim_mechanism",
+  "0001104659-26-057233:19: false claim without false_claim_mechanism",
+  "0001108524-16-000085:38: unknown mechanism 'caption-echo'",
+  "0001108524-16-000085:45: false claim without false_claim_mechanism",
+  "0001108524-16-000085:84: unknown mechanism 'caption-echo'",
+  "0001140361-16-074866:68: unknown mechanism 'caption-echo'",
+  "0001140361-23-024883:13: unknown mechanism 'caption-echo'",
+  "0001193125-05-215451:4: unknown mechanism 'caption-echo'",
+  "0001193125-05-220976:31: unknown mechanism 'caption-echo'",
+  "0001193125-06-025382:32: unknown mechanism 'caption-echo'",
+  "0001193125-06-025382:32: unknown mechanism 'caption-echo'",
+  "0001193125-08-015548:20: false claim without false_claim_mechanism",
+  "0001193125-10-207336:33: unknown mechanism 'caption-echo'",
+  "0001193125-11-149590:10: unknown mechanism 'caption-echo'",
+  "0001193125-11-149590:15: unknown mechanism 'caption-echo'",
+  "0001193125-11-195231:13: unknown mechanism 'caption-echo'",
+  "0001193125-12-201053:10: unknown mechanism 'caption-echo'",
+  "0001193125-12-467245:56: unknown mechanism 'caption-echo'",
+  "0001193125-13-204017:48: unknown mechanism 'caption-echo'",
+  "0001193125-14-302363:49: unknown mechanism 'caption-echo'",
+  "0001193125-16-567595:5: unknown mechanism 'caption-echo'",
+  "0001193125-16-670077:17: unknown mechanism 'caption-echo'",
+  "0001193125-16-790852:21: unknown mechanism 'caption-echo'",
+  "0001193125-17-019893:12: unknown mechanism 'caption-echo'",
+  "0001193125-18-296803:15: unknown mechanism 'caption-echo'",
+  "0001193125-19-136271:16: unknown mechanism 'caption-echo'",
+  "0001193125-19-264542:17: unknown mechanism 'caption-echo'",
+  "0001193125-20-133597:29: unknown mechanism 'caption-echo'",
+  "0001193125-24-134060:128: unknown mechanism 'caption-echo'",
+  "0001213900-24-068245:54: false claim without false_claim_mechanism",
+  "0001213900-25-075811:16: false claim without false_claim_mechanism",
+  "0001213900-25-075811:16: false claim without false_claim_mechanism",
+  "0001213900-25-075811:35: false claim without false_claim_mechanism",
+  "0001213900-25-075811:48: unknown mechanism 'caption-echo'",
+  "0001213900-25-075811:55: unknown mechanism 'caption-echo'",
+  "0001213900-26-089494:45: false claim without false_claim_mechanism",
+  "0001273441-24-000013:24: false claim without false_claim_mechanism",
+  "0001273441-24-000013:24: false claim without false_claim_mechanism",
+  "0001275158-17-000109:12: unknown mechanism 'caption-echo'",
+  "0001288847-25-000119:44: false claim without false_claim_mechanism",
+  "0001321732-24-000087:23: false claim without false_claim_mechanism",
+  "0001326801-23-000067:33: unknown mechanism 'caption-echo'",
+  "0001327978-19-000111:42: false claim without false_claim_mechanism",
+  "0001356090-20-000005:45: unknown mechanism 'caption-echo'",
+  "0001361658-18-000023:38: false claim without false_claim_mechanism",
+  "0001361658-18-000023:38: false claim without false_claim_mechanism",
+  "0001367859-20-000145:49: false claim without false_claim_mechanism",
+  "0001387131-17-002438:11: false claim without false_claim_mechanism",
+  "0001387131-17-002438:11: false claim without false_claim_mechanism",
+  "0001387131-17-002438:13: false claim without false_claim_mechanism",
+  "0001387131-17-002438:25: false claim without false_claim_mechanism",
+  "0001387131-18-003401:17: false claim without false_claim_mechanism",
+  "0001405495-25-000051:25: false claim without false_claim_mechanism",
+  "0001405495-25-000051:25: unknown mechanism 'caption-echo'",
+  "0001413329-20-000032:18: unknown mechanism 'summary-totals'",
+  "0001413329-20-000032:18: unknown mechanism 'caption-echo'",
+  "0001415889-10-000330:12: unknown mechanism 'subject-mismatch'",
+  "0001415889-10-000330:12: unknown mechanism 'caption-echo'",
+  "0001437749-16-031041:64: unknown mechanism 'subject-mismatch'",
+  "0001437749-20-011356:24: unknown mechanism 'subject-mismatch'",
+  "0001437749-20-011356:26: unknown mechanism 'composition-not-rollforward'",
+  "0001437749-20-022948:63: unknown mechanism 'percentage-composition'",
+  "0001437749-21-012310:40: unknown mechanism 'goodwill-not-intangibles'",
+  "0001437749-22-025647:28: unknown mechanism 'debt-carrying-detail'",
+  "0001437749-22-025647:28: unknown mechanism 'debt-carrying-detail'",
+  "0001437749-23-030122:41: unknown mechanism 'subject-mismatch'",
+  "0001437749-24-025547:13: unknown mechanism 'caption-echo'",
+  "0001437749-24-025547:18: unknown mechanism 'debt-detail'",
+  "0001492691-26-000059:8: unknown mechanism 'caption-echo'",
+  "0001493152-19-011067:22: unknown mechanism 'summary-form'",
+  "0001493152-19-011067:22: unknown mechanism 'caption-echo'",
+  "0001493152-20-009744:14: unknown mechanism 'other-obligation-rollforward'",
+  "0001511737-24-000027:18: unknown mechanism 'debt-composition-not-ladder'",
+  "0001514281-19-000075:78: unknown mechanism 'segment-columns'",
+  "0001516551-23-000044:12: unknown mechanism 'caption-echo'",
+  "0001516551-23-000044:12: false claim without false_claim_mechanism",
+  "0001518715-23-000114:75: false claim without false_claim_mechanism",
+  "0001546417-16-000209:59: false claim without false_claim_mechanism",
+  "0001558370-24-013751:11: false claim without false_claim_mechanism",
+  "0001564590-16-027823:9: false claim without false_claim_mechanism",
+  "0001564590-17-009872:22: false claim without false_claim_mechanism",
+  "0001564590-18-019767:73: false claim without false_claim_mechanism",
+  "0001564590-19-030803:18: false claim without false_claim_mechanism",
+  "0001564590-19-042658:24: false claim without false_claim_mechanism",
+  "0001564590-20-054938:35: false claim without false_claim_mechanism",
+  "0001564590-21-025343:13: unknown mechanism 'caption-echo'",
+  "0001573221-23-000074:13: unknown mechanism 'caption-echo'",
+  "0001597033-25-000090:34: unknown mechanism 'caption-echo'",
+  "0001628280-22-020260:68: unknown mechanism 'caption-echo'",
+  "0001628280-23-017868:30: unknown mechanism 'caption-echo'",
+  "0001628280-25-022866:20: false claim without false_claim_mechanism",
+  "0001628280-26-031374:108: false claim without false_claim_mechanism",
+  "0001628280-26-051847:48: false claim without false_claim_mechanism",
+  "0001645113-24-000019:19: unknown mechanism 'caption-echo'",
+  "0001653909-25-000051:18: unknown mechanism 'statement-tail'",
+  "0001654954-21-008751:18: false claim without false_claim_mechanism",
+  "0001688568-22-000006:16: false claim without false_claim_mechanism",
+  "0001688568-22-000006:42: unknown mechanism 'line-echo'",
+  "0001702744-18-000030:20: unknown mechanism 'caption-echo'",
+  "0001734342-25-000050:48: false claim without false_claim_mechanism",
+  "0001735707-24-000057:44: false claim without false_claim_mechanism",
+  "0001747079-23-000081:43: false claim without false_claim_mechanism",
+  "0001779474-24-000062:14: false claim without false_claim_mechanism",
+  "0001845437-24-000039:20: false claim without false_claim_mechanism",
+  "0001845437-24-000039:32: unknown mechanism 'caption-echo'",
+  "0001857154-26-000029:49: false claim without false_claim_mechanism"
+ ],
+ "vocabulary_notes": [
+  "0001171843-15-001398:31: unknown true family 'warrant_activity'",
+  "0001171843-15-001398:31: illegal false_claim_true_class 'gold:warrant_activity'",
+  "0001628280-18-001552:54: unknown true family 'valuation_model_assumptions'",
+  "0001628280-18-001552:54: illegal false_claim_true_class 'gold:valuation_model_assumptions'",
+  "0000950137-09-002011:26: unknown true family 'valuation_model_assumptions'",
+  "0000950137-09-002011:26: illegal false_claim_true_class 'gold:valuation_model_assumptions'",
+  "0001104659-12-056452:6: unknown true family 'combined_operations_ci'",
+  "0001104659-12-056452:6: illegal false_claim_true_class 'gold:combined_operations_ci'",
+  "0001493152-19-016669:9: unknown claimed family 'warrant_activity'",
+  "0001493152-23-028404:16: unknown claimed family 'warrant_activity'",
+  "0001493152-23-040650:20: unknown claimed family 'warrant_activity'",
+  "0001493152-26-023140:29: unknown claimed family 'warrant_activity'",
+  "0001493152-26-023140:30: unknown claimed family 'warrant_activity'"
+ ],
+ "records_total": 557
+}
