@@ -9,10 +9,12 @@ from edgar_sec.engine.tables.numeric_cells import (
     FINANCIAL_PLACEHOLDERS,
     NUMERIC_CELL_RE,
     PREFIX_SYMBOLS,
+    STRICT_NUMERIC_CELL_RE,
     SUFFIX_SYMBOLS,
     is_financial_placeholder,
     is_numeric_cell,
     is_numeric_start,
+    is_strict_numeric_cell,
 )
 
 
@@ -77,3 +79,49 @@ def test_numeric_start_sees_through_currency_and_unit_tokens() -> None:
 def test_numeric_cell_re_is_a_whole_cell_grammar() -> None:
     assert NUMERIC_CELL_RE.fullmatch("1,234") is not None
     assert NUMERIC_CELL_RE.fullmatch("1,234 widgets") is None
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "123",
+        "1,234",
+        "1,234.56",
+        "-123",
+        "$-123",
+        "-1,234.56",
+        "$1,234.56",
+        "(1,234)",
+        "($1,234)",
+        "(5)",
+        "1,2,3",
+        ",",
+    ],
+)
+def test_strict_seat_grammar_accepts_the_seats_figures(value: str) -> None:
+    assert is_strict_numeric_cell(value) is True
+
+
+@pytest.mark.parametrize(
+    "value",
+    [".5", "123.", "1.2.3", "5%", "1,000/2,000", "€100", "$(5)", "N/A", "-", ""],
+)
+def test_strict_seat_grammar_rejects_the_broad_forms(value: str) -> None:
+    assert is_strict_numeric_cell(value) is False
+
+
+def test_strict_and_broad_grammars_diverge_in_both_directions() -> None:
+    assert is_strict_numeric_cell("-123") is True
+    assert is_numeric_cell("-123") is False
+    assert is_strict_numeric_cell("N/A") is False
+    assert is_numeric_cell("N/A") is True
+
+
+def test_strict_seat_grammar_does_not_strip() -> None:
+    assert is_strict_numeric_cell(" 123") is False
+    assert is_strict_numeric_cell("123 ") is False
+
+
+def test_strict_seat_grammar_pattern_is_the_seats_own() -> None:
+    assert STRICT_NUMERIC_CELL_RE.pattern == r"^\(?\$?-?[\d,]+(\.\d+)?\)?$"
+    assert STRICT_NUMERIC_CELL_RE.match("1,234 widgets") is None

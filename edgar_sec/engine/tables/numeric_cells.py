@@ -65,6 +65,11 @@ _NUMERIC_STRIP_RE = re.compile(
     rf"(?:{_CURRENCY_ALTERNATION}|{_UNIT_ALTERNATION}|[%()\-,])"
 )
 
+# The strict seat grammar: an optional paren, dollar, and sign
+# over a digit-comma core with one decimal tail — the extraction
+# seats' whole-cell figure, narrower than NUMERIC_CELL_RE.
+STRICT_NUMERIC_CELL_RE = re.compile(r"^\(?\$?-?[\d,]+(\.\d+)?\)?$")
+
 # The in-text numeric core: a leading digit, comma-carrying digits, and one
 # optional decimal tail. Form-schema recognizers compose from this token
 # instead of re-deriving it.
@@ -115,6 +120,14 @@ def is_numeric_cell(value: str) -> bool:
     return bool(NUMERIC_CELL_RE.fullmatch(value) or is_financial_placeholder(value))
 
 
+def is_strict_numeric_cell(value: str) -> bool:
+    """Recognize a cell under the strict seat grammar.
+    No stripping and no placeholder admission: the caller
+    presents the cell exactly as the seats present theirs.
+    """
+    return bool(STRICT_NUMERIC_CELL_RE.match(value))
+
+
 def is_numeric_start(value: str) -> bool:
     """Return whether a cell starts with a numeric value after token removal."""
     clean = CURRENCY_TOKEN_RE.sub("", value)
@@ -136,10 +149,12 @@ __all__ = [
     "NUMERIC_CELL_RE",
     "NUMERIC_TOKEN_RE",
     "PREFIX_SYMBOLS",
+    "STRICT_NUMERIC_CELL_RE",
     "SUFFIX_SYMBOLS",
     "UNIT_SYMBOLS",
     "UNIT_TOKEN_RE",
     "is_financial_placeholder",
     "is_numeric_cell",
     "is_numeric_start",
+    "is_strict_numeric_cell",
 ]

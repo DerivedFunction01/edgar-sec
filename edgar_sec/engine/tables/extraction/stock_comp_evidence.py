@@ -15,10 +15,10 @@ from edgar_sec.engine.tables.extraction.stock_comp_specs import (
     StockCompEvidenceSpec,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable
+from edgar_sec.engine.tables.numeric_cells import is_strict_numeric_cell
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import MONTH_WORD_RE, YEAR_TOKEN_SEARCH_RE
 
-_NUM = re.compile(r"^\(?\$?-?[\d,]+(\.\d+)?\)?$")
 _RANGE2 = re.compile(r"\$?\s*[\d,]+(\.\d+)?\s*(?:[-–—]|\bto\b)\s*\$?\s*[\d,]+(\.\d+)?")
 _OPEN_PREFIX = build_alternation(("less than", "under", "below"))
 _OPEN_SUFFIX = build_alternation(("and above", "and over", "or more"))
@@ -39,7 +39,7 @@ def _cell_kind(cell: str) -> str:
         return "empty"
     if "%" in cell:
         return "percent"
-    if _NUM.match(cell.replace(" ", "")):
+    if is_strict_numeric_cell(cell.replace(" ", "")):
         return "numeric"
     if YEAR_TOKEN_SEARCH_RE.search(cell) or MONTH_WORD_RE.search(cell):
         return "date"
@@ -138,7 +138,11 @@ def legs_for(text: StockCompText, spec: StockCompEvidenceSpec) -> StockCompLegs:
     for i, row in enumerate(rows):
         stub_cell = row[0] if row else ""
         n_num = sum(1 for c in row[1:] if _cell_kind(c) == "numeric")
-        if _is_range(stub_cell) or _NUM.match(stub_cell.replace(" ", "")) or n_num >= 2:
+        if (
+            _is_range(stub_cell)
+            or is_strict_numeric_cell(stub_cell.replace(" ", ""))
+            or n_num >= 2
+        ):
             hdr_end = i
             break
     hdr_block = rows[:hdr_end] if hdr_end else rows[:1]
