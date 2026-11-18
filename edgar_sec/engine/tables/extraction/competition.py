@@ -59,6 +59,9 @@ from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.labor_evidence import (
     apply_labor_seat,
 )
+from edgar_sec.engine.tables.extraction.seat_floor_evidence import (
+    apply_seat_floor,
+)
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.profiles import (
@@ -482,6 +485,10 @@ def compete(
     # labor_contracts at the claim floor — registry data in
     # labor_specs.LABOR_EVIDENCE_SPECS.
     scores = apply_labor_seat(geometry, scores, claims, reach, hard_vetoed, CLAIM_FLOOR)
+    # R1 seat-at-floor (claim-path pricing): the registered
+    # families' priced seat tests seat them at the claim floor
+    # — registry data in seat_floor_specs.SEAT_FLOOR_SPECS.
+    scores = apply_seat_floor(geometry, scores, claims, hard_vetoed, floor=CLAIM_FLOOR)
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes

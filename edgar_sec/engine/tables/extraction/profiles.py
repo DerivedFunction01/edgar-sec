@@ -52,6 +52,7 @@ PROV_S6B_PRICING = "calibration:s6b-pricing"
 PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 PROV_STEP8_PRICING = "calibration:step8-pricing"
 PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
+PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the

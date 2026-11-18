@@ -90,6 +90,10 @@ from edgar_sec.engine.tables.extraction.percentage_form_specs import (
     PERCENTAGE_SPECS_BY_FAMILY,
     PercentageFormSpec,
 )
+from edgar_sec.engine.tables.extraction.seat_floor_specs import (
+    SEAT_FLOOR_SPECS,
+    SeatFloorSpec,
+)
 from edgar_sec.engine.tables.extraction.seat_test_specs import (
     SEAT_REGION_BODY,
     SEAT_TEST_SPECS_BY_FAMILY,
@@ -163,8 +167,10 @@ __all__ = (
     "PROV_STEP7_PRICING",
     "PROV_WARRANTY_PRICING",
     "PercentageFormSpec",
+    "SEAT_FLOOR_SPECS",
     "SEAT_REGION_BODY",
     "SEAT_TEST_SPECS_BY_FAMILY",
+    "SeatFloorSpec",
     "SeatTestSpec",
     "TAX_EVIDENCE_SPECS",
     "TAX_EVIDENCE_SPECS_BY_TEST_ID",
