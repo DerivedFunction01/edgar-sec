@@ -29,8 +29,10 @@ class PensionAnchorSpec:
     assumptions_partner_terms: tuple[str, ...]
     payments_min_year_stubs: int
     payments_context_terms: tuple[str, ...]
-    sensitivity_anchor_term: str
+    sensitivity_anchor_terms: tuple[str, ...]
     sensitivity_subject_terms: tuple[str, ...]
+    contributions_stub_terms: tuple[str, ...]
+    contributions_lead_terms: tuple[str, ...]
     funded_terms: tuple[str, ...]
     allocation_asset_terms: tuple[str, ...]
     allocation_context_terms: tuple[str, ...]
@@ -57,7 +59,7 @@ PENSION_ANCHOR_SPECS: dict[str, PensionAnchorSpec] = {
                 "net amortization",
             ),
         ),
-        npbc_min_groups=3,
+        npbc_min_groups=2,
         walk_subject_terms=("benefit obligation", "plan assets"),
         walk_open_terms=("beginning",),
         walk_close_terms=("end of", "ending"),
@@ -65,8 +67,10 @@ PENSION_ANCHOR_SPECS: dict[str, PensionAnchorSpec] = {
         assumptions_partner_terms=("expected", "compensation", "trend rate"),
         payments_min_year_stubs=4,
         payments_context_terms=("benefit", "pension"),
-        sensitivity_anchor_term="percentage point",
+        sensitivity_anchor_terms=("percentage point", "percentage-point"),
         sensitivity_subject_terms=("benefit obligation", "service"),
+        contributions_stub_terms=("defined benefit plan",),
+        contributions_lead_terms=("defined benefit", "contribution"),
         funded_terms=(
             "accumulated benefit obligation",
             "projected benefit obligation",
@@ -157,10 +161,14 @@ def pension_anchor_set(text: PensionText, spec: PensionAnchorSpec) -> frozenset[
         x in lead for x in spec.payments_context_terms
     ):
         anchors.add("payments")
-    if spec.sensitivity_anchor_term in low and any(
+    if any(x in low for x in spec.sensitivity_anchor_terms) and any(
         x in low for x in spec.sensitivity_subject_terms
     ):
         anchors.add("sensitivity")
+    if any(x in stub for stub in stubs for x in spec.contributions_stub_terms) and any(
+        x in lead for x in spec.contributions_lead_terms
+    ):
+        anchors.add("contributions")
     if any(x in stubtext for x in spec.funded_terms):
         anchors.add("funded")
     if any(x in stubtext for x in spec.allocation_asset_terms) and any(

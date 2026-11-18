@@ -17,13 +17,15 @@ def _anchors(text: PensionText) -> frozenset[str]:
     return pension_anchor_set(text, SPEC)
 
 
-def test_npbc_needs_three_groups() -> None:
+def test_npbc_needs_two_groups() -> None:
     full = PensionText(
         stubs=("Service cost", "Interest cost", "Expected return", "Total")
     )
     assert _anchors(full) == frozenset({"npbc"})
     partial = PensionText(stubs=("Service cost", "Interest cost", "Total"))
-    assert "npbc" not in _anchors(partial)
+    assert _anchors(partial) == frozenset({"npbc"})
+    single = PensionText(stubs=("Service cost", "Total"))
+    assert "npbc" not in _anchors(single)
 
 
 def test_walk_leg_reads_the_grid() -> None:
@@ -60,6 +62,33 @@ def test_sensitivity_and_funded_legs() -> None:
     assert _anchors(sens) == frozenset({"sensitivity"})
     funded = PensionText(stubs=("Funded status", "Total"))
     assert _anchors(funded) == frozenset({"funded"})
+
+
+def test_sensitivity_leg_reads_the_hyphenated_anchor() -> None:
+    text = PensionText(
+        grid_text=(
+            "effect of a one-percentage-point increase on the benefit obligation"
+        )
+    )
+    assert _anchors(text) == frozenset({"sensitivity"})
+
+
+def test_contributions_leg_needs_stub_and_lead_context() -> None:
+    text = PensionText(
+        stubs=("U.S. defined benefit plans", "Non-U.S. defined benefit plans"),
+        lead="The company expects to make contributions to its plans",
+    )
+    assert _anchors(text) == frozenset({"contributions"})
+    stub_only = PensionText(
+        stubs=("U.S. defined benefit plans",),
+        lead="The following table presents amounts by geography",
+    )
+    assert "contributions" not in _anchors(stub_only)
+    lead_only = PensionText(
+        stubs=("Amounts by geography",),
+        lead="Contributions to defined benefit plans are expected",
+    )
+    assert "contributions" not in _anchors(lead_only)
 
 
 def test_allocation_needs_asset_and_lead_context() -> None:
