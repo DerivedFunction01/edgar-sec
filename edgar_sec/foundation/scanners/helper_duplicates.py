@@ -114,7 +114,7 @@ _CENSUS_SCOPED_CLUSTERS = (
     # T-12 `_term_present` / `_present`
     frozenset(
         {
-            ("edgar_sec/engine/tables/extraction/competition.py", "_term_present"),
+            ("edgar_sec/engine/tables/extraction/geometry_scoring.py", "_term_present"),
             ("edgar_sec/engine/tables/extraction/derivatives_evidence.py", "_present"),
         }
     ),

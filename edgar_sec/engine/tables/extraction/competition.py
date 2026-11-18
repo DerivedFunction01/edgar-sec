@@ -8,14 +8,12 @@ explained by a measured containment edge. Closure corroborates.
 from __future__ import annotations
 
 import math
-import re
-from dataclasses import dataclass, field
 
 from edgar_sec.engine.tables.extraction.admission_evidence import apply_admissions
 from edgar_sec.engine.tables.extraction.aoci_gate import aoci_gate_detail
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
-    _term_pattern,
+    _term_pattern as _term_pattern,
     derivatives_subject_for_geometry,
     evaluate_derivatives_evidence,
 )
@@ -23,11 +21,19 @@ from edgar_sec.engine.tables.extraction.genre_seat import (
     apply_section_refusals,
     geometry_refusal,
 )
-from edgar_sec.engine.tables.extraction.section_gate import ScopeRow
-from edgar_sec.engine.tables.extraction.form_tests import (
-    FormTestOutcome,
-    evaluate_form_tests,
+from edgar_sec.engine.tables.extraction.geometry_scoring import (
+    ClaimEvidence,
+    ClaimGroup,
+    CompetitionResult,
+    FamilyScore,
+    _explained_foreign,
+    score_geometry,
 )
+from edgar_sec.engine.tables.extraction.geometry_text import (
+    GeometryText,
+    geometry_text_from_table as geometry_text_from_table,
+)
+from edgar_sec.engine.tables.extraction.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
     TAX_EVIDENCE_SPECS,
@@ -37,29 +43,12 @@ from edgar_sec.engine.tables.extraction.pension_evidence import (
     PensionText,
     evaluate_pension_anchor,
 )
-from edgar_sec.engine.tables.extraction.summary_separator import (
-    SummarySeparatorResult,
-    evaluate_summary_separator,
-)
 from edgar_sec.engine.tables.extraction.labor_evidence import (
     apply_labor_seat,
 )
-from edgar_sec.engine.tables.extraction.leadin_segmentation import (
-    lead_title_text,
-    leadin_segment,
-)
-from edgar_sec.engine.tables.extraction.detail_signatures import (
-    SCORED_VETOES,
-    detail_signatures,
-)
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
-from edgar_sec.engine.tables.extraction.term_vetoes import (
-    lead_channel_text,
-    term_veto_hits,
-)
-from edgar_sec.engine.tables.toc.patterns import RE_NOTE_HEADING_CUE
+from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
 from edgar_sec.engine.tables.extraction.signature_profiles import (
-    CHANNEL_WEIGHTS,
     CONTAINMENT_EDGES,
     INHERITANCE_FACTORS,
     LADDER_EDGE_TERMS,
@@ -79,12 +68,8 @@ CORROBORATION_POINTS = 0.75
 INHERITANCE_FACTOR = 0.5
 INHERITANCE_MAX_DISTANCE = 3
 TIE_POINTS = 1.0
-FRAGMENT_MAX_STUBS = 8
 
-# False-claim constants, derivation-priced. Vetoes are
-# scored negative evidence only — the
-# Deliverable 1 pricing earned no hard veto anywhere.
-VETO_POINTS = 1.5
+# False-claim constants, derivation-priced.
 LADDER_MARGIN = 1.0
 LADDER_SINGLE_MODE = "contest"
 REACH_DOMINANCE = 1.25
@@ -93,299 +78,6 @@ REACH_MIN_STUB_SHARE: dict[str, float] = {
     "pension": 0.5,
     "deferred_tax": 0.5,
 }
-
-_HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
-
-
-def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
-    """Heading lines framing a geometry: note headings and titles."""
-    lines: list[str] = []
-    for source in (prose_before or "", prose_after or ""):
-        for line in source.splitlines():
-            stripped = line.strip()
-            if not stripped:
-                continue
-            if RE_NOTE_HEADING_CUE.search(stripped) or _HEADING_NUMBERED.match(
-                stripped
-            ):
-                if len(stripped) < 120:
-                    lines.append(stripped)
-            elif len(stripped) >= 8 and stripped == stripped.upper():
-                if any(ch.isalpha() for ch in stripped):
-                    lines.append(stripped)
-    lines.append(caption or "")
-    return normalize_text(" ".join(lines))
-
-
-@dataclass(frozen=True, slots=True)
-class GeometryText:
-    """One geometry's text evidence, by channel, plus context."""
-
-    caption: str = ""
-    leadin: str = ""
-    notehead: str = ""
-    lead_title: str = ""
-    lead: str = ""
-    prose_after: str = ""
-    stubs: tuple[str, ...] = ()
-    closure_closed: bool | None = None
-    note_title: str | None = None
-    section_item: str | None = None
-    form_tests: tuple[FormTestOutcome, ...] = ()
-    summary_separator: SummarySeparatorResult | None = None
-    grid_text: str = ""
-    headers: tuple[str, ...] = ()
-    in_toc_span: bool = False
-    in_closing_span: bool = False
-    closing_kind: str | None = None
-    front_matter: bool = False
-    note_seated: bool = False
-    numeric_cells: int = 0
-    data_rows: int = 0
-    grid_rows: int = 0
-    max_row_cells: int = 0
-    index_named_share: float = 0.0
-    page_ref_share: float = 0.0
-    page_ref_only: bool = False
-    exhibit_stub_share: float = 0.0
-    section_form: str | None = None
-    section_part: str | None = None
-    section_title: str | None = None
-
-    @property
-    def stub_text(self) -> str:
-        """The stub distribution as one normalized skeleton text."""
-        return normalize_text(" ".join(self.stubs))
-
-    @property
-    def is_fragment(self) -> bool:
-        """A fragment: few stubs and no caption of its own."""
-        return len(self.stubs) <= FRAGMENT_MAX_STUBS and not self.caption.strip()
-
-
-def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryText:
-    """Build channel text from a TypedTable (duck-typed context)."""
-    context = table.context
-    caption = " | ".join(list(context.caption_stack) + list(table.caption.titles))
-    stubs = tuple(row.label for row in table.rows if row.label)
-    note = context.note
-    section = context.section
-    grid_text = normalize_text(
-        " ".join(cell for row in context.rows for cell in row if cell.strip())
-    )
-    consumed = table.caption.consumed_rows
-    first_data = next(
-        (i for i, row in enumerate(table.rows) if row.kind.name == "DATA"),
-        len(table.rows),
-    )
-    zone = max(consumed + table.header_rows, consumed + first_data)
-    headers = tuple(cell for row in context.rows[:zone] for cell in row if cell.strip())
-    return GeometryText(
-        caption=caption,
-        lead=lead_channel_text(caption, context.prose_before or ""),
-        leadin=leadin_segment(context.prose_before or ""),
-        notehead=heading_text(
-            context.prose_before or "", context.prose_after or "", caption
-        ),
-        lead_title=lead_title_text(context.prose_before or ""),
-        prose_after=context.prose_after or "",
-        stubs=stubs,
-        note_title=note.title if note else None,
-        section_item=section.item if section else None,
-        form_tests=evaluate_form_tests(table) if evaluate_stage else (),
-        summary_separator=(
-            evaluate_summary_separator(table) if evaluate_stage else None
-        ),
-        grid_text=grid_text,
-        headers=headers,
-        in_toc_span=context.in_toc_span,
-        in_closing_span=context.in_closing_span,
-        closing_kind=context.closing_kind,
-        front_matter=context.front_matter,
-        note_seated=note is not None,
-        numeric_cells=context.numeric_cells,
-        data_rows=context.data_rows,
-        grid_rows=context.grid_rows,
-        max_row_cells=context.max_row_cells,
-        index_named_share=context.index_named_share,
-        page_ref_share=context.page_ref_share,
-        page_ref_only=context.page_ref_only,
-        exhibit_stub_share=context.exhibit_stub_share,
-        section_form=section.form if section else None,
-        section_part=section.part if section else None,
-        section_title=section.title if section else None,
-    )
-
-
-@dataclass(frozen=True, slots=True)
-class ClaimEvidence:
-    """One scored contribution to a family's claim."""
-
-    channel: str
-    detail: str
-    points: float
-
-
-@dataclass(frozen=True, slots=True)
-class FamilyScore:
-    """A family's profile score over one geometry, by channel."""
-
-    family: str
-    total: float
-    by_channel: dict[str, float]
-    evidence: tuple[ClaimEvidence, ...]
-
-
-@dataclass(frozen=True, slots=True)
-class ClaimGroup:
-    """One family's grouped scored return over a geometry."""
-
-    family: str
-    score: float
-    state: str
-    role: str
-    channels: dict[str, float]
-    veto_flags: tuple[str, ...]
-    explained_foreign: float
-
-
-@dataclass(frozen=True, slots=True)
-class CompetitionResult:
-    """Claiming outcome: claims, contested pairs, and the scores."""
-
-    claims: tuple[str, ...]
-    contested: tuple[str, ...]
-    scores: dict[str, FamilyScore]
-    foreign_explained: dict[str, float] = field(default_factory=dict)
-    groups: tuple[ClaimGroup, ...] = ()
-
-
-def _term_present(term: str, text: str) -> bool:
-    if " " in term or "-" in term:
-        return term in text
-    return _term_pattern(term).search(text) is not None
-
-
-def score_geometry(
-    geometry: GeometryText,
-    terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
-) -> dict[str, FamilyScore]:
-    """Score every family's signature profile over the geometry."""
-    texts = {
-        "caption": normalize_text(geometry.caption),
-        "leadin": normalize_text(geometry.leadin),
-        "notehead": normalize_text(geometry.notehead),
-        "lead_title": normalize_text(geometry.lead_title),
-        "stub": geometry.stub_text,
-    }
-    by_family: dict[str, dict[str, float]] = {}
-    evidence: dict[str, list[ClaimEvidence]] = {}
-    for spec in terms:
-        text = texts[spec.channel]
-        if not text or not _term_present(spec.term, text):
-            continue
-        points = spec.weight * CHANNEL_WEIGHTS[spec.channel]
-        by_family.setdefault(spec.family, {}).setdefault(spec.channel, 0.0)
-        by_family[spec.family][spec.channel] += points
-        evidence.setdefault(spec.family, []).append(
-            ClaimEvidence(spec.channel, spec.term, points)
-        )
-    scores: dict[str, FamilyScore] = {}
-    for family, channels in by_family.items():
-        total = sum(channels.values())
-        scores[family] = FamilyScore(
-            family, total, dict(channels), tuple(evidence[family])
-        )
-    for outcome in geometry.form_tests:
-        entry = ClaimEvidence(
-            "form_test",
-            f"{outcome.test_id} {'passed' if outcome.passed else 'failed'}",
-            outcome.points if outcome.passed else 0.0,
-        )
-        score = scores.get(outcome.family)
-        if outcome.passed:
-            if score is None:
-                scores[outcome.family] = FamilyScore(
-                    outcome.family,
-                    outcome.points,
-                    {"form_test": outcome.points},
-                    (entry,),
-                )
-            else:
-                channels = dict(score.by_channel)
-                channels["form_test"] = channels.get("form_test", 0.0) + outcome.points
-                scores[outcome.family] = FamilyScore(
-                    outcome.family,
-                    score.total + outcome.points,
-                    channels,
-                    score.evidence + (entry,),
-                )
-        elif outcome.evaluable and score is not None:
-            scores[outcome.family] = FamilyScore(
-                outcome.family,
-                score.total,
-                dict(score.by_channel),
-                score.evidence + (entry,),
-            )
-    fired = detail_signatures(geometry)
-    for family, signatures in SCORED_VETOES.items():
-        score = scores.get(family)
-        if score is None:
-            continue
-        hits = [s for s in signatures if s in fired]
-        if not hits:
-            continue
-        penalty = VETO_POINTS * len(hits)
-        trail = score.evidence + tuple(
-            ClaimEvidence("veto", name, -VETO_POINTS) for name in hits
-        )
-        channels = dict(score.by_channel)
-        channels["veto"] = channels.get("veto", 0.0) - penalty
-        scores[family] = FamilyScore(
-            family, max(score.total - penalty, 0.0), channels, trail
-        )
-    # Term vetoes, scored tier (Step 6 v2 re-price): any-hit —
-    # one VETO_POINTS penalty per family per claim, however
-    # many of the family's scored terms hit in either channel.
-    for family, tiers in term_veto_hits(geometry).items():
-        term = tiers.get("scored")
-        if term is None:
-            continue
-        score = scores.get(family)
-        if score is None:
-            continue
-        trail = score.evidence + (ClaimEvidence("veto", f"term:{term}", -VETO_POINTS),)
-        channels = dict(score.by_channel)
-        channels["veto"] = channels.get("veto", 0.0) - VETO_POINTS
-        scores[family] = FamilyScore(
-            family, max(score.total - VETO_POINTS, 0.0), channels, trail
-        )
-    return scores
-
-
-def _explained_foreign(
-    claimant: str,
-    scores: dict[str, FamilyScore],
-    edges: tuple[ContainmentEdge, ...],
-) -> tuple[float, dict[str, float]]:
-    """Foreign mass after containment explanation, and the explained part."""
-    raw = 0.0
-    effective = 0.0
-    explained: dict[str, float] = {}
-    for family, score in scores.items():
-        if family == claimant:
-            continue
-        raw += score.total
-        discount = 0.0
-        for edge in edges:
-            if edge.subset == family and edge.parent == claimant:
-                discount = max(discount, edge.discount)
-            if edge.subset == claimant and edge.parent == family:
-                discount = max(discount, edge.discount)
-        effective += score.total * (1.0 - discount)
-        if discount and score.total:
-            explained[family] = score.total * discount
-    return effective, explained
 
 
 def _ladder_direction(
