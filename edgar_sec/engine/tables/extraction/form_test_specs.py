@@ -35,6 +35,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ADMISSION_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_EPS_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
     TEST_LADDER,
@@ -243,6 +244,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         beginning=("basic",),
         ending=("diluted",),
         excluded=("per share", "antidilutive", "anti-dilutive"),
+    ),
+    FormTestSpec(
+        "eps_reconciliation",
+        TEST_EPS_EVIDENCE,
+        "eps_evidence",
+        3.0,
+        provenance=PROV_R18_SEAT_PRICING,
     ),
     FormTestSpec(
         "debt_maturity",

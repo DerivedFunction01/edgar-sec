@@ -63,6 +63,7 @@ TEST_ROW_BOUND = "row_bound"
 TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 TEST_MEASURE_SET = "measure_set"
+TEST_EPS_EVIDENCE = "eps_evidence"
 TEST_PPE_EVIDENCE = "ppe_evidence"
 TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
@@ -85,6 +86,7 @@ FORM_TESTS = (
     TEST_SIGNATURE_ABSENCE,
     TEST_PLACEMENT_CONSISTENCY,
     TEST_MEASURE_SET,
+    TEST_EPS_EVIDENCE,
     TEST_RESTRUCTURING_EVIDENCE,
     TEST_WARRANTY_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
@@ -249,7 +251,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.041, 1.000, 0.477, 0.800),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK, TEST_PLACEMENT_CONSISTENCY),
+        form_tests=(TEST_WALK, TEST_PLACEMENT_CONSISTENCY, TEST_EPS_EVIDENCE),
+        note="seated additionally on the depth-3 detector "
+        "cell priced over the R18 fresh population (P 1.000 / "
+        "R 1.000; the price is in-population — Step 10's fresh "
+        "draw is its first out-of-sample test)",
     ),
     FamilyProfile(
         "equity_statement",

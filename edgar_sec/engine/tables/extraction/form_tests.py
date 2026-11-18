@@ -18,6 +18,7 @@ from edgar_sec.engine.tables.extraction.composition import evaluate_composition
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     evaluate_form_test_derivatives,
 )
+from edgar_sec.engine.tables.extraction.eps_evidence import evaluate_form_test_eps
 from edgar_sec.engine.tables.extraction.inventory_evidence import (
     evaluate_form_test_inventory,
 )
@@ -62,6 +63,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ADMISSION_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_EPS_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
     TEST_LADDER,
@@ -332,6 +334,20 @@ def _evaluate_derivatives(table: TypedTable, spec: FormTestSpec) -> FormTestOutc
         spec.kind,
         result.admitted,
         True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_eps(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_eps(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        result.evaluable,
         0,
         spec.points,
         result.detail,
@@ -616,6 +632,7 @@ _EVALUATORS = {
     TEST_PRIMARY_STATEMENT_SEAT: _evaluate_seat,
     TEST_COMPOSITION_TWIN: _evaluate_composition,
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
+    TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_PPE_EVIDENCE: _evaluate_ppe,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_ARO_EVIDENCE: _evaluate_aro,
