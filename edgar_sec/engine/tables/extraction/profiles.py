@@ -48,6 +48,7 @@ PROV_S1_PRICING = "calibration:s1-pricing"
 PROV_RULING18_PRICING = "pricing:ruling18-pass"
 PROV_S6B_PRICING = "calibration:s6b-pricing"
 PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
+PROV_STEP8_PRICING = "calibration:step8-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -75,6 +76,7 @@ TEST_TAX_EVIDENCE = "tax_evidence_seat"
 TEST_STOCK_COMP_EVIDENCE = "stock_comp_evidence"
 TEST_LABOR_FORM = "labor_form"
 TEST_CREDIT_LOSSES_EVIDENCE = "credit_losses_evidence"
+TEST_CORE_FORM = "core_form"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -99,6 +101,7 @@ FORM_TESTS = (
     TEST_PPE_EVIDENCE,
     TEST_LABOR_FORM,
     TEST_CREDIT_LOSSES_EVIDENCE,
+    TEST_CORE_FORM,
 )
 
 
@@ -289,7 +292,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.812, 0.692, 0.853, 0.674),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_CORE_FORM),
     ),
     FamilyProfile(
         "income_statement",
@@ -312,7 +315,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.349, 0.857, 0.543, 0.750),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_CORE_FORM),
     ),
     FamilyProfile(
         "inventory",
@@ -371,7 +374,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.866, 0.276, 0.625, 0.241),
         SEAT_NOTE_TITLE_CONTENT,
-        form_tests=(TEST_SEGMENT_FORM, TEST_PLACEMENT_CONSISTENCY),
+        form_tests=(TEST_SEGMENT_FORM, TEST_PLACEMENT_CONSISTENCY, TEST_CORE_FORM),
         gate_bindings=("content_gate",),
     ),
     FamilyProfile(

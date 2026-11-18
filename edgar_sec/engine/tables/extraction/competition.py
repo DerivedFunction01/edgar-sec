@@ -11,6 +11,10 @@ import math
 
 from edgar_sec.engine.tables.extraction.admission_evidence import apply_admissions
 from edgar_sec.engine.tables.extraction.aoci_gate import aoci_gate_detail
+from edgar_sec.engine.tables.extraction.core_form_evidence import (
+    failing_core_form_outcome,
+)
+from edgar_sec.engine.tables.extraction.core_form_specs import CORE_FORM_SPECS
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
     _term_pattern as _term_pattern,
@@ -51,6 +55,7 @@ from edgar_sec.engine.tables.extraction.labor_evidence import (
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.profiles import TEST_CORE_FORM
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CONTAINMENT_EDGES,
@@ -309,6 +314,19 @@ def compete(
                 ),
             ),
         )
+    # Step 8 core-form gate (priced): a claim in a core-form
+    # family requires its stamped core-form outcome to pass; an
+    # outcome absent or unevaluable never fails the gate.
+    for family in CORE_FORM_SPECS:
+        if family not in claims:
+            continue
+        failed = failing_core_form_outcome(geometry.form_tests, family, TEST_CORE_FORM)
+        if failed is None:
+            continue
+        claims.remove(family)
+        if family in contested:
+            contested.remove(family)
+        scores = _append_note(scores, family, "gate", failed.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []

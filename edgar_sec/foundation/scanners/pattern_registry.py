@@ -137,8 +137,8 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             "MONTH_SUFFIX_RE",
             "MONTH_WORD_RE",
             # The frozen Step 3 instrument's strict variant: the
-            # sanctioned narrowed pair; sole consumer of record is
-            # engine/tables/extraction/primary_gate.py.
+            # sanctioned narrowed pair; consumers of record are
+            # primary_gate.py and core_form_evidence.py (F-S8-2).
             "STRICT_MONTH_PATTERN",
             "STRICT_YEAR_TOKEN_PATTERN",
             "PERIOD_ENDED_PAT",
