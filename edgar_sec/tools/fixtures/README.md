@@ -15,6 +15,15 @@ shards, and prices it, and candidates are scored for tagged content.
 - **Substantial-content registry**: Only filings meeting the content floor
   enter the candidate registry; picks re-threshold from checkpoints.
 - **Offline planning**: Plan generation performs zero network I/O.
+- **Two-file transfer unit**: A fixture is `fixture.sqlite` + `manifest.json`;
+  both files travel on every transfer, and a directory holding only
+  `fixture.sqlite` cannot be opened.
+- **Open validates the pin**: `open_fixture` requires the manifest beside the
+  DB and cross-validates its plan pin against the DB's `fixture_meta`.
+- **`--forms` does not scope policy selection**: `filing-catalog plan --scope
+  policy --auto-policy` selection is not scoped by `--forms`.
+- **Per-family policy documents**: Family fixtures use a scoped per-family
+  policy document (precedents: `form144-htm-v1`, `form15-htm-v1`).
 
 ## Deliberate gaps
 

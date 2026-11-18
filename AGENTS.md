@@ -139,6 +139,11 @@ data beside its owning module is the cohort bundle corpora under
 `engine/xbrl/discovery/` (wheel-excluded in `pyproject.toml`); generated outputs
 use pytest's `tmp_path` or transient paths; the default suite is under 1s total.
 
+**Determinism**: nondeterministic tests are removed, and flaky tests are
+changed or dropped — never quarantined, skipped, or retried into green. The
+determinism proof is repeated parallel runs green; tests always run in
+parallel.
+
 ### Test Tree Mirrors the Source Tree
 
 Test-tree mirroring is the generic pattern (Code and documentation patterns) — e.g.
@@ -156,3 +161,23 @@ This repo's instance:
 
 Lint suppression belongs in `ruff.toml`, not scattered `# noqa` comments: a noisy
 rule gets a per-file ignore with a rationale comment, never a bypass.
+
+---
+
+## Data Tracking & Provenance Hygiene
+
+- **Need-to-track test (R6/D1)**: tracking is decided by need-to-track, not
+  consumption — consumed-but-regenerable data lives untracked. Named corpus
+  exemptions (probe, seed, vintage, and sp100 corpora) stay tracked.
+- **Determinism test (R7)**: anything generatable deterministically as the
+  codebase updates is untracked; corpora that fail the determinism test stay
+  tracked.
+- **Dedupe closure test**: a recognizer/helper family closes only on a fresh
+  census reading zero private copies AND its home registered AND its shape
+  rule live in the scanner. Diverged copies need priced behavior proof before
+  collapse; identical copies collapse directly. Sanctioned divergences carry
+  machine-visible `_SANCTIONED_SITES` entries.
+- **Semantic provenance only**: the engine names no steps — step-named
+  provenance is renamed semantic, values unchanged; retired concepts and
+  their identifiers likewise take semantic names; a finished module carries
+  no probes.

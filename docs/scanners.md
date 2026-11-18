@@ -11,6 +11,15 @@ with no entry here is a catalog defect, not an unregistered scanner.
 
 Roster: `ALL_SCANNERS` in `edgar_sec/foundation/scanners/__init__.py`:
 
+One-home rule (normative for every scanner below): shared regexes, methods,
+and helpers have one homed module per intent — extend the home, never define
+locally. Date/datetime helpers have one shared home
+(`edgar_sec/foundation/text/dates.py`). Enforcement is shape-based at the
+gate: the per-family scanners (`pattern-registry`, `page-patterns`,
+`helper-duplicates`, `date-patterns`, and their kin) flag the shape of a
+private copy wherever it appears, not only a duplicated name.
+
+
 - `environment-access`: Bans direct `os.environ` / `os.getenv` outside `edgar_sec.foundation.runtime.env`.
 - `artifact-paths`: Bans hardcoded `".artifacts"` path literals outside path resolvers.
 - `test-tree-paths`: Bans `tests` path components and `tests` imports in layers 0–5, exempting only the gate machinery that owns the test tree (`foundation/checks`, the scanners) and the tools layer. No file exemptions: production-consumed data lives in the package or the workspace, never under `tests/`.
