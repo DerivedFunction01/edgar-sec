@@ -38,6 +38,9 @@ from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
     TAX_EVIDENCE_SPECS,
 )
+from edgar_sec.engine.tables.extraction.input_class_evidence import (
+    apply_input_class_seat,
+)
 from edgar_sec.engine.tables.extraction.pension_evidence import (
     PENSION_ANCHOR_SPECS,
     PensionText,
@@ -347,6 +350,18 @@ def compete(
             )
             claims.append("derivatives_hedging")
             reach.append("derivatives_hedging")
+    # Ruling 18 seat (valuation_model_assumptions): the priced
+    # input-class reader seats the family on its grid text; at
+    # least 3 canonical classes claim, no refusal condition.
+    claims, scores = apply_input_class_seat(
+        geometry,
+        claims,
+        scores,
+        hard_vetoed,
+        floor=CLAIM_FLOOR,
+        score_type=FamilyScore,
+        evidence_type=ClaimEvidence,
+    )
     # Step 7 admission (priced): the core-signal reads seat
     # claims the signature competition cannot reach.
     admission, scores = apply_admissions(
