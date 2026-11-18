@@ -98,3 +98,69 @@ def test_hint_points_at_the_builder(synthetic_repo: Path) -> None:
     )
     hint = regex_alternations.scan_regex_alternations()[0].hint
     assert "build_alternation" in hint
+
+
+_FROZEN_PORT = "edgar_sec/engine/tables/extraction/primary_gate.py"
+
+
+def test_allows_frozen_step3_literals_in_their_port(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            _FROZEN_PORT: (
+                "PATTERNS = (\n"
+                '    r"(stockholder|shareholder|member|partner)s?\'? (equity|deficit)\\b",\n'
+                '    r"(stockholder|shareholder|member|partner)s?\'? \\(deficit\\) equity",\n'
+                '    r"unrealized (gain|gains|loss|losses) on\\b",\n'
+                ")\n"
+            )
+        },
+    )
+    assert regex_alternations.scan_regex_alternations() == []
+
+
+def test_flags_a_fourth_alternation_in_the_frozen_port(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            _FROZEN_PORT: (
+                "PATTERNS = (\n"
+                '    r"(parent|subsidiary|affiliate|successor) company",\n'
+                ")\n"
+            )
+        },
+    )
+    findings = regex_alternations.scan_regex_alternations()
+    assert [f.path for f in findings] == [_FROZEN_PORT]
+
+
+def test_flags_frozen_step3_literals_outside_their_port(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                'P = r"unrealized (gain|gains|loss|losses) on\\b"\n'
+            )
+        },
+    )
+    assert regex_alternations.scan_regex_alternations()
+
+
+def test_flags_an_alternation_sharing_a_line_with_a_sanctioned_literal(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            _FROZEN_PORT: (
+                'P = (r"unrealized (gain|gains|loss|losses) on\\b", '
+                'r"(alpha|beta|gamma|delta)")\n'
+            )
+        },
+    )
+    findings = regex_alternations.scan_regex_alternations()
+    assert [f.path for f in findings] == [_FROZEN_PORT]

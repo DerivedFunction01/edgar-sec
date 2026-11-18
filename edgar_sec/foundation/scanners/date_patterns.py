@@ -52,7 +52,14 @@ _NARROWED_YEAR_LIST_RE = re.compile(
 )
 
 # The module that owns the date vocabulary.
-_ALLOWED_PREFIXES = ("edgar_sec/foundation/text/dates.py",)
+_HOME = "edgar_sec/foundation/text/dates.py"
+
+# The one sanctioned narrowing: the frozen Step 3 instrument's strict
+# variant, homed in dates.py under exactly these two names. Any other
+# narrowed-year definition — any other name, any other file — flags.
+_SANCTIONED_NARROWED_RE = re.compile(
+    r"^(?:STRICT_MONTH_PATTERN|STRICT_YEAR_TOKEN_PATTERN)\s*(?::[^=\n]+)?="
+)
 
 _HINT = (
     "use MONTH_PATTERN, MONTH_NAMES, and parse_date from "
@@ -72,6 +79,8 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
         or _NARROWED_YEAR_ALT_RE.search(line)
         or _NARROWED_YEAR_LIST_RE.search(line)
     ):
+        if path == _HOME and _SANCTIONED_NARROWED_RE.match(line):
+            return None
         return finding(
             "date-patterns",
             path,
@@ -79,6 +88,8 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
             "narrowed year alternation in a regex",
             _YEAR_HINT,
         )
+    if path == _HOME:
+        return None
     if _MONTH_VAR_RE.search(line):
         return finding("date-patterns", path, number, "private month table", _HINT)
     if _MONTH_SEQUENCE_RE.search(line):
@@ -106,7 +117,7 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
 
 def scan_date_patterns() -> list[ScannerFinding]:
     """Flag private month tables, hand-crafted date patterns, narrowed years."""
-    return scan_text_rule(rule=_rule, prefixes=_ALLOWED_PREFIXES)
+    return scan_text_rule(rule=_rule)
 
 
 SCANNER = Scanner(

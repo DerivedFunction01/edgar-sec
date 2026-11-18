@@ -45,6 +45,18 @@ _ALLOWED_PREFIXES = (
     "edgar_sec/foundation/text/",
 )
 
+# The port of record for the frozen Step 3 instrument.
+_FROZEN_PORT = "edgar_sec/engine/tables/extraction/primary_gate.py"
+
+# The one sanctioned hand-crafted set: the frozen Step 3 instrument's
+# alternation text, verbatim in its port under exactly these literals.
+# Any other alternation — any other text, any other file — flags.
+_SANCTIONED_FROZEN_LITERALS = (
+    r"(stockholder|shareholder|member|partner)s?'? (equity|deficit)\b",
+    r"(stockholder|shareholder|member|partner)s?'? \(deficit\) equity",
+    r"unrealized (gain|gains|loss|losses) on\b",
+)
+
 _HINT = (
     "use build_alternation or build_compound from edgar_sec.foundation.regex.builder "
     "so branches stay longest-first and lookarounds stay safely anchored"
@@ -53,10 +65,20 @@ _HINT = (
 _BUILDER_CALLS = ("build_alternation", "build_compound", "compact_alternation")
 
 
+def _without_sanctioned(line: str) -> str:
+    for literal in _SANCTIONED_FROZEN_LITERALS:
+        line = line.replace(literal, "")
+    return line
+
+
 def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
     if any(call in line for call in _BUILDER_CALLS):
         return None
     if not _RAW_ALTERNATION_RE.search(line):
+        return None
+    if path == _FROZEN_PORT and not _RAW_ALTERNATION_RE.search(
+        _without_sanctioned(line)
+    ):
         return None
     return finding(
         "regex-alternations",

@@ -136,6 +136,11 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             "MONTH_NAME_RE",
             "MONTH_SUFFIX_RE",
             "MONTH_WORD_RE",
+            # The frozen Step 3 instrument's strict variant: the
+            # sanctioned narrowed pair; sole consumer of record is
+            # engine/tables/extraction/primary_gate.py.
+            "STRICT_MONTH_PATTERN",
+            "STRICT_YEAR_TOKEN_PATTERN",
             "PERIOD_ENDED_PAT",
             "PERIOD_ENDED_RE",
             "REPORTING_PERIOD_CAPTION_RE",
@@ -152,6 +157,21 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             _month_alternation_shape,
         ),
         "shape_hint": _DATES_HINT,
+    },
+    {
+        "family": "step3-primary-gate",
+        "home": "edgar_sec/engine/tables/extraction/primary_gate.py",
+        "names": (),
+        "literals": (
+            # The frozen Step 3 instrument's alternation text: the
+            # sanctioned hand-crafted literals; port of record is
+            # engine/tables/extraction/primary_gate.py.
+            r"(stockholder|shareholder|member|partner)s?'? (equity|deficit)\b",
+            r"(stockholder|shareholder|member|partner)s?'? \(deficit\) equity",
+            r"unrealized (gain|gains|loss|losses) on\b",
+        ),
+        "shapes": (),
+        "shape_hint": "",
     },
     {
         "family": "word-token",

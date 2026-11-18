@@ -50,6 +50,7 @@ from edgar_sec.engine.tables.extraction.labor_evidence import (
     apply_labor_seat,
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CONTAINMENT_EDGES,
@@ -598,4 +599,7 @@ def compete_filing(
             ladder_terms=ladder_terms,
             scopes=scopes,
         )
-    return results
+    # Final pass: the primary hard gates refuse claims whose
+    # necessary sections are missing over the statement cluster;
+    # running last, inheritance cannot resurrect a gated claim.
+    return apply_primary_gate(geometries, results)

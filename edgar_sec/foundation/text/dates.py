@@ -63,6 +63,12 @@ YEAR_TOKEN_PATTERN = build_alternation(
 )
 YEAR_TOKEN_RE = re.compile(rf"^\b({YEAR_TOKEN_PATTERN})\b$")
 YEAR_TOKEN_SEARCH_RE = re.compile(rf"\b(?:{YEAR_TOKEN_PATTERN})\b")
+
+# Strict variants: full month names only, years 1900-2099 — the
+# frozen Step 3 instrument's dated-row language, not general recognizers.
+STRICT_MONTH_PATTERN = "|".join(MONTH_NAMES)
+STRICT_YEAR_TOKEN_PATTERN = r"(?:19|20)\d{2}"
+
 YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
 NUMERIC_DATE_RE = re.compile(r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b")
@@ -745,6 +751,8 @@ __all__ = [
     "RE_FULL_DATE",
     "FULL_DATE_STUB_RE",
     "SEC_DATE_FORMATS",
+    "STRICT_MONTH_PATTERN",
+    "STRICT_YEAR_TOKEN_PATTERN",
     "TABLE_YEAR_RE",
     "YEAR_IN_TEXT_RE",
     "YEAR_RANGE",

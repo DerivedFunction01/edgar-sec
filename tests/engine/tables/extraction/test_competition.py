@@ -414,11 +414,19 @@ def test_fragment_inherits_from_preceding_claim_in_same_note() -> None:
         caption="Statements of Changes in Equity",
         leadin="Statement of changes in equity for the year.",
         notehead="Changes in Equity",
-        stubs=("Shares issued", "Accumulated other comprehensive income"),
+        stubs=(
+            "Balance, January 1, 2023",
+            "Shares issued",
+            "Accumulated other comprehensive income",
+        ),
         note_title="Equity",
     )
     fragment = GeometryText(
-        stubs=("Shares issued", "Dividends declared"),
+        stubs=(
+            "Shares issued",
+            "Dividends declared",
+            "Balance, December 31, 2023",
+        ),
         note_title="Equity",
     )
     results = compete_filing([first, fragment], terms=_TERMS, edges=_EDGES)

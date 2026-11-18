@@ -155,7 +155,22 @@ def test_flags_narrowed_year_alternation_list(synthetic_repo: Path) -> None:
     assert date_patterns.scan_date_patterns()
 
 
-def test_allows_narrowed_year_in_the_date_vocabulary_owner(
+def test_allows_sanctioned_strict_pair_in_the_date_vocabulary_owner(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/foundation/text/dates.py": (
+                'STRICT_MONTH_PATTERN = "|".join(MONTH_NAMES)\n'
+                'STRICT_YEAR_TOKEN_PATTERN = r"(?:19|20)\\d{2}"\n'
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
+def test_flags_narrowed_year_in_the_owner_under_any_other_name(
     synthetic_repo: Path,
 ) -> None:
     _build_repo(
@@ -167,7 +182,11 @@ def test_allows_narrowed_year_in_the_date_vocabulary_owner(
             )
         },
     )
-    assert date_patterns.scan_date_patterns() == []
+    findings = date_patterns.scan_date_patterns()
+    assert [f.path for f in findings] == [
+        "edgar_sec/foundation/text/dates.py",
+        "edgar_sec/foundation/text/dates.py",
+    ]
 
 
 def test_allows_year_literals_as_data(synthetic_repo: Path) -> None:
