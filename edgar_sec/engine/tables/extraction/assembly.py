@@ -9,12 +9,18 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
 
+from edgar_sec.engine.tables.extraction.admission_evidence import (
+    JOINT_TEST_ID,
+    evaluate_commitments_joint,
+)
 from edgar_sec.engine.tables.extraction.classify import (
     Classification,
+    Evidence,
     TableKind,
     classify_filing,
 )
 from edgar_sec.engine.tables.extraction.context import Scale, TableContext
+from edgar_sec.engine.tables.extraction.genre_seat import FULL_REFUSAL_PREFIXES
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.policy import (
     ClassificationPolicy,
@@ -633,6 +639,57 @@ def _note_groups(
     return tuple(note_groups)
 
 
+def _seat_joint_evidence(
+    tables: list[TypedTable],
+    results: list[Classification],
+    filing_scores: list[dict[str, float]],
+) -> tuple[list[Classification], list[dict[str, float]]]:
+    """Seat residual tables the commitments JOINT read claims.
+
+    The residual and genre-refused tiers carry no competition
+    channel; a passed JOINT read is their admission evidence.
+    """
+    seated: list[Classification] = []
+    scores: list[dict[str, float]] = []
+    for table, result, entry in zip(tables, results, filing_scores, strict=True):
+        if result.family == RESIDUAL_FAMILY and result.tier in (
+            "residual",
+            "genre_refusal",
+        ):
+            refused = any(
+                ev.group == "genre_refusal"
+                and ev.detail.startswith(FULL_REFUSAL_PREFIXES)
+                for ev in result.evidence
+            )
+            if not refused:
+                outcome = evaluate_commitments_joint(table)
+                if outcome.passed:
+                    result = replace(
+                        result,
+                        family="commitments_contingencies",
+                        tier="evidence",
+                        score=ASSIGNMENT_FLOOR,
+                        evidence=result.evidence
+                        + (
+                            Evidence(
+                                "form_test",
+                                f"{JOINT_TEST_ID} passed ({outcome.detail})",
+                                0.0,
+                            ),
+                        ),
+                    )
+                    entry = {
+                        **entry,
+                        "commitments_contingencies": max(
+                            entry.get("commitments_contingencies", 0.0),
+                            ASSIGNMENT_FLOOR,
+                        ),
+                    }
+        seated.append(result)
+        scores.append(entry)
+    return seated, scores
+
+
 def assemble(
     contexts: list[TableContext] | tuple[TableContext, ...],
     policy: ClassificationPolicy | None = None,
@@ -642,6 +699,7 @@ def assemble(
     tables = [structure_table(context) for context in contexts]
     outcomes = [evaluate_math(table) for table in tables]
     results, filing_scores = classify_filing(tables, policy, outcomes)
+    results, filing_scores = _seat_joint_evidence(tables, results, filing_scores)
     members: list[_Member] = []
     for position, context in enumerate(contexts):
         members.append(

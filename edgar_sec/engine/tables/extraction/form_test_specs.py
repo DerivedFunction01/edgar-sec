@@ -28,7 +28,9 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_STEP2_PRICING,
     PROV_STEP3_PRICING,
     PROV_WARRANTY_PRICING,
+    PROV_STEP7_PRICING,
     TEST_ARO_EVIDENCE,
+    TEST_ADMISSION_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
@@ -241,6 +243,20 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         3.0,
     ),
     FormTestSpec(
+        "debt_maturity",
+        TEST_ADMISSION_EVIDENCE,
+        "debt_maturity_j1_admission",
+        0.0,
+        provenance=PROV_STEP7_PRICING,
+    ),
+    FormTestSpec(
+        "commitments_contingencies",
+        TEST_ADMISSION_EVIDENCE,
+        "commitments_joint_admission",
+        0.0,
+        provenance=PROV_STEP7_PRICING,
+    ),
+    FormTestSpec(
         "tax_reconciliation",
         TEST_PERCENTAGE_FORM,
         "tax_rate_reconciliation_percentage_form",
@@ -428,11 +444,12 @@ YEAR_LADDER_SPECS: dict[str, YearLadderSpec] = {
 }
 
 # The same parameters keyed by test_id, derived at registry load
-# for the stage adapter; never a second literal copy.
+# for the stage adapter; never a second literal copy. Ladder-kind
+# specs only — other kinds over a ladder family stay out.
 LADDER_SPECS_BY_TEST_ID: dict[str, YearLadderSpec] = {
     spec.test_id: YEAR_LADDER_SPECS[spec.family]
     for spec in FORM_TEST_SPECS
-    if spec.family in YEAR_LADDER_SPECS
+    if spec.kind == TEST_LADDER and spec.family in YEAR_LADDER_SPECS
 }
 
 # Percentage-form specs (class (iii)): one per family

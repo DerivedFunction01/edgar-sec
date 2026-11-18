@@ -42,6 +42,7 @@ PROV_RESTRUCTURING_PRICING = "calibration:restructuring-seat-pricing"
 PROV_ARO_BASE = "measurement:aro-adjudication-base"
 PROV_WARRANTY_PRICING = "calibration:warranty-seat-pricing"
 PROV_R18_SEAT_PRICING = "calibration:r18-seat-pricing"
+PROV_STEP7_PRICING = "step7:discovery-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -61,6 +62,7 @@ TEST_MEASURE_SET = "measure_set"
 TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
 TEST_INVENTORY_EVIDENCE = "inventory_evidence"
+TEST_ADMISSION_EVIDENCE = "admission_evidence"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -77,6 +79,7 @@ FORM_TESTS = (
     TEST_RESTRUCTURING_EVIDENCE,
     TEST_WARRANTY_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
+    TEST_ADMISSION_EVIDENCE,
 )
 
 
@@ -189,7 +192,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.423, 0.167, 0.010, 0.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_LADDER,),
+        form_tests=(TEST_LADDER, TEST_ADMISSION_EVIDENCE),
         note="directed located recall .06 annual / .02 quarterly: "
         "true ladders go unclaimed, so the ladder is this family's "
         "admission evidence; bucketed payments-due tables are the "
@@ -360,7 +363,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.583, 0.100, 0.417, 0.000),
         SEAT_GEOMETRY_TEXT,
-        form_tests=(TEST_LADDER,),
+        form_tests=(TEST_LADDER, TEST_ADMISSION_EVIDENCE),
         gate_bindings=("commitments_seat",),
         note="seat relocated at refresh Step 4: directed located "
         "recall .000 on both strata under the note-title seat; "

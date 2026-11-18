@@ -86,7 +86,10 @@ def test_ladder_specs_are_registry_data_on_the_two_families() -> None:
     assert not hasattr(PROFILES_BY_FAMILY["debt_maturity"], "ladder_spec")
     for test_id, spec in declared.items():
         assert spec.kind == TEST_LADDER and spec.points == 3.0
-        assert form_test_specs_for(spec.family) == (spec,)
+        family_ladder = tuple(
+            s for s in form_test_specs_for(spec.family) if s.kind == TEST_LADDER
+        )
+        assert family_ladder == (spec,)
     assert {spec.family for spec in FORM_TEST_SPECS if spec.kind == TEST_LADDER} == {
         "debt_maturity",
         "commitments_contingencies",

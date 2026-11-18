@@ -8,6 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.admission_evidence import (
+    EVALUATORS as ADMISSION_EVALUATORS,
+)
 from edgar_sec.engine.tables.extraction.aro_evidence import (
     evaluate_form_test_aro,
 )
@@ -44,6 +47,7 @@ from edgar_sec.engine.tables.extraction.placement import (
 )
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ARO_EVIDENCE,
+    TEST_ADMISSION_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
@@ -372,6 +376,21 @@ def _evaluate_inventory(table: TypedTable, spec: FormTestSpec) -> FormTestOutcom
     )
 
 
+def _evaluate_admission(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    """Admission evidence: the priced core-signal read."""
+    outcome = ADMISSION_EVALUATORS[spec.test_id](table)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        outcome.passed,
+        outcome.evaluable,
+        0,
+        spec.points,
+        outcome.detail,
+    )
+
+
 def _evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_measure_set(table, spec)
     return FormTestOutcome(
@@ -514,6 +533,7 @@ _EVALUATORS = {
     TEST_WARRANTY_EVIDENCE: _evaluate_warranty,
     TEST_INVENTORY_EVIDENCE: _evaluate_inventory,
     TEST_MEASURE_SET: _evaluate_measure_set,
+    TEST_ADMISSION_EVIDENCE: _evaluate_admission,
     TEST_ROW_BOUND: _evaluate_row_bound,
     TEST_SIGNATURE_ABSENCE: _evaluate_absence,
 }

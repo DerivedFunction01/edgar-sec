@@ -11,6 +11,7 @@ import math
 import re
 from dataclasses import dataclass, field
 
+from edgar_sec.engine.tables.extraction.admission_evidence import apply_admissions
 from edgar_sec.engine.tables.extraction.aoci_gate import aoci_gate_detail
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     DerivativesText,
@@ -631,6 +632,17 @@ def compete(
                 )
             claims.append("derivatives_hedging")
             reach.append("derivatives_hedging")
+    # Step 7 admission (priced): the core-signal reads seat
+    # claims the signature competition cannot reach.
+    admission, scores = apply_admissions(
+        geometry.form_tests,
+        claims,
+        scores,
+        hard_vetoed,
+        floor=CLAIM_FLOOR,
+        score_type=FamilyScore,
+        evidence_type=ClaimEvidence,
+    )
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes
@@ -649,6 +661,8 @@ def compete(
         state = (
             "contested"
             if family in contested
+            else "admission"
+            if family in admission
             else "reach"
             if family in reach
             else "claimed"
