@@ -183,7 +183,9 @@ def _reconciles(
     """Whether every complete line's steps sum to its stated total."""
     checked = False
     for index, total in enumerate(totals):
-        steps = [values[index] for values in step_values]
+        steps = [
+            values[index] if index < len(values) else None for values in step_values
+        ]
         if total is None or any(step is None for step in steps):
             continue
         checked = True
