@@ -45,6 +45,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_TAX_EVIDENCE,
+    TEST_STOCK_COMP_EVIDENCE,
     TEST_WALK,
     TEST_WARRANTY_EVIDENCE,
 )
@@ -223,6 +224,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
             "at end of period",
         ),
         excluded=("exercisable", "expected to vest", "available for future"),
+    ),
+    FormTestSpec(
+        "stock_comp_rollforward",
+        TEST_STOCK_COMP_EVIDENCE,
+        "stock_comp_evidence",
+        3.0,
+        provenance=PROV_R18_SEAT_PRICING,
     ),
     FormTestSpec(
         "eps_reconciliation",

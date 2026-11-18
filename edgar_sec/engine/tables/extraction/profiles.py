@@ -68,6 +68,7 @@ TEST_INVENTORY_EVIDENCE = "inventory_evidence"
 TEST_ADMISSION_EVIDENCE = "admission_evidence"
 TEST_LEASE_EVIDENCE = "lease_evidence"
 TEST_TAX_EVIDENCE = "tax_evidence_seat"
+TEST_STOCK_COMP_EVIDENCE = "stock_comp_evidence"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -87,6 +88,7 @@ FORM_TESTS = (
     TEST_ADMISSION_EVIDENCE,
     TEST_LEASE_EVIDENCE,
     TEST_TAX_EVIDENCE,
+    TEST_STOCK_COMP_EVIDENCE,
 )
 
 
@@ -344,7 +346,15 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.234, 1.000, 0.255, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK, TEST_ROW_BOUND, TEST_SIGNATURE_ABSENCE),
+        form_tests=(
+            TEST_WALK,
+            TEST_ROW_BOUND,
+            TEST_SIGNATURE_ABSENCE,
+            TEST_STOCK_COMP_EVIDENCE,
+        ),
+        note="seated additionally on depth-2's priced form over the "
+        "Ruling 18 fresh population (P .919 / R .919; sparse recall "
+        ".870 is the seat's thin measure)",
     ),
     FamilyProfile(
         "tax_reconciliation",
