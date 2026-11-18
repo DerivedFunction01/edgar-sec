@@ -160,6 +160,15 @@ _SANCTIONED_SITES = (
     ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in billion"),
     ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in trillion"),
     ("edgar_sec/engine/tables/extraction/term_veto_notes.py", "in hundred"),
+    # The pension routed separator's priced host vocabulary carries
+    # the same class of datum: "in thousands" is a deferred_tax census
+    # core term of the determination instrument, carried in
+    # HOST_SUPP_VOCAB as supporting vocabulary and matched by
+    # whole-key equality, not a recognizer or pattern text.
+    # Sanctioned by name at the coordinator seat, 2026-11-18, on the
+    # term-veto priced-data disposition above (2026-11-17); recorded
+    # in the pattern registry's pension-routed row.
+    ("edgar_sec/engine/tables/extraction/pension_routed_specs.py", "in thousands"),
 )
 
 _MONEY_HINT = (

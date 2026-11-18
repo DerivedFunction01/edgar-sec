@@ -36,6 +36,7 @@ SEAT_REGION_GATED = "region_gated"
 PROV_DECLARED_SPECS = "form-tests:declared_specs"
 PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
 PROV_PENSION_ANCHOR = "form-tests:pension_anchor"
+PROV_PENSION_ROUTED = "form-tests:pension_routed_separator"
 PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
@@ -78,6 +79,7 @@ TEST_STOCK_COMP_EVIDENCE = "stock_comp_evidence"
 TEST_LABOR_FORM = "labor_form"
 TEST_CREDIT_LOSSES_EVIDENCE = "credit_losses_evidence"
 TEST_CORE_FORM = "core_form"
+TEST_PENSION_ROUTED = "pension_routed"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -103,6 +105,7 @@ FORM_TESTS = (
     TEST_LABOR_FORM,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_CORE_FORM,
+    TEST_PENSION_ROUTED,
 )
 
 
@@ -343,7 +346,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.347, 0.778, 0.525, 0.909),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_PENSION_ROUTED),
     ),
     FamilyProfile(
         "ppe",

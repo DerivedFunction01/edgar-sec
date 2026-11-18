@@ -39,6 +39,9 @@ from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.percentage_form import (
     evaluate_percentage_form,
 )
+from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    evaluate_form_test_pension_routed,
+)
 from edgar_sec.engine.tables.extraction.ppe_evidence import (
     evaluate_form_test_ppe,
 )
@@ -74,6 +77,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_LADDER,
     TEST_LEASE_EVIDENCE,
     TEST_MEASURE_SET,
+    TEST_PENSION_ROUTED,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
@@ -355,6 +359,20 @@ def _evaluate_core_form(table: TypedTable, spec: FormTestSpec) -> FormTestOutcom
         spec.test_id,
         spec.kind,
         result.core_present,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_pension_routed(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_pension_routed(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
         True,
         0,
         spec.points,
@@ -669,6 +687,7 @@ _EVALUATORS = {
     TEST_COMPOSITION_TWIN: _evaluate_composition,
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
     TEST_CORE_FORM: _evaluate_core_form,
+    TEST_PENSION_ROUTED: _evaluate_pension_routed,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_PPE_EVIDENCE: _evaluate_ppe,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,

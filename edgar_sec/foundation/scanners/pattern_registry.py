@@ -174,6 +174,23 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "shape_hint": "",
     },
     {
+        "family": "pension-routed",
+        "home": "edgar_sec/engine/tables/extraction/pension_routed_specs.py",
+        "names": (),
+        "literals": (
+            # The pension routed separator's priced host vocabulary:
+            # the sanctioned scale-phrase datum (a deferred_tax census
+            # core term of the determination instrument, carried as
+            # supporting vocabulary and matched by whole-key equality,
+            # never a recognizer); sanctioned by name at the
+            # coordinator seat, 2026-11-18, on the term-veto
+            # priced-data disposition (2026-11-17).
+            "in thousands",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
         "family": "word-token",
         "home": "edgar_sec/foundation/text/words.py",
         "names": ("WORD_TOKEN_RE",),

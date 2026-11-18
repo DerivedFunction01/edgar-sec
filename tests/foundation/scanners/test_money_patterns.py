@@ -420,3 +420,36 @@ def test_percent_mark_membership_data_is_sanctioned(synthetic_repo: Path) -> Non
         },
     )
     assert money_patterns.scan_money_patterns() == []
+
+
+def test_pension_routed_scale_datum_is_sanctioned(synthetic_repo: Path) -> None:
+    # Priced host-vocabulary datum of the determination instrument,
+    # sanctioned by name (coordinator ruling, 2026-11-18).
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/tables/extraction/pension_routed_specs.py": (
+                'HOST_SUPP_VOCAB = {"deferred_tax": frozenset({"in thousands"})}\n'
+            )
+        },
+    )
+    assert money_patterns.scan_money_patterns() == []
+
+
+def test_pension_routed_sanction_remainder_still_fires(synthetic_repo: Path) -> None:
+    # Per-literal remainder: the sanction covers the one named datum;
+    # any further scale label in the same file still fires.
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/tables/extraction/pension_routed_specs.py": (
+                'HOST_SUPP_VOCAB = {"deferred_tax": frozenset({"in thousands"})}\n'
+                'OTHER = {"in millions"}\n'
+            )
+        },
+    )
+    findings = money_patterns.scan_money_patterns()
+    assert [f.path for f in findings] == [
+        "edgar_sec/engine/tables/extraction/pension_routed_specs.py"
+    ]
+    assert _messages(findings) == ["private scale vocabulary outside its home"]
