@@ -35,6 +35,7 @@ SEAT_REGION_GATED = "region_gated"
 
 PROV_DECLARED_SPECS = "form-tests:declared_specs"
 PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
+PROV_PENSION_ANCHOR = "form-tests:pension_anchor"
 PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"

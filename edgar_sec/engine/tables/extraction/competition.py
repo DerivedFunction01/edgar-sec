@@ -31,6 +31,11 @@ from edgar_sec.engine.tables.extraction.form_tests import (
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
 )
+from edgar_sec.engine.tables.extraction.pension_evidence import (
+    PENSION_ANCHOR_SPECS,
+    PensionText,
+    evaluate_pension_anchor,
+)
 from edgar_sec.engine.tables.extraction.summary_separator import (
     SummarySeparatorResult,
     evaluate_summary_separator,
@@ -117,6 +122,7 @@ class GeometryText:
     notehead: str = ""
     lead_title: str = ""
     lead: str = ""
+    prose_after: str = ""
     stubs: tuple[str, ...] = ()
     closure_closed: bool | None = None
     note_title: str | None = None
@@ -178,6 +184,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
             context.prose_before or "", context.prose_after or "", caption
         ),
         lead_title=lead_title_text(context.prose_before or ""),
+        prose_after=context.prose_after or "",
         stubs=stubs,
         note_title=note.title if note else None,
         section_item=section.item if section else None,
@@ -651,6 +658,27 @@ def compete(
         score_type=FamilyScore,
         evidence_type=ClaimEvidence,
     )
+    # Pension core-anchor gate: a pension claim requires a
+    # disjunctive ASC 715 core anchor on the geometry's own
+    # surfaces, its following prose completing each leg's surface.
+    pension_spec = PENSION_ANCHOR_SPECS.get("pension")
+    if pension_spec is not None and "pension" in claims:
+        pension_evidence = evaluate_pension_anchor(
+            PensionText.from_geometry(geometry), pension_spec
+        )
+        if not pension_evidence.admitted:
+            claims.remove("pension")
+            if "pension" in contested:
+                contested.remove("pension")
+            gated = scores["pension"]
+            scores = dict(scores)
+            scores["pension"] = FamilyScore(
+                gated.family,
+                gated.total,
+                dict(gated.by_channel),
+                gated.evidence
+                + (ClaimEvidence("gate", f"pension: {pension_evidence.detail}", 0.0),),
+            )
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes

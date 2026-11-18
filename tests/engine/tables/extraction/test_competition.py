@@ -373,7 +373,8 @@ def test_presence_reach_claims_an_unclaimed_pension_geometry() -> None:
         SignatureTerm("pension", "stub", "pension obligation", 5.5, 30, 0),
         SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
     )
-    geometry = GeometryText(stubs=("Pension obligation", "Cash flows"))
+    # The funded-status stub carries the pension gate's core anchor.
+    geometry = GeometryText(stubs=("Pension obligation", "Funded status", "Cash flows"))
     result = compete(geometry, terms=terms, edges=())
     assert result.claims == ("pension",)
     assert result.groups[0].state == "reach"
@@ -392,7 +393,7 @@ def test_reach_requires_a_stub_share_of_the_family_evidence() -> None:
     )
     geometry = GeometryText(
         caption="Pension",
-        stubs=("Pension obligation", "Cash flows"),
+        stubs=("Pension obligation", "Funded status", "Cash flows"),
     )
     assert compete(geometry, terms=terms, edges=()).claims == ()
     stub_led = (
@@ -558,3 +559,76 @@ def test_framing_prose_specimens_keep_their_leadin() -> None:
     )
     assert leadin_segment(second) == second
     assert lead_title_text(second) == second.replace("\n", " ")
+
+
+_PENSION_TERMS = (
+    SignatureTerm("pension", "caption", "pension", 2.5, 40, 2),
+    SignatureTerm("pension", "leadin", "pension", 2.5, 35, 1),
+    SignatureTerm("pension", "stub", "pension expense", 2.5, 30, 0),
+    SignatureTerm("pension", "stub", "actuarial", 2.5, 20, 0),
+    SignatureTerm("pension", "stub", "equity securities", 2.5, 20, 0),
+)
+
+
+def test_pension_claim_without_core_anchor_is_gated() -> None:
+    geometry = GeometryText(
+        caption="Pension Benefits",
+        leadin="The pension plan is described below.",
+        stubs=("Pension expense", "Other expense", "Total"),
+    )
+    result = compete(geometry, terms=_PENSION_TERMS, edges=())
+    assert "pension" not in result.claims
+    trail = result.scores["pension"].evidence
+    assert any(
+        e.channel == "gate" and e.detail == "pension: no core anchor" for e in trail
+    )
+
+
+def test_pension_claim_with_core_anchor_stands() -> None:
+    geometry = GeometryText(
+        caption="Pension Benefits",
+        leadin="The pension plan is described below.",
+        stubs=("Pension expense", "Funded status", "Total"),
+    )
+    result = compete(geometry, terms=_PENSION_TERMS, edges=())
+    assert result.claims == ("pension",)
+
+
+def test_pension_oci_anchor_seats_the_claim() -> None:
+    geometry = GeometryText(
+        caption="Pension Benefits",
+        leadin="The pension plan is described below.",
+        stubs=(
+            "Net actuarial loss",
+            "Amortization of prior service credit",
+            "Total recognized in other comprehensive income",
+        ),
+    )
+    result = compete(geometry, terms=_PENSION_TERMS, edges=())
+    assert result.claims == ("pension",)
+
+
+def test_pension_prose_after_completion_seats_the_claim() -> None:
+    # The lead text avoids the family's priced lead veto terms, so
+    # the claim forms and the gate is the deciding act.
+    bare = GeometryText(
+        caption="Pension Benefits",
+        leadin="The pension plan is described below.",
+        lead="The following table presents the plan holdings.",
+        stubs=("Equity securities", "Total"),
+    )
+    gated = compete(bare, terms=_PENSION_TERMS, edges=())
+    assert "pension" not in gated.claims
+    trail = gated.scores["pension"].evidence
+    assert any(
+        e.channel == "gate" and e.detail == "pension: no core anchor" for e in trail
+    )
+    completed = GeometryText(
+        caption="Pension Benefits",
+        leadin="The pension plan is described below.",
+        lead="The following table presents the plan holdings.",
+        prose_after="Assets of the pension plan are held in trust.",
+        stubs=("Equity securities", "Total"),
+    )
+    seated = compete(completed, terms=_PENSION_TERMS, edges=())
+    assert seated.claims == ("pension",)
