@@ -89,6 +89,7 @@ FAMILY_PRIORITY = (
     "subsequent_events",
     "segment_reporting",
     "commitments_contingencies",
+    "labor_contracts",
     "related_party",
     "other",
 )

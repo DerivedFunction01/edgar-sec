@@ -21,6 +21,9 @@ from edgar_sec.engine.tables.extraction.derivatives_evidence import (
 from edgar_sec.engine.tables.extraction.inventory_evidence import (
     evaluate_form_test_inventory,
 )
+from edgar_sec.engine.tables.extraction.labor_evidence import (
+    evaluate_form_test_labor,
+)
 from edgar_sec.engine.tables.extraction.lease_evidence import (
     evaluate_form_test_lease,
 )
@@ -60,6 +63,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
+    TEST_LABOR_FORM,
     TEST_LADDER,
     TEST_LEASE_EVIDENCE,
     TEST_MEASURE_SET,
@@ -362,6 +366,20 @@ def _evaluate_restructuring(table: TypedTable, spec: FormTestSpec) -> FormTestOu
     )
 
 
+def _evaluate_labor(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_labor(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_tax(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_tax(table, spec)
     return FormTestOutcome(
@@ -605,6 +623,7 @@ _EVALUATORS = {
     TEST_INVENTORY_EVIDENCE: _evaluate_inventory,
     TEST_LEASE_EVIDENCE: _evaluate_lease,
     TEST_TAX_EVIDENCE: _evaluate_tax,
+    TEST_LABOR_FORM: _evaluate_labor,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ADMISSION_EVIDENCE: _evaluate_admission,
     TEST_STOCK_COMP_EVIDENCE: _evaluate_stock_comp,

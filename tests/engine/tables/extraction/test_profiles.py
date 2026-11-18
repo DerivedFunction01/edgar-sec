@@ -53,6 +53,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
     assert OPEN_FAMILIES <= families
     assert families == OPEN_FAMILIES | {
         "labor_capture",
+        "labor_contracts",
         "demographics",
         "cover_layout",
         "shares_purchased",
@@ -78,6 +79,7 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
     assert profile_for("no_such_family") is None
     assert set(competing_families()) == OPEN_FAMILIES | {
         "labor_capture",
+        "labor_contracts",
         "demographics",
         "shares_purchased",
         "combined_operations_ci",

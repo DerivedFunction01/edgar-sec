@@ -41,6 +41,9 @@ from edgar_sec.engine.tables.extraction.summary_separator import (
     SummarySeparatorResult,
     evaluate_summary_separator,
 )
+from edgar_sec.engine.tables.extraction.labor_evidence import (
+    apply_labor_seat,
+)
 from edgar_sec.engine.tables.extraction.leadin_segmentation import (
     lead_title_text,
     leadin_segment,
@@ -714,6 +717,11 @@ def compete(
                     scores, "tax_reconciliation", tax_outcome.detail
                 )
                 claims.append("tax_reconciliation")
+    # S6-B labor seat: the priced bargaining-unit signature
+    # (labor_form evidence, stamped at the form-test stage) seats
+    # labor_contracts at the claim floor — registry data in
+    # labor_specs.LABOR_EVIDENCE_SPECS.
+    scores = apply_labor_seat(geometry, scores, claims, reach, hard_vetoed, CLAIM_FLOOR)
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes

@@ -46,6 +46,7 @@ PROV_R18_SEAT_PRICING = "calibration:r18-seat-pricing"
 PROV_STEP7_PRICING = "step7:discovery-pricing"
 PROV_S1_PRICING = "calibration:s1-pricing"
 PROV_RULING18_PRICING = "pricing:ruling18-pass"
+PROV_S6B_PRICING = "calibration:s6b-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -70,6 +71,7 @@ TEST_ADMISSION_EVIDENCE = "admission_evidence"
 TEST_LEASE_EVIDENCE = "lease_evidence"
 TEST_TAX_EVIDENCE = "tax_evidence_seat"
 TEST_STOCK_COMP_EVIDENCE = "stock_comp_evidence"
+TEST_LABOR_FORM = "labor_form"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -91,6 +93,7 @@ FORM_TESTS = (
     TEST_TAX_EVIDENCE,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_PPE_EVIDENCE,
+    TEST_LABOR_FORM,
 )
 
 
@@ -406,14 +409,32 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "cluster and guarantee forms in MD&A / note regions",
     ),
     FamilyProfile(
+        "labor_contracts",
+        KIND_FAMILY,
+        None,
+        SEAT_SIGNATURE,
+        form_tests=(TEST_LABOR_FORM,),
+        note="interim seat on the covered-core price (S6-B "
+        "pricing): the signature seats 36 of 36 covered true "
+        "tables, 0 touches on 272 covered T1 negatives and 0 of "
+        "55 T2 demographics tables; pool-wide confirmation owed "
+        "on 468 unexamined judged filings; fresh-strata "
+        "measurement is Step 10's",
+        provenance=PROV_S6B_PRICING,
+    ),
+    FamilyProfile(
         "labor_capture",
         KIND_PROSE_PROFILE,
         None,
         SEAT_PROSE_CAPTURE,
         shape="employee group x contract x union",
         note="prose-side converter, outside the geometry verdict: "
-        "population precision/recall undefined at n=0 population "
-        "specimens; directed census presence .071 (26 of 365 judged)",
+        "the n=0 premise is falsified — specimens exist; directed "
+        "census presence .071 (26 of 365 judged) is a floor and "
+        "the priced signature recovers .088 (32 of 365); the "
+        "labor_contracts family seat carries the intent in the "
+        "geometry verdict and this prose-capture seat stands "
+        "retired in its favour",
         provenance=PROV_LABOR,
     ),
     FamilyProfile(
