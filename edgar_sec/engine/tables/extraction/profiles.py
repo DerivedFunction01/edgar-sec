@@ -40,6 +40,7 @@ PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
 PROV_RESTRUCTURING_PRICING = "calibration:restructuring-seat-pricing"
 PROV_ARO_BASE = "measurement:aro-adjudication-base"
+PROV_WARRANTY_PRICING = "calibration:warranty-seat-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -57,6 +58,7 @@ TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 TEST_MEASURE_SET = "measure_set"
 TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
+TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -71,6 +73,7 @@ FORM_TESTS = (
     TEST_PLACEMENT_CONSISTENCY,
     TEST_MEASURE_SET,
     TEST_RESTRUCTURING_EVIDENCE,
+    TEST_WARRANTY_EVIDENCE,
 )
 
 
@@ -410,6 +413,27 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "in the prose the geometry sits in; loan-context tables "
         "are refused before claimage",
         provenance=PROV_RESTRUCTURING_PRICING,
+    ),
+    FamilyProfile(
+        "warranty",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated on the dialect cure's priced core over "
+            "the completed adjudication base (extended P .909 / "
+            "R .915, pooled P .910 / R .910; adjudicated P .957 / "
+            "R .918); sealed-protocol precision/recall unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_WARRANTY_EVIDENCE,),
+        note="the aggregate product warranty liability walked "
+        "as the table's own subject: beginning balance, at "
+        "least one ASC 460 movement, ending balance, in any "
+        "filed dialect including the transposed form",
+        provenance=PROV_WARRANTY_PRICING,
     ),
     FamilyProfile(
         "valuation_model_assumptions",

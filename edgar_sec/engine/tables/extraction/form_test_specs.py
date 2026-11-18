@@ -26,6 +26,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_RESTRUCTURING_PRICING,
     PROV_STEP2_PRICING,
     PROV_STEP3_PRICING,
+    PROV_WARRANTY_PRICING,
     TEST_ARO_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
@@ -38,6 +39,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_WALK,
+    TEST_WARRANTY_EVIDENCE,
 )
 
 
@@ -290,6 +292,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "aro_rollforward_evidence_gate",
         3.0,
         provenance=PROV_ARO_BASE,
+    ),
+    FormTestSpec(
+        "warranty",
+        TEST_WARRANTY_EVIDENCE,
+        "warranty_rollforward_evidence",
+        3.0,
+        provenance=PROV_WARRANTY_PRICING,
     ),
     FormTestSpec(
         "shares_purchased",

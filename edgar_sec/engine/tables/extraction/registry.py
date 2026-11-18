@@ -84,6 +84,7 @@ FAMILY_PRIORITY = (
     "comprehensive_income",
     "combined_operations_ci",
     "restructuring",
+    "warranty",
     "equity_statement",
     "subsequent_events",
     "segment_reporting",

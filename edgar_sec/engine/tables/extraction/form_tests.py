@@ -52,6 +52,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_WALK,
+    TEST_WARRANTY_EVIDENCE,
 )
 from edgar_sec.engine.tables.extraction.restructuring_evidence import (
     evaluate_form_test_restructuring,
@@ -61,6 +62,9 @@ from edgar_sec.engine.tables.extraction.statement_seat import (
 )
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.validation import values_close
+from edgar_sec.engine.tables.extraction.warranty_evidence import (
+    evaluate_form_test_warranty,
+)
 from edgar_sec.engine.tables.extraction.year_ladder import evaluate_form_test_ladder
 
 _END_VALUE_WINDOW = 4
@@ -336,6 +340,20 @@ def _evaluate_aro(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     )
 
 
+def _evaluate_warranty(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_warranty(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_measure_set(table, spec)
     return FormTestOutcome(
@@ -475,6 +493,7 @@ _EVALUATORS = {
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_ARO_EVIDENCE: _evaluate_aro,
+    TEST_WARRANTY_EVIDENCE: _evaluate_warranty,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ROW_BOUND: _evaluate_row_bound,
     TEST_SIGNATURE_ABSENCE: _evaluate_absence,

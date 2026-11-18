@@ -61,6 +61,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
         "valuation_model_assumptions",
         "warrant_activity",
         "aro_rollforward",
+        "warranty",
         "other",
     }
     assert len(PROFILES) == len(PROFILES_BY_FAMILY)
@@ -84,6 +85,7 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
         "valuation_model_assumptions",
         "warrant_activity",
         "aro_rollforward",
+        "warranty",
     }
 
 
