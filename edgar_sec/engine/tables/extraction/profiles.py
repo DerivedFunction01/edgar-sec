@@ -41,6 +41,7 @@ PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
 PROV_RESTRUCTURING_PRICING = "calibration:restructuring-seat-pricing"
 PROV_ARO_BASE = "measurement:aro-adjudication-base"
+PROV_S4_GOODWILL_BASE = "measurement:goodwill-adjudication-base"
 PROV_WARRANTY_PRICING = "calibration:warranty-seat-pricing"
 PROV_R18_SEAT_PRICING = "calibration:r18-seat-pricing"
 PROV_STEP7_PRICING = "step7:discovery-pricing"
@@ -562,6 +563,29 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "are the listing variant's sharpest false class; warrant "
         "classification itself stays a determination, not a family",
         provenance=PROV_STEP3_PRICING,
+    ),
+    FamilyProfile(
+        "goodwill_rollforward",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated on the priced goodwill adjudication "
+            "base (stratum E, 48 trues): the cured combination "
+            "seats 48/48 at precision 1.000 / recall 1.000 on "
+            "the base; sealed-protocol precision/recall "
+            "unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_MEASURE_SET,),
+        note="the goodwill rollforward as filed: beginning and "
+        "ending bookends, anchored or dated, with at least one "
+        "ASC 350 movement between and goodwill as the walked "
+        "subject; static carrying compositions and goodwill "
+        "lines inside host tables stay host content",
+        provenance=PROV_S4_GOODWILL_BASE,
     ),
     FamilyProfile(
         "demographics",

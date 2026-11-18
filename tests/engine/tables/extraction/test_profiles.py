@@ -64,6 +64,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
         "aro_rollforward",
         "credit_losses_rollforward",
         "warranty",
+        "goodwill_rollforward",
         "other",
     }
     assert len(PROFILES) == len(PROFILES_BY_FAMILY)
@@ -90,6 +91,7 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
         "aro_rollforward",
         "credit_losses_rollforward",
         "warranty",
+        "goodwill_rollforward",
     }
 
 

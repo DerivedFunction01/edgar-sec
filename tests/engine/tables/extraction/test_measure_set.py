@@ -258,3 +258,308 @@ def test_income_statement_alone_is_not_the_combined_form() -> None:
         )
     )
     assert not _outcome(table, "combined_operations_ci_measure_set").passed
+
+
+def test_goodwill_standard_walk_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("2003", "2002", "2001"),
+            ("Balance at beginning of year", "14,706,191", "9,174,934"),
+            ("Additional purchase price allocation", "100", "50"),
+            ("Goodwill arising from business acquisitions", "200", "150"),
+            ("Amortization expense", "(10)", "(10)"),
+            ("Balance at end of year", "14,906,191", "9,324,934"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_dated_stubs_pass() -> None:
+    table = _table(
+        (
+            ("Goodwill:",),
+            ("Printing", "Office Products and Furniture", "Newspaper", "Total"),
+            ("Balance as of October 31, 2008", "100", "200", "300", "600"),
+            ("Goodwill acquired Fiscal 2009", "10", "20", "30", "60"),
+            ("Impairment losses Fiscal 2009", "(5)", "(5)", "(5)", "(15)"),
+            ("Balance at October 31, 2009", "105", "215", "325", "645"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_transposed_bare_date_headers_pass() -> None:
+    table = _table(
+        (
+            (
+                "The changes in the gross carrying amount and "
+                "accumulated impairment loss are as follows:",
+            ),
+            (
+                "Adjustments to Goodwill",
+                "December 29, 2012",
+                "Acquisitions",
+                "Foreign Exchange",
+                "December 28, 2013",
+            ),
+            ("Research Models and Services", "", "", "", ""),
+            ("Gross carrying amount", "100", "10", "1", "111"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_as_of_stubs_pass() -> None:
+    table = _table(
+        (
+            (
+                "Changes in the carrying amount of the Company’s "
+                "goodwill for the year ended December 31, 2007 were "
+                "as follows (in thousands):",
+            ),
+            ("", "Amount"),
+            ("As of January 1, 2006", "12,388"),
+            ("Goodwill acquired in 2006:", "100"),
+            ("Purchase price adjustments", "10"),
+            ("As of December 31, 2006", "12,498"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_brought_carried_forward_passes() -> None:
+    table = _table(
+        (
+            ("Notes",),
+            ("NOTE 8 GOODWILL* (Kronas in thousands)", "12/31/2015", "12/31/2014"),
+            ("- Acquisition value brought forward", "100", "90"),
+            ("- Amortization brought forward", "(10)", "(9)"),
+            ("Accumulated acquisition value carried forward", "90", "81"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_activity_movement_passes() -> None:
+    table = _table(
+        (
+            (
+                "Changes in goodwill for the years ended September 30, "
+                "2003 and 2004 are as follows (in thousands):",
+            ),
+            ("Balance as of September 30, 2002", "68,812"),
+            ("Goodwill activity during year", "100"),
+            ("Balance as of September 30, 2003", "68,912"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_equity_machine_without_goodwill_is_refused() -> None:
+    table = _table(
+        (
+            ("(In thousands of United States dollars, except number of shares)",),
+            ("Balance at December 31, 2003, as restated", "100"),
+            ("Issuance of common stock for acquisition of subsidiaries", "10"),
+            ("Foreign currency translation gain", "5"),
+            ("Balance at December 31, 2004", "115"),
+        )
+    )
+    outcome = _outcome(table, "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "subject absent" in outcome.detail
+
+
+def test_intangibles_fragment_is_refused() -> None:
+    table = _table(
+        (
+            (
+                "Changes in the carrying amount of the Company’s "
+                "intangible and other assets for the years ended "
+                "December 31, 2007 and 2006 were as follows "
+                "(in thousands):",
+            ),
+            ("As of January 1, 2006, net", "1,133"),
+            ("Intangible assets acquired in 2006:", "100"),
+            ("Amortization expense", "(50)"),
+            ("As of December 31, 2006", "1,183"),
+            ("Reclassification from goodwill—2006 acquisitions (Note 6)", "(10)"),
+            ("As of December 31, 2007", "1,173"),
+        )
+    )
+    outcome = _outcome(table, "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "subject not in walk position" in outcome.detail
+
+
+def test_static_two_date_carrying_is_refused() -> None:
+    table = _table(
+        (
+            (
+                "As of December 31, 2021, the goodwill balances "
+                "remaining for each of our reporting units were "
+                "as follows:",
+            ),
+            (
+                "Goodwill at December 31, 2021",
+                "Goodwill at December 31, 2020",
+                "Reporting Unit:",
+            ),
+            ("Local Advertising", "100", "90"),
+            ("National Digital", "50", "45"),
+            ("Balance", "150", "135"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_single_bookend_fragment_is_refused() -> None:
+    table = _table(
+        (
+            ("The following table summarizes the changes in goodwill by segment:",),
+            ("Goodwill acquired during the period", "10"),
+            ("Goodwill retired during the period", "(2)"),
+            ("Balance at end of period", "108"),
+        )
+    )
+    outcome = _outcome(table, "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "required group" in outcome.detail
+
+
+def test_composition_without_bookends_is_refused() -> None:
+    table = _table(
+        (
+            ("The table below sets forth the carrying amount of goodwill:",),
+            ("Gross carrying amount", "100"),
+            ("Accumulated impairment", "(10)"),
+            ("Goodwill, net", "90"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_definite_article_anchors_pass() -> None:
+    table = _table(
+        (
+            ("USG Boral Building Products Pty Limited and Controlled Entities",),
+            ("Reconciliation of movements in goodwill", ""),
+            ("Balance at the beginning of the year", "100"),
+            ("Acquisition of entities or operations", "10"),
+            ("Write off of goodwill", "(5)"),
+            ("Net foreign currency exchange differences", "1"),
+            ("Balance at the end of the year", "106"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_gross_leg_stubs_pass() -> None:
+    table = _table(
+        (
+            (
+                "The changes in the carrying amount of goodwill are "
+                "as follows (in thousands):",
+            ),
+            ("Goodwill (gross) at December 31, 2010", "179,286"),
+            ("Acquired goodwill", "137"),
+            ("Goodwill (gross) at December 31, 2011", "179,423"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_trailing_qualifier_stubs_pass() -> None:
+    table = _table(
+        (
+            (
+                "The following table shows changes in the carrying "
+                "amount of goodwill for the 2016, 2015 Successor and "
+                "2015 Predecessor periods (in thousands):",
+            ),
+            ("Balance at January 31, 2015 (Predecessor)", "67,413"),
+            ("Goodwill recognized as part of the Acquisition", "200"),
+            ("Balance at January 30, 2016 (Successor)", "67,613"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_month_day_stubs_pass() -> None:
+    table = _table(
+        (
+            (
+                "The changes in the carrying amount of goodwill for "
+                "the years ended September 30, 2012 and 2011 are "
+                "as follows:",
+            ),
+            ("Balance as of October 1:", "100"),
+            ("Foreign currency translation", "5"),
+            ("Balance as of September 30", "105"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_day_first_stubs_pass() -> None:
+    table = _table(
+        (
+            ("11 Goodwill",),
+            ("At 31 December 2003", "100"),
+            ("Impairment charge", "(5)"),
+            ("At 31 December 2004", "95"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_dated_header_composition_is_refused() -> None:
+    table = _table(
+        (
+            (
+                "The table below set forth the carrying amount of "
+                "goodwill for the year ended December 31, 2023 "
+                "and 2022:",
+            ),
+            ("As of December 31, 2023", "As of December 31, 2022"),
+            ("Gross carrying amount", "100"),
+            ("Acquired in business combination (1)", "10"),
+            ("Accumulated impairment", "(5)"),
+            ("Goodwill, net", "105"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_valuation_allowance_host_walk_is_refused() -> None:
+    table = _table(
+        (
+            ("The components of the net deferred tax assets are as follows:",),
+            ("In Thousands", "2010", "2009"),
+            ("Goodwill and intangible assets", "100", "90"),
+            ("Valuation Allowance", "", ""),
+            ("Beginning balance", "50", "45"),
+            ("Increase (decrease) during period", "5", "5"),
+            ("Ending balance", "55", "50"),
+        )
+    )
+    outcome = _outcome(table, "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "subject not in walk position" in outcome.detail
+
+
+def test_cash_walk_is_refused() -> None:
+    table = _table(
+        (
+            ("CONSOLIDATED STATEMENTS OF CASH FLOWS",),
+            ("For the Year Ended December 31,", "2023", "2022"),
+            ("Impairment on goodwill", "(5)", "(3)"),
+            ("Acquisition of subsidiaries, net cash acquired", "(100)", "(80)"),
+            ("CASH AND CASH EQUIVALENTS, BEGINNING OF YEAR", "500", "450"),
+            ("CASH AND CASH EQUIVALENTS, END OF YEAR", "395", "500"),
+        )
+    )
+    outcome = _outcome(table, "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "subject not in walk position" in outcome.detail

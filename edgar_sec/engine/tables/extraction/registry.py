@@ -78,6 +78,7 @@ FAMILY_PRIORITY = (
     "shares_purchased",
     "stock_comp_rollforward",
     "credit_losses_rollforward",
+    "goodwill_rollforward",
     "aro_rollforward",
     "balance_sheet",
     "cash_flow",

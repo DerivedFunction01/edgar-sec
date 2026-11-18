@@ -25,6 +25,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_FAMILY_SUPPORT,
     PROV_RESTRUCTURING_PRICING,
     PROV_R18_SEAT_PRICING,
+    PROV_S4_GOODWILL_BASE,
     PROV_RULING18_PRICING,
     PROV_S6B_PRICING,
     PROV_S5_SEAT_PRICING,
@@ -488,6 +489,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "combined_operations_ci_joint_measure_set",
         3.0,
         provenance=PROV_CI_STEP6_PRICING,
+    ),
+    FormTestSpec(
+        "goodwill_rollforward",
+        TEST_MEASURE_SET,
+        "goodwill_rollforward_measure_set",
+        3.0,
+        provenance=PROV_S4_GOODWILL_BASE,
     ),
     FormTestSpec(
         "restructuring",

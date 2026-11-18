@@ -10,6 +10,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_CI_STEP6_PRICING,
+    PROV_S4_GOODWILL_BASE,
     PROV_STEP3_PRICING,
 )
 
@@ -26,6 +27,9 @@ class MeasureSetSpec:
     refused_terms: tuple[str, ...] = ()
     provenance: str = PROV_STEP3_PRICING
     required_groups: tuple[int, ...] = ()
+    date_bookend_groups: tuple[int, ...] = ()
+    dated_bookend_qualified: bool = False
+    subject_position_bound: bool = False
 
 
 # Measure-set parameters, keyed by test_id (the per-kind table).
@@ -179,5 +183,57 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         ),
         min_groups=2,
         provenance=PROV_CI_STEP6_PRICING,
+    ),
+    # ASC 350-20-50-1 rollforward (S4 adjudication base): the
+    # beginning/ending bookends are required and may be carried
+    # by dated stubs; a pass needs the bookends plus one of the
+    # movement groups, with goodwill in walk position.
+    "goodwill_rollforward_measure_set": MeasureSetSpec(
+        groups=(
+            (
+                "beginning balance",
+                "beginning of period",
+                "beginning of year",
+                "brought forward",
+                "balance at the beginning",
+                "at the beginning of the year",
+                "at the beginning of the period",
+            ),
+            (
+                "ending balance",
+                "end of period",
+                "end of year",
+                "carried forward",
+                "balance at the end",
+                "at the end of the year",
+                "at the end of the period",
+            ),
+            ("acquisition", "acquired"),
+            ("impairment",),
+            (
+                "disposition",
+                "disposal",
+                "derecognized",
+                "divestiture",
+                "deduction",
+                "held for sale",
+            ),
+            (
+                "adjustment",
+                "activity",
+                "realignment",
+                "translation",
+                "deferred tax",
+                "measurement period",
+                "reclassification",
+            ),
+        ),
+        min_groups=3,
+        subject_terms=("goodwill",),
+        provenance=PROV_S4_GOODWILL_BASE,
+        required_groups=(0, 1),
+        date_bookend_groups=(0, 1),
+        dated_bookend_qualified=True,
+        subject_position_bound=True,
     ),
 }
