@@ -8,6 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.aro_evidence import (
+    evaluate_form_test_aro,
+)
 from edgar_sec.engine.tables.extraction.composition import evaluate_composition
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     evaluate_form_test_derivatives,
@@ -37,6 +40,7 @@ from edgar_sec.engine.tables.extraction.placement import (
     PlacementFacts,
 )
 from edgar_sec.engine.tables.extraction.profiles import (
+    TEST_ARO_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_LADDER,
@@ -318,6 +322,20 @@ def _evaluate_restructuring(table: TypedTable, spec: FormTestSpec) -> FormTestOu
     )
 
 
+def _evaluate_aro(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_aro(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_measure_set(table, spec)
     return FormTestOutcome(
@@ -456,6 +474,7 @@ _EVALUATORS = {
     TEST_COMPOSITION_TWIN: _evaluate_composition,
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
+    TEST_ARO_EVIDENCE: _evaluate_aro,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ROW_BOUND: _evaluate_row_bound,
     TEST_SIGNATURE_ABSENCE: _evaluate_absence,

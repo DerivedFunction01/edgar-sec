@@ -39,6 +39,7 @@ PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
 PROV_RESTRUCTURING_PRICING = "calibration:restructuring-seat-pricing"
+PROV_ARO_BASE = "measurement:aro-adjudication-base"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -50,6 +51,7 @@ TEST_PRIMARY_STATEMENT_SEAT = "primary_statement_seat"
 TEST_COMPOSITION_TWIN = "composition_twin"
 TEST_SEGMENT_FORM = "segment_form"
 TEST_DERIVATIVES_EVIDENCE = "derivatives_evidence_gate"
+TEST_ARO_EVIDENCE = "aro_evidence_gate"
 TEST_ROW_BOUND = "row_bound"
 TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
@@ -63,6 +65,7 @@ FORM_TESTS = (
     TEST_COMPOSITION_TWIN,
     TEST_SEGMENT_FORM,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_ARO_EVIDENCE,
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_PLACEMENT_CONSISTENCY,
@@ -206,6 +209,17 @@ PROFILES: tuple[FamilyProfile, ...] = (
         form_tests=(TEST_DERIVATIVES_EVIDENCE,),
         note="quarterly readings are the reconciled record read "
         "(precision .714, recall .826)",
+    ),
+    FamilyProfile(
+        "aro_rollforward",
+        KIND_FAMILY,
+        _support(None, None, None, None),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_ARO_EVIDENCE,),
+        note="support unmeasured on fresh strata; in-sample base "
+        "readings (129-specimen adjudication base): champion "
+        "P .983 / R .934 corpus, sealed 3/3 — the Step 10 cycle "
+        "measures fresh-strata support",
     ),
     FamilyProfile(
         "eps_reconciliation",

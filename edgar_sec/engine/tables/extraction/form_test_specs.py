@@ -19,12 +19,14 @@ from edgar_sec.engine.tables.extraction.form_signal_specs import (
 )
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_CI_STEP6_PRICING,
+    PROV_ARO_BASE,
     PROV_DECLARED_SPECS,
     PROV_DERIVATIVES_EVIDENCE,
     PROV_FAMILY_SUPPORT,
     PROV_RESTRUCTURING_PRICING,
     PROV_STEP2_PRICING,
     PROV_STEP3_PRICING,
+    TEST_ARO_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_LADDER,
@@ -281,6 +283,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "derivatives_hedging_evidence_gate",
         0.0,
         provenance=PROV_DERIVATIVES_EVIDENCE,
+    ),
+    FormTestSpec(
+        "aro_rollforward",
+        TEST_ARO_EVIDENCE,
+        "aro_rollforward_evidence_gate",
+        3.0,
+        provenance=PROV_ARO_BASE,
     ),
     FormTestSpec(
         "shares_purchased",

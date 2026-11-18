@@ -60,6 +60,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
         "restructuring",
         "valuation_model_assumptions",
         "warrant_activity",
+        "aro_rollforward",
         "other",
     }
     assert len(PROFILES) == len(PROFILES_BY_FAMILY)
@@ -82,6 +83,7 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
         "restructuring",
         "valuation_model_assumptions",
         "warrant_activity",
+        "aro_rollforward",
     }
 
 
