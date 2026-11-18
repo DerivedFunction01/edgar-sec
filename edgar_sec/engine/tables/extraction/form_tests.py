@@ -62,6 +62,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ARO_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
     TEST_COMPOSITION_TWIN,
+    TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_EPS_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
@@ -86,6 +87,9 @@ from edgar_sec.engine.tables.extraction.restructuring_evidence import (
 )
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
+)
+from edgar_sec.engine.tables.extraction.credit_losses_evidence import (
+    evaluate_form_test_credit_losses,
 )
 from edgar_sec.engine.tables.extraction.tax_evidence import evaluate_form_test_tax
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
@@ -410,6 +414,20 @@ def _evaluate_tax(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     )
 
 
+def _evaluate_credit_losses(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_credit_losses(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_aro(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_aro(table, spec)
     return FormTestOutcome(
@@ -641,6 +659,7 @@ _EVALUATORS = {
     TEST_LEASE_EVIDENCE: _evaluate_lease,
     TEST_TAX_EVIDENCE: _evaluate_tax,
     TEST_LABOR_FORM: _evaluate_labor,
+    TEST_CREDIT_LOSSES_EVIDENCE: _evaluate_credit_losses,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ADMISSION_EVIDENCE: _evaluate_admission,
     TEST_STOCK_COMP_EVIDENCE: _evaluate_stock_comp,

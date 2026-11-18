@@ -235,6 +235,7 @@ def test_priority_places_schedule_families_ahead_of_balance_sheet() -> None:
         "ppe",
         "shares_purchased",
         "stock_comp_rollforward",
+        "credit_losses_rollforward",
         "aro_rollforward",
     )
     anchor = FAMILY_PRIORITY.index("balance_sheet")

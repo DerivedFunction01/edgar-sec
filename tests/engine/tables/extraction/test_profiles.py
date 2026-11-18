@@ -62,6 +62,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
         "valuation_model_assumptions",
         "warrant_activity",
         "aro_rollforward",
+        "credit_losses_rollforward",
         "warranty",
         "other",
     }
@@ -87,6 +88,7 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
         "valuation_model_assumptions",
         "warrant_activity",
         "aro_rollforward",
+        "credit_losses_rollforward",
         "warranty",
     }
 

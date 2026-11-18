@@ -47,6 +47,7 @@ PROV_STEP7_PRICING = "step7:discovery-pricing"
 PROV_S1_PRICING = "calibration:s1-pricing"
 PROV_RULING18_PRICING = "pricing:ruling18-pass"
 PROV_S6B_PRICING = "calibration:s6b-pricing"
+PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -73,6 +74,7 @@ TEST_LEASE_EVIDENCE = "lease_evidence"
 TEST_TAX_EVIDENCE = "tax_evidence_seat"
 TEST_STOCK_COMP_EVIDENCE = "stock_comp_evidence"
 TEST_LABOR_FORM = "labor_form"
+TEST_CREDIT_LOSSES_EVIDENCE = "credit_losses_evidence"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -96,6 +98,7 @@ FORM_TESTS = (
     TEST_STOCK_COMP_EVIDENCE,
     TEST_PPE_EVIDENCE,
     TEST_LABOR_FORM,
+    TEST_CREDIT_LOSSES_EVIDENCE,
 )
 
 
@@ -245,6 +248,17 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "readings (129-specimen adjudication base): champion "
         "P .983 / R .934 corpus, sealed 3/3 — the Step 10 cycle "
         "measures fresh-strata support",
+    ),
+    FamilyProfile(
+        "credit_losses_rollforward",
+        KIND_FAMILY,
+        _support(None, None, None, None),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_CREDIT_LOSSES_EVIDENCE,),
+        note="support unmeasured on fresh strata; in-sample base "
+        "readings (436-specimen S+C adjudication base): headline "
+        "P .964 / R .947, production with the DA veto P .967 — "
+        "the Step 10 cycle measures fresh-strata support",
     ),
     FamilyProfile(
         "eps_reconciliation",
