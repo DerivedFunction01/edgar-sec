@@ -89,6 +89,7 @@ from edgar_sec.engine.tables.extraction.section_gate import (
     GenreRefusal,
     genre_refusal,
 )
+from edgar_sec.engine.tables.extraction.stub_routing import apply_stub_routing
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.validation import (
     IdentityOutcome,
@@ -792,4 +793,5 @@ def classify_filing(
             )
             results[position] = _refinish(tables[position], adjusted, evidence, marker)
             scores[position] = adjusted
+    apply_stub_routing(tables, results, _finish, Evidence)
     return results, scores
