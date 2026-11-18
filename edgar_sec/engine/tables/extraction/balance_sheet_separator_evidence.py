@@ -1,0 +1,146 @@
+"""Balance-sheet separator evidence (TEST_BALANCE_SHEET_SEPARATOR).
+Evaluates the priced separator legs over one table's grid: a
+balance_sheet claim is refused when any leg fires. The leg
+semantics are the imposter census derivation's, as priced.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+
+from edgar_sec.engine.tables.extraction.balance_sheet_separator_specs import (
+    BALANCE_SHEET_SEPARATOR_SPECS,
+    BalanceSheetSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.core_form_evidence import (
+    failing_core_form_outcome as fired_separator_outcome,
+)
+from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    norm as token_norm,
+)
+from edgar_sec.engine.tables.extraction.pension_routed_specs import (
+    HEADER_STOP_TOKENS,
+    MONTH_TOKENS,
+)
+from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
+from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
+
+# The priced numeric-share recognizer: a cell counts as numeric
+# when it is wholly a loose amount, or carries a digit and an
+# amount fragment; its core composes the numeric-cells fragment.
+NUMERIC_SHARE_CELL_RE = re.compile(r"\(?-?\$?\s*" + UNICODE_NUMERIC_CORE + r"\s*\)?\)?")
+HEADER_YEAR_RE = re.compile(rf"\b{STRICT_YEAR_TOKEN_PATTERN}\b")
+_DIGITS_RE = re.compile(r"\b\d+\b")
+_DIGIT_RE = re.compile(r"\d")
+
+
+def stub_key(stub: str) -> str:
+    """A stub's priced key: digits and months dropped, 8 tokens."""
+    normed = _DIGITS_RE.sub(" ", token_norm(stub))
+    tokens = [t for t in normed.split() if t not in MONTH_TOKENS and len(t) > 1]
+    return " ".join(tokens[:8])
+
+
+class BalanceSheetSeparatorText:
+    """One table's grid as the separator reads it: lines of cells."""
+
+    def __init__(self, table_text: str = ""):
+        lines = [ln for ln in (table_text or "").split("\n") if ln.strip()]
+        self.rows = [[c.strip() for c in ln.split("|")] for ln in lines]
+        self.stubs = [row[0] for row in self.rows if row and row[0]]
+        self.headers = [c for row in self.rows[:3] for c in row if c]
+
+    @classmethod
+    def from_rows(cls, rows) -> "BalanceSheetSeparatorText":
+        """Grid text from raw context rows (production surface)."""
+        table_text = "\n".join(" | ".join(str(c) for c in row) for row in rows)
+        return cls(table_text)
+
+    @classmethod
+    def from_packet(cls, packet) -> "BalanceSheetSeparatorText":
+        """Grid text from a census packet (priced population)."""
+        return cls(packet.get("table_text") or "")
+
+
+@dataclass(frozen=True)
+class BalanceSheetSeparatorVerdict:
+    """The separator verdict for one table: fired legs, if any."""
+
+    fired: bool
+    evaluable: bool
+    legs: tuple[str, ...]
+    detail: str
+
+
+def _numeric_share(rows) -> float:
+    """The priced numeric share: numeric cells over non-empty cells."""
+    numeric = total = 0
+    for row in rows:
+        for cell in row:
+            if not cell:
+                continue
+            total += 1
+            if NUMERIC_SHARE_CELL_RE.fullmatch(cell.replace("$", "").strip()) or (
+                _DIGIT_RE.search(cell) and NUMERIC_SHARE_CELL_RE.search(cell)
+            ):
+                numeric += 1
+    return round(numeric / total, 3) if total else 0.0
+
+
+def evaluate_balance_sheet_separator(
+    text: BalanceSheetSeparatorText, spec: BalanceSheetSeparatorSpec
+) -> BalanceSheetSeparatorVerdict:
+    """Evaluate one grid against the family's priced separator."""
+    if not text.rows:
+        return BalanceSheetSeparatorVerdict(
+            False, False, (), "separator unevaluable: no grid rows"
+        )
+    stub_keys = {k for k in (stub_key(s) for s in text.stubs) if len(k) >= 3}
+    header_keys = set()
+    for header in text.headers:
+        key = stub_key(header)
+        if len(key) >= 3:
+            header_keys.add(key)
+        for token in token_norm(header).split():
+            if (
+                len(token) > 2
+                and not token.isdigit()
+                and token not in HEADER_STOP_TOKENS
+            ):
+                header_keys.add(token)
+    year_count = len(HEADER_YEAR_RE.findall(" ".join(text.headers)))
+    numeric_share = _numeric_share(text.rows)
+    fired: list[str] = []
+    for leg in spec.legs:
+        if leg.kind == "rows" and len(text.rows) <= leg.limit:
+            fired.append(leg.leg_id)
+        elif leg.kind == "years" and year_count >= leg.limit:
+            fired.append(leg.leg_id)
+        elif leg.kind == "header" and leg.term in header_keys:
+            fired.append(leg.leg_id)
+        elif leg.kind == "stub" and leg.term in stub_keys:
+            fired.append(leg.leg_id)
+        elif leg.kind == "numshare" and numeric_share < leg.limit:
+            fired.append(leg.leg_id)
+    if any(phrase in stub_keys for phrase in spec.accrued_stub_phrases):
+        fired.append("accrued_stub")
+    if fired:
+        detail = "separator fired: " + ", ".join(fired)
+        return BalanceSheetSeparatorVerdict(True, True, tuple(fired), detail)
+    return BalanceSheetSeparatorVerdict(False, True, (), "separator clear")
+
+
+# ---------------- production wiring (stage adapter + gate) ----------------
+
+
+def evaluate_form_test_balance_sheet_separator(table, spec):
+    """Stage adapter: evaluate the declared separator over a table."""
+    gate_spec = BALANCE_SHEET_SEPARATOR_SPECS.get(spec.family)
+    if gate_spec is None:
+        return BalanceSheetSeparatorVerdict(
+            False, False, (), "no separator spec for family"
+        )
+    text = BalanceSheetSeparatorText.from_rows(table.context.rows)
+    return evaluate_balance_sheet_separator(text, gate_spec)

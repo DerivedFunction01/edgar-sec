@@ -20,6 +20,7 @@ from edgar_sec.engine.tables.extraction.form_signal_specs import (
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_CI_STEP6_PRICING,
     PROV_ARO_BASE,
+    PROV_BALANCE_SHEET_SEPARATOR,
     PROV_DECLARED_SPECS,
     PROV_DERIVATIVES_EVIDENCE,
     PROV_FAMILY_SUPPORT,
@@ -37,6 +38,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_STEP7_PRICING,
     TEST_ARO_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
+    TEST_BALANCE_SHEET_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_CORE_FORM,
     TEST_PENSION_ROUTED,
@@ -63,6 +65,10 @@ from edgar_sec.engine.tables.extraction.profiles import (
 from edgar_sec.engine.tables.extraction.aoci_claim_shape_specs import (
     AOCI_CLAIM_SHAPE_SPEC,
     AociClaimShapeSpec,
+)
+from edgar_sec.engine.tables.extraction.balance_sheet_separator_specs import (
+    BALANCE_SHEET_SEPARATOR_SPECS,
+    BalanceSheetSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -119,6 +125,8 @@ __all__ = (
     "ANCHOR_NONE",
     "AOCI_CLAIM_SHAPE_SPEC",
     "AociClaimShapeSpec",
+    "BALANCE_SHEET_SEPARATOR_SPECS",
+    "BalanceSheetSeparatorSpec",
     "COMMERCIAL_TERMS",
     "COMMODITY_HEADER_PHRASE",
     "COMPOSITION_SPECS",
@@ -140,6 +148,7 @@ __all__ = (
     "PERCENTAGE_SPECS",
     "PERCENTAGE_SPECS_BY_FAMILY",
     "PROV_ARO_BASE",
+    "PROV_BALANCE_SHEET_SEPARATOR",
     "PROV_CI_STEP6_PRICING",
     "PROV_DECLARED_SPECS",
     "PROV_DERIVATIVES_EVIDENCE",
@@ -161,6 +170,7 @@ __all__ = (
     "TAX_EVIDENCE_SPECS_BY_TEST_ID",
     "TEST_ADMISSION_EVIDENCE",
     "TEST_ARO_EVIDENCE",
+    "TEST_BALANCE_SHEET_SEPARATOR",
     "TEST_COMPOSITION_TWIN",
     "TEST_CORE_FORM",
     "TEST_DERIVATIVES_EVIDENCE",
@@ -421,6 +431,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "segment_reporting_core_form",
         3.0,
         provenance=PROV_STEP8_PRICING,
+    ),
+    FormTestSpec(
+        "balance_sheet",
+        TEST_BALANCE_SHEET_SEPARATOR,
+        "balance_sheet_separator",
+        0.0,
+        provenance=PROV_BALANCE_SHEET_SEPARATOR,
     ),
     FormTestSpec(
         "pension",

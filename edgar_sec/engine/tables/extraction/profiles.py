@@ -51,6 +51,7 @@ PROV_RULING18_PRICING = "pricing:ruling18-pass"
 PROV_S6B_PRICING = "calibration:s6b-pricing"
 PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 PROV_STEP8_PRICING = "calibration:step8-pricing"
+PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -79,6 +80,7 @@ TEST_STOCK_COMP_EVIDENCE = "stock_comp_evidence"
 TEST_LABOR_FORM = "labor_form"
 TEST_CREDIT_LOSSES_EVIDENCE = "credit_losses_evidence"
 TEST_CORE_FORM = "core_form"
+TEST_BALANCE_SHEET_SEPARATOR = "balance_sheet_separator"
 TEST_PENSION_ROUTED = "pension_routed"
 FORM_TESTS = (
     TEST_WALK,
@@ -105,6 +107,7 @@ FORM_TESTS = (
     TEST_LABOR_FORM,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_CORE_FORM,
+    TEST_BALANCE_SHEET_SEPARATOR,
     TEST_PENSION_ROUTED,
 )
 
@@ -181,6 +184,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             TEST_PRIMARY_STATEMENT_SEAT,
             TEST_ROW_BOUND,
             TEST_PLACEMENT_CONSISTENCY,
+            TEST_BALANCE_SHEET_SEPARATOR,
         ),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
