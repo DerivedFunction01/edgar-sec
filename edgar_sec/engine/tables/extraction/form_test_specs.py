@@ -35,6 +35,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_DERIVATIVES_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
     TEST_LADDER,
+    TEST_LEASE_EVIDENCE,
     TEST_MEASURE_SET,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
@@ -302,6 +303,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
     ),
     FormTestSpec(
         "lease_maturity", TEST_COMPOSITION_TWIN, "lease_maturity_composition", 3.0
+    ),
+    FormTestSpec(
+        "lease_maturity",
+        TEST_LEASE_EVIDENCE,
+        "lease_evidence",
+        3.0,
+        provenance=PROV_R18_SEAT_PRICING,
     ),
     FormTestSpec("fair_value", TEST_COMPOSITION_TWIN, "fair_value_composition", 3.0),
     FormTestSpec(

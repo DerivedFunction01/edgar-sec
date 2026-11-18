@@ -64,6 +64,7 @@ TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
 TEST_INVENTORY_EVIDENCE = "inventory_evidence"
 TEST_ADMISSION_EVIDENCE = "admission_evidence"
+TEST_LEASE_EVIDENCE = "lease_evidence"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -81,6 +82,7 @@ FORM_TESTS = (
     TEST_WARRANTY_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
+    TEST_LEASE_EVIDENCE,
 )
 
 
@@ -296,7 +298,10 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.553, 1.000, 0.215, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN,),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_LEASE_EVIDENCE),
+        note="seated additionally on the depth-4 attribution "
+        "cell priced over the R18 fresh population (P .913 / "
+        "R .913; sparse recall .846 is the seat's thin measure)",
     ),
     FamilyProfile(
         "pension",

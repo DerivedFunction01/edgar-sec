@@ -21,6 +21,9 @@ from edgar_sec.engine.tables.extraction.derivatives_evidence import (
 from edgar_sec.engine.tables.extraction.inventory_evidence import (
     evaluate_form_test_inventory,
 )
+from edgar_sec.engine.tables.extraction.lease_evidence import (
+    evaluate_form_test_lease,
+)
 from edgar_sec.engine.tables.extraction.measure_set import evaluate_measure_set
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.percentage_form import (
@@ -52,6 +55,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_DERIVATIVES_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
     TEST_LADDER,
+    TEST_LEASE_EVIDENCE,
     TEST_MEASURE_SET,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
@@ -376,6 +380,20 @@ def _evaluate_inventory(table: TypedTable, spec: FormTestSpec) -> FormTestOutcom
     )
 
 
+def _evaluate_lease(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_lease(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_admission(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     """Admission evidence: the priced core-signal read."""
     outcome = ADMISSION_EVALUATORS[spec.test_id](table)
@@ -532,6 +550,7 @@ _EVALUATORS = {
     TEST_ARO_EVIDENCE: _evaluate_aro,
     TEST_WARRANTY_EVIDENCE: _evaluate_warranty,
     TEST_INVENTORY_EVIDENCE: _evaluate_inventory,
+    TEST_LEASE_EVIDENCE: _evaluate_lease,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ADMISSION_EVIDENCE: _evaluate_admission,
     TEST_ROW_BOUND: _evaluate_row_bound,
