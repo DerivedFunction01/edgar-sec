@@ -12,18 +12,20 @@ from collections import Counter
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.form_test_specs import FormTestSpec
+from edgar_sec.engine.tables.extraction.period_keys import (
+    numeric_dates as _numeric_dates,
+    period_keys as _period_keys,
+    priced_years as _priced_years,
+    starts_with_numeric_date as _starts_with_numeric_date,
+    starts_with_period as _starts_with_period,
+)
 from edgar_sec.engine.tables.extraction.warranty_specs import (
     WARRANTY_EVIDENCE_SPECS_BY_TEST_ID,
     WarrantyEvidenceSpec,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
-    MONTH_NAMES,
-    NUMERIC_DATE_RE,
-    YEAR_TOKEN_PATTERN,
-    YEAR_TOKEN_SEARCH_RE,
-)
+from edgar_sec.foundation.text.dates import MONTH_NAMES, YEAR_TOKEN_PATTERN
 
 # The priced surface is the measurement packet's: prose and grid
 # text each capped at 6000 chars, as the collect's packet() caps.
@@ -37,32 +39,6 @@ _SEC_DATE_RE = re.compile(
 )
 
 
-def _priced_years(line: str) -> list[str]:
-    """The line's years in the priced shape (19xx/20xx only)."""
-    return [y for y in YEAR_TOKEN_SEARCH_RE.findall(line) if y[:2] in ("19", "20")]
-
-
-def _numeric_dates(line: str) -> list[str]:
-    """The line's numeric dates in the priced shape (slash only)."""
-    return [
-        match.group(0)
-        for match in NUMERIC_DATE_RE.finditer(line)
-        if len(match.group(0).split("/")) == 3
-    ]
-
-
-def _period_keys(line: str) -> set:
-    """Distinct period keys of one line: years, months, dates."""
-    keys = set()
-    for year in _priced_years(line):
-        keys.add(("y", year))
-    for month in _MONTH_WORD_RE.findall(line):
-        keys.add(("m", month.lower()))
-    for date in _numeric_dates(line):
-        keys.add(("d", date))
-    return keys
-
-
 def _period_keys_x(spec: WarrantyEvidenceSpec, line: str) -> set:
     """Period keys with abbreviated months counted as keys too."""
     keys = _period_keys(line)
@@ -72,23 +48,6 @@ def _period_keys_x(spec: WarrantyEvidenceSpec, line: str) -> set:
     for month in abbrev_re.findall(line):
         keys.add(("am", month.lower()))
     return keys
-
-
-def _starts_with_numeric_date(stripped: str) -> bool:
-    """A stripped line opening with a slash-separated numeric date."""
-    date = NUMERIC_DATE_RE.match(stripped)
-    return date is not None and len(date.group(0).split("/")) == 3
-
-
-def _starts_with_period(line: str) -> bool:
-    """A bare line opening with a month, a priced year, or a date."""
-    stripped = line.strip(" |")
-    if _MONTH_WORD_RE.match(stripped):
-        return True
-    year = YEAR_TOKEN_SEARCH_RE.match(stripped)
-    if year is not None and year.group(0)[:2] in ("19", "20"):
-        return True
-    return _starts_with_numeric_date(stripped)
 
 
 @dataclass(frozen=True, slots=True)
