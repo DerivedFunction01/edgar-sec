@@ -117,10 +117,10 @@ def test_hard_veto_bars_contested_and_creates_no_claim() -> None:
     assert all(g.family != "balance_sheet" for g in vetoed.groups)
 
 
-_TAX_TERMS = (
-    SignatureTerm("tax_reconciliation", "caption", "tax reconciliation", 2.5, 40, 2),
+_RP_TERMS = (
+    SignatureTerm("related_party", "caption", "related party transactions", 2.5, 40, 2),
     *(
-        SignatureTerm("tax_reconciliation", "stub", f"tax line {i}", 2.5, 30, 0)
+        SignatureTerm("related_party", "stub", f"related party line {i}", 2.5, 30, 0)
         for i in range(12)
     ),
 )
@@ -128,24 +128,24 @@ _TAX_TERMS = (
 
 def test_hard_veto_survives_inheritance_recompete() -> None:
     prior = GeometryText(
-        caption="Income Tax Reconciliation",
-        stubs=tuple(f"Tax line {i}" for i in range(12)),
-        note_title="Income taxes",
+        caption="Related Party Transactions",
+        stubs=tuple(f"Related party line {i}" for i in range(12)),
+        note_title="Related party",
     )
     inherited = GeometryText(
         stubs=("Other", "Miscellaneous"),
-        note_title="Income taxes",
-        lead="The reconciliation follows.",
+        note_title="Related party",
+        lead="The schedule follows.",
     )
-    results = compete_filing([prior, inherited], terms=_TAX_TERMS, edges=())
-    assert results[0].claims == ("tax_reconciliation",)
-    assert results[1].claims == ("tax_reconciliation",)
+    results = compete_filing([prior, inherited], terms=_RP_TERMS, edges=())
+    assert results[0].claims == ("related_party",)
+    assert results[1].claims == ("related_party",)
     vetoed_fragment = GeometryText(
         stubs=("Other", "Miscellaneous"),
-        note_title="Income taxes",
-        lead="Revenue and segment results are summarized.",
+        note_title="Related party",
+        lead="Payments due by period are summarized.",
     )
-    results = compete_filing([prior, vetoed_fragment], terms=_TAX_TERMS, edges=())
+    results = compete_filing([prior, vetoed_fragment], terms=_RP_TERMS, edges=())
     assert results[1].claims == ()
 
 

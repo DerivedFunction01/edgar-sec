@@ -45,6 +45,7 @@ PROV_WARRANTY_PRICING = "calibration:warranty-seat-pricing"
 PROV_R18_SEAT_PRICING = "calibration:r18-seat-pricing"
 PROV_STEP7_PRICING = "step7:discovery-pricing"
 PROV_S1_PRICING = "calibration:s1-pricing"
+PROV_RULING18_PRICING = "pricing:ruling18-pass"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -66,6 +67,7 @@ TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
 TEST_INVENTORY_EVIDENCE = "inventory_evidence"
 TEST_ADMISSION_EVIDENCE = "admission_evidence"
 TEST_LEASE_EVIDENCE = "lease_evidence"
+TEST_TAX_EVIDENCE = "tax_evidence_seat"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -84,6 +86,7 @@ FORM_TESTS = (
     TEST_INVENTORY_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
     TEST_LEASE_EVIDENCE,
+    TEST_TAX_EVIDENCE,
 )
 
 
@@ -348,7 +351,12 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.432, 1.000, 0.000, None, quarterly_directed_recall=0.758),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PERCENTAGE_FORM, TEST_ROW_BOUND, TEST_SIGNATURE_ABSENCE),
+        form_tests=(
+            TEST_PERCENTAGE_FORM,
+            TEST_ROW_BOUND,
+            TEST_SIGNATURE_ABSENCE,
+            TEST_TAX_EVIDENCE,
+        ),
         shape="statutory-rate anchor row, then adjustment rows, then an "
         "effective-rate row; every row in the block is percentage-valued "
         "per period column and anchor + adjustments close to the "

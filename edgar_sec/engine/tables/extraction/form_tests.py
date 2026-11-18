@@ -63,6 +63,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_RESTRUCTURING_EVIDENCE,
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
+    TEST_TAX_EVIDENCE,
     TEST_WALK,
     TEST_WARRANTY_EVIDENCE,
 )
@@ -72,6 +73,7 @@ from edgar_sec.engine.tables.extraction.restructuring_evidence import (
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
 )
+from edgar_sec.engine.tables.extraction.tax_evidence import evaluate_form_test_tax
 from edgar_sec.engine.tables.extraction.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.validation import values_close
 from edgar_sec.engine.tables.extraction.warranty_evidence import (
@@ -338,6 +340,20 @@ def _evaluate_restructuring(table: TypedTable, spec: FormTestSpec) -> FormTestOu
     )
 
 
+def _evaluate_tax(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_tax(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_aro(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_aro(table, spec)
     return FormTestOutcome(
@@ -551,6 +567,7 @@ _EVALUATORS = {
     TEST_WARRANTY_EVIDENCE: _evaluate_warranty,
     TEST_INVENTORY_EVIDENCE: _evaluate_inventory,
     TEST_LEASE_EVIDENCE: _evaluate_lease,
+    TEST_TAX_EVIDENCE: _evaluate_tax,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ADMISSION_EVIDENCE: _evaluate_admission,
     TEST_ROW_BOUND: _evaluate_row_bound,

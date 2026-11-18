@@ -30,6 +30,7 @@ from edgar_sec.engine.tables.extraction.form_tests import (
 )
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
+    TAX_EVIDENCE_SPECS,
 )
 from edgar_sec.engine.tables.extraction.pension_evidence import (
     PENSION_ANCHOR_SPECS,
@@ -399,6 +400,39 @@ def _ladder_direction(
     return direction
 
 
+def _seat_at_floor(
+    scores: dict[str, FamilyScore], family: str, detail: str
+) -> dict[str, FamilyScore]:
+    """Seat one family at CLAIM_FLOOR via the gate channel."""
+    existing = scores.get(family)
+    if existing is not None and existing.total >= CLAIM_FLOOR:
+        return scores
+    base = existing.total if existing is not None else 0.0
+    lift = CLAIM_FLOOR - base
+    channels = dict(existing.by_channel) if existing is not None else {}
+    channels["gate"] = channels.get("gate", 0.0) + lift
+    evidence = existing.evidence if existing is not None else ()
+    note = ClaimEvidence("gate", detail, lift)
+    seated = FamilyScore(family, CLAIM_FLOOR, channels, evidence + (note,))
+    return {**scores, family: seated}
+
+
+def _append_note(
+    scores: dict[str, FamilyScore], family: str, channel: str, detail: str
+) -> dict[str, FamilyScore]:
+    """Append a zero-point note to one family's trail."""
+    score = scores[family]
+    return {
+        **scores,
+        family: FamilyScore(
+            family,
+            score.total,
+            dict(score.by_channel),
+            score.evidence + (ClaimEvidence(channel, detail, 0.0),),
+        ),
+    }
+
+
 def compete(
     geometry: GeometryText,
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
@@ -434,17 +468,9 @@ def compete(
         family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
     }
     if hard_vetoed:
-        scores = dict(scores)
         for family, term in hard_vetoed.items():
-            score = scores.get(family)
-            if score is None:
-                continue
-            scores[family] = FamilyScore(
-                family,
-                score.total,
-                dict(score.by_channel),
-                score.evidence + (ClaimEvidence("veto", f"hard:{term}", 0.0),),
-            )
+            if family in scores:
+                scores = _append_note(scores, family, "veto", f"hard:{term}")
     ranked = sorted(scores.values(), key=lambda s: -s.total)
     claims: list[str] = []
     contested: list[str] = []
@@ -551,14 +577,11 @@ def compete(
         claims.remove("derivatives_hedging")
         if "derivatives_hedging" in contested:
             contested.remove("derivatives_hedging")
-        gated = scores["derivatives_hedging"]
-        scores = dict(scores)
-        scores["derivatives_hedging"] = FamilyScore(
-            gated.family,
-            gated.total,
-            dict(gated.by_channel),
-            gated.evidence
-            + (ClaimEvidence("gate", f"derivatives: {deriv_evidence.detail}", 0.0),),
+        scores = _append_note(
+            scores,
+            "derivatives_hedging",
+            "gate",
+            f"derivatives: {deriv_evidence.detail}",
         )
     # Cure 7 (derivatives subject gate): a derivatives claim also
     # requires the rank-1 subject verdict — derivative evidence in
@@ -624,27 +647,9 @@ def compete(
             and deriv_subject is not None
             and deriv_subject.subject
         ):
-            existing = scores.get("derivatives_hedging")
-            if existing is None:
-                scores = dict(scores)
-                scores["derivatives_hedging"] = FamilyScore(
-                    "derivatives_hedging",
-                    CLAIM_FLOOR,
-                    {"gate": CLAIM_FLOOR},
-                    (ClaimEvidence("gate", deriv_evidence.detail, CLAIM_FLOOR),),
-                )
-            elif existing.total < CLAIM_FLOOR:
-                lift = CLAIM_FLOOR - existing.total
-                channels = dict(existing.by_channel)
-                channels["gate"] = channels.get("gate", 0.0) + lift
-                scores = dict(scores)
-                scores["derivatives_hedging"] = FamilyScore(
-                    existing.family,
-                    CLAIM_FLOOR,
-                    channels,
-                    existing.evidence
-                    + (ClaimEvidence("gate", deriv_evidence.detail, lift),),
-                )
+            scores = _seat_at_floor(
+                scores, "derivatives_hedging", deriv_evidence.detail
+            )
             claims.append("derivatives_hedging")
             reach.append("derivatives_hedging")
     # Step 7 admission (priced): the core-signal reads seat
@@ -679,6 +684,36 @@ def compete(
                 gated.evidence
                 + (ClaimEvidence("gate", f"pension: {pension_evidence.detail}", 0.0),),
             )
+    # Ruling 18 seat (tax_reconciliation): the priced statutory-
+    # anchor conjunction replaces the family's claim path — a
+    # scored claim is displaced, the seat alone decides claimage.
+    tax_spec = TAX_EVIDENCE_SPECS.get("tax_reconciliation")
+    if tax_spec is not None:
+        if "tax_reconciliation" in claims:
+            claims.remove("tax_reconciliation")
+            if "tax_reconciliation" in contested:
+                contested.remove("tax_reconciliation")
+            scores = _append_note(
+                scores,
+                "tax_reconciliation",
+                "gate",
+                "tax seat displaces scored claim",
+            )
+        # Seat precedence: the seat outranks the recorded hard
+        # term in its precedence set; any other term bars it.
+        if hard_vetoed.get("tax_reconciliation") in (
+            None,
+            *tax_spec.seat_veto_precedence_terms,
+        ):
+            tax_outcome = next(
+                (o for o in geometry.form_tests if o.test_id == tax_spec.test_id),
+                None,
+            )
+            if tax_outcome is not None and tax_outcome.passed:
+                scores = _seat_at_floor(
+                    scores, "tax_reconciliation", tax_outcome.detail
+                )
+                claims.append("tax_reconciliation")
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes
