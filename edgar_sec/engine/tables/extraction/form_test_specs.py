@@ -24,12 +24,14 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_DERIVATIVES_EVIDENCE,
     PROV_FAMILY_SUPPORT,
     PROV_RESTRUCTURING_PRICING,
+    PROV_R18_SEAT_PRICING,
     PROV_STEP2_PRICING,
     PROV_STEP3_PRICING,
     PROV_WARRANTY_PRICING,
     TEST_ARO_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_INVENTORY_EVIDENCE,
     TEST_LADDER,
     TEST_MEASURE_SET,
     TEST_PERCENTAGE_FORM,
@@ -275,6 +277,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "deferred_tax", TEST_COMPOSITION_TWIN, "deferred_tax_composition", 3.0
     ),
     FormTestSpec("inventory", TEST_COMPOSITION_TWIN, "inventory_composition", 3.0),
+    FormTestSpec(
+        "inventory",
+        TEST_INVENTORY_EVIDENCE,
+        "inventory_evidence",
+        3.0,
+        provenance=PROV_R18_SEAT_PRICING,
+    ),
     FormTestSpec(
         "lease_maturity", TEST_COMPOSITION_TWIN, "lease_maturity_composition", 3.0
     ),

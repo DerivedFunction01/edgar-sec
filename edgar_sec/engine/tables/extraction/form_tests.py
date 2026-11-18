@@ -15,6 +15,9 @@ from edgar_sec.engine.tables.extraction.composition import evaluate_composition
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     evaluate_form_test_derivatives,
 )
+from edgar_sec.engine.tables.extraction.inventory_evidence import (
+    evaluate_form_test_inventory,
+)
 from edgar_sec.engine.tables.extraction.measure_set import evaluate_measure_set
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.percentage_form import (
@@ -43,6 +46,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ARO_EVIDENCE,
     TEST_COMPOSITION_TWIN,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_INVENTORY_EVIDENCE,
     TEST_LADDER,
     TEST_MEASURE_SET,
     TEST_PERCENTAGE_FORM,
@@ -354,6 +358,20 @@ def _evaluate_warranty(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome
     )
 
 
+def _evaluate_inventory(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_inventory(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_measure_set(table, spec)
     return FormTestOutcome(
@@ -494,6 +512,7 @@ _EVALUATORS = {
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_ARO_EVIDENCE: _evaluate_aro,
     TEST_WARRANTY_EVIDENCE: _evaluate_warranty,
+    TEST_INVENTORY_EVIDENCE: _evaluate_inventory,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ROW_BOUND: _evaluate_row_bound,
     TEST_SIGNATURE_ABSENCE: _evaluate_absence,

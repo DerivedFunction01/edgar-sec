@@ -41,6 +41,7 @@ PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
 PROV_RESTRUCTURING_PRICING = "calibration:restructuring-seat-pricing"
 PROV_ARO_BASE = "measurement:aro-adjudication-base"
 PROV_WARRANTY_PRICING = "calibration:warranty-seat-pricing"
+PROV_R18_SEAT_PRICING = "calibration:r18-seat-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -59,6 +60,7 @@ TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 TEST_MEASURE_SET = "measure_set"
 TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
+TEST_INVENTORY_EVIDENCE = "inventory_evidence"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -74,6 +76,7 @@ FORM_TESTS = (
     TEST_MEASURE_SET,
     TEST_RESTRUCTURING_EVIDENCE,
     TEST_WARRANTY_EVIDENCE,
+    TEST_INVENTORY_EVIDENCE,
 )
 
 
@@ -279,7 +282,10 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.710, 0.714, 0.829, 0.667),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_ROW_BOUND),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_ROW_BOUND, TEST_INVENTORY_EVIDENCE),
+        note="seated additionally on the Ruling 18 pass's priced "
+        "rule over the Step 1 fresh population (P 1.000 / R .905; "
+        "sparse recall .818 is the seat's thin measure)",
     ),
     FamilyProfile(
         "lease_maturity",
