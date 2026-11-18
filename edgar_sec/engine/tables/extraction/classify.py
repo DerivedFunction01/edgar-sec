@@ -7,6 +7,9 @@ from edgar_sec.engine.tables.extraction.classification import (
     Evidence,
     TableKind,
 )
+from edgar_sec.engine.tables.extraction.deferred_tax_seat import (
+    apply_deferred_tax_seat,
+)
 from edgar_sec.engine.tables.extraction.family_scoring import evidence_scores
 from edgar_sec.engine.tables.extraction.filing_passes import (
     apply_detail_agreement,
@@ -247,4 +250,5 @@ def classify_filing(
             results[position] = refinish(tables[position], adjusted, evidence, marker)
             scores[position] = adjusted
     apply_stub_routing(tables, results, finish, Evidence)
+    apply_deferred_tax_seat(tables, results, scores, finish)
     return results, scores
