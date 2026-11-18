@@ -22,6 +22,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_DECLARED_SPECS,
     PROV_DERIVATIVES_EVIDENCE,
     PROV_FAMILY_SUPPORT,
+    PROV_RESTRUCTURING_PRICING,
     PROV_STEP2_PRICING,
     PROV_STEP3_PRICING,
     TEST_COMPOSITION_TWIN,
@@ -31,6 +32,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
     TEST_PRIMARY_STATEMENT_SEAT,
+    TEST_RESTRUCTURING_EVIDENCE,
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_WALK,
@@ -321,6 +323,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "combined_operations_ci_joint_measure_set",
         3.0,
         provenance=PROV_CI_STEP6_PRICING,
+    ),
+    FormTestSpec(
+        "restructuring",
+        TEST_RESTRUCTURING_EVIDENCE,
+        "restructuring_rollforward_evidence",
+        3.0,
+        provenance=PROV_RESTRUCTURING_PRICING,
     ),
     *(
         FormTestSpec(family, kind, test_id, points, provenance=PROV_STEP2_PRICING)

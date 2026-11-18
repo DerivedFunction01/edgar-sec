@@ -44,9 +44,13 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
     TEST_PRIMARY_STATEMENT_SEAT,
+    TEST_RESTRUCTURING_EVIDENCE,
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_WALK,
+)
+from edgar_sec.engine.tables.extraction.restructuring_evidence import (
+    evaluate_form_test_restructuring,
 )
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
@@ -300,6 +304,20 @@ def _evaluate_derivatives(table: TypedTable, spec: FormTestSpec) -> FormTestOutc
     )
 
 
+def _evaluate_restructuring(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_restructuring(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_measure_set(table, spec)
     return FormTestOutcome(
@@ -437,6 +455,7 @@ _EVALUATORS = {
     TEST_PRIMARY_STATEMENT_SEAT: _evaluate_seat,
     TEST_COMPOSITION_TWIN: _evaluate_composition,
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
+    TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_MEASURE_SET: _evaluate_measure_set,
     TEST_ROW_BOUND: _evaluate_row_bound,
     TEST_SIGNATURE_ABSENCE: _evaluate_absence,

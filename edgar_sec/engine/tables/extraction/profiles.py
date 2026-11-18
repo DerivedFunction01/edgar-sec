@@ -38,6 +38,7 @@ PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
 PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
+PROV_RESTRUCTURING_PRICING = "calibration:restructuring-seat-pricing"
 
 # Form-test declarations (R1): names only, as registry data.
 # The test classes themselves are implemented outside the
@@ -53,6 +54,7 @@ TEST_ROW_BOUND = "row_bound"
 TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 TEST_MEASURE_SET = "measure_set"
+TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -65,6 +67,7 @@ FORM_TESTS = (
     TEST_SIGNATURE_ABSENCE,
     TEST_PLACEMENT_CONSISTENCY,
     TEST_MEASURE_SET,
+    TEST_RESTRUCTURING_EVIDENCE,
 )
 
 
@@ -371,6 +374,28 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "the composition fill); a standalone comprehensive income "
         "statement starts at net income and is not this form",
         provenance=PROV_STEP3_PRICING,
+    ),
+    FamilyProfile(
+        "restructuring",
+        KIND_FAMILY,
+        _support(
+            None,
+            None,
+            None,
+            None,
+            note="seated on the dialect cure's priced core over "
+            "the completed adjudication base (corpus P .917 / "
+            "R .909, pooled P .916 / R .912; sealed recall 1.000 "
+            "on n=8); sealed-protocol precision/recall unmeasured",
+        ),
+        SEAT_SIGNATURE,
+        form_tests=(TEST_RESTRUCTURING_EVIDENCE,),
+        note="the exit/disposal-cost liability walked as the "
+        "table's own subject: beginning balance, at least one "
+        "ASC 420 movement, ending balance; the subject may ride "
+        "in the prose the geometry sits in; loan-context tables "
+        "are refused before claimage",
+        provenance=PROV_RESTRUCTURING_PRICING,
     ),
     FamilyProfile(
         "valuation_model_assumptions",

@@ -57,6 +57,7 @@ def test_registry_covers_exactly_the_supported_set() -> None:
         "cover_layout",
         "shares_purchased",
         "combined_operations_ci",
+        "restructuring",
         "valuation_model_assumptions",
         "warrant_activity",
         "other",
@@ -78,6 +79,7 @@ def test_no_profile_no_claims_for_unknown_families() -> None:
         "demographics",
         "shares_purchased",
         "combined_operations_ci",
+        "restructuring",
         "valuation_model_assumptions",
         "warrant_activity",
     }
