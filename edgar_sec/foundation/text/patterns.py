@@ -53,6 +53,8 @@ RE_TRAILING_FILL_IN = re.compile(r"\s*[-_=]{2,}\s*$")
 RE_WHITESPACE = re.compile(r"\s+")
 RE_WHITESPACE_GAP = re.compile(r"\s{2,}")
 RE_WHITESPACE_SPLIT = re.compile(r"\t+|\s{2,}")
+RE_NUMERIC_ENTITY = re.compile(r"&#\d+;")
+RE_NAMED_ENTITY = re.compile(r"&[a-z]+;")
 RE_NON_ALNUM = re.compile(r"[^a-z0-9]+")
 RE_TABLE_OPEN = re.compile(r"<table\b", re.IGNORECASE)
 RE_TABLE_CLOSE = re.compile(r"</table\s*>", re.IGNORECASE)
@@ -75,7 +77,9 @@ __all__ = [
     "RE_DOT_LEADER",
     "RE_FILL_IN_RUN",
     "RE_GRAMMATICAL_COMMA",
+    "RE_NAMED_ENTITY",
     "RE_NON_ALNUM",
+    "RE_NUMERIC_ENTITY",
     "RE_PAGE_NUMBER_SUFFIX",
     "RE_PAGE_REFERENCE",
     "RE_SENTENCE_TERMINAL",

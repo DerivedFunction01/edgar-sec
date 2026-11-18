@@ -20,21 +20,22 @@ from edgar_sec.engine.tables.extraction.labor_specs import (
     WORKFORCE_HDR,
     LaborEvidenceSpec,
 )
+from edgar_sec.engine.tables.extraction.normalize import collapse_text
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable
-from edgar_sec.foundation.text.patterns import RE_WHITESPACE as _WHITESPACE_RUN
+from edgar_sec.foundation.text.normalize import NORMALIZE_TO_SPACE
+from edgar_sec.foundation.text.patterns import RE_NAMED_ENTITY, RE_NUMERIC_ENTITY
 
 _FRAGMENT_LEAD = re.compile(r"^\(\d+\)")
-_NUMERIC_ENTITY = re.compile(r"&#\d+;")
-_NAMED_ENTITY = re.compile(r"&[a-z]+;")
 FRAGMENT_MAX_CELLS = 3
+_TO_SPACE = str.maketrans({**{ch: " " for ch in NORMALIZE_TO_SPACE}, "\u200b": " "})
 
 
 def _clean(cell: str) -> str:
     """The pricing instrument's cell cleaning, ported exactly."""
-    text = cell.replace("\u200b", " ").replace("\xa0", " ")
-    text = _NUMERIC_ENTITY.sub(" ", text)
-    text = _NAMED_ENTITY.sub(" ", text)
-    return _WHITESPACE_RUN.sub(" ", text).strip().lower()
+    text = cell.translate(_TO_SPACE)
+    text = RE_NUMERIC_ENTITY.sub(" ", text)
+    text = RE_NAMED_ENTITY.sub(" ", text)
+    return collapse_text(text).lower()
 
 
 @dataclass(frozen=True, slots=True)
