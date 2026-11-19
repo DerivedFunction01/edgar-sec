@@ -181,7 +181,7 @@ def test_item_703_variant_phrasings_pass_on_the_pair_plus_one() -> None:
     assert _outcome(table, "shares_purchased_measure_set").passed
 
 
-def test_item_703_pair_without_any_completing_column_does_not_pass() -> None:
+def test_item_703_pair_without_any_completing_column_passes_on_the_pair() -> None:
     table = _table(
         (
             (
@@ -192,7 +192,9 @@ def test_item_703_pair_without_any_completing_column_does_not_pass() -> None:
             ("July 1 - 31, 2024", "1,000", "$ 6.03"),
         )
     )
-    assert not _outcome(table, "shares_purchased_measure_set").passed
+    outcome = _outcome(table, "shares_purchased_measure_set")
+    assert outcome.passed
+    assert "2 of 4 measure groups present (needs 2)" in outcome.detail
 
 
 def test_combined_statement_passes_all_three_classes() -> None:
