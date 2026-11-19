@@ -252,5 +252,5 @@ def test_inherited_claim_cannot_resurrect_past_the_gate() -> None:
     gate = [entry for entry in trail if entry.channel == "gate"]
     assert len(gate) == 1
     assert gate[0].detail == (
-        "primary gate: missing beginning_balances, ending_balances"
+        "equity assignment: strictly dominated candidate"
     )
