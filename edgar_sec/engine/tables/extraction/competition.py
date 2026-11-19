@@ -383,9 +383,7 @@ def compete(
             claims.remove("comprehensive_income")
             if "comprehensive_income" in contested:
                 contested.remove("comprehensive_income")
-            scores = _append_note(
-                scores, "comprehensive_income", "gate", fired.detail
-            )
+            scores = _append_note(scores, "comprehensive_income", "gate", fired.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []

@@ -65,9 +65,7 @@ class ComprehensiveIncomeSeparatorText:
         )
         self.caption_stack = list(caption_stack or [])
         self.stub_keys = frozenset(
-            key
-            for key in (stub_key(stub) for stub in self.stubs)
-            if len(key) >= 3
+            key for key in (stub_key(stub) for stub in self.stubs) if len(key) >= 3
         )
         self.header_keys = _header_keys(self.headers)
         self.norm_stubs = tuple(norm(stub) for stub in self.stubs)
@@ -79,15 +77,11 @@ class ComprehensiveIncomeSeparatorText:
 
     @classmethod
     def from_packet(cls, packet):
-        return cls(
-            packet.get("table_text") or "", packet.get("caption_stack") or []
-        )
+        return cls(packet.get("table_text") or "", packet.get("caption_stack") or [])
 
     @classmethod
     def from_rows(cls, rows, caption_stack=()):
-        table_text = "\n".join(
-            " | ".join(str(cell) for cell in row) for row in rows
-        )
+        table_text = "\n".join(" | ".join(str(cell) for cell in row) for row in rows)
         return cls(table_text, caption_stack)
 
 
@@ -108,9 +102,7 @@ class ComprehensiveIncomeCandidateFeatures:
 
 def _core_complete(stub_keys: frozenset, spec) -> bool:
     """The determined core: walk head, walk tail, OCI element."""
-    begin = any(
-        term in key for key in stub_keys for term in spec.walk_begin_terms
-    )
+    begin = any(term in key for key in stub_keys for term in spec.walk_begin_terms)
     end = any(term in key for key in stub_keys for term in spec.walk_end_terms)
     oci = any(term in key for key in stub_keys for term in spec.oci_terms)
     return begin and end and oci
@@ -122,9 +114,9 @@ def comprehensive_income_candidate_features(
 ) -> ComprehensiveIncomeCandidateFeatures:
     """Cascade features over the packet text surface."""
     blob = text.stub_blob
-    bookend_pair = any(
-        phrase in blob for phrase in _BOOKEND_BEGIN_PHRASES
-    ) and any(phrase in blob for phrase in _BOOKEND_END_PHRASES)
+    bookend_pair = any(phrase in blob for phrase in _BOOKEND_BEGIN_PHRASES) and any(
+        phrase in blob for phrase in _BOOKEND_END_PHRASES
+    )
     header_text = norm(" ".join([*text.caption_stack, *text.headers]))
     return ComprehensiveIncomeCandidateFeatures(
         row_count=len(text.rows),
@@ -170,9 +162,7 @@ def evaluate_comprehensive_income_separator(
 ) -> ComprehensiveIncomeSeparatorVerdict:
     """Fire the claim-local legs in their priced order."""
     if not text.rows:
-        return ComprehensiveIncomeSeparatorVerdict(
-            False, False, (), "no grid rows"
-        )
+        return ComprehensiveIncomeSeparatorVerdict(False, False, (), "no grid rows")
     features = comprehensive_income_candidate_features(text, spec)
     legs = []
     if features.row_count > spec.max_rows:
@@ -219,9 +209,7 @@ def evaluate_form_test_comprehensive_income_separator(table, spec):
 def comprehensive_income_core_complete_from_geometry(geometry, spec) -> bool:
     """The determined-core read over a claimed geometry's stubs."""
     stub_keys = frozenset(
-        key
-        for key in (stub_key(stub) for stub in geometry.stubs)
-        if len(key) >= 3
+        key for key in (stub_key(stub) for stub in geometry.stubs) if len(key) >= 3
     )
     return _core_complete(stub_keys, spec)
 

@@ -247,8 +247,7 @@ def test_gate_removes_claim_on_fired_outcome():
     assert "comprehensive_income" not in result.claims
     evidence = result.scores["comprehensive_income"].evidence
     assert any(
-        item.channel == "gate" and "separator fired" in item.detail
-        for item in evidence
+        item.channel == "gate" and "separator fired" in item.detail for item in evidence
     )
 
 

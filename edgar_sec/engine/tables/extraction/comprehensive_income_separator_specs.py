@@ -30,9 +30,7 @@ class ComprehensiveIncomeSeparatorSpec:
     tax_header_phrases: tuple[str, ...]
 
 
-COMPREHENSIVE_INCOME_SEPARATOR_SPECS: dict[
-    str, ComprehensiveIncomeSeparatorSpec
-] = {
+COMPREHENSIVE_INCOME_SEPARATOR_SPECS: dict[str, ComprehensiveIncomeSeparatorSpec] = {
     "comprehensive_income": ComprehensiveIncomeSeparatorSpec(
         family="comprehensive_income",
         max_rows=21,
