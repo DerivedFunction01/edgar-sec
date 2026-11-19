@@ -18,6 +18,9 @@ from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
     apply_cash_flow_assignment,
     fired_separator_outcome as fired_cash_flow_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.credit_separator_evidence import (
+    fired_separator_outcome as fired_credit_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
     failing_core_form_outcome,
 )
@@ -88,6 +91,7 @@ from edgar_sec.engine.tables.extraction.stock_comp_separator_evidence import (
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
+    TEST_CREDIT_SEPARATOR,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
     TEST_EPS_DETECTOR,
@@ -391,6 +395,22 @@ def compete(
             if "cash_flow" in contested:
                 contested.remove("cash_flow")
             scores = _append_note(scores, "cash_flow", "gate", fired.detail)
+    # Credit separator gate (priced): a credit_losses claim is
+    # refused when the stamped separator outcome fired; an
+    # outcome absent or unevaluable never fails the gate.
+    if "credit_losses_rollforward" in claims:
+        fired = fired_credit_separator_outcome(
+            geometry.form_tests,
+            "credit_losses_rollforward",
+            TEST_CREDIT_SEPARATOR,
+        )
+        if fired is not None:
+            claims.remove("credit_losses_rollforward")
+            if "credit_losses_rollforward" in contested:
+                contested.remove("credit_losses_rollforward")
+            scores = _append_note(
+                scores, "credit_losses_rollforward", "gate", fired.detail
+            )
     # EPS determination gate (priced): an eps_reconciliation
     # claim is refused when the seat's detector fires on the
     # geometry, whatever channel produced the claim; an outcome

@@ -53,6 +53,7 @@ PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 PROV_STEP8_PRICING = "calibration:step8-pricing"
 PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
 PROV_CASH_FLOW_CASCADE = "calibration:cash-flow-cascade-pricing"
+PROV_CREDIT_SEPARATOR = "calibration:credit-separator-pricing"
 PROV_COREFIN_COMPINCOME = "calibration:corefin-compincome-pricing"
 PROV_COMBINED_OPERATIONS_SEPARATOR = "calibration:combined-operations-cascade-pricing"
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
@@ -92,6 +93,7 @@ TEST_BALANCE_SHEET_SEPARATOR = "balance_sheet_separator"
 TEST_COMPREHENSIVE_INCOME_SEPARATOR = "comprehensive_income_separator"
 TEST_PENSION_ROUTED = "pension_routed"
 TEST_CASH_FLOW_SEPARATOR = "cash_flow_separator"
+TEST_CREDIT_SEPARATOR = "credit_separator"
 TEST_EQUITY_SEPARATOR = "equity_separator"
 TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
 TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
@@ -126,6 +128,7 @@ FORM_TESTS = (
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_EPS_DETECTOR,
     TEST_CASH_FLOW_SEPARATOR,
+    TEST_CREDIT_SEPARATOR,
     TEST_EQUITY_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
 )
@@ -290,7 +293,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(None, None, None, None),
         SEAT_SIGNATURE,
-        form_tests=(TEST_CREDIT_LOSSES_EVIDENCE,),
+        form_tests=(TEST_CREDIT_LOSSES_EVIDENCE, TEST_CREDIT_SEPARATOR),
         note="support unmeasured on fresh strata; in-sample base "
         "readings (436-specimen S+C adjudication base): headline "
         "P .964 / R .947, production with the DA veto P .967 — "

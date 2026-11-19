@@ -22,6 +22,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_ARO_BASE,
     PROV_BALANCE_SHEET_SEPARATOR,
     PROV_CASH_FLOW_CASCADE,
+    PROV_CREDIT_SEPARATOR,
     PROV_COREFIN_COMPINCOME,
     PROV_COREFIN_EQUITYSTATEMENT,
     PROV_COMBINED_OPERATIONS_SEPARATOR,
@@ -46,6 +47,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
+    TEST_CREDIT_SEPARATOR,
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
@@ -85,6 +87,10 @@ from edgar_sec.engine.tables.extraction.balance_sheet_separator_specs import (
 from edgar_sec.engine.tables.extraction.cash_flow_separator_specs import (
     CASH_FLOW_SEPARATOR_SPECS,
     CashFlowSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.credit_separator_specs import (
+    CREDIT_SEPARATOR_SPECS,
+    CreditSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.combined_operations_separator_specs import (
     COMBINED_OPERATIONS_SEPARATOR_SPECS,
@@ -165,6 +171,8 @@ __all__ = (
     "BalanceSheetSeparatorSpec",
     "CASH_FLOW_SEPARATOR_SPECS",
     "CashFlowSeparatorSpec",
+    "CREDIT_SEPARATOR_SPECS",
+    "CreditSeparatorSpec",
     "COMBINED_OPERATIONS_SEPARATOR_SPECS",
     "CombinedOperationsSeparatorSpec",
     "COMPREHENSIVE_INCOME_SEPARATOR_SPECS",
@@ -195,6 +203,7 @@ __all__ = (
     "PROV_ARO_BASE",
     "PROV_BALANCE_SHEET_SEPARATOR",
     "PROV_CASH_FLOW_CASCADE",
+    "PROV_CREDIT_SEPARATOR",
     "PROV_CI_STEP6_PRICING",
     "PROV_COREFIN_COMPINCOME",
     "PROV_COREFIN_EQUITYSTATEMENT",
@@ -227,6 +236,7 @@ __all__ = (
     "TEST_ARO_EVIDENCE",
     "TEST_BALANCE_SHEET_SEPARATOR",
     "TEST_CASH_FLOW_SEPARATOR",
+    "TEST_CREDIT_SEPARATOR",
     "TEST_COMBINED_OPERATIONS_SEPARATOR",
     "TEST_COMPOSITION_TWIN",
     "TEST_COMPREHENSIVE_INCOME_SEPARATOR",
@@ -534,6 +544,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "cash_flow_separator",
         0.0,
         provenance=PROV_CASH_FLOW_CASCADE,
+    ),
+    FormTestSpec(
+        "credit_losses_rollforward",
+        TEST_CREDIT_SEPARATOR,
+        "credit_separator",
+        0.0,
+        provenance=PROV_CREDIT_SEPARATOR,
     ),
     FormTestSpec(
         "comprehensive_income",

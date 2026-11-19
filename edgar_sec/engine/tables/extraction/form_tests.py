@@ -75,6 +75,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_CORE_FORM,
+    TEST_CREDIT_SEPARATOR,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_EPS_DETECTOR,
@@ -105,6 +106,7 @@ from edgar_sec.engine.tables.extraction.restructuring_evidence import (
 from edgar_sec.engine.tables.extraction.separator_form_tests import (
     _evaluate_balance_sheet_separator,
     _evaluate_cash_flow_separator,
+    _evaluate_credit_separator,
     _evaluate_comprehensive_income_separator,
     _evaluate_combined_operations_separator,
     _evaluate_equity_separator,
@@ -708,6 +710,7 @@ _EVALUATORS = {
     TEST_COMPREHENSIVE_INCOME_SEPARATOR: _evaluate_comprehensive_income_separator,
     TEST_PENSION_ROUTED: _evaluate_pension_routed,
     TEST_CASH_FLOW_SEPARATOR: _evaluate_cash_flow_separator,
+    TEST_CREDIT_SEPARATOR: _evaluate_credit_separator,
     TEST_EQUITY_SEPARATOR: _evaluate_equity_separator,
     TEST_COMBINED_OPERATIONS_SEPARATOR: _evaluate_combined_operations_separator,
     TEST_STOCK_COMP_SEPARATOR: _evaluate_stock_comp_separator,
