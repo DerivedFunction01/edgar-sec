@@ -52,6 +52,7 @@ PROV_S6B_PRICING = "calibration:s6b-pricing"
 PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 PROV_STEP8_PRICING = "calibration:step8-pricing"
 PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
+PROV_COREFIN_COMPINCOME = "calibration:corefin-compincome-pricing"
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
@@ -84,6 +85,7 @@ TEST_LABOR_FORM = "labor_form"
 TEST_CREDIT_LOSSES_EVIDENCE = "credit_losses_evidence"
 TEST_CORE_FORM = "core_form"
 TEST_BALANCE_SHEET_SEPARATOR = "balance_sheet_separator"
+TEST_COMPREHENSIVE_INCOME_SEPARATOR = "comprehensive_income_separator"
 TEST_PENSION_ROUTED = "pension_routed"
 FORM_TESTS = (
     TEST_WALK,
@@ -112,6 +114,7 @@ FORM_TESTS = (
     TEST_CORE_FORM,
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_PENSION_ROUTED,
+    TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_EPS_DETECTOR,
 )
 
@@ -217,7 +220,12 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.623, 0.750, 0.871, 0.625),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK, TEST_ROW_BOUND, TEST_PLACEMENT_CONSISTENCY),
+        form_tests=(
+            TEST_WALK,
+            TEST_ROW_BOUND,
+            TEST_PLACEMENT_CONSISTENCY,
+            TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+        ),
         gate_bindings=("section_gate",),
         exhibit_links=_EX13_ANNUAL,
     ),

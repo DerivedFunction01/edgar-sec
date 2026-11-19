@@ -17,6 +17,9 @@ from edgar_sec.engine.tables.extraction.aro_evidence import (
 from edgar_sec.engine.tables.extraction.balance_sheet_separator_evidence import (
     evaluate_form_test_balance_sheet_separator,
 )
+from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
+    evaluate_form_test_comprehensive_income_separator,
+)
 from edgar_sec.engine.tables.extraction.composition import evaluate_composition
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
     evaluate_form_test_core_form,
@@ -74,6 +77,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ARO_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,
+    TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_CORE_FORM,
     TEST_CREDIT_LOSSES_EVIDENCE,
@@ -392,6 +396,22 @@ def _evaluate_balance_sheet_separator(
     table: TypedTable, spec: FormTestSpec
 ) -> FormTestOutcome:
     result = evaluate_form_test_balance_sheet_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_comprehensive_income_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_comprehensive_income_separator(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,
@@ -726,6 +746,7 @@ _EVALUATORS = {
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
     TEST_CORE_FORM: _evaluate_core_form,
     TEST_BALANCE_SHEET_SEPARATOR: _evaluate_balance_sheet_separator,
+    TEST_COMPREHENSIVE_INCOME_SEPARATOR: _evaluate_comprehensive_income_separator,
     TEST_PENSION_ROUTED: _evaluate_pension_routed,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_EPS_DETECTOR: _evaluate_eps_detector,

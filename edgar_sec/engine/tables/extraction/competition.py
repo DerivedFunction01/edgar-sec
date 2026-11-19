@@ -64,8 +64,12 @@ from edgar_sec.engine.tables.extraction.seat_floor_evidence import (
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
+    apply_comprehensive_income_assignment,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
+    TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
     TEST_EPS_DETECTOR,
     TEST_PENSION_ROUTED,
@@ -366,6 +370,22 @@ def compete(
             if "eps_reconciliation" in contested:
                 contested.remove("eps_reconciliation")
             scores = _append_note(scores, "eps_reconciliation", "gate", fired.detail)
+    # Comprehensive-income separator gate (priced): a claim is
+    # refused when the stamped separator outcome fired; an
+    # outcome absent or unevaluable never fails the gate.
+    if "comprehensive_income" in claims:
+        fired = fired_separator_outcome(
+            geometry.form_tests,
+            "comprehensive_income",
+            TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+        )
+        if fired is not None:
+            claims.remove("comprehensive_income")
+            if "comprehensive_income" in contested:
+                contested.remove("comprehensive_income")
+            scores = _append_note(
+                scores, "comprehensive_income", "gate", fired.detail
+            )
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -672,6 +692,10 @@ def compete_filing(
             ladder_terms=ladder_terms,
             scopes=scopes,
         )
+    # Comprehensive-income ranking pass (set-level, priced):
+    # core-completeness ranking over the filing's formed
+    # candidate set; it only removes claims.
+    results = apply_comprehensive_income_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.

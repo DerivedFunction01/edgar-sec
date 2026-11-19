@@ -21,6 +21,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_CI_STEP6_PRICING,
     PROV_ARO_BASE,
     PROV_BALANCE_SHEET_SEPARATOR,
+    PROV_COREFIN_COMPINCOME,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
     PROV_DERIVATIVES_EVIDENCE,
@@ -41,6 +42,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_COMPOSITION_TWIN,
+    TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
     TEST_PENSION_ROUTED,
     TEST_CREDIT_LOSSES_EVIDENCE,
@@ -71,6 +73,10 @@ from edgar_sec.engine.tables.extraction.aoci_claim_shape_specs import (
 from edgar_sec.engine.tables.extraction.balance_sheet_separator_specs import (
     BALANCE_SHEET_SEPARATOR_SPECS,
     BalanceSheetSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.comprehensive_income_separator_specs import (
+    COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
+    ComprehensiveIncomeSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -133,6 +139,8 @@ __all__ = (
     "AociClaimShapeSpec",
     "BALANCE_SHEET_SEPARATOR_SPECS",
     "BalanceSheetSeparatorSpec",
+    "COMPREHENSIVE_INCOME_SEPARATOR_SPECS",
+    "ComprehensiveIncomeSeparatorSpec",
     "COMMERCIAL_TERMS",
     "COMMODITY_HEADER_PHRASE",
     "COMPOSITION_SPECS",
@@ -156,6 +164,7 @@ __all__ = (
     "PROV_ARO_BASE",
     "PROV_BALANCE_SHEET_SEPARATOR",
     "PROV_CI_STEP6_PRICING",
+    "PROV_COREFIN_COMPINCOME",
     "PROV_DECLARED_SPECS",
     "PROV_DERIVATIVES_EVIDENCE",
     "PROV_EPS_TRANSFER_PRICING",
@@ -181,6 +190,7 @@ __all__ = (
     "TEST_ARO_EVIDENCE",
     "TEST_BALANCE_SHEET_SEPARATOR",
     "TEST_COMPOSITION_TWIN",
+    "TEST_COMPREHENSIVE_INCOME_SEPARATOR",
     "TEST_CORE_FORM",
     "TEST_DERIVATIVES_EVIDENCE",
     "TEST_EPS_DETECTOR",
@@ -462,6 +472,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "pension_routed_separator",
         0.0,
         provenance=PROV_PENSION_ROUTED,
+    ),
+    FormTestSpec(
+        "comprehensive_income",
+        TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+        "comprehensive_income_separator",
+        0.0,
+        provenance=PROV_COREFIN_COMPINCOME,
     ),
     FormTestSpec(
         "aro_rollforward",
