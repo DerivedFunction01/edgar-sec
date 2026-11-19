@@ -424,7 +424,7 @@ def _evaluate_eps_detector(table: TypedTable, spec: FormTestSpec) -> FormTestOut
         spec.family,
         spec.test_id,
         spec.kind,
-        not result.fired,
+        result.evaluable and not result.fired,
         result.evaluable,
         0,
         spec.points,
