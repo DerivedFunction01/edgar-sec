@@ -248,7 +248,6 @@ def apply_equity_assignment(geometries, results):
 # ---------------------------------------------------------------
 # Production wiring: the stage adapter reads the assembled
 # table's full grid (context rows) through the same derivation.
-# ---------------------------------------------------------------
 
 
 def evaluate_form_test_equity_separator(table, spec) -> EquitySeparatorVerdict:
