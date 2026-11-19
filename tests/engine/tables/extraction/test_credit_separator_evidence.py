@@ -60,9 +60,7 @@ def test_packet_and_rows_surfaces_agree():
         ("Recoveries", "2"),
         ("Loans originated", "50"),
     )
-    via_rows = evaluate_credit_separator(
-        CreditSeparatorText.from_rows(rows), SPEC
-    )
+    via_rows = evaluate_credit_separator(CreditSeparatorText.from_rows(rows), SPEC)
     via_packet = evaluate_credit_separator(
         CreditSeparatorText.from_packet(
             {
