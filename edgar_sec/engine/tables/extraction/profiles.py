@@ -55,6 +55,7 @@ PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
 PROV_CASH_FLOW_CASCADE = "calibration:cash-flow-cascade-pricing"
 PROV_COREFIN_COMPINCOME = "calibration:corefin-compincome-pricing"
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
+PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -89,6 +90,7 @@ TEST_BALANCE_SHEET_SEPARATOR = "balance_sheet_separator"
 TEST_COMPREHENSIVE_INCOME_SEPARATOR = "comprehensive_income_separator"
 TEST_PENSION_ROUTED = "pension_routed"
 TEST_CASH_FLOW_SEPARATOR = "cash_flow_separator"
+TEST_EQUITY_SEPARATOR = "equity_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -119,6 +121,7 @@ FORM_TESTS = (
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_EPS_DETECTOR,
     TEST_CASH_FLOW_SEPARATOR,
+    TEST_EQUITY_SEPARATOR,
 )
 
 
@@ -309,7 +312,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.316, 1.000, 0.315, 0.769),
         SEAT_SIGNATURE,
-        form_tests=(TEST_PRIMARY_STATEMENT_SEAT, TEST_ROW_BOUND),
+        form_tests=(
+            TEST_PRIMARY_STATEMENT_SEAT,
+            TEST_ROW_BOUND,
+            TEST_EQUITY_SEPARATOR,
+        ),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
         note="thinnest directed coverage of the four; the directed "

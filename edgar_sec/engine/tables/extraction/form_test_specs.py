@@ -23,6 +23,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_BALANCE_SHEET_SEPARATOR,
     PROV_CASH_FLOW_CASCADE,
     PROV_COREFIN_COMPINCOME,
+    PROV_COREFIN_EQUITYSTATEMENT,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
     PROV_DERIVATIVES_EVIDENCE,
@@ -46,6 +47,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_COMPOSITION_TWIN,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
+    TEST_EQUITY_SEPARATOR,
     TEST_PENSION_ROUTED,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_DERIVATIVES_EVIDENCE,
@@ -83,6 +85,10 @@ from edgar_sec.engine.tables.extraction.cash_flow_separator_specs import (
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_specs import (
     COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
     ComprehensiveIncomeSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.equity_separator_specs import (
+    EQUITY_SEPARATOR_SPECS,
+    EquitySeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -149,6 +155,8 @@ __all__ = (
     "CashFlowSeparatorSpec",
     "COMPREHENSIVE_INCOME_SEPARATOR_SPECS",
     "ComprehensiveIncomeSeparatorSpec",
+    "EQUITY_SEPARATOR_SPECS",
+    "EquitySeparatorSpec",
     "COMMERCIAL_TERMS",
     "COMMODITY_HEADER_PHRASE",
     "COMPOSITION_SPECS",
@@ -175,6 +183,7 @@ __all__ = (
     "PROV_CASH_FLOW_CASCADE",
     "PROV_CI_STEP6_PRICING",
     "PROV_COREFIN_COMPINCOME",
+    "PROV_COREFIN_EQUITYSTATEMENT",
     "PROV_DECLARED_SPECS",
     "PROV_DERIVATIVES_EVIDENCE",
     "PROV_EPS_TRANSFER_PRICING",
@@ -203,6 +212,7 @@ __all__ = (
     "TEST_COMPOSITION_TWIN",
     "TEST_COMPREHENSIVE_INCOME_SEPARATOR",
     "TEST_CORE_FORM",
+    "TEST_EQUITY_SEPARATOR",
     "TEST_DERIVATIVES_EVIDENCE",
     "TEST_EPS_DETECTOR",
     "TEST_EPS_EVIDENCE",
@@ -511,6 +521,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "comprehensive_income_separator",
         0.0,
         provenance=PROV_COREFIN_COMPINCOME,
+    ),
+    FormTestSpec(
+        "equity_statement",
+        TEST_EQUITY_SEPARATOR,
+        "equity_separator",
+        0.0,
+        provenance=PROV_COREFIN_EQUITYSTATEMENT,
     ),
     FormTestSpec(
         "aro_rollforward",

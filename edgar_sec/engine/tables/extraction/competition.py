@@ -71,12 +71,16 @@ from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
     apply_comprehensive_income_assignment,
 )
+from edgar_sec.engine.tables.extraction.equity_separator_evidence import (
+    apply_equity_assignment,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
     TEST_EPS_DETECTOR,
+    TEST_EQUITY_SEPARATOR,
     TEST_PENSION_ROUTED,
 )
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
@@ -402,6 +406,18 @@ def compete(
             if "comprehensive_income" in contested:
                 contested.remove("comprehensive_income")
             scores = _append_note(scores, "comprehensive_income", "gate", fired.detail)
+    # Equity separator gate (priced): an equity_statement claim
+    # is refused when the stamped separator outcome fired; an
+    # outcome absent or unevaluable never fails the gate.
+    if "equity_statement" in claims:
+        fired = fired_separator_outcome(
+            geometry.form_tests, "equity_statement", TEST_EQUITY_SEPARATOR
+        )
+        if fired is not None:
+            claims.remove("equity_statement")
+            if "equity_statement" in contested:
+                contested.remove("equity_statement")
+            scores = _append_note(scores, "equity_statement", "gate", fired.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -716,6 +732,10 @@ def compete_filing(
     # takes all over the filing's formed cash_flow candidate set;
     # it only removes claims, so the primary gate stays final.
     results = apply_cash_flow_assignment(geometries, results)
+    # Equity assignment pass (set-level, priced): joint
+    # assignment over the filing's formed equity candidate set;
+    # it only removes claims, so the primary gate stays final.
+    results = apply_equity_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.

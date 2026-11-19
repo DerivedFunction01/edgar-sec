@@ -78,6 +78,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_DERIVATIVES_EVIDENCE,
     TEST_EPS_DETECTOR,
     TEST_EPS_EVIDENCE,
+    TEST_EQUITY_SEPARATOR,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
     TEST_LADDER,
@@ -103,6 +104,7 @@ from edgar_sec.engine.tables.extraction.separator_form_tests import (
     _evaluate_balance_sheet_separator,
     _evaluate_cash_flow_separator,
     _evaluate_comprehensive_income_separator,
+    _evaluate_equity_separator,
 )
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
@@ -702,6 +704,7 @@ _EVALUATORS = {
     TEST_COMPREHENSIVE_INCOME_SEPARATOR: _evaluate_comprehensive_income_separator,
     TEST_PENSION_ROUTED: _evaluate_pension_routed,
     TEST_CASH_FLOW_SEPARATOR: _evaluate_cash_flow_separator,
+    TEST_EQUITY_SEPARATOR: _evaluate_equity_separator,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_EPS_DETECTOR: _evaluate_eps_detector,
     TEST_PPE_EVIDENCE: _evaluate_ppe,
