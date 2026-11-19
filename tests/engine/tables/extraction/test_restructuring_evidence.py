@@ -292,3 +292,42 @@ def test_text_level_evaluator_matches_the_adapter():
         lines=tuple(" | ".join(row) for row in _WALK),
     )
     assert evaluate_restructuring_evidence(text, SPEC).admitted
+
+
+def test_exit_cost_liability_walk_is_admitted():
+    # Specimen 0001413329-23-000117:49: the walk's subject is
+    # "exit cost liabilities", never "restructuring".
+    rows = (
+        ("Liability balance, January 1, 2023", "100"),
+        ("Charges, net", "20"),
+        ("Cash spent", "(15)"),
+        ("Liability balance, March 31, 2023", "105"),
+    )
+    result = _verdict(rows, caption_stack=("Movement in Exit Cost Liabilities",))
+    assert result.admitted
+
+
+def test_employee_separation_walk_is_admitted():
+    # Specimen 0001047127-12-000009:32: the walk is carried as
+    # "employee separation costs" with accrual bookends.
+    rows = (
+        ("Accrual at December 31, 2011", "50"),
+        ("Charges", "10"),
+        ("Cash Payments", "(8)"),
+        ("Accrual at June 30, 2012", "52"),
+    )
+    result = _verdict(rows, caption_stack=("Employee Separation Costs",))
+    assert result.admitted
+
+
+def test_charge_incidence_table_stays_outside_the_walk_gate():
+    # The incidence sub-kind carries no accrual walk; the term
+    # set does not seat it (a determination split, not built).
+    rows = (
+        ("Segment A", "10"),
+        ("Segment B", "5"),
+        ("Total charges", "15"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges by Segment",))
+    assert not result.admitted
+    assert result.detail == "no bookend pair in any filed form"

@@ -255,3 +255,89 @@ def test_adapter_outcome_equals_legs_claim():
 
 def _form_spec():
     return next(s for s in FORM_TEST_SPECS if s.test_id == SPEC.test_id)
+
+
+def test_hyphenated_bookends_claim():
+    # Specimen 0000059558-26-000016:118: "beginning-of-year /
+    # end-of-year" bookends in the filer's hyphenated dialect.
+    table = _table(
+        (
+            ("Balance as of beginning-of-year", "100"),
+            ("Provision for credit losses", "10"),
+            ("Balance as of end-of-year", "110"),
+        ),
+        caption=("Allowance for Credit Losses",),
+    )
+    legs = _legs(table)
+    assert legs.bookends_arm3 and legs.claim
+    assert evaluate_form_test_credit_losses(table, _form_spec()).admitted
+
+
+def test_dated_stub_bookends_claim():
+    # Specimen 0000842517-15-000076:18: the bookends are bare
+    # dated stubs; the subject sits in the caption.
+    table = _table(
+        (
+            ("January 1, 2015", "100"),
+            ("Provision for credit losses", "10"),
+            ("Charge-offs", "(5)"),
+            ("March 31, 2015", "105"),
+        ),
+        caption=("Allowance for Credit Losses",),
+    )
+    legs = _legs(table)
+    assert not legs.bookends_arm3
+    assert legs.stub_pair and legs.claim
+    result = evaluate_form_test_credit_losses(table, _form_spec())
+    assert result.admitted
+    assert "dated-stub bookends" in result.detail
+
+
+def test_alll_token_subject_claims_on_arm3_bookends():
+    # Specimen 0001277902 (via the token arm): the subject is
+    # carried only by the ALLL stub token.
+    table = _table(
+        (
+            ("Total ALLL", ""),
+            ("Balance at beginning of year", "100"),
+            ("Provision", "10"),
+            ("Balance at end of year", "110"),
+        )
+    )
+    legs = _legs(table)
+    assert not legs.subject
+    assert legs.token_subject and legs.bookends_arm3 and legs.claim
+    result = evaluate_form_test_credit_losses(table, _form_spec())
+    assert result.admitted
+    assert "token subject + arm-3 bookends" in result.detail
+
+
+def test_alll_token_subject_claims_on_transposed_bookends():
+    # Specimen 0001628280-26-010546:68: the walk is transposed;
+    # the bookends are the dated header columns.
+    table = _table(
+        (
+            ("Total ALLL", "December 31, 2022", "December 31, 2023"),
+            ("Provision", "10", "12"),
+            ("Charge-offs", "(5)", "(4)"),
+        )
+    )
+    legs = _legs(table)
+    assert not legs.bookends_arm3
+    assert legs.token_subject and legs.transposed and legs.claim
+    result = evaluate_form_test_credit_losses(table, _form_spec())
+    assert result.admitted
+    assert "token subject + transposed bookends" in result.detail
+
+
+def test_alll_token_without_bookends_or_movement_fails():
+    table = _table(
+        (
+            ("Total ALLL", "100"),
+            ("Balance", "110"),
+        )
+    )
+    legs = _legs(table)
+    assert legs.token_subject
+    assert not legs.claim
+    assert not evaluate_form_test_credit_losses(table, _form_spec()).admitted

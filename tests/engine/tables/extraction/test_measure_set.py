@@ -563,3 +563,135 @@ def test_cash_walk_is_refused() -> None:
     outcome = _outcome(table, "goodwill_rollforward_measure_set")
     assert not outcome.passed
     assert "subject not in walk position" in outcome.detail
+
+
+def _prose_table(rows: tuple[tuple[str, ...], ...], prose_before: str) -> TypedTable:
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=rows,
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+    context = TableContext(geometry=geometry, prose_before=prose_before)
+    return structure_table(context)
+
+
+def test_goodwill_subject_carried_by_lead_in_prose_passes() -> None:
+    rows = (
+        ("Printing", "Office Products", "Total"),
+        ("Balance as of October 31, 2008", "100", "200", "300"),
+        ("Acquisitions", "10", "20", "30"),
+        ("Impairment losses", "(5)", "(5)", "(10)"),
+        ("Balance as of October 31, 2009", "105", "215", "320"),
+    )
+    prose = "The following table summarizes the changes in goodwill."
+    assert _outcome(
+        _prose_table(rows, prose), "goodwill_rollforward_measure_set"
+    ).passed
+    silent = "The following table summarizes the changes in carrying amount."
+    outcome = _outcome(_prose_table(rows, silent), "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "subject absent" in outcome.detail
+
+
+def test_goodwill_prose_clears_the_walk_position_binding() -> None:
+    rows = (
+        ("Balance at beginning of year", "100"),
+        ("Goodwill acquired", "10"),
+        ("Impairment", "(5)"),
+        ("Balance at end of year", "105"),
+    )
+    outcome = _outcome(_prose_table(rows, ""), "goodwill_rollforward_measure_set")
+    assert not outcome.passed
+    assert "subject not in walk position" in outcome.detail
+    prose = "Goodwill activity for the year ended December 31 was as follows."
+    assert _outcome(
+        _prose_table(rows, prose), "goodwill_rollforward_measure_set"
+    ).passed
+
+
+def test_goodwill_net_carrying_value_bookends_pass() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Net carrying value as of December 31, 2024", "100"),
+            ("Acquisitions", "10"),
+            ("Impairment losses", "(5)"),
+            ("Net carrying value as of December 31, 2025", "105"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_additions_only_movement_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Balance at beginning of year", "100"),
+            ("Additions", "0"),
+            ("Balance at end of year", "100"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_item_703_pair_only_summary_passes_on_the_pair() -> None:
+    table = _table(
+        (
+            (
+                "Period",
+                "Number of Shares Repurchased",
+                "Average Price Per Share",
+                "Amount",
+            ),
+            ("January 2023", "1,000", "10.00", "10,000"),
+        )
+    )
+    assert _outcome(table, "shares_purchased_measure_set").passed
+
+
+def test_item_703_variant_program_phrasings_pass() -> None:
+    table = _table(
+        (
+            (
+                "Total Number of Shares Purchased",
+                "Weighted-Average Per Share Price",
+                "Cumulative Shares Repurchased Under the Program",
+                "Dollar Amount Remaining Under The Program",
+            ),
+            ("1,000", "10.00", "1,000", "5,000"),
+        )
+    )
+    assert _outcome(table, "shares_purchased_measure_set").passed
+
+
+def test_combined_statement_descent_totals_pass() -> None:
+    table = _table(
+        (
+            ("Total revenues", "100"),
+            ("Total expenses", "80"),
+            ("Net income", "20"),
+            ("Other comprehensive income", "3"),
+            ("Comprehensive income", "23"),
+        )
+    )
+    assert _outcome(table, "combined_operations_ci_measure_set").passed
+
+
+def test_combined_statement_translation_adjustment_passes() -> None:
+    table = _table(
+        (
+            ("Operating income", "20"),
+            ("Net income", "20"),
+            ("Cumulative translation adjustment", "3"),
+            ("Comprehensive income", "23"),
+        )
+    )
+    assert _outcome(table, "combined_operations_ci_measure_set").passed

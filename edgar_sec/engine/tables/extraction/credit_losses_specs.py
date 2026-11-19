@@ -120,6 +120,8 @@ CREDIT_LOSSES_EVIDENCE_SPECS: dict[str, CreditLossesEvidenceSpec] = {
             "beginning of year",
             "beginning of the period",
             "beginning of the year",
+            "beginning-of-year",
+            "beginning-of-period",
         ),
         bookend_x_end=(
             "balance at end",
@@ -127,6 +129,8 @@ CREDIT_LOSSES_EVIDENCE_SPECS: dict[str, CreditLossesEvidenceSpec] = {
             "end of year",
             "end of the year",
             "balance at the end",
+            "end-of-year",
+            "end-of-period",
         ),
         anchor_words=(
             "balance",

@@ -192,11 +192,12 @@ def evaluate_restructuring_evidence(
     )
     if loan:
         return RestructuringEvidence(False, "loan context: scope condition")
-    term = spec.subject_term
-    lead = (
+    terms = spec.subject_terms
+    lead = any(
         term in cap_l or term in prose_l[-spec.prose_tail_chars :] or term in first_line
+        for term in terms
     )
-    prose = term in prose_l
+    prose = any(term in prose_l for term in terms)
     if not (lead or prose):
         return RestructuringEvidence(False, "subject not anchored")
     forms = _bookends(spec, lines_l, first_line)

@@ -20,7 +20,7 @@ class RestructuringEvidenceSpec:
 
     family: str
     test_id: str
-    subject_term: str
+    subject_terms: tuple[str, ...]
     prose_tail_chars: int
     anchors: tuple[str, ...]
     move_types: tuple[tuple[str, tuple[str, ...]], ...]
@@ -43,7 +43,14 @@ RESTRUCTURING_EVIDENCE_SPECS: dict[str, RestructuringEvidenceSpec] = {
     "restructuring": RestructuringEvidenceSpec(
         family="restructuring",
         test_id="restructuring_rollforward_evidence",
-        subject_term="restructuring",
+        subject_terms=(
+            "restructuring",
+            "exit cost",
+            "exit activities",
+            "employee separation",
+            "separation costs",
+            "reduction in force",
+        ),
         prose_tail_chars=400,
         anchors=(
             "balance",

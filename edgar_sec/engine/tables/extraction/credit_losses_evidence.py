@@ -38,7 +38,24 @@ _RE_BARE_END = re.compile(
 )
 _RE_ASOF_PREP = re.compile(r"(allowance|balance)[^\n|]*\bas of\b", re.IGNORECASE)
 _RE_ACLTOK = re.compile(r"(?<![a-z])acl(?![a-z])")
+_RE_ALLLTOK = re.compile(r"(?<![a-z])alll(?![a-z])")
+_RE_ALL_STUB = re.compile(r"^all\s+(balance|at)\b")
+_STUB_PREFIX_ALT = build_alternation(
+    ["balance", r"allowance(?:\s+for\s+[a-z ]+?)?", "alll", "acl"],
+    sort_longest_first=False,
+)
+_RE_STUB_DATE = re.compile(
+    rf"^{_STUB_PREFIX_ALT}?\s*,?\s*"
+    rf"([a-z]+)\s+(\d{{1,2}})(?:{_ORDINAL_ALT})?\s*,?\s*"
+    rf"({YEAR_TOKEN_PATTERN})?$"
+)
 _RE_SEP = re.compile(r"[|\n]+")
+_MONTH_NAME_SET = frozenset(MONTH_NAMES)
+
+
+def _stub_text(cell: str) -> str:
+    """One stub cell normalized: lowered, collapsed, edge-stripped."""
+    return " ".join(str(cell).lower().split()).strip(" ,")
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,6 +64,8 @@ class CreditLossesText:
 
     drawn: str = ""
     prose: str = ""
+    stubs: tuple[str, ...] = ()
+    head_line: str = ""
 
     @classmethod
     def from_table(cls, table: TypedTable) -> CreditLossesText:
@@ -54,9 +73,19 @@ class CreditLossesText:
         context = table.context
         caption = " ".join(context.caption_stack)
         grid = "\n".join("|".join(row) for row in context.rows)
+        stubs = tuple(
+            _stub_text(row[0]) for row in context.rows if row and str(row[0]).strip()
+        )
+        head_line = ""
+        for row in context.rows:
+            if any(str(cell).strip() for cell in row):
+                head_line = " | ".join(str(cell) for cell in row).lower()
+                break
         return cls(
             drawn=(caption + " \n " + grid).lower(),
             prose=(context.prose_before or "").lower(),
+            stubs=stubs,
+            head_line=head_line,
         )
 
 
@@ -74,6 +103,9 @@ class CreditLossesLegs:
     movement: bool
     vetoed: bool
     claim: bool
+    stub_pair: bool = False
+    token_subject: bool = False
+    transposed: bool = False
 
 
 def _dates_in(segment: str) -> set[tuple[int, int]]:
@@ -144,6 +176,25 @@ def _movement(drawn: str, spec: CreditLossesEvidenceSpec) -> bool:
     return moves_ext or schedule
 
 
+def _stub_pair(text: CreditLossesText) -> bool:
+    """Dated-stub bookends: two distinct (month, day) stub keys."""
+    keys: set[tuple[int, int]] = set()
+    for stub in text.stubs:
+        match = _RE_STUB_DATE.match(stub)
+        if match and match.group(1) in _MONTH_NAME_SET:
+            index = month_name_to_index(match.group(1))
+            if index is not None:
+                keys.add((index, int(match.group(2))))
+    return len(keys) >= 2
+
+
+def _token_subject(text: CreditLossesText) -> bool:
+    """Abbreviation-carried subject: ALLL token or ALL stub."""
+    if _RE_ALLLTOK.search(text.drawn):
+        return True
+    return any(_RE_ALL_STUB.match(stub) for stub in text.stubs)
+
+
 def legs_for(
     text: CreditLossesText, spec: CreditLossesEvidenceSpec
 ) -> CreditLossesLegs:
@@ -165,7 +216,14 @@ def legs_for(
         and not (r1 or bare or acltok)
         and (spec.da_phrase in drawn or spec.da_phrase in prose)
     )
+    stub_pair = _stub_pair(text)
+    token_subject = _token_subject(text)
+    transposed = len(_dates_in(text.head_line)) >= 2
     claim = subject and arm3 and movement and not vetoed
+    claim = claim or (subject and movement and not vetoed and stub_pair)
+    claim = claim or (
+        token_subject and movement and not vetoed and (arm3 or transposed)
+    )
     return CreditLossesLegs(
         r1=r1,
         bare=bare,
@@ -177,6 +235,9 @@ def legs_for(
         movement=movement,
         vetoed=vetoed,
         claim=claim,
+        stub_pair=stub_pair,
+        token_subject=token_subject,
+        transposed=transposed,
     )
 
 
@@ -194,8 +255,17 @@ def evaluate_credit_losses_evidence(
     """The priced conjunction, returned as the seat's verdict."""
     legs = legs_for(text, spec)
     if legs.claim:
+        if legs.subject and legs.bookends_arm3 and legs.movement and not legs.vetoed:
+            return CreditLossesEvidence(
+                True, "subject + arm-3 bookends + movement, no DA veto"
+            )
+        if legs.token_subject:
+            via = "arm-3 bookends" if legs.bookends_arm3 else "transposed bookends"
+            return CreditLossesEvidence(
+                True, f"token subject + {via} + movement, no DA veto"
+            )
         return CreditLossesEvidence(
-            True, "subject + arm-3 bookends + movement, no DA veto"
+            True, "subject + dated-stub bookends + movement, no DA veto"
         )
     failed = [
         name

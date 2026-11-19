@@ -71,6 +71,9 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
         rf"goodwill\s*(?:\(\s*(?:gross|net)\s*\)|,?\s+(?:gross|net),?)"
         rf"\s+(?:at\s+|as of\s+)?",
         rf"accumulated impairment(?:\s+losses)?\s+(?:at\s+|as of\s+)?",
+        rf"net carrying value,?\s+(?:at\s+|as of\s+)?",
+        rf"carrying amount,?\s+(?:at\s+|as of\s+)?",
+        rf"carrying value,?\s+(?:at\s+|as of\s+)?",
     )
     prefix = "(?:" + "|".join(prefixes) + ")?"
     core = "(?:" + "|".join((md, NUMERIC_DATE_RE.pattern, df, mdy)) + ")"
@@ -233,8 +236,17 @@ def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetRes
     )
     if refused is not None:
         return MeasureSetResult(False, True, f"refused term present: {refused}")
+    prose_tail = ""
+    if params.subject_prose_tail_chars:
+        prose_tail = (table.context.prose_before or "")[
+            -params.subject_prose_tail_chars :
+        ].lower()
     missing = next(
-        (term for term in params.subject_terms if not _present(texts, (term,))),
+        (
+            term
+            for term in params.subject_terms
+            if not _present(texts, (term,)) and term not in prose_tail
+        ),
         None,
     )
     if missing is not None:
@@ -243,6 +255,8 @@ def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetRes
     unbound = False
     if params.date_bookend_groups:
         present, unbound = _dated_verdict(table, texts, present, params)
+    if unbound and any(term in prose_tail for term in params.subject_terms):
+        unbound = False
     hits = sum(present)
     missing_required = next((i for i in params.required_groups if not present[i]), None)
     admitted = hits >= params.min_groups and missing_required is None and not unbound

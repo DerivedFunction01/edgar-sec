@@ -30,6 +30,7 @@ class MeasureSetSpec:
     date_bookend_groups: tuple[int, ...] = ()
     dated_bookend_qualified: bool = False
     subject_position_bound: bool = False
+    subject_prose_tail_chars: int = 0
 
 
 # Measure-set parameters, keyed by test_id (the per-kind table).
@@ -39,6 +40,9 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
     # Item 703 columns in core order (CI Step 6 re-derivation,
     # population-priced): (a) and (b) are the rank-1 purchase pair
     # and are required; a pass needs the pair plus one of (c)/(d).
+    # The gold-miss revision adds the filed variant phrasings to
+    # all four groups and drops the minimum to the pair alone, so
+    # a pair-only activity summary passes on the pair.
     "shares_purchased_measure_set": MeasureSetSpec(
         groups=(
             (
@@ -47,21 +51,32 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "number of shares purchased",
                 "total number of shares",
                 "common shares repurchased",
+                "shares repurchased",
+                "number of shares repurchased",
             ),
             (
                 "average price paid per share",
                 "average price paid",
                 "average price per share",
                 "average price per common share",
+                "average per share",
+                "per share price",
             ),
-            ("publicly announced plans or programs", "publicly announced"),
+            (
+                "publicly announced plans or programs",
+                "publicly announced",
+                "repurchased under the program",
+                "purchased under the program",
+            ),
             (
                 "may yet be purchased",
                 "still available under",
                 "still available for purchase",
+                "remaining under",
+                "amount remaining",
             ),
         ),
-        min_groups=3,
+        min_groups=2,
         provenance=PROV_CI_STEP6_PRICING,
         required_groups=(0, 1),
     ),
@@ -143,6 +158,9 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "cost of revenue",
                 "cost of goods sold",
                 "total operating expenses",
+                "total revenues",
+                "total income",
+                "total expenses",
             ),
             ("net income", "net loss", "net earnings"),
             (
@@ -153,6 +171,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "unrealized loss",
                 "net unrealized",
                 "available for sale",
+                "translation adjustment",
             ),
             ("comprehensive income", "comprehensive loss", "total comprehensive"),
         ),
@@ -226,6 +245,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "deferred tax",
                 "measurement period",
                 "reclassification",
+                "additions",
             ),
         ),
         min_groups=3,
@@ -235,5 +255,6 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         date_bookend_groups=(0, 1),
         dated_bookend_qualified=True,
         subject_position_bound=True,
+        subject_prose_tail_chars=400,
     ),
 }
