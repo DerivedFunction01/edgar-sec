@@ -75,6 +75,9 @@ from edgar_sec.engine.tables.extraction.seat_floor_evidence import (
 )
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.aro_evidence import (
+    apply_aro_assignment,
+)
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
     apply_comprehensive_income_assignment,
 )
@@ -862,6 +865,10 @@ def compete_filing(
     # the same geometry; it only removes claims, so the
     # primary gate stays final.
     results = apply_stock_comp_assignment(geometries, results)
+    # ARO assignment pass (set-level, priced): joint
+    # assignment over the filing's formed aro candidate set;
+    # it only removes claims, so the primary gate stays final.
+    results = apply_aro_assignment(geometries, results)
     # Lease assignment pass (set-level, priced): a claim is
     # refused when the debt seat has seated the same geometry;
     # it only removes claims, so the primary gate stays final.

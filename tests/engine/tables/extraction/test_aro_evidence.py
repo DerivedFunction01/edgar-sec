@@ -9,15 +9,23 @@ from edgar_sec.engine.tables.ascii_html.model import (
 )
 from edgar_sec.engine.tables.extraction.aro_evidence import (
     AroText,
+    apply_aro_assignment,
     aro_legs,
     evaluate_form_test_aro,
 )
+from edgar_sec.engine.tables.extraction.competition import GeometryText
 from edgar_sec.engine.tables.extraction.context import TableContext
 from edgar_sec.engine.tables.extraction.aro_evidence_specs import (
+    ARO_ASSIGNMENT_SPEC,
     ARO_EVIDENCE_SPECS,
     ARO_EVIDENCE_SPECS_BY_TEST_ID,
 )
 from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
+from edgar_sec.engine.tables.extraction.geometry_scoring import (
+    ClaimGroup,
+    CompetitionResult,
+    FamilyScore,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ARO_EVIDENCE,
     profile_for,
@@ -426,3 +434,72 @@ def test_dated_rows_without_subject_in_line_refused():
     assert legs["subject_lead"] and legs["m1"]
     assert not legs["dated_subject_d"]
     assert not legs["claim"]
+
+
+def _geometry(stubs):
+    return GeometryText(stubs=stubs)
+
+
+def _result(*families, groups=()):
+    scores = {
+        family: FamilyScore(family, 11.0, {"signature": 11.0}, ())
+        for family in families
+    }
+    return CompetitionResult(
+        claims=families, contested=families, scores=scores, groups=groups
+    )
+
+
+def test_assignment_removes_aro_on_warranty_coclaim():
+    geo = _geometry(("Asset retirement obligations",))
+    groups = (
+        ClaimGroup(
+            "aro_rollforward", 11.0, "claimed", "primary", {"signature": 11.0}, (), 0.0
+        ),
+        ClaimGroup(
+            "warranty", 11.0, "claimed", "primary", {"signature": 11.0}, (), 0.0
+        ),
+    )
+    results = apply_aro_assignment(
+        [geo], [_result("aro_rollforward", "warranty", groups=groups)]
+    )
+    assert "aro_rollforward" not in results[0].claims
+    assert "aro_rollforward" not in results[0].contested
+    assert "warranty" in results[0].claims
+    score = results[0].scores["aro_rollforward"]
+    assert score.total == 11.0
+    evidence = [item for item in score.evidence if item.channel == "gate"]
+    assert len(evidence) == 1
+    assert evidence[0].detail == ARO_ASSIGNMENT_SPEC.detail
+    assert [group.family for group in results[0].groups] == ["warranty"]
+
+
+def test_assignment_keeps_aro_only():
+    geo = _geometry(("Asset retirement obligations",))
+    results = apply_aro_assignment([geo], [_result("aro_rollforward")])
+    assert "aro_rollforward" in results[0].claims
+
+
+def test_assignment_keeps_warranty_only():
+    geo = _geometry(("Warranty liability",))
+    results = apply_aro_assignment([geo], [_result("warranty")])
+    assert "warranty" in results[0].claims
+
+
+def test_assignment_leaves_unclaimed_geometries():
+    geo = _geometry(("Asset retirement obligations",))
+    before = [_result("balance_sheet")]
+    results = apply_aro_assignment([geo], before)
+    assert results == before
+
+
+def test_assignment_leaves_other_families():
+    first = _geometry(("Asset retirement obligations",))
+    second = _geometry(("Total assets",))
+    results = apply_aro_assignment(
+        [first, second],
+        [_result("aro_rollforward", "warranty"), _result("balance_sheet")],
+    )
+    assert "aro_rollforward" not in results[0].claims
+    assert "warranty" in results[0].claims
+    assert "balance_sheet" in results[1].claims

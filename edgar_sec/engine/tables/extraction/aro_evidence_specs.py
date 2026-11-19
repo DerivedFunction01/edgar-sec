@@ -102,3 +102,24 @@ ARO_EVIDENCE_SPECS: dict[str, AroEvidenceSpec] = {
 ARO_EVIDENCE_SPECS_BY_TEST_ID: dict[str, AroEvidenceSpec] = {
     spec.test_id: spec for spec in ARO_EVIDENCE_SPECS.values()
 }
+
+
+@dataclass(frozen=True, slots=True)
+class AroAssignmentSpec:
+    """ARO joint-assignment parameters, declared as data.
+    The family, the co-claim target that stands, and the
+    refusal detail the pass stamps on the removed claim."""
+
+    family: str
+    target_family: str
+    detail: str
+
+
+# ARO joint assignment: the priced L_JOINT leg — a geometry
+# carrying both the ARO claim and a warranty claim is
+# assigned to warranty; the bare co-claim touches no true.
+ARO_ASSIGNMENT_SPEC = AroAssignmentSpec(
+    family="aro_rollforward",
+    target_family="warranty",
+    detail="aro assignment: warranty co-claim stands",
+)

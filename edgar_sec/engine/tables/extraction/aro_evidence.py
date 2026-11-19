@@ -8,6 +8,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.aro_evidence_specs import (
+    ARO_ASSIGNMENT_SPEC,
     ARO_EVIDENCE_SPECS_BY_TEST_ID,
     AroEvidenceSpec,
 )
@@ -294,3 +295,50 @@ def evaluate_form_test_aro(table: TypedTable, spec: FormTestSpec) -> AroVerdict:
     """Stage adapter: price the family's gate over a typed table."""
     params = ARO_EVIDENCE_SPECS_BY_TEST_ID[spec.test_id]
     return evaluate_aro_evidence(AroText.from_table(table), params)
+
+
+def apply_aro_assignment(geometries, results):
+    """Joint assignment pass: an aro_rollforward claim is
+    refused when the same geometry also carries a warranty
+    claim; runs after every claim is formed, before the gate.
+    """
+    from edgar_sec.engine.tables.extraction.competition import (
+        ClaimEvidence,
+        CompetitionResult,
+        FamilyScore,
+    )
+
+    spec = ARO_ASSIGNMENT_SPEC
+    family = spec.family
+    target = spec.target_family
+    refused = {
+        i
+        for i, result in enumerate(results)
+        if family in result.claims and target in result.claims
+    }
+    if not refused:
+        return list(results)
+    out = []
+    for i, result in enumerate(results):
+        if i not in refused:
+            out.append(result)
+            continue
+        scores = dict(result.scores)
+        score = scores.get(family)
+        if score is not None:
+            scores[family] = FamilyScore(
+                score.family,
+                score.total,
+                dict(score.by_channel),
+                score.evidence + (ClaimEvidence("gate", spec.detail, 0.0),),
+            )
+        out.append(
+            CompetitionResult(
+                claims=tuple(name for name in result.claims if name != family),
+                contested=tuple(name for name in result.contested if name != family),
+                scores=scores,
+                foreign_explained=result.foreign_explained,
+                groups=tuple(g for g in result.groups if g.family != family),
+            )
+        )
+    return out
