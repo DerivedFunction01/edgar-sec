@@ -251,6 +251,4 @@ def test_inherited_claim_cannot_resurrect_past_the_gate() -> None:
     trail = results[1].scores["equity_statement"].evidence
     gate = [entry for entry in trail if entry.channel == "gate"]
     assert len(gate) == 1
-    assert gate[0].detail == (
-        "equity assignment: strictly dominated candidate"
-    )
+    assert gate[0].detail == ("equity assignment: strictly dominated candidate")
