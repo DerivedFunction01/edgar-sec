@@ -99,9 +99,7 @@ def evaluate_combined_operations_separator(
     present = group_presence(table, MEASURE_SET_TEST_ID)
     measure_passed = evaluate_measure_set(table, _MEASURE_SET_FORM_SPEC).admitted
     joint_passed = evaluate_measure_set(table, _JOINT_FORM_SPEC).admitted
-    core_satisfied = (
-        all(present[index] for index in CORE_GROUP_INDICES) or joint_passed
-    )
+    core_satisfied = all(present[index] for index in CORE_GROUP_INDICES) or joint_passed
     form_rank = 2 if measure_passed else 1 if joint_passed else 0
     n_rows = len(table.rows)
     evaluable = n_rows > 0 or any(present)
@@ -167,9 +165,7 @@ def separator_facts(form_tests) -> tuple[bool, int] | None:
 
 
 def _test_passed(form_tests, test_id: str) -> bool:
-    return any(
-        outcome.test_id == test_id and outcome.passed for outcome in form_tests
-    )
+    return any(outcome.test_id == test_id and outcome.passed for outcome in form_tests)
 
 
 def _core_satisfied(geometry, family: str) -> bool:

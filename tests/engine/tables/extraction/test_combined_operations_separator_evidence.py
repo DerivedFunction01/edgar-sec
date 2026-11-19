@@ -286,7 +286,8 @@ def _result(claims, totals, contested=(), foreign_explained=None) -> Competition
         claims=tuple(claims),
         contested=tuple(contested),
         scores={
-            family: FamilyScore(family, total, {}, ()) for family, total in totals.items()
+            family: FamilyScore(family, total, {}, ())
+            for family, total in totals.items()
         },
         foreign_explained=dict(foreign_explained or {}),
         groups=(),
