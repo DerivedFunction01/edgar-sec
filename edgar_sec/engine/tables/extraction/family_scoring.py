@@ -14,11 +14,11 @@ from edgar_sec.engine.tables.extraction.commitments_seat import (
     evaluate_commitments_seat,
 )
 from edgar_sec.engine.tables.extraction.competition import geometry_text_from_table
-from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
-from edgar_sec.engine.tables.extraction.form_tests import (
+from edgar_sec.engine.tables.extraction.form_test_specs import (
+    FORM_TEST_SPECS,
     FormTestOutcome,
-    evaluate_form_tests,
 )
+from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.grouping import grouping_signatures
 from edgar_sec.engine.tables.extraction.negative_evidence import NEGATIVE_EVIDENCE
 from edgar_sec.engine.tables.extraction.normalize import normalize_text

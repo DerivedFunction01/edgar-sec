@@ -16,8 +16,8 @@ from edgar_sec.engine.tables.extraction.form_test_specs import (
     FORM_TEST_SPECS,
     TAX_EVIDENCE_SPECS,
     TAX_EVIDENCE_SPECS_BY_TEST_ID,
+    FormTestOutcome,
 )
-from edgar_sec.engine.tables.extraction.form_tests import FormTestOutcome
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_TAX_EVIDENCE,
     profile_for,

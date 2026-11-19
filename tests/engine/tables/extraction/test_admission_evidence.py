@@ -25,11 +25,11 @@ from edgar_sec.engine.tables.extraction.competition import (
     compete,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
-from edgar_sec.engine.tables.extraction.form_test_specs import form_test_specs_for
-from edgar_sec.engine.tables.extraction.form_tests import (
+from edgar_sec.engine.tables.extraction.form_test_specs import (
     FormTestOutcome,
-    evaluate_form_tests,
+    form_test_specs_for,
 )
+from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.profiles import (
     PROFILES_BY_FAMILY,
     PROV_STEP7_PRICING,

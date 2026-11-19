@@ -24,11 +24,11 @@ from edgar_sec.engine.tables.extraction.competition import (
     compete,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
-from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
-from edgar_sec.engine.tables.extraction.form_tests import (
+from edgar_sec.engine.tables.extraction.form_test_specs import (
+    FORM_TEST_SPECS,
     FormTestOutcome,
-    evaluate_form_tests,
 )
+from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.geometry_scoring import FamilyScore
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
     norm as _PENSION_NORM,

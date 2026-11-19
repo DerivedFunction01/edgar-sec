@@ -6,8 +6,8 @@ from edgar_sec.engine.tables.extraction.competition import CLAIM_FLOOR, compete
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     FORM_TEST_SPECS,
     SEAT_FLOOR_SPECS as FACADE_SEAT_FLOOR_SPECS,
+    FormTestOutcome,
 )
-from edgar_sec.engine.tables.extraction.form_tests import FormTestOutcome
 from edgar_sec.engine.tables.extraction.geometry_scoring import (
     ClaimEvidence,
     FamilyScore,

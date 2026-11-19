@@ -6,22 +6,11 @@ competition; passed tests feed both competitions as evidence.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-
 from edgar_sec.engine.tables.extraction.admission_evidence import (
     EVALUATORS as ADMISSION_EVALUATORS,
 )
 from edgar_sec.engine.tables.extraction.aro_evidence import (
     evaluate_form_test_aro,
-)
-from edgar_sec.engine.tables.extraction.balance_sheet_separator_evidence import (
-    evaluate_form_test_balance_sheet_separator,
-)
-from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
-    evaluate_form_test_cash_flow_separator,
-)
-from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
-    evaluate_form_test_comprehensive_income_separator,
 )
 from edgar_sec.engine.tables.extraction.composition import evaluate_composition
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
@@ -69,6 +58,7 @@ from edgar_sec.engine.tables.extraction.form_signal_specs import (
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     FORM_TEST_SPECS,
     WALK_SPECS_BY_TEST_ID,
+    FormTestOutcome,
     FormTestSpec,
     WalkSpec,
 )
@@ -109,6 +99,11 @@ from edgar_sec.engine.tables.extraction.profiles import (
 from edgar_sec.engine.tables.extraction.restructuring_evidence import (
     evaluate_form_test_restructuring,
 )
+from edgar_sec.engine.tables.extraction.separator_form_tests import (
+    _evaluate_balance_sheet_separator,
+    _evaluate_cash_flow_separator,
+    _evaluate_comprehensive_income_separator,
+)
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
 )
@@ -124,20 +119,6 @@ from edgar_sec.engine.tables.extraction.warranty_evidence import (
 from edgar_sec.engine.tables.extraction.year_ladder import evaluate_form_test_ladder
 
 _END_VALUE_WINDOW = 4
-
-
-@dataclass(frozen=True, slots=True)
-class FormTestOutcome:
-    """One form test's evaluation over one table."""
-
-    family: str
-    test_id: str
-    kind: str
-    passed: bool
-    evaluable: bool
-    columns_closed: int
-    points: float
-    detail: str
 
 
 def _matches(label: str, patterns: tuple[str, ...]) -> bool:
@@ -390,54 +371,6 @@ def _evaluate_pension_routed(table: TypedTable, spec: FormTestSpec) -> FormTestO
         spec.kind,
         result.admitted,
         True,
-        0,
-        spec.points,
-        result.detail,
-    )
-
-
-def _evaluate_balance_sheet_separator(
-    table: TypedTable, spec: FormTestSpec
-) -> FormTestOutcome:
-    result = evaluate_form_test_balance_sheet_separator(table, spec)
-    return FormTestOutcome(
-        spec.family,
-        spec.test_id,
-        spec.kind,
-        not result.fired,
-        result.evaluable,
-        0,
-        spec.points,
-        result.detail,
-    )
-
-
-def _evaluate_cash_flow_separator(
-    table: TypedTable, spec: FormTestSpec
-) -> FormTestOutcome:
-    result = evaluate_form_test_cash_flow_separator(table, spec)
-    return FormTestOutcome(
-        spec.family,
-        spec.test_id,
-        spec.kind,
-        not result.fired,
-        result.evaluable,
-        0,
-        spec.points,
-        result.detail,
-    )
-
-
-def _evaluate_comprehensive_income_separator(
-    table: TypedTable, spec: FormTestSpec
-) -> FormTestOutcome:
-    result = evaluate_form_test_comprehensive_income_separator(table, spec)
-    return FormTestOutcome(
-        spec.family,
-        spec.test_id,
-        spec.kind,
-        not result.fired,
-        result.evaluable,
         0,
         spec.points,
         result.detail,

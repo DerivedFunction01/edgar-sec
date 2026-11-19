@@ -13,13 +13,11 @@ from edgar_sec.engine.tables.extraction.competition import (
     score_geometry,
 )
 from edgar_sec.engine.tables.extraction.context import TableContext
-from edgar_sec.engine.tables.extraction.form_tests import (
-    FormTestOutcome,
-    evaluate_form_tests,
-)
+from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     FORM_TEST_SPECS,
     WALK_SPECS_BY_TEST_ID,
+    FormTestOutcome,
     FormTestSpec,
     form_test_specs_for,
 )

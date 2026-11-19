@@ -162,6 +162,7 @@ __all__ = (
     "FORM_SIGNAL_TEST_ENTRIES",
     "FORM_TEST_SPECS",
     "FORM_TEST_SPECS_BY_FAMILY",
+    "FormTestOutcome",
     "FormTestSpec",
     "LADDER_SPECS_BY_TEST_ID",
     "NPNS_PHRASES",
@@ -251,6 +252,20 @@ class FormTestSpec:
     ending: tuple[str, ...] = ()
     excluded: tuple[str, ...] = ()
     provenance: str = PROV_DECLARED_SPECS
+
+
+@dataclass(frozen=True, slots=True)
+class FormTestOutcome:
+    """One form test's evaluation over one table."""
+
+    family: str
+    test_id: str
+    kind: str
+    passed: bool
+    evaluable: bool
+    columns_closed: int
+    points: float
+    detail: str
 
 
 # Form-test specs: every kind's declared specs, per family.

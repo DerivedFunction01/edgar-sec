@@ -9,10 +9,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.form_tests import (
-    FormTestOutcome,
-    evaluate_form_tests,
-)
+from edgar_sec.engine.tables.extraction.form_test_specs import FormTestOutcome
+from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.leadin_segmentation import (
     lead_title_text,
     leadin_segment,
