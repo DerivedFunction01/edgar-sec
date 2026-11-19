@@ -54,6 +54,7 @@ PROV_STEP8_PRICING = "calibration:step8-pricing"
 PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
 PROV_CASH_FLOW_CASCADE = "calibration:cash-flow-cascade-pricing"
 PROV_COREFIN_COMPINCOME = "calibration:corefin-compincome-pricing"
+PROV_COMBINED_OPERATIONS_SEPARATOR = "calibration:combined-operations-cascade-pricing"
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
@@ -91,6 +92,7 @@ TEST_COMPREHENSIVE_INCOME_SEPARATOR = "comprehensive_income_separator"
 TEST_PENSION_ROUTED = "pension_routed"
 TEST_CASH_FLOW_SEPARATOR = "cash_flow_separator"
 TEST_EQUITY_SEPARATOR = "equity_separator"
+TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -119,6 +121,7 @@ FORM_TESTS = (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_PENSION_ROUTED,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+    TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_EPS_DETECTOR,
     TEST_CASH_FLOW_SEPARATOR,
     TEST_EQUITY_SEPARATOR,
@@ -509,7 +512,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             "set; sealed-protocol precision/recall unmeasured",
         ),
         SEAT_SIGNATURE,
-        form_tests=(TEST_MEASURE_SET,),
+        form_tests=(TEST_MEASURE_SET, TEST_COMBINED_OPERATIONS_SEPARATOR),
         note="the combined statement as filed: one table carrying "
         "the operating descent, the OCI components and the "
         "comprehensive total (11 imposter pairs + 5 unclaimed on "

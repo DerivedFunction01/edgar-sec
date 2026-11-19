@@ -24,6 +24,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_CASH_FLOW_CASCADE,
     PROV_COREFIN_COMPINCOME,
     PROV_COREFIN_EQUITYSTATEMENT,
+    PROV_COMBINED_OPERATIONS_SEPARATOR,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
     PROV_DERIVATIVES_EVIDENCE,
@@ -44,6 +45,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
+    TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
@@ -81,6 +83,10 @@ from edgar_sec.engine.tables.extraction.balance_sheet_separator_specs import (
 from edgar_sec.engine.tables.extraction.cash_flow_separator_specs import (
     CASH_FLOW_SEPARATOR_SPECS,
     CashFlowSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.combined_operations_separator_specs import (
+    COMBINED_OPERATIONS_SEPARATOR_SPECS,
+    CombinedOperationsSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_specs import (
     COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
@@ -153,6 +159,8 @@ __all__ = (
     "BalanceSheetSeparatorSpec",
     "CASH_FLOW_SEPARATOR_SPECS",
     "CashFlowSeparatorSpec",
+    "COMBINED_OPERATIONS_SEPARATOR_SPECS",
+    "CombinedOperationsSeparatorSpec",
     "COMPREHENSIVE_INCOME_SEPARATOR_SPECS",
     "ComprehensiveIncomeSeparatorSpec",
     "EQUITY_SEPARATOR_SPECS",
@@ -184,6 +192,7 @@ __all__ = (
     "PROV_CI_STEP6_PRICING",
     "PROV_COREFIN_COMPINCOME",
     "PROV_COREFIN_EQUITYSTATEMENT",
+    "PROV_COMBINED_OPERATIONS_SEPARATOR",
     "PROV_DECLARED_SPECS",
     "PROV_DERIVATIVES_EVIDENCE",
     "PROV_EPS_TRANSFER_PRICING",
@@ -209,6 +218,7 @@ __all__ = (
     "TEST_ARO_EVIDENCE",
     "TEST_BALANCE_SHEET_SEPARATOR",
     "TEST_CASH_FLOW_SEPARATOR",
+    "TEST_COMBINED_OPERATIONS_SEPARATOR",
     "TEST_COMPOSITION_TWIN",
     "TEST_COMPREHENSIVE_INCOME_SEPARATOR",
     "TEST_CORE_FORM",
@@ -528,6 +538,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "equity_separator",
         0.0,
         provenance=PROV_COREFIN_EQUITYSTATEMENT,
+    ),
+    FormTestSpec(
+        "combined_operations_ci",
+        TEST_COMBINED_OPERATIONS_SEPARATOR,
+        "combined_operations_ci_separator",
+        0.0,
+        provenance=PROV_COMBINED_OPERATIONS_SEPARATOR,
     ),
     FormTestSpec(
         "aro_rollforward",

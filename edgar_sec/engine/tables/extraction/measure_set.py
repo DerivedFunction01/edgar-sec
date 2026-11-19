@@ -269,3 +269,13 @@ def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetRes
     if unbound:
         detail += "; subject not in walk position"
     return MeasureSetResult(admitted, True, detail)
+
+
+def group_presence(table: TypedTable, test_id: str) -> tuple[bool, ...]:
+    """The spec's raw per-group presence over the table's texts.
+
+    Raw: before any dated-bookend folding — the presence vector
+    the measure-set admission itself starts from."""
+    params = MEASURE_SET_SPECS_BY_TEST_ID[test_id]
+    texts = _texts(table)
+    return tuple(_present(texts, group) for group in params.groups)

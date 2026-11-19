@@ -60,6 +60,10 @@ from edgar_sec.engine.tables.extraction.pension_evidence import (
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
     failing_pension_routed_outcome,
 )
+from edgar_sec.engine.tables.extraction.combined_operations_separator_evidence import (
+    apply_combined_operations_assignment,
+    failing_combined_operations_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.labor_evidence import (
     apply_labor_seat,
 )
@@ -555,6 +559,20 @@ def compete(
     # families' priced seat tests seat them at the claim floor
     # — registry data in seat_floor_specs.SEAT_FLOOR_SPECS.
     scores = apply_seat_floor(geometry, scores, claims, hard_vetoed, floor=CLAIM_FLOOR)
+    # Combined operations separator gate (priced): a
+    # combined_operations_ci claim is refused when the stamped
+    # separator outcome fired. It binds after the seat-at-floor
+    # channel — this family's seat can admit a claim its typed
+    # core refuses — where the sibling separators bind earlier.
+    if "combined_operations_ci" in claims:
+        fired = failing_combined_operations_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("combined_operations_ci")
+            if "combined_operations_ci" in contested:
+                contested.remove("combined_operations_ci")
+            scores = _append_note(
+                scores, "combined_operations_ci", "gate", fired.detail
+            )
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes
@@ -736,6 +754,10 @@ def compete_filing(
     # assignment over the filing's formed equity candidate set;
     # it only removes claims, so the primary gate stays final.
     results = apply_equity_assignment(geometries, results)
+    # Combined operations set-level pass (priced): J1 joint
+    # assignment and A1 corekeep adjudication over the filing's
+    # complete candidate sets, after inheritance settles claims.
+    results = apply_combined_operations_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.

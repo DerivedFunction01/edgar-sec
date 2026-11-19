@@ -12,6 +12,9 @@ from edgar_sec.engine.tables.extraction.balance_sheet_separator_evidence import 
 from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
     evaluate_form_test_cash_flow_separator,
 )
+from edgar_sec.engine.tables.extraction.combined_operations_separator_evidence import (
+    evaluate_form_test_combined_operations_separator,
+)
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
     evaluate_form_test_comprehensive_income_separator,
 )
@@ -45,6 +48,22 @@ def _evaluate_cash_flow_separator(
     table: TypedTable, spec: FormTestSpec
 ) -> FormTestOutcome:
     result = evaluate_form_test_cash_flow_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_combined_operations_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_combined_operations_separator(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,
