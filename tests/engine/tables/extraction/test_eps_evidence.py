@@ -1,5 +1,6 @@
 """EPS seat kind: the priced rule's specimen shapes.
-Pins transcribe the depth-3 run's priced leg definitions.
+Pins transcribe the priced leg definitions and the
+transfer-pricing remedies (caption title, signed walk, gate).
 """
 
 from __future__ import annotations
@@ -9,13 +10,25 @@ from edgar_sec.engine.tables.ascii_html.model import (
     TableGeometry,
     TableRenderResult,
 )
+from edgar_sec.engine.tables.extraction.competition import GeometryText, compete
 from edgar_sec.engine.tables.extraction.context import TableContext
-from edgar_sec.engine.tables.extraction.eps_evidence import EpsText, legs_for
+from edgar_sec.engine.tables.extraction.eps_evidence import (
+    EpsText,
+    evaluate_form_test_eps_detector,
+    legs_for,
+)
 from edgar_sec.engine.tables.extraction.eps_specs import EPS_EVIDENCE_SPECS
-from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
+from edgar_sec.engine.tables.extraction.form_test_specs import FORM_TEST_SPECS
+from edgar_sec.engine.tables.extraction.form_tests import (
+    FormTestOutcome,
+    evaluate_form_tests,
+)
+from edgar_sec.engine.tables.extraction.geometry_scoring import FamilyScore
+from edgar_sec.engine.tables.extraction.profiles import TEST_EPS_DETECTOR, profile_for
 from edgar_sec.engine.tables.extraction.typed_rows import TypedTable, structure_table
 
 TEST_ID = "eps_evidence"
+DETECTOR_ID = "eps_detector"
 SPEC = EPS_EVIDENCE_SPECS["eps_reconciliation"]
 
 
@@ -78,6 +91,28 @@ def test_denominator_identity_seats_without_the_pair() -> None:
     )
     legs = _legs(table)
     assert legs.es_add and legs.bd_arm and not legs.pair
+    assert not legs.v_signed
+    outcome = _outcome(table)
+    assert outcome.passed
+    assert outcome.detail == "denominator form, detector silent"
+
+
+def test_signed_treasury_walk_seats_via_v_signed() -> None:
+    # R-B (transfer pricing): the treasury-method walk in
+    # decimal millions — the repurchase leg subtracts, so the
+    # spine's integral scale and the variants' non-negative
+    # mids both fail; the signed arm completes the identity.
+    table = _table(
+        (
+            ("Basic weighted average shares outstanding", "2,774.8", "2,700.0"),
+            ("Dilutive effect of stock options", "85.0", "80.0"),
+            ("Repurchase of common shares", "(42.7)", "(30.0)"),
+            ("Diluted weighted average shares outstanding", "2,817.1", "2,750.0"),
+        )
+    )
+    legs = _legs(table)
+    assert legs.v_signed and legs.bd_arm and legs.h1 and not legs.det
+    assert not legs.es_add and not legs.v_any and not legs.w_any
     outcome = _outcome(table)
     assert outcome.passed
     assert outcome.detail == "denominator form, detector silent"
@@ -158,7 +193,11 @@ def test_terminal_per_share_foot_is_screened_by_det_foot60() -> None:
     assert not _outcome(table).passed
 
 
-def test_statement_title_in_the_lead_is_screened_by_det_title() -> None:
+def test_statement_title_in_the_lead_no_longer_screens() -> None:
+    # R-A (transfer pricing): title evidence binds on the
+    # geometry's own caption; an EPS note's prose referring
+    # to the statement of operations is the disclosure's own
+    # cross-reference, not a primary-statement screen.
     table = _table(
         (
             ("Basic shares", "10,000", "9,000"),
@@ -167,7 +206,21 @@ def test_statement_title_in_the_lead_is_screened_by_det_title() -> None:
         prose_before="The statements of operations include basic and diluted amounts.",
     )
     legs = _legs(table)
-    assert legs.pair and legs.det_title and not legs.det_walk3
+    assert legs.pair and not legs.det_title and not legs.det
+    assert _outcome(table).passed
+
+
+def test_statement_title_in_the_caption_is_screened_by_det_title() -> None:
+    table = _table(
+        (
+            ("Basic shares", "10,000", "9,000"),
+            ("Diluted shares", "10,500", "9,400"),
+        ),
+        caption_stack=("Consolidated Statements of Operations",),
+        prose_before="Basic and diluted amounts follow.",
+    )
+    legs = _legs(table)
+    assert legs.pair and legs.det_title and legs.det
     assert not _outcome(table).passed
 
 
@@ -207,3 +260,100 @@ def test_empty_grid_is_unevaluable() -> None:
     assert not outcome.passed
     assert not outcome.evaluable
     assert outcome.detail == "no grid rows"
+
+
+# ---------------- detector kind (R-D gate evidence) ----------------
+
+
+def _detector_outcome(table: TypedTable):
+    return next(o for o in evaluate_form_tests(table) if o.test_id == DETECTOR_ID)
+
+
+def test_detector_kind_is_declared_on_the_profile() -> None:
+    profile = profile_for("eps_reconciliation")
+    assert profile is not None and TEST_EPS_DETECTOR in profile.form_tests
+    spec = next(s for s in FORM_TEST_SPECS if s.test_id == DETECTOR_ID)
+    assert spec.kind == TEST_EPS_DETECTOR and spec.points == 0.0
+
+
+def test_detector_silent_on_a_seat_grid() -> None:
+    table = _table(
+        (
+            ("Basic earnings per share", "1.00"),
+            ("Diluted earnings per share", "0.90"),
+        ),
+        prose_before="Net income per share — basic and diluted — follows.",
+    )
+    outcome = _detector_outcome(table)
+    assert outcome.passed and outcome.evaluable
+    assert outcome.detail == "detector silent"
+
+
+def test_detector_fires_on_a_caption_title_grid() -> None:
+    table = _table(
+        (
+            ("Basic shares", "10,000", "9,000"),
+            ("Diluted shares", "10,500", "9,400"),
+        ),
+        caption_stack=("Consolidated Statements of Operations",),
+    )
+    spec = next(s for s in FORM_TEST_SPECS if s.test_id == DETECTOR_ID)
+    verdict = evaluate_form_test_eps_detector(table, spec)
+    assert verdict.fired and verdict.detail == "detector fired: det_title"
+    outcome = _detector_outcome(table)
+    assert not outcome.passed and outcome.evaluable
+
+
+def test_detector_empty_grid_is_unevaluable() -> None:
+    outcome = _detector_outcome(_table(()))
+    assert not outcome.passed and not outcome.evaluable
+    assert outcome.detail == "no grid rows"
+
+
+# ---------------- competition gate (R-D) ----------------
+
+_SCORE = {
+    "eps_reconciliation": FamilyScore(
+        "eps_reconciliation", 11.0, {"signature": 11.0}, ()
+    )
+}
+
+
+def _gate_outcome(passed: bool, evaluable: bool = True) -> FormTestOutcome:
+    return FormTestOutcome(
+        "eps_reconciliation",
+        DETECTOR_ID,
+        TEST_EPS_DETECTOR,
+        passed,
+        evaluable,
+        0,
+        0.0,
+        "detector fired: det_title",
+    )
+
+
+def test_gate_removes_claim_on_fired_outcome() -> None:
+    geometry = GeometryText(form_tests=(_gate_outcome(False),))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert "eps_reconciliation" not in result.claims
+    evidence = result.scores["eps_reconciliation"].evidence
+    assert any(
+        item.channel == "gate" and "detector fired" in item.detail for item in evidence
+    )
+
+
+def test_gate_keeps_claim_on_clear_outcome() -> None:
+    geometry = GeometryText(form_tests=(_gate_outcome(True),))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert "eps_reconciliation" in result.claims
+
+
+def test_gate_keeps_claim_when_outcome_absent() -> None:
+    result = compete(GeometryText(), scores=dict(_SCORE))
+    assert "eps_reconciliation" in result.claims
+
+
+def test_gate_keeps_claim_when_outcome_unevaluable() -> None:
+    geometry = GeometryText(form_tests=(_gate_outcome(False, evaluable=False),))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert "eps_reconciliation" in result.claims

@@ -52,6 +52,7 @@ PROV_S6B_PRICING = "calibration:s6b-pricing"
 PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 PROV_STEP8_PRICING = "calibration:step8-pricing"
 PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
+PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -70,6 +71,7 @@ TEST_SIGNATURE_ABSENCE = "signature_absence"
 TEST_PLACEMENT_CONSISTENCY = "placement_consistency"
 TEST_MEASURE_SET = "measure_set"
 TEST_EPS_EVIDENCE = "eps_evidence"
+TEST_EPS_DETECTOR = "eps_detector"
 TEST_PPE_EVIDENCE = "ppe_evidence"
 TEST_RESTRUCTURING_EVIDENCE = "restructuring_evidence_gate"
 TEST_WARRANTY_EVIDENCE = "warranty_evidence_gate"
@@ -110,6 +112,7 @@ FORM_TESTS = (
     TEST_CORE_FORM,
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_PENSION_ROUTED,
+    TEST_EPS_DETECTOR,
 )
 
 
@@ -277,7 +280,12 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.041, 1.000, 0.477, 0.800),
         SEAT_SIGNATURE,
-        form_tests=(TEST_WALK, TEST_PLACEMENT_CONSISTENCY, TEST_EPS_EVIDENCE),
+        form_tests=(
+            TEST_WALK,
+            TEST_PLACEMENT_CONSISTENCY,
+            TEST_EPS_EVIDENCE,
+            TEST_EPS_DETECTOR,
+        ),
         note="seated additionally on the depth-3 detector "
         "cell priced over the R18 fresh population (P 1.000 / "
         "R 1.000; the price is in-population — Step 10's fresh "

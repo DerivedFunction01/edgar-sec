@@ -24,7 +24,10 @@ from edgar_sec.engine.tables.extraction.core_form_evidence import (
 from edgar_sec.engine.tables.extraction.derivatives_evidence import (
     evaluate_form_test_derivatives,
 )
-from edgar_sec.engine.tables.extraction.eps_evidence import evaluate_form_test_eps
+from edgar_sec.engine.tables.extraction.eps_evidence import (
+    evaluate_form_test_eps,
+    evaluate_form_test_eps_detector,
+)
 from edgar_sec.engine.tables.extraction.inventory_evidence import (
     evaluate_form_test_inventory,
 )
@@ -75,6 +78,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_CORE_FORM,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_DERIVATIVES_EVIDENCE,
+    TEST_EPS_DETECTOR,
     TEST_EPS_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
@@ -414,6 +418,20 @@ def _evaluate_eps(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     )
 
 
+def _evaluate_eps_detector(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_eps_detector(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
 def _evaluate_ppe(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_ppe(table, spec)
     return FormTestOutcome(
@@ -710,6 +728,7 @@ _EVALUATORS = {
     TEST_BALANCE_SHEET_SEPARATOR: _evaluate_balance_sheet_separator,
     TEST_PENSION_ROUTED: _evaluate_pension_routed,
     TEST_EPS_EVIDENCE: _evaluate_eps,
+    TEST_EPS_DETECTOR: _evaluate_eps_detector,
     TEST_PPE_EVIDENCE: _evaluate_ppe,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_ARO_EVIDENCE: _evaluate_aro,

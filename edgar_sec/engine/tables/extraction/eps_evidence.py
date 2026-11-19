@@ -163,6 +163,30 @@ def _additive_generic(cols: list, floor: float, tol_fn, integral: bool) -> bool:
     return False
 
 
+def _additive_signed(cols: list) -> bool:
+    """The signed-walk arm: an additive identity at decimal
+    scale whose mids carry at least one negative and one
+    positive value — the treasury walk; repurchases subtract."""
+    for seq in cols:
+        for ii in range(len(seq)):
+            vi = seq[ii][1]
+            if vi <= 0 or abs(vi) < 10:
+                continue
+            for kk in range(ii + 2, len(seq)):
+                vk = seq[kk][1]
+                if vk <= 0 or abs(vk) < 10:
+                    continue
+                mids = [seq[j][1] for j in range(ii + 1, kk)]
+                if not any(m < 0 for m in mids):
+                    continue
+                if not any(m > 0 for m in mids):
+                    continue
+                tol = max(0.15, 0.001 * vk)
+                if abs(vi + sum(mids) - vk) <= tol:
+                    return True
+    return False
+
+
 @dataclass(frozen=True, slots=True)
 class EpsLegs:
     """The priced rule's leg readings over one geometry."""
@@ -176,6 +200,7 @@ class EpsLegs:
     v_comb: bool
     v_mil10: bool
     v_sub: bool
+    v_signed: bool
     v_frag: bool
     v_fragx: bool
     v_any: bool
@@ -194,7 +219,7 @@ class EpsLegs:
     @property
     def bd_arm(self) -> bool:
         """The denominator arm: bd under the spine or a variant."""
-        return self.basic_diluted and (self.es_add or self.v_any)
+        return self.basic_diluted and (self.es_add or self.v_any or self.v_signed)
 
     @property
     def claim(self) -> bool:
@@ -270,6 +295,7 @@ def legs_for(text: EpsText, spec: EpsEvidenceSpec) -> EpsLegs:
         for c in range(1, n_cols)
     ]
     v_mil10 = _additive_generic(cols, 10, lambda vk: max(0.15, 0.001 * vk), False)
+    v_signed = _additive_signed(cols)
     v_sub = es_add1k and not es_add
     groups: list[list[float]] = []
     cur: list[float] | None = None
@@ -294,7 +320,7 @@ def legs_for(text: EpsText, spec: EpsEvidenceSpec) -> EpsLegs:
     w_equiv = "share equivalents" in text.stub_text and es_add
     w_incr = "incremental shares" in text.stub_text and es_add
     w_any = w_spine or w_equiv or w_incr
-    h1 = pair or (basic_diluted and (es_add or v_any)) or w_any
+    h1 = pair or (basic_diluted and (es_add or v_any or v_signed)) or w_any
 
     stubs = text.stub_low
     n = len(stubs)
@@ -309,16 +335,7 @@ def legs_for(text: EpsText, spec: EpsEvidenceSpec) -> EpsLegs:
         sum(1 for s in stubs if any(t in s for t in spec.walk_terms))
         >= spec.walk_min_rows
     )
-    title_surfaces = (
-        text.caption
-        + " "
-        + text.lead[:250]
-        + " "
-        + text.lead[-250:]
-        + " "
-        + text.prose_after[:250]
-    )
-    det_title = any(t in title_surfaces for t in spec.title_terms)
+    det_title = any(t in text.caption for t in spec.title_terms)
     head2 = " ".join(" ".join(r) for r in rows[:2]).lower() + " " + text.caption
     det_change = any(t in head2 for t in spec.change_terms)
     det = det_walk3 or det_title or det_foot60 or det_change
@@ -332,6 +349,7 @@ def legs_for(text: EpsText, spec: EpsEvidenceSpec) -> EpsLegs:
         v_comb=v_comb,
         v_mil10=v_mil10,
         v_sub=v_sub,
+        v_signed=v_signed,
         v_frag=v_frag,
         v_fragx=v_fragx,
         v_any=v_any,
@@ -381,3 +399,45 @@ def evaluate_form_test_eps(table: TypedTable, spec: FormTestSpec) -> EpsEvidence
     if not table.context.rows:
         return EpsEvidence(False, False, None, "no grid rows")
     return evaluate_eps(EpsText.from_table(table), gate_spec)
+
+
+@dataclass(frozen=True, slots=True)
+class EpsDetectorVerdict:
+    """The detector verdict for one geometry: fired legs, if any."""
+
+    fired: bool
+    evaluable: bool
+    legs: EpsLegs | None
+    detail: str
+
+
+def evaluate_eps_detector(text: EpsText, spec: EpsEvidenceSpec) -> EpsDetectorVerdict:
+    """The seat's detector alone over one geometry's seat text."""
+    legs = legs_for(text, spec)
+    fired = tuple(
+        name
+        for name, on in (
+            ("det_walk3", legs.det_walk3),
+            ("det_title", legs.det_title),
+            ("det_foot60", legs.det_foot60),
+            ("det_change", legs.det_change),
+        )
+        if on
+    )
+    if fired:
+        return EpsDetectorVerdict(
+            True, True, legs, "detector fired: " + ", ".join(fired)
+        )
+    return EpsDetectorVerdict(False, True, legs, "detector silent")
+
+
+def evaluate_form_test_eps_detector(
+    table: TypedTable, spec: FormTestSpec
+) -> EpsDetectorVerdict:
+    """Stage adapter: evaluate the family's seat detector over a table."""
+    gate_spec = EPS_EVIDENCE_SPECS.get(spec.family)
+    if gate_spec is None:
+        return EpsDetectorVerdict(False, False, None, "no seat spec for test")
+    if not table.context.rows:
+        return EpsDetectorVerdict(False, False, None, "no grid rows")
+    return evaluate_eps_detector(EpsText.from_table(table), gate_spec)

@@ -67,6 +67,7 @@ from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CORE_FORM,
+    TEST_EPS_DETECTOR,
     TEST_PENSION_ROUTED,
 )
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
@@ -352,6 +353,19 @@ def compete(
             if "balance_sheet" in contested:
                 contested.remove("balance_sheet")
             scores = _append_note(scores, "balance_sheet", "gate", fired.detail)
+    # EPS determination gate (priced): an eps_reconciliation
+    # claim is refused when the seat's detector fires on the
+    # geometry, whatever channel produced the claim; an outcome
+    # absent or unevaluable never fails the gate.
+    if "eps_reconciliation" in claims:
+        fired = failing_core_form_outcome(
+            geometry.form_tests, "eps_reconciliation", TEST_EPS_DETECTOR
+        )
+        if fired is not None:
+            claims.remove("eps_reconciliation")
+            if "eps_reconciliation" in contested:
+                contested.remove("eps_reconciliation")
+            scores = _append_note(scores, "eps_reconciliation", "gate", fired.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
