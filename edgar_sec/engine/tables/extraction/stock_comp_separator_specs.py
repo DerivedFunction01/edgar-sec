@@ -22,10 +22,9 @@ class StockCompSeparatorLeg:
 
 @dataclass(frozen=True)
 class StockCompSeparatorSpec:
-    """One family's separator: the ordered legs as priced.
-    span_ge_5 refuses a grant listing whose grid spans five or
-    more distinct years; assign_other refuses a claim whose
-    geometry a determined other-family seat has seated."""
+    """One family's separator: the ordered legs as priced. span_ge_5 refuses
+    a grant listing whose grid spans five or more distinct years; assign_other
+    refuses a claim whose geometry a determined other-family seat has seated."""
 
     family: str
     legs: tuple[StockCompSeparatorLeg, ...]

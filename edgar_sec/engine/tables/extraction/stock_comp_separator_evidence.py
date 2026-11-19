@@ -1,8 +1,7 @@
 """Stock comp separator evidence (TEST_STOCK_COMP_SEPARATOR).
-Evaluates the priced span_ge_5 leg over one table's grid: a
-stock_comp claim is refused when the grid spans five or more
-distinct years. The set-level assign_other leg runs at filing
-level, anchored on the input-class seat's determined claim.
+Evaluates the priced span_ge_5 leg over one table's grid: a stock_comp claim is
+refused when the grid spans five or more distinct years. The set-level assign_other
+leg runs at filing level, anchored on the input-class seat's determined claim.
 """
 
 from __future__ import annotations
