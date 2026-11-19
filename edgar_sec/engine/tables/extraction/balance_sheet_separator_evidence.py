@@ -18,6 +18,7 @@ from edgar_sec.engine.tables.extraction.core_form_evidence import (
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
     norm as token_norm,
+    stub_key,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_specs import (
     HEADER_STOP_TOKENS,
@@ -32,15 +33,7 @@ from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 # amount fragment; its core composes the numeric-cells fragment.
 NUMERIC_SHARE_CELL_RE = re.compile(r"\(?-?\$?\s*" + UNICODE_NUMERIC_CORE + r"\s*\)?\)?")
 HEADER_YEAR_RE = re.compile(rf"\b{STRICT_YEAR_TOKEN_PATTERN}\b")
-_DIGITS_RE = re.compile(r"\b\d+\b")
 _DIGIT_RE = re.compile(r"\d")
-
-
-def stub_key(stub: str) -> str:
-    """A stub's priced key: digits and months dropped, 8 tokens."""
-    normed = _DIGITS_RE.sub(" ", token_norm(stub))
-    tokens = [t for t in normed.split() if t not in MONTH_TOKENS and len(t) > 1]
-    return " ".join(tokens[:8])
 
 
 class BalanceSheetSeparatorText:
