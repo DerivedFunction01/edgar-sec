@@ -14,6 +14,7 @@ from edgar_sec.engine.tables.extraction.comprehensive_income_separator_specs imp
     ComprehensiveIncomeSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys,
     norm,
     stub_key,
 )
@@ -36,23 +37,6 @@ _BOOKEND_END_PHRASES = (
 )
 
 
-def _header_keys(header_cells: tuple[str, ...]) -> frozenset:
-    """Header keys: whole-cell stub keys plus content tokens."""
-    keys = set()
-    for cell in header_cells:
-        keyed = stub_key(cell)
-        if len(keyed) >= 3:
-            keys.add(keyed)
-        for token in norm(cell).split():
-            if (
-                len(token) > 2
-                and not token.isdigit()
-                and token not in HEADER_STOP_TOKENS
-            ):
-                keys.add(token)
-    return frozenset(keys)
-
-
 class ComprehensiveIncomeSeparatorText:
     """The packet text surface the cascade reads."""
 
@@ -67,7 +51,7 @@ class ComprehensiveIncomeSeparatorText:
         self.stub_keys = frozenset(
             key for key in (stub_key(stub) for stub in self.stubs) if len(key) >= 3
         )
-        self.header_keys = _header_keys(self.headers)
+        self.header_keys = header_keys(self.headers)
         self.norm_stubs = tuple(norm(stub) for stub in self.stubs)
         self.stub_blob = " ".join(self.norm_stubs)
         years = set()

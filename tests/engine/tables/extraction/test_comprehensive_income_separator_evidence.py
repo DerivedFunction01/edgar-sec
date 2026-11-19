@@ -33,6 +33,7 @@ from edgar_sec.engine.tables.extraction.geometry_scoring import (
     FamilyScore,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys as _PENSION_HEADER_KEYS,
     stub_key as _PENSION_STUB_KEY,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_specs import (
@@ -97,6 +98,7 @@ def test_packet_and_rows_surfaces_agree():
 
 def test_recognizer_homes():
     assert _cise.stub_key is _PENSION_STUB_KEY
+    assert _cise.header_keys is _PENSION_HEADER_KEYS
     assert _cise.HEADER_STOP_TOKENS is _PENSION_STOP_TOKENS
     assert _cise._YEAR_RE.pattern == r"\b(?:19|20)\d{2}\b"
 

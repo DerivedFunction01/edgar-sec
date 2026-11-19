@@ -19,6 +19,7 @@ from edgar_sec.engine.tables.extraction.equity_separator_specs import (
     EquitySeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys,
     norm,
     stub_key,
 )
@@ -42,23 +43,6 @@ def _dated_balance_count(raw_stubs) -> int:
     return count
 
 
-def _header_keys(header_cells) -> frozenset:
-    """Header keys: whole-cell stub keys plus content tokens."""
-    keys = set()
-    for cell in header_cells:
-        keyed = stub_key(cell)
-        if len(keyed) >= 3:
-            keys.add(keyed)
-        for token in norm(cell).split():
-            if (
-                len(token) > 2
-                and not token.isdigit()
-                and token not in HEADER_STOP_TOKENS
-            ):
-                keys.add(token)
-    return frozenset(keys)
-
-
 class EquitySeparatorText:
     """The packet text surface the equity cascade reads."""
 
@@ -72,7 +56,7 @@ class EquitySeparatorText:
         self.stub_keys = frozenset(
             key for key in (stub_key(stub) for stub in self.stubs) if key
         )
-        self.header_keys = _header_keys(self.headers)
+        self.header_keys = header_keys(self.headers)
         self.dated_balance_rows = _dated_balance_count(self.raw_stubs)
         years = set()
         for cell in self.headers:
@@ -185,7 +169,7 @@ def equity_candidate_features_from_geometry(geometry, spec) -> EquityCandidateFe
     return _candidate_features(
         _dated_balance_count(geometry.stubs),
         stub_keys,
-        _header_keys(geometry.headers),
+        header_keys(geometry.headers),
         geometry.grid_rows,
         spec,
     )

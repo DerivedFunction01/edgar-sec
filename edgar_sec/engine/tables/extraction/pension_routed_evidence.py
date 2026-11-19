@@ -52,6 +52,23 @@ def stub_key(stub):
     return " ".join(toks[:8])
 
 
+def header_keys(header_cells: tuple[str, ...]) -> frozenset:
+    """Header keys: whole-cell stub keys plus content tokens."""
+    keys = set()
+    for cell in header_cells:
+        keyed = stub_key(cell)
+        if len(keyed) >= 3:
+            keys.add(keyed)
+        for token in norm(cell).split():
+            if (
+                len(token) > 2
+                and not token.isdigit()
+                and token not in HEADER_STOP_TOKENS
+            ):
+                keys.add(token)
+    return frozenset(keys)
+
+
 class PensionRoutedText:
     """The packet text surface the routed separator reads."""
 
