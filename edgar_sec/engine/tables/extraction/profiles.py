@@ -52,6 +52,7 @@ PROV_S6B_PRICING = "calibration:s6b-pricing"
 PROV_S5_SEAT_PRICING = "calibration:s5-seat-pricing"
 PROV_STEP8_PRICING = "calibration:step8-pricing"
 PROV_BALANCE_SHEET_SEPARATOR = "calibration:balance-sheet-separator-pricing"
+PROV_CASH_FLOW_CASCADE = "calibration:cash-flow-cascade-pricing"
 PROV_COREFIN_COMPINCOME = "calibration:corefin-compincome-pricing"
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
@@ -87,6 +88,7 @@ TEST_CORE_FORM = "core_form"
 TEST_BALANCE_SHEET_SEPARATOR = "balance_sheet_separator"
 TEST_COMPREHENSIVE_INCOME_SEPARATOR = "comprehensive_income_separator"
 TEST_PENSION_ROUTED = "pension_routed"
+TEST_CASH_FLOW_SEPARATOR = "cash_flow_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -116,6 +118,7 @@ FORM_TESTS = (
     TEST_PENSION_ROUTED,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_EPS_DETECTOR,
+    TEST_CASH_FLOW_SEPARATOR,
 )
 
 
@@ -293,6 +296,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             TEST_PLACEMENT_CONSISTENCY,
             TEST_EPS_EVIDENCE,
             TEST_EPS_DETECTOR,
+            TEST_CASH_FLOW_SEPARATOR,
         ),
         note="seated additionally on the depth-3 detector "
         "cell priced over the R18 fresh population (P 1.000 / "

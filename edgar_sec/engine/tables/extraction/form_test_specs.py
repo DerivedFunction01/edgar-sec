@@ -21,6 +21,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_CI_STEP6_PRICING,
     PROV_ARO_BASE,
     PROV_BALANCE_SHEET_SEPARATOR,
+    PROV_CASH_FLOW_CASCADE,
     PROV_COREFIN_COMPINCOME,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
@@ -41,6 +42,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ARO_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,
+    TEST_CASH_FLOW_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
@@ -73,6 +75,10 @@ from edgar_sec.engine.tables.extraction.aoci_claim_shape_specs import (
 from edgar_sec.engine.tables.extraction.balance_sheet_separator_specs import (
     BALANCE_SHEET_SEPARATOR_SPECS,
     BalanceSheetSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.cash_flow_separator_specs import (
+    CASH_FLOW_SEPARATOR_SPECS,
+    CashFlowSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_specs import (
     COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
@@ -139,6 +145,8 @@ __all__ = (
     "AociClaimShapeSpec",
     "BALANCE_SHEET_SEPARATOR_SPECS",
     "BalanceSheetSeparatorSpec",
+    "CASH_FLOW_SEPARATOR_SPECS",
+    "CashFlowSeparatorSpec",
     "COMPREHENSIVE_INCOME_SEPARATOR_SPECS",
     "ComprehensiveIncomeSeparatorSpec",
     "COMMERCIAL_TERMS",
@@ -163,6 +171,7 @@ __all__ = (
     "PERCENTAGE_SPECS_BY_FAMILY",
     "PROV_ARO_BASE",
     "PROV_BALANCE_SHEET_SEPARATOR",
+    "PROV_CASH_FLOW_CASCADE",
     "PROV_CI_STEP6_PRICING",
     "PROV_COREFIN_COMPINCOME",
     "PROV_DECLARED_SPECS",
@@ -189,6 +198,7 @@ __all__ = (
     "TEST_ADMISSION_EVIDENCE",
     "TEST_ARO_EVIDENCE",
     "TEST_BALANCE_SHEET_SEPARATOR",
+    "TEST_CASH_FLOW_SEPARATOR",
     "TEST_COMPOSITION_TWIN",
     "TEST_COMPREHENSIVE_INCOME_SEPARATOR",
     "TEST_CORE_FORM",
@@ -472,6 +482,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "pension_routed_separator",
         0.0,
         provenance=PROV_PENSION_ROUTED,
+    ),
+    FormTestSpec(
+        "cash_flow",
+        TEST_CASH_FLOW_SEPARATOR,
+        "cash_flow_separator",
+        0.0,
+        provenance=PROV_CASH_FLOW_CASCADE,
     ),
     FormTestSpec(
         "comprehensive_income",

@@ -14,6 +14,9 @@ from edgar_sec.engine.tables.extraction.aoci_gate import aoci_gate_detail
 from edgar_sec.engine.tables.extraction.balance_sheet_separator_evidence import (
     fired_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
+    fired_separator_outcome as fired_cash_flow_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
     failing_core_form_outcome,
 )
@@ -69,6 +72,7 @@ from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence 
 )
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
+    TEST_CASH_FLOW_SEPARATOR,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
     TEST_EPS_DETECTOR,
@@ -357,6 +361,19 @@ def compete(
             if "balance_sheet" in contested:
                 contested.remove("balance_sheet")
             scores = _append_note(scores, "balance_sheet", "gate", fired.detail)
+    # Cash-flow cascade gate (priced): a cash_flow claim is
+    # refused when the stamped cascade outcome fired on a
+    # claim-local leg; an outcome absent or unevaluable never
+    # fails the gate. The set-level legs run at filing level.
+    if "cash_flow" in claims:
+        fired = fired_cash_flow_separator_outcome(
+            geometry.form_tests, "cash_flow", TEST_CASH_FLOW_SEPARATOR
+        )
+        if fired is not None:
+            claims.remove("cash_flow")
+            if "cash_flow" in contested:
+                contested.remove("cash_flow")
+            scores = _append_note(scores, "cash_flow", "gate", fired.detail)
     # EPS determination gate (priced): an eps_reconciliation
     # claim is refused when the seat's detector fires on the
     # geometry, whatever channel produced the claim; an outcome
