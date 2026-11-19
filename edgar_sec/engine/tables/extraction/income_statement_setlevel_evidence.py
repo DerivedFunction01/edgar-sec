@@ -31,9 +31,7 @@ def core_share(geometry) -> float:
     if not CORE_VOCAB_FRESH:
         return 0.0
     keys = {stub_key(stub) for stub in geometry.stubs}
-    return sum(1 for term in CORE_VOCAB_FRESH if term in keys) / len(
-        CORE_VOCAB_FRESH
-    )
+    return sum(1 for term in CORE_VOCAB_FRESH if term in keys) / len(CORE_VOCAB_FRESH)
 
 
 def _canon(value: float) -> str | None:
@@ -142,9 +140,7 @@ def apply_income_statement_assignment(geometries, results):
             return False
         own = geometries[index].stubs
         return any(
-            not missing_sections(own, other)
-            for other in GATE_SETS
-            if other != FAMILY
+            not missing_sections(own, other) for other in GATE_SETS if other != FAMILY
         )
 
     def uniqueness_eliminated() -> set[int]:
@@ -211,9 +207,7 @@ def apply_income_statement_assignment(geometries, results):
         out.append(
             CompetitionResult(
                 claims=tuple(name for name in result.claims if name != FAMILY),
-                contested=tuple(
-                    name for name in result.contested if name != FAMILY
-                ),
+                contested=tuple(name for name in result.contested if name != FAMILY),
                 scores=scores,
                 foreign_explained=result.foreign_explained,
                 groups=result.groups,

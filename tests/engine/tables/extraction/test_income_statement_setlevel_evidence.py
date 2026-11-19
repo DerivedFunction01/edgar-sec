@@ -149,9 +149,7 @@ def test_ties_silent_when_tied():
 
 def test_refusal_keeps_other_claims_and_score_totals():
     geometry = _geometry(stubs=_BALANCE)
-    results = [
-        _result(claims=(_IS, "cash_flow"), totals={_IS: 7.5, "cash_flow": 3.0})
-    ]
+    results = [_result(claims=(_IS, "cash_flow"), totals={_IS: 7.5, "cash_flow": 3.0})]
     out = apply_income_statement_assignment([geometry], results)
     assert out[0].claims == ("cash_flow",)
     assert out[0].scores[_IS].total == 7.5
@@ -167,9 +165,7 @@ def test_core_share_reads_carried_vocabulary():
 def test_net_values_canonicalizes_and_filters():
     geometry = _geometry(
         grid_text=(
-            "Net income | (1,234) | 12 | 123.45\n"
-            "Revenues | 7,890\n"
-            "Net loss | 5,678"
+            "Net income | (1,234) | 12 | 123.45\nRevenues | 7,890\nNet loss | 5,678"
         )
     )
     assert net_values(geometry) == {"1234", "5678"}
