@@ -78,6 +78,9 @@ from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence 
 from edgar_sec.engine.tables.extraction.equity_separator_evidence import (
     apply_equity_assignment,
 )
+from edgar_sec.engine.tables.extraction.income_statement_setlevel_evidence import (
+    apply_income_statement_assignment,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
@@ -758,6 +761,10 @@ def compete_filing(
     # assignment and A1 corekeep adjudication over the filing's
     # complete candidate sets, after inheritance settles claims.
     results = apply_combined_operations_assignment(geometries, results)
+    # Income-statement set-level pass (priced): routing,
+    # uniqueness, dominant-cluster and ties refusals over the
+    # filing's formed candidate set; it only removes claims.
+    results = apply_income_statement_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.
