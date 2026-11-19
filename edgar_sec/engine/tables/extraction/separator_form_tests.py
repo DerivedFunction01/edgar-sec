@@ -36,6 +36,9 @@ from edgar_sec.engine.tables.extraction.deferred_tax_separator_evidence import (
 from edgar_sec.engine.tables.extraction.lease_separator_evidence import (
     evaluate_form_test_lease_separator,
 )
+from edgar_sec.engine.tables.extraction.form_separation_evidence import (
+    evaluate_form_test_form_separation,
+)
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     FormTestOutcome,
     FormTestSpec,
@@ -189,6 +192,22 @@ def _evaluate_tax_reconciliation_separator(
 
 def _evaluate_lease_separator(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_lease_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_form_separation(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_form_separation(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,

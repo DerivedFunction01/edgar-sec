@@ -84,6 +84,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_EPS_DETECTOR,
     TEST_EPS_EVIDENCE,
     TEST_EQUITY_SEPARATOR,
+    TEST_FORM_SEPARATION,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
     TEST_LADDER,
@@ -121,6 +122,7 @@ from edgar_sec.engine.tables.extraction.separator_form_tests import (
     _evaluate_stock_comp_separator,
     _evaluate_tax_reconciliation_separator,
     _evaluate_lease_separator,
+    _evaluate_form_separation,
 )
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
@@ -744,6 +746,7 @@ _EVALUATORS = {
     TEST_TAX_RECONCILIATION_SEPARATOR: _evaluate_tax_reconciliation_separator,
     TEST_DEFERRED_TAX_SEPARATOR: _evaluate_deferred_tax_separator,
     TEST_LEASE_SEPARATOR: _evaluate_lease_separator,
+    TEST_FORM_SEPARATION: _evaluate_form_separation,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_EPS_DETECTOR: _evaluate_eps_detector,
     TEST_PPE_EVIDENCE: _evaluate_ppe,

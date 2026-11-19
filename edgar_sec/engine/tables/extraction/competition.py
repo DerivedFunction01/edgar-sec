@@ -110,6 +110,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_EPS_DETECTOR,
     TEST_EQUITY_SEPARATOR,
     TEST_PENSION_COMBINATION,
+    TEST_FORM_SEPARATION,
     TEST_PENSION_ROUTED,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
@@ -217,6 +218,7 @@ _STAMPED_GATES = (
         TEST_STOCK_COMP_SEPARATOR,
         fired_stock_comp_separator_outcome,
     ),
+    ("related_party", TEST_FORM_SEPARATION, failing_core_form_outcome),
     (
         "tax_reconciliation",
         TEST_TAX_RECONCILIATION_SEPARATOR,

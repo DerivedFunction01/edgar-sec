@@ -63,6 +63,9 @@ PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
 PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
 PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
 PROV_LEASE_SEPARATOR = "calibration:lease-separator-pricing"
+PROV_RELATED_PARTY_FORM_SEPARATION = (
+    "calibration:related-party-form-separation-pricing"
+)
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -105,6 +108,7 @@ TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
 TEST_TAX_RECONCILIATION_SEPARATOR = "tax_reconciliation_separator"
 TEST_DEFERRED_TAX_SEPARATOR = "deferred_tax_separator"
 TEST_LEASE_SEPARATOR = "lease_separator"
+TEST_FORM_SEPARATION = "form_separation"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -143,6 +147,7 @@ FORM_TESTS = (
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_LEASE_SEPARATOR,
+    TEST_FORM_SEPARATION,
 )
 
 
@@ -430,6 +435,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.389, 0.200, 0.643, 0.333),
         SEAT_NOTE_TITLE_CONTENT,
+        form_tests=(TEST_FORM_SEPARATION,),
         gate_bindings=("content_gate",),
         note="host-form share of true instances is a named recall "
         "ceiling: its evidence sits in note prose, and R6 rules "
