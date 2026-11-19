@@ -62,8 +62,7 @@ def test_read_header_features_come_from_the_homed_derivation():
     read = _pre._read(PensionRoutedText("Funded status of the plan | 2024 | 2023"))
     hdr_features = {f for f in read.features if f.startswith("hdr:")}
     expected = {
-        f"hdr:{k}"
-        for k in header_keys(("Funded status of the plan", "2024", "2023"))
+        f"hdr:{k}" for k in header_keys(("Funded status of the plan", "2024", "2023"))
     }
     assert hdr_features == expected
 
