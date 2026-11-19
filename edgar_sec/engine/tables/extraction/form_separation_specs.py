@@ -38,6 +38,7 @@ class FormSeparationSpec:
     gold_families: tuple[str, ...]
     foreign_shapes: bool
     recast_cell: bool
+    segment_detail_cell: bool
 
 
 FORM_SEPARATION_SPECS: dict[str, FormSeparationSpec] = {
@@ -47,6 +48,7 @@ FORM_SEPARATION_SPECS: dict[str, FormSeparationSpec] = {
         gold_families=("warrant_activity", "debt_maturity"),
         foreign_shapes=True,
         recast_cell=True,
+        segment_detail_cell=False,
     ),
     "intangibles": FormSeparationSpec(
         family="intangibles",
@@ -54,5 +56,17 @@ FORM_SEPARATION_SPECS: dict[str, FormSeparationSpec] = {
         gold_families=("inventory",),
         foreign_shapes=False,
         recast_cell=False,
+        segment_detail_cell=False,
+    ),
+    # related_party: F+EXT priced by the production-frame
+    # board (register-relatedparty-prodframe.md); the
+    # segment-detail cell is the EXT stage, separate from F.
+    "related_party": FormSeparationSpec(
+        family="related_party",
+        foreign_classes=FOREIGN_FORM_CLASSES,
+        gold_families=("lease_maturity", "eps_reconciliation"),
+        foreign_shapes=False,
+        recast_cell=False,
+        segment_detail_cell=True,
     ),
 }

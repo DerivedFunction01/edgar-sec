@@ -74,6 +74,8 @@ def _is_foreign(token: str, spec: FormSeparationSpec) -> bool:
         return True
     if token == "restatement-recast":
         return spec.recast_cell
+    if token == "segment-detail":
+        return spec.segment_detail_cell
     if token.startswith("gold:"):
         return token[len("gold:") :] in spec.gold_families
     if token.startswith("shape:"):
