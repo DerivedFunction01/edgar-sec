@@ -8,6 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.eps_specs import (
+    EPS_EVIDENCE_SPECS,
     EPS_EVIDENCE_SPECS_BY_TEST_ID,
     EpsEvidenceSpec,
 )
