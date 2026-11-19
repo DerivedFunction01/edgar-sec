@@ -5,12 +5,12 @@ from __future__ import annotations
 from dataclasses import replace
 
 import edgar_sec.engine.tables.extraction.combined_operations_separator_evidence as _evidence
-import edgar_sec.engine.tables.extraction.measure_set
 from edgar_sec.engine.tables.ascii_html.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
+from edgar_sec.engine.tables.extraction import measure_set
 from edgar_sec.engine.tables.extraction.combined_operations_separator_evidence import (
     apply_combined_operations_assignment,
     evaluate_combined_operations_separator,
