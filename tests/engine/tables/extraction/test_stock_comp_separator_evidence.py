@@ -240,8 +240,7 @@ def _result(*families):
 
 
 _ADMITTING_GRID = (
-    "Expected volatility | risk-free interest rate | dividend yield"
-    " | expected term"
+    "Expected volatility | risk-free interest rate | dividend yield | expected term"
 )
 _QUIET_GRID = "Weighted average exercise price | 10.50"
 
@@ -289,7 +288,10 @@ def test_assignment_preserves_cross_claims():
 
 def test_assignment_leaves_other_families_alone():
     results = apply_stock_comp_assignment(
-        [GeometryText(grid_text=_ADMITTING_GRID), GeometryText(grid_text=_ADMITTING_GRID)],
+        [
+            GeometryText(grid_text=_ADMITTING_GRID),
+            GeometryText(grid_text=_ADMITTING_GRID),
+        ],
         [_result(ANCHOR), _result("balance_sheet")],
     )
     assert ANCHOR in results[0].claims
