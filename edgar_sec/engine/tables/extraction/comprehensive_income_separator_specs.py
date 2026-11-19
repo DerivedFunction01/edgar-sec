@@ -13,9 +13,8 @@ from dataclasses import dataclass
 class ComprehensiveIncomeSeparatorSpec:
     """One family's routed separator: the cascade as data.
 
-    The determined core is the statement walk: a net-income
-    head, a comprehensive tail, and an other-comprehensive
-    element, each read over the candidate's stub keys.
+    The determined core is the statement walk, read over
+    the candidate's stub keys.
     """
 
     family: str
