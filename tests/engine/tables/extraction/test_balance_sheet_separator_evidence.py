@@ -38,6 +38,7 @@ from edgar_sec.foundation.text.dates import (
     STRICT_YEAR_TOKEN_PATTERN as _HOME_STRICT_YEAR,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys as _PENSION_HEADER_KEYS,
     norm as _PENSION_NORM,
     stub_key as _PENSION_STUB_KEY,
 )
@@ -106,6 +107,7 @@ def test_recognizer_homes_and_frozen_text():
     assert _bse.MONTH_TOKENS is _PENSION_MONTH_TOKENS
     assert _bse.token_norm is _PENSION_NORM
     assert _bse.stub_key is _PENSION_STUB_KEY
+    assert _bse.header_keys is _PENSION_HEADER_KEYS
     assert _bse.RE_NON_ALNUM is _HOME_NON_ALNUM
     assert _bse.RE_WHITESPACE is _HOME_WHITESPACE
     assert _bse.STRICT_YEAR_TOKEN_PATTERN is _HOME_STRICT_YEAR

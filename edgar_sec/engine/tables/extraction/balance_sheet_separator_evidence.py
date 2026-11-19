@@ -17,6 +17,7 @@ from edgar_sec.engine.tables.extraction.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys,
     norm as token_norm,
     stub_key,
 )
@@ -91,18 +92,7 @@ def evaluate_balance_sheet_separator(
             False, False, (), "separator unevaluable: no grid rows"
         )
     stub_keys = {k for k in (stub_key(s) for s in text.stubs) if len(k) >= 3}
-    header_keys = set()
-    for header in text.headers:
-        key = stub_key(header)
-        if len(key) >= 3:
-            header_keys.add(key)
-        for token in token_norm(header).split():
-            if (
-                len(token) > 2
-                and not token.isdigit()
-                and token not in HEADER_STOP_TOKENS
-            ):
-                header_keys.add(token)
+    hdr_keys = header_keys(tuple(text.headers))
     year_count = len(HEADER_YEAR_RE.findall(" ".join(text.headers)))
     numeric_share = _numeric_share(text.rows)
     fired: list[str] = []
@@ -111,7 +101,7 @@ def evaluate_balance_sheet_separator(
             fired.append(leg.leg_id)
         elif leg.kind == "years" and year_count >= leg.limit:
             fired.append(leg.leg_id)
-        elif leg.kind == "header" and leg.term in header_keys:
+        elif leg.kind == "header" and leg.term in hdr_keys:
             fired.append(leg.leg_id)
         elif leg.kind == "stub" and leg.term in stub_keys:
             fired.append(leg.leg_id)

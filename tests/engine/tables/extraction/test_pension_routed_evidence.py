@@ -15,10 +15,12 @@ from edgar_sec.engine.tables.extraction.form_test_specs import (
 )
 from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.geometry_scoring import FamilyScore
+import edgar_sec.engine.tables.extraction.pension_routed_evidence as _pre
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
     PensionRoutedText,
     evaluate_form_test_pension_routed,
     evaluate_pension_routed,
+    header_keys,
     norm,
     stub_key,
 )
@@ -54,6 +56,16 @@ def test_norm_is_the_priced_norm():
 def test_stub_key_drops_digits_months_and_truncates():
     assert stub_key("Service cost 2024") == "service cost"
     assert stub_key("Balance at December 31, 2024") == "balance at"
+
+
+def test_read_header_features_come_from_the_homed_derivation():
+    read = _pre._read(PensionRoutedText("Funded status of the plan | 2024 | 2023"))
+    hdr_features = {f for f in read.features if f.startswith("hdr:")}
+    expected = {
+        f"hdr:{k}"
+        for k in header_keys(("Funded status of the plan", "2024", "2023"))
+    }
+    assert hdr_features == expected
 
 
 def test_packet_and_rows_surfaces_agree():

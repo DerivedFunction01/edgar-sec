@@ -16,6 +16,7 @@ from edgar_sec.engine.tables.extraction.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys,
     norm as token_norm,
     stub_key,
 )
@@ -75,18 +76,7 @@ def evaluate_cash_flow_separator(
         return CashFlowSeparatorVerdict(
             False, False, (), "separator unevaluable: no grid rows"
         )
-    header_keys = set()
-    for header in text.headers:
-        key = stub_key(header)
-        if len(key) >= 3:
-            header_keys.add(key)
-        for token in token_norm(header).split():
-            if (
-                len(token) > 2
-                and not token.isdigit()
-                and token not in HEADER_STOP_TOKENS
-            ):
-                header_keys.add(token)
+    hdr_keys = header_keys(tuple(text.headers))
     core_present = section_presence(text.stubs, spec.family)[spec.core_section]
     fired: list[str] = []
     for leg in spec.legs:
@@ -94,7 +84,7 @@ def evaluate_cash_flow_separator(
             continue
         if leg.kind == "rows" and len(text.rows) <= leg.limit:
             fired.append(leg.leg_id)
-        elif leg.kind == "header" and leg.term in header_keys:
+        elif leg.kind == "header" and leg.term in hdr_keys:
             fired.append(leg.leg_id)
         elif leg.kind == "core_absent" and not core_present:
             fired.append(leg.leg_id)

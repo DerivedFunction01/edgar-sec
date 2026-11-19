@@ -31,6 +31,7 @@ from edgar_sec.engine.tables.extraction.form_test_specs import (
 from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.geometry_scoring import FamilyScore
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
+    header_keys as _PENSION_HEADER_KEYS,
     norm as _PENSION_NORM,
     stub_key as _PENSION_STUB_KEY,
 )
@@ -93,6 +94,7 @@ def test_packet_and_rows_surfaces_agree():
 def test_recognizer_homes():
     assert _cfe.stub_key is _PENSION_STUB_KEY
     assert _cfe.token_norm is _PENSION_NORM
+    assert _cfe.header_keys is _PENSION_HEADER_KEYS
     assert _cfe.section_presence is _HOME_SECTION_PRESENCE
     assert stub_key("Cash, beginning of period") == "cash beginning of period"
 

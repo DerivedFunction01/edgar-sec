@@ -114,14 +114,7 @@ def _read(text: PensionRoutedText) -> _Read:
     colcells = [c for r in rows[:_HEADER_LINES] for c in r[1:] if c]
     stub_keys = tuple(k for k in (stub_key(s) for s in stubs) if len(k) >= 3)
     features = {f"stub:{k}" for k in stub_keys}
-    hkeys = set()
-    for header in headers:
-        hk = stub_key(header)
-        if len(hk) >= 3:
-            hkeys.add(hk)
-        for tok in norm(header).split():
-            if len(tok) > 2 and not tok.isdigit() and tok not in HEADER_STOP_TOKENS:
-                hkeys.add(tok)
+    hkeys = header_keys(tuple(headers))
     features |= {f"hdr:{k}" for k in hkeys}
     if len(lines) <= 3:
         features.add("rows_le_3")
