@@ -81,8 +81,7 @@ def _dominant_cluster(clusters, results) -> tuple[int, ...] | None:
     """The filing's dominant statement cluster, or None.
 
     The cluster carrying a balance-sheet grouped record; with
-    several, the one carrying the most grouped records; with
-    none, the cluster carrying the most grouped records.
+    several or none, the one carrying the most grouped records.
     """
     unique = list(dict.fromkeys(clusters))
     if not unique:
