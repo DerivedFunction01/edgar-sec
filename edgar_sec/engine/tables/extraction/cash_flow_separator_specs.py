@@ -1,7 +1,7 @@
 """Cash-flow cascade parameter table (TEST_CASH_FLOW_SEPARATOR).
-The priced Composition B leg set as data, in firing order:
-claim-local legs read the candidate, set-level legs read the
-filing's complete candidate set (provenance: PROV_CASH_FLOW_CASCADE).
+The Composition B leg set as built, in firing order: claim-local
+legs read the candidate, the set-level leg reads the filing's
+complete candidate set (provenance: PROV_CASH_FLOW_CASCADE).
 """
 
 from dataclasses import dataclass
@@ -9,10 +9,9 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class CashFlowSeparatorLeg:
-    """One priced cascade leg: its kind, scope, and parameter.
-    Kinds: rows (grid lines at most limit), header (key),
-    core_absent (the family's core section absent), gold_route
-    and winner_take_all (set-level joint assignment)."""
+    """One cascade leg: kind, scope, and parameter. Kinds: rows,
+    header, core_absent (claim-local); winner_take_all (set-level
+    joint assignment over the filing's candidate set)."""
 
     leg_id: str
     kind: str
@@ -38,7 +37,6 @@ CASH_FLOW_SEPARATOR_SPECS = {
         legs=(
             CashFlowSeparatorLeg("rows_le_12", "rows", "claim-local", limit=12),
             CashFlowSeparatorLeg("hdr:value", "header", "claim-local", term="value"),
-            CashFlowSeparatorLeg("gold_route", "gold_route", "set-level"),
             CashFlowSeparatorLeg(
                 "core_absent:cash_reconciliation", "core_absent", "claim-local"
             ),

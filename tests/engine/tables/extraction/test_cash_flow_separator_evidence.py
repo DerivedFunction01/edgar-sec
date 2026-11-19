@@ -1,4 +1,4 @@
-"""Cash-flow cascade (TEST_CASH_FLOW_SEPARATOR): legs, gate."""
+"""Cash-flow cascade (TEST_CASH_FLOW_SEPARATOR): legs, gate, assignment."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ from edgar_sec.engine.tables.ascii_html.model import (
 )
 from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
     CashFlowSeparatorText,
+    apply_cash_flow_assignment,
     evaluate_cash_flow_separator,
     evaluate_form_test_cash_flow_separator,
     stub_key,
@@ -18,6 +19,7 @@ from edgar_sec.engine.tables.extraction.cash_flow_separator_specs import (
     CASH_FLOW_SEPARATOR_SPECS,
 )
 from edgar_sec.engine.tables.extraction.competition import (
+    CompetitionResult,
     GeometryText,
     compete,
 )
@@ -75,9 +77,7 @@ def test_packet_and_rows_surfaces_agree():
         ("Net cash provided by operating activities", "100"),
         ("Net increase in cash and cash equivalents", "10"),
     )
-    via_rows = evaluate_cash_flow_separator(
-        CashFlowSeparatorText.from_rows(rows), SPEC
-    )
+    via_rows = evaluate_cash_flow_separator(CashFlowSeparatorText.from_rows(rows), SPEC)
     via_packet = evaluate_cash_flow_separator(
         CashFlowSeparatorText.from_packet(
             {
@@ -226,3 +226,60 @@ def test_gate_keeps_claim_when_outcome_unevaluable():
     geometry = GeometryText(form_tests=(_outcome(False, evaluable=False),))
     result = compete(geometry, scores=dict(_SCORE))
     assert "cash_flow" in result.claims
+
+
+# ---------------- assignment pass ----------------
+
+
+def test_spec_carries_the_ruled_leg_set():
+    legs = [(leg.leg_id, leg.scope) for leg in SPEC.legs]
+    assert legs == [
+        ("rows_le_12", "claim-local"),
+        ("hdr:value", "claim-local"),
+        ("core_absent:cash_reconciliation", "claim-local"),
+        ("winner_take_all", "set-level"),
+    ]
+
+
+def _result(*families):
+    scores = {
+        family: FamilyScore(family, 11.0, {"signature": 11.0}, ())
+        for family in families
+    }
+    return CompetitionResult(claims=families, contested=(), scores=scores)
+
+
+def test_assignment_refuses_competing_survivors():
+    results = apply_cash_flow_assignment(
+        [GeometryText(), GeometryText()],
+        [_result("cash_flow"), _result("cash_flow")],
+    )
+    assert all("cash_flow" not in r.claims for r in results)
+    evidence = results[0].scores["cash_flow"].evidence
+    assert any(item.channel == "gate" for item in evidence)
+
+
+def test_assignment_keeps_singleton_claim():
+    results = apply_cash_flow_assignment(
+        [GeometryText(), GeometryText()],
+        [_result("cash_flow"), _result("balance_sheet")],
+    )
+    assert "cash_flow" in results[0].claims
+    assert "balance_sheet" in results[1].claims
+
+
+def test_assignment_preserves_cross_claims():
+    results = apply_cash_flow_assignment(
+        [GeometryText(), GeometryText()],
+        [_result("cash_flow", "balance_sheet"), _result("cash_flow")],
+    )
+    assert "cash_flow" not in results[0].claims
+    assert "balance_sheet" in results[0].claims
+
+
+def test_assignment_leaves_other_families_alone():
+    results = apply_cash_flow_assignment(
+        [GeometryText(), GeometryText()],
+        [_result("balance_sheet"), _result("balance_sheet")],
+    )
+    assert all("balance_sheet" in r.claims for r in results)

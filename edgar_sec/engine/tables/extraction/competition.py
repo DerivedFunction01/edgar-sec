@@ -15,6 +15,7 @@ from edgar_sec.engine.tables.extraction.balance_sheet_separator_evidence import 
     fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
+    apply_cash_flow_assignment,
     fired_separator_outcome as fired_cash_flow_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
@@ -711,6 +712,10 @@ def compete_filing(
     # core-completeness ranking over the filing's formed
     # candidate set; it only removes claims.
     results = apply_comprehensive_income_assignment(geometries, results)
+    # Cash-flow assignment pass (set-level, priced): winner
+    # takes all over the filing's formed cash_flow candidate set;
+    # it only removes claims, so the primary gate stays final.
+    results = apply_cash_flow_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.
