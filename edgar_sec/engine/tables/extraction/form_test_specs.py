@@ -25,6 +25,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_COREFIN_COMPINCOME,
     PROV_COREFIN_EQUITYSTATEMENT,
     PROV_COMBINED_OPERATIONS_SEPARATOR,
+    PROV_STOCK_COMP_SEPARATOR,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
     PROV_DERIVATIVES_EVIDENCE,
@@ -69,6 +70,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_SIGNATURE_ABSENCE,
     TEST_TAX_EVIDENCE,
     TEST_STOCK_COMP_EVIDENCE,
+    TEST_STOCK_COMP_SEPARATOR,
     TEST_WALK,
     TEST_WARRANTY_EVIDENCE,
 )
@@ -95,6 +97,10 @@ from edgar_sec.engine.tables.extraction.comprehensive_income_separator_specs imp
 from edgar_sec.engine.tables.extraction.equity_separator_specs import (
     EQUITY_SEPARATOR_SPECS,
     EquitySeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.stock_comp_separator_specs import (
+    STOCK_COMP_SEPARATOR_SPECS,
+    StockCompSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -205,6 +211,7 @@ __all__ = (
     "PROV_STEP3_PRICING",
     "PROV_STEP8_PRICING",
     "PROV_STEP7_PRICING",
+    "PROV_STOCK_COMP_SEPARATOR",
     "PROV_WARRANTY_PRICING",
     "PercentageFormSpec",
     "SEAT_FLOOR_SPECS",
@@ -212,6 +219,8 @@ __all__ = (
     "SEAT_TEST_SPECS_BY_FAMILY",
     "SeatFloorSpec",
     "SeatTestSpec",
+    "STOCK_COMP_SEPARATOR_SPECS",
+    "StockCompSeparatorSpec",
     "TAX_EVIDENCE_SPECS",
     "TAX_EVIDENCE_SPECS_BY_TEST_ID",
     "TEST_ADMISSION_EVIDENCE",
@@ -239,6 +248,7 @@ __all__ = (
     "TEST_ROW_BOUND",
     "TEST_SIGNATURE_ABSENCE",
     "TEST_STOCK_COMP_EVIDENCE",
+    "TEST_STOCK_COMP_SEPARATOR",
     "TEST_TAX_EVIDENCE",
     "TEST_WALK",
     "TEST_WARRANTY_EVIDENCE",
@@ -545,6 +555,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "combined_operations_ci_separator",
         0.0,
         provenance=PROV_COMBINED_OPERATIONS_SEPARATOR,
+    ),
+    FormTestSpec(
+        "stock_comp_rollforward",
+        TEST_STOCK_COMP_SEPARATOR,
+        "stock_comp_separator",
+        0.0,
+        provenance=PROV_STOCK_COMP_SEPARATOR,
     ),
     FormTestSpec(
         "aro_rollforward",

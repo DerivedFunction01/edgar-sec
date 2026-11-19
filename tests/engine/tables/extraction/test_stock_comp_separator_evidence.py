@@ -1,0 +1,296 @@
+"""Stock comp separator (TEST_STOCK_COMP_SEPARATOR): legs, gate, assignment."""
+
+from __future__ import annotations
+
+import edgar_sec.engine.tables.extraction.stock_comp_separator_evidence as _sse
+from edgar_sec.engine.tables.ascii_html.model import (
+    ResolvedGrid,
+    TableGeometry,
+    TableRenderResult,
+)
+from edgar_sec.engine.tables.extraction.competition import (
+    CompetitionResult,
+    GeometryText,
+    compete,
+)
+from edgar_sec.engine.tables.extraction.context import TableContext
+from edgar_sec.engine.tables.extraction.core_form_evidence import (
+    failing_core_form_outcome as _CORE_FORM_OUTCOME,
+)
+from edgar_sec.engine.tables.extraction.form_test_specs import (
+    FORM_TEST_SPECS,
+    FormTestOutcome,
+)
+from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
+from edgar_sec.engine.tables.extraction.geometry_scoring import FamilyScore
+from edgar_sec.engine.tables.extraction.profiles import (
+    PROV_STOCK_COMP_SEPARATOR,
+    TEST_STOCK_COMP_SEPARATOR,
+    profile_for,
+)
+from edgar_sec.engine.tables.extraction.stock_comp_separator_evidence import (
+    StockCompSeparatorText,
+    apply_stock_comp_assignment,
+    evaluate_form_test_stock_comp_separator,
+    evaluate_stock_comp_separator,
+)
+from edgar_sec.engine.tables.extraction.stock_comp_separator_specs import (
+    STOCK_COMP_SEPARATOR_SPECS,
+)
+from edgar_sec.engine.tables.extraction.typed_rows import structure_table
+from edgar_sec.foundation.text.dates import (
+    YEAR_TOKEN_SEARCH_RE as _HOME_YEAR_RE,
+)
+
+SPEC = STOCK_COMP_SEPARATOR_SPECS["stock_comp_rollforward"]
+FAMILY = "stock_comp_rollforward"
+ANCHOR = "valuation_model_assumptions"
+
+
+def _eval(table_text: str):
+    return evaluate_stock_comp_separator(StockCompSeparatorText(table_text), SPEC)
+
+
+def _listing(*years: str) -> str:
+    header = "Grant | " + " | ".join(years)
+    body = [f"Options granted in {y} | 100 | 200" for y in years]
+    return "\n".join([header, *body])
+
+
+def test_kind_is_declared_as_form_test_data():
+    entry = next(
+        s
+        for s in FORM_TEST_SPECS
+        if s.family == FAMILY and s.kind == TEST_STOCK_COMP_SEPARATOR
+    )
+    assert entry.test_id == "stock_comp_separator"
+    assert entry.points == 0.0
+    assert entry.provenance == PROV_STOCK_COMP_SEPARATOR
+    assert SPEC.family == FAMILY
+    assert TEST_STOCK_COMP_SEPARATOR in profile_for(FAMILY).form_tests
+
+
+def test_spec_carries_the_priced_pair():
+    legs = [(leg.leg_id, leg.kind, leg.scope) for leg in SPEC.legs]
+    assert legs == [
+        ("span_ge_5", "span", "claim-local"),
+        ("assign_other", "assign_other", "set-level"),
+    ]
+    anchor = next(leg for leg in SPEC.legs if leg.kind == "assign_other")
+    assert anchor.anchor_family == ANCHOR
+    span = next(leg for leg in SPEC.legs if leg.kind == "span")
+    assert span.limit == 5
+
+
+def test_packet_and_rows_surfaces_agree():
+    rows = (
+        ("Options granted", "2011", "2012", "2013", "2016", "2017", "2018"),
+        ("Exercised", "10", "20", "30", "40", "50", "60"),
+    )
+    via_rows = evaluate_stock_comp_separator(
+        StockCompSeparatorText.from_rows(rows), SPEC
+    )
+    via_packet = evaluate_stock_comp_separator(
+        StockCompSeparatorText.from_packet(
+            {
+                "table_text": "Options granted | 2011 | 2012 | 2013 | 2016 | 2017"
+                " | 2018\nExercised | 10 | 20 | 30 | 40 | 50 | 60"
+            }
+        ),
+        SPEC,
+    )
+    assert via_rows == via_packet
+    assert via_rows.fired
+
+
+def test_recognizer_homes():
+    assert _sse.YEAR_TOKEN_SEARCH_RE is _HOME_YEAR_RE
+    assert _sse.fired_separator_outcome is _CORE_FORM_OUTCOME
+
+
+# ---------------- the claim-local leg ----------------
+
+
+def test_leg_span_ge_5_fires_on_six_years():
+    verdict = _eval(_listing("2011", "2012", "2013", "2016", "2017", "2018"))
+    assert verdict.fired
+    assert verdict.legs == ("span_ge_5",)
+
+
+def test_leg_span_ge_5_fires_at_the_boundary():
+    verdict = _eval(_listing("2019", "2020", "2021", "2022", "2023"))
+    assert verdict.fired
+    assert verdict.legs == ("span_ge_5",)
+
+
+def test_leg_span_clear_below_five():
+    verdict = _eval(_listing("2022", "2023", "2024", "2025"))
+    assert not verdict.fired
+    assert verdict.legs == ()
+
+
+def test_leg_span_counts_distinct_years_only():
+    text = "Grant | 2023 | 2023\nGranted in 2023 | 1 | 2\nGranted in 2024 | 3 | 4"
+    verdict = _eval(text)
+    assert not verdict.fired
+
+
+def test_empty_grid_is_unevaluable():
+    verdict = _eval("")
+    assert not verdict.fired
+    assert not verdict.evaluable
+
+
+# ---------------- stage adapter + dispatch ----------------
+
+
+def _table(rows):
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=rows,
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+    context = TableContext(geometry=geometry, caption_stack=(), prose_before="")
+    return structure_table(context)
+
+
+def test_stage_adapter_over_full_grid():
+    table = _table(
+        (("Options granted", "2011", "2012", "2013", "2016", "2017", "2018"),)
+    )
+    spec = next(s for s in FORM_TEST_SPECS if s.test_id == "stock_comp_separator")
+    verdict = evaluate_form_test_stock_comp_separator(table, spec)
+    assert verdict.fired
+    assert "span_ge_5" in verdict.legs
+
+
+def test_stage_dispatch_stamps_separator_outcome():
+    table = _table(
+        (("Options granted", "2011", "2012", "2013", "2016", "2017", "2018"),)
+    )
+    outcomes = {o.test_id: o for o in evaluate_form_tests(table)}
+    outcome = outcomes["stock_comp_separator"]
+    assert outcome.kind == TEST_STOCK_COMP_SEPARATOR
+    assert not outcome.passed and outcome.evaluable
+    assert outcome.points == 0.0
+
+
+# ---------------- competition gate ----------------
+
+_SCORE = {FAMILY: FamilyScore(FAMILY, 11.0, {"signature": 11.0}, ())}
+
+
+def _outcome(passed: bool, evaluable: bool = True) -> FormTestOutcome:
+    return FormTestOutcome(
+        FAMILY,
+        "stock_comp_separator",
+        TEST_STOCK_COMP_SEPARATOR,
+        passed,
+        evaluable,
+        0,
+        0.0,
+        "separator fired: span_ge_5",
+    )
+
+
+def test_gate_removes_claim_on_fired_outcome():
+    geometry = GeometryText(form_tests=(_outcome(False),))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert FAMILY not in result.claims
+    evidence = result.scores[FAMILY].evidence
+    assert any(
+        item.channel == "gate" and "separator fired" in item.detail for item in evidence
+    )
+
+
+def test_gate_keeps_claim_on_clear_outcome():
+    geometry = GeometryText(form_tests=(_outcome(True),))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert FAMILY in result.claims
+
+
+def test_gate_keeps_claim_when_outcome_absent():
+    result = compete(GeometryText(), scores=dict(_SCORE))
+    assert FAMILY in result.claims
+
+
+def test_gate_keeps_claim_when_outcome_unevaluable():
+    geometry = GeometryText(form_tests=(_outcome(False, evaluable=False),))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert FAMILY in result.claims
+
+
+# ---------------- assignment pass ----------------
+
+
+def _result(*families):
+    scores = {
+        family: FamilyScore(family, 11.0, {"signature": 11.0}, ())
+        for family in families
+    }
+    return CompetitionResult(claims=families, contested=(), scores=scores)
+
+
+_ADMITTING_GRID = (
+    "Expected volatility | risk-free interest rate | dividend yield"
+    " | expected term"
+)
+_QUIET_GRID = "Weighted average exercise price | 10.50"
+
+
+def test_assignment_refuses_when_anchor_seat_admits():
+    results = apply_stock_comp_assignment(
+        [GeometryText(grid_text=_ADMITTING_GRID)],
+        [_result(FAMILY, ANCHOR)],
+    )
+    assert FAMILY not in results[0].claims
+    assert ANCHOR in results[0].claims
+    evidence = results[0].scores[FAMILY].evidence
+    assert any(
+        item.channel == "gate" and "stock comp assignment" in item.detail
+        for item in evidence
+    )
+
+
+def test_assignment_keeps_claim_when_anchor_seat_silent():
+    results = apply_stock_comp_assignment(
+        [GeometryText(grid_text=_QUIET_GRID)],
+        [_result(FAMILY, ANCHOR)],
+    )
+    assert FAMILY in results[0].claims
+    assert ANCHOR in results[0].claims
+
+
+def test_assignment_keeps_claim_without_anchor_claim():
+    results = apply_stock_comp_assignment(
+        [GeometryText(grid_text=_ADMITTING_GRID)],
+        [_result(FAMILY)],
+    )
+    assert FAMILY in results[0].claims
+
+
+def test_assignment_preserves_cross_claims():
+    results = apply_stock_comp_assignment(
+        [GeometryText(grid_text=_ADMITTING_GRID)],
+        [_result(FAMILY, ANCHOR, "balance_sheet")],
+    )
+    assert FAMILY not in results[0].claims
+    assert ANCHOR in results[0].claims
+    assert "balance_sheet" in results[0].claims
+
+
+def test_assignment_leaves_other_families_alone():
+    results = apply_stock_comp_assignment(
+        [GeometryText(grid_text=_ADMITTING_GRID), GeometryText(grid_text=_ADMITTING_GRID)],
+        [_result(ANCHOR), _result("balance_sheet")],
+    )
+    assert ANCHOR in results[0].claims
+    assert "balance_sheet" in results[1].claims

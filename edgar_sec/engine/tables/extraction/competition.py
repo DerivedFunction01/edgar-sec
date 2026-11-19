@@ -81,6 +81,10 @@ from edgar_sec.engine.tables.extraction.equity_separator_evidence import (
 from edgar_sec.engine.tables.extraction.income_statement_setlevel_evidence import (
     apply_income_statement_assignment,
 )
+from edgar_sec.engine.tables.extraction.stock_comp_separator_evidence import (
+    apply_stock_comp_assignment,
+    fired_separator_outcome as fired_stock_comp_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
@@ -89,6 +93,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_EPS_DETECTOR,
     TEST_EQUITY_SEPARATOR,
     TEST_PENSION_ROUTED,
+    TEST_STOCK_COMP_SEPARATOR,
 )
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
 from edgar_sec.engine.tables.extraction.signature_profiles import (
@@ -425,6 +430,20 @@ def compete(
             if "equity_statement" in contested:
                 contested.remove("equity_statement")
             scores = _append_note(scores, "equity_statement", "gate", fired.detail)
+    # Stock-comp separator gate (priced): a stock_comp claim is
+    # refused when the stamped separator outcome fired; an
+    # outcome absent or unevaluable never fails the gate.
+    if "stock_comp_rollforward" in claims:
+        fired = fired_stock_comp_separator_outcome(
+            geometry.form_tests, "stock_comp_rollforward", TEST_STOCK_COMP_SEPARATOR
+        )
+        if fired is not None:
+            claims.remove("stock_comp_rollforward")
+            if "stock_comp_rollforward" in contested:
+                contested.remove("stock_comp_rollforward")
+            scores = _append_note(
+                scores, "stock_comp_rollforward", "gate", fired.detail
+            )
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -765,6 +784,11 @@ def compete_filing(
     # uniqueness, dominant-cluster and ties refusals over the
     # filing's formed candidate set; it only removes claims.
     results = apply_income_statement_assignment(geometries, results)
+    # Stock-comp assignment pass (set-level, priced): a claim
+    # is refused when a determined other-family seat has seated
+    # the same geometry; it only removes claims, so the
+    # primary gate stays final.
+    results = apply_stock_comp_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.

@@ -57,6 +57,7 @@ PROV_COREFIN_COMPINCOME = "calibration:corefin-compincome-pricing"
 PROV_COMBINED_OPERATIONS_SEPARATOR = "calibration:combined-operations-cascade-pricing"
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
+PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -93,6 +94,7 @@ TEST_PENSION_ROUTED = "pension_routed"
 TEST_CASH_FLOW_SEPARATOR = "cash_flow_separator"
 TEST_EQUITY_SEPARATOR = "equity_separator"
 TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
+TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -125,6 +127,7 @@ FORM_TESTS = (
     TEST_EPS_DETECTOR,
     TEST_CASH_FLOW_SEPARATOR,
     TEST_EQUITY_SEPARATOR,
+    TEST_STOCK_COMP_SEPARATOR,
 )
 
 
@@ -427,6 +430,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             TEST_ROW_BOUND,
             TEST_SIGNATURE_ABSENCE,
             TEST_STOCK_COMP_EVIDENCE,
+            TEST_STOCK_COMP_SEPARATOR,
         ),
         note="seated additionally on depth-2's priced form over the "
         "Ruling 18 fresh population (P .919 / R .919; sparse recall "
