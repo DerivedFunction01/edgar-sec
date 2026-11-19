@@ -211,6 +211,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             TEST_PRIMARY_STATEMENT_SEAT,
             TEST_ROW_BOUND,
             TEST_SIGNATURE_ABSENCE,
+            TEST_CASH_FLOW_SEPARATOR,
         ),
         gate_bindings=_STATEMENT_GATES,
         exhibit_links=_EX13_ANNUAL,
