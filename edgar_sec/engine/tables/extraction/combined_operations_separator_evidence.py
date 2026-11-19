@@ -213,11 +213,9 @@ def _refuse(result: CompetitionResult, family: str, note: str) -> CompetitionRes
 def apply_combined_operations_assignment(geometries, results):
     """J1 joint assignment across the primaries, then A1 corekeep.
 
-    J1: a geometry claimed by two or more primaries seats only the
-    top-ranked one. A1: a filing's non-core candidates for this
-    family are pruned to their best one; core candidates all stand.
-    X1 require-tie carries no act: refuted as a gate in every frame,
-    it is corroboration only and this stage never reads it."""
+    J1 seats only the top-ranked primary; A1 prunes a filing's non-core
+    candidates to their best one, core candidates standing. X1: no act.
+    """
     results = list(results)
     for index, geometry in enumerate(geometries):
         result = results[index]

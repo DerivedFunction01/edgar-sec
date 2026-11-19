@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import replace
 
 import edgar_sec.engine.tables.extraction.combined_operations_separator_evidence as _evidence
-import edgar_sec.engine.tables.extraction.measure_set as _measure_set
+import edgar_sec.engine.tables.extraction.measure_set
 from edgar_sec.engine.tables.ascii_html.model import (
     ResolvedGrid,
     TableGeometry,
@@ -112,8 +112,8 @@ def test_core_group_indices_name_the_typed_core():
 
 def test_recognizer_and_presence_homes():
     assert _evidence._YEAR_RE.pattern == _HOME_STRICT_YEAR
-    assert _evidence.group_presence is _measure_set.group_presence
-    assert _evidence.evaluate_measure_set is _measure_set.evaluate_measure_set
+    assert _evidence.group_presence is measure_set.group_presence
+    assert _evidence.evaluate_measure_set is measure_set.evaluate_measure_set
 
 
 # ---------------- the claim-local legs ----------------

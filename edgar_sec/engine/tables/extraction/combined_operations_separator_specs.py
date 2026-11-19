@@ -21,9 +21,8 @@ CORE_GROUP_INDICES = (0, 1, 3)
 class CombinedOperationsSeparatorSpec:
     """One family's priced cascade thresholds.
 
-    max_rows: S1 fires at or below this typed-row count.
-    numeric_share_bound: S2 fires strictly below this share.
-    min_year_columns: S3 fires at or above this year-column count.
+    max_rows: S1 fires at or below this count; numeric_share_bound: S2 fires
+    strictly below this share; min_year_columns: S3 fires at or above it.
     """
 
     family: str
