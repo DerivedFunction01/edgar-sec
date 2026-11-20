@@ -174,7 +174,9 @@ def grid_features(text: RollforwardGridText) -> RollforwardGridFeatures:
         and (
             "beginning" in first_line
             or " end" in first_line
-            or len(set(_YEAR_RE.findall(first_line))) >= 2
+            # Year occurrences, not distinct years — verbatim the
+            # priced g1 instrument (a repeated year bookends).
+            or len(_YEAR_RE.findall(first_line)) >= 2
         )
     )
     bookend_f2 = bool((anchor_begin and anchor_end) or anchor_pair or horizontal)
