@@ -1,8 +1,7 @@
-"""Lease separator evidence (TEST_LEASE_SEPARATOR).
-Evaluates the priced spanprod_le_2 leg over one table's grid: a lease
-claim is refused when stub+header span two or fewer distinct years.
-The set-level assign_sibling_seat leg runs at filing level, anchored
-on the debt seat's stamped ladder and admission outcomes.
+"""Lease separator evidence (TEST_LEASE_SEPARATOR): the priced
+spanprod_le_2 leg refuses a lease claim whose stub+header span two
+or fewer distinct years; the set-level assign_sibling_seat leg runs
+at filing level, anchored on the debt seat's stamped outcomes.
 """
 
 from __future__ import annotations

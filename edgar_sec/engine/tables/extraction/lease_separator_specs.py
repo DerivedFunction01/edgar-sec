@@ -23,9 +23,8 @@ class LeaseSeparatorLeg:
 @dataclass(frozen=True)
 class LeaseSeparatorSpec:
     """One family's separator: the ordered legs as priced.
-    spanprod_le_2 refuses a claim whose stub+header spans two or
-    fewer distinct years; assign_sibling_seat refuses a claim
-    whose geometry the debt seat has seated."""
+    spanprod_le_2 refuses a claim whose stub+header spans two or fewer
+    distinct years; assign_sibling_seat refuses one the debt seat seated."""
 
     family: str
     legs: tuple[LeaseSeparatorLeg, ...]
