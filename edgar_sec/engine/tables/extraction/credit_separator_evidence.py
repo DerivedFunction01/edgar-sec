@@ -27,6 +27,7 @@ __all__ = [
     "fired_separator_outcome",
 ]
 
+
 def _norm(cell) -> str:
     return RE_WHITESPACE.sub(" ", str(cell).strip().lower())
 
