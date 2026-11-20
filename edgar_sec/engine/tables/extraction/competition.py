@@ -85,6 +85,9 @@ from edgar_sec.engine.tables.extraction.stock_comp_separator_evidence import (
     apply_stock_comp_assignment,
     fired_separator_outcome as fired_stock_comp_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_evidence import (
+    fired_separator_outcome as fired_tax_reconciliation_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
@@ -94,6 +97,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_EQUITY_SEPARATOR,
     TEST_PENSION_ROUTED,
     TEST_STOCK_COMP_SEPARATOR,
+    TEST_TAX_RECONCILIATION_SEPARATOR,
 )
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
 from edgar_sec.engine.tables.extraction.signature_profiles import (
@@ -444,6 +448,20 @@ def compete(
             scores = _append_note(
                 scores, "stock_comp_rollforward", "gate", fired.detail
             )
+    # Tax-reconciliation separator gate (priced): a claim is
+    # refused when the stamped separator outcome fired; an
+    # outcome absent or unevaluable never fails the gate.
+    if "tax_reconciliation" in claims:
+        fired = fired_tax_reconciliation_separator_outcome(
+            geometry.form_tests,
+            "tax_reconciliation",
+            TEST_TAX_RECONCILIATION_SEPARATOR,
+        )
+        if fired is not None:
+            claims.remove("tax_reconciliation")
+            if "tax_reconciliation" in contested:
+                contested.remove("tax_reconciliation")
+            scores = _append_note(scores, "tax_reconciliation", "gate", fired.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []

@@ -24,6 +24,9 @@ from edgar_sec.engine.tables.extraction.equity_separator_evidence import (
 from edgar_sec.engine.tables.extraction.stock_comp_separator_evidence import (
     evaluate_form_test_stock_comp_separator,
 )
+from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_evidence import (
+    evaluate_form_test_tax_reconciliation_separator,
+)
 from edgar_sec.engine.tables.extraction.form_test_specs import (
     FormTestOutcome,
     FormTestSpec,
@@ -115,6 +118,22 @@ def _evaluate_stock_comp_separator(
     table: TypedTable, spec: FormTestSpec
 ) -> FormTestOutcome:
     result = evaluate_form_test_stock_comp_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_tax_reconciliation_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_tax_reconciliation_separator(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,

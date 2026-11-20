@@ -26,6 +26,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_COREFIN_EQUITYSTATEMENT,
     PROV_COMBINED_OPERATIONS_SEPARATOR,
     PROV_STOCK_COMP_SEPARATOR,
+    PROV_TAX_RECONCILIATION_SEPARATOR,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
     PROV_DERIVATIVES_EVIDENCE,
@@ -69,6 +70,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_TAX_EVIDENCE,
+    TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_STOCK_COMP_SEPARATOR,
     TEST_WALK,
@@ -101,6 +103,10 @@ from edgar_sec.engine.tables.extraction.equity_separator_specs import (
 from edgar_sec.engine.tables.extraction.stock_comp_separator_specs import (
     STOCK_COMP_SEPARATOR_SPECS,
     StockCompSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_specs import (
+    TAX_RECONCILIATION_SEPARATOR_SPECS,
+    TaxReconciliationSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -212,6 +218,7 @@ __all__ = (
     "PROV_STEP8_PRICING",
     "PROV_STEP7_PRICING",
     "PROV_STOCK_COMP_SEPARATOR",
+    "PROV_TAX_RECONCILIATION_SEPARATOR",
     "PROV_WARRANTY_PRICING",
     "PercentageFormSpec",
     "SEAT_FLOOR_SPECS",
@@ -221,6 +228,8 @@ __all__ = (
     "SeatTestSpec",
     "STOCK_COMP_SEPARATOR_SPECS",
     "StockCompSeparatorSpec",
+    "TAX_RECONCILIATION_SEPARATOR_SPECS",
+    "TaxReconciliationSeparatorSpec",
     "TAX_EVIDENCE_SPECS",
     "TAX_EVIDENCE_SPECS_BY_TEST_ID",
     "TEST_ADMISSION_EVIDENCE",
@@ -250,6 +259,7 @@ __all__ = (
     "TEST_STOCK_COMP_EVIDENCE",
     "TEST_STOCK_COMP_SEPARATOR",
     "TEST_TAX_EVIDENCE",
+    "TEST_TAX_RECONCILIATION_SEPARATOR",
     "TEST_WALK",
     "TEST_WARRANTY_EVIDENCE",
     "THEREAFTER_NONE",
@@ -583,6 +593,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "tax_reconciliation_statutory_anchor_seat",
         0.0,
         provenance=PROV_RULING18_PRICING,
+    ),
+    FormTestSpec(
+        "tax_reconciliation",
+        TEST_TAX_RECONCILIATION_SEPARATOR,
+        "tax_reconciliation_separator",
+        0.0,
+        provenance=PROV_TAX_RECONCILIATION_SEPARATOR,
     ),
     FormTestSpec(
         "labor_contracts",
