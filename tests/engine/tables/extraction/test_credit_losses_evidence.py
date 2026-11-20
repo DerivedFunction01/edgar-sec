@@ -23,6 +23,7 @@ from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_S5_SEAT_PRICING,
     TEST_CREDIT_LOSSES_EVIDENCE,
+    TEST_CREDIT_SEPARATOR,
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import structure_table
@@ -70,7 +71,7 @@ def test_seat_is_declared_as_form_test_data():
     assert CREDIT_LOSSES_EVIDENCE_SPECS_BY_TEST_ID[SPEC.test_id] is SPEC
     profile = profile_for("credit_losses_rollforward")
     assert profile is not None
-    assert profile.form_tests == (TEST_CREDIT_LOSSES_EVIDENCE,)
+    assert profile.form_tests == (TEST_CREDIT_LOSSES_EVIDENCE, TEST_CREDIT_SEPARATOR)
     assert profile.support is not None
     assert profile.support.annual_precision is None
     assert profile.support.quarterly_precision is None
