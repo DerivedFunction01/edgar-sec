@@ -9,6 +9,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.engine.forms.common.numbers import SCHEMA_PERCENT_RE
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
@@ -31,7 +32,7 @@ __all__ = [
 ]
 
 _ZERO_TOKENS = {"", "—", "-", "*", "–"}
-_NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?%?$")
+_NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?$")
 _DIGITS_RE = re.compile(r"\d+")
 _NON_PHRASE_RE = re.compile(r"[^a-z# ]+")
 
@@ -51,7 +52,7 @@ def _cell_value(cell):
     c = cell.strip()
     if c in _ZERO_TOKENS:
         return False, 0.0
-    core = c.rstrip("%").strip()
+    core = SCHEMA_PERCENT_RE.sub("", c).strip()
     if not _NUM_RE.match(core):
         return False, 0.0
     neg = core.startswith("(") and core.endswith(")")
