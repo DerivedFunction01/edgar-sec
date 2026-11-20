@@ -59,6 +59,7 @@ PROV_COMBINED_OPERATIONS_SEPARATOR = "calibration:combined-operations-cascade-pr
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
 PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
+PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -97,6 +98,7 @@ TEST_CREDIT_SEPARATOR = "credit_separator"
 TEST_EQUITY_SEPARATOR = "equity_separator"
 TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
 TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
+TEST_TAX_RECONCILIATION_SEPARATOR = "tax_reconciliation_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -131,6 +133,7 @@ FORM_TESTS = (
     TEST_CREDIT_SEPARATOR,
     TEST_EQUITY_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
+    TEST_TAX_RECONCILIATION_SEPARATOR,
 )
 
 
@@ -449,6 +452,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             TEST_ROW_BOUND,
             TEST_SIGNATURE_ABSENCE,
             TEST_TAX_EVIDENCE,
+            TEST_TAX_RECONCILIATION_SEPARATOR,
         ),
         shape="statutory-rate anchor row, then adjustment rows, then an "
         "effective-rate row; every row in the block is percentage-valued "
