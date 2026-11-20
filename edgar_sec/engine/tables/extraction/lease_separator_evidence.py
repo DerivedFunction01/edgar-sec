@@ -1,8 +1,7 @@
-"""Lease separator evidence (TEST_LEASE_SEPARATOR): the priced
-spanprod_le_2 leg refuses a lease claim whose stub+header span two
-or fewer distinct years; subj_before400 refuses one whose subject
-lead names a financing liability; assign_sibling_seat runs at
-filing level, anchored on the debt seat's stamped outcomes.
+"""Lease separator evidence (TEST_LEASE_SEPARATOR): spanprod_le_2
+refuses a lease claim whose stub+header span two or fewer distinct
+years; subj_before400 one whose subject lead names a financing
+liability; assign_sibling_seat runs at filing level, debt-anchored.
 """
 
 from __future__ import annotations
