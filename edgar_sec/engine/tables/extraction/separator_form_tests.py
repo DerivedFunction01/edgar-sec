@@ -163,10 +163,8 @@ def _evaluate_stock_comp_separator(
 
 def _evaluate_restructuring_separator(
     table: TypedTable, spec: FormTestSpec
-) -> FormTestOutcome | None:
+) -> FormTestOutcome:
     result = evaluate_form_test_restructuring_separator(table, spec)
-    if result.evaluable and not result.fired:
-        return None
     return FormTestOutcome(
         spec.family,
         spec.test_id,

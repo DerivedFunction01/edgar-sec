@@ -279,7 +279,11 @@ def test_anchor_pair_bookends_are_admitted():
 
 def test_form_test_stage_scores_the_seat_points():
     table = _table(_WALK, caption_stack=("Restructuring Charges",))
-    outcomes = [o for o in evaluate_form_tests(table) if o.family == "restructuring"]
+    outcomes = [
+        o
+        for o in evaluate_form_tests(table)
+        if o.test_id == "restructuring_rollforward_evidence"
+    ]
     assert len(outcomes) == 1
     assert outcomes[0].passed
     assert outcomes[0].points == 3.0
