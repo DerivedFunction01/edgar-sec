@@ -353,9 +353,7 @@ def _is_fragment(text: FormSeparationText) -> bool:
 
 def _is_eps_own_frame(subjects: tuple[str, ...]) -> bool:
     """An EPS computation's own frame: numerator/denominator or share base."""
-    return any(
-        term in subject for subject in subjects for term in _EPS_OWN_FRAME_TERMS
-    )
+    return any(term in subject for subject in subjects for term in _EPS_OWN_FRAME_TERMS)
 
 
 def _eps_own_frame_in_headers(text: FormSeparationText) -> bool:
@@ -402,15 +400,11 @@ def _is_own_frame(subjects: tuple[str, ...], family: str) -> bool:
 def _has_add_deduct_walk(subjects: tuple[str, ...]) -> bool:
     """An Add:/Deduct: walk: a stub whose first token is add or deduct."""
     return any(
-        subject.split(" ", 1)[0] in ("add", "deduct")
-        for subject in subjects
-        if subject
+        subject.split(" ", 1)[0] in ("add", "deduct") for subject in subjects if subject
     )
 
 
-def _data_subjects(
-    text: FormSeparationText, subjects: tuple[str, ...]
-) -> list[str]:
+def _data_subjects(text: FormSeparationText, subjects: tuple[str, ...]) -> list[str]:
     """The subjects of rows with a non-empty subject and a numeric cell."""
     return [
         subject
@@ -442,8 +436,7 @@ def _is_condensed_summary(
     if len(_data_subjects(text, subjects)) > 6:
         return False
     return any(
-        "income from continuing operations" in subject
-        or "statutory capital" in subject
+        "income from continuing operations" in subject or "statutory capital" in subject
         for subject in subjects
     )
 
@@ -495,9 +488,7 @@ def _is_goodwill_walk_narrow(subjects: tuple[str, ...]) -> bool:
         for subject in subjects
     ):
         return True
-    if any(
-        "reclassified to assets held for sale" in subject for subject in subjects
-    ):
+    if any("reclassified to assets held for sale" in subject for subject in subjects):
         return True
     return any(
         subject.startswith("sale of") and "to franchisees" in subject

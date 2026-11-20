@@ -336,10 +336,7 @@ def test_leg_fragment_prose_rows():
 
 
 def test_two_short_rows_are_not_fragment():
-    text = (
-        " | 2019 | 2018 | 2017 | 2016 | 2015\n"
-        "(In millions) | 10 | 20 | 30 | 40 | 50"
-    )
+    text = " | 2019 | 2018 | 2017 | 2016 | 2015\n(In millions) | 10 | 20 | 30 | 40 | 50"
     assert not _eval_int(text).fired
 
 
@@ -372,12 +369,7 @@ def test_leg_ladder_detail():
 
 
 def test_single_due_in_stub_is_not_ladder_detail():
-    text = (
-        " | Amount\n"
-        "Due in one year or less | $ | 100\n"
-        "Other |  | 50\n"
-        "Total |  | 150"
-    )
+    text = " | Amount\nDue in one year or less | $ | 100\nOther |  | 50\nTotal |  | 150"
     assert not _eval_eps(text).fired
 
 
@@ -402,11 +394,7 @@ def test_leg_shape_fair_value_headers():
 
 
 def test_single_level_stub_is_not_fair_value():
-    text = (
-        "Level Input: Input Definition: |  | \n"
-        "Level I | $ | 100\n"
-        "Other |  | 50"
-    )
+    text = "Level Input: Input Definition: |  | \nLevel I | $ | 100\nOther |  | 50"
     assert not _eval_eps(text).fired
 
 
@@ -550,11 +538,7 @@ def test_leg_option_schedule():
 
 
 def test_options_stub_without_count_or_price_is_not_supplemental():
-    text = (
-        " | 2011 | 2010\n"
-        "Stock options |  | 100 |  | 90\n"
-        "Total |  | 100 |  | 90"
-    )
+    text = " | 2011 | 2010\nStock options |  | 100 |  | 90\nTotal |  | 100 |  | 90"
     assert not _eval_eps(text).fired
 
 
@@ -911,9 +895,7 @@ def test_leg_single_data_row_fragment_share_awards():
 
 def test_leg_single_data_row_fragment_goodwill():
     text = (
-        " | December 31, |  |  | \n"
-        " | 2023 |  | 2022 | \n"
-        "Goodwill | $ | 0 | $ | 49,786"
+        " | December 31, |  |  | \n | 2023 |  | 2022 | \nGoodwill | $ | 0 | $ | 49,786"
     )
     assert _eval_int(text).legs == ("form:fragment",)
 
@@ -928,10 +910,7 @@ def test_single_data_row_amortization_is_not_fragment():
 
 
 def test_single_data_row_with_own_frame_is_not_fragment():
-    text = (
-        " | 2023 | 2022\n"
-        "Weighted average shares outstanding | 100,000 | 90,000"
-    )
+    text = " | 2023 | 2022\nWeighted average shares outstanding | 100,000 | 90,000"
     assert not _eval_eps(text).fired
 
 
