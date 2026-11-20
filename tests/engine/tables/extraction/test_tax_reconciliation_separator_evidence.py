@@ -24,6 +24,7 @@ from edgar_sec.engine.tables.extraction.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.geometry_scoring import FamilyScore
 from edgar_sec.engine.tables.extraction.profiles import (
     PROV_TAX_RECONCILIATION_SEPARATOR,
+    TEST_TAX_EVIDENCE,
     TEST_TAX_RECONCILIATION_SEPARATOR,
     profile_for,
 )
@@ -225,6 +226,21 @@ def _outcome(passed: bool, evaluable: bool = True) -> FormTestOutcome:
     )
 
 
+# The landed seat displaces a scored claim and re-seats it
+# only on a passed seat outcome; keeps geometries carry one.
+def _seat_outcome() -> FormTestOutcome:
+    return FormTestOutcome(
+        FAMILY,
+        "tax_reconciliation_statutory_anchor_seat",
+        TEST_TAX_EVIDENCE,
+        True,
+        True,
+        0,
+        0.0,
+        "anchor 'statutory' in stub; context 'tax' in lead",
+    )
+
+
 def test_gate_removes_claim_on_fired_outcome():
     geometry = GeometryText(form_tests=(_outcome(False),))
     result = compete(geometry, scores=dict(_SCORE))
@@ -236,17 +252,20 @@ def test_gate_removes_claim_on_fired_outcome():
 
 
 def test_gate_keeps_claim_on_clear_outcome():
-    geometry = GeometryText(form_tests=(_outcome(True),))
+    geometry = GeometryText(form_tests=(_outcome(True), _seat_outcome()))
     result = compete(geometry, scores=dict(_SCORE))
     assert FAMILY in result.claims
 
 
 def test_gate_keeps_claim_when_outcome_absent():
-    result = compete(GeometryText(), scores=dict(_SCORE))
+    geometry = GeometryText(form_tests=(_seat_outcome(),))
+    result = compete(geometry, scores=dict(_SCORE))
     assert FAMILY in result.claims
 
 
 def test_gate_keeps_claim_when_outcome_unevaluable():
-    geometry = GeometryText(form_tests=(_outcome(False, evaluable=False),))
+    geometry = GeometryText(
+        form_tests=(_outcome(False, evaluable=False), _seat_outcome())
+    )
     result = compete(geometry, scores=dict(_SCORE))
     assert FAMILY in result.claims
