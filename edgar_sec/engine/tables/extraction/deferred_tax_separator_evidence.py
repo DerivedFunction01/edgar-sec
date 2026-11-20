@@ -60,9 +60,7 @@ class DeferredTaxSeparatorText:
     @classmethod
     def from_packet(cls, packet) -> "DeferredTaxSeparatorText":
         """Grid text from a census packet (priced population)."""
-        return cls(
-            packet.get("table_text") or "", packet.get("caption_stack") or []
-        )
+        return cls(packet.get("table_text") or "", packet.get("caption_stack") or [])
 
 
 @dataclass(frozen=True)
