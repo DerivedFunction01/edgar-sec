@@ -58,9 +58,9 @@ FORM_SEPARATION_SPECS: dict[str, FormSeparationSpec] = {
         recast_cell=False,
         segment_detail_cell=False,
     ),
-    # related_party: F+EXT priced by the production-frame
-    # board (register-relatedparty-prodframe.md); the
-    # segment-detail cell is the EXT stage, separate from F.
+    # The production-frame board prices this family at F+EXT
+    # (register-relatedparty-prodframe.md); the segment-detail
+    # cell is the EXT stage, separate from F.
     "related_party": FormSeparationSpec(
         family="related_party",
         foreign_classes=FOREIGN_FORM_CLASSES,
