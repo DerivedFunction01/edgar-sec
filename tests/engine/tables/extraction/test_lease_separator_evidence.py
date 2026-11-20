@@ -66,16 +66,20 @@ def test_kind_is_declared_as_form_test_data():
     assert TEST_LEASE_SEPARATOR in profile_for(FAMILY).form_tests
 
 
-def test_spec_carries_the_priced_pair():
+def test_spec_carries_the_priced_legs():
     legs = [(leg.leg_id, leg.kind, leg.scope) for leg in SPEC.legs]
     assert legs == [
         ("spanprod_le_2", "span", "claim-local"),
         ("assign_sibling_seat", "assign_sibling", "set-level"),
+        ("subj_before400", "subject", "claim-local"),
     ]
     anchor = next(leg for leg in SPEC.legs if leg.kind == "assign_sibling")
     assert anchor.anchor_family == ANCHOR
     span = next(leg for leg in SPEC.legs if leg.kind == "span")
     assert span.limit == 2
+    subject = next(leg for leg in SPEC.legs if leg.kind == "subject")
+    assert subject.pattern == "financing (liability|obligation)"
+    assert subject.tail == 400
 
 
 def test_packet_and_rows_surfaces_agree():
@@ -83,10 +87,18 @@ def test_packet_and_rows_surfaces_agree():
         ("Lease payments", "2026", "2027"),
         ("Rent", "100", "200"),
     )
-    via_rows = evaluate_lease_separator(LeaseSeparatorText.from_rows(rows), SPEC)
+    caption = ("Lease payments due",)
+    prose = "Payments are due monthly."
+    via_rows = evaluate_lease_separator(
+        LeaseSeparatorText.from_rows(rows, caption, prose), SPEC
+    )
     via_packet = evaluate_lease_separator(
         LeaseSeparatorText.from_packet(
-            {"table_text": "Lease payments | 2026 | 2027\nRent | 100 | 200"}
+            {
+                "table_text": "Lease payments | 2026 | 2027\nRent | 100 | 200",
+                "caption_stack": ["Lease payments due"],
+                "prose_before": "Payments are due monthly.",
+            }
         ),
         SPEC,
     )
@@ -146,10 +158,52 @@ def test_empty_grid_is_unevaluable():
     assert not verdict.evaluable
 
 
+# ---------------- the subject leg ----------------
+
+_GRID3 = "Lease payments | 2026 | 2027 | 2028\nRent | 100 | 200 | 300"
+
+
+def test_leg_subject_fires_on_caption():
+    text = LeaseSeparatorText(
+        _GRID3, caption_stack=("Financing liability payments",)
+    )
+    verdict = evaluate_lease_separator(text, SPEC)
+    assert verdict.fired
+    assert verdict.legs == ("subj_before400",)
+
+
+def test_leg_subject_fires_on_prose_tail():
+    prose = "x " * 300 + "the financing obligation is due"
+    verdict = evaluate_lease_separator(
+        LeaseSeparatorText(_GRID3, prose_before=prose), SPEC
+    )
+    assert verdict.fired
+    assert verdict.legs == ("subj_before400",)
+
+
+def test_leg_subject_ignores_prose_beyond_tail():
+    prose = "the financing obligation is due " + "x " * 300
+    verdict = evaluate_lease_separator(
+        LeaseSeparatorText(_GRID3, prose_before=prose), SPEC
+    )
+    assert not verdict.fired
+
+
+def test_leg_subject_ignores_prose_after():
+    packet = {
+        "table_text": _GRID3,
+        "caption_stack": ["Lease payments"],
+        "prose_before": "Payments are due monthly.",
+        "prose_after": "Financing liability payments are shown below.",
+    }
+    verdict = evaluate_lease_separator(LeaseSeparatorText.from_packet(packet), SPEC)
+    assert not verdict.fired
+
+
 # ---------------- stage adapter + dispatch ----------------
 
 
-def _table(rows):
+def _table(rows, caption_stack=(), prose_before=""):
     geometry = TableGeometry(
         table_index=0,
         render_result=TableRenderResult(
@@ -163,7 +217,9 @@ def _table(rows):
             confidence=1.0,
         ),
     )
-    context = TableContext(geometry=geometry, caption_stack=(), prose_before="")
+    context = TableContext(
+        geometry=geometry, caption_stack=caption_stack, prose_before=prose_before
+    )
     return structure_table(context)
 
 
@@ -173,6 +229,17 @@ def test_stage_adapter_over_full_grid():
     verdict = evaluate_form_test_lease_separator(table, spec)
     assert verdict.fired
     assert "spanprod_le_2" in verdict.legs
+
+
+def test_stage_adapter_reads_context_subject_surface():
+    table = _table(
+        (("Lease payments", "2026", "2027", "2028"),),
+        caption_stack=("Financing liability payments",),
+    )
+    spec = next(s for s in FORM_TEST_SPECS if s.test_id == "lease_separator")
+    verdict = evaluate_form_test_lease_separator(table, spec)
+    assert verdict.fired
+    assert verdict.legs == ("subj_before400",)
 
 
 def test_stage_dispatch_stamps_separator_outcome():
