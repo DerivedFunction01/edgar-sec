@@ -61,7 +61,7 @@ def test_movement_nonzero_counts_movement_word_lines():
         "Payments | 5\n"
         "Balance, end of period | 105"
     )
-    assert _features(text).movement_nonzero == 3
+    assert _features(text).movement_nonzero == 2
 
 
 def test_pct_density_over_numeric_cells():

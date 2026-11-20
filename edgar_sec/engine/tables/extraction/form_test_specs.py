@@ -643,13 +643,6 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         provenance=PROV_STOCK_COMP_SEPARATOR,
     ),
     FormTestSpec(
-        "restructuring",
-        TEST_RESTRUCTURING_SEPARATOR,
-        "restructuring_separator",
-        0.0,
-        provenance=PROV_RESTRUCTURING_SEPARATOR,
-    ),
-    FormTestSpec(
         "lease_maturity",
         TEST_LEASE_SEPARATOR,
         "lease_separator",
@@ -767,6 +760,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "restructuring_rollforward_evidence",
         3.0,
         provenance=PROV_RESTRUCTURING_PRICING,
+    ),
+    FormTestSpec(
+        "restructuring",
+        TEST_RESTRUCTURING_SEPARATOR,
+        "restructuring_separator",
+        0.0,
+        provenance=PROV_RESTRUCTURING_SEPARATOR,
     ),
     *(
         FormTestSpec(family, kind, test_id, points, provenance=PROV_STEP2_PRICING)

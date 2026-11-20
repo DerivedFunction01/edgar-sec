@@ -490,8 +490,8 @@ def evaluate_form_tests(
     placement: PlacementFacts | None = None,
 ) -> tuple[FormTestOutcome, ...]:
     """Evaluate every declared form test over one assembled table.
-    Placement-kind tests need caller-stamped filing facts;
-    unstamped they are unevaluable, never failed."""
+    Placement-kind tests need caller-stamped filing facts; unstamped
+    they are unevaluable, never failed. None stamps no outcome."""
     outcomes = []
     for spec in specs:
         if spec.kind == TEST_PLACEMENT_CONSISTENCY:
@@ -512,5 +512,7 @@ def evaluate_form_tests(
                 )
             )
         else:
-            outcomes.append(evaluator(table, spec))
+            outcome = evaluator(table, spec)
+            if outcome is not None:
+                outcomes.append(outcome)
     return tuple(outcomes)
