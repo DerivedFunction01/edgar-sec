@@ -61,6 +61,7 @@ PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
 PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
 PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
 PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
+PROV_LEASE_SEPARATOR = "calibration:lease-separator-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -101,6 +102,7 @@ TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
 TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
 TEST_TAX_RECONCILIATION_SEPARATOR = "tax_reconciliation_separator"
 TEST_DEFERRED_TAX_SEPARATOR = "deferred_tax_separator"
+TEST_LEASE_SEPARATOR = "lease_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -137,6 +139,7 @@ FORM_TESTS = (
     TEST_STOCK_COMP_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
+    TEST_LEASE_SEPARATOR,
 )
 
 
@@ -388,7 +391,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.553, 1.000, 0.215, 1.000),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_LEASE_EVIDENCE),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_LEASE_EVIDENCE, TEST_LEASE_SEPARATOR),
         note="seated additionally on the depth-4 attribution "
         "cell priced over the R18 fresh population (P .913 / "
         "R .913; sparse recall .846 is the seat's thin measure)",

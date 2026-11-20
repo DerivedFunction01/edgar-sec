@@ -29,6 +29,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_STOCK_COMP_SEPARATOR,
     PROV_DEFERRED_TAX_SEPARATOR,
     PROV_TAX_RECONCILIATION_SEPARATOR,
+    PROV_LEASE_SEPARATOR,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
     PROV_DERIVATIVES_EVIDENCE,
@@ -77,6 +78,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_STOCK_COMP_SEPARATOR,
+    TEST_LEASE_SEPARATOR,
     TEST_WALK,
     TEST_WARRANTY_EVIDENCE,
 )
@@ -119,6 +121,10 @@ from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_specs impor
 from edgar_sec.engine.tables.extraction.deferred_tax_separator_specs import (
     DEFERRED_TAX_SEPARATOR_SPECS,
     DeferredTaxSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.lease_separator_specs import (
+    LEASE_SEPARATOR_SPECS,
+    LeaseSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -234,6 +240,7 @@ __all__ = (
     "PROV_STEP7_PRICING",
     "PROV_STOCK_COMP_SEPARATOR",
     "PROV_TAX_RECONCILIATION_SEPARATOR",
+    "PROV_LEASE_SEPARATOR",
     "PROV_WARRANTY_PRICING",
     "PercentageFormSpec",
     "SEAT_FLOOR_SPECS",
@@ -249,6 +256,8 @@ __all__ = (
     "TAX_RECONCILIATION_SEPARATOR_SPECS",
     "TEST_DEFERRED_TAX_SEPARATOR",
     "TaxReconciliationSeparatorSpec",
+    "LEASE_SEPARATOR_SPECS",
+    "LeaseSeparatorSpec",
     "TAX_EVIDENCE_SPECS",
     "TAX_EVIDENCE_SPECS_BY_TEST_ID",
     "TEST_ADMISSION_EVIDENCE",
@@ -278,6 +287,7 @@ __all__ = (
     "TEST_SIGNATURE_ABSENCE",
     "TEST_STOCK_COMP_EVIDENCE",
     "TEST_STOCK_COMP_SEPARATOR",
+    "TEST_LEASE_SEPARATOR",
     "TEST_TAX_EVIDENCE",
     "TEST_TAX_RECONCILIATION_SEPARATOR",
     "TEST_WALK",
@@ -606,6 +616,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "stock_comp_separator",
         0.0,
         provenance=PROV_STOCK_COMP_SEPARATOR,
+    ),
+    FormTestSpec(
+        "lease_maturity",
+        TEST_LEASE_SEPARATOR,
+        "lease_separator",
+        0.0,
+        provenance=PROV_LEASE_SEPARATOR,
     ),
     FormTestSpec(
         "aro_rollforward",

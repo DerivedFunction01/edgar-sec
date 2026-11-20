@@ -89,6 +89,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_PENSION_ROUTED,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_STOCK_COMP_SEPARATOR,
+    TEST_LEASE_SEPARATOR,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
     TEST_PPE_EVIDENCE,
@@ -115,6 +116,7 @@ from edgar_sec.engine.tables.extraction.separator_form_tests import (
     _evaluate_equity_separator,
     _evaluate_stock_comp_separator,
     _evaluate_tax_reconciliation_separator,
+    _evaluate_lease_separator,
 )
 from edgar_sec.engine.tables.extraction.statement_seat import (
     evaluate_statement_seat,
@@ -720,6 +722,7 @@ _EVALUATORS = {
     TEST_STOCK_COMP_SEPARATOR: _evaluate_stock_comp_separator,
     TEST_TAX_RECONCILIATION_SEPARATOR: _evaluate_tax_reconciliation_separator,
     TEST_DEFERRED_TAX_SEPARATOR: _evaluate_deferred_tax_separator,
+    TEST_LEASE_SEPARATOR: _evaluate_lease_separator,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_EPS_DETECTOR: _evaluate_eps_detector,
     TEST_PPE_EVIDENCE: _evaluate_ppe,

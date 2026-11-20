@@ -94,6 +94,10 @@ from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_evidence im
 from edgar_sec.engine.tables.extraction.deferred_tax_separator_evidence import (
     fired_separator_outcome as fired_deferred_tax_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.lease_separator_evidence import (
+    apply_lease_assignment,
+    fired_separator_outcome as fired_lease_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
@@ -106,6 +110,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
+    TEST_LEASE_SEPARATOR,
 )
 from edgar_sec.engine.tables.extraction.term_vetoes import term_veto_hits
 from edgar_sec.engine.tables.extraction.signature_profiles import (
@@ -500,6 +505,18 @@ def compete(
             if "deferred_tax" in contested:
                 contested.remove("deferred_tax")
             scores = _append_note(scores, "deferred_tax", "gate", fired.detail)
+    # Lease separator gate (priced): a lease claim is refused
+    # when the stamped separator outcome fired; an outcome
+    # absent or unevaluable never fails the gate.
+    if "lease_maturity" in claims:
+        fired = fired_lease_separator_outcome(
+            geometry.form_tests, "lease_maturity", TEST_LEASE_SEPARATOR
+        )
+        if fired is not None:
+            claims.remove("lease_maturity")
+            if "lease_maturity" in contested:
+                contested.remove("lease_maturity")
+            scores = _append_note(scores, "lease_maturity", "gate", fired.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -845,6 +862,10 @@ def compete_filing(
     # the same geometry; it only removes claims, so the
     # primary gate stays final.
     results = apply_stock_comp_assignment(geometries, results)
+    # Lease assignment pass (set-level, priced): a claim is
+    # refused when the debt seat has seated the same geometry;
+    # it only removes claims, so the primary gate stays final.
+    results = apply_lease_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.
