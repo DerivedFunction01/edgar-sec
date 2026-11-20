@@ -208,10 +208,10 @@ _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "scored"): 13,
     ("aoci_rollforward", "lead", "hard"): 2,
     ("aoci_rollforward", "lead", "scored"): 5,
-    ("balance_sheet", "body", "hard"): 34,
-    ("balance_sheet", "body", "scored"): 28,
-    ("balance_sheet", "lead", "hard"): 26,
-    ("balance_sheet", "lead", "scored"): 16,
+    ("balance_sheet", "body", "hard"): 30,
+    ("balance_sheet", "body", "scored"): 32,
+    ("balance_sheet", "lead", "hard"): 22,
+    ("balance_sheet", "lead", "scored"): 20,
     ("cash_flow", "body", "hard"): 4,
     ("cash_flow", "body", "scored"): 20,
     ("cash_flow", "lead", "hard"): 12,
@@ -294,8 +294,8 @@ def test_veto_set_is_complete_as_ruled() -> None:
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 217
-    assert tiers.count("scored") == 340
+    assert tiers.count("hard") == 209
+    assert tiers.count("scored") == 348
 
 
 def test_build_act_exclusions_of_record() -> None:
@@ -361,13 +361,15 @@ def test_dagger_rows_landed_hard_as_priced() -> None:
     assert all((*row, "hard") in rows for row in dagger_rows)
 
 
-def test_current_assets_body_row_retiered_to_scored() -> None:
+def test_current_assets_rows_retiered_to_scored() -> None:
     rows = _all_rows()
     # On the body channel the term is the family's own grid
-    # vocabulary (42 true touches on v3); the lead row stands.
+    # vocabulary (42 true touches on v3); the s7 conversion
+    # build re-tiers the lead row the same way.
     assert ("balance_sheet", "current assets", "body", "hard") not in rows
     assert ("balance_sheet", "current assets", "body", "scored") in rows
-    assert ("balance_sheet", "current assets", "lead", "hard") in rows
+    assert ("balance_sheet", "current assets", "lead", "hard") not in rows
+    assert ("balance_sheet", "current assets", "lead", "scored") in rows
 
 
 def test_issuer_purchases_rows_exactly_the_six_measured_families() -> None:

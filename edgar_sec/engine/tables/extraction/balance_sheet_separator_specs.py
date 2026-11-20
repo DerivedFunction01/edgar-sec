@@ -34,7 +34,6 @@ BALANCE_SHEET_SEPARATOR_SPECS = {
     "balance_sheet": BalanceSheetSeparatorSpec(
         family="balance_sheet",
         legs=(
-            BalanceSheetSeparatorLeg("rows_le_12", "rows", limit=12),
             BalanceSheetSeparatorLeg("year_ladder", "years", limit=3),
             BalanceSheetSeparatorLeg("hdr:fair", "header", "fair"),
             BalanceSheetSeparatorLeg("hdr:sheet", "header", "sheet"),

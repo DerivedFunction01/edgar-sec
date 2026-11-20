@@ -117,12 +117,7 @@ def test_recognizer_homes_and_frozen_text():
     )
 
 
-# ---------------- the eleven legs ----------------
-
-
-def test_leg_rows_le_12():
-    verdict = _eval(_grid("Item | Alpha | Beta", "Item", 4))
-    assert verdict.legs == ("rows_le_12",)
+# ---------------- the ten legs ----------------
 
 
 def test_leg_year_ladder():
