@@ -366,9 +366,7 @@ def _eps_own_frame_in_headers(text: FormSeparationText) -> bool:
     """
     units: list[str] = []
     for row in text.rows:
-        if row[0].strip() and any(
-            STRICT_NUMERIC_CELL_RE.match(cell) for cell in row
-        ):
+        if row[0].strip() and any(STRICT_NUMERIC_CELL_RE.match(cell) for cell in row):
             break
         for cell in row:
             for line in cell.split("\n"):
