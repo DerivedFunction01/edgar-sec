@@ -7,13 +7,17 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.numeric_cells import STRICT_NUMERIC_CELL_RE
+from edgar_sec.engine.tables.numeric_cells import GROUPED_INTEGER_FRAGMENT
 from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 
 _YEAR_RE = re.compile(rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b")
 _DIGIT_RE = re.compile(r"\d")
 _NON_ALPHA_RE = re.compile(r"[^a-z# ]")
 _RATE_RE = re.compile(r"\brate\b")
+# _NUM_RE recomposed from the homed digit/comma fragment; the %? tail
+# is dead on the call path (_cell_value rstrips "%" first), so the
+# verdicts match _NUM_RE exactly, leading-minus rejection included.
+_ROLLFORWARD_NUM_RE = re.compile(rf"^\(?\$?{GROUPED_INTEGER_FRAGMENT}(?:\.\d+)?\)?$")
 # Word lists ported verbatim from the priced g1 instrument.
 _ANCHOR_WORDS = (
     "balance",
@@ -112,7 +116,7 @@ def _cell_value(cell: str) -> float | None:
     if not token or token in {"—", "-", "*", "–"}:
         return None
     core = token.rstrip("%").strip()
-    if not STRICT_NUMERIC_CELL_RE.match(core):
+    if not _ROLLFORWARD_NUM_RE.match(core):
         return None
     negative = core.startswith("(") and core.endswith(")")
     token = core.strip("()$").replace(",", "")
