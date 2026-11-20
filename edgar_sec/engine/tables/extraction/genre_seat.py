@@ -31,6 +31,8 @@ EXHIBIT_STUB_SHARE_MIN = 0.5
 EXHIBIT_MIN_ROWS = 3
 EMPTY_BODY_MAX_ROWS = 2
 FOLIO_MAX_CELLS = 3
+CLOSING_NUMERIC_CELLS_MIN = 4
+CLOSING_DATA_ROWS_MIN = 3
 
 FULL_REFUSAL_PREFIXES = (
     "toc refused",
@@ -203,6 +205,14 @@ def _shape_refusal(facts: GenreFacts) -> SeatRefusal | None:
     return None
 
 
+def _statement_content(facts: GenreFacts) -> bool:
+    """Statement content: a numeric grid, not a signature block."""
+    return (
+        facts.numeric_cells >= CLOSING_NUMERIC_CELLS_MIN
+        and facts.data_rows >= CLOSING_DATA_ROWS_MIN
+    )
+
+
 def _facts_refusal(facts: GenreFacts) -> SeatRefusal | None:
     """The facts-only seat, in order: span, index, closing, band,
     shapes."""
@@ -211,7 +221,7 @@ def _facts_refusal(facts: GenreFacts) -> SeatRefusal | None:
     refusal = _index_refusal(facts)
     if refusal is not None:
         return refusal
-    if facts.in_closing_span:
+    if facts.in_closing_span and not _statement_content(facts):
         return SeatRefusal(
             f"closing refused: {facts.closing_kind or 'closing'} region",
             "closing_span",
@@ -246,7 +256,7 @@ def table_refusal(table: TypedTable) -> SeatRefusal | None:
             f"{facts.index_named_share:.2f} named share)",
             "index",
         )
-    if facts.in_closing_span:
+    if facts.in_closing_span and not _statement_content(facts):
         return SeatRefusal(
             f"closing refused: {facts.closing_kind or 'closing'} region",
             "closing_span",

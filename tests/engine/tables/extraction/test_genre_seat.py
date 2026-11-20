@@ -160,11 +160,18 @@ def test_toc_span_fact_refuses_a_statement_grid() -> None:
     assert compete(_geometry(_BALANCE_SHEET, in_toc_span=True)).claims == ()
 
 
-def test_closing_span_fact_refuses_a_statement_grid() -> None:
+def test_closing_span_yields_to_a_statement_grid() -> None:
     facts = {"in_closing_span": True, "closing_kind": "signatures"}
     detail = _refusal_detail(_BALANCE_SHEET, **facts)
+    assert detail is None
+    assert compete(_geometry(_BALANCE_SHEET, **facts)).claims != ()
+
+
+def test_closing_span_fact_refuses_a_signature_block() -> None:
+    facts = {"in_closing_span": True, "closing_kind": "signatures"}
+    detail = _refusal_detail(_SIGNATURE, **facts)
     assert detail is not None and detail.startswith("closing refused")
-    assert compete(_geometry(_BALANCE_SHEET, **facts)).claims == ()
+    assert compete(_geometry(_SIGNATURE, **facts)).claims == ()
 
 
 def test_folio_row_refused() -> None:
