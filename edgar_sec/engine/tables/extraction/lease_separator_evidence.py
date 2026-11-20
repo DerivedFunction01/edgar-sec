@@ -58,9 +58,7 @@ class LeaseSeparatorText:
         self.rows = rows
 
     @classmethod
-    def from_rows(
-        cls, rows, caption_stack=(), prose_before=""
-    ) -> "LeaseSeparatorText":
+    def from_rows(cls, rows, caption_stack=(), prose_before="") -> "LeaseSeparatorText":
         """Surfaces from raw context rows (production surface)."""
         table_text = "\n".join(" | ".join(str(c) for c in row) for row in rows)
         return cls(table_text, caption_stack, prose_before)

@@ -164,9 +164,7 @@ _GRID3 = "Lease payments | 2026 | 2027 | 2028\nRent | 100 | 200 | 300"
 
 
 def test_leg_subject_fires_on_caption():
-    text = LeaseSeparatorText(
-        _GRID3, caption_stack=("Financing liability payments",)
-    )
+    text = LeaseSeparatorText(_GRID3, caption_stack=("Financing liability payments",))
     verdict = evaluate_lease_separator(text, SPEC)
     assert verdict.fired
     assert verdict.legs == ("subj_before400",)
