@@ -10,6 +10,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
 from edgar_sec.engine.tables.extraction.form_separation_specs import (
     FORM_SEPARATION_SPECS,
     FormSeparationSpec,
@@ -23,8 +25,7 @@ from edgar_sec.engine.tables.numeric_cells import STRICT_NUMERIC_CELL_RE
 _HEADER_LINES = 3
 
 _PAREN_RE = re.compile(r"\([^)]*\)")
-_BARE_YEAR_RE = re.compile(r"^(?:19|20)\d{2}$")
-_FIRM_RE = re.compile(r"CPA|PLLC|LLP|P\.A\.")
+_FIRM_RE = re.compile(build_alternation(["CPA", "PLLC", "LLP", r"P\.A\."]))
 _STATEMENT_LINE_PATTERNS = (
     "total revenues",
     "operating expenses",
@@ -125,7 +126,7 @@ def _is_supplemental_schedule(
 
 def _is_lease_maturity(text: FormSeparationText, subjects: tuple[str, ...]) -> bool:
     """The maturity ladder: bare-year stubs ending in Thereafter."""
-    years = sum(1 for stub in text.raw_stubs if _BARE_YEAR_RE.match(stub.strip()))
+    years = sum(1 for stub in text.raw_stubs if YEAR_TOKEN_RE.match(stub.strip()))
     return years >= 3 and "thereafter" in subjects
 
 
@@ -191,8 +192,7 @@ def _is_composition(subjects: tuple[str, ...]) -> bool:
 def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str | None:
     """The determined form token for one candidate, or None.
 
-    Recognizers are priced per class over the packet surface:
-    each keys on the form's own subject signals, in
+    Recognizers key on the form's own subject signals, in
     most-specific-first order; an unrecognized form abstains.
     """
     subjects = _stub_subjects(text)

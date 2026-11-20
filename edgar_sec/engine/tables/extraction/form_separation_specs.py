@@ -28,9 +28,8 @@ FOREIGN_FORM_CLASSES: tuple[str, ...] = (
 class FormSeparationSpec:
     """One family's form-separation refusal data.
 
-    foreign_classes names the determined form classes the
-    stage refuses here; gold_families names the families
-    whose determined own form routes the refusal.
+    foreign_classes names the refused determined form classes;
+    gold_families names the families whose own form routes it.
     """
 
     family: str
