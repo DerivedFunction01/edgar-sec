@@ -57,6 +57,10 @@ def _listing(*years: str) -> str:
     return "\n".join([header, *body])
 
 
+def _spec():
+    return next(s for s in FORM_TEST_SPECS if s.test_id == "stock_comp_separator")
+
+
 def test_kind_is_declared_as_form_test_data():
     entry = next(
         s
