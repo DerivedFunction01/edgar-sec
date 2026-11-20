@@ -197,6 +197,55 @@ def _append_note(
     }
 
 
+_STAMPED_GATES = (
+    ("balance_sheet", TEST_BALANCE_SHEET_SEPARATOR, fired_separator_outcome),
+    ("cash_flow", TEST_CASH_FLOW_SEPARATOR, fired_cash_flow_separator_outcome),
+    (
+        "credit_losses_rollforward",
+        TEST_CREDIT_SEPARATOR,
+        fired_credit_separator_outcome,
+    ),
+    ("eps_reconciliation", TEST_EPS_DETECTOR, failing_core_form_outcome),
+    (
+        "comprehensive_income",
+        TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+        fired_separator_outcome,
+    ),
+    ("equity_statement", TEST_EQUITY_SEPARATOR, fired_separator_outcome),
+    (
+        "stock_comp_rollforward",
+        TEST_STOCK_COMP_SEPARATOR,
+        fired_stock_comp_separator_outcome,
+    ),
+    (
+        "tax_reconciliation",
+        TEST_TAX_RECONCILIATION_SEPARATOR,
+        fired_tax_reconciliation_separator_outcome,
+    ),
+    (
+        "deferred_tax",
+        TEST_DEFERRED_TAX_SEPARATOR,
+        fired_deferred_tax_separator_outcome,
+    ),
+    ("lease_maturity", TEST_LEASE_SEPARATOR, fired_lease_separator_outcome),
+)
+
+
+def _apply_stamped_gates(claims, contested, scores, geometry):
+    """Refuse claims whose stamped gate outcome fired."""
+    for family, test_id, outcome_of in _STAMPED_GATES:
+        if family not in claims:
+            continue
+        fired = outcome_of(geometry.form_tests, family, test_id)
+        if fired is None:
+            continue
+        claims.remove(family)
+        if family in contested:
+            contested.remove(family)
+        scores = _append_note(scores, family, "gate", fired.detail)
+    return scores
+
+
 def compete(
     geometry: GeometryText,
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
@@ -387,140 +436,10 @@ def compete(
         if family in contested:
             contested.remove(family)
         scores = _append_note(scores, family, "gate", failed.detail)
-    # Balance-sheet separator gate (priced): a balance_sheet
-    # claim is refused when the stamped separator outcome fired;
-    # an outcome absent or unevaluable never fails the gate.
-    if "balance_sheet" in claims:
-        fired = fired_separator_outcome(
-            geometry.form_tests, "balance_sheet", TEST_BALANCE_SHEET_SEPARATOR
-        )
-        if fired is not None:
-            claims.remove("balance_sheet")
-            if "balance_sheet" in contested:
-                contested.remove("balance_sheet")
-            scores = _append_note(scores, "balance_sheet", "gate", fired.detail)
-    # Cash-flow cascade gate (priced): a cash_flow claim is
-    # refused when the stamped cascade outcome fired on a
-    # claim-local leg; an outcome absent or unevaluable never
-    # fails the gate. The set-level legs run at filing level.
-    if "cash_flow" in claims:
-        fired = fired_cash_flow_separator_outcome(
-            geometry.form_tests, "cash_flow", TEST_CASH_FLOW_SEPARATOR
-        )
-        if fired is not None:
-            claims.remove("cash_flow")
-            if "cash_flow" in contested:
-                contested.remove("cash_flow")
-            scores = _append_note(scores, "cash_flow", "gate", fired.detail)
-    # Credit separator gate (priced): a credit_losses claim is
-    # refused when the stamped separator outcome fired; an
-    # outcome absent or unevaluable never fails the gate.
-    if "credit_losses_rollforward" in claims:
-        fired = fired_credit_separator_outcome(
-            geometry.form_tests,
-            "credit_losses_rollforward",
-            TEST_CREDIT_SEPARATOR,
-        )
-        if fired is not None:
-            claims.remove("credit_losses_rollforward")
-            if "credit_losses_rollforward" in contested:
-                contested.remove("credit_losses_rollforward")
-            scores = _append_note(
-                scores, "credit_losses_rollforward", "gate", fired.detail
-            )
-    # EPS determination gate (priced): an eps_reconciliation
-    # claim is refused when the seat's detector fires on the
-    # geometry, whatever channel produced the claim; an outcome
+    # Stamped separator gates (priced): a claim is refused when
+    # its family's stamped separator outcome fired; an outcome
     # absent or unevaluable never fails the gate.
-    if "eps_reconciliation" in claims:
-        fired = failing_core_form_outcome(
-            geometry.form_tests, "eps_reconciliation", TEST_EPS_DETECTOR
-        )
-        if fired is not None:
-            claims.remove("eps_reconciliation")
-            if "eps_reconciliation" in contested:
-                contested.remove("eps_reconciliation")
-            scores = _append_note(scores, "eps_reconciliation", "gate", fired.detail)
-    # Comprehensive-income separator gate (priced): a claim is
-    # refused when the stamped separator outcome fired; an
-    # outcome absent or unevaluable never fails the gate.
-    if "comprehensive_income" in claims:
-        fired = fired_separator_outcome(
-            geometry.form_tests,
-            "comprehensive_income",
-            TEST_COMPREHENSIVE_INCOME_SEPARATOR,
-        )
-        if fired is not None:
-            claims.remove("comprehensive_income")
-            if "comprehensive_income" in contested:
-                contested.remove("comprehensive_income")
-            scores = _append_note(scores, "comprehensive_income", "gate", fired.detail)
-    # Equity separator gate (priced): an equity_statement claim
-    # is refused when the stamped separator outcome fired; an
-    # outcome absent or unevaluable never fails the gate.
-    if "equity_statement" in claims:
-        fired = fired_separator_outcome(
-            geometry.form_tests, "equity_statement", TEST_EQUITY_SEPARATOR
-        )
-        if fired is not None:
-            claims.remove("equity_statement")
-            if "equity_statement" in contested:
-                contested.remove("equity_statement")
-            scores = _append_note(scores, "equity_statement", "gate", fired.detail)
-    # Stock-comp separator gate (priced): a stock_comp claim is
-    # refused when the stamped separator outcome fired; an
-    # outcome absent or unevaluable never fails the gate.
-    if "stock_comp_rollforward" in claims:
-        fired = fired_stock_comp_separator_outcome(
-            geometry.form_tests, "stock_comp_rollforward", TEST_STOCK_COMP_SEPARATOR
-        )
-        if fired is not None:
-            claims.remove("stock_comp_rollforward")
-            if "stock_comp_rollforward" in contested:
-                contested.remove("stock_comp_rollforward")
-            scores = _append_note(
-                scores, "stock_comp_rollforward", "gate", fired.detail
-            )
-    # Tax-reconciliation separator gate (priced): a claim is
-    # refused when the stamped separator outcome fired; an
-    # outcome absent or unevaluable never fails the gate.
-    if "tax_reconciliation" in claims:
-        fired = fired_tax_reconciliation_separator_outcome(
-            geometry.form_tests,
-            "tax_reconciliation",
-            TEST_TAX_RECONCILIATION_SEPARATOR,
-        )
-        if fired is not None:
-            claims.remove("tax_reconciliation")
-            if "tax_reconciliation" in contested:
-                contested.remove("tax_reconciliation")
-            scores = _append_note(scores, "tax_reconciliation", "gate", fired.detail)
-    # Deferred-tax separator gate (priced): a claim is refused
-    # when the stamped separator outcome fired; an outcome
-    # absent or unevaluable never fails the gate.
-    if "deferred_tax" in claims:
-        fired = fired_deferred_tax_separator_outcome(
-            geometry.form_tests,
-            "deferred_tax",
-            TEST_DEFERRED_TAX_SEPARATOR,
-        )
-        if fired is not None:
-            claims.remove("deferred_tax")
-            if "deferred_tax" in contested:
-                contested.remove("deferred_tax")
-            scores = _append_note(scores, "deferred_tax", "gate", fired.detail)
-    # Lease separator gate (priced): a lease claim is refused
-    # when the stamped separator outcome fired; an outcome
-    # absent or unevaluable never fails the gate.
-    if "lease_maturity" in claims:
-        fired = fired_lease_separator_outcome(
-            geometry.form_tests, "lease_maturity", TEST_LEASE_SEPARATOR
-        )
-        if fired is not None:
-            claims.remove("lease_maturity")
-            if "lease_maturity" in contested:
-                contested.remove("lease_maturity")
-            scores = _append_note(scores, "lease_maturity", "gate", fired.detail)
+    scores = _apply_stamped_gates(claims, contested, scores, geometry)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
@@ -756,6 +675,18 @@ def compete(
 # Inheritance lends a fragment the discounted evidence of the
 # nearest preceding claim in its note or section; a note title
 # shared with 2+ same-family claims lends that family tie evidence.
+_ASSIGNMENT_PASSES = (
+    apply_comprehensive_income_assignment,
+    apply_cash_flow_assignment,
+    apply_equity_assignment,
+    apply_combined_operations_assignment,
+    apply_income_statement_assignment,
+    apply_stock_comp_assignment,
+    apply_aro_assignment,
+    apply_lease_assignment,
+)
+
+
 def compete_filing(
     geometries: list[GeometryText] | tuple[GeometryText, ...],
     terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
@@ -844,39 +775,11 @@ def compete_filing(
             ladder_terms=ladder_terms,
             scopes=scopes,
         )
-    # Comprehensive-income ranking pass (set-level, priced):
-    # core-completeness ranking over the filing's formed
-    # candidate set; it only removes claims.
-    results = apply_comprehensive_income_assignment(geometries, results)
-    # Cash-flow assignment pass (set-level, priced): winner
-    # takes all over the filing's formed cash_flow candidate set;
-    # it only removes claims, so the primary gate stays final.
-    results = apply_cash_flow_assignment(geometries, results)
-    # Equity assignment pass (set-level, priced): joint
-    # assignment over the filing's formed equity candidate set;
-    # it only removes claims, so the primary gate stays final.
-    results = apply_equity_assignment(geometries, results)
-    # Combined operations set-level pass (priced): J1 joint
-    # assignment and A1 corekeep adjudication over the filing's
-    # complete candidate sets, after inheritance settles claims.
-    results = apply_combined_operations_assignment(geometries, results)
-    # Income-statement set-level pass (priced): routing,
-    # uniqueness, dominant-cluster and ties refusals over the
-    # filing's formed candidate set; it only removes claims.
-    results = apply_income_statement_assignment(geometries, results)
-    # Stock-comp assignment pass (set-level, priced): a claim
-    # is refused when a determined other-family seat has seated
-    # the same geometry; it only removes claims, so the
-    # primary gate stays final.
-    results = apply_stock_comp_assignment(geometries, results)
-    # ARO assignment pass (set-level, priced): joint
-    # assignment over the filing's formed aro candidate set;
-    # it only removes claims, so the primary gate stays final.
-    results = apply_aro_assignment(geometries, results)
-    # Lease assignment pass (set-level, priced): a claim is
-    # refused when the debt seat has seated the same geometry;
-    # it only removes claims, so the primary gate stays final.
-    results = apply_lease_assignment(geometries, results)
+    # Set-level assignment passes (priced): each pass runs over
+    # the filing's formed candidate set for its family and only
+    # removes claims, so the primary gate stays final.
+    for apply_assignment in _ASSIGNMENT_PASSES:
+        results = apply_assignment(geometries, results)
     # Final pass: the primary hard gates refuse claims whose
     # necessary sections are missing over the statement cluster;
     # running last, inheritance cannot resurrect a gated claim.
