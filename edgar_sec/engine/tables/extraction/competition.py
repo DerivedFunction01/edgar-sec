@@ -314,6 +314,9 @@ def compete(
             if top < DOMINANCE_RATIO * second:
                 claims = floored[:2]
                 contested = floored[:2]
+        if not claims and floored:
+            claims = floored[:1]
+            contested = floored[:1]
     if len(claims) >= 2:
         top = scores[claims[0]].total
         second = scores[claims[1]].total
