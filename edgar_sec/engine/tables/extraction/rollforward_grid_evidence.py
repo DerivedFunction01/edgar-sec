@@ -14,19 +14,48 @@ _NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?%?$")
 _RATE_RE = re.compile(r"\brate\b")
 # Word lists ported verbatim from the priced g1 instrument.
 _ANCHOR_WORDS = (
-    "balance", "accrual", "accrued", "liability", "liabilities",
-    "reserve", "obligation", "obligations",
+    "balance",
+    "accrual",
+    "accrued",
+    "liability",
+    "liabilities",
+    "reserve",
+    "obligation",
+    "obligations",
 )
 _MOVE_WORDS = (
-    "beginning", "ending", "granted", "exercised", "forfeited",
-    "expired", "outstanding", "provision", "charge", "payment",
-    "paid", "adjustment", "addition", "settlement", "incurred",
-    "accrued", "deduction", "vested",
+    "beginning",
+    "ending",
+    "granted",
+    "exercised",
+    "forfeited",
+    "expired",
+    "outstanding",
+    "provision",
+    "charge",
+    "payment",
+    "paid",
+    "adjustment",
+    "addition",
+    "settlement",
+    "incurred",
+    "accrued",
+    "deduction",
+    "vested",
 )
 _INVENTORY_COMPONENTS = (
-    "raw material", "work in process", "work-in-process",
-    "in process", "finished good", "finished product", "fuel",
-    "merchandise", "parts", "supplies", "product", "materials",
+    "raw material",
+    "work in process",
+    "work-in-process",
+    "in process",
+    "finished good",
+    "finished product",
+    "fuel",
+    "merchandise",
+    "parts",
+    "supplies",
+    "product",
+    "materials",
 )
 
 
@@ -129,9 +158,20 @@ def grid_features(text: RollforwardGridText) -> RollforwardGridFeatures:
         if any(word in joined for word in _ANCHOR_WORDS):
             keys = set(line_years)
             for month in (
-                "january", "february", "march", "april", "may", "june",
-                "july", "august", "september", "october", "november",
-                "december", "beginning", " end",
+                "january",
+                "february",
+                "march",
+                "april",
+                "may",
+                "june",
+                "july",
+                "august",
+                "september",
+                "october",
+                "november",
+                "december",
+                "beginning",
+                " end",
             ):
                 if month in joined:
                     keys.add(month)

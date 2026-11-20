@@ -68,7 +68,10 @@ def test_spec_carries_the_priced_pair():
 
 
 def test_packet_and_rows_surfaces_agree():
-    rows = (("Payments", "2019", "2020", "2021"), ("Lease termination", "10", "20", "30"))
+    rows = (
+        ("Payments", "2019", "2020", "2021"),
+        ("Lease termination", "10", "20", "30"),
+    )
     via_rows = evaluate_restructuring_separator(
         RollforwardGridText.from_rows(rows), SPEC
     )

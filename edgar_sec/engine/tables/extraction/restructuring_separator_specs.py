@@ -35,9 +35,7 @@ RESTRUCTURING_SEPARATOR_SPECS = {
             RestructuringSeparatorLeg(
                 "nb_span_ge3", "no_bookend_span", "claim-local", limit=3
             ),
-            RestructuringSeparatorLeg(
-                "restr_zeroact", "zero_activity", "claim-local"
-            ),
+            RestructuringSeparatorLeg("restr_zeroact", "zero_activity", "claim-local"),
         ),
     ),
 }
