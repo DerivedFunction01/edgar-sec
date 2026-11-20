@@ -1,8 +1,7 @@
 """Lease separator parameter table (TEST_LEASE_SEPARATOR).
 The priced legs as built: spanprod_le_2 reads the candidate's
-stub+header years, assign_sibling_seat reads the debt seat's
-stamped outcomes, subj_before400 reads the subject lead over
-caption + prose_before tail (provenance: PROV_LEASE_SEPARATOR).
+stub+header years, assign_sibling_seat the debt seat's stamped
+outcomes, subj_before400 the subject lead (PROV_LEASE_SEPARATOR).
 """
 
 from dataclasses import dataclass
@@ -11,9 +10,8 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class LeaseSeparatorLeg:
     """One priced leg: kind, scope, and parameters. Kinds: span
-    (claim-local); assign_sibling (set-level joint assignment
-    anchored on the sibling family's seat outcomes); subject
-    (claim-local regex over caption + prose_before tail)."""
+    (claim-local); assign_sibling (set-level, sibling seat's
+    outcomes); subject (claim-local, caption + prose tail)."""
 
     leg_id: str
     kind: str

@@ -1,8 +1,8 @@
 """Lease separator evidence (TEST_LEASE_SEPARATOR): the priced
 spanprod_le_2 leg refuses a lease claim whose stub+header span two
 or fewer distinct years; subj_before400 refuses one whose subject
-lead names a financing liability; the set-level assign_sibling_seat
-leg runs at filing level, anchored on the debt seat's outcomes.
+lead names a financing liability; assign_sibling_seat runs at
+filing level, anchored on the debt seat's stamped outcomes.
 """
 
 from __future__ import annotations
@@ -35,6 +35,12 @@ __all__ = [
 
 DEBT_LADDER_TEST_ID = "debt_maturity_year_ladder"
 DEBT_ADMISSION_TEST_ID = "debt_maturity_j1_admission"
+_SUBJECT_RES = {
+    leg.leg_id: re.compile(leg.pattern)
+    for spec in LEASE_SEPARATOR_SPECS.values()
+    for leg in spec.legs
+    if leg.kind == "subject"
+}
 
 
 class LeaseSeparatorText:
@@ -106,7 +112,7 @@ def subject_surface(text: LeaseSeparatorText, tail: int) -> str:
 
 def subject_fires(text: LeaseSeparatorText, leg) -> bool:
     """True when the leg's regex matches the subject surface."""
-    return re.search(leg.pattern, subject_surface(text, leg.tail)) is not None
+    return _SUBJECT_RES[leg.leg_id].search(subject_surface(text, leg.tail)) is not None
 
 
 def evaluate_lease_separator(
