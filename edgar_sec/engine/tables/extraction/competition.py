@@ -206,6 +206,8 @@ _STAMPED_GATES = (
         fired_credit_separator_outcome,
     ),
     ("eps_reconciliation", TEST_EPS_DETECTOR, failing_core_form_outcome),
+    ("eps_reconciliation", TEST_FORM_SEPARATION, failing_core_form_outcome),
+    ("intangibles", TEST_FORM_SEPARATION, failing_core_form_outcome),
     (
         "comprehensive_income",
         TEST_COMPREHENSIVE_INCOME_SEPARATOR,
