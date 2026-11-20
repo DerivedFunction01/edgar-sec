@@ -64,6 +64,20 @@ _EPS_OWN_FRAME_TERMS = (
     "average common shares",
     "equivalent shares",
 )
+_EPS_FRAME_HEADER_LABELS = (
+    "numerator",
+    "denominator",
+    "weighted average",
+    "weighted-average",
+    "weighted average shares",
+    "weighted-average shares",
+    "average shares",
+    "average common shares",
+    "per share",
+    "per-share",
+    "per share amount",
+    "per-share amount",
+)
 _INTANGIBLE_CLASS_NAMES = (
     "goodwill",
     "patents",
@@ -344,6 +358,35 @@ def _is_eps_own_frame(subjects: tuple[str, ...]) -> bool:
     )
 
 
+def _eps_own_frame_in_headers(text: FormSeparationText) -> bool:
+    """The EPS own frame in the header band: a label cell or fragments.
+
+    The band is the leading rows before the first stubbed data row;
+    a descriptive header merely containing the words does not match.
+    """
+    units: list[str] = []
+    for row in text.rows:
+        if row[0].strip() and any(
+            STRICT_NUMERIC_CELL_RE.match(cell) for cell in row
+        ):
+            break
+        for cell in row:
+            for line in cell.split("\n"):
+                unit = " ".join(line.lower().split()).strip("():")
+                if unit:
+                    units.append(unit)
+    if any(unit in _EPS_FRAME_HEADER_LABELS for unit in units):
+        return True
+    for label in _EPS_FRAME_HEADER_LABELS:
+        parts = label.split(" ")
+        if len(parts) < 2:
+            continue
+        for i in range(len(units) - len(parts) + 1):
+            if units[i : i + len(parts)] == parts:
+                return True
+    return False
+
+
 def _is_intangibles_own_frame(subjects: tuple[str, ...]) -> bool:
     """An intangibles table's own frame: a bare class stub."""
     return any(subject in _INTANGIBLE_CLASS_NAMES for subject in subjects)
@@ -428,10 +471,12 @@ def _is_goodwill_segment(subject: str) -> bool:
 
 
 def _is_generalized_composition(
-    subjects: tuple[str, ...], family: str
+    text: FormSeparationText, subjects: tuple[str, ...], family: str
 ) -> bool:
     """A component composition: >=2 component stubs, own-frame absent."""
     if _is_own_frame(subjects, family):
+        return False
+    if family == "eps_reconciliation" and _eps_own_frame_in_headers(text):
         return False
     if _has_add_deduct_walk(subjects):
         return False
@@ -534,7 +579,7 @@ def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str |
         return "segment-detail"
     if _is_composition(subjects):
         return "composition"
-    if (is_eps or is_int) and _is_generalized_composition(subjects, family):
+    if (is_eps or is_int) and _is_generalized_composition(text, subjects, family):
         return "composition"
     if _is_summary_columns(text):
         return "summary-columns"
