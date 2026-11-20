@@ -1,4 +1,4 @@
-"""Cash-flow cascade (TEST_CASH_FLOW_SEPARATOR): legs, gate, assignment."""
+"""Cash-flow cascade (TEST_CASH_FLOW_SEPARATOR): legs, gate."""
 
 from __future__ import annotations
 
@@ -10,7 +10,6 @@ from edgar_sec.engine.tables.ascii_html.model import (
 )
 from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
     CashFlowSeparatorText,
-    apply_cash_flow_assignment,
     evaluate_cash_flow_separator,
     evaluate_form_test_cash_flow_separator,
     stub_key,
@@ -19,7 +18,6 @@ from edgar_sec.engine.tables.extraction.cash_flow_separator_specs import (
     CASH_FLOW_SEPARATOR_SPECS,
 )
 from edgar_sec.engine.tables.extraction.competition import (
-    CompetitionResult,
     GeometryText,
     compete,
 )
@@ -102,20 +100,9 @@ def test_recognizer_homes():
 # ---------------- the claim-local legs ----------------
 
 
-def test_leg_rows_le_12():
-    verdict = _eval(_statement(4))
-    assert verdict.legs == ("rows_le_12",)
-
-
 def test_leg_header_value():
     verdict = _eval(_statement(14, header="Item | Value | 2023"))
     assert verdict.legs == ("hdr:value",)
-
-
-def test_leg_core_absent():
-    lines = [" | 2024 | 2023"] + [f"Operating item {i} | 1 | 2" for i in range(14)]
-    verdict = _eval("\n".join(lines))
-    assert verdict.legs == ("core_absent:cash_reconciliation",)
 
 
 def test_plain_cash_flow_statement_is_clear():
@@ -169,15 +156,15 @@ def _table(rows):
 
 
 def test_stage_adapter_over_full_grid():
-    table = _table((("Cash", "100"), ("Total assets", "50")))
+    table = _table((("Item", "Value"), ("Cash", "100")))
     spec = next(s for s in FORM_TEST_SPECS if s.test_id == "cash_flow_separator")
     verdict = evaluate_form_test_cash_flow_separator(table, spec)
     assert verdict.fired
-    assert "rows_le_12" in verdict.legs
+    assert "hdr:value" in verdict.legs
 
 
 def test_stage_dispatch_stamps_separator_outcome():
-    table = _table((("Cash", "100"), ("Total assets", "50")))
+    table = _table((("Item", "Value"), ("Cash", "100")))
     outcomes = {o.test_id: o for o in evaluate_form_tests(table)}
     outcome = outcomes["cash_flow_separator"]
     assert outcome.kind == TEST_CASH_FLOW_SEPARATOR
@@ -230,58 +217,11 @@ def test_gate_keeps_claim_when_outcome_unevaluable():
     assert "cash_flow" in result.claims
 
 
-# ---------------- assignment pass ----------------
+# ---------------- the spec ----------------
 
 
 def test_spec_carries_the_ruled_leg_set():
     legs = [(leg.leg_id, leg.scope) for leg in SPEC.legs]
     assert legs == [
-        ("rows_le_12", "claim-local"),
         ("hdr:value", "claim-local"),
-        ("core_absent:cash_reconciliation", "claim-local"),
-        ("winner_take_all", "set-level"),
     ]
-
-
-def _result(*families):
-    scores = {
-        family: FamilyScore(family, 11.0, {"signature": 11.0}, ())
-        for family in families
-    }
-    return CompetitionResult(claims=families, contested=(), scores=scores)
-
-
-def test_assignment_refuses_competing_survivors():
-    results = apply_cash_flow_assignment(
-        [GeometryText(), GeometryText()],
-        [_result("cash_flow"), _result("cash_flow")],
-    )
-    assert all("cash_flow" not in r.claims for r in results)
-    evidence = results[0].scores["cash_flow"].evidence
-    assert any(item.channel == "gate" for item in evidence)
-
-
-def test_assignment_keeps_singleton_claim():
-    results = apply_cash_flow_assignment(
-        [GeometryText(), GeometryText()],
-        [_result("cash_flow"), _result("balance_sheet")],
-    )
-    assert "cash_flow" in results[0].claims
-    assert "balance_sheet" in results[1].claims
-
-
-def test_assignment_preserves_cross_claims():
-    results = apply_cash_flow_assignment(
-        [GeometryText(), GeometryText()],
-        [_result("cash_flow", "balance_sheet"), _result("cash_flow")],
-    )
-    assert "cash_flow" not in results[0].claims
-    assert "balance_sheet" in results[0].claims
-
-
-def test_assignment_leaves_other_families_alone():
-    results = apply_cash_flow_assignment(
-        [GeometryText(), GeometryText()],
-        [_result("balance_sheet"), _result("balance_sheet")],
-    )
-    assert all("balance_sheet" in r.claims for r in results)

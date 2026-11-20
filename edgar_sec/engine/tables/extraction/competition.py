@@ -15,7 +15,6 @@ from edgar_sec.engine.tables.extraction.balance_sheet_separator_evidence import 
     fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.cash_flow_separator_evidence import (
-    apply_cash_flow_assignment,
     fired_separator_outcome as fired_cash_flow_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.credit_separator_evidence import (
@@ -682,7 +681,6 @@ def compete(
 # shared with 2+ same-family claims lends that family tie evidence.
 _ASSIGNMENT_PASSES = (
     apply_comprehensive_income_assignment,
-    apply_cash_flow_assignment,
     apply_equity_assignment,
     apply_combined_operations_assignment,
     apply_income_statement_assignment,

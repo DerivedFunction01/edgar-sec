@@ -28,7 +28,6 @@ from edgar_sec.engine.tables.extraction.primary_gate import section_presence
 __all__ = [
     "CashFlowSeparatorText",
     "CashFlowSeparatorVerdict",
-    "apply_cash_flow_assignment",
     "evaluate_cash_flow_separator",
     "evaluate_form_test_cash_flow_separator",
     "fired_separator_outcome",
@@ -92,49 +91,6 @@ def evaluate_cash_flow_separator(
         detail = "separator fired: " + ", ".join(fired)
         return CashFlowSeparatorVerdict(True, True, tuple(fired), detail)
     return CashFlowSeparatorVerdict(False, True, (), "separator clear")
-
-
-def apply_cash_flow_assignment(geometries, results):
-    """Filing-level pass: a cash_flow claim is refused when
-    another cash_flow candidate in the filing survives the
-    claim-local cascade (winner_take_all, survivor form).
-    """
-    from edgar_sec.engine.tables.extraction.competition import (
-        ClaimEvidence,
-        CompetitionResult,
-        FamilyScore,
-    )
-
-    family = "cash_flow"
-    claimed = [i for i, result in enumerate(results) if family in result.claims]
-    if len(claimed) < 2:
-        return list(results)
-    detail = "cash flow assignment: competing candidate survives"
-    refused = set(claimed)
-    out = []
-    for i, result in enumerate(results):
-        if i not in refused:
-            out.append(result)
-            continue
-        scores = dict(result.scores)
-        score = scores.get(family)
-        if score is not None:
-            scores[family] = FamilyScore(
-                score.family,
-                score.total,
-                score.by_channel,
-                score.evidence + (ClaimEvidence("gate", detail, 0.0),),
-            )
-        out.append(
-            CompetitionResult(
-                claims=tuple(name for name in result.claims if name != family),
-                contested=tuple(name for name in result.contested if name != family),
-                scores=scores,
-                foreign_explained=result.foreign_explained,
-                groups=result.groups,
-            )
-        )
-    return out
 
 
 # ---------------- production wiring (stage adapter + gate) ----------------
