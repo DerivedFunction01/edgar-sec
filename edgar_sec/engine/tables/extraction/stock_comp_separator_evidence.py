@@ -1,8 +1,7 @@
 """Stock comp separator evidence (TEST_STOCK_COMP_SEPARATOR).
 Evaluates the priced claim-local legs over one table — span_ge_5
-over the grid, the C2 composition over the seat verdict and the
-geometry surfaces — plus the set-level assign_other leg at
-filing level, anchored on the input-class seat's claim.
+and the C2 composition over the seat verdict and geometry
+surfaces — plus the set-level assign_other leg at filing level.
 """
 
 from __future__ import annotations
