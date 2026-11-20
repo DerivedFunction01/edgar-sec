@@ -199,9 +199,8 @@ def _append_note(
 
 
 # Stamped-outcome gates (priced): a claim is refused when its
-# family's stamped outcome fired; an outcome absent or
-# unevaluable never fails the gate. One row per gated family,
-# in the order the gates bind.
+# family's stamped outcome fired; an absent or unevaluable
+# outcome never fails the gate.
 _STAMPED_GATES = (
     ("balance_sheet", TEST_BALANCE_SHEET_SEPARATOR, fired_separator_outcome),
     ("cash_flow", TEST_CASH_FLOW_SEPARATOR, fired_cash_flow_separator_outcome),

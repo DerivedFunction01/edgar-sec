@@ -7,10 +7,12 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.numeric_cells import STRICT_NUMERIC_CELL_RE
 from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 
 _YEAR_RE = re.compile(rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b")
-_NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?%?$")
+_DIGIT_RE = re.compile(r"\d")
+_NON_ALPHA_RE = re.compile(r"[^a-z# ]")
 _RATE_RE = re.compile(r"\brate\b")
 # Word lists ported verbatim from the priced g1 instrument.
 _ANCHOR_WORDS = (
@@ -100,8 +102,8 @@ class RollforwardGridFeatures:
 
 
 def _norm_phrase(text: str) -> str:
-    text = re.sub(r"\d", "#", text.lower())
-    text = re.sub(r"[^a-z# ]", " ", text)
+    text = _DIGIT_RE.sub("#", text.lower())
+    text = _NON_ALPHA_RE.sub(" ", text)
     return " ".join(text.split())
 
 
@@ -110,7 +112,7 @@ def _cell_value(cell: str) -> float | None:
     if not token or token in {"—", "-", "*", "–"}:
         return None
     core = token.rstrip("%").strip()
-    if not _NUM_RE.match(core):
+    if not STRICT_NUMERIC_CELL_RE.match(core):
         return None
     negative = core.startswith("(") and core.endswith(")")
     token = core.strip("()$").replace(",", "")

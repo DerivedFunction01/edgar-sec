@@ -19,10 +19,9 @@ class RestructuringSeparatorLeg:
 
 @dataclass(frozen=True)
 class RestructuringSeparatorSpec:
-    """One family's separator: the ordered legs as priced. nb_span_ge3
-    refuses a claim whose grid carries no bookend form and spans three
-    or more distinct years; restr_zeroact refuses a claim whose walked
-    balances are unchanged with no nonzero movement."""
+    """One family's separator: the ordered legs as priced.
+    Legs: nb_span_ge3 (no-bookend span >= 3 distinct years),
+    restr_zeroact (unchanged walked balances, no nonzero movement)."""
 
     family: str
     legs: tuple[RestructuringSeparatorLeg, ...]
