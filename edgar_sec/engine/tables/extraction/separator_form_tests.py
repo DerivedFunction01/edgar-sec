@@ -187,9 +187,7 @@ def _evaluate_tax_reconciliation_separator(
     )
 
 
-def _evaluate_lease_separator(
-    table: TypedTable, spec: FormTestSpec
-) -> FormTestOutcome:
+def _evaluate_lease_separator(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_lease_separator(table, spec)
     return FormTestOutcome(
         spec.family,
