@@ -64,6 +64,8 @@ PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pr
 PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
 PROV_LEASE_SEPARATOR = "calibration:lease-separator-pricing"
 PROV_RELATED_PARTY_FORM_SEPARATION = "calibration:related-party-form-separation-pricing"
+PROV_CASCADE_G4_FORM_SEPARATION = "calibration:cascade-g4-form-separation-pricing"
+PROV_CASCADE_G4_FORM_SEPARATION = "calibration:cascade-g4-form-separation-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -329,6 +331,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             TEST_EPS_EVIDENCE,
             TEST_EPS_DETECTOR,
             TEST_CASH_FLOW_SEPARATOR,
+            TEST_FORM_SEPARATION,
         ),
         note="seated additionally on the depth-3 detector "
         "cell priced over the R18 fresh population (P 1.000 / "
@@ -380,7 +383,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.349, 0.857, 0.543, 0.750),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_CORE_FORM),
+        form_tests=(TEST_COMPOSITION_TWIN, TEST_CORE_FORM, TEST_FORM_SEPARATION),
     ),
     FamilyProfile(
         "inventory",

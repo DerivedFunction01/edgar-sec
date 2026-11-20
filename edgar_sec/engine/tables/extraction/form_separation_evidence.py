@@ -47,6 +47,14 @@ _STOCK_STATUS_TERMS = (
     "impaired loans",
     "troubled debt",
 )
+_INVENTORY_COMPONENT_TERMS = (
+    "raw materials",
+    "work in process",
+    "finished goods",
+    "merchandise",
+)
+_QUARTER_ORDINALS = ("1st", "2nd", "3rd", "4th")
+_LEVEL_RE = re.compile(r"^level (i|ii|iii)\b")
 
 
 class FormSeparationText:
@@ -113,6 +121,23 @@ def _is_eps_reconciliation(subjects: tuple[str, ...]) -> bool:
     )
 
 
+def _is_warrant_activity(text: FormSeparationText, subjects: tuple[str, ...]) -> bool:
+    """A warrant schedule: warrant terms over an exercise price."""
+    joined = (" ".join(text.headers) + " " + " ".join(subjects)).lower()
+    return "warrant" in joined and "exercise price" in joined
+
+
+def _is_inventory(subjects: tuple[str, ...]) -> bool:
+    """An inventory schedule: at least two component stubs."""
+    matched = {
+        term
+        for subject in subjects
+        for term in _INVENTORY_COMPONENT_TERMS
+        if term in subject
+    }
+    return len(matched) >= 2
+
+
 def _is_supplemental_schedule(
     text: FormSeparationText, subjects: tuple[str, ...]
 ) -> bool:
@@ -128,6 +153,31 @@ def _is_lease_maturity(text: FormSeparationText, subjects: tuple[str, ...]) -> b
     """The maturity ladder: bare-year stubs ending in Thereafter."""
     years = sum(1 for stub in text.raw_stubs if YEAR_TOKEN_RE.match(stub.strip()))
     return years >= 3 and "thereafter" in subjects
+
+
+def _is_debt_maturity(text: FormSeparationText, subjects: tuple[str, ...]) -> bool:
+    """A debt maturity ladder: Thereafter over debt stubs."""
+    header_text = " ".join(text.headers).lower()
+    return "thereafter" in header_text and any(
+        "debt" in subject for subject in subjects
+    )
+
+
+def _is_movement_detail(subjects: tuple[str, ...]) -> bool:
+    """A movement bridge: direction stubs or a pre/post-tax bridge."""
+    direction = sum(
+        1
+        for subject in subjects
+        if subject.startswith("higher ") or subject.startswith("lower ")
+    )
+    if direction >= 2:
+        return True
+    return "total before tax" in subjects and "net of tax" in subjects
+
+
+def _is_restatement_recast(subjects: tuple[str, ...]) -> bool:
+    """A restatement recast: an as-adjusted stub."""
+    return any("as adjusted" in subject for subject in subjects)
 
 
 def _is_statement_summary(subjects: tuple[str, ...]) -> bool:
@@ -189,6 +239,40 @@ def _is_composition(subjects: tuple[str, ...]) -> bool:
     )
 
 
+def _is_summary_columns(text: FormSeparationText) -> bool:
+    """Quarterly columns: a quarters caption over ordinal headers."""
+    caption_text = " ".join(text.caption_stack).lower()
+    header_text = " ".join(text.headers).lower()
+    if "quarters" not in caption_text and "quarters" not in header_text:
+        return False
+    ordinals = sum(1 for ordinal in _QUARTER_ORDINALS if ordinal in header_text)
+    return ordinals >= 3
+
+
+def _is_ladder_detail(subjects: tuple[str, ...]) -> bool:
+    """A due-in ladder: at least two due-in stubs."""
+    return sum(1 for subject in subjects if subject.startswith("due in")) >= 2
+
+
+def _is_fair_value(text: FormSeparationText, subjects: tuple[str, ...]) -> bool:
+    """A fair-value shape: level stubs or carrying/fair headers."""
+    levels = {subject for subject in subjects if _LEVEL_RE.match(subject)}
+    if len(levels) >= 2:
+        return True
+    header_text = " ".join(text.headers).lower()
+    return "carrying value" in header_text and "fair value" in header_text
+
+
+def _is_fragment(text: FormSeparationText) -> bool:
+    """A fragment: one row, or two rows of long prose stubs."""
+    if len(text.rows) == 1:
+        return True
+    if len(text.rows) != 2:
+        return False
+    stubs = [stub for stub in text.stubs if stub.strip()]
+    return bool(stubs) and all(len(stub) >= 80 for stub in stubs)
+
+
 def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str | None:
     """The determined form token for one candidate, or None.
 
@@ -200,10 +284,20 @@ def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str |
         return "furniture"
     if _is_eps_reconciliation(subjects):
         return "gold:eps_reconciliation"
+    if _is_warrant_activity(text, subjects):
+        return "gold:warrant_activity"
+    if _is_inventory(subjects):
+        return "gold:inventory"
     if _is_supplemental_schedule(text, subjects):
         return "supplemental-schedule"
     if _is_lease_maturity(text, subjects):
         return "gold:lease_maturity"
+    if _is_debt_maturity(text, subjects):
+        return "gold:debt_maturity"
+    if _is_movement_detail(subjects):
+        return "movement-detail"
+    if _is_restatement_recast(subjects):
+        return "restatement-recast"
     if _is_statement_summary(subjects):
         return "statement-summary"
     if _is_percentage_rows(text):
@@ -212,6 +306,14 @@ def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str |
         return "segment-detail"
     if _is_composition(subjects):
         return "composition"
+    if _is_summary_columns(text):
+        return "summary-columns"
+    if _is_ladder_detail(subjects):
+        return "ladder-detail"
+    if _is_fair_value(text, subjects):
+        return "shape:fair_value"
+    if _is_fragment(text):
+        return "fragment"
     return None
 
 
