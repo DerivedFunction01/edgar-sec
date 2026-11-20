@@ -27,6 +27,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_COREFIN_EQUITYSTATEMENT,
     PROV_COMBINED_OPERATIONS_SEPARATOR,
     PROV_STOCK_COMP_SEPARATOR,
+    PROV_DEFERRED_TAX_SEPARATOR,
     PROV_TAX_RECONCILIATION_SEPARATOR,
     PROV_DECLARED_SPECS,
     PROV_EPS_TRANSFER_PRICING,
@@ -72,6 +73,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_TAX_EVIDENCE,
+    TEST_DEFERRED_TAX_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_STOCK_COMP_SEPARATOR,
@@ -113,6 +115,10 @@ from edgar_sec.engine.tables.extraction.stock_comp_separator_specs import (
 from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_specs import (
     TAX_RECONCILIATION_SEPARATOR_SPECS,
     TaxReconciliationSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.deferred_tax_separator_specs import (
+    DEFERRED_TAX_SEPARATOR_SPECS,
+    DeferredTaxSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.core_form_specs import (
     CORE_FORM_SPECS,
@@ -237,7 +243,11 @@ __all__ = (
     "SeatTestSpec",
     "STOCK_COMP_SEPARATOR_SPECS",
     "StockCompSeparatorSpec",
+    "DEFERRED_TAX_SEPARATOR_SPECS",
+    "DeferredTaxSeparatorSpec",
+    "PROV_DEFERRED_TAX_SEPARATOR",
     "TAX_RECONCILIATION_SEPARATOR_SPECS",
+    "TEST_DEFERRED_TAX_SEPARATOR",
     "TaxReconciliationSeparatorSpec",
     "TAX_EVIDENCE_SPECS",
     "TAX_EVIDENCE_SPECS_BY_TEST_ID",
@@ -486,6 +496,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
     FormTestSpec("intangibles", TEST_COMPOSITION_TWIN, "intangibles_composition", 3.0),
     FormTestSpec(
         "deferred_tax", TEST_COMPOSITION_TWIN, "deferred_tax_composition", 3.0
+    ),
+    FormTestSpec(
+        "deferred_tax",
+        TEST_DEFERRED_TAX_SEPARATOR,
+        "deferred_tax_separator",
+        0.0,
+        provenance=PROV_DEFERRED_TAX_SEPARATOR,
     ),
     FormTestSpec("inventory", TEST_COMPOSITION_TWIN, "inventory_composition", 3.0),
     FormTestSpec(

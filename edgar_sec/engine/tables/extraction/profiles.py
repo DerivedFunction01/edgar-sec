@@ -60,6 +60,7 @@ PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
 PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
 PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
+PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.
@@ -99,6 +100,7 @@ TEST_EQUITY_SEPARATOR = "equity_separator"
 TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
 TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
 TEST_TAX_RECONCILIATION_SEPARATOR = "tax_reconciliation_separator"
+TEST_DEFERRED_TAX_SEPARATOR = "deferred_tax_separator"
 FORM_TESTS = (
     TEST_WALK,
     TEST_LADDER,
@@ -134,6 +136,7 @@ FORM_TESTS = (
     TEST_EQUITY_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
+    TEST_DEFERRED_TAX_SEPARATOR,
 )
 
 
@@ -264,7 +267,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.589, 1.000, 0.519, None, quarterly_directed_recall=0.942),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_SIGNATURE_ABSENCE),
+        form_tests=(
+            TEST_COMPOSITION_TWIN,
+            TEST_SIGNATURE_ABSENCE,
+            TEST_DEFERRED_TAX_SEPARATOR,
+        ),
         note="quarterly recall unmeasured on the sealed sweep (n=0); "
         "the directed rate is the recall evidence of record. "
         "Step 3 union disposition: the Step 1 TEST_WALK declaration "

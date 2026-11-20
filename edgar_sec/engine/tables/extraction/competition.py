@@ -91,6 +91,9 @@ from edgar_sec.engine.tables.extraction.stock_comp_separator_evidence import (
 from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_evidence import (
     fired_separator_outcome as fired_tax_reconciliation_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.deferred_tax_separator_evidence import (
+    fired_separator_outcome as fired_deferred_tax_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
@@ -100,6 +103,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_EPS_DETECTOR,
     TEST_EQUITY_SEPARATOR,
     TEST_PENSION_ROUTED,
+    TEST_DEFERRED_TAX_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
 )
@@ -482,6 +486,20 @@ def compete(
             if "tax_reconciliation" in contested:
                 contested.remove("tax_reconciliation")
             scores = _append_note(scores, "tax_reconciliation", "gate", fired.detail)
+    # Deferred-tax separator gate (priced): a claim is refused
+    # when the stamped separator outcome fired; an outcome
+    # absent or unevaluable never fails the gate.
+    if "deferred_tax" in claims:
+        fired = fired_deferred_tax_separator_outcome(
+            geometry.form_tests,
+            "deferred_tax",
+            TEST_DEFERRED_TAX_SEPARATOR,
+        )
+        if fired is not None:
+            claims.remove("deferred_tax")
+            if "deferred_tax" in contested:
+                contested.remove("deferred_tax")
+            scores = _append_note(scores, "deferred_tax", "gate", fired.detail)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
     reach: list[str] = []
