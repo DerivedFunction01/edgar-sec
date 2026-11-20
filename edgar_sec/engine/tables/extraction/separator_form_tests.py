@@ -165,7 +165,7 @@ def _evaluate_restructuring_separator(
     table: TypedTable, spec: FormTestSpec
 ) -> FormTestOutcome | None:
     result = evaluate_form_test_restructuring_separator(table, spec)
-    if not result.fired:
+    if result.evaluable and not result.fired:
         return None
     return FormTestOutcome(
         spec.family,
