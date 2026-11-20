@@ -20,9 +20,8 @@ class CreditSeparatorLeg:
 @dataclass(frozen=True)
 class CreditSeparatorSpec:
     """One family's separator: the ordered legs plus the
-    movement-count terms. The count runs over the seat home's
-    movement kinds minus excluded_count_kind; the loan leg
-    reads row stubs."""
+    movement-count terms, counted over the seat home's kinds
+    minus excluded_count_kind; the loan leg reads row stubs."""
 
     family: str
     legs: tuple[CreditSeparatorLeg, ...]

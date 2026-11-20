@@ -5,7 +5,6 @@ credit claim is refused when any leg fires.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.core_form_evidence import (
@@ -18,6 +17,7 @@ from edgar_sec.engine.tables.extraction.credit_separator_specs import (
     CREDIT_SEPARATOR_SPECS,
     CreditSeparatorSpec,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 __all__ = [
     "CreditSeparatorText",
@@ -27,11 +27,8 @@ __all__ = [
     "fired_separator_outcome",
 ]
 
-_WS_RE = re.compile(r"\s+")
-
-
 def _norm(cell) -> str:
-    return _WS_RE.sub(" ", str(cell).strip().lower())
+    return RE_WHITESPACE.sub(" ", str(cell).strip().lower())
 
 
 def _row_cells(line: str) -> list[str]:
