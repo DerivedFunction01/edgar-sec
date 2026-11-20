@@ -109,6 +109,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_CORE_FORM,
     TEST_EPS_DETECTOR,
     TEST_EQUITY_SEPARATOR,
+    TEST_PENSION_COMBINATION,
     TEST_PENSION_ROUTED,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
@@ -606,18 +607,21 @@ def compete(
                 gated.evidence
                 + (ClaimEvidence("gate", f"pension: {pension_evidence.detail}", 0.0),),
             )
-    # Pension routed separator gate (priced): a surviving pension
-    # claim requires the stamped routed-separator outcome to
-    # pass; an outcome absent or unevaluable never fails it.
+    # Pension separator gates (priced): a surviving pension claim
+    # requires each stamped separator outcome to pass; an outcome
+    # absent or unevaluable never fails it.
     if "pension" in claims:
-        routed_failed = failing_pension_routed_outcome(
-            geometry.form_tests, "pension", TEST_PENSION_ROUTED
-        )
-        if routed_failed is not None:
-            claims.remove("pension")
-            if "pension" in contested:
-                contested.remove("pension")
-            scores = _append_note(scores, "pension", "gate", routed_failed.detail)
+        for kind, reader in (
+            (TEST_PENSION_ROUTED, failing_pension_routed_outcome),
+            (TEST_PENSION_COMBINATION, failing_core_form_outcome),
+        ):
+            failed = reader(geometry.form_tests, "pension", kind)
+            if failed is not None:
+                claims.remove("pension")
+                if "pension" in contested:
+                    contested.remove("pension")
+                scores = _append_note(scores, "pension", "gate", failed.detail)
+                break
     # Ruling 18 seat (tax_reconciliation): the priced statutory-
     # anchor conjunction replaces the family's claim path — a
     # scored claim is displaced, the seat alone decides claimage.

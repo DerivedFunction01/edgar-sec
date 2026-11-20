@@ -40,6 +40,9 @@ from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.percentage_form import (
     evaluate_percentage_form,
 )
+from edgar_sec.engine.tables.extraction.pension_combination_evidence import (
+    evaluate_form_test_pension_combination,
+)
 from edgar_sec.engine.tables.extraction.pension_routed_evidence import (
     evaluate_form_test_pension_routed,
 )
@@ -86,6 +89,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_LADDER,
     TEST_LEASE_EVIDENCE,
     TEST_MEASURE_SET,
+    TEST_PENSION_COMBINATION,
     TEST_PENSION_ROUTED,
     TEST_STOCK_COMP_EVIDENCE,
     TEST_STOCK_COMP_SEPARATOR,
@@ -379,6 +383,22 @@ def _evaluate_core_form(table: TypedTable, spec: FormTestSpec) -> FormTestOutcom
 
 def _evaluate_pension_routed(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_pension_routed(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.admitted,
+        True,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_pension_combination(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_pension_combination(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,
@@ -715,6 +735,7 @@ _EVALUATORS = {
     TEST_BALANCE_SHEET_SEPARATOR: _evaluate_balance_sheet_separator,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR: _evaluate_comprehensive_income_separator,
     TEST_PENSION_ROUTED: _evaluate_pension_routed,
+    TEST_PENSION_COMBINATION: _evaluate_pension_combination,
     TEST_CASH_FLOW_SEPARATOR: _evaluate_cash_flow_separator,
     TEST_CREDIT_SEPARATOR: _evaluate_credit_separator,
     TEST_EQUITY_SEPARATOR: _evaluate_equity_separator,

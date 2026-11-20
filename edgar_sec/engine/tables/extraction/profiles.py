@@ -37,6 +37,7 @@ PROV_DECLARED_SPECS = "form-tests:declared_specs"
 PROV_DERIVATIVES_EVIDENCE = "form-tests:derivatives_evidence"
 PROV_PENSION_ANCHOR = "form-tests:pension_anchor"
 PROV_PENSION_ROUTED = "form-tests:pension_routed_separator"
+PROV_PENSION_COMBINATION = "form-tests:pension_combination_separator"
 PROV_STEP2_PRICING = "calibration:step2-v3-pricing"
 PROV_STEP3_PRICING = "calibration:step3-v3-pricing"
 PROV_CI_STEP6_PRICING = "calibration:ci-step6-population-pricing"
@@ -95,6 +96,7 @@ TEST_CORE_FORM = "core_form"
 TEST_BALANCE_SHEET_SEPARATOR = "balance_sheet_separator"
 TEST_COMPREHENSIVE_INCOME_SEPARATOR = "comprehensive_income_separator"
 TEST_PENSION_ROUTED = "pension_routed"
+TEST_PENSION_COMBINATION = "pension_combination"
 TEST_CASH_FLOW_SEPARATOR = "cash_flow_separator"
 TEST_CREDIT_SEPARATOR = "credit_separator"
 TEST_EQUITY_SEPARATOR = "equity_separator"
@@ -130,6 +132,7 @@ FORM_TESTS = (
     TEST_CORE_FORM,
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_PENSION_ROUTED,
+    TEST_PENSION_COMBINATION,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_EPS_DETECTOR,
@@ -401,7 +404,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.347, 0.778, 0.525, 0.909),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_PENSION_ROUTED),
+        form_tests=(
+            TEST_COMPOSITION_TWIN,
+            TEST_PENSION_ROUTED,
+            TEST_PENSION_COMBINATION,
+        ),
     ),
     FamilyProfile(
         "ppe",
