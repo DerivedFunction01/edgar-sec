@@ -495,6 +495,381 @@ def test_loan_rollforward_is_clear():
     assert not _eval(text).fired
 
 
+# ---------------- broader D2: payment/option schedules ----------------
+
+
+def test_leg_payment_schedule_dividend_dates():
+    text = (
+        " | Dividend |  |  | \n"
+        " | Payment Date | Record Date | Amount | \n"
+        " | Dividend |  |  | \n"
+        "Dividends payable, January 1, 2008 | $ | 20 | $ | 21\n"
+        "Dividends declared |  | 100 |  | 105\n"
+        "Dividends paid |  | (90) |  | (95)"
+    )
+    assert _eval_eps(text).legs == ("form:supplemental-schedule",)
+
+
+def test_leg_payment_schedule_distribution_amount():
+    text = (
+        " |  | Three Months Ended |  |  |  | Six Months Ended |  |  |  | \n"
+        " |  | June 30, |  |  |  | June 30, |  |  |  | \n"
+        " | Dividend Payments on Common Stock | 2022 |  | 2021 |  | 2022 |  | 2021 |  | \n"
+        " | Per Share | $ | 0.54 | $ | 0.51 | $ | 1.08 | $ | 1.02 | \n"
+        " | In Millions | $ | 270 | $ | 258 | $ | 541 | $ | 516 | "
+    )
+    assert _eval_eps(text).legs == ("form:supplemental-schedule",)
+
+
+def test_dividend_without_payment_headers_is_not_supplemental():
+    text = (
+        " | 2022 | 2021\n"
+        "Dividends declared | $ | 100 | $ | 90\n"
+        "Dividends paid |  | (80) |  | (70)"
+    )
+    assert not _eval_eps(text).fired
+
+
+def test_payment_schedule_does_not_refuse_related_party():
+    text = (
+        " | Dividend |  |  | \n"
+        " | Payment Date | Record Date | Amount | \n"
+        "Dividends payable | $ | 20 | $ | 21"
+    )
+    assert not _eval(text).fired
+
+
+def test_leg_option_schedule():
+    text = (
+        " | Years Ended December 31, |  |  |  |  | \n"
+        " | 2011 |  | 2010 |  | 2009 | \n"
+        "Number of options |  | 0 |  | 0 |  | 755,494\n"
+        "Ranges of option purchase prices | $ | 0 | $ | 0 | $ | 18.33-20.36"
+    )
+    assert _eval_eps(text).legs == ("form:supplemental-schedule",)
+
+
+def test_options_stub_without_count_or_price_is_not_supplemental():
+    text = (
+        " | 2011 | 2010\n"
+        "Stock options |  | 100 |  | 90\n"
+        "Total |  | 100 |  | 90"
+    )
+    assert not _eval_eps(text).fired
+
+
+# ---------------- broader D2: condensed summaries ----------------
+
+
+def test_leg_condensed_summary_statutory_capital():
+    text = (
+        " | 2007 |  | 2006 | \n"
+        " |  |  |  | \n"
+        " | (In millions) |  |  | \n"
+        "Combined statutory capital and surplus: |  |  |  | \n"
+        "Life insurance operations | $ | 29,416 |  | $ | 28,189\n"
+        "Property insurance operations |  | 5,692 |  |  | 5,480\n"
+        "Total combined statutory capital and surplus | $ | 35,108 |  | $ | 33,669"
+    )
+    assert _eval_eps(text).legs == ("form:statement-summary",)
+
+
+def test_leg_condensed_summary_continuing_operations():
+    text = (
+        " | 2007 |  | 2006 | \n"
+        " | (In millions, except per share data) |  |  | \n"
+        " | Earnings per share: |  |  | \n"
+        "Continuing operations: |  |  |  | \n"
+        "Utility and Corporate Services |  | 304.8 |  |  | 305.6\n"
+        "Non-regulated and parent |  | 20.1 |  |  | 26.5\n"
+        "Income from continuing operations |  | 324.9 |  |  | 332.1\n"
+        "Loss from discontinued operations |  | (5.1) |  |  | 17.5\n"
+        "Net income | $ | 319.8 |  | $ | 349.6"
+    )
+    assert _eval_eps(text).legs == ("form:statement-summary",)
+
+
+def test_condensed_summary_with_own_frame_is_clear():
+    text = (
+        " | 2007 |  | 2006 | \n"
+        " | (In thousands, except per share data) |  |  | \n"
+        "Net (loss) income: |  |  |  |  |  |  | \n"
+        "Net (loss) income from continuing operations | $ | (144,680) |  | $ | 374,300\n"
+        "Net income from discontinued operations, net of tax |  | 3,821 |  |  | 4,715\n"
+        "Net (loss) income | $ | (139,502) |  | $ | 379,015\n"
+        "Weighted-average shares: |  |  |  |  |  |  | \n"
+        "Weighted-average common shares outstanding |  | 237,707 |  |  | 244,421"
+    )
+    assert not _eval_eps(text).fired
+
+
+def test_condensed_summary_long_table_is_clear():
+    text = (
+        " | 2010 | 2009\n"
+        "Income from continuing operations | $ | 100 | $ | 90\n"
+        "Loss from discontinued operations |  | (5) |  | (4)\n"
+        "Net income |  | 95 |  | 86\n"
+        "Other income |  | 10 |  | 9\n"
+        "Other expense |  | (2) |  | (1)\n"
+        "Gain on sale |  | 3 |  | 2\n"
+        "Tax expense |  | (1) |  | (1)\n"
+        "Total |  | 105 |  | 95"
+    )
+    assert not _eval_eps(text).fired
+
+
+# ---------------- broader D2: percentage schedules ----------------
+
+
+def test_leg_percentage_schedule():
+    text = (
+        " | Shares Beneficially Owned |  |  | \n"
+        "Name of Beneficial Owner | Number |  | Percentage | \n"
+        "Directors and Executive Officers |  |  |  |  | \n"
+        "Jeffrey Crowe (1) |  | 12,705,505 |  | 17.2\n"
+        "Daniel Ciporin (2) |  | 12,512,798 |  | 16.9\n"
+        "Rebecca Lynn (3) |  | 7,122,876 |  | 9.7\n"
+        "All executive officers and directors as a group |  | 43,049,419 |  | 56.8"
+    )
+    assert _eval_eps(text).legs == ("form:percentage-rows",)
+
+
+def test_percentage_schedule_without_header_is_clear():
+    text = (
+        " | Shares Beneficially Owned |  |  | \n"
+        "Name of Beneficial Owner | Number |  | Amount | \n"
+        "Jeffrey Crowe (1) |  | 12,705,505 |  | 17.2\n"
+        "Daniel Ciporin (2) |  | 12,512,798 |  | 16.9"
+    )
+    assert not _eval_eps(text).fired
+
+
+# ---------------- broader D2: generalized composition ----------------
+
+
+def test_leg_generalized_composition_share_equivalents():
+    text = (
+        " | As of December 31, | \n"
+        " | 2025 | 2024\n"
+        "Anti-dilutive common stock equivalents: |  | \n"
+        "October 2024 Common Warrants | 2,398,414 | 2,398,414\n"
+        "March 2025 Common Warrants | 8,316,882 | 0\n"
+        "Stock options outstanding | 2,429,064 | 1,160,251\n"
+        "Unvested RSAs | 0 | 40,137\n"
+        "Unvested RSUs | 257,400 | 0\n"
+        "Total anti-dilutive common stock equivalents | 16,478,681 | 3,598,802"
+    )
+    assert _eval_eps(text).legs == ("form:composition",)
+
+
+def test_leg_generalized_composition_carrying_value():
+    text = (
+        " | As of |  |  |  |  | \n"
+        " | July 31, 2016 |  |  | January 31, 2016 |  | \n"
+        "Liability component : |  |  |  |  |  | \n"
+        "Principal (1) | $ | 1,150,000 |  | $ | 1,150,000 | \n"
+        "Less: debt discount, net (2) | (42,526) |  |  | (54,941) |  | \n"
+        "Less: debt issuance cost (3) | (5,324) |  |  | (6,962) |  | \n"
+        "Net carrying amount | $ | 1,102,150 |  | $ | 1,088,097 | "
+    )
+    assert _eval_int(text).legs == ("form:composition",)
+
+
+def test_leg_generalized_composition_goodwill_segments():
+    text = (
+        " | March 31, |  | June 30, | \n"
+        " | 2021 |  | 2020 | \n"
+        " |  |  |  | \n"
+        "Goodwill - Original Sprout | $ | 416,817 | $ | 416,817\n"
+        "Goodwill - Gourmet Foods |  | 275,311 |  | 147,628\n"
+        "Goodwill - Brigadier |  | 351,345 |  | 351,345\n"
+        "Total | $ | 1,043,473 | $ | 915,790"
+    )
+    assert _eval_int(text).legs == ("form:composition",)
+
+
+def test_leg_generalized_composition_geography():
+    text = (
+        " | October 31, |  | January 31, |  | October 31, | \n"
+        " | 2020 |  | 2020 |  | 2019 | \n"
+        "United States | $ | 15,884 | $ | 18,852 | $ | 19,613\n"
+        "International |  | 8,118 |  | 10,386 |  | 9,662\n"
+        "Consolidated total | $ | 24,002 | $ | 29,238 | $ | 29,275"
+    )
+    assert _eval_int(text).legs == ("form:composition",)
+
+
+def test_generalized_composition_with_own_frame_is_clear():
+    text = (
+        " | For the Three Months Ended September 30, |  |  |  | For the Nine Months Ended September 30, |  |  |  | \n"
+        " | 2019 |  | 2018 |  | 2019 |  | 2018 | \n"
+        "Numerator (basic and diluted): |  |  |  |  |  |  |  | \n"
+        "Net income | $ | 391,293 | $ | 366,151 | $ | 1,066,126 | $ | 1,024,130\n"
+        "Denominator: |  |  |  |  |  |  |  | \n"
+        "Weighted-average common shares outstanding - basic | 76,172 |  | 80,593 |  | 77,415 |  | 81,939\n"
+        "Effect of stock options (1) | 797 |  | 817 |  | 805 |  | 902\n"
+        "Stock options (1) | 207 |  | 650 |  | 214 |  | 232"
+    )
+    assert not _eval_eps(text).fired
+
+
+def test_generalized_composition_add_deduct_walk_is_clear():
+    text = (
+        " | 2005 |  |  | 2004 |  | \n"
+        " |  |  |  |  |  | \n"
+        "Net income as reported | $ | 126,658 |  | $ | 90,100 | \n"
+        "Add: stock-based employee compensation expense included in reported net income, net of taxes |  | 6,299 |  |  | 4,071 | \n"
+        "Deduct: total stock-based employee compensation expense determined under fair value based methods for all awards, net of taxes |  | (9,282) |  |  | (8,289) | \n"
+        "Net income - pro forma | $ | 123,675 |  | $ | 85,882 | "
+    )
+    assert not _eval_eps(text).fired
+
+
+def test_generalized_composition_single_component_is_clear():
+    text = (
+        " | Net |  |  |  |  |  | \n"
+        " | Earnings |  |  | Weighted |  |  | \n"
+        " | Applicable to |  |  | Average |  | Net | \n"
+        " | Common |  |  | Common Shares |  | Earnings | \n"
+        " | Stockholders |  |  | Outstanding |  | per Share | \n"
+        "Earnings from continuing operations | $ | 574 |  |  |  |  | \n"
+        "Basic earnings per share |  | 572 |  |  | 444 | $ | 1.29\n"
+        "Effect of outstanding stock options |  | 0 |  |  | 6 |  | \n"
+        "Diluted earnings per share | $ | 572 |  |  | 450 | $ | 1.27"
+    )
+    assert not _eval_eps(text).fired
+
+
+def test_goodwill_walk_narrow_does_not_refuse_related_party():
+    text = (
+        "Balance as of December 31, 2013 |  | 196,395 | \n"
+        "Goodwill acquired through the acquisition of Westchester Imaging |  | 231 | \n"
+        "Balance as of December 31, 2015 | $ | 239,408 | "
+    )
+    assert not _eval(text).fired
+
+
+# ---------------- broader D2: goodwill walks + non-GAAP bridge ----------------
+
+
+def test_leg_goodwill_walk_acquisition():
+    text = (
+        "Balance as of December 31, 2013 |  | 196,395 | \n"
+        "Goodwill acquired through the acquisition of Westchester Imaging |  | 231 | \n"
+        "Goodwill acquired through the acquisition of Garden State Radiology |  | 50 | \n"
+        "Goodwill disposed through the sale of New Jersey Imaging Partners |  | (18,833) | \n"
+        "Balance as of December 31, 2015 | $ | 239,408 | "
+    )
+    assert _eval_int(text).legs == ("form:movement-detail",)
+
+
+def test_leg_goodwill_walk_franchisee_sale():
+    text = (
+        " | Jack in the Box |  | Del Taco |  | Total | \n"
+        "Balance at October 2, 2022 | $ | 136,099 | $ | 230,722 | $ | 366,821\n"
+        "Sale of Del Taco company-operated restaurants to franchisees | 0 |  | (7,238) |  | (7,238) | \n"
+        "Sale of Jack in the Box company-operated restaurants to franchisees | (72) |  | 0 |  | (72) | \n"
+        "Reclassified to assets held for sale | 0 |  | (5,900) |  | (5,900) | \n"
+        "Balance at April 16, 2023 | $ | 136,027 | $ | 217,584 | $ | 353,611"
+    )
+    assert _eval_int(text).legs == ("form:movement-detail",)
+
+
+def test_goodwill_walk_bare_acquired_is_not_movement():
+    text = (
+        " | 2019 |  | 2018 | \n"
+        "Balance, January 1 | $ | 445,355 | $ | 445,355\n"
+        "Goodwill acquired | 97,844 |  | 0 | \n"
+        "Measurement period adjustment | 719 |  | $ | 0\n"
+        "Balance, December 31 | $ | 543,918 | $ | 445,355"
+    )
+    assert not _eval_int(text).fired
+
+
+def test_leg_nongaap_bridge():
+    text = (
+        " | For the year ended | \n"
+        " | December 31, 2019 | \n"
+        "EPS (GAAP) | $ | 3.00\n"
+        "Plus/(less): Pre-tax adjustments: Securities gains, unrealized gains on equity investments, corporate development and restructuring expense, recovery of fraud loss | 0.91 | \n"
+        "(Plus) less: Tax impact of pre-tax adjustments | (0.17) | \n"
+        "Core EPS (non-GAAP) | $ | 3.74"
+    )
+    assert _eval_eps(text).legs == ("form:movement-detail",)
+
+
+def test_nongaap_bridge_without_core_eps_is_clear():
+    text = (
+        " | For the year ended | \n"
+        " | December 31, 2019 | \n"
+        "EPS (GAAP) | $ | 3.00\n"
+        "Plus/(less): Pre-tax adjustments | 0.91 | \n"
+        "(Plus) less: Tax impact of pre-tax adjustments | (0.17) | \n"
+        "Adjusted EPS | $ | 3.74"
+    )
+    assert not _eval_eps(text).fired
+
+
+# ---------------- broader D2: wrapped fair value + single-row fragment ----------------
+
+
+def test_leg_fair_value_wrapped():
+    text = (
+        " | At September 30, 2019 |  |  |  |  | At December 31, 2018 |  |  |  | \n"
+        " | Carrying |  | Fair |  |  | Carrying |  | Fair |  | \n"
+        " | Value |  | Value |  |  | Value |  | Value |  | \n"
+        "Mortgage loans receivable | $ | 253,186 | $ | 310,842 |  | $ | 242,939 | $ | 295,492\n"
+        "Bank borrowings |  | 165,400 |  | 165,400 |  |  | 112,000 |  | 112,000\n"
+        "Senior unsecured notes, net of debt issue costs |  | 518,469 |  | 537,739 |  |  | 533,029 |  | 508,613"
+    )
+    assert _eval_eps(text).legs == ("form:shape:fair_value",)
+
+
+def test_fair_value_wrapped_without_carrying_is_clear():
+    text = (
+        " | At September 30, 2019 |  |  |  | \n"
+        " | Fair |  |  |  | \n"
+        " | Value |  |  |  | \n"
+        "Mortgage loans receivable | $ | 253,186 | $ | 310,842\n"
+        "Bank borrowings |  | 165,400 |  | 165,400"
+    )
+    assert not _eval_eps(text).fired
+
+
+def test_leg_single_data_row_fragment_share_awards():
+    text = (
+        "(in millions) | Fiscal 2017 | Fiscal 2016 | Fiscal 2015\n"
+        "Share awards | 0.1 | 0.1 | 0"
+    )
+    assert _eval_eps(text).legs == ("form:fragment",)
+
+
+def test_leg_single_data_row_fragment_goodwill():
+    text = (
+        " | December 31, |  |  | \n"
+        " | 2023 |  | 2022 | \n"
+        "Goodwill | $ | 0 | $ | 49,786"
+    )
+    assert _eval_int(text).legs == ("form:fragment",)
+
+
+def test_single_data_row_amortization_is_not_fragment():
+    text = (
+        " | December 31, |  |  | \n"
+        " | 2023 |  | 2022 | \n"
+        "Amortization | $ | 100 | $ | 90"
+    )
+    assert not _eval_int(text).fired
+
+
+def test_single_data_row_with_own_frame_is_not_fragment():
+    text = (
+        " | 2023 | 2022\n"
+        "Weighted average shares outstanding | 100,000 | 90,000"
+    )
+    assert not _eval_eps(text).fired
+
+
 # ---------------- stage adapter + dispatch ----------------
 
 

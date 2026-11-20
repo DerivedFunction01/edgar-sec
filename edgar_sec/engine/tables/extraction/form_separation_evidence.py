@@ -55,6 +55,70 @@ _INVENTORY_COMPONENT_TERMS = (
 )
 _QUARTER_ORDINALS = ("1st", "2nd", "3rd", "4th")
 _LEVEL_RE = re.compile(r"^level (i|ii|iii)\b")
+_EPS_OWN_FRAME_TERMS = (
+    "numerator",
+    "denominator",
+    "weighted average",
+    "weighted-average",
+    "average shares",
+    "average common shares",
+    "equivalent shares",
+)
+_INTANGIBLE_CLASS_NAMES = (
+    "goodwill",
+    "patents",
+    "trademarks",
+    "trade names",
+    "customer relationships",
+    "developed technology",
+    "licenses",
+    "copyrights",
+    "intangible assets",
+    "other intangible assets",
+)
+_COMPOSITION_TERMS = (
+    "warrant",
+    "stock option",
+    "options",
+    "rsa",
+    "rsu",
+    "conversion of",
+    "convertible",
+    "anti-dilutive",
+    "share award",
+    "unit option",
+    "restricted stock",
+    "accrued",
+    "accounts receivable",
+    "allowance for doubtful",
+    "principal",
+    "unamortized",
+    "debt discount",
+    "debt issuance",
+    "net carrying",
+    "united states",
+    "international",
+    "cost of sales",
+    "operating expenses",
+    "restructuring",
+)
+_GOODWILL_MOVEMENT_WORDS = (
+    "acquired",
+    "disposed",
+    "adjustment",
+    "measurement",
+    "translation",
+    "reclassified",
+    "related",
+    "sale",
+    "impairment",
+)
+_PAYMENT_SCHEDULE_TERMS = (
+    "payment date",
+    "record date",
+    "distribution amount",
+    "dividend payments",
+)
 
 
 class FormSeparationText:
@@ -273,6 +337,155 @@ def _is_fragment(text: FormSeparationText) -> bool:
     return bool(stubs) and all(len(stub) >= 80 for stub in stubs)
 
 
+def _is_eps_own_frame(subjects: tuple[str, ...]) -> bool:
+    """An EPS computation's own frame: numerator/denominator or share base."""
+    return any(
+        term in subject for subject in subjects for term in _EPS_OWN_FRAME_TERMS
+    )
+
+
+def _is_intangibles_own_frame(subjects: tuple[str, ...]) -> bool:
+    """An intangibles table's own frame: a bare class stub."""
+    return any(subject in _INTANGIBLE_CLASS_NAMES for subject in subjects)
+
+
+def _is_own_frame(subjects: tuple[str, ...], family: str) -> bool:
+    """The family's own-frame signal, guarding the broad branches."""
+    if family == "eps_reconciliation":
+        return _is_eps_own_frame(subjects)
+    if family == "intangibles":
+        return _is_intangibles_own_frame(subjects)
+    return False
+
+
+def _has_add_deduct_walk(subjects: tuple[str, ...]) -> bool:
+    """An Add:/Deduct: walk: a stub whose first token is add or deduct."""
+    return any(
+        subject.split(" ", 1)[0] in ("add", "deduct")
+        for subject in subjects
+        if subject
+    )
+
+
+def _data_subjects(
+    text: FormSeparationText, subjects: tuple[str, ...]
+) -> list[str]:
+    """The subjects of rows with a non-empty subject and a numeric cell."""
+    return [
+        subject
+        for row, subject in zip(text.rows, subjects)
+        if subject and any(STRICT_NUMERIC_CELL_RE.match(cell) for cell in row)
+    ]
+
+
+def _is_payment_schedule(text: FormSeparationText) -> bool:
+    """A dividend/distribution payment schedule: date headers."""
+    header_text = " ".join(text.headers).lower()
+    return any(term in header_text for term in _PAYMENT_SCHEDULE_TERMS)
+
+
+def _is_option_schedule(subjects: tuple[str, ...]) -> bool:
+    """An option schedule: an option-count or purchase-price stub."""
+    return any(
+        "number of options" in subject or "option purchase price" in subject
+        for subject in subjects
+    )
+
+
+def _is_condensed_summary(
+    text: FormSeparationText, subjects: tuple[str, ...], family: str
+) -> bool:
+    """A condensed note-level summary: short, own-frame absent."""
+    if _is_own_frame(subjects, family):
+        return False
+    if len(_data_subjects(text, subjects)) > 6:
+        return False
+    return any(
+        "income from continuing operations" in subject
+        or "statutory capital" in subject
+        for subject in subjects
+    )
+
+
+def _is_percentage_schedule(text: FormSeparationText) -> bool:
+    """A percentage schedule: a Percentage header over numeric rows."""
+    header_text = " ".join(text.headers).lower()
+    if "percentage" not in header_text:
+        return False
+    numeric_rows = sum(
+        1
+        for row in text.rows
+        if any(STRICT_NUMERIC_CELL_RE.match(cell) for cell in row)
+    )
+    return numeric_rows >= 2
+
+
+def _is_goodwill_segment(subject: str) -> bool:
+    """A goodwill-by-segment stub: qualified, no movement word."""
+    if not subject.startswith("goodwill") or len(subject.split()) < 2:
+        return False
+    return not any(word in subject for word in _GOODWILL_MOVEMENT_WORDS)
+
+
+def _is_generalized_composition(
+    subjects: tuple[str, ...], family: str
+) -> bool:
+    """A component composition: >=2 component stubs, own-frame absent."""
+    if _is_own_frame(subjects, family):
+        return False
+    if _has_add_deduct_walk(subjects):
+        return False
+    matched = {
+        subject
+        for subject in subjects
+        if any(term in subject for term in _COMPOSITION_TERMS)
+        or _is_goodwill_segment(subject)
+    }
+    return len(matched) >= 2
+
+
+def _is_goodwill_walk_narrow(subjects: tuple[str, ...]) -> bool:
+    """A separable goodwill walk: named acquisition/disposal or held-for-sale."""
+    if any(
+        "goodwill acquired through the acquisition of" in subject
+        or "goodwill disposed through the sale of" in subject
+        for subject in subjects
+    ):
+        return True
+    if any(
+        "reclassified to assets held for sale" in subject for subject in subjects
+    ):
+        return True
+    return any(
+        subject.startswith("sale of") and "to franchisees" in subject
+        for subject in subjects
+    )
+
+
+def _is_nongaap_bridge(subjects: tuple[str, ...]) -> bool:
+    """A non-GAAP core bridge: a core EPS stub."""
+    return any("core eps" in subject for subject in subjects)
+
+
+def _is_fair_value_wrapped(text: FormSeparationText) -> bool:
+    """A wrapped fair-value header: carrying/fair/value tokens."""
+    tokens = set(" ".join(text.headers).lower().split())
+    return {"carrying", "fair", "value"} <= tokens
+
+
+def _is_single_data_row_fragment(
+    text: FormSeparationText, subjects: tuple[str, ...]
+) -> bool:
+    """A single-data-row fragment: one data row, no own-frame stub."""
+    data = _data_subjects(text, subjects)
+    if len(data) != 1:
+        return False
+    subject = data[0]
+    if "amortization" in subject:
+        return False
+    return not any(term in subject for term in _EPS_OWN_FRAME_TERMS)
+
+
 def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str | None:
     """The determined form token for one candidate, or None.
 
@@ -280,6 +493,9 @@ def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str |
     most-specific-first order; an unrecognized form abstains.
     """
     subjects = _stub_subjects(text)
+    family = spec.family
+    is_eps = family == "eps_reconciliation"
+    is_int = family == "intangibles"
     if _is_furniture(text):
         return "furniture"
     if _is_eps_reconciliation(subjects):
@@ -290,21 +506,35 @@ def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str |
         return "gold:inventory"
     if _is_supplemental_schedule(text, subjects):
         return "supplemental-schedule"
+    if is_eps and _is_payment_schedule(text):
+        return "supplemental-schedule"
+    if is_eps and _is_option_schedule(subjects):
+        return "supplemental-schedule"
     if _is_lease_maturity(text, subjects):
         return "gold:lease_maturity"
     if _is_debt_maturity(text, subjects):
         return "gold:debt_maturity"
     if _is_movement_detail(subjects):
         return "movement-detail"
+    if is_int and _is_goodwill_walk_narrow(subjects):
+        return "movement-detail"
+    if is_eps and _is_nongaap_bridge(subjects):
+        return "movement-detail"
     if _is_restatement_recast(subjects):
         return "restatement-recast"
     if _is_statement_summary(subjects):
         return "statement-summary"
+    if is_eps and _is_condensed_summary(text, subjects, family):
+        return "statement-summary"
     if _is_percentage_rows(text):
+        return "percentage-rows"
+    if is_eps and _is_percentage_schedule(text):
         return "percentage-rows"
     if _is_segment_detail(text, subjects):
         return "segment-detail"
     if _is_composition(subjects):
+        return "composition"
+    if (is_eps or is_int) and _is_generalized_composition(subjects, family):
         return "composition"
     if _is_summary_columns(text):
         return "summary-columns"
@@ -312,6 +542,10 @@ def _determine_form(text: FormSeparationText, spec: FormSeparationSpec) -> str |
         return "ladder-detail"
     if _is_fair_value(text, subjects):
         return "shape:fair_value"
+    if is_eps and _is_fair_value_wrapped(text):
+        return "shape:fair_value"
+    if (is_eps or is_int) and _is_single_data_row_fragment(text, subjects):
+        return "fragment"
     if _is_fragment(text):
         return "fragment"
     return None
