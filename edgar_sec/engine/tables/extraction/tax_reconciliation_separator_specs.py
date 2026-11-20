@@ -32,8 +32,7 @@ MOVE_WORDS = (
 class TaxReconciliationSeparatorSpec:
     """One family's separator: the priced conjunction's row bound.
     The refusal fires only when every leg holds: the rate core is
-    absent, no movement line carries a nonzero value, and the grid
-    has at most max_rows rows."""
+    absent, movement is zero, and the grid has at most max_rows rows."""
 
     family: str
     max_rows: int

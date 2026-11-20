@@ -38,6 +38,7 @@ from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_specs impor
     TAX_RECONCILIATION_SEPARATOR_SPECS,
 )
 from edgar_sec.engine.tables.extraction.typed_rows import structure_table
+from edgar_sec.engine.forms.common.numbers import SCHEMA_PERCENT_RE as _HOME_PCT_RE
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE as _HOME_WS_RE
 
 SPEC = TAX_RECONCILIATION_SEPARATOR_SPECS["tax_reconciliation"]
@@ -92,6 +93,7 @@ def test_packet_and_rows_surfaces_agree():
 
 def test_recognizer_homes():
     assert _tse.RE_WHITESPACE is _HOME_WS_RE
+    assert _tse.SCHEMA_PERCENT_RE is _HOME_PCT_RE
     assert _tse.fired_separator_outcome is _CORE_FORM_OUTCOME
 
 
