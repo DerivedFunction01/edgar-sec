@@ -204,9 +204,7 @@ def _evaluate_lease_separator(table: TypedTable, spec: FormTestSpec) -> FormTest
     )
 
 
-def _evaluate_form_separation(
-    table: TypedTable, spec: FormTestSpec
-) -> FormTestOutcome:
+def _evaluate_form_separation(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_form_separation(table, spec)
     return FormTestOutcome(
         spec.family,

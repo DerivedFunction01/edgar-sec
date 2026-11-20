@@ -41,9 +41,7 @@ SPEC = FORM_SEPARATION_SPECS["related_party"]
 
 
 def _eval(table_text: str, caption_stack=()):
-    return evaluate_form_separation(
-        FormSeparationText(table_text, caption_stack), SPEC
-    )
+    return evaluate_form_separation(FormSeparationText(table_text, caption_stack), SPEC)
 
 
 def test_kind_is_declared_as_form_test_data():
@@ -259,9 +257,7 @@ def test_stage_dispatch_stamps_clear_outcome_on_related_party_grid():
 
 # ---------------- competition gate ----------------
 
-_SCORE = {
-    "related_party": FamilyScore("related_party", 11.0, {"signature": 11.0}, ())
-}
+_SCORE = {"related_party": FamilyScore("related_party", 11.0, {"signature": 11.0}, ())}
 
 
 def _outcome(passed: bool, evaluable: bool = True) -> FormTestOutcome:

@@ -63,9 +63,7 @@ PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
 PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
 PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
 PROV_LEASE_SEPARATOR = "calibration:lease-separator-pricing"
-PROV_RELATED_PARTY_FORM_SEPARATION = (
-    "calibration:related-party-form-separation-pricing"
-)
+PROV_RELATED_PARTY_FORM_SEPARATION = "calibration:related-party-form-separation-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
 
 # Form-test declarations (R1): names only, as registry data.

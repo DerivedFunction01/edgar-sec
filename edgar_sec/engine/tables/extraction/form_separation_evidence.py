@@ -56,9 +56,7 @@ class FormSeparationText:
         self.rows = [tuple(c.strip() for c in ln.split("|")) for ln in lines]
         self.raw_stubs = tuple(row[0] for row in self.rows)
         self.stubs = tuple(stub for stub in self.raw_stubs if stub)
-        self.headers = tuple(
-            cell for row in self.rows[:_HEADER_LINES] for cell in row
-        )
+        self.headers = tuple(cell for row in self.rows[:_HEADER_LINES] for cell in row)
         self.caption_stack = list(caption_stack or [])
         self.stub_keys = frozenset(
             key for key in (stub_key(stub) for stub in self.stubs) if key
@@ -93,10 +91,7 @@ def _stub_subjects(text: FormSeparationText) -> tuple[str, ...]:
 def _numeric_cells(text: FormSeparationText) -> list[str]:
     """The grid's strict-numeric data cells."""
     return [
-        cell
-        for row in text.rows
-        for cell in row
-        if STRICT_NUMERIC_CELL_RE.match(cell)
+        cell for row in text.rows for cell in row if STRICT_NUMERIC_CELL_RE.match(cell)
     ]
 
 
@@ -125,16 +120,12 @@ def _is_supplemental_schedule(
         return True
     if len(text.rows) > 6:
         return False
-    return any(
-        _FIRM_RE.search(cell) for row in text.rows for cell in row if cell
-    )
+    return any(_FIRM_RE.search(cell) for row in text.rows for cell in row if cell)
 
 
 def _is_lease_maturity(text: FormSeparationText, subjects: tuple[str, ...]) -> bool:
     """The maturity ladder: bare-year stubs ending in Thereafter."""
-    years = sum(
-        1 for stub in text.raw_stubs if _BARE_YEAR_RE.match(stub.strip())
-    )
+    years = sum(1 for stub in text.raw_stubs if _BARE_YEAR_RE.match(stub.strip()))
     return years >= 3 and "thereafter" in subjects
 
 
@@ -152,10 +143,7 @@ def _is_statement_summary(subjects: tuple[str, ...]) -> bool:
 def _is_percentage_rows(text: FormSeparationText) -> bool:
     """A mix table in percents: a total row summing to 100."""
     percent_cells = sum(
-        1
-        for row in text.rows
-        for cell in row
-        if cell == "%" or cell.endswith("%")
+        1 for row in text.rows for cell in row if cell == "%" or cell.endswith("%")
     )
     if percent_cells < 2:
         return False
@@ -195,8 +183,7 @@ def _is_composition(subjects: tuple[str, ...]) -> bool:
     if len(status) < 2:
         return False
     return any(
-        subject.startswith("total")
-        and ("loans" in subject or "receivables" in subject)
+        subject.startswith("total") and ("loans" in subject or "receivables" in subject)
         for subject in subjects
     )
 
