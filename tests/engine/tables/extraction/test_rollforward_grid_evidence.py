@@ -41,7 +41,7 @@ def test_bookend_from_beginning_and_end_anchors():
 
 
 def test_no_bookend_on_a_plain_year_matrix():
-    text = "Accrual | 2019 | 2020 | 2021\nLease termination | 10 | 20 | 30"
+    text = "Activity | 2019 | 2020 | 2021\nLease termination | 10 | 20 | 30"
     assert not _features(text).bookend_f2
 
 
@@ -54,14 +54,14 @@ def test_balances_unchanged_needs_two_equal_walks():
     assert not _features(single).balances_unchanged
 
 
-def test_movement_nonzero_counts_only_movement_lines():
+def test_movement_nonzero_counts_movement_word_lines():
     text = (
         "Balance, beginning of period | 100\n"
         "Charges | 0\n"
         "Payments | 5\n"
         "Balance, end of period | 105"
     )
-    assert _features(text).movement_nonzero == 1
+    assert _features(text).movement_nonzero == 3
 
 
 def test_pct_density_over_numeric_cells():

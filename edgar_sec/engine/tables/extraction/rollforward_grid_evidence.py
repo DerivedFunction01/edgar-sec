@@ -11,23 +11,22 @@ from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 
 _YEAR_RE = re.compile(rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b")
 _NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?%?$")
-_MONTHS = (
-    "january", "february", "march", "april", "may", "june", "july",
-    "august", "september", "october", "november", "december",
-    "jan", "feb", "mar", "apr", "jun", "jul", "aug", "sep", "sept",
-    "oct", "nov", "dec",
+_RATE_RE = re.compile(r"\brate\b")
+# Word lists ported verbatim from the priced g1 instrument.
+_ANCHOR_WORDS = (
+    "balance", "accrual", "accrued", "liability", "liabilities",
+    "reserve", "obligation", "obligations",
 )
-_ANCHOR_WORDS = ("balance", "beginning", "ending", "end of")
 _MOVE_WORDS = (
-    "accru", "charg", "settl", "revers", "adjust", "payment", "cash paid",
-    "additions", "deductions", "incurr", "provisions", "expense", "write",
-    "utiliz", "reclass", "amortiz", "deprecia", "impair", "restructur",
-    "severance", "exit cost", "lease termination", "facility clos",
+    "beginning", "ending", "granted", "exercised", "forfeited",
+    "expired", "outstanding", "provision", "charge", "payment",
+    "paid", "adjustment", "addition", "settlement", "incurred",
+    "accrued", "deduction", "vested",
 )
 _INVENTORY_COMPONENTS = (
-    "raw material", "work in process", "work-in-process", "finished good",
-    "finished product", "merchandise", "inventories consist", "supplies",
-    "in transit", "goods in transit", "components",
+    "raw material", "work in process", "work-in-process",
+    "in process", "finished good", "finished product", "fuel",
+    "merchandise", "parts", "supplies", "product", "materials",
 )
 
 
@@ -81,10 +80,11 @@ def _cell_value(cell: str) -> float | None:
     token = cell.strip()
     if not token or token in {"—", "-", "*", "–"}:
         return None
-    if not _NUM_RE.match(token):
+    core = token.rstrip("%").strip()
+    if not _NUM_RE.match(core):
         return None
-    negative = token.startswith("(")
-    token = token.strip("()$% ").replace(",", "")
+    negative = core.startswith("(") and core.endswith(")")
+    token = core.strip("()$").replace(",", "")
     try:
         value = float(token)
     except ValueError:
@@ -128,13 +128,13 @@ def grid_features(text: RollforwardGridText) -> RollforwardGridFeatures:
         is_move = any(word in joined for word in _MOVE_WORDS)
         if any(word in joined for word in _ANCHOR_WORDS):
             keys = set(line_years)
-            for month in _MONTHS:
+            for month in (
+                "january", "february", "march", "april", "may", "june",
+                "july", "august", "september", "october", "november",
+                "december", "beginning", " end",
+            ):
                 if month in joined:
                     keys.add(month)
-            if "beginning" in joined:
-                keys.add("beginning")
-            if " end" in joined:
-                keys.add("end")
             anchor_lines.append((idx, keys))
             if "beginning" in joined:
                 anchor_begin = True
@@ -195,7 +195,7 @@ def grid_features(text: RollforwardGridText) -> RollforwardGridFeatures:
         bare_year_stubs=bare_year_stubs,
         name_year_stubs=name_year_stubs,
         bookend_f2=bookend_f2,
-        rate_header="%" in header_zone,
+        rate_header=bool(_RATE_RE.search(header_zone)),
         balances_unchanged=balances_unchanged,
         movement_nonzero=movement_nonzero,
         prose_cells=prose_cells,

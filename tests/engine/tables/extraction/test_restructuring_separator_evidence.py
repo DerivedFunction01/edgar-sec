@@ -68,17 +68,14 @@ def test_spec_carries_the_priced_pair():
 
 
 def test_packet_and_rows_surfaces_agree():
-    rows = (
-        ("Accrual", "2019", "2020", "2021"),
-        ("Lease termination", "10", "20", "30"),
-    )
+    rows = (("Payments", "2019", "2020", "2021"), ("Lease termination", "10", "20", "30"))
     via_rows = evaluate_restructuring_separator(
         RollforwardGridText.from_rows(rows), SPEC
     )
     via_packet = evaluate_restructuring_separator(
         RollforwardGridText.from_packet(
             {
-                "table_text": "Accrual | 2019 | 2020 | 2021\n"
+                "table_text": "Payments | 2019 | 2020 | 2021\n"
                 "Lease termination | 10 | 20 | 30"
             }
         ),
@@ -94,7 +91,7 @@ def test_recognizer_homes():
 
 # ---------------- the claim-local legs ----------------
 
-_MATRIX = "Accrual | 2019 | 2020 | 2021\nLease termination | 10 | 20 | 30"
+_MATRIX = "Payments | 2019 | 2020 | 2021\nLease termination | 10 | 20 | 30"
 
 
 def test_leg_nb_span_ge3_fires_on_bookend_free_span():
@@ -104,12 +101,12 @@ def test_leg_nb_span_ge3_fires_on_bookend_free_span():
 
 
 def test_leg_nb_span_ge3_fires_at_the_boundary():
-    verdict = _eval("Accrual | 2022 | 2023 | 2024\nCharges | 1 | 2 | 3")
+    verdict = _eval("Payments | 2022 | 2023 | 2024\nCharges | 1 | 2 | 3")
     assert verdict.legs == ("nb_span_ge3",)
 
 
 def test_leg_nb_span_clear_below_three_years():
-    verdict = _eval("Accrual | 2023 | 2024\nCharges | 1 | 2")
+    verdict = _eval("Payments | 2023 | 2024\nCharges | 1 | 2")
     assert not verdict.fired
 
 
@@ -124,10 +121,10 @@ def test_leg_nb_span_blocked_by_a_bookend():
 
 
 _ZERO_WALK = (
-    "Balance, beginning of period | 100\n"
+    "Balance, beginning of period | 0\n"
     "Charges | 0\n"
     "Payments | 0\n"
-    "Balance, end of period | 100"
+    "Balance, end of period | 0"
 )
 
 
@@ -143,7 +140,7 @@ def test_leg_zeroact_clear_with_nonzero_movement():
 
 
 def test_leg_zeroact_clear_when_balances_change():
-    verdict = _eval(_ZERO_WALK.replace("end of period | 100", "end of period | 90"))
+    verdict = _eval(_ZERO_WALK.replace("end of period | 0", "end of period | 90"))
     assert not verdict.fired
 
 
@@ -175,7 +172,7 @@ def _table(rows):
 
 
 def test_stage_adapter_over_full_grid():
-    table = _table((("Accrual", "2019", "2020", "2021"), ("Charges", "1", "2", "3")))
+    table = _table((("Payments", "2019", "2020", "2021"), ("Charges", "1", "2", "3")))
     spec = next(s for s in FORM_TEST_SPECS if s.test_id == "restructuring_separator")
     verdict = evaluate_form_test_restructuring_separator(table, spec)
     assert verdict.fired
@@ -183,7 +180,7 @@ def test_stage_adapter_over_full_grid():
 
 
 def test_stage_dispatch_stamps_separator_outcome():
-    table = _table((("Accrual", "2019", "2020", "2021"), ("Charges", "1", "2", "3")))
+    table = _table((("Payments", "2019", "2020", "2021"), ("Charges", "1", "2", "3")))
     outcomes = {o.test_id: o for o in evaluate_form_tests(table)}
     outcome = outcomes["restructuring_separator"]
     assert outcome.kind == TEST_RESTRUCTURING_SEPARATOR
