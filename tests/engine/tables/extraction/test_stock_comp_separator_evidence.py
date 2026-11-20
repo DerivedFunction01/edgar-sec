@@ -70,16 +70,21 @@ def test_kind_is_declared_as_form_test_data():
     assert TEST_STOCK_COMP_SEPARATOR in profile_for(FAMILY).form_tests
 
 
-def test_spec_carries_the_priced_pair():
+def test_spec_carries_the_priced_composition():
     legs = [(leg.leg_id, leg.kind, leg.scope) for leg in SPEC.legs]
     assert legs == [
         ("span_ge_5", "span", "claim-local"),
+        ("seat_bound", "seat_bound", "claim-local"),
+        ("warrant_vocab", "warrant", "claim-local"),
+        ("available_pool", "available", "claim-local"),
         ("assign_other", "assign_other", "set-level"),
     ]
     anchor = next(leg for leg in SPEC.legs if leg.kind == "assign_other")
     assert anchor.anchor_family == ANCHOR
     span = next(leg for leg in SPEC.legs if leg.kind == "span")
     assert span.limit == 5
+    seat_bound = next(leg for leg in SPEC.legs if leg.kind == "seat_bound")
+    assert seat_bound.limit == 3
 
 
 def test_packet_and_rows_surfaces_agree():
@@ -139,6 +144,71 @@ def test_empty_grid_is_unevaluable():
     verdict = _eval("")
     assert not verdict.fired
     assert not verdict.evaluable
+
+
+# ---------------- the C2 claim-local legs ----------------
+
+
+def test_seat_bound_fires_when_the_seat_reader_does_not_admit():
+    # Activity stubs without a granted row: the derived seat
+    # form does not admit, and no bookend exception holds.
+    table = _table(
+        [
+            ("Shares issued under the plan", "100", "200"),
+            ("Shares repurchased", "10", "20"),
+        ]
+    )
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert verdict.fired and verdict.legs == ("seat_bound",)
+
+
+def test_seat_bound_holds_under_the_bookend_exception():
+    # Balance bookends with three activity rows: Xb protects
+    # the claim even though the seat reader does not admit it.
+    table = _table(
+        [
+            ("Balance at December 31, 2023", "100"),
+            ("Issued", "10"),
+            ("Exercised", "(5)"),
+            ("Forfeited", "(2)"),
+            ("Balance at December 31, 2024", "103"),
+        ]
+    )
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert not verdict.fired and verdict.legs == ()
+
+
+def test_warrant_vocab_fires_on_an_admitted_geometry():
+    table = _table(
+        [
+            ("Warrants granted", "100", "5.00"),
+            ("Warrants exercised", "10", "5.00"),
+            ("Warrants forfeited", "2", "5.00"),
+        ]
+    )
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert verdict.fired and verdict.legs == ("warrant_vocab",)
+
+
+def test_available_pool_fires_on_an_admitted_geometry():
+    table = _table(
+        [
+            ("Available for issuance", "500"),
+            ("Granted", "100"),
+            ("Expired", "10"),
+            ("Forfeited", "5"),
+        ]
+    )
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert verdict.fired and verdict.legs == ("available_pool",)
+
+
+def test_c2_legs_stay_silent_on_a_grid_only_text():
+    # No typed table, no surfaces: warrant vocabulary in the
+    # grid alone never fires the claim-local C2 legs.
+    text = StockCompSeparatorText("Warrants granted | 100\nWarrants exercised | 10")
+    verdict = evaluate_stock_comp_separator(text, SPEC)
+    assert not verdict.fired
 
 
 # ---------------- stage adapter + dispatch ----------------
