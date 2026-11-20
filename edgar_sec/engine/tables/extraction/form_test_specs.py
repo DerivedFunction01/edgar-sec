@@ -39,6 +39,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     PROV_PENSION_ROUTED,
     PROV_RELATED_PARTY_FORM_SEPARATION,
     PROV_RESTRUCTURING_PRICING,
+    PROV_RESTRUCTURING_SEPARATOR,
     PROV_R18_SEAT_PRICING,
     PROV_S4_GOODWILL_BASE,
     PROV_RULING18_PRICING,
@@ -76,6 +77,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_PPE_EVIDENCE,
     TEST_PRIMARY_STATEMENT_SEAT,
     TEST_RESTRUCTURING_EVIDENCE,
+    TEST_RESTRUCTURING_SEPARATOR,
     TEST_ROW_BOUND,
     TEST_SIGNATURE_ABSENCE,
     TEST_TAX_EVIDENCE,
@@ -118,6 +120,10 @@ from edgar_sec.engine.tables.extraction.equity_separator_specs import (
 from edgar_sec.engine.tables.extraction.stock_comp_separator_specs import (
     STOCK_COMP_SEPARATOR_SPECS,
     StockCompSeparatorSpec,
+)
+from edgar_sec.engine.tables.extraction.restructuring_separator_specs import (
+    RESTRUCTURING_SEPARATOR_SPECS,
+    RestructuringSeparatorSpec,
 )
 from edgar_sec.engine.tables.extraction.tax_reconciliation_separator_specs import (
     TAX_RECONCILIATION_SEPARATOR_SPECS,
@@ -239,6 +245,7 @@ __all__ = (
     "PROV_FAMILY_SUPPORT",
     "PROV_R18_SEAT_PRICING",
     "PROV_RESTRUCTURING_PRICING",
+    "PROV_RESTRUCTURING_SEPARATOR",
     "PROV_RULING18_PRICING",
     "PROV_S6B_PRICING",
     "PROV_STEP2_PRICING",
@@ -255,6 +262,8 @@ __all__ = (
     "SEAT_TEST_SPECS_BY_FAMILY",
     "SeatFloorSpec",
     "SeatTestSpec",
+    "RESTRUCTURING_SEPARATOR_SPECS",
+    "RestructuringSeparatorSpec",
     "STOCK_COMP_SEPARATOR_SPECS",
     "StockCompSeparatorSpec",
     "DEFERRED_TAX_SEPARATOR_SPECS",
@@ -291,6 +300,7 @@ __all__ = (
     "TEST_PPE_EVIDENCE",
     "TEST_PRIMARY_STATEMENT_SEAT",
     "TEST_RESTRUCTURING_EVIDENCE",
+    "TEST_RESTRUCTURING_SEPARATOR",
     "TEST_ROW_BOUND",
     "TEST_SIGNATURE_ABSENCE",
     "TEST_STOCK_COMP_EVIDENCE",
@@ -631,6 +641,13 @@ FORM_TEST_SPECS: tuple[FormTestSpec, ...] = (
         "stock_comp_separator",
         0.0,
         provenance=PROV_STOCK_COMP_SEPARATOR,
+    ),
+    FormTestSpec(
+        "restructuring",
+        TEST_RESTRUCTURING_SEPARATOR,
+        "restructuring_separator",
+        0.0,
+        provenance=PROV_RESTRUCTURING_SEPARATOR,
     ),
     FormTestSpec(
         "lease_maturity",

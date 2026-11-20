@@ -60,6 +60,7 @@ PROV_COMBINED_OPERATIONS_SEPARATOR = "calibration:combined-operations-cascade-pr
 PROV_EPS_TRANSFER_PRICING = "calibration:eps-transfer-pricing"
 PROV_COREFIN_EQUITYSTATEMENT = "calibration:corefin-equitystatement-pricing"
 PROV_STOCK_COMP_SEPARATOR = "calibration:stock-comp-cascade-pricing"
+PROV_RESTRUCTURING_SEPARATOR = "calibration:rollforward-restructuring-pricing"
 PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
 PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
 PROV_LEASE_SEPARATOR = "calibration:lease-separator-pricing"
@@ -104,6 +105,7 @@ TEST_CREDIT_SEPARATOR = "credit_separator"
 TEST_EQUITY_SEPARATOR = "equity_separator"
 TEST_COMBINED_OPERATIONS_SEPARATOR = "combined_operations_separator"
 TEST_STOCK_COMP_SEPARATOR = "stock_comp_separator"
+TEST_RESTRUCTURING_SEPARATOR = "restructuring_separator"
 TEST_TAX_RECONCILIATION_SEPARATOR = "tax_reconciliation_separator"
 TEST_DEFERRED_TAX_SEPARATOR = "deferred_tax_separator"
 TEST_LEASE_SEPARATOR = "lease_separator"
@@ -143,6 +145,7 @@ FORM_TESTS = (
     TEST_CREDIT_SEPARATOR,
     TEST_EQUITY_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
+    TEST_RESTRUCTURING_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_LEASE_SEPARATOR,
@@ -568,7 +571,7 @@ PROFILES: tuple[FamilyProfile, ...] = (
             "on n=8); sealed-protocol precision/recall unmeasured",
         ),
         SEAT_SIGNATURE,
-        form_tests=(TEST_RESTRUCTURING_EVIDENCE,),
+        form_tests=(TEST_RESTRUCTURING_EVIDENCE, TEST_RESTRUCTURING_SEPARATOR),
         note="the exit/disposal-cost liability walked as the "
         "table's own subject: beginning balance, at least one "
         "ASC 420 movement, ending balance; the subject may ride "

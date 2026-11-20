@@ -112,6 +112,7 @@ from edgar_sec.engine.tables.extraction.profiles import (
     TEST_FORM_SEPARATION,
     TEST_PENSION_ROUTED,
     TEST_DEFERRED_TAX_SEPARATOR,
+    TEST_RESTRUCTURING_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_LEASE_SEPARATOR,
@@ -197,6 +198,10 @@ def _append_note(
     }
 
 
+# Stamped-outcome gates (priced): a claim is refused when its
+# family's stamped outcome fired; an outcome absent or
+# unevaluable never fails the gate. One row per gated family,
+# in the order the gates bind.
 _STAMPED_GATES = (
     ("balance_sheet", TEST_BALANCE_SHEET_SEPARATOR, fired_separator_outcome),
     ("cash_flow", TEST_CASH_FLOW_SEPARATOR, fired_cash_flow_separator_outcome),
@@ -219,6 +224,7 @@ _STAMPED_GATES = (
         TEST_STOCK_COMP_SEPARATOR,
         fired_stock_comp_separator_outcome,
     ),
+    ("restructuring", TEST_RESTRUCTURING_SEPARATOR, fired_separator_outcome),
     ("related_party", TEST_FORM_SEPARATION, failing_core_form_outcome),
     (
         "tax_reconciliation",
@@ -442,9 +448,8 @@ def compete(
         if family in contested:
             contested.remove(family)
         scores = _append_note(scores, family, "gate", failed.detail)
-    # Stamped separator gates (priced): a claim is refused when
-    # its family's stamped separator outcome fired; an outcome
-    # absent or unevaluable never fails the gate.
+    # Stamped-outcome gates (priced): the separator and detector
+    # gates refuse a claim whose stamped outcome fired.
     scores = _apply_stamped_gates(claims, contested, scores, geometry)
     # Cures 4+5 (claim-reach): subject-evidence presence claims
     # an otherwise unclaimed geometry at declared provenance.
