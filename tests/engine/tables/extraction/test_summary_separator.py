@@ -117,6 +117,74 @@ def test_quarterly_named_rule_at_item8() -> None:
     assert "quarterly_item8_total_revenues" in _rules(table)
 
 
+_NONGAAP_RULES = ("nongaap_income_tax", "nongaap_years3", "nongaap_rows12")
+
+
+def test_nongaap_income_tax_fires_on_the_after_carried_marker() -> None:
+    table = _table(
+        (
+            ("Income tax expense", "10"),
+            ("Net income", "40"),
+        ),
+        prose_after="Adjusted results are non-GAAP measures.",
+    )
+    assert "nongaap_income_tax" in _rules(table)
+
+
+def test_nongaap_income_tax_fires_on_the_before_carried_marker() -> None:
+    table = _table(
+        (
+            ("Income tax expense", "10"),
+            ("Net income", "40"),
+        ),
+        prose_before="We present non-GAAP financial measures below.",
+    )
+    assert "nongaap_income_tax" in _rules(table)
+
+
+def test_nongaap_legs_silent_without_the_marker() -> None:
+    table = _table(
+        (
+            ("Income tax expense", "10"),
+            ("Net income", "40"),
+        ),
+        prose_after="Adjusted results are supplemental measures.",
+    )
+    assert not any(rule in _rules(table) for rule in _NONGAAP_RULES)
+
+
+def test_nongaap_years3_fires_at_three_years_silent_at_two() -> None:
+    three = _table(
+        (
+            ("", "2021", "2022", "2023"),
+            ("Revenue", "10", "11", "12"),
+        ),
+        prose_after="Non-GAAP highlights follow.",
+    )
+    assert "nongaap_years3" in _rules(three)
+    two = _table(
+        (
+            ("", "2022", "2023"),
+            ("Revenue", "11", "12"),
+        ),
+        prose_after="Non-GAAP highlights follow.",
+    )
+    assert "nongaap_years3" not in _rules(two)
+
+
+def test_nongaap_rows12_fires_at_twelve_rows_silent_at_thirteen() -> None:
+    twelve = _table(
+        tuple((f"Line {i}", "1") for i in range(12)),
+        prose_before="Our non-GAAP results are summarized below.",
+    )
+    assert "nongaap_rows12" in _rules(twelve)
+    thirteen = _table(
+        tuple((f"Line {i}", "1") for i in range(13)),
+        prose_before="Our non-GAAP results are summarized below.",
+    )
+    assert not any(rule in _rules(thirteen) for rule in _NONGAAP_RULES)
+
+
 def test_plain_table_fires_nothing() -> None:
     table = _table((("Revenue", "10"), ("Cost of revenue", "6")))
     result = evaluate_summary_separator(table)

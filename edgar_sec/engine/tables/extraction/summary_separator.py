@@ -30,6 +30,7 @@ class SeparatorFeatures:
     summar_lead: bool
     has_total_row: bool
     last_stub_total: bool
+    nongaap_prose: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -61,6 +62,7 @@ def separator_features(table) -> SeparatorFeatures:
     stubs = [next((cell for cell in row if cell), "") for row in grid]
     caption = " ".join(context.caption_stack)
     lead = (context.prose_before or "")[-_LEAD_CHARS:]
+    after_lead = (context.prose_after or "")[:_LEAD_CHARS]
     hay = "; ".join(stubs).lower() + " " + caption.lower() + " " + lead.lower()
     header_text = " ".join(cell for row in grid[:3] for cell in row).lower()
     years = len(set(YEAR_TOKEN_SEARCH_RE.findall(header_text + " " + caption)))
@@ -75,6 +77,7 @@ def separator_features(table) -> SeparatorFeatures:
         summar_lead="summar" in (caption + " " + lead).lower(),
         has_total_row=any(stub.lower().startswith("total") for stub in stubs),
         last_stub_total=bool(stubs) and stubs[-1].lower().startswith("total"),
+        nongaap_prose="non-gaap" in (lead + " " + after_lead).lower(),
     )
 
 
@@ -92,6 +95,8 @@ def _atom_holds(atom: str, features: SeparatorFeatures) -> bool:
         return features.rows > 0 and features.cols <= int(atom.removeprefix("cols<="))
     if atom == "summar_lead":
         return features.summar_lead
+    if atom == "nongaap_prose":
+        return features.nongaap_prose
     if atom == "has_total_row":
         return features.has_total_row
     if atom == "last_stub_total":

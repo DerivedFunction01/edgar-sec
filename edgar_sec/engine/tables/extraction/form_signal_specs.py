@@ -475,6 +475,39 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
         2,
         0,
     ),
+    # The NONGAAP-SUMMARY legs (F7 combination pricing,
+    # greenfield-ci-f7combo-price run 2026-11-20): the
+    # non-GAAP prose marker conjoined with one separator
+    # atom each; priced on the imposter-census claim base
+    # (517 falses / 2,310 trues), counts in the seat
+    # slots. Union of record: 12 kills / 2 touches.
+    SummarySeparatorSpec(
+        "nongaap_income_tax",
+        "NONGAAP-SUMMARY",
+        ("nongaap_prose", "present[income tax]"),
+        0,
+        0,
+        8,
+        1,
+    ),
+    SummarySeparatorSpec(
+        "nongaap_years3",
+        "NONGAAP-SUMMARY",
+        ("nongaap_prose", "years>=3"),
+        0,
+        0,
+        4,
+        0,
+    ),
+    SummarySeparatorSpec(
+        "nongaap_rows12",
+        "NONGAAP-SUMMARY",
+        ("nongaap_prose", "rows<=12"),
+        0,
+        0,
+        5,
+        1,
+    ),
 )
 
 SUMMARY_SEPARATOR_SPECS_BY_ID: dict[str, SummarySeparatorSpec] = {
