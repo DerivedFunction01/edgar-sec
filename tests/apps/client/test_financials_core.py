@@ -27,6 +27,11 @@ from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import load_filing, registry_filings
 from tests.support import bundle_dir
 
+
+def _msft() -> Xbrl:
+    return Xbrl.from_bundle(bundle_dir("msft_2024_10k"), load_domain_taxonomy())
+
+
 _COHORT_FACADES: dict[str, Xbrl] = {}
 
 
