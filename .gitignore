@@ -466,9 +466,7 @@ edgar_sec/engine/xbrl/taxonomy/archive/**
 !edgar_sec/engine/xbrl/discovery/vintage/**
 !edgar_sec/engine/xbrl/discovery/sp100/
 !edgar_sec/engine/xbrl/discovery/sp100/**
-# edgar_sec/pipelines/xbrl_review/fixtures/probe/ holds the probe cohort
-# bundle corpus: review-plane measurement data beside its registry in the
-# review pipeline's fixtures, not a production discovery input. It is
-# excluded from the wheel in pyproject.toml, not from the repository.
-!edgar_sec/pipelines/xbrl_review/fixtures/probe/
-!edgar_sec/pipelines/xbrl_review/fixtures/probe/**
+# edgar_sec/pipelines/xbrl_review/fixtures/probe/ held the probe cohort
+# bundle corpus; retired 2026-11-21: regenerable from the tools path,
+# never re-tracked.
+edgar_sec/pipelines/xbrl_review/fixtures/probe/
