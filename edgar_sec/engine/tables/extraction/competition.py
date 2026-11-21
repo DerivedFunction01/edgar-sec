@@ -79,6 +79,7 @@ from edgar_sec.engine.tables.extraction.aro_evidence import (
 )
 from edgar_sec.engine.tables.extraction.ppe_veto_evidence import (
     apply_ppe_vetoes,
+    capture_claim_stages,
 )
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
     apply_comprehensive_income_assignment,
@@ -706,15 +707,14 @@ def compete_filing(
     ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
     scopes: tuple[ScopeRow, ...] = (),
 ) -> list[CompetitionResult]:
-    """Compete one filing's geometries with context fed back.
-
-    Context lends evidence to unclaimed geometries only; it never
-    overrides a geometry's own scored claim.
-    """
+    """Compete one filing's geometries with context fed back;
+    context lends to unclaimed geometries only and never
+    overrides a geometry's own scored claim."""
     results = [
         compete(g, terms, edges, ladder_terms=ladder_terms, scopes=scopes)
         for g in geometries
     ]
+    own_results = list(results)
     claimed_by_title: dict[str, dict[str, int]] = {}
     for geometry, result in zip(geometries, results, strict=True):
         if geometry.note_title and result.claims:
@@ -787,13 +787,13 @@ def compete_filing(
             ladder_terms=ladder_terms,
             scopes=scopes,
         )
+    stages = capture_claim_stages(own_results, results)
     # Set-level assignment passes (priced): each pass runs over
-    # the filing's formed candidate set for its family and only
-    # removes claims, so the primary gate stays final.
+    # the filing's formed candidate set and only removes claims.
     for apply_assignment in _ASSIGNMENT_PASSES:
         results = apply_assignment(geometries, results)
     # The primary hard gates refuse claims whose necessary
     # sections are missing over the statement cluster; the PPE
-    # veto pass then reads the gate-final claims and totals.
+    # veto then reads gate-final claims on the captured stage.
     gated = apply_primary_gate(geometries, results)
-    return apply_ppe_vetoes(geometries, gated)
+    return apply_ppe_vetoes(geometries, gated, stages)

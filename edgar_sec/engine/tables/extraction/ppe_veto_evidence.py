@@ -1,10 +1,11 @@
 """PPE veto pass: set-level refusals over gate-final claims.
-
-Four priced legs read the input results only; a PPE claim
-firing any leg is removed with a gate note naming the legs.
+The dominance leg prices rival presence on the pre-gate
+claim stage; the other legs read the gate-final results.
 """
 
 from __future__ import annotations
+
+from typing import NamedTuple
 
 from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.ppe_veto_specs import (
@@ -19,6 +20,30 @@ from edgar_sec.engine.tables.extraction.ppe_veto_specs import (
     SIGNATURE_CHANNELS,
     STRONG_STUB_KEYS,
 )
+
+
+class ClaimStage(NamedTuple):
+    """One geometry's pre-gate claim stage: the families
+    claiming at the own or context stage, with the scores
+    as computed at the own stage."""
+
+    claims: tuple
+    scores: dict
+
+
+def capture_claim_stages(own_results, mid_results):
+    """Snapshot the pre-gate claim stage per geometry.
+
+    Presence unions the own claims with the context-stage
+    claims; totals stay at the own stage, as priced.
+    """
+    return tuple(
+        ClaimStage(
+            claims=tuple(dict.fromkeys((*own.claims, *mid.claims))),
+            scores=own.scores,
+        )
+        for own, mid in zip(own_results, mid_results, strict=True)
+    )
 
 
 def _signature_sum(score) -> float:
@@ -40,15 +65,16 @@ def _host_claim_fires(geometry, result) -> bool:
     return False
 
 
-def _dominance_fires(result) -> bool:
-    """A claiming rival's final total reaches the PPE total."""
+def _dominance_fires(result, stage) -> bool:
+    """A stage-claiming rival's own-stage total reaches the
+    PPE final total (weak dominance, as arbitrated)."""
     own = result.scores.get(PPE_FAMILY)
     if own is None:
         return False
-    for family in result.claims:
+    for family in stage.claims:
         if family == PPE_FAMILY:
             continue
-        rival = result.scores.get(family)
+        rival = stage.scores.get(family)
         if rival is not None and rival.total >= own.total:
             return True
     return False
@@ -93,14 +119,14 @@ def _context_carried_fires(geometries, results, index, result) -> bool:
     return False
 
 
-def _fired_legs(geometries, results, index):
+def _fired_legs(geometries, results, stages, index):
     """Every priced leg firing on one PPE-claimed geometry."""
     geometry = geometries[index]
     result = results[index]
     legs = []
     if _host_claim_fires(geometry, result):
         legs.append(LEG_HOST_CLAIM)
-    if _dominance_fires(result):
+    if _dominance_fires(result, stages[index]):
         legs.append(LEG_DOMINANCE)
     if _lead_balance_fires(result):
         legs.append(LEG_LEAD_BALANCE)
@@ -109,11 +135,11 @@ def _fired_legs(geometries, results, index):
     return tuple(legs)
 
 
-def apply_ppe_vetoes(geometries, results):
+def apply_ppe_vetoes(geometries, results, stages):
     """Final pass: remove PPE claims firing any priced leg.
 
-    Every leg reads the input results, so one removal never
-    changes another geometry's firing.
+    Firings read the input results and the captured claim
+    stages only, so removals never change another firing.
     """
     from edgar_sec.engine.tables.extraction.competition import (
         ClaimEvidence,
@@ -125,7 +151,7 @@ def apply_ppe_vetoes(geometries, results):
         index: legs
         for index, result in enumerate(results)
         if PPE_FAMILY in result.claims
-        and (legs := _fired_legs(geometries, results, index))
+        and (legs := _fired_legs(geometries, results, stages, index))
     }
     if not fired:
         return list(results)

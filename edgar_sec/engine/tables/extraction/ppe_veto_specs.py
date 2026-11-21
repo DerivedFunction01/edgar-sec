@@ -1,10 +1,14 @@
 """PPE veto composition: the priced data.
 
 The census-arbitrated strong stub keys, the leg thresholds,
-and the channel sets the veto pass prices over final claims.
+and the channel sets the veto pass prices.
 """
 
 from __future__ import annotations
+
+from edgar_sec.engine.tables.extraction.signature_profiles import (
+    CHANNELS as SIGNATURE_CHANNELS,
+)
 
 PPE_FAMILY = "ppe"
 
@@ -17,7 +21,6 @@ LEG_CONTEXT_CARRIED = "D1c_true"
 HOST_MIN_SHARED_KEYS = 2
 LEAD_BALANCE_MIN = 0.4
 
-SIGNATURE_CHANNELS = ("caption", "leadin", "notehead", "lead_title", "stub")
 PROSE_CHANNELS = ("leadin", "lead_title", "caption", "notehead")
 
 # Census-arbitrated strong stub keys by family (derivation
