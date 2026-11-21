@@ -20,9 +20,7 @@ def _result(families, totals=None, channels=None, groups=()):
     totals = totals or {}
     channels = channels or {}
     scores = {
-        family: _score(
-            family, totals.get(family, 11.0), channels.get(family)
-        )
+        family: _score(family, totals.get(family, 11.0), channels.get(family))
         for family in families
     }
     return CompetitionResult(
@@ -39,9 +37,7 @@ def _unclaimed(score):
 
 def _gate_details(result, family="ppe"):
     return [
-        item.detail
-        for item in result.scores[family].evidence
-        if item.channel == "gate"
+        item.detail for item in result.scores[family].evidence if item.channel == "gate"
     ]
 
 
@@ -56,9 +52,7 @@ def test_host_claim_removes_ppe_on_two_shared_keys():
     geo = GeometryText(stubs=("Total Assets", "Total Liabilities", "Land"))
     groups = (
         ClaimGroup("ppe", 11.0, "claimed", "primary", {"stub": 11.0}, (), 0.0),
-        ClaimGroup(
-            "balance_sheet", 5.0, "claimed", "primary", {"stub": 5.0}, (), 0.0
-        ),
+        ClaimGroup("balance_sheet", 5.0, "claimed", "primary", {"stub": 5.0}, (), 0.0),
     )
     results = apply_ppe_vetoes(
         [geo],
@@ -157,9 +151,7 @@ def test_lead_balance_keeps_form_test_or_stub_mass():
 def test_context_carried_removes_with_cross_section_mate():
     claim_geo = GeometryText(section_item="Item 8")
     mate_geo = GeometryText(section_item="Item 7")
-    claim = _result(
-        ("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}}
-    )
+    claim = _result(("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}})
     mate = _unclaimed(_score("ppe", 9.0, {"stub": 9.0}))
     results = apply_ppe_vetoes([claim_geo, mate_geo], [claim, mate])
     assert "ppe" not in results[0].claims
@@ -170,9 +162,7 @@ def test_context_carried_removes_with_cross_section_mate():
 def test_context_carried_keeps_same_section_mate():
     claim_geo = GeometryText(section_item="Item 8")
     mate_geo = GeometryText(section_item="Item 8")
-    claim = _result(
-        ("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}}
-    )
+    claim = _result(("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}})
     mate = _unclaimed(_score("ppe", 9.0, {"stub": 9.0}))
     results = apply_ppe_vetoes([claim_geo, mate_geo], [claim, mate])
     assert "ppe" in results[0].claims
@@ -194,9 +184,7 @@ def test_context_carried_keeps_signature_earned_claim():
 def test_context_carried_keeps_without_signature_earned_mate():
     claim_geo = GeometryText(section_item="Item 8")
     mate_geo = GeometryText(section_item="Item 7")
-    claim = _result(
-        ("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}}
-    )
+    claim = _result(("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}})
     mate = _unclaimed(_score("ppe", 3.0, {"context": 3.0}))
     results = apply_ppe_vetoes([claim_geo, mate_geo], [claim, mate])
     assert "ppe" in results[0].claims
@@ -221,9 +209,7 @@ def test_note_names_every_fired_leg():
 def test_removals_read_the_input_results_only():
     claim_geo = GeometryText(section_item="Item 8")
     mate_geo = GeometryText(section_item="Item 7")
-    claim = _result(
-        ("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}}
-    )
+    claim = _result(("ppe",), totals={"ppe": 6.0}, channels={"ppe": {"context": 6.0}})
     mate = _result(
         ("ppe",),
         totals={"ppe": 8.0},
