@@ -58,19 +58,10 @@ def corpus_dir(corpus: str) -> Path:
     return DISCOVERY_DIR / corpus
 
 
-def _probe_corpus_dir() -> Path:
-    """The probe bundle corpus: review fixtures data, not discovery package data."""
-    from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
-
-    return canonical_probe_cohort_path().parent / "probe"
-
-
 def _resolve_fixture(name: str) -> Path:
     parts = name.split("/")
     if len(parts) >= 2 and parts[0] == "xbrl" and parts[1] in _CORPUS_DIRS:
         return corpus_dir(parts[1]).joinpath(*parts[2:])
-    if len(parts) >= 2 and parts[0] == "xbrl" and parts[1] == "probe":
-        return _probe_corpus_dir().joinpath(*parts[2:])
     return FIXTURES / name
 
 

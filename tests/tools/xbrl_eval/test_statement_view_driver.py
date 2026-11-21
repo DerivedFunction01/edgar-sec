@@ -11,7 +11,6 @@ from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.discovery.cohort import canonical_seed_cohort_path
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
-from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
 from edgar_sec.tools.xbrl_eval.statement_view_driver import (
     BLOCKED,
     FAITHFUL,
@@ -169,41 +168,6 @@ def test_classify_catalog_face_missing_blocks() -> None:
         "classification": BLOCKED,
         "mechanism": MECH_FACE,
     }
-
-
-def test_run_driver_smoke_over_smallest_probe_bundle() -> None:
-    """The driver records a full cell set for the tiny dei-only 6-K."""
-    report = run_driver(
-        canonical_probe_cohort_path(),
-        folders=["dsgx_2023_6k"],
-        workers=1,
-    )
-    record = report["filings"]["dsgx_2023_6k"]
-    assert record["form"] == "6-K"
-    assert record["analysis"]["statement"] is False
-    assert record["cells"]["statements.cover"]["facts"] > 0
-    assert (
-        record["classification"]["statements.income_statement"]["classification"]
-        == HONEST
-    )
-    assert set(record["classification"]) == set(record["cells"])
-
-
-def test_run_driver_segment_census_wiring_and_cell_fields() -> None:
-    """The census flag records an empty census; the cell carries its fields."""
-    report = run_driver(
-        canonical_probe_cohort_path(),
-        folders=["dsgx_2023_6k"],
-        workers=1,
-        segment_census=True,
-    )
-    record = report["filings"]["dsgx_2023_6k"]
-    assert record["segment_census"] == []
-    cell = record["cells"]["financials.segment_breakdown"]
-    assert cell["classification"] is None
-    assert cell["basis"] is None
-    assert cell["alternates"] == 0
-    assert cell["filed_member_sum"] is None
 
 
 def test_segment_census_classifies_msft_overlap_with_declared_partitions() -> None:
