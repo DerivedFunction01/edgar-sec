@@ -1,0 +1,54 @@
+"""PPE veto composition: the priced data.
+
+The census-arbitrated strong stub keys, the leg thresholds,
+and the channel sets the veto pass prices over final claims.
+"""
+
+from __future__ import annotations
+
+PPE_FAMILY = "ppe"
+
+# Leg names, in the order the gate note reports them.
+LEG_HOST_CLAIM = "H2claim"
+LEG_DOMINANCE = "LBdomF"
+LEG_LEAD_BALANCE = "L6bal0.4"
+LEG_CONTEXT_CARRIED = "D1c_true"
+
+HOST_MIN_SHARED_KEYS = 2
+LEAD_BALANCE_MIN = 0.4
+
+SIGNATURE_CHANNELS = ("caption", "leadin", "notehead", "lead_title", "stub")
+PROSE_CHANNELS = ("leadin", "lead_title", "caption", "notehead")
+
+# Census-arbitrated strong stub keys by family (derivation
+# pop/pop/norm/pop), carried verbatim as population
+# constants: each family's census-strong normalized stubs.
+STRONG_STUB_KEYS: dict[str, frozenset[str]] = {
+    "aro_rollforward": frozenset({"accretion expense"}),
+    "balance_sheet": frozenset(
+        {
+            "assets",
+            "cash and cash equivalents",
+            "current assets",
+            "current liabilities",
+            "total assets",
+            "total current assets",
+            "total current liabilities",
+            "total liabilities",
+        }
+    ),
+    "cash_flow": frozenset(
+        {
+            "cash flows from financing activities",
+            "cash flows from investing activities",
+        }
+    ),
+    "combined_operations_ci": frozenset({"operating expenses"}),
+    "lease_maturity": frozenset({"thereafter"}),
+    "credit_losses_rollforward": frozenset({"recoveries"}),
+    "warrant_activity": frozenset({"exercised", "issued"}),
+    "inventory": frozenset({"finished goods", "raw materials"}),
+    "valuation_model_assumptions": frozenset({"expected volatility"}),
+    "shares_purchased": frozenset({"period", "total"}),
+    "stock_comp_rollforward": frozenset({"granted"}),
+}

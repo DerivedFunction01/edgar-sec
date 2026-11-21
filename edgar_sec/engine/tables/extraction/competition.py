@@ -77,6 +77,9 @@ from edgar_sec.engine.tables.extraction.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.aro_evidence import (
     apply_aro_assignment,
 )
+from edgar_sec.engine.tables.extraction.ppe_veto_evidence import (
+    apply_ppe_vetoes,
+)
 from edgar_sec.engine.tables.extraction.comprehensive_income_separator_evidence import (
     apply_comprehensive_income_assignment,
 )
@@ -789,7 +792,8 @@ def compete_filing(
     # removes claims, so the primary gate stays final.
     for apply_assignment in _ASSIGNMENT_PASSES:
         results = apply_assignment(geometries, results)
-    # Final pass: the primary hard gates refuse claims whose
-    # necessary sections are missing over the statement cluster;
-    # running last, inheritance cannot resurrect a gated claim.
-    return apply_primary_gate(geometries, results)
+    # The primary hard gates refuse claims whose necessary
+    # sections are missing over the statement cluster; the PPE
+    # veto pass then reads the gate-final claims and totals.
+    gated = apply_primary_gate(geometries, results)
+    return apply_ppe_vetoes(geometries, gated)
