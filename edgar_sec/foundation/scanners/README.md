@@ -32,15 +32,16 @@ the same groups.
   scanner that cannot decode a file has no opinion about its contents.
 - The scanners and `tests/` are exempt from every text rule, so a test can assert
   on a violation without tripping the gate itself.
-- Every finding is blocking: `run_all()` returns `1` if any scanner reported any,
-  with no severity distinction between them.
+- Findings carry a severity: `run_all()` returns `1` when any scanner reported
+  an error finding; notice findings print and do not block.
 
 Some behaviours are worth naming because they are not what the name implies.
 `environment-access` matches raw line text, so `os.environ` inside a string or a
 comment still trips it. `clean-exit` passes a file whose exits all sit inside its
-main guard. `file-length` emits an advisory-sounding finding that blocks exactly
-like a hard violation. `legacy-shims` reads comment lines on purpose, because a
-shim is usually announced in prose rather than in code.
+main guard. `file-length` speaks in two voices: over the 800-line cap it blocks;
+inside the 700–800 creep band it lists as a notice and does not. `legacy-shims`
+reads comment lines on purpose, because a shim is usually announced in prose
+rather than in code.
 
 **Obligations callers place on this package**
 
@@ -79,9 +80,6 @@ and findings, and exits non-zero when any scanner reported:
 ## Deliberate gaps
 
 - **No auto-fix.** Every scanner reports and stops; `check.py --fix` runs ruff only.
-- **No severity model.** `file-length` reads as advice in `docs/scanners.md` and its
-  hint says "consider refactoring", but in practice it blocks the gate exactly as a
-  hard violation does. Either the rule or the wording should change.
 - **No suppression mechanism.** No `noqa` equivalent, no allowlist file, no
   per-line pragma. A false positive has to be fixed by editing the scanner.
 - **`layer-boundary` is not the only AST scanner.** `batch-defaults`,

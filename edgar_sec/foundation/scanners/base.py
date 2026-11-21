@@ -5,6 +5,9 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 
+SEVERITY_ERROR = "error"
+SEVERITY_NOTICE = "notice"
+
 
 @dataclass(frozen=True)
 class ScannerFinding:
@@ -16,6 +19,7 @@ class ScannerFinding:
     line: int | None
     message: str
     hint: str = ""
+    severity: str = SEVERITY_ERROR
 
 
 @dataclass(frozen=True)
@@ -27,4 +31,4 @@ class Scanner:
     run: Callable[[], list[ScannerFinding]]
 
 
-__all__ = ["ScannerFinding", "Scanner"]
+__all__ = ["SEVERITY_ERROR", "SEVERITY_NOTICE", "ScannerFinding", "Scanner"]

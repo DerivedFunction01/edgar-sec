@@ -4,7 +4,12 @@ from __future__ import annotations
 
 import multiprocessing
 
-from edgar_sec.foundation.scanners import ALL_SCANNERS, Scanner, ScannerFinding
+from edgar_sec.foundation.scanners import (
+    ALL_SCANNERS,
+    SEVERITY_ERROR,
+    Scanner,
+    ScannerFinding,
+)
 
 
 def _run_scanner(index: int) -> tuple[int, list[ScannerFinding]]:
@@ -62,27 +67,31 @@ def run_all() -> int:
         (scanners[index], results_by_index[index] or []) for index in range(total)
     ]
 
-    has_error = False
-    for _, findings in paired:
-        if findings:
-            has_error = True
+    has_error = any(
+        finding.severity == SEVERITY_ERROR
+        for _, findings in paired
+        for finding in findings
+    )
 
-    violated = sum(1 for _, fs in paired if fs)
+    violated = sum(
+        1 for _, fs in paired if any(f.severity == SEVERITY_ERROR for f in fs)
+    )
     clean = total - violated
     if violated == 0:
         print(f"==> ran {total} checks: {clean} clean")
     else:
         print(f"==> ran {total} checks: {clean} clean, {violated} violated")
-        for scanner, findings in paired:
-            if not findings:
-                continue
-            for finding in findings:
-                print(
-                    f"    ERROR [{finding.scanner}] {finding.path}:{finding.line}: "
-                    f"{finding.message}"
-                )
-                if finding.hint:
-                    print(f"          hint: {finding.hint}")
+    for scanner, findings in paired:
+        if not findings:
+            continue
+        for finding in findings:
+            label = "ERROR" if finding.severity == SEVERITY_ERROR else "NOTICE"
+            print(
+                f"    {label} [{finding.scanner}] {finding.path}:{finding.line}: "
+                f"{finding.message}"
+            )
+            if finding.hint:
+                print(f"          hint: {finding.hint}")
     return 1 if has_error else 0
 
 

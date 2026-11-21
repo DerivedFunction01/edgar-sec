@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.foundation.scanners.base import SEVERITY_ERROR
 from edgar_sec.foundation.scanners.mechanics import artifact_paths
 from edgar_sec.foundation.scanners.runtime import clean_exit, environment
 from edgar_sec.foundation.scanners.runtime import secrets as secrets_scanner
@@ -173,9 +174,11 @@ def test_file_length_flags_long_module(synthetic_repo: Path) -> None:
     assert findings[0].line == 801
 
 
-def test_file_length_ignores_tests(synthetic_repo: Path) -> None:
+def test_file_length_flags_long_suite(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
         {"tests/pipelines/test_long_mod.py": "x = 1\n" * 900},
     )
-    assert length.scan_file_length() == []
+    findings = length.scan_file_length()
+    assert len(findings) == 1
+    assert findings[0].severity == SEVERITY_ERROR

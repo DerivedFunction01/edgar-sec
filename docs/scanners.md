@@ -25,7 +25,8 @@ private copy wherever it appears, not only a duplicated name.
 - `test-tree-paths`: Bans `tests` path components and `tests` imports in layers 0–5, exempting only the gate machinery that owns the test tree (`foundation/checks`, the scanners) and the tools layer. No file exemptions: production-consumed data lives in the package or the workspace, never under `tests/`.
 - `secrets-leakage`: Bans committed API keys, tokens, or credentials.
 - `clean-exit`: Bans `sys.exit()` in library modules (only allowed in `run.py`, `check.py`, and CLI entrypoints).
-- `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
+- `file-length`: **Fails the gate** on a code file exceeding the 800-line cap, suites included, over the enforcement population (code files under `edgar_sec/` and `tests/`, plus the root entry points `check.py`, `run.py`, `init_venv.py`; paths with an `assets` or `generated` part are out). A non-suite file at 700–800 lines lists as a notice: notices print and do not fail the gate — only error findings return a nonzero exit code.
+- `folder-density`: **Fails the gate** on a folder holding more than 20 direct-child code files (the `file-length` population; subfolders never count toward a parent, and data files never count). A folder at 17–20 files lists as a notice. Group into subfolders by intent.
 - `layer-boundary`: Enforces strict downward-only import hierarchy.
 - `resource-allocation`: Bans hardcoded thread counts or memory limits in pipeline/engine code.
 - `batch-defaults`: Enforces ownership of shared chunk, read, SQL-insert, Parquet, document payload, and I/O buffer defaults; it flags duplicate symbol definitions and governed literals at identified call sites while allowing equal numbers used for distinct policies.

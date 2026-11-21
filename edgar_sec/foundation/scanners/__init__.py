@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .base import Scanner, ScannerFinding
+from .base import SEVERITY_ERROR, SEVERITY_NOTICE, Scanner, ScannerFinding
 from .forms.form_isolation import SCANNER as FORM_ISOLATION_SCANNER
 from .forms.form_vocabulary import SCANNER as FORM_VOCABULARY_SCANNER
 from .forms.tables_form_literals import SCANNER as TABLES_FORM_LITERALS_SCANNER
@@ -27,6 +27,7 @@ from .runtime.clean_exit import SCANNER as CLEAN_EXIT_SCANNER
 from .runtime.environment import SCANNER as ENV_SCANNER
 from .runtime.resources import SCANNER as RESOURCES_SCANNER
 from .runtime.secrets import SCANNER as SECRETS_SCANNER
+from .structure.folder_density import SCANNER as FOLDER_DENSITY_SCANNER
 from .structure.helper_duplicates import SCANNER as HELPER_DUPLICATES_SCANNER
 from .structure.layers import SCANNER as LAYERS_SCANNER
 from .structure.legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
@@ -65,6 +66,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     HELPER_DUPLICATES_SCANNER,
     IDENTIFIER_PATTERNS_SCANNER,
     PERIOD_PATTERNS_SCANNER,
+    FOLDER_DENSITY_SCANNER,
 )
 
 __all__ = [
@@ -75,6 +77,7 @@ __all__ = [
     "ENV_SCANNER",
     "FORM_ISOLATION_SCANNER",
     "FORM_VOCABULARY_SCANNER",
+    "FOLDER_DENSITY_SCANNER",
     "HELPER_DUPLICATES_SCANNER",
     "IDENTIFIER_PATTERNS_SCANNER",
     "JSON_IO_SCANNER",
@@ -92,6 +95,8 @@ __all__ = [
     "RESOURCES_SCANNER",
     "SECRETS_SCANNER",
     "SEC_SURFACE_SCANNER",
+    "SEVERITY_ERROR",
+    "SEVERITY_NOTICE",
     "SHA256_VALIDATION_SCANNER",
     "SQL_INTERPOLATION_SCANNER",
     "STRING_LOOKUP_SCANNER",
