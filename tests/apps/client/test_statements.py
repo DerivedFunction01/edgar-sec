@@ -16,6 +16,7 @@ from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.support import bundle_dir
 
+
 def test_plan_absence_on_seed_annual() -> None:
     """A seed-corpus corporate annual serves the absence posture."""
     facade = Xbrl.from_bundle(bundle_dir("msft_2024_10k"), load_domain_taxonomy())

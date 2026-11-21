@@ -16,6 +16,7 @@ from tests.engine.xbrl.solve.conftest import (
 )
 from tests.support import bundle_dir
 
+
 def _seed_facade(folder: str, *, presentation: bool = True) -> Xbrl:
     pres_arcs = ()
     if presentation:
