@@ -14,7 +14,7 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import extract_registration_number
+from edgar_sec.engine.forms.common.identity.entities import extract_registration_number
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 
 _KIND_KEYS: tuple[str, ...] = ("original_filing", "amended_filing")

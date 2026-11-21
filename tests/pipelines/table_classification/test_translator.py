@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     STRATUM_ANNUAL,
     STRATUM_QUARTERLY,
     ExhibitLink,

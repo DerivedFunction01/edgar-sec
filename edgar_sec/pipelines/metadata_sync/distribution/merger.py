@@ -23,7 +23,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node
+from edgar_sec.infra.storage.dag.working.publication import publish_node
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,

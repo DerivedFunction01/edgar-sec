@@ -8,7 +8,7 @@ from edgar_sec.domain.forms.families.ownership.evidence import (
     OWNERSHIP_FORM_NAMES,
     OWNERSHIP_PROSE_BOILERPLATE_RULE,
 )
-from edgar_sec.engine.forms.common.phrases import (
+from edgar_sec.engine.forms.common.phrases.phrases import (
     PhraseMatch,
     compile_phrase_rules,
     match_phrase_rules,

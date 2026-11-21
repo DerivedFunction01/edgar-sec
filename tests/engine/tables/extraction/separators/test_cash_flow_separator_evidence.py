@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import edgar_sec.engine.tables.extraction.separators.cash_flow_separator_evidence as _cfe
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
@@ -18,8 +18,10 @@ from edgar_sec.engine.tables.extraction.separators.cash_flow_separator_specs imp
     CASH_FLOW_SEPARATOR_SPECS,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
 )
@@ -27,7 +29,9 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import FamilyScore
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    FamilyScore,
+)
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     header_keys as _PENSION_HEADER_KEYS,
     norm as _PENSION_NORM,
@@ -36,7 +40,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
     section_presence as _HOME_SECTION_PRESENCE,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_CASH_FLOW_CASCADE,
     TEST_CASH_FLOW_SEPARATOR,
     profile_for,

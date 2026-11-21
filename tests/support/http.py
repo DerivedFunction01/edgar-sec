@@ -9,7 +9,7 @@ from typing import Any
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.sec_http.retry import RetryPolicy
-from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
+from edgar_sec.pipelines.metadata_sync.core.sec_client import SubmissionsClient
 
 
 class FakeResponse:

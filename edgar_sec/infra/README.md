@@ -34,7 +34,7 @@ lookup, and every layer above consumes the decision rather than re-making it.
 
 - **Layer 2 may import only `edgar_sec.domain` and `edgar_sec.foundation`** —
   never `engine` or `pipelines`. The `layer-boundary` scanner
-  (`foundation/scanners/layers.py`) enforces this by ranking the importing and
+  (`foundation/scanners/structure/layers.py`) enforces this by ranking the importing and
   imported module's layer from each module's AST, so an `infra` → `engine` or
   `infra` → `pipelines` import fails the gate rather than depending on review.
 - Same-layer imports are unrestricted, and the scanner compares layer ranks

@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
     LADDER_SPECS_BY_TEST_ID,
@@ -16,7 +16,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
 from edgar_sec.engine.tables.extraction.form_specs.year_ladder_specs import (
     YEAR_LADDER_SPECS,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES_BY_FAMILY,
     TEST_LADDER,
 )

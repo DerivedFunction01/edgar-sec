@@ -31,7 +31,7 @@ from edgar_sec.engine.forms.cover.checkmarks.frames import (
 from edgar_sec.engine.forms.cover.checkmarks.models import CheckboxCandidate
 from edgar_sec.engine.forms.cover.checkmarks.yes_no_pairs import YES_NO_WORD_RE
 from edgar_sec.engine.forms.cover.models import CoverBoundary
-from edgar_sec.engine.forms.common.mark_association import (
+from edgar_sec.engine.forms.common.marks.mark_association import (
     MarkLabelRelation,
     SpanPosition,
     relation_between,

@@ -10,7 +10,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
     FormTestSpec,
 )
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import RowKind, TypedTable
 from edgar_sec.engine.tables.extraction.form_specs.walk_specs import (
     WALK_SPECS_BY_TEST_ID,

@@ -4,11 +4,8 @@ feedback over one filing's geometries.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.evidence.aro_evidence import (
-    apply_aro_assignment,
-)
-from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
-    apply_combined_operations_assignment,
+from edgar_sec.engine.tables.extraction.cascade.assignment_stage import (
+    apply_assignment_stage,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import (
     INHERITANCE_FACTOR,
@@ -16,31 +13,27 @@ from edgar_sec.engine.tables.extraction.cascade.competition import (
     TIE_POINTS,
     compete,
 )
-from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_evidence import (
-    apply_comprehensive_income_assignment,
-)
-from edgar_sec.engine.tables.extraction.separators.equity_separator_evidence import (
-    apply_equity_assignment,
-)
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimEvidence,
     CompetitionResult,
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.evidence.income_statement_setlevel_evidence import (
-    apply_income_statement_assignment,
-)
-from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
-    apply_lease_assignment,
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
 )
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_evidence import (
     apply_ppe_vetoes,
     capture_claim_stages,
 )
+from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
+    apply_precision_vetoes,
+)
+from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
+    apply_spanning_vetoes,
+)
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
-from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CONTAINMENT_EDGES,
     INHERITANCE_FACTORS,
     LADDER_EDGE_TERMS,
@@ -49,23 +42,11 @@ from edgar_sec.engine.tables.extraction.core.signature_profiles import (
     LadderTerm,
     SignatureTerm,
 )
-from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_evidence import (
-    apply_stock_comp_assignment,
-)
 
 
 # Inheritance lends a fragment the discounted evidence of the
 # nearest preceding claim in its note or section; a note title
 # shared with 2+ same-family claims lends that family tie evidence.
-_ASSIGNMENT_PASSES = (
-    apply_comprehensive_income_assignment,
-    apply_equity_assignment,
-    apply_combined_operations_assignment,
-    apply_income_statement_assignment,
-    apply_stock_comp_assignment,
-    apply_aro_assignment,
-    apply_lease_assignment,
-)
 
 
 def compete_filing(
@@ -156,12 +137,14 @@ def compete_filing(
             scopes=scopes,
         )
     stages = capture_claim_stages(own_results, results)
-    # Set-level assignment passes (priced): each pass runs over
-    # the filing's formed candidate set and only removes claims.
-    for apply_assignment in _ASSIGNMENT_PASSES:
-        results = apply_assignment(geometries, results)
+    # Set-level assignment stage (priced): the passes run over
+    # the filing's formed candidate set and only remove claims;
+    # the stage preserves the claims they remove.
+    results = apply_assignment_stage(geometries, results)
     # The primary hard gates refuse claims whose necessary
-    # sections are missing over the statement cluster; the PPE
-    # veto then reads gate-final claims on the captured stage.
+    # sections are missing over the statement cluster; the PPE,
+    # precision, and spanning vetoes read gate-final claims.
     gated = apply_primary_gate(geometries, results)
-    return apply_ppe_vetoes(geometries, gated, stages)
+    vetoed = apply_ppe_vetoes(geometries, gated, stages)
+    precise = apply_precision_vetoes(geometries, vetoed)
+    return apply_spanning_vetoes(geometries, precise)

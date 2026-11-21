@@ -9,6 +9,12 @@ in tiered, form-generic terms. Each pack exports anchors, secondary tokens, and 
 signals as plain string tuples. The engine compiles these into regex patterns at runtime
 with `foundation.regex.builder.build_alternation`.
 
+## Layout
+
+Packs are grouped by their declared tier, one subpackage per tier:
+`tier1/`, `tier2/`, `tier3/`. A pack lives in the package matching its
+`tier=` value; the registry imports each tier package directly.
+
 ## Contracts
 
 - **Declarative only**: Packs contain string metadata; zero regex compilation or I/O.

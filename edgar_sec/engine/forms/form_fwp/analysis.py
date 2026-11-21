@@ -12,7 +12,7 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     NAME_FORM_TOKENS,
     extract_cusip_near_caption,
 )

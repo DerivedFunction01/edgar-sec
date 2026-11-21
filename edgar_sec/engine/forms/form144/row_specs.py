@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.extraction import FieldKind
-from edgar_sec.engine.forms.common.row_extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import FieldKind
+from edgar_sec.engine.forms.common.fields.row_extraction import (
     RowSpec,
     column_spec as _column,
 )

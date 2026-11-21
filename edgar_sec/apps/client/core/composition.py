@@ -11,8 +11,8 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 
 from edgar_sec.engine.xbrl.schema.models import CalculationArc
-from edgar_sec.engine.xbrl.solve.antichain import AntiChainValidator
-from edgar_sec.engine.xbrl.solve.query import FinancialQueryResult, QueryStatus
+from edgar_sec.engine.xbrl.solve.core.antichain import AntiChainValidator
+from edgar_sec.engine.xbrl.solve.core.query import FinancialQueryResult, QueryStatus
 
 # Facade precedence ladder, best to worst (Phase 2 followup ruling).
 STATUS_ORDER: tuple[QueryStatus, ...] = (

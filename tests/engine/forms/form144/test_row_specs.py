@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.extraction import FieldKind
+from edgar_sec.engine.forms.common.fields.extraction import FieldKind
 from edgar_sec.engine.forms.form144.row_specs import (
     FORM144_PROPOSED_SALE_ROW_SPEC,
     FORM144_TABLE_I_ROW_SPEC,

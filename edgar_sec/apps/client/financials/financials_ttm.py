@@ -23,8 +23,8 @@ from edgar_sec.apps.client.financials.financials_core import (
 )
 from edgar_sec.apps.client.core.kernel import _span_length_class
 from edgar_sec.engine.xbrl.schema.models import XbrlFact, split_concept_qname
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
-from edgar_sec.engine.xbrl.solve.statement import period_rank
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.statements.statement import period_rank
 from edgar_sec.engine.xbrl.taxonomy.archive import standard_prefixes
 
 

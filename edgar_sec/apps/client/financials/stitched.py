@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING
 
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries, assemble_series
-from edgar_sec.engine.xbrl.solve.scoping import FilingRef, base_form
+from edgar_sec.engine.xbrl.solve.series.assembly import StitchedSeries, assemble_series
+from edgar_sec.engine.xbrl.solve.core.scoping import FilingRef, base_form
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.financials.financials_stitched import StitchedFinancials

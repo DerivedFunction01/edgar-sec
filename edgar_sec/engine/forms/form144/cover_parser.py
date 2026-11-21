@@ -8,17 +8,17 @@ from edgar_sec.domain.forms.families.form144.models import (
     IssuerInformation,
     ReportingPerson,
 )
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     PHONE_NUMBER_RE,
     STATE_ZIP_RE,
     is_boilerplate_entity_name,
     is_street_address_value,
     is_street_or_address_line,
 )
-from edgar_sec.engine.forms.common.statutory import (
+from edgar_sec.engine.forms.common.phrases.statutory import (
     strip_form_prompt_prefix,
 )
-from edgar_sec.engine.forms.common.tables import (
+from edgar_sec.engine.forms.common.tables.tables import (
     address_from_column_headers,
     address_from_inline_cells,
     clean_field_candidate,

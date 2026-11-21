@@ -13,7 +13,7 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     COMMISSION_FILE_TOKEN_RE,
     parse_cusip,
 )

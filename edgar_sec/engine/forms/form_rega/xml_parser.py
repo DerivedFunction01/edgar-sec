@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from edgar_sec.domain.forms.families.form_rega.models import RegADocument, RegAKind
 from edgar_sec.domain.forms.families.form_rega.taxonomy import kind_of
-from edgar_sec.engine.forms.common.edgar_submission import (
+from edgar_sec.engine.forms.common.scaffold.edgar_submission import (
     edgar_header_from_root,
     edgar_submission_root,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     all_deep_texts,
     find_child_element,
     find_element_path,

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.xbrl.solve.query import QueryMode, QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryMode, QueryStatus
 from tests.support.corpus import bundle_text
 
 from tests.engine.xbrl.solve.grounded_seed_support import (

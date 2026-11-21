@@ -15,9 +15,9 @@ from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.families.annual.processing import (
     PROFILE as ANNUAL_PROFILE,
 )
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.registry import RESIDUAL_FAMILY
-from edgar_sec.engine.tables.extraction.core.subject_evidence import load_map
+from edgar_sec.engine.tables.extraction.core.subjects.subject_evidence import load_map
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import MONTH_NAMES

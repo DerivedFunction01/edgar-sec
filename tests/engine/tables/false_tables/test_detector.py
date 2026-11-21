@@ -226,7 +226,7 @@ def test_raw_html_inside_a_table_wrapper_does_not_read_as_a_toc_row() -> None:
 
 def test_geometry_overrides_the_rendered_text_when_it_is_supplied() -> None:
     from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
-    from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+    from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 
     result = convert_html_table(
         "<table><tr><td>Revenue</td><td>1,200</td></tr>"

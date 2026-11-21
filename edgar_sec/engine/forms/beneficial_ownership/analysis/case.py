@@ -11,7 +11,7 @@ from edgar_sec.engine.forms.beneficial_ownership.field_observations import (
     empty_field_observations,
 )
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import FIELD_TAGS
-from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
+from edgar_sec.engine.forms.common.xml.unparsed import load_unparsed_sections
 
 
 def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | None:

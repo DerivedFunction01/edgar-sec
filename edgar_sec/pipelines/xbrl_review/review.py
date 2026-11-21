@@ -15,17 +15,20 @@ from edgar_sec.engine.xbrl.discovery.cohort import SeedFiling
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
-from edgar_sec.engine.xbrl.solve.counter_solver import (
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_cohort_table
+from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import (
     CounterSolver,
     QuarantinedFact,
 )
-from edgar_sec.engine.xbrl.solve.evidence_index import (
+from edgar_sec.engine.xbrl.solve.cohort.evidence_index import (
     FilingEvidenceRecord,
     build_evidence_index,
 )
-from edgar_sec.engine.xbrl.solve.solver import SOLVER_FINGERPRINT, XbrlConstraintSolver
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.core.solver import (
+    SOLVER_FINGERPRINT,
+    XbrlConstraintSolver,
+)
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.taxonomy.domain import (
     DomainTaxonomy,
     load_domain_taxonomy,

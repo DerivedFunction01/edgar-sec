@@ -3,7 +3,7 @@
 import pytest
 
 from edgar_sec.apps.client.statements.comparison import panel_query
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 from tests.apps.client.xbrl.xbrl_support import (
     _ANNUAL,
     _RPO_CONCEPT,

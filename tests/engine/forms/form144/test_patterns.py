@@ -1,6 +1,6 @@
 """Tests for Form 144 regex patterns."""
 
-from edgar_sec.engine.forms.common.entities import EXCHANGE_RE
+from edgar_sec.engine.forms.common.identity.entities import EXCHANGE_RE
 from edgar_sec.engine.forms.form144.patterns import (
     NOTICE_DATE_LABEL_RE,
     PLAN_ADOPTION_RE,

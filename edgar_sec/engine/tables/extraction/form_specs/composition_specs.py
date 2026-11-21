@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.profiles import PROV_FAMILY_SUPPORT
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROV_FAMILY_SUPPORT,
+)
 
 
 @dataclass(frozen=True, slots=True)

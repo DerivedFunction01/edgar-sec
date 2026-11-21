@@ -7,7 +7,7 @@ explained by a measured containment edge. Closure corroborates.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.evidence.admission_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     apply_admissions,
 )
 from edgar_sec.engine.tables.extraction.seats.aoci_gate import aoci_gate_detail
@@ -24,7 +24,7 @@ from edgar_sec.engine.tables.extraction.seats.genre_seat import (
     apply_section_refusals,
     geometry_refusal,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
@@ -32,15 +32,19 @@ from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
     _explained_foreign,
     score_geometry,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.evidence.input_class_evidence import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.evidence.form.input_class_evidence import (
     apply_input_class_seat,
 )
-from edgar_sec.engine.tables.extraction.evidence.labor_evidence import apply_labor_seat
-from edgar_sec.engine.tables.extraction.cascade.ladder_attribution import (
+from edgar_sec.engine.tables.extraction.evidence.form.labor_evidence import (
+    apply_labor_seat,
+)
+from edgar_sec.engine.tables.extraction.cascade.scoring.ladder_attribution import (
     apply_ladder_attribution,
 )
-from edgar_sec.engine.tables.extraction.cascade.score_trail import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.score_trail import (
     append_note,
     seat_at_floor,
 )
@@ -48,7 +52,7 @@ from edgar_sec.engine.tables.extraction.seats.seat_floor_evidence import (
     apply_seat_floor,
 )
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
-from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CONTAINMENT_EDGES,
     LADDER_EDGE_TERMS,
     SIGNATURE_TERMS,

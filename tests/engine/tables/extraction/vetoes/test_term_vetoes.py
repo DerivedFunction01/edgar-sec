@@ -6,15 +6,17 @@ set-completeness pin as ruled (Step 6 record; Step 4 build act).
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
 from edgar_sec.engine.tables.extraction.cascade.filing_competition import compete_filing
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import score_geometry
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    score_geometry,
+)
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
     geometry_text_from_table,
 )
@@ -22,8 +24,10 @@ from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     TERM_VETOES,
     term_veto_hits,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
-from edgar_sec.engine.tables.extraction.core.signature_profiles import SignatureTerm
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
+    SignatureTerm,
+)
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 
 _BS_TERMS = (

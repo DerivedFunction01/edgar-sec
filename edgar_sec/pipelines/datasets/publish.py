@@ -21,7 +21,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import (
+from edgar_sec.infra.storage.dag.working.publication import (
     publish_node,
     snapshot_tip as store_tip,
 )

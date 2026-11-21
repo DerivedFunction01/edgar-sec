@@ -4,15 +4,17 @@ from __future__ import annotations
 
 import edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_evidence as _dse
 import edgar_sec.engine.tables.extraction.note_separators.tax_reconciliation_separator_evidence as _tse
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.context import TableContext
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as _CORE_FORM_OUTCOME,
 )
 from edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_evidence import (
@@ -31,8 +33,10 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import FamilyScore
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    FamilyScore,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_DEFERRED_TAX_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
     profile_for,

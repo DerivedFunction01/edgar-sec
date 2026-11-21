@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
-from edgar_sec.engine.forms.common.native_xml import inspect_sec_xml_root
-from edgar_sec.engine.forms.common.unparsed import (
+from edgar_sec.engine.forms.common.xml.native_xml import inspect_sec_xml_root
+from edgar_sec.engine.forms.common.xml.unparsed import (
     UNPARSED_SECTIONS_FILE,
     serialize_unparsed_sections,
 )

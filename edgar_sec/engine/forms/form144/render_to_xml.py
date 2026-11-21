@@ -27,24 +27,24 @@ from edgar_sec.engine.forms.form144.metadata_parser import (
 from edgar_sec.engine.forms.form144.sale_parser import parse_proposed_sale_box_3
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
-from edgar_sec.engine.forms.common.dates import (
+from edgar_sec.engine.forms.common.values.dates import (
     external_reference_year,
     normalize_iso_date,
     resolve_reference_year,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     FieldKind,
     FieldSpec,
     add_field_element,
     extract_value,
     format_field_value,
 )
-from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
-from edgar_sec.engine.forms.common.row_extraction import (
+from edgar_sec.engine.forms.common.xml.native_xml import passthrough_sec_xml
+from edgar_sec.engine.forms.common.fields.row_extraction import (
     normalize_row_record,
     row_field as _row_field,
 )
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
 from edgar_sec.engine.forms.form144.row_specs import (
     FORM144_PROPOSED_SALE_ROW_SPEC,
     FORM144_TABLE_I_ROW_SPEC,

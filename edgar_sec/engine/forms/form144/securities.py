@@ -16,20 +16,20 @@ from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
     TableIISecuritySoldItem,
 )
-from edgar_sec.engine.forms.common.alignment import (
+from edgar_sec.engine.forms.common.tables.alignment import (
     CanonicalColumn,
     TableSchema,
     align_row_to_schema,
 )
-from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
-from edgar_sec.engine.forms.common.tables import is_instruction_row
-from edgar_sec.engine.forms.common.numbers import (
+from edgar_sec.engine.forms.common.phrases.statutory import STATUTORY_PAGE_ARTIFACT_RE
+from edgar_sec.engine.forms.common.tables.tables import is_instruction_row
+from edgar_sec.engine.forms.common.values.numbers import (
     NUMERIC_TOKEN_RE,
     extract_schema_number_or_token,
     normalize_decimal_stripping_currency,
     normalize_integer_stripping_units,
 )
-from edgar_sec.engine.forms.common.row_extraction import (
+from edgar_sec.engine.forms.common.fields.row_extraction import (
     as_integer,
     normalize_row_record,
     scan_date_cells,

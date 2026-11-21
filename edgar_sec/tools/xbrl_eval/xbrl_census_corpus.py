@@ -18,7 +18,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 
 CORPUS_NAMES = ("seed", "vintage")
 
@@ -331,7 +331,7 @@ def textblock_qnames(facts: tuple[XbrlFact, ...]) -> set[str]:
 
 def corpus_cohort_entries() -> tuple:
     """Cohort entries over the grounded corpus bundles, accessions authoritative."""
-    from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
+    from edgar_sec.engine.xbrl.solve.concepts.concept_table import CohortEntry
 
     registry = corpus_cohort_rows()
     sources = corpus_source_bundles()

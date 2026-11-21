@@ -7,6 +7,11 @@ Parses supported Form 3/4/5 ownership filings into SEC `<ownershipDocument>` XML
 Extracts supported reporting-owner details, transaction rows, dates, and signatures from
 filer-authored tables. Recognized values are normalized to ownership XML types and date format.
 
+The package root keeps the composition surface (analysis, footnotes, patterns,
+render_to_xml, sections); the leaf groups are `ascii/` (plain-text table route),
+`parsers/` (metadata, period, reporting owner), `tables/` (Table I / Table II
+construction), and `specs/` (field specs, row specs, schema).
+
 ## Contracts
 
 - **Pure transformation only**: Transformation is total and offline with zero network or filesystem I/O.

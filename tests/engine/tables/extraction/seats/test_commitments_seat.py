@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import classify_table
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_table
 from edgar_sec.engine.tables.extraction.seats.commitments_seat import (
     FORM_CREDIT_CLUSTER,
     FORM_GUARANTEE_SCHEDULE,
@@ -17,13 +17,15 @@ from edgar_sec.engine.tables.extraction.seats.commitments_seat import (
     evaluate_commitments_seat,
     seat_region,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.context import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.context import (
     NoteRef,
     SectionRef,
     TableContext,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES_BY_FAMILY,
     SEAT_GEOMETRY_TEXT,
 )

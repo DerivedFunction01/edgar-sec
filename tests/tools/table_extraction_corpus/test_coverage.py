@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.tools.table_extraction_corpus.coverage import (
     build_seed_candidates,
     module_literals,

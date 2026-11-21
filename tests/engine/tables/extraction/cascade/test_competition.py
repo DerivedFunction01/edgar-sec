@@ -4,12 +4,14 @@ from __future__ import annotations
 
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
 from edgar_sec.engine.tables.extraction.cascade.filing_competition import compete_filing
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
 from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
     lead_title_text,
     leadin_segment,
 )
-from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     ContainmentEdge,
     SignatureTerm,
 )
@@ -103,7 +105,7 @@ def test_closure_corroborates_but_never_vetoes() -> None:
 
 
 def test_profile_is_assembled_from_the_subject_evidence_map() -> None:
-    from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+    from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
         CHANNEL_WEIGHTS,
         INHERITANCE_FACTORS,
         PROV_SUBJECT_EVIDENCE_MAP,
@@ -185,8 +187,10 @@ def test_scored_veto_can_kill_a_detail_shaped_claim() -> None:
 def test_year_columns_signature_spans_the_full_year_range() -> None:
     """Delta pin: year_columns keys on the homed year token; the
     deleted private vocabulary was hard-narrowed to 2022-2027."""
-    from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-    from edgar_sec.engine.tables.extraction.cascade.detail_signatures import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+        GeometryText,
+    )
+    from edgar_sec.engine.tables.extraction.cascade.geometry.detail_signatures import (
         detail_signatures,
     )
 
@@ -322,7 +326,9 @@ def test_aoci_standalone_claim_needs_core_shape() -> None:
 
 
 def test_ladder_edge_terms_attribute_a_contested_pair() -> None:
-    from edgar_sec.engine.tables.extraction.core.signature_profiles import LadderTerm
+    from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
+        LadderTerm,
+    )
 
     ladder = (
         LadderTerm("thereafter", 17, 82),
@@ -346,7 +352,9 @@ def test_ladder_edge_terms_attribute_a_contested_pair() -> None:
 
 
 def test_ladder_edge_terms_contest_a_lone_inverted_claim() -> None:
-    from edgar_sec.engine.tables.extraction.core.signature_profiles import LadderTerm
+    from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
+        LadderTerm,
+    )
 
     ladder = (LadderTerm("thereafter", 17, 82),)
     geometry = GeometryText(

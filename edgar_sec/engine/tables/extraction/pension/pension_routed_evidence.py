@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,
 )
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (

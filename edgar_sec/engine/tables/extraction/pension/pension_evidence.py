@@ -8,8 +8,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
-from edgar_sec.engine.tables.extraction.core.profiles import PROV_PENSION_ANCHOR
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROV_PENSION_ANCHOR,
+)
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 
 
@@ -38,6 +40,9 @@ class PensionAnchorSpec:
     allocation_context_terms: tuple[str, ...]
     oci_phrases: tuple[str, ...]
     oci_component_terms: tuple[str, ...]
+    multiemployer_id_terms: tuple[str, ...] = ()
+    multiemployer_status_terms: tuple[str, ...] = ()
+    multiemployer_context_terms: tuple[str, ...] = ()
     provenance: str = PROV_PENSION_ANCHOR
 
 
@@ -88,6 +93,13 @@ PENSION_ANCHOR_SPECS: dict[str, PensionAnchorSpec] = {
             "other comprehensive loss",
         ),
         oci_component_terms=("actuarial", "prior service", "unrecognized"),
+        multiemployer_id_terms=("ein", "plan number"),
+        multiemployer_status_terms=("fip/rp", "zone status"),
+        multiemployer_context_terms=(
+            "multiemployer",
+            "collective bargaining",
+            "collective-bargaining",
+        ),
     ),
 }
 
@@ -175,6 +187,15 @@ def pension_anchor_set(text: PensionText, spec: PensionAnchorSpec) -> frozenset[
         x in lead for x in spec.allocation_context_terms
     ):
         anchors.add("allocation")
+    # The multiemployer leg (ASC 715-80): plan identification and
+    # PPA zone/FIP-RP machinery on the grid, in multiemployer or
+    # collective-bargaining context.
+    if (
+        all(x in low for x in spec.multiemployer_id_terms)
+        and any(x in low for x in spec.multiemployer_status_terms)
+        and any(x in lead or x in low for x in spec.multiemployer_context_terms)
+    ):
+        anchors.add("multiemployer")
     return frozenset(anchors)
 
 

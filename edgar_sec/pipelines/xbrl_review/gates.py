@@ -21,10 +21,10 @@ from edgar_sec.engine.xbrl.review.benchmark import (
 )
 from edgar_sec.engine.xbrl.review.relations import RELATION_SET, evaluate_relations
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortLookup
-from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
-from edgar_sec.engine.xbrl.solve.query import FinancialQueryEngine
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortLookup
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_cohort_table
+from edgar_sec.engine.xbrl.solve.core.query import FinancialQueryEngine
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import (
     LoadedFiling,

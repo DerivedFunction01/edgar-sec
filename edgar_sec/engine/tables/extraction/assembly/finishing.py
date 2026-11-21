@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.classification import (
+from edgar_sec.engine.tables.extraction.core.subjects.classification import (
     Classification,
     Evidence,
     TableKind,
 )
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.registry import (
     ASSIGNMENT_FLOOR,
     CORE_FAMILIES,

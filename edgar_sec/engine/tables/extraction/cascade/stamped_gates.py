@@ -10,7 +10,7 @@ from edgar_sec.engine.tables.extraction.separators.balance_sheet_separator_evide
 from edgar_sec.engine.tables.extraction.separators.cash_flow_separator_evidence import (
     fired_separator_outcome as fired_cash_flow_separator_outcome,
 )
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,
 )
 from edgar_sec.engine.tables.extraction.note_separators.credit_separator_evidence import (
@@ -22,13 +22,15 @@ from edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_e
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
     fired_separator_outcome as fired_lease_separator_outcome,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CREDIT_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_EPS_DETECTOR,
+    TEST_EPS_ADJACENCY_REFUSAL,
+    TEST_EPS_PROFORMA_REFUSAL,
     TEST_EQUITY_SEPARATOR,
     TEST_FORM_SEPARATION,
     TEST_LEASE_SEPARATOR,
@@ -36,7 +38,7 @@ from edgar_sec.engine.tables.extraction.core.profiles import (
     TEST_STOCK_COMP_SEPARATOR,
     TEST_TAX_RECONCILIATION_SEPARATOR,
 )
-from edgar_sec.engine.tables.extraction.cascade.score_trail import append_note
+from edgar_sec.engine.tables.extraction.cascade.scoring.score_trail import append_note
 from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_evidence import (
     fired_separator_outcome as fired_stock_comp_separator_outcome,
 )
@@ -57,6 +59,8 @@ STAMPED_GATES = (
         fired_credit_separator_outcome,
     ),
     ("eps_reconciliation", TEST_EPS_DETECTOR, failing_core_form_outcome),
+    ("eps_reconciliation", TEST_EPS_ADJACENCY_REFUSAL, failing_core_form_outcome),
+    ("eps_reconciliation", TEST_EPS_PROFORMA_REFUSAL, failing_core_form_outcome),
     ("eps_reconciliation", TEST_FORM_SEPARATION, failing_core_form_outcome),
     ("intangibles", TEST_FORM_SEPARATION, failing_core_form_outcome),
     (

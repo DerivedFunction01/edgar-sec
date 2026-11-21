@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
-from edgar_sec.engine.xbrl.solve.concept_table import build_concept_table
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_concept_table
 from edgar_sec.engine.xbrl.taxonomy.archive import (
     CURRENT_SLICES,
     TAXONOMY_PREFIXES,

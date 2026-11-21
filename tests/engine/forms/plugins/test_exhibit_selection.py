@@ -3,7 +3,7 @@
 from dataclasses import replace
 
 from edgar_sec.domain.forms.common.exhibits import ExhibitIdentity
-from edgar_sec.domain.forms.exhibits.packs import ex3_1, ex31_i
+from edgar_sec.domain.forms.exhibits.packs.tier1 import ex3_1, ex31_i
 from edgar_sec.engine.forms.cover.toc.models import TocSpan
 from edgar_sec.engine.forms.plugins.exhibit_selection import (
     CompiledExhibitPack,

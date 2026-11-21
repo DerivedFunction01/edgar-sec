@@ -10,7 +10,10 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from edgar_sec.engine.tables.extraction.core.profiles import PROFILES, registry_state
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROFILES,
+    registry_state,
+)
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.table_classification.cli import main
 from edgar_sec.pipelines.table_classification.paths import ClassificationPaths

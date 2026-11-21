@@ -6,7 +6,7 @@ import json
 from typing import Any
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.publication import StaleParentError
+from edgar_sec.infra.storage.dag.working.publication import StaleParentError
 from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )

@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from typing import Any
 
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.query import FinancialQuery, QueryStatus
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.query import FinancialQuery, QueryStatus
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 
 
 @dataclass(frozen=True, slots=True)

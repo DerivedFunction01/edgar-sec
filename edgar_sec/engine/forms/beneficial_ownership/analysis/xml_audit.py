@@ -15,15 +15,15 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13G_ITEMS,
     SCHEDULE_13G_XML_NAMESPACE,
 )
-from edgar_sec.engine.forms.common.entities import is_valid_cusip
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip
+from edgar_sec.engine.forms.common.fields.extraction import (
     deep_element_index,
     grouped_deep_elements,
     local_name,
     xml_subtree_text_normalized,
 )
-from edgar_sec.engine.forms.common.numbers import normalize_schema_number
-from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
+from edgar_sec.engine.forms.common.values.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.phrases.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (

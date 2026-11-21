@@ -8,7 +8,7 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import CohortEntry
 from tests.support.corpus import bundle_dir, corpus_cohort_rows, corpus_source_bundles
 
 

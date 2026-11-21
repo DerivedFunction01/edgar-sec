@@ -26,7 +26,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     PresentationArc,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import CohortEntry
 from edgar_sec.engine.xbrl.storage.storage import (
     calculation_arcs_from_arrow_table,
     declarations_from_arrow_table,

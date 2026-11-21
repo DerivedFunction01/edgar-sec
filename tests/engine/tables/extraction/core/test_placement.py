@@ -4,8 +4,9 @@ first primary run, gap tolerance two, deep notes at fifteen."""
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core import placement, registry
-from edgar_sec.engine.tables.extraction.core.placement import (
+from edgar_sec.engine.tables.extraction.core import registry
+from edgar_sec.engine.tables.extraction.core.text import placement
+from edgar_sec.engine.tables.extraction.core.text.placement import (
     REGION_FRONT,
     REGION_NOTES,
     REGION_STATEMENTS,

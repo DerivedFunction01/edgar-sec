@@ -7,7 +7,7 @@ import re
 import pytest
 
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
-from edgar_sec.engine.tables.ascii_html.model import RenderBudget
+from edgar_sec.engine.tables.ascii_html.model.model import RenderBudget
 
 CANONICAL_HTML = """
 <table>

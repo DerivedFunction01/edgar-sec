@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import replace
 
 import edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence as _evidence
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
@@ -23,8 +23,10 @@ from edgar_sec.engine.tables.extraction.separators.combined_operations_separator
     MEASURE_SET_TEST_ID,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
 )
@@ -32,14 +34,14 @@ from edgar_sec.engine.tables.extraction.form_tests.form_tests import (
     FormTestOutcome,
     evaluate_form_tests,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     CompetitionResult,
     FamilyScore,
 )
 from edgar_sec.engine.tables.extraction.specs.measure_set_specs import (
     MEASURE_SET_SPECS_BY_TEST_ID,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_COMBINED_OPERATIONS_SEPARATOR,
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_MEASURE_SET,

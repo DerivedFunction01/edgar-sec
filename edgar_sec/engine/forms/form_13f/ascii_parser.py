@@ -15,7 +15,7 @@ from edgar_sec.domain.forms.families.form_13f.models import (
     InfoTableRow,
     ManagerAddress,
 )
-from edgar_sec.engine.forms.common.entities import is_valid_cusip, parse_cusip
+from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip, parse_cusip
 from edgar_sec.foundation.text.dates import REPORT_QUARTER_ENDED_RE
 
 _VALUE_SCALE = 1000

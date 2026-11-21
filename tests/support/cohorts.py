@@ -10,7 +10,10 @@ from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.pipelines.cohort.sources import SOURCE_URLS, refresh_official_source
-from edgar_sec.pipelines.metadata_sync.roster import Roster, cohort_record_to_roster
+from edgar_sec.pipelines.metadata_sync.core.roster import (
+    Roster,
+    cohort_record_to_roster,
+)
 from tests.support.fixtures import fixture_path
 from tests.support.http import FakeSession, build_test_http
 from tests.support.scratch import scratch_root

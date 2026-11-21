@@ -15,7 +15,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     ConceptDeclaration,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.counter_solver import (
+from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import (
     QUARANTINE_REASONS,
     AuditHypothesis,
     CounterSolver,

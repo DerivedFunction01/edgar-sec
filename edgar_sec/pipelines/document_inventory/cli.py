@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
-from edgar_sec.infra.storage.dag.cli import (
+from edgar_sec.infra.storage.dag.operator.cli import (
     attach_dag_subparser,
     dispatch_dag_subcommand,
 )

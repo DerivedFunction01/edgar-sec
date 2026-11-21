@@ -17,7 +17,7 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.facing_sheet import facing_sheet_fields
+from edgar_sec.engine.forms.common.identity.facing_sheet import facing_sheet_fields
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 
 _ELECTION_KEYS: tuple[str, ...] = (

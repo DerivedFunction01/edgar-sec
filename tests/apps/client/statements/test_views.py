@@ -3,8 +3,8 @@
 from edgar_sec.apps.client.statements.views import StatementView
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
-from edgar_sec.engine.xbrl.solve.statement import build_statement_graph
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.statements.statement import build_statement_graph
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
 

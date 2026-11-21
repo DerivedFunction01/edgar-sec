@@ -39,7 +39,7 @@ Each package's README carries its deliberate gaps.
 
 - **Layer 3 may import only from `infra`, `domain`, and `foundation`.** It must never import
   from `pipelines`. This is enforced by the `layer-boundary` scanner
-  (`edgar_sec/foundation/scanners/layers.py`) and run by `check.py --scan`; it is a hard
+  (`edgar_sec/foundation/scanners/structure/layers.py`) and run by `check.py --scan`; it is a hard
   gate failure, not a lint warning. Within the layer, sibling sub-packages may import each
   freely — `forms/` imports from `document/`, `reflow/`, and `tables/`.
 - **Purity, with named exceptions.** The transformation packages (`document/`, `tables/`,

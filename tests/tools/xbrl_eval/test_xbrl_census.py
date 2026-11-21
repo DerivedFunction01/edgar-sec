@@ -4,7 +4,7 @@ from pathlib import Path
 
 from edgar_sec.engine.xbrl.review.benchmark import summarize_census
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.tools.xbrl_eval.xbrl_census import (
     classify,
     replay_faithful,

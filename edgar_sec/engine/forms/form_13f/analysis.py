@@ -7,8 +7,8 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.families.form_13f.models import Form13FDocument
-from edgar_sec.engine.forms.common.entities import is_valid_cusip
-from edgar_sec.engine.forms.common.family_scaffold import empty_report
+from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import empty_report
 from edgar_sec.engine.forms.form_13f.xml_parser import parse_form_13f_xml
 
 _CORE_FIELDS = (

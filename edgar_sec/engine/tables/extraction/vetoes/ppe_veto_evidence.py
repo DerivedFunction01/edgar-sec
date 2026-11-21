@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from typing import NamedTuple
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     HOST_MIN_SHARED_KEYS,
     LEAD_BALANCE_MIN,
@@ -141,7 +141,7 @@ def apply_ppe_vetoes(geometries, results, stages):
     Firings read the input results and the captured claim
     stages only, so removals never change another firing.
     """
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

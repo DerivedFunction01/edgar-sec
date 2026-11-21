@@ -8,7 +8,7 @@ from edgar_sec.apps.client.financials.financials import XbrlFinancials
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.support.corpus import bundle_dir
 

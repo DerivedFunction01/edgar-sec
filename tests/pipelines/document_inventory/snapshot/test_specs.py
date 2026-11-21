@@ -5,7 +5,7 @@ import pyarrow as pa
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.compaction import compact_lineage
+from edgar_sec.infra.storage.dag.working.compaction import compact_lineage
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,

@@ -14,13 +14,13 @@ from edgar_sec.domain.forms.families.form_13f.models import (
     InfoTableRow,
     ManagerAddress,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     find_child_element,
     find_child_elements,
     local_name,
     xml_element_text_or_none,
 )
-from edgar_sec.engine.forms.common.family_scaffold import element_int as _int
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import element_int as _int
 
 _DOLLARS_ERA_START = (2023, 1, 1)
 

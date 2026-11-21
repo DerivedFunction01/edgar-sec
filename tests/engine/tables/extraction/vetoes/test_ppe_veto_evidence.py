@@ -3,8 +3,10 @@ on the pre-gate claim stage."""
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimGroup,
     CompetitionResult,
     FamilyScore,
@@ -18,7 +20,7 @@ from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     SIGNATURE_CHANNELS,
     STRONG_STUB_KEYS,
 )
-from edgar_sec.engine.tables.extraction.core.signature_profiles import CHANNELS
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import CHANNELS
 
 
 def _score(family, total=11.0, channels=None):

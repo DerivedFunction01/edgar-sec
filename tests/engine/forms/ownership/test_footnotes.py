@@ -1,6 +1,6 @@
 from edgar_sec.engine.forms.ownership.footnotes import parse_footnotes
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection, SectionRole
-from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.model.model import ResolvedGrid
 
 
 def test_parse_footnotes_collects_entries_across_one_multiline_cell() -> None:

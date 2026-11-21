@@ -15,7 +15,7 @@ from ..patterns import RE_TABLE_BLOCK
 from .detector import _marker_candidates, _visible_text, is_false_table
 
 if TYPE_CHECKING:
-    from ..ascii_html.model import TableGeometry
+    from ..ascii_html.model.model import TableGeometry
 
 
 def _is_list_item(text: str) -> bool:

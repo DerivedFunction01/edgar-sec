@@ -1,7 +1,7 @@
 """Tests proving length-class span selection for fiscal-year queries."""
 
-from edgar_sec.engine.xbrl.solve.query import QueryMode, QueryStatus
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.query import QueryMode, QueryStatus
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 from tests.apps.client.xbrl.xbrl_support import (
     _ANNUAL,
     _MSFT_ACCESSION,

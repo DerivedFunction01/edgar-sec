@@ -7,10 +7,10 @@ and row labels, independent of caption vocabulary.
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.numbers import clean_numeric
+from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.foundation.text.dates import RE_FULL_DATE
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 
 _COMPONENTS: dict[str, tuple[str, ...]] = {

@@ -12,7 +12,7 @@ from edgar_sec.engine.xbrl.normalize.filed_metadata import (
     filed_metadata as read_filed_metadata,
 )
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
 _ACCESSION = "0000000000-26-000001"

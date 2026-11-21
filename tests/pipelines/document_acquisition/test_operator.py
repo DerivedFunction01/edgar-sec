@@ -62,7 +62,7 @@ def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
 
 
 def test_menu_routes_snapshot_console_to_shared_dag_console(monkeypatch):
-    from edgar_sec.infra.storage.dag import menu as dag_menu
+    from edgar_sec.infra.storage.dag.operator import menu as dag_menu
 
     opened = []
     monkeypatch.setattr(

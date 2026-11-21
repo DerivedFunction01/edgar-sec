@@ -8,7 +8,7 @@ from enum import StrEnum
 import re
 
 from edgar_sec.domain.forms.common.statutory import COMMON_STATUTORY_LEXICAL_PACK
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     EXCHANGE_RE,
     IRS_RE,
     PHONE_NUMBER_RE,
@@ -16,7 +16,7 @@ from edgar_sec.engine.forms.common.entities import (
     normalize_exchange_name,
 )
 from edgar_sec.engine.forms.common.signatures.grid import is_signature_table
-from edgar_sec.engine.forms.common.tables import (
+from edgar_sec.engine.forms.common.tables.tables import (
     is_empty_continuation_row,
     is_instruction_row,
     is_single_cell_empty_table,
@@ -30,13 +30,13 @@ from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_TABLE_II_LEXICAL_PACK,
 )
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
-from edgar_sec.engine.forms.common.numbers import NUMERIC_TOKEN_RE
+from edgar_sec.engine.forms.common.values.numbers import NUMERIC_TOKEN_RE
 from edgar_sec.engine.forms.form144.patterns import (
     SEC_FILE_LABEL_RE,
     form144_instruction_matches,
 )
 from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     NON_ALNUM_RE,
     ResolvedGrid,
     merge_resolved_grids,

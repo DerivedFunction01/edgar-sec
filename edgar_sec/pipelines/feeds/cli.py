@@ -10,7 +10,7 @@ import argparse
 import sys
 
 from edgar_sec.domain.feeds.models import STRUCTURED_FEED_SOURCES
-from edgar_sec.infra.storage.dag.cli import (
+from edgar_sec.infra.storage.dag.operator.cli import (
     attach_dag_subparser,
     dispatch_dag_subcommand,
 )

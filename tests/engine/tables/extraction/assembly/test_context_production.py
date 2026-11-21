@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from edgar_sec.engine.document.page_markers.models import PageArtifactPolicy
 from edgar_sec.engine.forms.normalize import normalize_document
-from edgar_sec.engine.tables.extraction.cascade.classify import classify_table
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_table
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.assembly.context_production import (
     DocumentInput,
     FilingFacts,

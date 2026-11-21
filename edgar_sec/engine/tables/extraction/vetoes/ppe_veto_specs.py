@@ -6,7 +6,7 @@ and the channel sets the veto pass prices.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNELS as SIGNATURE_CHANNELS,
 )
 

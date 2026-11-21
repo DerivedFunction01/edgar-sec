@@ -11,11 +11,11 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.engine.xbrl.solve.solver import SOLVER_FINGERPRINT
+from edgar_sec.engine.xbrl.solve.core.solver import SOLVER_FINGERPRINT
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.dag.publication import read_pointer
+from edgar_sec.infra.storage.dag.working.publication import read_pointer
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet, sql_literal
 from edgar_sec.pipelines.xbrl_review.paths import xbrl_paths, xbrl_run_paths
 from edgar_sec.pipelines.xbrl_review.schemas import WORK_ORDER_SCHEMA

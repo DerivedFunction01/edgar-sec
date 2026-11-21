@@ -6,7 +6,7 @@ from types import SimpleNamespace
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
 from edgar_sec.engine.forms.ownership.render_to_xml import render_ownership_to_xml
 from edgar_sec.engine.forms.ownership.sections import partition_ownership_tables
-from edgar_sec.engine.forms.ownership.table_ii import parse_table_ii_rows
+from edgar_sec.engine.forms.ownership.tables.table_ii import parse_table_ii_rows
 
 SAMPLE_DOC_HTML = b"""
 <html><body>

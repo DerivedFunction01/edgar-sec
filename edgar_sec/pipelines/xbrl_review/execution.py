@@ -17,10 +17,10 @@ import uuid
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.engine.xbrl.solve.cohort_scan import plan_cohort_scan
-from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
-from edgar_sec.engine.xbrl.solve.evidence_index import build_evidence_index
-from edgar_sec.engine.xbrl.solve.solver import SOLVER_FINGERPRINT
+from edgar_sec.engine.xbrl.solve.cohort.cohort_scan import plan_cohort_scan
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_cohort_table
+from edgar_sec.engine.xbrl.solve.cohort.evidence_index import build_evidence_index
+from edgar_sec.engine.xbrl.solve.core.solver import SOLVER_FINGERPRINT
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.paths import (
@@ -36,7 +36,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node
+from edgar_sec.infra.storage.dag.working.publication import publish_node
 from edgar_sec.infra.storage.parquet import read_parquet_key_bounds, write_parquet_table
 from edgar_sec.pipelines.xbrl_review.bundles import (
     cohort_entries,

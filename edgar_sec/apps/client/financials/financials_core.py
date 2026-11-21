@@ -18,7 +18,7 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact, split_concept_qname
-from edgar_sec.engine.xbrl.solve.identities import (
+from edgar_sec.engine.xbrl.solve.core.identities import (
     cleanest_facts,
     eps_identity_legs,
     unique_value,

@@ -11,7 +11,7 @@ from edgar_sec.domain.forms.families.form_rega.taxonomy import (
     REGA_OFFERING_XML_SPEC,
 )
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
-from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
+from edgar_sec.engine.forms.common.xml.native_xml import passthrough_sec_xml
 
 if TYPE_CHECKING:
     from edgar_sec.engine.document_processing.registry import HandlerContext

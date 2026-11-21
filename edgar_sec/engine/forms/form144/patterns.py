@@ -8,12 +8,12 @@ from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_BOX_1_2_DECISIVE_PHRASES,
     FORM144_INSTRUCTION_PHRASE_RULE,
 )
-from edgar_sec.engine.forms.common.phrases import (
+from edgar_sec.engine.forms.common.phrases.phrases import (
     PhraseMatch,
     compile_phrase_rules,
     match_phrase_rules,
 )
-from edgar_sec.engine.forms.common.tables import IGNORE_SUBBOX_MARKERS
+from edgar_sec.engine.forms.common.tables.tables import IGNORE_SUBBOX_MARKERS
 from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE

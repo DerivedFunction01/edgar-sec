@@ -1,12 +1,12 @@
 """Pins for the tag local-name home (Wave 2B).
-The namespace strip lives in ``engine.forms.common.extraction``;
+The namespace strip lives in ``engine.forms.common.fields.extraction``;
 the filing-summary parser binds it.
 """
 
 from __future__ import annotations
 
 from edgar_sec.engine.filing_summary import parser
-from edgar_sec.engine.forms.common.extraction import local_name
+from edgar_sec.engine.forms.common.fields.extraction import local_name
 
 
 def test_binding_is_the_extraction_home() -> None:

@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.equivalence import (
+from edgar_sec.engine.xbrl.solve.concepts.equivalence import (
     EXACT,
     RankedEquivalent,
     coordinate_diff,

@@ -5,21 +5,21 @@ refuse or seat claims after the dominance claiming.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,
 )
 from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     CORE_FORM_SPECS,
 )
-from edgar_sec.engine.tables.extraction.evidence.derivatives_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.derivatives_evidence import (
     DerivativesText,
     derivatives_subject_for_geometry,
     evaluate_derivatives_evidence,
 )
-from edgar_sec.engine.tables.extraction.specs.derivatives_evidence_specs import (
+from edgar_sec.engine.tables.extraction.specs.families.derivatives_evidence_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimEvidence,
     FamilyScore,
 )
@@ -31,16 +31,16 @@ from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     failing_pension_routed_outcome,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     TEST_CORE_FORM,
     TEST_PENSION_COMBINATION,
     TEST_PENSION_ROUTED,
 )
-from edgar_sec.engine.tables.extraction.cascade.score_trail import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.score_trail import (
     append_note,
     seat_at_floor,
 )
-from edgar_sec.engine.tables.extraction.specs.tax_evidence_specs import (
+from edgar_sec.engine.tables.extraction.specs.families.tax_evidence_specs import (
     TAX_EVIDENCE_SPECS,
 )
 

@@ -4,7 +4,10 @@
 
 Per-family evidence builders: each module gathers its family's evidence over a
 table context — vocabulary, shape, and arithmetic signals — and scores it for
-the classification cascade.
+the classification cascade. The builders are grouped by the statement their
+family belongs to — `balance_sheet/`, `income_statement/`, `equity/` — with
+the form layer in `form/`; the shared rollforward grid derivation stays at
+this root.
 
 ## Contracts
 
@@ -13,7 +16,7 @@ the classification cascade.
 - **Derivatives claims are gated on U/A evidence**: a `derivatives_hedging`
   claim issues only when the geometry itself carries underlying/notional or
   accounting-effects evidence under the gate algebra declared in
-  `core.profiles`.
+  `core.subjects.profiles`.
 - **Evidence scores, it does not refuse**: refusal lives in `seats/` and
   `vetoes/`; a failed signal records a zero-point signal, never a gate.
 

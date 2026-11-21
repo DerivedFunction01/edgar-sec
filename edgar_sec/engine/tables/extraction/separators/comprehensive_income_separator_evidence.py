@@ -203,7 +203,7 @@ def apply_comprehensive_income_assignment(geometries, results):
     when a core-complete sibling candidate stands in the same
     filing; runs after every claim is formed, before the gate.
     """
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

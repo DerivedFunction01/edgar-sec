@@ -9,14 +9,14 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.forms.common.signatures.patterns import SIG_BOILERPLATE_TERMS
-from edgar_sec.engine.forms.common.statutory import (
+from edgar_sec.engine.forms.common.phrases.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
 )
-from edgar_sec.engine.forms.common.dates import parse_schema_date, reported_year
-from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
+from edgar_sec.engine.forms.common.values.dates import parse_schema_date, reported_year
+from edgar_sec.engine.forms.common.xml.unparsed import load_unparsed_sections
 from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
-from edgar_sec.engine.forms.ownership.schema import ownership_schema_anomalies
+from edgar_sec.engine.forms.ownership.specs.schema import ownership_schema_anomalies
 from edgar_sec.foundation.text.dates import (
     MONTH_WORD_RE,
     NUMERIC_DATE_RE,

@@ -12,11 +12,11 @@ from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     RE_PERSON_WITH_NOISE,
 )
-from edgar_sec.engine.forms.common.statutory import (
+from edgar_sec.engine.forms.common.phrases.statutory import (
     HEADER_LEAK_RE,
     annotate_common_form_phrases,
 )
-from edgar_sec.engine.forms.common.phrases import (
+from edgar_sec.engine.forms.common.phrases.phrases import (
     PhraseMatch,
     compile_phrase_rules,
     match_phrase_rules,

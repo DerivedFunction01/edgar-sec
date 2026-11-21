@@ -10,7 +10,7 @@ from edgar_sec.domain.forms.common.entities import (
     ISSUER_LABEL_TERMS,
 )
 from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS, NAME_STOPWORDS
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     COMMISSION_FILE_TOKEN_RE,
     IRS_RE,
     ISSUER_TAIL_RE,

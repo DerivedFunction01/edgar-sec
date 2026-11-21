@@ -22,7 +22,7 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import parse_cusip
+from edgar_sec.engine.forms.common.identity.entities import parse_cusip
 from edgar_sec.engine.forms.cover.registrant import previous_content_line
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.tables.protection.tags import find_table_spans

@@ -11,7 +11,7 @@ from edgar_sec.engine.tables.ascii_html.converter import (
     convert_html_tables_to_ascii_with_metadata,
     resolve_html_table_grid,
 )
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 from edgar_sec.engine.tables.ascii_html.renderer import render_grid_to_ascii
 
 DOCUMENT = """

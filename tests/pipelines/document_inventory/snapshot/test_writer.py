@@ -20,7 +20,7 @@ from edgar_sec.domain.document_inventory.models import (
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.dag import publication as publication_module
+from edgar_sec.infra.storage.dag.working import publication as publication_module
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.checkpoint import (
     AttemptWriters,
@@ -41,7 +41,7 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
 from edgar_sec.pipelines.document_inventory.snapshot.errors import (
     ValidationFailedError,
 )
-from edgar_sec.infra.storage.dag.publication import (
+from edgar_sec.infra.storage.dag.working.publication import (
     PublicationLock,
     PublicationLockError,
     StaleParentError,

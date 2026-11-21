@@ -23,7 +23,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     ordered_parts_fingerprint,
 )
 from edgar_sec.infra.storage.dag.paths import DAGPaths
-from edgar_sec.infra.storage.dag.publication import publish_node, read_pointer
+from edgar_sec.infra.storage.dag.working.publication import publish_node, read_pointer
 from edgar_sec.infra.storage.parquet import (
     read_parquet_key_bounds,
     read_parquet_table,

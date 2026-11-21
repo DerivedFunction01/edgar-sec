@@ -2,17 +2,17 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
     candidate_scores,
     classify_filing,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
-from edgar_sec.engine.tables.extraction.cascade.detail_agreement import (
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
+from edgar_sec.engine.tables.extraction.cascade.geometry.detail_agreement import (
     DETAIL_AGREEMENT_FLOOR,
     DETAIL_AGREEMENT_POINTS,
     find_detail_agreement,

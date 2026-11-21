@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     QueryMode,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 from tests.support.corpus import bundle_text
 
 from tests.engine.xbrl.solve.grounded_seed_support import _grounded_engine

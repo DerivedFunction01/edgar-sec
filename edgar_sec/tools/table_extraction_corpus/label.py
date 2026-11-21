@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from decimal import Decimal, InvalidOperation
 
-from edgar_sec.engine.forms.common.numbers import clean_numeric
+from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
 from edgar_sec.foundation.text.words import word_tokens
 

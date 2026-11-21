@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
 from edgar_sec.engine.forms.form144.render_to_xml import render_form144_to_xml
-from edgar_sec.engine.forms.common.unparsed import deserialize_unparsed_sections
-from edgar_sec.engine.forms.common.extraction import normalize_value
+from edgar_sec.engine.forms.common.xml.unparsed import deserialize_unparsed_sections
+from edgar_sec.engine.forms.common.fields.extraction import normalize_value
 from edgar_sec.engine.forms.form144.render_to_xml import (
     _xml_date,
 )

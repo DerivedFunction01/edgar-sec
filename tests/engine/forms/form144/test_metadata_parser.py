@@ -57,7 +57,7 @@ def test_parse_signatures_recovers_from_fallback_section():
         ClassifiedSection,
         SectionRole,
     )
-    from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+    from edgar_sec.engine.tables.ascii_html.model.model import ResolvedGrid
 
     fallback = ClassifiedSection(
         role=SectionRole.UNPARSED,

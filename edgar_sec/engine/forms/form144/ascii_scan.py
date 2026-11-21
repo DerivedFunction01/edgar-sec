@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     is_street_or_address_line,
     normalize_exchange_name,
 )
-from edgar_sec.engine.forms.common.numbers import (
+from edgar_sec.engine.forms.common.values.numbers import (
     NUMERIC_TOKEN_RE,
     format_scaled_number_string,
 )
-from edgar_sec.engine.forms.common.tables import (
+from edgar_sec.engine.forms.common.tables.tables import (
     clean_field_candidate,
     is_horizontal_rule_line,
     strip_footnote_references,

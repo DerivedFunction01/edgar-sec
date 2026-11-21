@@ -27,7 +27,7 @@ from edgar_sec.engine.forms.ownership.patterns import (
     OWNERSHIP_PAGE_MARKER_RE,
 )
 from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     NON_ALNUM_RE,
     HorizontalAlign,
     ResolvedGrid,

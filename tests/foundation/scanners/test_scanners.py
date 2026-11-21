@@ -9,13 +9,10 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.foundation.scanners import (
-    clean_exit,
-    environment,
-    length,
-    artifact_paths,
-)
-from edgar_sec.foundation.scanners import secrets as secrets_scanner
+from edgar_sec.foundation.scanners.mechanics import artifact_paths
+from edgar_sec.foundation.scanners.runtime import clean_exit, environment
+from edgar_sec.foundation.scanners.runtime import secrets as secrets_scanner
+from edgar_sec.foundation.scanners.structure import length
 
 
 def _build_repo(root: Path, files: dict[str, str]) -> None:

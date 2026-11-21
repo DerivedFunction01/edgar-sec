@@ -3,36 +3,36 @@
 from __future__ import annotations
 
 from .base import Scanner, ScannerFinding
-from .artifact_paths import SCANNER as PATHS_SCANNER
-from .batch_defaults import SCANNER as BATCH_DEFAULTS_SCANNER
-from .clean_exit import SCANNER as CLEAN_EXIT_SCANNER
-from .date_patterns import SCANNER as DATE_PATTERNS_SCANNER
-from .environment import SCANNER as ENV_SCANNER
-from .form_isolation import SCANNER as FORM_ISOLATION_SCANNER
-from .form_vocabulary import SCANNER as FORM_VOCABULARY_SCANNER
-from .helper_duplicates import SCANNER as HELPER_DUPLICATES_SCANNER
-from .identifier_patterns import SCANNER as IDENTIFIER_PATTERNS_SCANNER
-from .json_io import SCANNER as JSON_IO_SCANNER
-from .layers import SCANNER as LAYERS_SCANNER
-from .legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
-from .length import SCANNER as LENGTH_SCANNER
-from .money_patterns import SCANNER as MONEY_PATTERNS_SCANNER
-from .pattern_registry import SCANNER as PATTERN_REGISTRY_SCANNER
-from .page_patterns import SCANNER as PAGE_PATTERNS_SCANNER
-from .period_patterns import SCANNER as PERIOD_PATTERNS_SCANNER
-from .prose_length import SCANNER as PROSE_LENGTH_SCANNER
-from .refcell_patterns import SCANNER as REFCELL_PATTERNS_SCANNER
-from .regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
-from .resources import SCANNER as RESOURCES_SCANNER
-from .sec_surface import SCANNER as SEC_SURFACE_SCANNER
-from .secrets import SCANNER as SECRETS_SCANNER
-from .sha256_validation import SCANNER as SHA256_VALIDATION_SCANNER
-from .sql_interpolation import SCANNER as SQL_INTERPOLATION_SCANNER
-from .string_lookup import SCANNER as STRING_LOOKUP_SCANNER
-from .tables_form_literals import SCANNER as TABLES_FORM_LITERALS_SCANNER
-from .test_tree_paths import SCANNER as TEST_TREE_PATHS_SCANNER
-from .uncompiled_regex import SCANNER as UNCOMPILED_REGEX_SCANNER
-from .whole_file_read import SCANNER as WHOLE_FILE_READ_SCANNER
+from .forms.form_isolation import SCANNER as FORM_ISOLATION_SCANNER
+from .forms.form_vocabulary import SCANNER as FORM_VOCABULARY_SCANNER
+from .forms.tables_form_literals import SCANNER as TABLES_FORM_LITERALS_SCANNER
+from .mechanics.artifact_paths import SCANNER as PATHS_SCANNER
+from .mechanics.json_io import SCANNER as JSON_IO_SCANNER
+from .mechanics.regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
+from .mechanics.sec_surface import SCANNER as SEC_SURFACE_SCANNER
+from .mechanics.sha256_validation import SCANNER as SHA256_VALIDATION_SCANNER
+from .mechanics.sql_interpolation import SCANNER as SQL_INTERPOLATION_SCANNER
+from .mechanics.string_lookup import SCANNER as STRING_LOOKUP_SCANNER
+from .mechanics.uncompiled_regex import SCANNER as UNCOMPILED_REGEX_SCANNER
+from .mechanics.whole_file_read import SCANNER as WHOLE_FILE_READ_SCANNER
+from .patterns.date_patterns import SCANNER as DATE_PATTERNS_SCANNER
+from .patterns.identifier_patterns import SCANNER as IDENTIFIER_PATTERNS_SCANNER
+from .patterns.money_patterns import SCANNER as MONEY_PATTERNS_SCANNER
+from .patterns.page_patterns import SCANNER as PAGE_PATTERNS_SCANNER
+from .patterns.pattern_registry import SCANNER as PATTERN_REGISTRY_SCANNER
+from .patterns.period_patterns import SCANNER as PERIOD_PATTERNS_SCANNER
+from .patterns.refcell_patterns import SCANNER as REFCELL_PATTERNS_SCANNER
+from .runtime.batch_defaults import SCANNER as BATCH_DEFAULTS_SCANNER
+from .runtime.clean_exit import SCANNER as CLEAN_EXIT_SCANNER
+from .runtime.environment import SCANNER as ENV_SCANNER
+from .runtime.resources import SCANNER as RESOURCES_SCANNER
+from .runtime.secrets import SCANNER as SECRETS_SCANNER
+from .structure.helper_duplicates import SCANNER as HELPER_DUPLICATES_SCANNER
+from .structure.layers import SCANNER as LAYERS_SCANNER
+from .structure.legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
+from .structure.length import SCANNER as LENGTH_SCANNER
+from .structure.prose_length import SCANNER as PROSE_LENGTH_SCANNER
+from .structure.test_tree_paths import SCANNER as TEST_TREE_PATHS_SCANNER
 
 ALL_SCANNERS: tuple[Scanner, ...] = (
     ENV_SCANNER,

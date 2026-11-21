@@ -33,16 +33,16 @@ from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
 )
 from edgar_sec.domain.taxonomy.jurisdictions import clean_entity_name
 from edgar_sec.engine.document.page_markers.candidates import looks_like_prose
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     ORGANIZATION_SUFFIX_ALT,
     is_boilerplate_entity_name,
 )
-from edgar_sec.engine.forms.common.numbers import (
+from edgar_sec.engine.forms.common.values.numbers import (
     PERCENT_OF_CLASS_RE,
     _SCHEMA_UNIT_SUFFIX_ALT,
     normalize_schema_number,
 )
-from edgar_sec.engine.forms.common.tables import (
+from edgar_sec.engine.forms.common.tables.tables import (
     strip_markup_tags,
     strip_separator_runs,
 )

@@ -19,9 +19,9 @@ from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.submissions.models import EntityProfile
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
-from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries, assemble_series
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
-from edgar_sec.engine.xbrl.solve.scoping import FilingRef
+from edgar_sec.engine.xbrl.solve.series.assembly import StitchedSeries, assemble_series
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.scoping import FilingRef
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
 _CIK = "1234"

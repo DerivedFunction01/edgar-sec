@@ -14,9 +14,9 @@ from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import PartDescriptor
-from edgar_sec.infra.storage.dag.query import compile_pruned_views
+from edgar_sec.infra.storage.dag.working.query import compile_pruned_views
 from edgar_sec.infra.storage.dag.spec import RelationSpec
-from edgar_sec.infra.storage.dag.traversal import LineageChain
+from edgar_sec.infra.storage.dag.working.traversal import LineageChain
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
 
 _BATCH_SIZE = 512

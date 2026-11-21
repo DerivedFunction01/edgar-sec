@@ -24,7 +24,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node
+from edgar_sec.infra.storage.dag.working.publication import publish_node
 
 _ACC = "0000000000-24-000001"
 _OTHER = "0000000000-24-000099"

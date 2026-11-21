@@ -10,8 +10,10 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
-from edgar_sec.engine.tables.extraction.core.signature_profiles import SIGNATURE_TERMS
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
+    SIGNATURE_TERMS,
+)
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedRow, TypedTable
 from edgar_sec.engine.tables.numeric_cells import (
     CURRENCY_TOKEN_RE,

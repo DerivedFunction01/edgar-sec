@@ -3,7 +3,7 @@ from edgar_sec.domain.forms.families.form144.taxonomy import (
     FORM144_YES_NO_CODES,
 )
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
-from edgar_sec.engine.forms.common.extraction import FieldKind, FieldSpec
+from edgar_sec.engine.forms.common.fields.extraction import FieldKind, FieldSpec
 
 _TEXT_LIMITS = {
     "schemaVersion": 5,

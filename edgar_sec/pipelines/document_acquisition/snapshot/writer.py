@@ -22,7 +22,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     ParentRef,
     PartDescriptor,
 )
-from edgar_sec.infra.storage.dag.publication import (
+from edgar_sec.infra.storage.dag.working.publication import (
     PublicationLock,
     StaleParentError,
     publish_node,

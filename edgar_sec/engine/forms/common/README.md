@@ -10,6 +10,16 @@ form families. Owns the shared field contract every form family normalizes throu
 types, date anchoring, jurisdiction resolution, tabular row extraction, and
 unresolved-content evidence.
 
+## Layout
+
+Helpers are grouped by intent into subpackages: `values/` (dates, magnitudes,
+periods), `fields/` (the field contract and row specs), `tables/` (grid
+structure), `xml/` (XML passthrough, building, and the unparsed sidecar),
+`identity/` (registrant and reporting-person identity), `marks/` (mark
+recognition), `phrases/` (phrase and statutory signals), `scaffold/`
+(submission headers and family scaffolding), and `signatures/` (conformed
+signature blocks). Consumers import the subpackage paths directly.
+
 ## Contracts
 
 - **Layer discipline**: Sits in Layer 3 (`engine/`), importing only from `domain`, `foundation`, and other `engine` modules.

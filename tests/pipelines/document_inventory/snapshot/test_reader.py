@@ -245,7 +245,7 @@ def test_reader_pinned_snapshot_id_bypasses_pointer(tmp_path: Path) -> None:
 
 def test_reader_pinned_snapshot_id_missing(tmp_path: Path) -> None:
     """Verify a pinned snapshot absent from the catalog raises."""
-    from edgar_sec.infra.storage.dag.traversal import BrokenLineageError
+    from edgar_sec.infra.storage.dag.working.traversal import BrokenLineageError
 
     _setup_inventory_dag(tmp_path)
     try:

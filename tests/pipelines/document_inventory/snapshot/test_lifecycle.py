@@ -12,7 +12,7 @@ import pytest
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.sec_http.metrics import HttpMetrics
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.publication import StaleParentError
+from edgar_sec.infra.storage.dag.working.publication import StaleParentError
 from edgar_sec.pipelines.document_inventory.commands.run import cmd_run
 from edgar_sec.pipelines.document_inventory.commands.publish import cmd_publish
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths

@@ -12,13 +12,13 @@ from typing import Any
 from edgar_sec.foundation.runtime.paths import snapshots_root
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.infra.storage.dag.paths import DAGPaths
-from edgar_sec.infra.storage.dag.publication import read_pointer
-from edgar_sec.infra.storage.dag.query import (
+from edgar_sec.infra.storage.dag.working.publication import read_pointer
+from edgar_sec.infra.storage.dag.working.query import (
     compile_pruned_views,
     derive_accession_range,
     query_point,
 )
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_inventory.paths import DATASET
 from edgar_sec.pipelines.document_inventory.snapshot.specs import (

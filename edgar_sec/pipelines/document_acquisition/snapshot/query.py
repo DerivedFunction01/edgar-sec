@@ -8,8 +8,8 @@ from typing import Any
 import pyarrow as pa
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.resolution import compile_virtual_views
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.resolution import compile_virtual_views
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import arrow_table, connect, sql_identifier
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 

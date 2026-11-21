@@ -9,12 +9,14 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimEvidence,
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_SEAT_FLOOR_PRICING,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_MEASURE_SET,

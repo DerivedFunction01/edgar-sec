@@ -24,7 +24,7 @@ def test_document_acquisition_launcher_routes_through_operator() -> None:
 
 def test_dag_launcher_routes_through_dag_operator() -> None:
     entry = next(item for item in ENTRIES if item.id == "dag")
-    assert entry.module == "edgar_sec.infra.storage.dag.operator"
+    assert entry.module == "edgar_sec.infra.storage.dag.operator.operator"
 
 
 def test_fetch_launcher_routes_through_client_operator() -> None:

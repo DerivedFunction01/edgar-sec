@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.core.context import SectionRef, TableContext
-from edgar_sec.engine.tables.extraction.core.regions import (
+from edgar_sec.engine.tables.extraction.core.text.context import (
+    SectionRef,
+    TableContext,
+)
+from edgar_sec.engine.tables.extraction.core.text.regions import (
     derive_regions,
     effective_region_paths,
     effective_regions,

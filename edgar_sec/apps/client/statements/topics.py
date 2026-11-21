@@ -21,19 +21,19 @@ from edgar_sec.engine.xbrl.evidence.partitions import (
 from edgar_sec.engine.xbrl.evidence.subsumption import MemberSubsumption
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, DefinitionArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.identities import evaluate_composition
-from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
+from edgar_sec.engine.xbrl.solve.core.identities import evaluate_composition
+from edgar_sec.engine.xbrl.solve.statements.rollforward_graphs import (
     CashRollforwardGraph,
     SegmentBreakdownGraph,
     SegmentMember,
 )
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     DebtStructureGraph,
     DerivativePortfolioGraph,
     StatementNode,
     period_rank,
 )
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 _DEBT_MODS = {"M_DEBT", "M_DEBT_BORROWING", "M_COMMERCIAL_PAPER"}

@@ -36,7 +36,7 @@ from edgar_sec.pipelines.filing_catalog.publication import (
     plan_fingerprint,
     plan_locator_keys,
 )
-from tests.pipelines.filing_catalog.planning.test_policy import _policy
+from tests.pipelines.filing_catalog.planning.policy_support import _policy
 
 
 def _root(catalog_artifacts_root: Path) -> Path:

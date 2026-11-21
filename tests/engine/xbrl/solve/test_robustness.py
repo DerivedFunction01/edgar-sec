@@ -4,7 +4,7 @@ import random
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.solve.gold import (
+from edgar_sec.engine.xbrl.solve.core.gold import (
     ExtensionGroundTruth,
     PlacementPrediction,
     evaluate_placement_accuracy,
@@ -14,7 +14,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
 
 
 def test_t1_hidden_arc_placement_experiment() -> None:

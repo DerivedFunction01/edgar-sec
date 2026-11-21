@@ -11,7 +11,7 @@ from edgar_sec.engine.forms.beneficial_ownership.parser import (
 from edgar_sec.engine.forms.beneficial_ownership.render_to_xml import (
     build_beneficial_ownership_xml,
 )
-from edgar_sec.engine.forms.common.unparsed import deserialize_unparsed_sections
+from edgar_sec.engine.forms.common.xml.unparsed import deserialize_unparsed_sections
 from edgar_sec.engine.forms.cover.models import BoundaryMethod, CoverBoundary
 from edgar_sec.engine.forms.normalize import NormalizationResult
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence

@@ -16,7 +16,7 @@ from edgar_sec.domain.forms.exhibits.vocabulary import (
 )
 from edgar_sec.domain.forms.families.annual.evidence import EX13_DELEGATION_VERBS
 from edgar_sec.engine.forms.plugins.exhibit_selection import evaluate_exhibit_body
-from edgar_sec.engine.tables.extraction.core.profiles import PROFILES
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import PROFILES
 
 #: Characters either side of an exhibit anchor scanned for a verb.
 DELEGATION_WINDOW_CHARS = 300

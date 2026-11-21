@@ -98,7 +98,7 @@ def test_pattern_parts_and_venues() -> None:
 
 
 def test_derivatives_spec_draws_from_the_substrate() -> None:
-    from edgar_sec.engine.tables.extraction.specs.derivatives_evidence_specs import (
+    from edgar_sec.engine.tables.extraction.specs.families.derivatives_evidence_specs import (
         DERIVATIVES_EVIDENCE_SPECS,
     )
 

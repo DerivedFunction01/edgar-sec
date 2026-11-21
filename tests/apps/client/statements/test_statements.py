@@ -12,7 +12,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.support.corpus import bundle_dir
 

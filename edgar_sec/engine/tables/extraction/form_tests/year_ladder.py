@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import re
 
-from edgar_sec.engine.forms.common.numbers import clean_numeric
+from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
     YEAR_TOKEN_PATTERN,
@@ -18,8 +18,8 @@ from edgar_sec.foundation.text.dates import (
     YEAR_TOKEN_SEARCH_RE,
 )
 
-from edgar_sec.engine.tables.extraction.core.context import TableContext
-from edgar_sec.engine.tables.extraction.core.normalize import collapse_text
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.normalize import collapse_text
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     LADDER_SPECS_BY_TEST_ID,
 )

@@ -11,8 +11,8 @@ import pyarrow as pa
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.query import compile_pruned_views
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.query import compile_pruned_views
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot.specs import INVENTORY_RELATIONS

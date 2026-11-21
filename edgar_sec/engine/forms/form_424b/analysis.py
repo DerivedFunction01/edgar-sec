@@ -15,11 +15,11 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     NAME_FORM_TOKENS,
     extract_cusip_near_caption,
 )
-from edgar_sec.engine.forms.common.family_scaffold import first_group
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import first_group
 from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
 

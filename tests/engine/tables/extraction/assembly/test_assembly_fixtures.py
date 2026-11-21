@@ -5,13 +5,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.assembly.assembly import assemble
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from tests.support.fixtures import fixture_path
 
 _CORPUS = fixture_path("table_extraction_corpus")

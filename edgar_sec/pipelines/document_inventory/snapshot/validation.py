@@ -15,9 +15,9 @@ from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_path_list
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.doctor import _resolve_part_path
+from edgar_sec.infra.storage.dag.operator.doctor import _resolve_part_path
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.parquet import read_parquet_key_bounds
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot.errors import (

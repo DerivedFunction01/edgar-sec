@@ -17,13 +17,13 @@ from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
-from edgar_sec.engine.xbrl.solve.equivalence import (
+from edgar_sec.engine.xbrl.solve.concepts.equivalence import (
     EXACT,
     GENERALIZATION,
     NEAR,
     SPECIALIZATION,
 )
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 

@@ -44,7 +44,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node
+from edgar_sec.infra.storage.dag.working.publication import publish_node
 from edgar_sec.pipelines.filing_catalog.materialization import (
     build_delta_profile_query,
     build_delta_unnest_query,

@@ -8,8 +8,8 @@ from edgar_sec.engine.tables.ascii_html.continuation import (
     fuse_source_tables,
     is_allowed_intervening_content,
 )
-from edgar_sec.engine.tables.ascii_html.model import SourceTable
-from edgar_sec.engine.tables.ascii_html.spans import extract_source_table
+from edgar_sec.engine.tables.ascii_html.model.model import SourceTable
+from edgar_sec.engine.tables.ascii_html.geometry.spans import extract_source_table
 
 STATEMENT_HEAD = "<tr><th>Item</th><th>2017</th><th>2018</th></tr>"
 

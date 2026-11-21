@@ -16,10 +16,12 @@ from edgar_sec.foundation.text.dates import (
 )
 
 if TYPE_CHECKING:
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         CompetitionResult,
     )
-    from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+        GeometryText,
+    )
 
 GATE_SETS: dict[str, tuple[str, ...]] = {
     "balance_sheet": ("assets", "liabilities", "equity"),
@@ -324,7 +326,7 @@ def apply_primary_gate(
     For each claimed family with a gate set, missing necessary
     sections over the claim geometry's cluster remove the claim.
     """
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

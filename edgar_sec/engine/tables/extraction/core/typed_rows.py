@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass
 from enum import Enum
 
-from edgar_sec.engine.forms.common.numbers import clean_numeric
+from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.engine.tables.patterns import SCALE_PATTERNS
 from edgar_sec.foundation.text.dates import (
     MONTH_WORD_RE,
@@ -14,8 +14,8 @@ from edgar_sec.foundation.text.dates import (
     YEAR_TOKEN_SEARCH_RE,
 )
 
-from .context import Scale, TableContext
-from .normalize import collapse_text
+from .text.context import Scale, TableContext
+from .text.normalize import collapse_text
 
 _MAX_CAPTION_ROWS = 6
 _PAREN_RE = re.compile(r"\([^)]*\)")

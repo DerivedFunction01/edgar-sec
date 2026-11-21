@@ -70,7 +70,7 @@ def test_parse_cover_rejects_truncated_label_fragment_as_issuer():
         ClassifiedSection,
         SectionRole,
     )
-    from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+    from edgar_sec.engine.tables.ascii_html.model.model import ResolvedGrid
 
     rows = (
         (

@@ -20,13 +20,13 @@ from edgar_sec.engine.forms.exhibit_resolution import (
     resolve_exhibits,
 )
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
-from edgar_sec.engine.tables.extraction.cascade.classify import classify_filing
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_filing
 from edgar_sec.engine.tables.extraction.assembly.context_production import (
     DocumentInput,
     ProductionResult,
     produce_contexts,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import registry_state
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import registry_state
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 
 #: Origin stamped on every row this path serves (D2 duality).

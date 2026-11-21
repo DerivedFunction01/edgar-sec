@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from ..tokens import is_numeric_cell, is_prefix_token, is_suffix_token
-from .blocks import (
+from .model.blocks import (
     align_terminal_numeric_headers,
     build_row_blocks,
     expand_numeric_blocks_to_header_bands,
@@ -17,26 +17,26 @@ from .blocks import (
     fuse_empty_header_span_blocks,
     fuse_header_suffix_blocks,
 )
-from .borders import (
+from .geometry.borders import (
     extract_border_segments,
     score_header_boundary,
 )
-from .cell import format_cell_line, normalize_grid_indents, wrap_cell_text
-from .columns import (
+from .model.cell import format_cell_line, normalize_grid_indents, wrap_cell_text
+from .geometry.columns import (
     identify_affix_columns,
     is_affix_footnote_token,
     resolve_columns,
 )
 from .diagnostics import evaluate_table_confidence
-from .dividers import (
+from .geometry.dividers import (
     format_row_divider,
     format_top_divider,
     heal_divider_lines_from_templates,
     prune_unanchored_divider_fragments,
     repair_rendered_affix_columns,
 )
-from .geometry import estimate_table_geometry
-from .model import (
+from .geometry.geometry import estimate_table_geometry
+from .model.model import (
     DEFAULT_RENDER_BUDGET,
     BorderStyle,
     HorizontalAlign,
@@ -48,14 +48,14 @@ from .model import (
     TableRenderResult,
     VerticalAlign,
 )
-from .parens import merge_split_paren_cells
-from .spans import (
+from .model.parens import merge_split_paren_cells
+from .geometry.spans import (
     build_span_matrix,
     distribute_multi_row_span_lines,
     extract_source_table,
     repair_header_band_spans,
 )
-from .widths import compute_column_widths
+from .geometry.widths import compute_column_widths
 
 if TYPE_CHECKING:
     from edgar_sec.engine.document.html.tree import FastHtmlNode

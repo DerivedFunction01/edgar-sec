@@ -20,7 +20,7 @@ from edgar_sec.domain.sec_urls import SURFACE_SUBMISSIONS
 from edgar_sec.foundation.runtime.paths import snapshots_root
 from edgar_sec.foundation.runtime.settings import resolve_surface_ttl_s
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
 __all__ = ["materialize_from_snapshot"]

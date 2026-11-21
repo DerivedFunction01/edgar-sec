@@ -8,7 +8,7 @@ import pytest
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.infra.storage.dag.publication import StaleParentError
+from edgar_sec.infra.storage.dag.working.publication import StaleParentError
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
     project_acquisition_run,

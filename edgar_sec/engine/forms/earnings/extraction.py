@@ -29,11 +29,11 @@ from edgar_sec.engine.forms.earnings.models import (
     HeadlineFigures,
     ReviewSignal,
 )
-from edgar_sec.engine.forms.common.numbers import clean_numeric
+from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.engine.forms.earnings.selection import select_exhibit_candidates
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
 from edgar_sec.engine.forms.plugins.exhibit_selection import evaluate_exhibit_body
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 from edgar_sec.foundation.text.normalize import fold_smart_quotes
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 

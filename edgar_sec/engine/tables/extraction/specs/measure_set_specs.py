@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_CI_STEP6_PRICING,
     PROV_S4_GOODWILL_BASE,
     PROV_STEP3_PRICING,

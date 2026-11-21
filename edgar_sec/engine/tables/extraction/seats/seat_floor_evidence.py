@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimEvidence,
     FamilyScore,
 )

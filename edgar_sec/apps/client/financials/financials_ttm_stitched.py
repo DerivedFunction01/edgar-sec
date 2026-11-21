@@ -24,11 +24,11 @@ from edgar_sec.apps.client.financials.financials_ttm import (
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
-from edgar_sec.engine.xbrl.solve.stitched import DerivationInput, StitchedValue
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
-from edgar_sec.engine.xbrl.solve.unaccumulate import derive_discrete_quarters
+from edgar_sec.engine.xbrl.solve.series.assembly import StitchedSeries
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.series.stitched import DerivationInput, StitchedValue
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.series.unaccumulate import derive_discrete_quarters
 from edgar_sec.engine.xbrl.taxonomy.domain import (
     DomainTaxonomy,
     load_domain_taxonomy,
