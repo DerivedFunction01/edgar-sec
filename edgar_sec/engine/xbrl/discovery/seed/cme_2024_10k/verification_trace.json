@@ -1,0 +1,81 @@
+{
+  "firm": "CME",
+  "accession": "0001156375-25-000021",
+  "cik": "0001156375",
+  "sic_code": 6200,
+  "sector": "Financials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1700,
+      1765
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total Revenues",
+        "reported_value": 6130100000.0,
+        "table_value": 6130.1,
+        "line_number": 1739,
+        "snippet": "Total Revenues                                                           6,130.1     5,578.9     5,019.4"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total Expenses",
+        "reported_value": 2198600000.0,
+        "table_value": 2198.6,
+        "line_number": 1750,
+        "snippet": "Total Expenses                                                           2,198.6     2,143.2     2,003.5"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income",
+        "reported_value": 3931500000.0,
+        "table_value": 3931.5,
+        "line_number": 1752,
+        "snippet": "Operating Income                                                         3,931.5     3,435.7     3,015.9"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax provision",
+        "reported_value": 1015600000.0,
+        "table_value": 1015.6,
+        "line_number": 1762,
+        "snippet": "Income tax provision                                                     1,015.6       927.4       799.3"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income",
+        "reported_value": 3525800000.0,
+        "table_value": 3525.8,
+        "line_number": 1764,
+        "snippet": "Net Income                                                             $ 3,525.8   $ 3,226.2   $ 2,691.0"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 6130100000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 2198600000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 3931500000.0,
+      "target_value": 3931500000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

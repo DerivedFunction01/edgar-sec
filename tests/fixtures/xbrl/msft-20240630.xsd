@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xbrli="http://www.xbrl.org/2003/instance"
+           xmlns:msft="http://www.microsoft.com/20240630"
+           targetNamespace="http://www.microsoft.com/20240630"
+           elementFormDefault="qualified">
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:element id="msft_ServerProductsAndCloudServicesMember"
+              name="ServerProductsAndCloudServicesMember"
+              type="xbrli:stringItemType"
+              substitutionGroup="xbrli:item"
+              xbrli:periodType="duration"
+              abstract="true"
+              nillable="true"/>
+  <xs:element id="msft_ProductAndServiceOtherMember"
+              name="ProductAndServiceOtherMember"
+              type="xbrli:stringItemType"
+              substitutionGroup="xbrli:item"
+              xbrli:periodType="duration"
+              abstract="true"
+              nillable="true"/>
+</xs:schema>

@@ -1,0 +1,130 @@
+{
+  "firm": "APD",
+  "accession": "0000002969-24-000056",
+  "cik": "0000002969",
+  "sic_code": 2810,
+  "sector": "Materials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED INCOME STATEMENTS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1751,
+      1760
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Sales",
+        "reported_value": 12100600000.0,
+        "table_value": 12100.6,
+        "line_number": 1751,
+        "snippet": "Sales                                                                         $12,100.6  $12,600.0  $12,698.6"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of sales",
+        "reported_value": 8168700000.0,
+        "table_value": 8168.7,
+        "line_number": 1752,
+        "snippet": "Cost of sales                                                                   8,168.7    8,833.0    9,338.5"
+      },
+      {
+        "concept_qname": "us-gaap:SellingGeneralAndAdministrativeExpense",
+        "label": "Selling and administrative expense",
+        "reported_value": 942400000.0,
+        "table_value": 942.4,
+        "line_number": 1753,
+        "snippet": "Selling and administrative expense                                                942.4      957.0      900.6"
+      },
+      {
+        "concept_qname": "us-gaap:ResearchAndDevelopmentExpense",
+        "label": "Research and development expense",
+        "reported_value": 100200000.0,
+        "table_value": 100.2,
+        "line_number": 1754,
+        "snippet": "Research and development expense                                                  100.2      105.6      102.9"
+      },
+      {
+        "concept_qname": "us-gaap:RestructuringCharges",
+        "label": "Business and asset actions",
+        "reported_value": 57000000.0,
+        "table_value": 57.0,
+        "line_number": 1756,
+        "snippet": "Business and asset actions                                                         57.0      244.6       73.7"
+      },
+      {
+        "concept_qname": "apd:OtherIncomeExpenseNet",
+        "label": "Other income (expense), net",
+        "reported_value": 58200000.0,
+        "table_value": 58.2,
+        "line_number": 1757,
+        "snippet": "Other income (expense), net                                                        58.2       34.8       55.9"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income",
+        "reported_value": 4466100000.0,
+        "table_value": 4466.1,
+        "line_number": 1759,
+        "snippet": "Operating Income                                                                4,466.1    2,494.6    2,338.8"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromEquityMethodInvestments",
+        "label": "Equity affiliates' income",
+        "reported_value": 647700000.0,
+        "table_value": 647.7,
+        "line_number": 1760,
+        "snippet": "Equity affiliates' income                                                         647.7      604.3      481.5"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncome = Revenues - CostOfSales - SellingAndAdministrativeExpense - ResearchAndDevelopmentExpense + GainOnSaleOfBusiness - BusinessAndAssetActions + OtherIncomeExpenseNet",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 12100600000.0,
+          "weight": 1
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 8168700000.0,
+          "weight": -1
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "value": 942400000.0,
+          "weight": -1
+        },
+        {
+          "concept": "us-gaap:ResearchAndDevelopmentExpense",
+          "value": 100200000.0,
+          "weight": -1
+        },
+        {
+          "concept": "us-gaap:GainLossOnSaleOfBusiness",
+          "value": 1575600000.0,
+          "weight": 1
+        },
+        {
+          "concept": "us-gaap:RestructuringCharges",
+          "value": 57000000.0,
+          "weight": -1
+        },
+        {
+          "concept": "apd:OtherIncomeExpenseNet",
+          "value": 58200000.0,
+          "weight": 1
+        }
+      ],
+      "computed_sum": 4466100000.0,
+      "target_value": 4466100000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

@@ -1,0 +1,713 @@
+"""Compositional SEC cover capability groups and form-family profiles: a profile
+selects groups rather than re-declaring field lists, so annual-only anchors cannot
+leak into quarterly or current-report processing.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, replace
+from typing import TYPE_CHECKING
+
+from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_PHRASES
+from edgar_sec.domain.forms.common.models import (
+    BodyEvidencePack,
+    CoverEvidencePack,
+)
+from edgar_sec.domain.forms.common.rules import COMMON_PHRASE_RULES
+from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
+from edgar_sec.domain.forms.common.vocabulary import (
+    COVER_EVIDENCE_TERMS,
+    COVER_LABELS_FLAT,
+    COVER_START_IDENTITY_TERMS,
+)
+from edgar_sec.domain.forms.families.annual.evidence import (
+    ANNUAL_ADDITIONAL_PHRASE_RULES,
+    AnnualReportEvidence,
+)
+from edgar_sec.domain.forms.families.annual.taxonomy import (
+    FORM_10K_DERIVED,
+    FORM_10K_ITEMS,
+    FORM_20F_DERIVED,
+)
+from edgar_sec.domain.forms.families.current.evidence import (
+    CURRENT_COVER_TERMS,
+    CurrentReportEvidence,
+)
+from edgar_sec.domain.forms.families.current.taxonomy import (
+    FORM_6K_DERIVED,
+    FORM_6K_ITEMS,
+    FORM_8K_ITEMS,
+)
+from edgar_sec.domain.forms.families.quarterly.evidence import (
+    QuarterlyReportEvidence,
+)
+from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_DERIVED
+from edgar_sec.domain.forms.families.registration.evidence import (
+    REGISTRATION_SHAPE_TERMS,
+    RegistrationEvidence,
+)
+from edgar_sec.domain.forms.families.registration.taxonomy import (
+    FORM_S1_DERIVED,
+    FORM_S1_ITEMS,
+    FORM_S3_DERIVED,
+    FORM_S4_DERIVED,
+    FORM_S8_DERIVED,
+)
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    SCHEDULE_13D_ITEMS,
+    SCHEDULE_13G_ITEMS,
+)
+from edgar_sec.engine.forms.cover.models import (
+    BoundarySignal,
+    CoverBoundaryPolicy,
+)
+
+if TYPE_CHECKING:
+    from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
+    from edgar_sec.domain.forms.common.schemas import CoverCheckboxSchema
+    from edgar_sec.foundation.text.healing import PhraseSequenceRule
+
+
+COMMON_COVER_LABELS: tuple[str, ...] = COVER_LABELS_FLAT
+
+ANNUAL_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
+QUARTERLY_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
+GENERIC_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
+NO_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
+
+QUARTERLY_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULES)
+GENERIC_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULES)
+NO_COVER_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULES)
+
+
+@dataclass(frozen=True, slots=True)
+class CoverProfile:
+    """Immutable cover processing for one form family, and the only object the
+    normalization stages consult: boundary capabilities, packs, rewrite vocabulary.
+    """
+
+    family: str
+    boundary: CoverBoundaryPolicy | None = None
+    labels: tuple[str, ...] = ()
+    evidence_terms: tuple[str, ...] = ()
+    healing_rules: tuple[PhraseSequenceRule, ...] = ()
+    cover_evidence: CoverEvidencePack | None = None
+    body_evidence: BodyEvidencePack | None = None
+    derived_taxonomy: dict | None = None
+    checkbox_schema: CoverCheckboxSchema | None = None
+    cover_table_cleaners: tuple[str, ...] = ()
+    unwrap_false_tables: bool = True
+    processing_profile: DocumentProcessingProfile | None = None
+
+    @property
+    def has_toc(self) -> bool:
+        return self.processing_profile.has_toc if self.processing_profile else False
+
+    @property
+    def has_sections(self) -> bool:
+        return (
+            self.processing_profile.has_sections if self.processing_profile else False
+        )
+
+    @property
+    def has_notes(self) -> bool:
+        return self.processing_profile.has_notes if self.processing_profile else False
+
+    @property
+    def section_run_in_titles(self) -> bool:
+        return (
+            self.processing_profile.section_run_in_titles
+            if self.processing_profile
+            else False
+        )
+
+    @property
+    def has_xbrl(self) -> bool:
+        return self.processing_profile.has_xbrl if self.processing_profile else False
+
+    @property
+    def version(self) -> str:
+        return self.processing_profile.version if self.processing_profile else "v1"
+
+
+def _make_profile(
+    family: str,
+    boundary: CoverBoundaryPolicy | None,
+    labels: tuple[str, ...],
+    healing_rules: tuple[PhraseSequenceRule, ...],
+    cover_evidence: CoverEvidencePack | None = None,
+    body_evidence: BodyEvidencePack | None = None,
+    derived_taxonomy: dict | None = None,
+    cover_table_cleaners: tuple[str, ...] = (),
+    unwrap_false_tables: bool = True,
+) -> CoverProfile:
+    family_entry = get_family_entry(family)
+    prof = family_entry.profile if family_entry is not None else None
+    return CoverProfile(
+        family=family,
+        boundary=boundary,
+        labels=labels,
+        evidence_terms=(
+            cover_evidence.shape_terms if cover_evidence is not None else ()
+        ),
+        healing_rules=healing_rules,
+        cover_evidence=cover_evidence,
+        body_evidence=body_evidence,
+        derived_taxonomy=derived_taxonomy,
+        checkbox_schema=(
+            family_entry.cover_checkbox_schema if family_entry is not None else None
+        ),
+        cover_table_cleaners=cover_table_cleaners,
+        unwrap_false_tables=unwrap_false_tables,
+        processing_profile=prof,
+    )
+
+
+def build_annual_profile(family: str) -> CoverProfile:
+    """Cover profile for annual reports: the only family allowed to end on an
+    incorporated-by-reference block, and the only one enabling AMENDMENT_TRANSITION.
+    """
+    annual = AnnualReportEvidence()
+    family_entry = get_family_entry(family)
+    items = (
+        family_entry.taxonomy_items
+        if family_entry is not None and family_entry.taxonomy_items
+        else FORM_10K_ITEMS
+    )
+    headings = ("PART I", *(d.item for d in items))
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.INCORPORATED_REFERENCE,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.AMENDMENT_TRANSITION,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
+            )
+        ),
+        labels=ANNUAL_COVER_LABELS,
+        healing_rules=tuple(COMMON_PHRASE_RULES)
+        + tuple(ANNUAL_ADDITIONAL_PHRASE_RULES),
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *annual.shape_terms,
+            ),
+            labels=COMMON_COVER_LABELS,
+            cover_end_terms=annual.incorporated_reference_terms,
+            healing_rules=annual.healing_rules,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=headings,
+            semantic_headings=(
+                "management's discussion and analysis",
+                "risk factors",
+                *FORWARD_LOOKING_PHRASES,
+                "glossary of",
+                "definitions",
+                # Amendment-specific semantic anchors
+                "explanatory note",
+                "explanatory statement",
+                "report of independent registered public accounting firm",
+                "report of independent auditors",
+                "index to consolidated financial statements",
+            ),
+            body_ngrams=annual.body_ngrams,
+            body_verbs=annual.body_verbs,
+            body_terms=annual.body_terms,
+            cover_terms=annual.cover_terms,
+            lexical=annual.body_lexical,
+        ),
+        cover_table_cleaners=("report_period",),
+    )
+
+
+def build_quarterly_profile(family: str) -> CoverProfile:
+    """Cover profile for quarterly reports: no incorporated-by-reference or
+    public-float block, so only shared identity and share-count vocabulary.
+    """
+    quarterly = QuarterlyReportEvidence()
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
+            )
+        ),
+        labels=QUARTERLY_COVER_LABELS,
+        healing_rules=QUARTERLY_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(*COMMON_COVER_LABELS, "section 12(b)"),
+            labels=COMMON_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=("PART I", "ITEM 1"),
+            semantic_headings=(
+                "management's discussion and analysis",
+                "quantitative and qualitative disclosures",
+                *FORWARD_LOOKING_PHRASES,
+                "notes to condensed consolidated financial statements",
+                "condensed consolidated financial statements",
+            ),
+            body_ngrams=quarterly.body_ngrams,
+            body_verbs=quarterly.body_verbs,
+            body_terms=quarterly.body_terms,
+            cover_terms=quarterly.cover_terms,
+            lexical=quarterly.body_lexical,
+        ),
+        cover_table_cleaners=("report_period",),
+    )
+
+
+def build_current_profile(family: str) -> CoverProfile:
+    """Cover profile for current reports (8-K, 6-K): a statutory cover page
+    transitioning directly into item events or signatures.
+    """
+    current = CurrentReportEvidence()
+    structural_headings = tuple(d.item for d in FORM_8K_ITEMS)
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=GENERIC_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(*COMMON_COVER_LABELS, *CURRENT_COVER_TERMS),
+            labels=COMMON_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=structural_headings,
+            semantic_headings=(
+                "item",
+                *current.body_ngrams,
+                *FORWARD_LOOKING_PHRASES,
+                "signature",
+                "signatures",
+            ),
+            body_ngrams=current.body_ngrams,
+            body_verbs=current.body_verbs,
+            body_terms=current.body_terms,
+            cover_terms=current.cover_terms,
+            lexical=current.body_lexical,
+        ),
+    )
+
+
+def build_generic_cover_profile(family: str) -> CoverProfile:
+    """Build a generic baseline cover profile for unspecialized or event-driven forms."""
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=GENERIC_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=COMMON_COVER_LABELS,
+            labels=COMMON_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            semantic_headings=FORWARD_LOOKING_PHRASES,
+        ),
+    )
+
+
+_REGISTRATION_DERIVED = {
+    "S-1": FORM_S1_DERIVED,
+    "S-3": FORM_S3_DERIVED,
+    "S-4": FORM_S4_DERIVED,
+    "S-8": FORM_S8_DERIVED,
+}
+
+
+def build_registration_profile(family: str) -> CoverProfile:
+    """Cover profile for registration statements (Form S-1, S-3, S-4, S-8)."""
+    registration = RegistrationEvidence()
+    family_entry = get_family_entry(family)
+    items = (
+        family_entry.taxonomy_items
+        if family_entry is not None and family_entry.taxonomy_items
+        else FORM_S1_ITEMS
+    )
+    headings = ("PART I", "PART II", *(d.item for d in items))
+    derived = _REGISTRATION_DERIVED.get(family, FORM_S1_DERIVED)
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
+            )
+        ),
+        labels=COMMON_COVER_LABELS,
+        healing_rules=tuple(COMMON_PHRASE_RULES),
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *REGISTRATION_SHAPE_TERMS,
+            ),
+            labels=COMMON_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=headings,
+            semantic_headings=(
+                "prospectus summary",
+                "risk factors",
+                "use of proceeds",
+                "dilution",
+                "capitalization",
+                "plan of distribution",
+                "underwriting",
+                "questions and answers",
+                "the merger",
+                "special meeting",
+                "merger agreement",
+                "incorporation of documents by reference",
+                "where you can find more information",
+                *FORWARD_LOOKING_PHRASES,
+                "preliminary prospectus",
+                "subject to completion",
+                "index to consolidated financial statements",
+            ),
+            body_ngrams=registration.body_ngrams,
+            body_verbs=registration.body_verbs,
+            body_terms=registration.body_terms,
+            cover_terms=registration.cover_terms,
+            lexical=registration.body_lexical,
+        ),
+        derived_taxonomy=derived,
+    )
+
+
+def build_no_cover_profile(family: str) -> CoverProfile:
+    """Build a generic baseline cover profile (alias for build_generic_cover_profile)."""
+    return build_generic_cover_profile(family)
+
+
+_BENEFICIAL_OWNERSHIP_COVER_LABELS: tuple[str, ...] = (
+    "names of reporting persons",
+    "name of reporting person",
+    "check the appropriate box if a member of a group",
+    "sec use only",
+    "source of funds",
+    "check box if disclosure of legal proceedings",
+    "citizenship or place of organization",
+    "sole voting power",
+    "shared voting power",
+    "sole dispositive power",
+    "shared dispositive power",
+    "aggregate amount beneficially owned",
+    "percent of class",
+    "type of reporting person",
+    "cusip number",
+    "name of issuer",
+    "rule 13d-1(b)",
+    "rule 13d-1(c)",
+    "rule 13d-1(d)",
+)
+
+
+def build_beneficial_ownership_profile(family: str = "13D") -> CoverProfile:
+    """Cover profile for beneficial ownership statements (Schedule 13D/13G)."""
+    items = SCHEDULE_13G_ITEMS if family == "13G" else SCHEDULE_13D_ITEMS
+    structural_headings = tuple(d.item for d in items)
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
+            labels=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=structural_headings,
+            semantic_headings=(
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+        unwrap_false_tables=False,
+    )
+
+
+def _build_profiles() -> dict[str, CoverProfile]:
+    from edgar_sec.engine.forms.cover.family_profiles.abs import (
+        build_form_abs_reports_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.annual import (
+        build_form_11k_profile,
+        build_form_18k_profile,
+        build_form_40f_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.exchange_act import (
+        build_form_12b25_profile,
+        build_form_12reg_profile,
+        build_form_15_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.foreign import (
+        build_form_f1_profile,
+        build_form_f3_profile,
+        build_form_f4_profile,
+        build_form_f6_profile,
+        build_form_fn_profile,
+        build_form_mjds_profile,
+        build_form_suppl_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.funds import (
+        build_form_24f2_profile,
+        build_form_4017f1_profile,
+        build_form_4017f2_profile,
+        build_form_4017g_profile,
+        build_form_40app_profile,
+        build_form_497_profile,
+        build_form_n23c1_profile,
+        build_form_n23c2_profile,
+        build_form_n23c3_profile,
+        build_form_n30d_profile,
+        build_form_ncsr_profile,
+        build_form_nq_profile,
+        build_form_nsar_profile,
+        build_form_nvp_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.prospectus import (
+        build_form_424b_profile,
+        build_form_425_profile,
+        build_form_fwp_profile,
+        build_form_s6_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.regulation_a import (
+        build_form_rega_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.residual import (
+        build_form_drs_profile,
+        build_form_sd_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.schedules import (
+        build_form_14a_profile,
+        build_form_tender_profile,
+    )
+
+    annual_common = replace(
+        build_annual_profile("10-K"), derived_taxonomy=FORM_10K_DERIVED
+    )
+    annual_foreign = replace(
+        annual_common, family="20-F", derived_taxonomy=FORM_20F_DERIVED
+    )
+    quarterly = replace(
+        build_quarterly_profile("10-Q"), derived_taxonomy=FORM_10Q_DERIVED
+    )
+    registration_s1 = build_registration_profile("S-1")
+    registration_s3 = build_registration_profile("S-3")
+    registration_s4 = build_registration_profile("S-4")
+    registration_s8 = build_registration_profile("S-8")
+    generic_8k = build_current_profile("8-K")
+    current = CurrentReportEvidence()
+    generic_6k = replace(
+        build_current_profile("6-K"),
+        derived_taxonomy=FORM_6K_DERIVED,
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_6K_ITEMS),
+            semantic_headings=(
+                "signatures",
+                "signature",
+                "exhibit",
+                "press release",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+            body_ngrams=current.body_ngrams,
+            body_verbs=current.body_verbs,
+            body_terms=current.body_terms,
+            lexical=current.body_lexical,
+        ),
+    )
+    schedule13d = build_beneficial_ownership_profile("13D")
+    schedule13g = build_beneficial_ownership_profile("13G")
+    form_s6 = build_form_s6_profile("S-6")
+    form_424b = build_form_424b_profile("424B")
+    form_fwp = build_form_fwp_profile("FWP")
+    form_425 = build_form_425_profile("425")
+    form_15 = build_form_15_profile("15")
+    form_18k = build_form_18k_profile("18-K")
+    form_24f2 = build_form_24f2_profile("24F-2NT")
+    form_4017g = build_form_4017g_profile("40-17G")
+    form_4017f1 = build_form_4017f1_profile("40-17F1")
+    form_4017f2 = build_form_4017f2_profile("40-17F2")
+    form_40app = build_form_40app_profile("40-APP")
+    form_12b25 = build_form_12b25_profile("12B-25")
+    form_25 = build_form_12reg_profile("25")
+    form_8a = build_form_12reg_profile("8-A")
+    form_8b = build_form_12reg_profile("8-B")
+    form_14a = build_form_14a_profile("14A")
+    form_11k = build_form_11k_profile("11-K")
+    form_ncsr = build_form_ncsr_profile("N-CSR")
+    form_n23c1 = build_form_n23c1_profile("N-23C-1")
+    form_n23c2 = build_form_n23c2_profile("N-23C-2")
+    form_n23c3 = build_form_n23c3_profile("N-23C-3")
+    form_n30d = build_form_n30d_profile("N-30D")
+    form_nq = build_form_nq_profile("N-Q")
+    form_nsar = build_form_nsar_profile("NSAR")
+    form_497 = build_form_497_profile("497")
+    form_nvp = build_form_nvp_profile("N-VP")
+    form_tender = build_form_tender_profile("SC TO")
+    form_sd = build_form_sd_profile("SD")
+    form_drs = build_form_drs_profile("DRS")
+    form_abs_reports = build_form_abs_reports_profile("ABS")
+    form_f1 = build_form_f1_profile("F-1")
+    form_f2 = build_form_f1_profile("F-2")
+    form_f3 = build_form_f3_profile("F-3")
+    form_f4 = build_form_f4_profile("F-4")
+    form_f7 = build_form_mjds_profile("F-7")
+    form_f8 = build_form_mjds_profile("F-8")
+    form_f9 = build_form_mjds_profile("F-9")
+    form_f10 = build_form_mjds_profile("F-10")
+    form_f80 = build_form_mjds_profile("F-80")
+    form_40f = build_form_40f_profile("40-F")
+    form_f6 = build_form_f6_profile("F-6")
+    form_suppl = build_form_suppl_profile("SUPPL")
+    form_fn = build_form_fn_profile("F-N")
+    form_1sa = build_form_rega_profile("1-SA")
+    form_1u = build_form_rega_profile("1-U")
+    generic = build_generic_cover_profile("GENERIC")
+    return {
+        "10-K": annual_common,
+        "20-F": annual_foreign,
+        "10-Q": quarterly,
+        "S-1": registration_s1,
+        "S-3": registration_s3,
+        "S-4": registration_s4,
+        "S-8": registration_s8,
+        "8-K": generic_8k,
+        "6-K": generic_6k,
+        "13D": schedule13d,
+        "13G": schedule13g,
+        "SC TO": form_tender,
+        "SD": form_sd,
+        "DRS": form_drs,
+        "ABS": form_abs_reports,
+        "S-6": form_s6,
+        "424B": form_424b,
+        "FWP": form_fwp,
+        "425": form_425,
+        "15": form_15,
+        "18-K": form_18k,
+        "24F-2NT": form_24f2,
+        "40-17G": form_4017g,
+        "40-17F1": form_4017f1,
+        "40-17F2": form_4017f2,
+        "40-APP": form_40app,
+        "12B-25": form_12b25,
+        "25": form_25,
+        "8-A": form_8a,
+        "8-B": form_8b,
+        "14A": form_14a,
+        "11-K": form_11k,
+        "N-CSR": form_ncsr,
+        "N-23C-1": form_n23c1,
+        "N-23C-2": form_n23c2,
+        "N-23C-3": form_n23c3,
+        "N-30D": form_n30d,
+        "N-Q": form_nq,
+        "NSAR": form_nsar,
+        "497": form_497,
+        "N-VP": form_nvp,
+        "F-1": form_f1,
+        "F-2": form_f2,
+        "F-3": form_f3,
+        "F-4": form_f4,
+        "F-7": form_f7,
+        "F-8": form_f8,
+        "F-9": form_f9,
+        "F-10": form_f10,
+        "F-80": form_f80,
+        "40-F": form_40f,
+        "F-6": form_f6,
+        "SUPPL": form_suppl,
+        "F-N": form_fn,
+        "1-SA": form_1sa,
+        "1-U": form_1u,
+        "GENERIC": generic,
+    }
+
+
+COVER_PROFILES: dict[str, CoverProfile] = _build_profiles()
+
+#: Family key of the profile every unmodelled form resolves to. A profile's
+#: boundary policy is never ``None``, so no-cover is identified by this key.
+GENERIC_PROFILE_FAMILY = "GENERIC"
+
+
+def get_profile(family: str | None) -> CoverProfile:
+    """The cover profile for a form family, falling back to generic. Resolved through
+    the alias table, and an unknown family never gains cover capabilities.
+    """
+    if not family:
+        return COVER_PROFILES["GENERIC"]
+    family = resolve_alias(family) or family
+    return COVER_PROFILES.get(family.upper(), COVER_PROFILES["GENERIC"])
+
+
+__all__ = [
+    "ANNUAL_COVER_LABELS",
+    "COMMON_COVER_LABELS",
+    "COVER_PROFILES",
+    "GENERIC_COVER_LABELS",
+    "GENERIC_PROFILE_FAMILY",
+    "GENERIC_PHRASE_RULES",
+    "NO_COVER_LABELS",
+    "NO_COVER_PHRASE_RULES",
+    "QUARTERLY_COVER_LABELS",
+    "QUARTERLY_PHRASE_RULES",
+    "CoverProfile",
+    "build_annual_profile",
+    "build_current_profile",
+    "build_generic_cover_profile",
+    "build_no_cover_profile",
+    "build_quarterly_profile",
+    "build_registration_profile",
+    "build_beneficial_ownership_profile",
+    "get_profile",
+]

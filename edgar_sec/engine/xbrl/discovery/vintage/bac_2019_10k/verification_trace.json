@@ -1,0 +1,110 @@
+{
+  "firm": "BAC",
+  "accession": "0000070858-20-000011",
+  "cik": "0000070858",
+  "sic_code": 6021,
+  "sector": "Financials",
+  "fiscal_year": 2019,
+  "source_filing_fiscal_year": 2019,
+  "statement_of_operations": {
+    "title": "Consolidated Statement of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      4809,
+      4844
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:InterestIncomeExpenseNet",
+        "label": "Net interest income",
+        "reported_value": 48891000000.0,
+        "table_value": 48891,
+        "line_number": 4817,
+        "snippet": "Net interest income                                       48,891      48,162      45,239"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestIncome",
+        "label": "Total noninterest income",
+        "reported_value": 42353000000.0,
+        "table_value": 42353,
+        "line_number": 4824,
+        "snippet": "Total noninterest income                                  42,353      42,858      41,887"
+      },
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenue, net of interest expense",
+        "reported_value": 91244000000.0,
+        "table_value": 91244,
+        "line_number": 4826,
+        "snippet": "Total revenue, net of interest expense                    91,244      91,020      87,126"
+      },
+      {
+        "concept_qname": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+        "label": "Provision for credit losses",
+        "reported_value": 3590000000.0,
+        "table_value": 3590,
+        "line_number": 4828,
+        "snippet": "Provision for credit losses                                3,590       3,282       3,396"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestExpense",
+        "label": "Total noninterest expense",
+        "reported_value": 54900000000.0,
+        "table_value": 54900,
+        "line_number": 4839,
+        "snippet": "Total noninterest expense                                 54,900      53,154      54,517"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income before income taxes",
+        "reported_value": 32754000000.0,
+        "table_value": 32754,
+        "line_number": 4841,
+        "snippet": "Income before income taxes                                32,754      34,584      29,213"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 5324000000.0,
+        "table_value": 5324,
+        "line_number": 4842,
+        "snippet": "Income tax expense                                         5,324       6,437      10,981"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 27430000000.0,
+        "table_value": 27430,
+        "line_number": 4844,
+        "snippet": "Net income                                              $ 27,430    $ 28,147    $ 18,232"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Total revenue, net of interest expense - Provision for credit losses - Total noninterest expense = Income before income taxes",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "weight": 1,
+          "value": 91244000000.0
+        },
+        {
+          "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+          "weight": -1,
+          "value": 3590000000.0
+        },
+        {
+          "concept": "us-gaap:NoninterestExpense",
+          "weight": -1,
+          "value": 54900000000.0
+        }
+      ],
+      "computed_sum": 32754000000.0,
+      "target_value": 32754000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

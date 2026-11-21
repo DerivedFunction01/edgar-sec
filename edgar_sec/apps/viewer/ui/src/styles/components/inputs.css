@@ -1,0 +1,32 @@
+.input,
+.select {
+	background: var(--theme-surface-primary);
+	color: var(--theme-content-primary);
+	border: 1px solid var(--theme-border-default);
+	border-radius: var(--theme-radius-sm);
+	padding: 5px 9px;
+	font-size: 12.5px;
+	min-width: 0;
+}
+
+.input::placeholder {
+	color: var(--theme-content-tertiary);
+}
+
+.input:focus,
+.select:focus {
+	border-color: var(--theme-border-focus);
+	outline: none;
+}
+
+.searchbox {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex: 1;
+	max-width: 420px;
+}
+
+.searchbox .input {
+	flex: 1;
+}

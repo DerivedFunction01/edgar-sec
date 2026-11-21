@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_GrossProfit" xlink:label="loc_GrossProfit"/>
+    <link:label xlink:type="resource" xlink:label="lab_GrossProfit" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Gross Profit</link:label>
+    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+        xlink:from="loc_GrossProfit" xlink:to="lab_GrossProfit"/>
+        
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax" xlink:label="loc_Revenues"/>
+    <link:label xlink:type="resource" xlink:label="lab_Revenues" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Total Revenues</link:label>
+    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+        xlink:from="loc_Revenues" xlink:to="lab_Revenues"/>
+  </link:labelLink>
+</link:linkbase>

@@ -1,0 +1,54 @@
+# `edgar_sec/infra/storage/dag` — Schema-agnostic append-only snapshot DAG engine
+
+This package provides generic DAG snapshot mechanics for content-addressed datasets.
+It decouples graph traversal, CAS publication, candidate anti-joining, and Checkpoint compaction
+from phase-specific schemas and table structures.
+
+## Purpose
+
+Replaces monolithic Copy-on-Write (CoW) partition rewrites with lightweight, append-only
+deltas. Upper layers configure declarative `RelationSpec` contracts; this layer compiles
+the relational resolution views in DuckDB, enforces cycle immunity and parent digest chains,
+and provides two-tier retention analysis.
+
+## Contracts
+
+- **Append-only ingestion**: Deltas record only new or modified Parquet files.
+- **Cycle immunity via content addressing**: Every parent link cryptographically pins `manifest_sha256`.
+- **Topological linearization**: Multi-parent diamond merges are deduplicated; checkpoints are loaded once.
+- **Streaming I/O**: Deltas are applied incrementally without rewriting whole partitions.
+- **CAS publication**: The target branch tip is compare-and-swapped under one exclusive lock; a stale tip leaves the active pointer unchanged.
+- **Read-only inspection**: `DAGCatalog(..., read_only=True)` requires an existing catalog and never initializes its schema.
+- **Fail-closed missing parents**: Any broken parent link immediately halts resolution with `BrokenLineageError`.
+- **Branch targeting**: Durable publishers resolve a named branch (default `main`); explicit non-main branches must exist and be tip-matched before publishing.
+- **Lineage vs. CAS**: A node's manifest `parents` are distinct from the branch-tip guard.
+- **Part range pruning & lineage caching**: Queries filter candidate Parquet parts by range bounds; lineage resolution is cached in-memory.
+- **Snapshot SQL console**: Limits the initial result page, pins the current `main` lineage for the session, and materializes a session-only paging table only when more rows are requested; saved SQL is revalidated on every execution.
+- **Saved queries**: SQL files live in the sibling `console/queries` directory outside the snapshot repository.
+- **Console exports**: Parquet exports are written outside the snapshot repository; SQL rejects external file readers and literal file sources.
+
+## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `branch` | List, create, or delete branches | `[--from]` |
+| `checkout` | Switch current or branch pointer | `[--branch]`, `[--force]` |
+| `doctor` | Run integrity checks | `[--skip-digests]` |
+| `gc` | Collect unreferenced snapshots and parts | `[--dry-run]` |
+| `log` | Display lineage history | `[-n]`, `[--branch]`, `[--graph]`, `[--all]` |
+| `publish` | Publish a staged snapshot node | `[--expected-parent]`, `[--allow-null]`, `[--branch]` |
+| `status` | Show current snapshot status | `[--branch]` |
+| `tag` | List, create, or delete tags | `[-m]` |
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
+
+```bash
+.venv/bin/python -m edgar_sec.infra.storage.dag.cli --help
+```
+
+## Deliberate gaps
+
+- **Secondary inverted index management**: Generating multi-shard seek indexes is deferred to domain adapters and Checkpoint compaction.
+- **Standalone schema discovery**: The query console needs caller-supplied `RelationSpec`s; schema-less repository discovery cannot expose logical active relations.

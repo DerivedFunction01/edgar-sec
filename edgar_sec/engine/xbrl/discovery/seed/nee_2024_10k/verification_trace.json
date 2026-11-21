@@ -1,0 +1,86 @@
+{
+  "firm": "NEE",
+  "accession": "0000753308-25-000011",
+  "cik": "0000753308",
+  "sic_code": 4911,
+  "sector": "Utilities",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1880,
+      1921
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RegulatedAndUnregulatedOperatingRevenue",
+        "label": "OPERATING REVENUES",
+        "reported_value": 24753000000.0,
+        "table_value": 24753,
+        "line_number": 1889,
+        "snippet": "OPERATING REVENUES                                                                                             $ 24,753    $ 28,114    $ 20,956"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingExpenses",
+        "label": "Total operating expenses",
+        "reported_value": 17626000000.0,
+        "table_value": 17626,
+        "line_number": 1897,
+        "snippet": "Total operating expenses \u2013 net                                                                                   17,626      18,282      17,397"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "OPERATING INCOME",
+        "reported_value": 7479000000.0,
+        "table_value": 7479,
+        "line_number": 1901,
+        "snippet": "OPERATING INCOME                                                                                                  7,479      10,237       4,081"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "INCOME TAXES",
+        "reported_value": 339000000.0,
+        "table_value": 339,
+        "line_number": 1915,
+        "snippet": "INCOME TAXES                                                                                                        339       1,006         586"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "NET INCOME ATTRIBUTABLE TO NEE",
+        "reported_value": 6946000000.0,
+        "table_value": 6946,
+        "line_number": 1920,
+        "snippet": "NET INCOME ATTRIBUTABLE TO NEE                                                                                  $ 6,946     $ 7,310     $ 4,147"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = RegulatedAndUnregulatedOperatingRevenue + DisposalGroupNotDiscontinuedOperationGainLossOnDisposal - OperatingExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:RegulatedAndUnregulatedOperatingRevenue",
+          "value": 24753000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:DisposalGroupNotDiscontinuedOperationGainLossOnDisposal",
+          "value": 352000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:OperatingExpenses",
+          "value": 17626000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 7479000000.0,
+      "target_value": 7479000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "firm": "CAT",
+  "accession": "0000018230-25-000008",
+  "cik": "0000018230",
+  "sic_code": 3531,
+  "sector": "Industrials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Results of Operations for the Years Ended December 31,",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1809,
+      1865
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total sales and revenues",
+        "reported_value": 64809000000.0,
+        "table_value": 64809,
+        "line_number": 1821,
+        "snippet": "Total sales and revenues                                                 64,809      67,060      59,427"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Cost of goods sold",
+        "reported_value": 40199000000.0,
+        "table_value": 40199,
+        "line_number": 1824,
+        "snippet": "Cost of goods sold                                                       40,199      42,767      41,350"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating costs",
+        "reported_value": 51737000000.0,
+        "table_value": 51737,
+        "line_number": 1831,
+        "snippet": "Total operating costs                                                    51,737      54,094      51,523"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating profit",
+        "reported_value": 13072000000.0,
+        "table_value": 13072,
+        "line_number": 1834,
+        "snippet": "Operating profit                                                         13,072      12,966       7,904"
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Profit of consolidated and affiliated companies",
+        "reported_value": 10788000000.0,
+        "table_value": 10788,
+        "line_number": 1849,
+        "snippet": "Profit of consolidated and affiliated companies                          10,788      10,332       6,704"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 64809000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 51737000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 13072000000.0,
+      "target_value": 13072000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

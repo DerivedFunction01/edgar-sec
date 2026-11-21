@@ -1,0 +1,82 @@
+{
+  "firm": "ASML",
+  "accession": "0000937966-25-000009",
+  "cik": "0000937966",
+  "sic_code": 3559,
+  "sector": "Technology",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated statements of operations",
+    "unit": "EUR in millions",
+    "scale": 1000000,
+    "period_column_index": 2,
+    "line_range": [
+      46518,
+      46567
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Total cost of sales1",
+        "reported_value": 13770900000.0,
+        "table_value": -13770.9,
+        "line_number": 46536,
+        "snippet": "Total cost of sales1                                                     (10,473.3)  (13,422.4)  (13,770.9)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 14492000000.0,
+        "table_value": 14492.0,
+        "line_number": 46540,
+        "snippet": "Gross profit                                                             10,700.1    14,136.1    14,492.0"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Income from operations",
+        "reported_value": 9022600000.0,
+        "table_value": 9022.6,
+        "line_number": 46548,
+        "snippet": "Income from operations                                                   6,500.7     9,042.3     9,022.6"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "label": "Income before income taxes",
+        "reported_value": 9042400000.0,
+        "table_value": 9042.4,
+        "line_number": 46554,
+        "snippet": "Income before income taxes                                               6,456.1     9,083.5     9,042.4"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 7571600000.0,
+        "table_value": 7571.6,
+        "line_number": 46566,
+        "snippet": "Net income                                                               5,624.2     7,839.0     7,571.6"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = RevenueFromContractWithCustomerExcludingAssessedTax - CostOfGoodsAndServicesSold",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 28262900000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 13770900000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 14492000000.0,
+      "target_value": 14492000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

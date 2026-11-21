@@ -1,0 +1,237 @@
+"""Separator form-test evaluators: the separator kinds' stage adapters.
+
+Each adapter runs its family's separator evidence over one table
+and stamps the stage outcome (passed = the separator did not fire).
+"""
+
+from __future__ import annotations
+
+from edgar_sec.engine.tables.extraction.separators.balance_sheet_separator_evidence import (
+    evaluate_form_test_balance_sheet_separator,
+)
+from edgar_sec.engine.tables.extraction.separators.cash_flow_separator_evidence import (
+    evaluate_form_test_cash_flow_separator,
+)
+from edgar_sec.engine.tables.extraction.note_separators.credit_separator_evidence import (
+    evaluate_form_test_credit_separator,
+)
+from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
+    evaluate_form_test_combined_operations_separator,
+)
+from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_evidence import (
+    evaluate_form_test_comprehensive_income_separator,
+)
+from edgar_sec.engine.tables.extraction.separators.equity_separator_evidence import (
+    evaluate_form_test_equity_separator,
+)
+from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_evidence import (
+    evaluate_form_test_stock_comp_separator,
+)
+from edgar_sec.engine.tables.extraction.note_separators.restructuring_separator_evidence import (
+    evaluate_form_test_restructuring_separator,
+)
+from edgar_sec.engine.tables.extraction.note_separators.tax_reconciliation_separator_evidence import (
+    evaluate_form_test_tax_reconciliation_separator,
+)
+from edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_evidence import (
+    evaluate_form_test_deferred_tax_separator,
+)
+from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
+    evaluate_form_test_lease_separator,
+)
+from edgar_sec.engine.tables.extraction.evidence.form_separation_evidence import (
+    evaluate_form_test_form_separation,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
+    FormTestSpec,
+)
+from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
+
+
+def _evaluate_balance_sheet_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_balance_sheet_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_cash_flow_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_cash_flow_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_credit_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_credit_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_combined_operations_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_combined_operations_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_comprehensive_income_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_comprehensive_income_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_equity_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_equity_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_stock_comp_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_stock_comp_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_restructuring_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_restructuring_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_deferred_tax_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_deferred_tax_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_tax_reconciliation_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_tax_reconciliation_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_lease_separator(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_lease_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_form_separation(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
+    result = evaluate_form_test_form_separation(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )

@@ -1,0 +1,110 @@
+{
+  "firm": "BP",
+  "accession": "0001628280-20-003753",
+  "cik": "0000313807",
+  "sic_code": 2911,
+  "sector": "Energy",
+  "fiscal_year": 2019,
+  "source_filing_fiscal_year": 2019,
+  "statement_of_operations": {
+    "title": "Group income statement",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      877,
+      899
+    ],
+    "concepts": [
+      {
+        "concept_qname": "ifrs-full:RevenueAndOperatingIncome",
+        "label": "Sales and other operating revenues",
+        "reported_value": 278397000000.0,
+        "table_value": 278397,
+        "line_number": 877,
+        "snippet": "Sales and other operating revenues                                                 5  278,397  298,756    240,208"
+      },
+      {
+        "concept_qname": "ifrs-full:Revenue",
+        "label": "Total revenues and other income",
+        "reported_value": 282616000000.0,
+        "table_value": 282616,
+        "line_number": 883,
+        "snippet": "Total revenues and other income                                                       282,616  303,738    244,582"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLossFromOperatingActivities",
+        "label": "Profit before interest and taxation",
+        "reported_value": 11706000000.0,
+        "table_value": 11706,
+        "line_number": 892,
+        "snippet": "Profit before interest and taxation                                                    11,706   19,378      9,474"
+      },
+      {
+        "concept_qname": "ifrs-full:FinanceCosts",
+        "label": "Finance costs",
+        "reported_value": 3489000000.0,
+        "table_value": 3489,
+        "line_number": 893,
+        "snippet": "Finance costs                                                                      7    3,489    2,528      2,074"
+      },
+      {
+        "concept_qname": "ifrs-full:InterestExpenseIncomeNetDefinedBenefitLiabilityAsset",
+        "label": "Net finance expense relating to pensions and other post-retirement benefits",
+        "reported_value": 63000000.0,
+        "table_value": 63,
+        "line_number": 894,
+        "snippet": "Net finance expense relating to pensions and other post-retirement benefits       24       63      127        220"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLossBeforeTax",
+        "label": "Profit before taxation",
+        "reported_value": 8154000000.0,
+        "table_value": 8154,
+        "line_number": 896,
+        "snippet": "Profit before taxation                                                                  8,154   16,723      7,180"
+      },
+      {
+        "concept_qname": "ifrs-full:IncomeTaxExpenseContinuingOperations",
+        "label": "Taxation",
+        "reported_value": 3964000000.0,
+        "table_value": 3964,
+        "line_number": 897,
+        "snippet": "Taxation                                                                           9    3,964    7,145      3,712"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLoss",
+        "label": "Profit for the year",
+        "reported_value": 4190000000.0,
+        "table_value": 4190,
+        "line_number": 899,
+        "snippet": "Profit for the year                                                                     4,190    9,578      3,468"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Profit before interest and taxation - Finance costs - Net finance expense relating to pensions and other post-retirement benefits = Profit before taxation",
+      "left_concept": "ifrs-full:ProfitLossBeforeTax",
+      "components": [
+        {
+          "concept": "ifrs-full:ProfitLossFromOperatingActivities",
+          "value": 11706000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "ifrs-full:FinanceCosts",
+          "value": 3489000000.0,
+          "weight": -1
+        },
+        {
+          "concept": "ifrs-full:InterestExpenseIncomeNetDefinedBenefitLiabilityAsset",
+          "value": 63000000.0,
+          "weight": -1
+        }
+      ],
+      "computed_sum": 8154000000.0,
+      "target_value": 8154000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

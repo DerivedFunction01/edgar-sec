@@ -1,0 +1,38 @@
+[
+  {
+    "member_pattern": "level1",
+    "hierarchy_level": "LEVEL_1",
+    "implies_valuation_basis": "FAIR_VALUE",
+    "description": "Fair value measurement using Level 1 quoted active market inputs"
+  },
+  {
+    "member_pattern": "level2",
+    "hierarchy_level": "LEVEL_2",
+    "implies_valuation_basis": "FAIR_VALUE",
+    "description": "Fair value measurement using Level 2 observable market inputs"
+  },
+  {
+    "member_pattern": "level3",
+    "hierarchy_level": "LEVEL_3",
+    "implies_valuation_basis": "FAIR_VALUE",
+    "description": "Fair value measurement using Level 3 unobservable model inputs"
+  },
+  {
+    "member_pattern": "fairvalue",
+    "hierarchy_level": "FAIR_VALUE_GENERAL",
+    "implies_valuation_basis": "FAIR_VALUE",
+    "description": "Fair value measurement general hierarchy"
+  },
+  {
+    "member_pattern": "amortizedcost",
+    "hierarchy_level": "AMORTIZED_COST",
+    "implies_valuation_basis": "AMORTIZED_COST",
+    "description": "Carrying value measured at amortized cost"
+  },
+  {
+    "member_pattern": "undiscounted",
+    "hierarchy_level": "UNDISCOUNTED",
+    "implies_valuation_basis": "UNDISCOUNTED",
+    "description": "Undiscounted contractual gross cash flow amounts"
+  }
+]

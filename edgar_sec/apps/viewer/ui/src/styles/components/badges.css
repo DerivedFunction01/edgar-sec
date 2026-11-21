@@ -1,0 +1,59 @@
+.badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 1px 7px;
+	border-radius: 999px;
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	border: 1px solid;
+	white-space: nowrap;
+}
+
+.badge-type {
+	background: var(--theme-status-info-surface);
+	border-color: var(--theme-status-info-border);
+	color: var(--theme-status-info-content);
+}
+
+.badge-kind {
+	background: var(--theme-surface-tertiary);
+	border-color: var(--theme-border-default);
+	color: var(--theme-content-secondary);
+}
+
+/* Kind badges, generated as `badge-${kind}` by ArtifactSidebar. Tones:
+   info    = a published dataset you can browse (the primary things)
+   tertiary = a side index, a manifest, or an in-flight chunk that is not
+              the published payload and may still change
+   success = the record the pointer currently names                                    */
+
+.badge-metadata_snapshot,
+.badge-catalog_profiles,
+.badge-catalog_targets,
+.badge-document_index,
+.badge-metadata_run_union,
+.badge-filing_catalog_run_union,
+.badge-document_storage_run_union {
+	background: var(--theme-status-info-surface);
+	border-color: var(--theme-status-info-border);
+	color: var(--theme-status-info-content);
+}
+
+.badge-metadata_cik_index,
+.badge-document_payload,
+.badge-metadata_chunk,
+.badge-filing_catalog_chunk,
+.badge-document_storage_chunk,
+.badge-manifest,
+.badge-sqlite_table {
+	background: var(--theme-surface-tertiary);
+	border-color: var(--theme-border-default);
+	color: var(--theme-content-tertiary);
+}
+
+.badge-null {
+	background: var(--theme-surface-danger);
+	border-color: var(--theme-border-danger);
+	color: var(--theme-status-danger-content);
+}

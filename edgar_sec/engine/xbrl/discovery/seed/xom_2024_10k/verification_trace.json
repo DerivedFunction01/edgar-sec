@@ -1,0 +1,81 @@
+{
+  "firm": "XOM",
+  "accession": "0000034088-25-000010",
+  "cik": "0000034088",
+  "sic_code": 2911,
+  "sector": "Energy",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENT OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      2847,
+      2886
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues and other income",
+        "reported_value": 349585000000.0,
+        "table_value": 349585,
+        "line_number": 2856,
+        "snippet": "Total revenues and other income                                                        349,585  344,582  413,680"
+      },
+      {
+        "concept_qname": "xom:CrudeOilAndProductPurchases",
+        "label": "Crude oil and product purchases",
+        "reported_value": 199454000000.0,
+        "table_value": 199454,
+        "line_number": 2860,
+        "snippet": "Crude oil and product purchases                                                        199,454  193,029  228,959"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total costs and other deductions",
+        "reported_value": 300712000000.0,
+        "table_value": 300712,
+        "line_number": 2869,
+        "snippet": "Total costs and other deductions                                                       300,712  291,799  335,927"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income (loss) before income taxes",
+        "reported_value": 48873000000.0,
+        "table_value": 48873,
+        "line_number": 2871,
+        "snippet": "Income (loss) before income taxes                                                       48,873   52,783   77,753"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income (loss) attributable to ExxonMobil",
+        "reported_value": 33680000000.0,
+        "table_value": 33680,
+        "line_number": 2877,
+        "snippet": "Net income (loss) attributable to ExxonMobil                                            33,680   36,010   55,740"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "IncomeBeforeIncomeTaxes = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 349585000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 300712000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 48873000000.0,
+      "target_value": 48873000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

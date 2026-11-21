@@ -1,0 +1,81 @@
+{
+  "firm": "ALL_2022",
+  "accession": "0000899051-23-000020",
+  "cik": "0000899051",
+  "sic_code": 6331,
+  "sector": "Insurance",
+  "fiscal_year": 2022,
+  "source_filing_fiscal_year": 2022,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      5078,
+      5150
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues",
+        "reported_value": 51412000000.0,
+        "table_value": 51412,
+        "line_number": 5097,
+        "snippet": "Total revenues                                                                                                                                    51,412      50,588      41,909"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax (benefit) expense",
+        "reported_value": -494000000.0,
+        "table_value": -494,
+        "line_number": 5129,
+        "snippet": "Income tax (benefit) expense                                                                                                                       (494)       1,289       1,373"
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Net (loss) income",
+        "reported_value": -1364000000.0,
+        "table_value": -1364,
+        "line_number": 5141,
+        "snippet": "Net (loss) income                                                                                                                                (1,364)       1,566       5,576"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLossAttributableToNoncontrollingInterest",
+        "label": "Net loss attributable to noncontrolling interest",
+        "reported_value": -53000000.0,
+        "table_value": -53,
+        "line_number": 5145,
+        "snippet": "Less: Net loss attributable to noncontrolling interest                                                                                              (53)        (33)           \u2014"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net (loss) income attributable to Allstate",
+        "reported_value": -1311000000.0,
+        "table_value": -1311,
+        "line_number": 5149,
+        "snippet": "Net (loss) income attributable to Allstate                                                                                                       (1,311)       1,599       5,576"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "NetIncomeLoss = ProfitLoss - NetIncomeLossAttributableToNoncontrollingInterest",
+      "left_concept": "us-gaap:NetIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:ProfitLoss",
+          "value": -1364000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:NetIncomeLossAttributableToNoncontrollingInterest",
+          "value": -53000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": -1311000000.0,
+      "target_value": -1311000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

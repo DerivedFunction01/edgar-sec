@@ -1,0 +1,199 @@
+"""Unit tests for engine common entities regexes."""
+
+from edgar_sec.engine.forms.common.entities import (
+    CLEAN_TEMPLATE_RE,
+    CRD_RE,
+    CUSIP_RE,
+    IRS_RE,
+    RELATIONSHIP_TO_ISSUER_RE,
+    SEC_FILE_NUMBER_RE,
+    STATE_ZIP_RE,
+    STREET_ANCHOR_RE,
+    STREET_SUFFIX_RE,
+    TICKER_PAREN_RE,
+    normalize_exchange_name,
+)
+
+
+def test_state_zip_and_irs_matching():
+    """Verify state/zip and IRS tax ID extraction."""
+    assert bool(STATE_ZIP_RE.search("New York, NY 10001"))
+    assert bool(IRS_RE.search("12-3456789"))
+    assert bool(IRS_RE.search("123456789"))
+
+
+def test_clean_template_and_ticker():
+    """Verify template artifact stripping and ticker regex."""
+    assert bool(CLEAN_TEMPLATE_RE.search("(Last)"))
+    assert bool(STREET_ANCHOR_RE.search("123 Main Street"))
+    match = TICKER_PAREN_RE.search("(NASDAQ: AAPL)")
+    assert match is not None
+    assert match.group(1) == "AAPL"
+
+
+def test_street_suffix_and_exchange_normalization():
+    """Verify exchange normalization and CT state vs Ct suffix disambiguation."""
+    assert normalize_exchange_name("Traded on NASDQ") == "NASDAQ"
+    assert normalize_exchange_name("Listed on NYSE") == "NYSE"
+    assert normalize_exchange_name("Unknown Exchange") is None
+
+    matches = list(STREET_SUFFIX_RE.finditer("100 Main Street, Hartford, CT 06103"))
+    assert len(matches) == 1
+    assert matches[0].group(0).lower() == "street"
+
+    court_matches = list(STREET_SUFFIX_RE.finditer("15 Maple Ct, Hartford, CT 06103"))
+    assert len(court_matches) == 1
+    assert court_matches[0].group(0).lower() == "ct"
+
+
+def test_identifiers_and_relationships():
+    """Verify SEC file numbers, CUSIP, CRD, and relationship roles."""
+    assert bool(SEC_FILE_NUMBER_RE.search("001-12345"))
+    assert bool(SEC_FILE_NUMBER_RE.search("028-00500"))
+    assert bool(CUSIP_RE.search("037833100"))
+    assert bool(CRD_RE.search("123456"))
+    assert bool(RELATIONSHIP_TO_ISSUER_RE.search("Officer (give title below)"))
+    assert bool(RELATIONSHIP_TO_ISSUER_RE.search("10% Stockholder"))
+
+
+def test_shared_entity_regexes_and_morphology():
+    """Verify shared organization, officer title, and noise patterns."""
+    from edgar_sec.engine.forms.common.entities import (
+        FILLER_RUN_RE,
+        OFFICER_TITLE_BOUNDARY_RE,
+        ORGANIZATION_SUFFIX_RE,
+        PHONE_NUMBER_RE,
+        SSN_REDACTION_MASK_RE,
+        TRAILING_FOOTNOTE_RE,
+        is_street_address_value,
+        is_valid_entity_name,
+        sanitize_document_noise,
+        strip_footnote_markers,
+    )
+
+    assert bool(ORGANIZATION_SUFFIX_RE.search("Acme Holdings Inc."))
+    assert bool(ORGANIZATION_SUFFIX_RE.search("Volaris Trust"))
+    assert bool(OFFICER_TITLE_BOUNDARY_RE.search("Officer"))
+    assert bool(OFFICER_TITLE_BOUNDARY_RE.search("Chief Executive Officer"))
+    assert bool(SSN_REDACTION_MASK_RE.match("###-##-####"))
+    assert bool(PHONE_NUMBER_RE.search("(212) 555-1234"))
+    assert bool(FILLER_RUN_RE.search("____"))
+    assert bool(TRAILING_FOOTNOTE_RE.search("John Doe[1]"))
+
+    assert is_street_address_value("345 Park Avenue, 41st Floor")
+    assert is_street_address_value("P.O. Box 1234")
+    assert is_street_address_value("Baltimore, MD 21202")
+    assert not is_street_address_value("Stephen L. Way")
+    assert not is_street_address_value("Dr. Patrick Yeramian")
+    assert not is_street_address_value("Kings Road Investments Ltd.")
+
+    assert is_valid_entity_name("Bioenvision, Inc.")
+    assert is_valid_entity_name("The 2006 MRG/CPG Volaris Trust")
+    assert not is_valid_entity_name("USA")
+    assert not is_valid_entity_name("12345")
+
+    assert sanitize_document_noise("|  John Doe  ____ |") == "John Doe"
+    assert strip_footnote_markers("John Doe [1]") == "John Doe"
+    assert strip_footnote_markers("Acme Corp.*") == "Acme Corp."
+
+
+def test_is_boilerplate_entity_name() -> None:
+    """Verify rejection of statutory boilerplate and validation of genuine names."""
+    from edgar_sec.engine.forms.common.entities import is_boilerplate_entity_name
+
+    assert is_boilerplate_entity_name(None) is False
+    assert is_boilerplate_entity_name("") is True
+    assert is_boilerplate_entity_name("---") is True
+    assert is_boilerplate_entity_name("NAME OF REPORTING PERSON") is True
+    assert (
+        is_boilerplate_entity_name(
+            "I.R.S. IDENTIFICATION NOS. OF ABOVE PERSONS (ENTITIES ONLY)"
+        )
+        is True
+    )
+    assert is_boilerplate_entity_name("SEC USE ONLY") is True
+    assert is_boilerplate_entity_name("INSTRUCTIONS") is True
+    assert is_boilerplate_entity_name("(a)") is True
+    assert is_boilerplate_entity_name("123-45-6789") is True
+    assert is_boilerplate_entity_name("P.O. Box 100") is True
+    assert is_boilerplate_entity_name("Stephen L. Way") is False
+    assert is_boilerplate_entity_name("Starboard Value R LP") is False
+    assert is_boilerplate_entity_name("Acme Holdings Inc.") is False
+
+
+def test_parse_cusip_normalization_and_rejection() -> None:
+    """Verify CUSIP extraction, segmentation normalization, and false candidate rejection."""
+    from edgar_sec.engine.forms.common.entities import parse_cusip
+
+    assert parse_cusip("45765Y-10-5 13G/A") == "45765Y105"
+    assert parse_cusip("G8742C 10 2*") == "G8742C102"
+    assert parse_cusip("58936H 109(1)") == "58936H109"
+    assert parse_cusip("90354D 104 **") == "90354D104"
+    assert parse_cusip("63886 Q109 – Common Stock") == "63886Q109"
+    assert parse_cusip("64125S1042") == "64125S104"
+    assert parse_cusip("155118V207") == "155118V20"
+    assert parse_cusip("22906C1027") == "22906C102"
+    assert (
+        parse_cusip(
+            "Class A Common Stock: 369385 10 9 Class B Common Stock: 369385 20 8"
+        )
+        == "369385109"
+    )
+    assert parse_cusip("Nos. 257701 20 1 and 257701 30 0") == "257701201"
+    assert parse_cusip("037833100") == "037833100"
+    assert parse_cusip("January 30, 2009") is None
+    assert parse_cusip("OCTOBER 12, 2007") is None
+    assert parse_cusip("268157") is None
+    assert parse_cusip("670980") is None
+    assert parse_cusip("5949368") is None
+    assert (
+        parse_cusip(
+            "DPAC Technologies Corp. 5675 Hudson Industrial Parkway Hudson, Ohio 44236 (800) 553-1170"
+        )
+        is None
+    )
+    assert parse_cusip(None) is None
+
+
+def test_commission_file_token_re_matches_bare_file_numbers() -> None:
+    from edgar_sec.engine.forms.common.entities import COMMISSION_FILE_TOKEN_RE
+
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("1-11288")
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("333-152242")
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("0-22636")
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("20549")
+    assert not COMMISSION_FILE_TOKEN_RE.fullmatch("FORM 12b-25")
+    assert not COMMISSION_FILE_TOKEN_RE.fullmatch("registrant")
+
+
+def test_extract_registration_number_caption_variants() -> None:
+    from edgar_sec.engine.forms.common.entities import (
+        extract_registration_number,
+    )
+
+    assert extract_registration_number("Registration No. 333-287547") == "333-287547"
+    assert (
+        extract_registration_number("Registration Statement No. 333-91744")
+        == "333-91744"
+    )
+    assert extract_registration_number("File No. 333-211718") == "333-211718"
+    assert (
+        extract_registration_number("Files Nos. 333-123456, 333-123457") == "333-123456"
+    )
+    assert extract_registration_number("Registration No. 33-123456") == "33-123456"
+    assert extract_registration_number("File Number 333-242483") == "333-242483"
+    assert extract_registration_number("REGISTRATION NO. (333-65522)") == "333-65522"
+    assert (
+        extract_registration_number("Registration Statement No. 333 - 160709")
+        == "333-160709"
+    )
+
+
+def test_extract_registration_number_rejects_commission_file_numbers() -> None:
+    from edgar_sec.engine.forms.common.entities import (
+        extract_registration_number,
+    )
+
+    assert extract_registration_number("Commission File Number: 1-31402") is None
+    assert extract_registration_number("Commission file number: 001-40851") is None
+    assert extract_registration_number("no caption here 333-287547") is None
