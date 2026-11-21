@@ -68,6 +68,14 @@ def test_strip_benign_font_styles_preserves_symbolic_fonts() -> None:
         assert "FONT-SIZE" not in cleaned
 
 
+def test_strip_benign_font_styles_preserves_entity_encoded_symbolic() -> None:
+    text = (
+        '<p style="font-family:&#39;Wingdings 2&#39;, sans-serif;font-size:8pt">x</p>'
+    )
+    cleaned = strip_benign_font_styles(text)
+    assert "Wingdings 2" in cleaned
+
+
 def test_strip_benign_font_styles_preserves_structure_declarations() -> None:
     text = (
         '<td style="border-top: 1pt solid #000000; WIDTH: 50%; '
@@ -161,6 +169,35 @@ def test_normalize_font_qualified_wingdings_named_uuml_entity() -> None:
         '<FONT STYLE="font-family: Wingdings">&uuml;</FONT>'
     )
     assert "[X]" in normalized
+
+
+def test_normalize_font_qualified_glyphs_entity_encoded_font_family() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        '<font style="font-family:&#39;Wingdings 2&#39;, sans-serif;'
+        'font-size:8pt">&#163;</font>'
+    )
+    assert "[ ]" in normalized
+    assert "&#163;" not in normalized
+
+
+def test_normalize_font_qualified_glyphs_entity_encoded_wingdings() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        '<font style="font-family:&#39;Wingdings&#39;, sans-serif">þ</font>'
+    )
+    assert "[X]" in normalized
+
+
+def test_normalize_font_qualified_glyphs_hex_entity_font_family() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        '<font style="font-family:&#x27;Wingdings 2&#x27;, sans-serif">&#163;</font>'
+    )
+    assert "[ ]" in normalized
+    assert "&#163;" not in normalized
+
+
+def test_normalize_font_qualified_glyphs_entity_encoded_ordinary_font() -> None:
+    text = '<font style="font-family:&#39;Georgia&#39;, serif">£</font>'
+    assert normalize_font_qualified_glyphs(text) == text
 
 
 def test_normalize_font_qualified_letter_glyphs() -> None:

@@ -23,9 +23,13 @@ def test_font_glyph_state() -> None:
     assert font_glyph_state("Wingdings", "o") == "unchecked"
     assert font_glyph_state("Wingdings", "¨") == "unchecked"
 
-    assert font_glyph_state("Wingdings 2", "R") == "unchecked"
+    # Wingdings 2 codes 82/163 per Microsoft checkbox guidance;
+    # £ specimen Anthropic S-1 0001628280-26-067168.
+    assert font_glyph_state("Wingdings 2", "R") == "checked"
     assert font_glyph_state("Wingdings 2", "S") == "checked"
-    assert font_glyph_state("Wingdings 2", "£") == "checked"
+    assert font_glyph_state("Wingdings 2", "£") == "unchecked"
+    assert font_glyph_state("Wingdings2", "£") == "unchecked"
+    assert font_glyph_state("Wingdings2", "R") == "checked"
 
     assert font_glyph_state("Arial", "x") is None
     assert font_glyph_state("Wingdings", "Z") is None

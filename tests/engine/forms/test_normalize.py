@@ -832,3 +832,24 @@ def test_form_n23c_paper_stub_resolves_no_sections() -> None:
 
     assert res.family == "N-23C-3"
     assert res.sections is None
+
+
+def test_s1_cover_wingdings_glyphs_normalize_to_unchecked_boxes() -> None:
+    """Anthropic S-1 cover excerpt: entity-quoted Wingdings 2 boxes convert."""
+    path = fixture_path("document/anthropic_s1_cover_wingdings.htm")
+    res = normalize_document(path.read_bytes(), form="S-1", document_path=path.name)
+
+    assert res.family == "S-1"
+    assert res.representation == "html"
+    assert "£" not in res.text
+    assert "&#163;" not in res.text
+    assert res.text.count("[ ]") == 9
+    assert res.text.count("[X]") == 1
+
+    assert res.cover_checkmarks is not None
+    states = dict(res.cover_checkmarks.hypotheses[0].states)
+    assert states["rule 415"] == "unchecked"
+    assert states["rule 462b"] == "unchecked"
+    assert states["rule 462c"] == "unchecked"
+    assert states["rule 462d"] == "unchecked"
+    assert states["non_accelerated_filer"] == "checked"

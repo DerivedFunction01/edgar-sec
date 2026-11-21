@@ -95,7 +95,7 @@ FONT_GLYPH_MAPPINGS = {
     },
     "wingdings 2": {
         "r": "unchecked",
-        "R": "unchecked",
+        "R": "checked",
         "o": "unchecked",
         "O": "unchecked",
         "x": "checked",
@@ -103,12 +103,12 @@ FONT_GLYPH_MAPPINGS = {
         "þ": "checked",
         "ý": "checked",
         "¨": "unchecked",
-        "£": "checked",
+        "£": "unchecked",
         "S": "checked",
     },
     "wingdings2": {
         "r": "unchecked",
-        "R": "unchecked",
+        "R": "checked",
         "o": "unchecked",
         "O": "unchecked",
         "x": "checked",
@@ -116,7 +116,7 @@ FONT_GLYPH_MAPPINGS = {
         "þ": "checked",
         "ý": "checked",
         "¨": "unchecked",
-        "£": "checked",
+        "£": "unchecked",
         "S": "checked",
     },
     "webdings": {

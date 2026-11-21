@@ -5,6 +5,7 @@ borders, alignment, `width`, and all text. Pass order is a contract - glyphs nee
 
 from __future__ import annotations
 
+import html as html_lib
 import re
 
 from edgar_sec.domain.forms.common.checkmarks import (
@@ -61,7 +62,7 @@ _SIDE_SUFFIX_ALT = build_alternation(
 # properties while preserving structural borders, alignment, widths, page breaks, symbolic fonts.
 _RE_BENIGN_STYLE_DECL = re.compile(
     r"(?i)(?<![a-z-])(?:"
-    rf"(?:font-family|font)\s*:\s*(?![^;\"'\n>]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
+    rf"(?:font-family|font)\s*:\s*(?!(?:&#?[a-zA-Z0-9]+;|[^;\"'\n>])*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
     r"|font-size\s*:[^;\"'\n>]*"
     r"|(?:background-)?color\s*:[^;\"'\n>]*"
     rf"|(?:{_BOX_SPACING_ALT})(?:-(?:{_SIDE_SUFFIX_ALT}))?\s*:[^;\"'\n>]*"
@@ -75,9 +76,10 @@ _RE_EMPTY_STYLE_ATTR = re.compile(r'(?i)(?<=[\s"])style\s*=\s*"\s*"')
 
 _RE_TAG_OR_TEXT = re.compile(r"(?is)<!--.*?-->|<[^>]*>|[^<]+")
 _RE_STYLE_FONT_FAMILY = re.compile(
-    r"(?i)\bfont-family\s*:\s*([^;\"]+)|(?<=style=[\"'])\s*([a-z0-9\s,'\"_-]+?)(?:;|\"|'|$)"
+    r"(?i)\bfont-family\s*:\s*((?:&#?[a-zA-Z0-9]+;|[^;\"])+)"
+    r"|(?<=style=[\"'])\s*((?:&#?[a-zA-Z0-9]+;|[a-z0-9\s,'\"_-])+?)(?:;|\"|'|$)"
 )
-_RE_STYLE_FONT = re.compile(r"(?i)\bfont\s*:\s*([^;\"]+)")
+_RE_STYLE_FONT = re.compile(r"(?i)\bfont\s*:\s*((?:&#?[a-zA-Z0-9]+;|[^;\"])+)")
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fd\u00fc\uf078\uf0a3aSrRnNuUoOxX]")
 _RE_NUMERIC_GLYPH_ENTITY = re.compile(r"&#(?:x([0-9a-f]+)|(\d+));?", re.IGNORECASE)
@@ -282,6 +284,7 @@ def normalize_font_qualified_glyphs(html: str) -> str:
                 if shorthand_match:
                     declared_font = shorthand_match.group(1).strip()
         if declared_font is not None:
+            declared_font = html_lib.unescape(declared_font)
             pres_match = _RE_HAS_PRESERVED_FAMILY.search(declared_font)
             current_font = pres_match.group(0) if pres_match else None
 
