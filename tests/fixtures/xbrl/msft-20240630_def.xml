@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+  <link:roleRef roleURI="http://www.microsoft.com/role/SegmentInformation" xlink:type="simple" xlink:href="msft-20240630.xsd#SegmentInformation"/>
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.microsoft.com/role/SegmentInformation">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_StatementLineItems" xlink:label="loc_LineItems"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_StatementTable" xlink:label="loc_Table"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd#srt_ProductOrServiceAxis" xlink:label="loc_Axis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd#srt_ProductsAndServicesDomain" xlink:label="loc_Domain"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd#srt_ProductsAndServicesDomain" xlink:label="loc_DomainDefault"/>
+    <link:loc xlink:type="locator" xlink:href="msft-20240630.xsd#msft_ServerProductsAndCloudServicesMember" xlink:label="loc_ServerMember"/>
+    <link:loc xlink:type="locator" xlink:href="msft-20240630.xsd#msft_ProductAndServiceOtherMember" xlink:label="loc_OtherMember"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_ProductMember" xlink:label="loc_ProductMember"/>
+
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all"
+        xlink:from="loc_LineItems" xlink:to="loc_Table" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+        xlink:from="loc_Table" xlink:to="loc_Axis" order="1"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain"
+        xlink:from="loc_Axis" xlink:to="loc_Domain" order="1"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default"
+        xlink:from="loc_Axis" xlink:to="loc_DomainDefault" order="1"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+        xlink:from="loc_Domain" xlink:to="loc_ServerMember" order="1"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+        xlink:from="loc_ServerMember" xlink:to="loc_OtherMember" order="1"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+        xlink:from="loc_Domain" xlink:to="loc_ProductMember" order="2" xbrldt:usable="false"/>
+  </link:definitionLink>
+</link:linkbase>

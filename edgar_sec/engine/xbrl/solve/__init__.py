@@ -1,0 +1,1 @@
+"""XBRL solve subpackage."""

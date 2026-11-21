@@ -1,0 +1,74 @@
+{
+  "firm": "AAPL",
+  "accession": "0000320193-24-000123",
+  "cik": "0000320193",
+  "sic_code": 3571,
+  "sector": "Technology",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      910,
+      955
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total net sales",
+        "reported_value": 391035000000.0,
+        "table_value": 391035,
+        "dimensions": {},
+        "line_number": 923,
+        "snippet": "Total net sales                                          391,035             383,285             394,328"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Total cost of sales",
+        "reported_value": 210352000000.0,
+        "table_value": 210352,
+        "line_number": 929,
+        "snippet": "Total cost of sales                                      210,352             214,137             223,546"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross margin",
+        "reported_value": 180683000000.0,
+        "table_value": 180683,
+        "line_number": 931,
+        "snippet": "Gross margin                                             180,683             169,148             170,782"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 123216000000.0,
+        "table_value": 123216,
+        "line_number": 941,
+        "snippet": "Operating income                                         123,216             114,301             119,437"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossMargin = TotalNetSales - TotalCostOfSales",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "weight": 1.0,
+          "value": 391035000000.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "weight": -1.0,
+          "value": 210352000000.0
+        }
+      ],
+      "computed_sum": 180683000000.0,
+      "target_value": 180683000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

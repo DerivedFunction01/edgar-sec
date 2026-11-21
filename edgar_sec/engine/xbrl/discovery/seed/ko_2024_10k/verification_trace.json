@@ -1,0 +1,81 @@
+{
+  "firm": "KO",
+  "accession": "0000021344-25-000011",
+  "cik": "0000021344",
+  "sic_code": 2080,
+  "sector": "Consumer_Staples",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1626,
+      1659
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Net Operating Revenues",
+        "reported_value": 47061000000.0,
+        "table_value": 47061,
+        "line_number": 1629,
+        "snippet": "Net Operating Revenues                                              $ 47,061    $ 45,754    $ 43,004"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of goods sold",
+        "reported_value": 18324000000.0,
+        "table_value": 18324,
+        "line_number": 1630,
+        "snippet": "Cost of goods sold                                                    18,324      18,520      18,000"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross Profit",
+        "reported_value": 28737000000.0,
+        "table_value": 28737,
+        "line_number": 1632,
+        "snippet": "Gross Profit                                                          28,737      27,234      25,004"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income",
+        "reported_value": 9992000000.0,
+        "table_value": 9992,
+        "line_number": 1636,
+        "snippet": "Operating Income                                                       9,992      11,311      10,909"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income Attributable to Shareowners of The Coca-Cola Company",
+        "reported_value": 10631000000.0,
+        "table_value": 10631,
+        "line_number": 1648,
+        "snippet": "Net Income Attributable to Shareowners of The Coca-Cola Company     $ 10,631    $ 10,714     $ 9,542"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfGoodsAndServicesSold",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 47061000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 18324000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 28737000000.0,
+      "target_value": 28737000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

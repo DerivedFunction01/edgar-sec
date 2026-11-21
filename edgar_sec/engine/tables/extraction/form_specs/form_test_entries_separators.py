@@ -1,0 +1,127 @@
+"""Form-test entries: the separator and form-separation specs —
+the separator block of the registry, composed into
+FORM_TEST_SPECS by form_test_specs.
+"""
+
+from __future__ import annotations
+
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
+from edgar_sec.engine.tables.extraction.core.profiles import (
+    PROV_BALANCE_SHEET_SEPARATOR,
+    PROV_CASCADE_G4_FORM_SEPARATION,
+    PROV_CASH_FLOW_CASCADE,
+    PROV_COMBINED_OPERATIONS_SEPARATOR,
+    PROV_COREFIN_COMPINCOME,
+    PROV_COREFIN_EQUITYSTATEMENT,
+    PROV_CREDIT_SEPARATOR,
+    PROV_LEASE_SEPARATOR,
+    PROV_PENSION_COMBINATION,
+    PROV_PENSION_ROUTED,
+    PROV_RELATED_PARTY_FORM_SEPARATION,
+    PROV_STOCK_COMP_SEPARATOR,
+    TEST_BALANCE_SHEET_SEPARATOR,
+    TEST_CASH_FLOW_SEPARATOR,
+    TEST_COMBINED_OPERATIONS_SEPARATOR,
+    TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+    TEST_CREDIT_SEPARATOR,
+    TEST_EQUITY_SEPARATOR,
+    TEST_FORM_SEPARATION,
+    TEST_LEASE_SEPARATOR,
+    TEST_PENSION_COMBINATION,
+    TEST_PENSION_ROUTED,
+    TEST_STOCK_COMP_SEPARATOR,
+)
+
+SEPARATOR_FORM_TEST_ENTRIES: tuple[FormTestSpec, ...] = (
+    FormTestSpec(
+        "balance_sheet",
+        TEST_BALANCE_SHEET_SEPARATOR,
+        "balance_sheet_separator",
+        0.0,
+        provenance=PROV_BALANCE_SHEET_SEPARATOR,
+    ),
+    FormTestSpec(
+        "pension",
+        TEST_PENSION_ROUTED,
+        "pension_routed_separator",
+        0.0,
+        provenance=PROV_PENSION_ROUTED,
+    ),
+    FormTestSpec(
+        "pension",
+        TEST_PENSION_COMBINATION,
+        "pension_combination_separator",
+        0.0,
+        provenance=PROV_PENSION_COMBINATION,
+    ),
+    FormTestSpec(
+        "cash_flow",
+        TEST_CASH_FLOW_SEPARATOR,
+        "cash_flow_separator",
+        0.0,
+        provenance=PROV_CASH_FLOW_CASCADE,
+    ),
+    FormTestSpec(
+        "credit_losses_rollforward",
+        TEST_CREDIT_SEPARATOR,
+        "credit_separator",
+        0.0,
+        provenance=PROV_CREDIT_SEPARATOR,
+    ),
+    FormTestSpec(
+        "comprehensive_income",
+        TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+        "comprehensive_income_separator",
+        0.0,
+        provenance=PROV_COREFIN_COMPINCOME,
+    ),
+    FormTestSpec(
+        "equity_statement",
+        TEST_EQUITY_SEPARATOR,
+        "equity_separator",
+        0.0,
+        provenance=PROV_COREFIN_EQUITYSTATEMENT,
+    ),
+    FormTestSpec(
+        "combined_operations_ci",
+        TEST_COMBINED_OPERATIONS_SEPARATOR,
+        "combined_operations_ci_separator",
+        0.0,
+        provenance=PROV_COMBINED_OPERATIONS_SEPARATOR,
+    ),
+    FormTestSpec(
+        "stock_comp_rollforward",
+        TEST_STOCK_COMP_SEPARATOR,
+        "stock_comp_separator",
+        0.0,
+        provenance=PROV_STOCK_COMP_SEPARATOR,
+    ),
+    FormTestSpec(
+        "lease_maturity",
+        TEST_LEASE_SEPARATOR,
+        "lease_separator",
+        0.0,
+        provenance=PROV_LEASE_SEPARATOR,
+    ),
+    FormTestSpec(
+        "related_party",
+        TEST_FORM_SEPARATION,
+        "related_party_form_separation",
+        0.0,
+        provenance=PROV_RELATED_PARTY_FORM_SEPARATION,
+    ),
+    FormTestSpec(
+        "eps_reconciliation",
+        TEST_FORM_SEPARATION,
+        "eps_reconciliation_form_separation",
+        0.0,
+        provenance=PROV_CASCADE_G4_FORM_SEPARATION,
+    ),
+    FormTestSpec(
+        "intangibles",
+        TEST_FORM_SEPARATION,
+        "intangibles_form_separation",
+        0.0,
+        provenance=PROV_CASCADE_G4_FORM_SEPARATION,
+    ),
+)

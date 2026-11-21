@@ -1,0 +1,81 @@
+{
+  "firm": "ADM",
+  "accession": "0000007084-25-000011",
+  "cik": "0000007084",
+  "sic_code": 2040,
+  "sector": "Agriculture",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1305,
+      1339
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Revenues",
+        "reported_value": 85530000000.0,
+        "table_value": 85530,
+        "line_number": 1321,
+        "snippet": "Revenues                                                             $ 85,530      $ 93,935     $ 101,556"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Cost of products sold",
+        "reported_value": 79752000000.0,
+        "table_value": 79752,
+        "line_number": 1322,
+        "snippet": "Cost of products sold                                                  79,752        86,422        93,986"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross Profit",
+        "reported_value": 5778000000.0,
+        "table_value": 5778,
+        "line_number": 1324,
+        "snippet": "Gross Profit                                                            5,778         7,513         7,570"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 476000000.0,
+        "table_value": 476,
+        "line_number": 1333,
+        "snippet": "Income tax expense                                                        476           828           868"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Earnings Attributable to Controlling Interests",
+        "reported_value": 1800000000.0,
+        "table_value": 1800,
+        "line_number": 1338,
+        "snippet": "Net Earnings Attributable to Controlling Interests                    $ 1,800       $ 3,483       $ 4,340"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 85530000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 79752000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 5778000000.0,
+      "target_value": 5778000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

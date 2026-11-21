@@ -1,0 +1,1 @@
+"""Ownership report family definitions."""

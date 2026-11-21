@@ -1,0 +1,81 @@
+{
+  "firm": "CF",
+  "accession": "0001324404-25-000006",
+  "cik": "0001324404",
+  "sic_code": 2870,
+  "sector": "Materials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1805,
+      1846
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Net sales",
+        "reported_value": 5936000000.0,
+        "table_value": 5936,
+        "line_number": 1819,
+        "snippet": "Net sales                                                         $ 5,936       $ 6,631      $ 11,186"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Cost of sales",
+        "reported_value": 3880000000.0,
+        "table_value": 3880,
+        "line_number": 1820,
+        "snippet": "Cost of sales                                                       3,880         4,086         5,325"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross margin",
+        "reported_value": 2056000000.0,
+        "table_value": 2056,
+        "line_number": 1822,
+        "snippet": "Gross margin                                                        2,056         2,545         5,861"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating earnings",
+        "reported_value": 1746000000.0,
+        "table_value": 1746,
+        "line_number": 1833,
+        "snippet": "Operating earnings                                                  1,746         2,230         5,397"
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Net earnings",
+        "reported_value": 1477000000.0,
+        "table_value": 1477,
+        "line_number": 1842,
+        "snippet": "Net earnings                                                        1,477         1,838         3,937"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 5936000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 3880000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 2056000000.0,
+      "target_value": 2056000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

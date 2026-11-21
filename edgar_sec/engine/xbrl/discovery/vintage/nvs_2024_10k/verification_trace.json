@@ -1,0 +1,117 @@
+{
+  "firm": "NVS",
+  "accession": "0001370368-25-000004",
+  "cik": "0001114448",
+  "sic_code": 2834,
+  "sector": "Healthcare",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated income statements",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      8323,
+      8377
+    ],
+    "concepts": [
+      {
+        "concept_qname": "ifrs-full:RevenueFromSaleOfGoods",
+        "label": "Net sales from continuing operations",
+        "reported_value": 50317000000.0,
+        "table_value": 50317,
+        "line_number": 8323,
+        "snippet": "Net sales from continuing operations                                                                                      4   50 317   45 440   42 206"
+      },
+      {
+        "concept_qname": "ifrs-full:OtherRevenue",
+        "label": "Other revenues",
+        "reported_value": 1405000000.0,
+        "table_value": 1405,
+        "line_number": 8326,
+        "snippet": "Other revenues                                                                                                            4    1 405    1 220    1 255"
+      },
+      {
+        "concept_qname": "ifrs-full:CostOfSales",
+        "label": "Cost of goods sold",
+        "reported_value": 12827000000.0,
+        "table_value": -12827,
+        "line_number": 8329,
+        "snippet": "Cost of goods sold                                                                                                           -12 827  -12 472  -11 582",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "ifrs-full:GrossProfit",
+        "label": "Gross profit from continuing operations",
+        "reported_value": 38895000000.0,
+        "table_value": 38895,
+        "line_number": 8332,
+        "snippet": "Gross profit from continuing operations                                                                                       38 895   34 188   31 879"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLossFromOperatingActivities",
+        "label": "Operating income from continuing operations",
+        "reported_value": 14544000000.0,
+        "table_value": 14544,
+        "line_number": 8347,
+        "snippet": "Operating income from continuing operations                                                                                   14 544    9 769    7 946"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLossBeforeTax",
+        "label": "Income before taxes from continuing operations",
+        "reported_value": 13640000000.0,
+        "table_value": 13640,
+        "line_number": 8359,
+        "snippet": "Income before taxes from continuing operations                                                                                13 640    9 123    7 177"
+      },
+      {
+        "concept_qname": "ifrs-full:IncomeTaxExpenseContinuingOperations",
+        "label": "Income taxes",
+        "reported_value": 1701000000.0,
+        "table_value": -1701,
+        "line_number": 8362,
+        "snippet": "Income taxes                                                                                                              6   -1 701     -551   -1 128",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLoss",
+        "label": "Net income",
+        "reported_value": 11939000000.0,
+        "table_value": 11939,
+        "line_number": 8377,
+        "snippet": "Net income                                                                                                                    11 939   14 854    6 955"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Operating income from continuing operations + Loss from associated companies - Interest expense + Other financial income and expense = Income before taxes from continuing operations",
+      "left_concept": "ifrs-full:ProfitLossBeforeTax",
+      "components": [
+        {
+          "concept": "ifrs-full:ProfitLossFromOperatingActivities",
+          "value": 14544000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "ifrs-full:ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod",
+          "value": -38000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "ifrs-full:InterestExpense",
+          "value": 1006000000.0,
+          "weight": -1
+        },
+        {
+          "concept": "ifrs-full:OtherFinanceIncomeCost",
+          "value": 140000000.0,
+          "weight": 1
+        }
+      ],
+      "computed_sum": 13640000000.0,
+      "target_value": 13640000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

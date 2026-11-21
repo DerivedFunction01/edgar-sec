@@ -1,0 +1,621 @@
+"""Cross-company concept equivalence ranking over atom coordinates."""
+
+from __future__ import annotations
+
+from collections.abc import Iterable, Mapping
+from dataclasses import dataclass
+
+from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.relations import AtomRelationGraph
+from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
+    SiblingGroup,
+    load_sibling_groups,
+)
+
+EXACT = "exact"
+NEAR = "near"
+UNRELATED = "unrelated"
+
+GENERALIZATION = "generalization"
+SPECIALIZATION = "specialization"
+
+_AGGREGATE_MODIFIER = "M_AGGREGATE"
+_TEXT_MODIFIER = "M_TEXT_NODE"
+_PERCENT_MODIFIER = "M_PERCENT_TYPED"
+_HORIZON_AXIS = "MATURITY_HORIZON"
+_HORIZON_FALLBACK = frozenset({"M_CURRENT", "M_NONCURRENT"})
+_PURCHASE_ACT_MODIFIER = "M_PURCHASE"
+_EXIT_ACT_MARKERS = frozenset({"M_SALE", "M_DISPOSAL", "M_COLLECTION"})
+_DIALECT_MARKERS = frozenset({_PURCHASE_ACT_MODIFIER, "M_INVESTING"})
+_DIALECT_RELATION_TYPE = "DIALECT_OF"
+
+_DEFAULT_GROUPS: tuple[SiblingGroup, ...] | None = None
+_DEFAULT_RELATIONS: AtomRelationGraph | None = None
+
+
+def _default_groups() -> tuple[SiblingGroup, ...]:
+    """The shipped sibling-group declaration, loaded once on first use."""
+    global _DEFAULT_GROUPS
+    if _DEFAULT_GROUPS is None:
+        _DEFAULT_GROUPS = load_sibling_groups(
+            resolve_xbrl_paths().default_sibling_groups_path
+        )
+    return _DEFAULT_GROUPS
+
+
+def _default_relations() -> AtomRelationGraph:
+    """The shipped atom-relation graph, loaded once on first use."""
+    global _DEFAULT_RELATIONS
+    if _DEFAULT_RELATIONS is None:
+        paths = resolve_xbrl_paths()
+        _DEFAULT_RELATIONS = AtomRelationGraph.load_json(
+            paths.default_atom_relations_path, paths.default_relation_types_path
+        )
+    return _DEFAULT_RELATIONS
+
+
+def _dialect_bridge(
+    target: Atom,
+    candidate: Atom,
+    graph: AtomRelationGraph,
+    diff: frozenset[str] | None = None,
+) -> int | None:
+    """Object distance when a declared dialect edge bridges the pair.
+
+    Entry is act-governed, per the DIALECT_OF relation semantics.
+    """
+    for payments, purchase in ((target, candidate), (candidate, target)):
+        if _PURCHASE_ACT_MODIFIER not in purchase.modifiers:
+            continue
+        if purchase.modifiers & _EXIT_ACT_MARKERS:
+            continue
+        if payments.modifiers & (_EXIT_ACT_MARKERS | {_PURCHASE_ACT_MODIFIER}):
+            continue
+        for edge in graph.relations:
+            if edge.relation_type != _DIALECT_RELATION_TYPE:
+                continue
+            if payments == edge.source and purchase.is_a(edge.target):
+                if diff is None:
+                    diff = target.modifiers ^ candidate.modifiers
+                return len(diff - _DIALECT_MARKERS)
+    return None
+
+
+def _resolve_groups(
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None,
+) -> tuple[SiblingGroup, ...]:
+    """The caller's groups, or the shipped sibling-group declaration.
+
+    Bare member sets normalize to anonymous unscoped groups, preserving
+    the behaviour bare callers have always had.
+    """
+    if sibling_groups is None:
+        return _default_groups()
+    return tuple(
+        group
+        if isinstance(group, SiblingGroup)
+        else SiblingGroup("", tuple(group), "compoundable")
+        for group in sibling_groups
+    )
+
+
+def _sibling_swap(
+    left: Atom,
+    right: Atom,
+    groups: tuple[SiblingGroup, ...],
+    diff: frozenset[str] | None = None,
+) -> bool:
+    """True when each atom holds exactly one side of an admitted sibling pair.
+
+    The difference must sit inside one single group and that group's
+    scope must admit the pair's head and shared modifiers.
+    """
+    if diff is None:
+        diff = left.modifiers ^ right.modifiers
+    if len(diff) != 2:
+        return False
+    if len(left.modifiers & diff) != 1 or len(right.modifiers & diff) != 1:
+        return False
+    shared = left.modifiers & right.modifiers
+    return any(
+        diff <= frozenset(group.members) and group.swap_admitted(left.head, shared)
+        for group in groups
+    )
+
+
+def _text_barrier(left: Atom, right: Atom) -> bool:
+    """True when exactly one atom carries the text coordinate."""
+    return (_TEXT_MODIFIER in left.modifiers) != (_TEXT_MODIFIER in right.modifiers)
+
+
+def _percent_barrier(left: Atom, right: Atom) -> bool:
+    """True when exactly one atom carries the percent coordinate."""
+    return (_PERCENT_MODIFIER in left.modifiers) != (
+        _PERCENT_MODIFIER in right.modifiers
+    )
+
+
+def _classify_detail(
+    left: Atom,
+    right: Atom,
+    groups: tuple[SiblingGroup, ...] | None = None,
+    *,
+    same_qname: bool = False,
+    atom_target: bool = False,
+    diff: frozenset[str] | None = None,
+) -> tuple[str, str]:
+    """Classify a pair, naming the deciding rule; specific rules first.
+
+    Widening and single-difference pairs are subsumption pairs too, so
+    they precede it; every such branch yields NEAR, preserving tiers.
+    """
+    if groups is None:
+        groups = _default_groups()
+    if left == right:
+        if same_qname or atom_target or left.modifiers:
+            return EXACT, "equality"
+        return NEAR, "bare_head_equality"
+    if left.head != right.head:
+        return UNRELATED, ""
+    if _text_barrier(left, right):
+        return UNRELATED, "text_barrier"
+    if _percent_barrier(left, right):
+        return UNRELATED, "percent_barrier"
+    if diff is None:
+        diff = left.modifiers ^ right.modifiers
+    if diff == {_AGGREGATE_MODIFIER}:
+        return NEAR, "aggregate_widening"
+    if len(diff) == 1:
+        return NEAR, "single_modifier_difference"
+    if left.is_a(right) or right.is_a(left):
+        return NEAR, "subsumption"
+    if _sibling_swap(left, right, groups, diff):
+        return NEAR, "sibling_swap"
+    return UNRELATED, ""
+
+
+def classify_pair(left: Atom, right: Atom, *, same_qname: bool = False) -> str:
+    """Classify two atoms as exact, near (lattice neighbours), or unrelated."""
+    return _classify_detail(left, right, same_qname=same_qname)[0]
+
+
+def _subsumption_direction(target: Atom, candidate: Atom) -> str:
+    """Name a pair's subsumption direction; empty when neither subsumes.
+
+    Generalization means the candidate strictly subsumes the target;
+    specialization means the target strictly subsumes the candidate.
+    """
+    if target.is_a(candidate) and not candidate.is_a(target):
+        return GENERALIZATION
+    if candidate.is_a(target) and not target.is_a(candidate):
+        return SPECIALIZATION
+    return ""
+
+
+def _axis_members(
+    groups: tuple[SiblingGroup, ...], entry: DefaultCoordinate
+) -> frozenset[str]:
+    """The member set of the axis a default names.
+
+    Named groups resolve by name, never by order; anonymous groups
+    fall back to first membership.
+    """
+    for group in groups:
+        if group.group == entry.axis:
+            return frozenset(group.members)
+    for group in groups:
+        if entry.presumed_modifier in group.members:
+            return frozenset(group.members)
+    return frozenset()
+
+
+def presumed_atom(
+    atom: Atom,
+    defaults: Iterable[DefaultCoordinate],
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+    *,
+    axis_cache: dict[DefaultCoordinate, frozenset[str]] | None = None,
+) -> Atom:
+    """Apply a presumed coordinate when the atom is silent on the entry's axis.
+
+    The presumed copy exists only for classification and ranking; an atom
+    stating any axis value, or matching no entry, is returned unchanged.
+    """
+    groups = _resolve_groups(sibling_groups)
+    if axis_cache is None:
+        axis_cache = {}
+    for entry in defaults:
+        if entry.head != atom.head:
+            continue
+        members = axis_cache.get(entry)
+        if members is None:
+            members = axis_cache[entry] = _axis_members(groups, entry)
+        if atom.modifiers & members:
+            continue
+        if frozenset(atom.modifiers) == frozenset(entry.identity_modifiers):
+            return Atom(atom.head, atom.modifiers | {entry.presumed_modifier})
+    return atom
+
+
+def _horizon_members(groups: tuple[SiblingGroup, ...]) -> frozenset[str]:
+    """The MATURITY_HORIZON axis members declared among the groups."""
+    for group in groups:
+        if group.group == _HORIZON_AXIS:
+            return frozenset(group.members)
+    return _HORIZON_FALLBACK
+
+
+def _filing_local(
+    atom: Atom,
+    derived_horizon: str | None,
+    placement_horizon: str | None,
+    groups: tuple[SiblingGroup, ...],
+    members: frozenset[str] | None = None,
+) -> Atom:
+    """Apply the filing-local rung; higher rungs' silence is its entry condition."""
+    if placement_horizon is None:
+        return atom
+    if members is None:
+        members = _horizon_members(groups)
+    if atom.modifiers & members:
+        return atom
+    if derived_horizon is not None:
+        return atom
+    if placement_horizon not in members:
+        return atom
+    return Atom(atom.head, atom.modifiers | {placement_horizon})
+
+
+def presumed_atom_filing_local(
+    atom: Atom,
+    derived_horizon: str | None,
+    placement_horizon: str | None,
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+) -> Atom:
+    """Presume a placement-derived horizon when name and derived are silent.
+
+    An atom stating any horizon member, or a set derived horizon, is
+    returned unchanged: evidence never outranks a higher rung.
+    """
+    return _filing_local(
+        atom, derived_horizon, placement_horizon, _resolve_groups(sibling_groups)
+    )
+
+
+def _ladder_atom(
+    atom: Atom,
+    defaults: tuple[DefaultCoordinate, ...],
+    groups: tuple[SiblingGroup, ...],
+    derived_horizon: str | None,
+    placement_horizon: str | None,
+    *,
+    horizon_members: frozenset[str] | None = None,
+    axis_cache: dict[DefaultCoordinate, frozenset[str]] | None = None,
+) -> tuple[Atom, str]:
+    """One side's fully presumed atom and the rung that supplied it."""
+    members = (
+        horizon_members if horizon_members is not None else _horizon_members(groups)
+    )
+    if not atom.modifiers & members:
+        if derived_horizon is not None and derived_horizon in members:
+            return Atom(atom.head, atom.modifiers | {derived_horizon}), "derived"
+        placed = _filing_local(
+            atom, derived_horizon, placement_horizon, groups, members
+        )
+        if placed != atom:
+            return placed, "filing_local"
+    presumed = presumed_atom(atom, defaults, groups, axis_cache=axis_cache)
+    if presumed != atom:
+        return presumed, "default"
+    return atom, ""
+
+
+@dataclass(frozen=True, slots=True)
+class LadderClassification:
+    """One pair's classification under the full presumption ladder."""
+
+    tier: str
+    rule: str
+    via_default: bool
+    via_filing_local: bool
+    modifier_distance: int
+    direction: str
+    via_bridge: bool = False
+
+
+def classify_ladder_pair(
+    target: Atom,
+    candidate: Atom,
+    defaults: Iterable[DefaultCoordinate] = (),
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+    *,
+    target_derived_horizon: str | None = None,
+    candidate_derived_horizon: str | None = None,
+    target_placement_horizon: str | None = None,
+    candidate_placement_horizon: str | None = None,
+    same_qname: bool = False,
+    atom_target: bool = False,
+    relations: AtomRelationGraph | None = None,
+) -> LadderClassification:
+    """Classify a pair on stated atoms, then on fully presumed atoms.
+
+    A pair NEAR only under presumption names its weakest mediating
+    rung; a pair no rung relates is tested against the dialect bridge.
+    """
+    groups = _resolve_groups(sibling_groups)
+    defaults = tuple(defaults)
+    horizon_members = _horizon_members(groups)
+    axis_cache: dict[DefaultCoordinate, frozenset[str]] = {}
+    stated_diff = target.modifiers ^ candidate.modifiers
+    tier, rule = _classify_detail(
+        target,
+        candidate,
+        groups,
+        same_qname=same_qname,
+        atom_target=atom_target,
+        diff=stated_diff,
+    )
+    presumed_regime = bool(defaults) or any(
+        value is not None
+        for value in (
+            target_derived_horizon,
+            candidate_derived_horizon,
+            target_placement_horizon,
+            candidate_placement_horizon,
+        )
+    )
+    if (
+        tier == UNRELATED
+        and target.head != candidate.head
+        and _PURCHASE_ACT_MODIFIER not in target.modifiers
+        and _PURCHASE_ACT_MODIFIER not in candidate.modifiers
+    ):
+        # Presumption adds a modifier but never changes a head, and the
+        # bridge requires the purchase marker on one side: no later
+        # rung can relate this pair, so only the distance remains.
+        if presumed_regime:
+            target_atom, _rung = _ladder_atom(
+                target,
+                defaults,
+                groups,
+                target_derived_horizon,
+                target_placement_horizon,
+                horizon_members=horizon_members,
+                axis_cache=axis_cache,
+            )
+            candidate_atom, _rung = _ladder_atom(
+                candidate,
+                defaults,
+                groups,
+                candidate_derived_horizon,
+                candidate_placement_horizon,
+                horizon_members=horizon_members,
+                axis_cache=axis_cache,
+            )
+            distance = len(target_atom.modifiers ^ candidate_atom.modifiers)
+        else:
+            distance = len(stated_diff)
+        return LadderClassification(
+            tier=tier,
+            rule=rule,
+            via_default=False,
+            via_filing_local=False,
+            modifier_distance=distance,
+            direction="",
+        )
+    target_atom, target_rung = _ladder_atom(
+        target,
+        defaults,
+        groups,
+        target_derived_horizon,
+        target_placement_horizon,
+        horizon_members=horizon_members,
+        axis_cache=axis_cache,
+    )
+    candidate_atom, candidate_rung = _ladder_atom(
+        candidate,
+        defaults,
+        groups,
+        candidate_derived_horizon,
+        candidate_placement_horizon,
+        horizon_members=horizon_members,
+        axis_cache=axis_cache,
+    )
+    presumed_diff = (
+        target_atom.modifiers ^ candidate_atom.modifiers
+        if presumed_regime
+        else stated_diff
+    )
+    via_default = False
+    via_filing_local = False
+    via_bridge = False
+    bridge_distance: int | None = None
+    direction_target, direction_atom = target, candidate
+    if tier == UNRELATED:
+        ladder_tier, ladder_rule = _classify_detail(
+            target_atom, candidate_atom, groups, diff=presumed_diff
+        )
+        if ladder_tier == NEAR:
+            tier = NEAR
+            via_filing_local = "filing_local" in (target_rung, candidate_rung)
+            via_default = "default" in (target_rung, candidate_rung)
+            if via_default:
+                rule = "via_default"
+            elif via_filing_local:
+                rule = "via_filing_local"
+            else:
+                rule = ladder_rule
+            direction_target, direction_atom = target_atom, candidate_atom
+    if tier == UNRELATED:
+        graph = relations if relations is not None else _default_relations()
+        bridge_distance = _dialect_bridge(target, candidate, graph, stated_diff)
+        if bridge_distance is not None:
+            tier = NEAR
+            rule = "dialect_bridge"
+            via_bridge = True
+    if bridge_distance is not None:
+        distance = bridge_distance
+    elif presumed_regime:
+        distance = len(presumed_diff)
+    else:
+        distance = len(stated_diff)
+    return LadderClassification(
+        tier=tier,
+        rule=rule,
+        via_default=via_default,
+        via_filing_local=via_filing_local,
+        modifier_distance=distance,
+        direction=_subsumption_direction(direction_target, direction_atom),
+        via_bridge=via_bridge,
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class CoordinateDiff:
+    """Modifier coordinates separating a candidate atom from a target."""
+
+    target_only: tuple[str, ...]
+    candidate_only: tuple[str, ...]
+    swapped: tuple[str, str] | None = None
+
+
+def coordinate_diff(target: Atom, candidate: Atom, rule: str = "") -> CoordinateDiff:
+    """Diff a classified pair's modifier coordinates, sorted for display.
+
+    The swapped pair is named only for the sibling_swap rule, where
+    each side holds exactly one member of an admitted sibling pair.
+    """
+    target_only = tuple(sorted(target.modifiers - candidate.modifiers))
+    candidate_only = tuple(sorted(candidate.modifiers - target.modifiers))
+    swapped = None
+    if rule == "sibling_swap" and len(target_only) == 1 and len(candidate_only) == 1:
+        swapped = (target_only[0], candidate_only[0])
+    return CoordinateDiff(target_only, candidate_only, swapped)
+
+
+@dataclass(frozen=True, slots=True)
+class RankedEquivalent:
+    """A candidate concept ranked against a target atom."""
+
+    qname: str
+    atom: Atom
+    tier: str
+    modifier_distance: int
+    via_default: bool = False
+    via_filing_local: bool = False
+    rule: str = ""
+    residual_intent_count: int = 0
+    residual_total_count: int = 0
+    direction: str = ""
+    via_bridge: bool = False
+
+
+def ladder_rank_key(
+    tier: str,
+    via_default: bool,
+    via_filing_local: bool,
+    modifier_distance: int,
+    residuals: tuple[int, int],
+    qname: str,
+) -> tuple[int, int, int, int, int, str]:
+    """The ladder's candidate order: tier, rung, distance, residuals, qname."""
+    return (
+        0 if tier == EXACT else 1,
+        2 if via_default else 1 if via_filing_local else 0,
+        modifier_distance,
+        residuals[0],
+        residuals[1],
+        qname,
+    )
+
+
+def rank_equivalents(
+    target_qname: str,
+    target: Atom,
+    candidates: Iterable[tuple[str, Atom]],
+    defaults: Iterable[DefaultCoordinate] = (),
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+    residual_counts: Mapping[str, tuple[int, int]] | None = None,
+    *,
+    target_derived_horizon: str | None = None,
+    target_placement_horizon: str | None = None,
+    derived_horizons: Mapping[str, str | None] | None = None,
+    placement_horizons: Mapping[str, str | None] | None = None,
+    relations: AtomRelationGraph | None = None,
+) -> tuple[RankedEquivalent, ...]:
+    """Rank candidate concepts by equivalence tier to the target.
+
+    A qname target classifies concept pairs (bare-head equality demotes);
+    an atom target is the whole specification, matched exactly as stated.
+    """
+    groups = _resolve_groups(sibling_groups)
+    defaults = tuple(defaults)
+    counts = residual_counts or {}
+    derived = derived_horizons or {}
+    placements = placement_horizons or {}
+    ranked = []
+    for qname, atom in candidates:
+        if qname == target_qname:
+            continue
+        result = classify_ladder_pair(
+            target,
+            atom,
+            defaults,
+            groups,
+            target_derived_horizon=target_derived_horizon,
+            candidate_derived_horizon=derived.get(qname),
+            target_placement_horizon=target_placement_horizon,
+            candidate_placement_horizon=placements.get(qname),
+            atom_target=not target_qname,
+            relations=relations,
+        )
+        if result.tier == UNRELATED:
+            continue
+        intent, total = counts.get(qname, (0, 0))
+        ranked.append(
+            RankedEquivalent(
+                qname,
+                atom,
+                result.tier,
+                result.modifier_distance,
+                result.via_default,
+                result.via_filing_local,
+                rule=result.rule,
+                residual_intent_count=intent,
+                residual_total_count=total,
+                direction=result.direction,
+                via_bridge=result.via_bridge,
+            )
+        )
+    ranked.sort(
+        key=lambda item: ladder_rank_key(
+            item.tier,
+            item.via_default,
+            item.via_filing_local,
+            item.modifier_distance,
+            (item.residual_intent_count, item.residual_total_count),
+            item.qname,
+        )
+    )
+    return tuple(ranked)
+
+
+__all__ = [
+    "EXACT",
+    "GENERALIZATION",
+    "NEAR",
+    "SPECIALIZATION",
+    "UNRELATED",
+    "CoordinateDiff",
+    "LadderClassification",
+    "RankedEquivalent",
+    "classify_ladder_pair",
+    "classify_pair",
+    "coordinate_diff",
+    "ladder_rank_key",
+    "presumed_atom",
+    "presumed_atom_filing_local",
+    "rank_equivalents",
+]

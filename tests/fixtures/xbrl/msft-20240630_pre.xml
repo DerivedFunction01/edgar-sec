@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="http://www.microsoft.com/role/IncomeStatement" xlink:type="simple" xlink:href="msft-20240630.xsd#IncomeStatement"/>
+  <link:presentationLink xlink:type="extended" xlink:role="http://www.microsoft.com/role/IncomeStatement">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_IncomeStatementAbstract" xlink:label="loc_Abstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_GrossProfit" xlink:label="loc_GrossProfit"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd#us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax" xlink:label="loc_Revenues"/>
+    
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+        xlink:from="loc_Abstract" xlink:to="loc_GrossProfit" order="1.0"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+        xlink:from="loc_GrossProfit" xlink:to="loc_Revenues" order="1.0"/>
+  </link:presentationLink>
+</link:linkbase>

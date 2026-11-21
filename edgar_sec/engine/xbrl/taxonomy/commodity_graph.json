@@ -1,0 +1,1202 @@
+{
+    "edges": [
+        {
+            "source": "COAL",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "OIL",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "GAS",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "ELECTRICITY",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "REFINED_PRODUCTS",
+            "target": "OIL",
+            "type": "IS_A"
+        },
+        {
+            "source": "crude_oil",
+            "target": "OIL",
+            "type": "IS_A"
+        },
+        {
+            "source": "refined_products",
+            "target": "REFINED_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "jet_fuel",
+            "target": "REFINED_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "diesel",
+            "target": "REFINED_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "gasoline",
+            "target": "REFINED_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "natural_gas",
+            "target": "GAS",
+            "type": "IS_A"
+        },
+        {
+            "source": "electricity",
+            "target": "ELECTRICITY",
+            "type": "IS_A"
+        },
+        {
+            "source": "corn",
+            "target": "ethanol",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "NGL",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "BIOFUELS",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "BASE_METALS",
+            "target": "METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "PRECIOUS_METALS",
+            "target": "METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "BATTERY_METALS",
+            "target": "METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "GRAINS_OILSEEDS",
+            "target": "CROPS",
+            "type": "IS_A"
+        },
+        {
+            "source": "SOFTS",
+            "target": "CROPS",
+            "type": "IS_A"
+        },
+        {
+            "source": "FERTILIZERS",
+            "target": "CHEMICALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "PETROCHEMICALS",
+            "target": "CHEMICALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "INDUSTRIAL_GASES",
+            "target": "CHEMICALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "ENVIRONMENTAL_COMPLIANCE",
+            "target": "ENVIRONMENTAL",
+            "type": "IS_A"
+        },
+        {
+            "source": "WOOD_PRODUCTS",
+            "target": "FORESTRY",
+            "type": "IS_A"
+        },
+        {
+            "source": "BUILDING_MATERIALS",
+            "target": "CONSTRUCTION",
+            "type": "IS_A"
+        },
+        {
+            "source": "copper",
+            "target": "BASE_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "gold",
+            "target": "PRECIOUS_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "corn",
+            "target": "GRAINS_OILSEEDS",
+            "type": "IS_A"
+        },
+        {
+            "source": "nitrogen_fertilizer",
+            "target": "FERTILIZERS",
+            "type": "IS_A"
+        },
+        {
+            "source": "ethanol",
+            "target": "BIOFUELS",
+            "type": "IS_A"
+        },
+        {
+            "source": "propane",
+            "target": "NGL",
+            "type": "IS_A"
+        },
+        {
+            "source": "butane",
+            "target": "NGL",
+            "type": "IS_A"
+        },
+        {
+            "source": "biodiesel",
+            "target": "BIOFUELS",
+            "type": "IS_A"
+        },
+        {
+            "source": "renewable_diesel",
+            "target": "BIOFUELS",
+            "type": "IS_A"
+        },
+        {
+            "source": "uranium",
+            "target": "ENERGY",
+            "type": "IS_A"
+        },
+        {
+            "source": "silver",
+            "target": "PRECIOUS_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "platinum",
+            "target": "PRECIOUS_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "aluminum",
+            "target": "BASE_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "steel",
+            "target": "BASE_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "iron_ore",
+            "target": "BASE_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "zinc",
+            "target": "BASE_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "lithium",
+            "target": "BATTERY_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "nickel",
+            "target": "BATTERY_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "cobalt",
+            "target": "BATTERY_METALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "soybeans",
+            "target": "GRAINS_OILSEEDS",
+            "type": "IS_A"
+        },
+        {
+            "source": "wheat",
+            "target": "GRAINS_OILSEEDS",
+            "type": "IS_A"
+        },
+        {
+            "source": "sugar",
+            "target": "SOFTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "coffee",
+            "target": "SOFTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "cocoa",
+            "target": "SOFTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "cotton",
+            "target": "SOFTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "phosphate",
+            "target": "FERTILIZERS",
+            "type": "IS_A"
+        },
+        {
+            "source": "potash",
+            "target": "FERTILIZERS",
+            "type": "IS_A"
+        },
+        {
+            "source": "ammonia",
+            "target": "FERTILIZERS",
+            "type": "IS_A"
+        },
+        {
+            "source": "ethylene",
+            "target": "PETROCHEMICALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "hydrogen",
+            "target": "INDUSTRIAL_GASES",
+            "type": "IS_A"
+        },
+        {
+            "source": "cattle",
+            "target": "LIVESTOCK",
+            "type": "IS_A"
+        },
+        {
+            "source": "hogs",
+            "target": "LIVESTOCK",
+            "type": "IS_A"
+        },
+        {
+            "source": "poultry",
+            "target": "LIVESTOCK",
+            "type": "IS_A"
+        },
+        {
+            "source": "milk",
+            "target": "LIVESTOCK",
+            "type": "IS_A"
+        },
+        {
+            "source": "carbon_allowances",
+            "target": "ENVIRONMENTAL_COMPLIANCE",
+            "type": "IS_A"
+        },
+        {
+            "source": "carbon_offsets",
+            "target": "ENVIRONMENTAL_COMPLIANCE",
+            "type": "IS_A"
+        },
+        {
+            "source": "rins",
+            "target": "ENVIRONMENTAL_COMPLIANCE",
+            "type": "IS_A"
+        },
+        {
+            "source": "recs",
+            "target": "ENVIRONMENTAL_COMPLIANCE",
+            "type": "IS_A"
+        },
+        {
+            "source": "timber",
+            "target": "WOOD_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "lumber",
+            "target": "WOOD_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "pulp",
+            "target": "WOOD_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "paperboard",
+            "target": "WOOD_PRODUCTS",
+            "type": "IS_A"
+        },
+        {
+            "source": "cement",
+            "target": "BUILDING_MATERIALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "aggregates",
+            "target": "BUILDING_MATERIALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "asphalt",
+            "target": "BUILDING_MATERIALS",
+            "type": "IS_A"
+        },
+        {
+            "source": "soybeans",
+            "target": "renewable_diesel",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "natural_gas",
+            "target": "ammonia",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "ammonia",
+            "target": "nitrogen_fertilizer",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "corn",
+            "target": "poultry",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "soybeans",
+            "target": "cattle",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "crude_oil",
+            "target": "ethylene",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "timber",
+            "target": "pulp",
+            "type": "FEEDSTOCK_FOR"
+        },
+        {
+            "source": "pulp",
+            "target": "paperboard",
+            "type": "FEEDSTOCK_FOR"
+        }
+    ],
+    "nodes": [
+        {
+            "id": "ENERGY",
+            "kind": "class"
+        },
+        {
+            "id": "METALS",
+            "kind": "class"
+        },
+        {
+            "id": "CROPS",
+            "kind": "class"
+        },
+        {
+            "id": "CHEMICALS",
+            "kind": "class"
+        },
+        {
+            "class": "ENERGY",
+            "id": "COAL",
+            "kind": "group"
+        },
+        {
+            "class": "ENERGY",
+            "id": "OIL",
+            "kind": "group"
+        },
+        {
+            "class": "ENERGY",
+            "id": "GAS",
+            "kind": "group"
+        },
+        {
+            "class": "ENERGY",
+            "id": "ELECTRICITY",
+            "kind": "group"
+        },
+        {
+            "base": "oil",
+            "class": "ENERGY",
+            "id": "REFINED_PRODUCTS",
+            "kind": "group"
+        },
+        {
+            "base": "oil",
+            "class": "ENERGY",
+            "form": "crude",
+            "id": "crude_oil",
+            "kind": "instrument",
+            "origin": "fossil"
+        },
+        {
+            "base": "oil",
+            "class": "ENERGY",
+            "form": "refined",
+            "id": "refined_products",
+            "kind": "instrument",
+            "origin": "fossil"
+        },
+        {
+            "base": "oil",
+            "class": "ENERGY",
+            "form": "refined",
+            "id": "jet_fuel",
+            "kind": "instrument",
+            "origin": "fossil"
+        },
+        {
+            "base": "oil",
+            "class": "ENERGY",
+            "form": "refined",
+            "id": "diesel",
+            "kind": "instrument",
+            "origin": "fossil"
+        },
+        {
+            "base": "oil",
+            "class": "ENERGY",
+            "form": "refined",
+            "id": "gasoline",
+            "kind": "instrument",
+            "origin": "fossil"
+        },
+        {
+            "base": "gas",
+            "class": "ENERGY",
+            "form": "raw",
+            "id": "natural_gas",
+            "kind": "instrument",
+            "origin": "fossil"
+        },
+        {
+            "base": "electricity",
+            "class": "ENERGY",
+            "form": "generated",
+            "id": "electricity",
+            "kind": "instrument",
+            "origin": null
+        },
+        {
+            "base": "corn",
+            "class": "ENERGY",
+            "form": "fuel",
+            "id": "ethanol",
+            "kind": "instrument",
+            "origin": "renewable"
+        },
+        {
+            "base": "gold",
+            "class": "METALS",
+            "id": "gold",
+            "kind": "instrument",
+            "origin": "mineral"
+        },
+        {
+            "base": "copper",
+            "class": "METALS",
+            "id": "copper",
+            "kind": "instrument",
+            "origin": "mineral"
+        },
+        {
+            "base": "corn",
+            "class": "CROPS",
+            "id": "corn",
+            "kind": "instrument",
+            "origin": "agricultural"
+        },
+        {
+            "base": "nitrogen",
+            "class": "CHEMICALS",
+            "form": "fertilizer",
+            "id": "nitrogen_fertilizer",
+            "kind": "instrument",
+            "origin": null
+        },
+        {
+            "id": "LIVESTOCK",
+            "kind": "class"
+        },
+        {
+            "id": "FORESTRY",
+            "kind": "class"
+        },
+        {
+            "id": "CONSTRUCTION",
+            "kind": "class"
+        },
+        {
+            "id": "ENVIRONMENTAL",
+            "kind": "class"
+        },
+        {
+            "id": "NGL",
+            "kind": "group",
+            "class": "ENERGY",
+            "base": "gas"
+        },
+        {
+            "id": "BIOFUELS",
+            "kind": "group",
+            "class": "ENERGY",
+            "form": "fuel"
+        },
+        {
+            "id": "BASE_METALS",
+            "kind": "group",
+            "class": "METALS"
+        },
+        {
+            "id": "PRECIOUS_METALS",
+            "kind": "group",
+            "class": "METALS"
+        },
+        {
+            "id": "BATTERY_METALS",
+            "kind": "group",
+            "class": "METALS"
+        },
+        {
+            "id": "GRAINS_OILSEEDS",
+            "kind": "group",
+            "class": "CROPS"
+        },
+        {
+            "id": "SOFTS",
+            "kind": "group",
+            "class": "CROPS"
+        },
+        {
+            "id": "FERTILIZERS",
+            "kind": "group",
+            "class": "CHEMICALS"
+        },
+        {
+            "id": "PETROCHEMICALS",
+            "kind": "group",
+            "class": "CHEMICALS"
+        },
+        {
+            "id": "INDUSTRIAL_GASES",
+            "kind": "group",
+            "class": "CHEMICALS"
+        },
+        {
+            "id": "ENVIRONMENTAL_COMPLIANCE",
+            "kind": "group",
+            "class": "ENVIRONMENTAL"
+        },
+        {
+            "id": "WOOD_PRODUCTS",
+            "kind": "group",
+            "class": "FORESTRY"
+        },
+        {
+            "id": "BUILDING_MATERIALS",
+            "kind": "group",
+            "class": "CONSTRUCTION"
+        },
+        {
+            "id": "propane",
+            "kind": "instrument",
+            "class": "ENERGY",
+            "base": "propane",
+            "form": "liquid",
+            "origin": "fossil"
+        },
+        {
+            "id": "butane",
+            "kind": "instrument",
+            "class": "ENERGY",
+            "base": "butane",
+            "form": "liquid",
+            "origin": "fossil"
+        },
+        {
+            "id": "biodiesel",
+            "kind": "instrument",
+            "class": "ENERGY",
+            "base": "biodiesel",
+            "form": "fuel",
+            "origin": "renewable"
+        },
+        {
+            "id": "renewable_diesel",
+            "kind": "instrument",
+            "class": "ENERGY",
+            "base": "renewable_diesel",
+            "form": "fuel",
+            "origin": "renewable"
+        },
+        {
+            "id": "uranium",
+            "kind": "instrument",
+            "class": "ENERGY",
+            "base": "uranium",
+            "form": "raw",
+            "origin": "mineral"
+        },
+        {
+            "id": "silver",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "silver",
+            "origin": "mineral"
+        },
+        {
+            "id": "platinum",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "platinum",
+            "origin": "mineral"
+        },
+        {
+            "id": "aluminum",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "aluminum",
+            "origin": "mineral"
+        },
+        {
+            "id": "steel",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "steel",
+            "origin": "mineral"
+        },
+        {
+            "id": "iron_ore",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "iron",
+            "origin": "mineral"
+        },
+        {
+            "id": "zinc",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "zinc",
+            "origin": "mineral"
+        },
+        {
+            "id": "lithium",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "lithium",
+            "origin": "mineral"
+        },
+        {
+            "id": "nickel",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "nickel",
+            "origin": "mineral"
+        },
+        {
+            "id": "cobalt",
+            "kind": "instrument",
+            "class": "METALS",
+            "base": "cobalt",
+            "origin": "mineral"
+        },
+        {
+            "id": "soybeans",
+            "kind": "instrument",
+            "class": "CROPS",
+            "base": "soybean",
+            "origin": "agricultural"
+        },
+        {
+            "id": "wheat",
+            "kind": "instrument",
+            "class": "CROPS",
+            "base": "wheat",
+            "origin": "agricultural"
+        },
+        {
+            "id": "sugar",
+            "kind": "instrument",
+            "class": "CROPS",
+            "base": "sugar",
+            "origin": "agricultural"
+        },
+        {
+            "id": "coffee",
+            "kind": "instrument",
+            "class": "CROPS",
+            "base": "coffee",
+            "origin": "agricultural"
+        },
+        {
+            "id": "cocoa",
+            "kind": "instrument",
+            "class": "CROPS",
+            "base": "cocoa",
+            "origin": "agricultural"
+        },
+        {
+            "id": "cotton",
+            "kind": "instrument",
+            "class": "CROPS",
+            "base": "cotton",
+            "origin": "agricultural"
+        },
+        {
+            "id": "phosphate",
+            "kind": "instrument",
+            "class": "CHEMICALS",
+            "base": "phosphate",
+            "form": "fertilizer",
+            "origin": "mineral"
+        },
+        {
+            "id": "potash",
+            "kind": "instrument",
+            "class": "CHEMICALS",
+            "base": "potash",
+            "form": "fertilizer",
+            "origin": "mineral"
+        },
+        {
+            "id": "ammonia",
+            "kind": "instrument",
+            "class": "CHEMICALS",
+            "base": "ammonia",
+            "form": "raw",
+            "origin": null
+        },
+        {
+            "id": "ethylene",
+            "kind": "instrument",
+            "class": "CHEMICALS",
+            "base": "ethylene",
+            "form": "raw",
+            "origin": "fossil"
+        },
+        {
+            "id": "hydrogen",
+            "kind": "instrument",
+            "class": "CHEMICALS",
+            "base": "hydrogen",
+            "form": "gas",
+            "origin": null
+        },
+        {
+            "id": "cattle",
+            "kind": "instrument",
+            "class": "LIVESTOCK",
+            "base": "cattle",
+            "origin": "agricultural"
+        },
+        {
+            "id": "hogs",
+            "kind": "instrument",
+            "class": "LIVESTOCK",
+            "base": "swine",
+            "origin": "agricultural"
+        },
+        {
+            "id": "poultry",
+            "kind": "instrument",
+            "class": "LIVESTOCK",
+            "base": "poultry",
+            "origin": "agricultural"
+        },
+        {
+            "id": "milk",
+            "kind": "instrument",
+            "class": "LIVESTOCK",
+            "base": "dairy",
+            "origin": "agricultural"
+        },
+        {
+            "id": "carbon_allowances",
+            "kind": "instrument",
+            "class": "ENVIRONMENTAL",
+            "base": "carbon",
+            "form": "allowance",
+            "origin": null
+        },
+        {
+            "id": "carbon_offsets",
+            "kind": "instrument",
+            "class": "ENVIRONMENTAL",
+            "base": "carbon",
+            "form": "offset",
+            "origin": null
+        },
+        {
+            "id": "rins",
+            "kind": "instrument",
+            "class": "ENVIRONMENTAL",
+            "base": "renewable_fuel",
+            "form": "credit",
+            "origin": null
+        },
+        {
+            "id": "recs",
+            "kind": "instrument",
+            "class": "ENVIRONMENTAL",
+            "base": "renewable_electricity",
+            "form": "credit",
+            "origin": null
+        },
+        {
+            "id": "timber",
+            "kind": "instrument",
+            "class": "FORESTRY",
+            "base": "timber",
+            "form": "raw",
+            "origin": "forestry"
+        },
+        {
+            "id": "lumber",
+            "kind": "instrument",
+            "class": "FORESTRY",
+            "base": "timber",
+            "form": "sawn",
+            "origin": "forestry"
+        },
+        {
+            "id": "pulp",
+            "kind": "instrument",
+            "class": "FORESTRY",
+            "base": "timber",
+            "form": "processed",
+            "origin": "forestry"
+        },
+        {
+            "id": "paperboard",
+            "kind": "instrument",
+            "class": "FORESTRY",
+            "base": "paperboard",
+            "form": "manufactured",
+            "origin": "forestry"
+        },
+        {
+            "id": "cement",
+            "kind": "instrument",
+            "class": "CONSTRUCTION",
+            "base": "cement",
+            "origin": "mineral"
+        },
+        {
+            "id": "aggregates",
+            "kind": "instrument",
+            "class": "CONSTRUCTION",
+            "base": "aggregates",
+            "origin": "mineral"
+        },
+        {
+            "id": "asphalt",
+            "kind": "instrument",
+            "class": "CONSTRUCTION",
+            "base": "asphalt",
+            "origin": "fossil"
+        }
+    ],
+    "unseeded_classes": [
+        "SEAFOOD"
+    ],
+    "link_patterns": [
+        {
+            "instrument": "crude_oil",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_CRUDE_OIL"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "processed"
+            ]
+        },
+        {
+            "instrument": "refined_products",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_CRUDE_OIL"
+            ],
+            "tokens_all": [
+                "product"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases"
+            ]
+        },
+        {
+            "instrument": "natural_gas",
+            "relation": "EXPOSED_TO",
+            "require_mods": [
+                "M_COMMODITY_NATURAL_GAS"
+            ],
+            "tokens_any": [
+                "inventory"
+            ]
+        },
+        {
+            "instrument": "natural_gas",
+            "relation": "CONSUMES",
+            "require_any_mods": [
+                "M_COMMODITY_NATURAL_GAS",
+                "M_COMMODITY_OIL_AND_GAS"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "payable",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "copper",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_COPPER"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        },
+        {
+            "instrument": "gold",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_GOLD"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        },
+        {
+            "instrument": "corn",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_CORN"
+            ],
+            "tokens_any": [
+                "processed",
+                "purchase",
+                "purchases"
+            ]
+        },
+        {
+            "instrument": "nitrogen_fertilizer",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_NITROGEN_FERTILIZER"
+            ]
+        },
+        {
+            "instrument": "soybeans",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_SOYBEANS"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "processed",
+                "crush"
+            ]
+        },
+        {
+            "instrument": "wheat",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_WHEAT"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "processed"
+            ]
+        },
+        {
+            "instrument": "sugar",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_SUGAR"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "coffee",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_COFFEE"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "cotton",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_COTTON"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases"
+            ]
+        },
+        {
+            "instrument": "aluminum",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_ALUMINUM"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "silver",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_SILVER"
+            ],
+            "tokens_all": [
+                "sale"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased",
+                "agreement",
+                "percentage"
+            ]
+        },
+        {
+            "instrument": "lithium",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_LITHIUM"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        },
+        {
+            "instrument": "steel",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_STEEL"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "cattle",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_CATTLE"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "procurement",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "poultry",
+            "relation": "CONSUMES",
+            "require_mods": [
+                "M_COMMODITY_POULTRY"
+            ],
+            "tokens_any": [
+                "purchase",
+                "purchases",
+                "feed",
+                "cost"
+            ]
+        },
+        {
+            "instrument": "phosphate",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_PHOSPHATE"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        },
+        {
+            "instrument": "potash",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_POTASH"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        },
+        {
+            "instrument": "lumber",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_LUMBER"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        },
+        {
+            "instrument": "cement",
+            "relation": "PRODUCES",
+            "require_mods": [
+                "M_COMMODITY_CEMENT"
+            ],
+            "tokens_none": [
+                "purchase",
+                "purchases",
+                "purchased"
+            ]
+        }
+    ]
+}

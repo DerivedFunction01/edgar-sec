@@ -1,0 +1,354 @@
+"""Tokenizer-driven close-match fact search over one filing's facts.
+
+Search is retrieval, never equivalence: hits are ranked candidates
+for inspection and never feed query() or solver results.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Mapping, Sequence
+from dataclasses import dataclass
+from typing import TYPE_CHECKING
+
+from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
+from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from edgar_sec.engine.xbrl.solve.equivalence import (
+    EXACT,
+    RankedEquivalent,
+    coordinate_diff,
+    ladder_rank_key,
+    rank_equivalents,
+)
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
+
+if TYPE_CHECKING:
+    from edgar_sec.apps.client.core.facts import DisplayRecord
+    from edgar_sec.infra.storage.corpus_index import CorpusIndex
+
+_UNKNOWN_HEAD = "H_UNKNOWN"
+
+
+@dataclass(frozen=True, slots=True)
+class FactSearchHit:
+    """One concept ranked against a search target, with its facts."""
+
+    qname: str
+    atom: Atom
+    tier: str
+    rule: str
+    modifier_distance: int
+    target_only: tuple[str, ...]
+    hit_only: tuple[str, ...]
+    swapped: tuple[str, str] | None
+    residual_mass: tuple[int, int]
+    facts: tuple[XbrlFact, ...]
+    via_default: bool = False
+    via_filing_local: bool = False
+
+
+@dataclass(frozen=True, slots=True)
+class FactSearch:
+    """A term search's outcome: the resolved target and its ranked hits.
+
+    Partial marks a term whose decomposition left residuals or an
+    unknown head; its hits rank the claimed coordinates only.
+    """
+
+    term: str
+    target_atom: Atom | None
+    term_residuals: tuple[str, ...] = ()
+    partial: bool = False
+    hits: tuple[FactSearchHit, ...] = ()
+
+
+def resolve_search_targets(
+    term: str, taxonomy: DomainTaxonomy
+) -> tuple[tuple[Atom, ...], tuple[str, ...]]:
+    """Resolve a search term to target atoms, mirroring the query engine.
+
+    Declared alias specs win on the normalized term; any other term
+    is decomposed, and its unclaimed tokens ride along as residuals.
+    """
+    normalized = "".join(
+        character.casefold() for character in term if character.isalnum()
+    )
+    aliases = {record.alias: record.targets for record in taxonomy.query_aliases}
+    if normalized in aliases:
+        return aliases[normalized], ()
+    lexicon = taxonomy.token_lexicon
+    if lexicon is None:
+        return (), ()
+    atom, residuals, _, _ = decompose_concept(term, lexicon)
+    return (atom,), residuals
+
+
+def _rank_key(hit: FactSearchHit) -> tuple:
+    """Ladder order: tier, rung, modifier distance, residual mass, qname."""
+    return ladder_rank_key(
+        hit.tier,
+        hit.via_default,
+        hit.via_filing_local,
+        hit.modifier_distance,
+        hit.residual_mass,
+        hit.qname,
+    )
+
+
+def _to_hit(
+    target: Atom,
+    item: RankedEquivalent,
+    facts: list[XbrlFact],
+    residual_mass: tuple[int, int],
+) -> FactSearchHit:
+    """Assemble one ranked equivalent into a search hit with its diff."""
+    diff = coordinate_diff(target, item.atom, item.rule)
+    return FactSearchHit(
+        qname=item.qname,
+        atom=item.atom,
+        tier=item.tier,
+        rule=item.rule,
+        modifier_distance=item.modifier_distance,
+        target_only=diff.target_only,
+        hit_only=diff.candidate_only,
+        swapped=diff.swapped,
+        residual_mass=residual_mass,
+        facts=tuple(facts),
+        via_default=item.via_default,
+        via_filing_local=item.via_filing_local,
+    )
+
+
+def rank_search_hits(
+    targets: Sequence[Atom],
+    facts: Sequence[XbrlFact],
+    records: Mapping[str, DisplayRecord],
+    taxonomy: DomainTaxonomy,
+    *,
+    limit: int | None = None,
+) -> tuple[FactSearchHit, ...]:
+    """Rank a fact pool's concepts against target atoms by the ladder.
+
+    One routine serves the facade search and the builder's close_to
+    stage; classification and diffs run on the records' stated atoms.
+    """
+    grouped: dict[str, list[XbrlFact]] = {}
+    for fact in facts:
+        grouped.setdefault(fact.concept_qname, []).append(fact)
+    candidates = tuple(
+        sorted((qname, records[qname].atom) for qname in grouped if qname in records)
+    )
+    if not candidates:
+        return ()
+    counts = {qname: records[qname].residual_mass for qname, _ in candidates}
+    groups = tuple(taxonomy.sibling_groups) or None
+    best: dict[str, FactSearchHit] = {}
+    for target in targets:
+        ranked = rank_equivalents(
+            "",
+            target,
+            candidates,
+            (),
+            sibling_groups=groups,
+            residual_counts=counts,
+        )
+        for item in ranked:
+            hit = _to_hit(target, item, grouped[item.qname], counts[item.qname])
+            current = best.get(item.qname)
+            if current is None or _rank_key(hit) < _rank_key(current):
+                best[item.qname] = hit
+    hits = tuple(sorted(best.values(), key=_rank_key))
+    return hits if limit is None else hits[:limit]
+
+
+def search_facts(
+    term: str,
+    facts: Sequence[XbrlFact],
+    records: Mapping[str, DisplayRecord],
+    taxonomy: DomainTaxonomy,
+    *,
+    limit: int | None = None,
+) -> FactSearch:
+    """Search one filing's facts for close matches to a term.
+
+    A term leaving residuals, or decomposing to an unknown head,
+    still ranks its claimed coordinates and is marked partial.
+    """
+    targets, residuals = resolve_search_targets(term, taxonomy)
+    usable = tuple(atom for atom in targets if atom.head != _UNKNOWN_HEAD)
+    partial = bool(residuals) or len(usable) != len(targets)
+    hits = (
+        rank_search_hits(usable, facts, records, taxonomy, limit=limit)
+        if usable
+        else ()
+    )
+    return FactSearch(
+        term=term,
+        target_atom=targets[0] if len(targets) == 1 else None,
+        term_residuals=residuals,
+        partial=partial,
+        hits=hits,
+    )
+
+
+def close_match_qnames(
+    term: str,
+    facts: Sequence[XbrlFact],
+    records: Mapping[str, DisplayRecord],
+    taxonomy: DomainTaxonomy,
+) -> frozenset[str]:
+    """Concept qnames of a term's EXACT and NEAR matches in a fact pool."""
+    result = search_facts(term, facts, records, taxonomy)
+    return frozenset(hit.qname for hit in result.hits)
+
+
+@dataclass(frozen=True, slots=True)
+class CorpusSearchHit:
+    """One concept ranked against a search target, with its filing.
+
+    The index counterpart of FactSearchHit: identical ranking fields,
+    no fact payload — a hit names a filing to materialize, not a fact.
+    """
+
+    cik: str
+    accession: str
+    qname: str
+    atom: Atom
+    tier: str
+    rule: str
+    modifier_distance: int
+    target_only: tuple[str, ...]
+    hit_only: tuple[str, ...]
+    swapped: tuple[str, str] | None
+    residual_mass: tuple[int, int]
+    via_default: bool = False
+    via_filing_local: bool = False
+
+
+@dataclass(frozen=True, slots=True)
+class CorpusSearch:
+    """A corpus search's outcome: the resolved target and its ranked hits.
+
+    Hits are grouped by filing in (cik, accession) order, each filing's
+    hits in the same ladder order a per-facade search would return.
+    """
+
+    term: str
+    target_atom: Atom | None
+    term_residuals: tuple[str, ...] = ()
+    partial: bool = False
+    hits: tuple[CorpusSearchHit, ...] = ()
+
+
+def _corpus_rank_key(hit: CorpusSearchHit) -> tuple:
+    """Ladder order within one filing: tier, rung, distance, residuals, qname."""
+    return ladder_rank_key(
+        hit.tier,
+        hit.via_default,
+        hit.via_filing_local,
+        hit.modifier_distance,
+        hit.residual_mass,
+        hit.qname,
+    )
+
+
+def _rank_index_hits(
+    index: CorpusIndex,
+    targets: Sequence[Atom],
+    taxonomy: DomainTaxonomy,
+    *,
+    limit: int | None,
+) -> tuple[CorpusSearchHit, ...]:
+    """Rank index rows against target atoms, filing by filing.
+
+    Only same-head rows can classify as related, so the index read is
+    the screening step; ranking reuses the live ladder verbatim.
+    """
+    heads = tuple(sorted({target.head for target in targets}))
+    by_filing: dict[tuple[str, str], list] = {}
+    for row in index.rows_for_heads(heads):
+        by_filing.setdefault((row.cik, row.accession), []).append(row)
+    groups = tuple(taxonomy.sibling_groups) or None
+    hits: list[CorpusSearchHit] = []
+    for (cik, accession), filing_rows in sorted(by_filing.items()):
+        candidates = tuple(
+            sorted(
+                (row.concept_qname, Atom(row.head, frozenset(row.modifiers)))
+                for row in filing_rows
+            )
+        )
+        counts = {
+            row.concept_qname: (row.residual_intent, row.residual_total)
+            for row in filing_rows
+        }
+        best: dict[str, CorpusSearchHit] = {}
+        for target in targets:
+            ranked = rank_equivalents(
+                "",
+                target,
+                candidates,
+                (),
+                sibling_groups=groups,
+                residual_counts=counts,
+            )
+            for item in ranked:
+                diff = coordinate_diff(target, item.atom, item.rule)
+                hit = CorpusSearchHit(
+                    cik=cik,
+                    accession=accession,
+                    qname=item.qname,
+                    atom=item.atom,
+                    tier=item.tier,
+                    rule=item.rule,
+                    modifier_distance=item.modifier_distance,
+                    target_only=diff.target_only,
+                    hit_only=diff.candidate_only,
+                    swapped=diff.swapped,
+                    residual_mass=counts[item.qname],
+                    via_default=item.via_default,
+                    via_filing_local=item.via_filing_local,
+                )
+                current = best.get(item.qname)
+                if current is None or _corpus_rank_key(hit) < _corpus_rank_key(current):
+                    best[item.qname] = hit
+        ranked_hits = sorted(best.values(), key=_corpus_rank_key)
+        hits.extend(ranked_hits if limit is None else ranked_hits[:limit])
+    return tuple(hits)
+
+
+def search_index(
+    index: CorpusIndex,
+    term: str,
+    taxonomy: DomainTaxonomy,
+    *,
+    limit: int | None = None,
+) -> CorpusSearch:
+    """Search the corpus index for close matches to a term.
+
+    Screening only: hits rank by the per-facade ladder and name the
+    filings worth materializing; no facade is constructed.
+    """
+    targets, residuals = resolve_search_targets(term, taxonomy)
+    usable = tuple(atom for atom in targets if atom.head != _UNKNOWN_HEAD)
+    partial = bool(residuals) or len(usable) != len(targets)
+    hits = _rank_index_hits(index, usable, taxonomy, limit=limit) if usable else ()
+    return CorpusSearch(
+        term=term,
+        target_atom=targets[0] if len(targets) == 1 else None,
+        term_residuals=residuals,
+        partial=partial,
+        hits=hits,
+    )
+
+
+__all__ = [
+    "CorpusSearch",
+    "CorpusSearchHit",
+    "FactSearch",
+    "FactSearchHit",
+    "close_match_qnames",
+    "rank_search_hits",
+    "resolve_search_targets",
+    "search_facts",
+    "search_index",
+]

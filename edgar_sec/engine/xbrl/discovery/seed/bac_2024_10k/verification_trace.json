@@ -1,0 +1,81 @@
+{
+  "firm": "BAC",
+  "accession": "0000070858-25-000139",
+  "cik": "0000070858",
+  "sic_code": 6021,
+  "sector": "Financials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statement of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      4477,
+      4513
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenue, net of interest expense",
+        "reported_value": 101887000000.0,
+        "table_value": 101887,
+        "line_number": 4494,
+        "snippet": "Total revenue, net of interest expense                   101,887      98,581      94,950"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestExpense",
+        "label": "Total noninterest expense",
+        "reported_value": 66812000000.0,
+        "table_value": 66812,
+        "line_number": 4507,
+        "snippet": "Total noninterest expense                                 66,812      65,845      61,438"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income before income taxes",
+        "reported_value": 29254000000.0,
+        "table_value": 29254,
+        "line_number": 4509,
+        "snippet": "Income before income taxes                                29,254      28,342      30,969"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 2122000000.0,
+        "table_value": 2122,
+        "line_number": 4510,
+        "snippet": "Income tax expense                                         2,122       1,827       3,441"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 27132000000.0,
+        "table_value": 27132,
+        "line_number": 4512,
+        "snippet": "Net income                                              $ 27,132    $ 26,515    $ 27,528"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "NetIncomeLoss = IncomeLossFromContinuingOperationsBeforeIncomeTaxes - IncomeTaxExpenseBenefit",
+      "left_concept": "us-gaap:NetIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "value": 29254000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "value": 2122000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 27132000000.0,
+      "target_value": 27132000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

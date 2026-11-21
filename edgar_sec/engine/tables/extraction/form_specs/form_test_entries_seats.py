@@ -1,0 +1,129 @@
+"""Form-test entries: evidence seats, the labor form, and the
+measure sets — the seat block of the registry, composed into
+FORM_TEST_SPECS by form_test_specs.
+"""
+
+from __future__ import annotations
+
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
+from edgar_sec.engine.tables.extraction.core.profiles import (
+    PROV_ARO_BASE,
+    PROV_CI_STEP6_PRICING,
+    PROV_RESTRUCTURING_PRICING,
+    PROV_RESTRUCTURING_SEPARATOR,
+    PROV_RULING18_PRICING,
+    PROV_S4_GOODWILL_BASE,
+    PROV_S6B_PRICING,
+    PROV_STEP3_PRICING,
+    PROV_TAX_RECONCILIATION_SEPARATOR,
+    PROV_WARRANTY_PRICING,
+    TEST_ARO_EVIDENCE,
+    TEST_LABOR_FORM,
+    TEST_MEASURE_SET,
+    TEST_RESTRUCTURING_EVIDENCE,
+    TEST_RESTRUCTURING_SEPARATOR,
+    TEST_TAX_EVIDENCE,
+    TEST_TAX_RECONCILIATION_SEPARATOR,
+    TEST_WARRANTY_EVIDENCE,
+)
+
+SEAT_FORM_TEST_ENTRIES: tuple[FormTestSpec, ...] = (
+    FormTestSpec(
+        "aro_rollforward",
+        TEST_ARO_EVIDENCE,
+        "aro_rollforward_evidence_gate",
+        3.0,
+        provenance=PROV_ARO_BASE,
+    ),
+    FormTestSpec(
+        "warranty",
+        TEST_WARRANTY_EVIDENCE,
+        "warranty_rollforward_evidence",
+        3.0,
+        provenance=PROV_WARRANTY_PRICING,
+    ),
+    FormTestSpec(
+        "tax_reconciliation",
+        TEST_TAX_EVIDENCE,
+        "tax_reconciliation_statutory_anchor_seat",
+        0.0,
+        provenance=PROV_RULING18_PRICING,
+    ),
+    FormTestSpec(
+        "tax_reconciliation",
+        TEST_TAX_RECONCILIATION_SEPARATOR,
+        "tax_reconciliation_separator",
+        0.0,
+        provenance=PROV_TAX_RECONCILIATION_SEPARATOR,
+    ),
+    FormTestSpec(
+        "labor_contracts",
+        TEST_LABOR_FORM,
+        "labor_contracts_form",
+        0.0,
+        provenance=PROV_S6B_PRICING,
+    ),
+    FormTestSpec(
+        "shares_purchased",
+        TEST_MEASURE_SET,
+        "shares_purchased_measure_set",
+        3.0,
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FormTestSpec(
+        "valuation_model_assumptions",
+        TEST_MEASURE_SET,
+        "valuation_model_assumptions_measure_set",
+        3.0,
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FormTestSpec(
+        "warrant_activity",
+        TEST_MEASURE_SET,
+        "warrant_activity_rollforward",
+        3.0,
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FormTestSpec(
+        "warrant_activity",
+        TEST_MEASURE_SET,
+        "warrant_outstanding_listing",
+        3.0,
+        provenance=PROV_STEP3_PRICING,
+    ),
+    FormTestSpec(
+        "combined_operations_ci",
+        TEST_MEASURE_SET,
+        "combined_operations_ci_measure_set",
+        3.0,
+        provenance=PROV_CI_STEP6_PRICING,
+    ),
+    FormTestSpec(
+        "combined_operations_ci",
+        TEST_MEASURE_SET,
+        "combined_operations_ci_joint_measure_set",
+        3.0,
+        provenance=PROV_CI_STEP6_PRICING,
+    ),
+    FormTestSpec(
+        "goodwill_rollforward",
+        TEST_MEASURE_SET,
+        "goodwill_rollforward_measure_set",
+        3.0,
+        provenance=PROV_S4_GOODWILL_BASE,
+    ),
+    FormTestSpec(
+        "restructuring",
+        TEST_RESTRUCTURING_EVIDENCE,
+        "restructuring_rollforward_evidence",
+        3.0,
+        provenance=PROV_RESTRUCTURING_PRICING,
+    ),
+    FormTestSpec(
+        "restructuring",
+        TEST_RESTRUCTURING_SEPARATOR,
+        "restructuring_separator",
+        0.0,
+        provenance=PROV_RESTRUCTURING_SEPARATOR,
+    ),
+)

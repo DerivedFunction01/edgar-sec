@@ -1,0 +1,6 @@
+[
+  {"alias": "aoci", "targets": [{"head": "H_EQUITY", "modifiers": ["M_ACCUMULATED", "M_OCI", "V_NET"]}, {"head": "H_INCOME", "modifiers": ["M_OCI", "V_NET"]}]},
+  {"alias": "capex", "targets": [{"head": "H_CASH", "modifiers": ["M_PPE_CAPEX"]}]},
+  {"alias": "cfo", "targets": [{"head": "H_CASH", "modifiers": ["M_OPERATING", "V_NET"]}]},
+  {"alias": "eps", "targets": [{"head": "H_UNIT_RATE", "modifiers": ["V_BASIC"]}, {"head": "H_UNIT_RATE", "modifiers": ["V_DILUTED"]}]}
+]

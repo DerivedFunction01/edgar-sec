@@ -1,0 +1,249 @@
+"""Directory layout for the metadata sync pipeline.
+
+Transient checkpoints are kept apart from published snapshots, and a plan is a
+directory, so a worker can be handed a copy and reassigned unchanged.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from pathlib import Path
+
+import edgar_sec.foundation.runtime.paths as foundation_paths
+from edgar_sec.foundation.runtime.paths import (
+    PLAN_FILE_NAME,
+    ProjectPaths,
+    resolve_paths,
+    RUN_LOCK_FILE,
+    transient_dir,
+)
+from edgar_sec.infra.storage.dag.paths import DAGPaths
+
+from .core.roster import ROSTER_FILE_NAME
+
+METADATA_DIR = "metadata"
+FACTS_DIR = "facts"
+FACTS_STORE_FILE = "companyfacts.duckdb"
+SERIES_CLASS_DIR = "series_class"
+SERIES_CLASS_STORE_FILE = "series_class.duckdb"
+BULK_ARCHIVES_DIR = "bulk_archives"
+PARTS_DIR = "parts"
+ROSTER_DIR = "roster"
+INPUT_DIR = "input"
+INPUT_MANIFEST_FILE = "input_manifest.json"
+ASSIGNMENTS_DIR = "assignments"
+RECEIPT_FILE = "receipt.json"
+FINGERPRINTS_FILE_NAME = "fingerprints.parquet"
+
+#: The SEC bulk-archive member name for one CIK's main document file.
+CIK_MEMBER_RE = re.compile(r"^CIK(\d{10})\.json$")
+
+PLANS_DIR = foundation_paths.PLANS_DIR
+CHUNKS_DIR = foundation_paths.CHUNKS_DIR
+
+
+@dataclass(frozen=True, slots=True)
+class MetadataPaths:
+    """Root-scoped metadata dataset layout, independent of any single run."""
+
+    artifacts_root: Path
+
+    @property
+    def metadata_root(self) -> Path:
+        """Root of the published metadata dataset."""
+        return self.artifacts_root / METADATA_DIR
+
+    @property
+    def snapshots_root(self) -> Path:
+        """Root of published snapshot directories."""
+        return self.metadata_root / foundation_paths.SNAPSHOTS_DIR
+
+    @property
+    def bulk_archives_root(self) -> Path:
+        """Root of the shared bulk-archive store (all sources, all pipelines)."""
+        return self.artifacts_root / BULK_ARCHIVES_DIR
+
+    @property
+    def facts_root(self) -> Path:
+        """Root of the company-facts store and its published snapshots."""
+        return self.metadata_root / FACTS_DIR
+
+    @property
+    def facts_store_file(self) -> Path:
+        """The DuckDB company-facts store."""
+        return self.facts_root / FACTS_STORE_FILE
+
+    @property
+    def facts_snapshots_root(self) -> Path:
+        """Root of published facts snapshot directories, and of the pointer."""
+        return self.facts_root / foundation_paths.SNAPSHOTS_DIR
+
+    @property
+    def facts_catalog_file(self) -> Path:
+        """SQLite DAG catalog database for published facts snapshots."""
+        return DAGPaths(self.facts_snapshots_root).catalog_file
+
+    def facts_transient_dir(self, run_id: str) -> Path:
+        """Staging directory for one facts run, never published."""
+        return transient_dir(self.artifacts_root, METADATA_DIR, f"facts-{run_id}")
+
+    @property
+    def series_class_root(self) -> Path:
+        """Root of the series/class reference store and its snapshots."""
+        return self.metadata_root / SERIES_CLASS_DIR
+
+    @property
+    def series_class_store_file(self) -> Path:
+        """The DuckDB series/class reference store."""
+        return self.series_class_root / SERIES_CLASS_STORE_FILE
+
+    @property
+    def series_class_snapshots_root(self) -> Path:
+        """Root of published series/class snapshot directories."""
+        return self.series_class_root / foundation_paths.SNAPSHOTS_DIR
+
+    @property
+    def series_class_catalog_file(self) -> Path:
+        """SQLite DAG catalog database for published series/class snapshots."""
+        return DAGPaths(self.series_class_snapshots_root).catalog_file
+
+    def series_class_transient_dir(self, run_id: str) -> Path:
+        """Staging directory for one series/class run, never published."""
+        return transient_dir(
+            self.artifacts_root, METADATA_DIR, f"series-class-{run_id}"
+        )
+
+    @property
+    def plans_root(self) -> Path:
+        """Root of published metadata plan bundles."""
+        return self.metadata_root / PLANS_DIR
+
+    def plan_dir(self, plan_id: str) -> Path:
+        """Directory holding one immutable plan."""
+        return self.plans_root / plan_id
+
+    def transient_dir(self, plan_id: str) -> Path:
+        """Directory holding one plan's transient chunk checkpoints."""
+        return transient_dir(self.artifacts_root, METADATA_DIR, plan_id)
+
+    def snapshot_dir(self, snapshot_id: str) -> Path:
+        """Directory holding one published snapshot."""
+        return self.snapshots_root / snapshot_id
+
+    def snapshot_parts_dir(self, snapshot_id: str) -> Path:
+        """Directory holding the Parquet parts of a multipart snapshot."""
+        return self.snapshot_dir(snapshot_id) / PARTS_DIR
+
+    def snapshot_part(self, snapshot_id: str, part_name: str) -> Path:
+        """Path of one metadata part within a multipart snapshot."""
+        return self.snapshot_parts_dir(snapshot_id) / part_name
+
+    def snapshot_cik_index(self, snapshot_id: str) -> Path:
+        """Sorted distinct CIK index published beside one snapshot payload."""
+        return self.snapshot_dir(snapshot_id) / ROSTER_FILE_NAME
+
+    def snapshot_lock_path(self, snapshot_id: str) -> Path:
+        """Exclusive run lock for a published snapshot (used by augment)."""
+        return self.snapshot_dir(snapshot_id) / RUN_LOCK_FILE
+
+
+@dataclass(frozen=True, slots=True)
+class RunPaths:
+    """Plan-scoped paths for the plan bundle and chunk checkpoints."""
+
+    metadata: MetadataPaths
+    plan_id: str
+
+    @property
+    def plan_file(self) -> Path:
+        """Small execution manifest for this plan."""
+        return self.metadata.plan_dir(self.plan_id) / PLAN_FILE_NAME
+
+    @property
+    def fingerprints_file(self) -> Path:
+        """Per-CIK member-CRC fingerprints for an archive plan."""
+        return self.plan_bundle / FINGERPRINTS_FILE_NAME
+
+    @property
+    def plan_bundle(self) -> Path:
+        """Root of the immutable bundle copied to a worker."""
+        return self.metadata.plan_dir(self.plan_id)
+
+    @property
+    def roster_file(self) -> Path:
+        """The CIK cohort, stored once for the whole plan."""
+        return self.plan_bundle / ROSTER_DIR / ROSTER_FILE_NAME
+
+    @property
+    def input_manifest_file(self) -> Path:
+        """Diagnostics about where the selected cohort came from."""
+        return self.plan_bundle / INPUT_DIR / INPUT_MANIFEST_FILE
+
+    @property
+    def assignments_dir(self) -> Path:
+        """Directory holding one chunk-to-worker mapping per distribution."""
+        return self.plan_bundle / ASSIGNMENTS_DIR
+
+    def assignment_file(self, assignment_id: str) -> Path:
+        """Path of one worker assignment dataset."""
+        return self.assignments_dir / f"{assignment_id}.parquet"
+
+    @property
+    def chunk_dir(self) -> Path:
+        """Transient chunk checkpoint directory for this run."""
+        return self.metadata.transient_dir(self.plan_id)
+
+    def chunk_file(self, chunk_id: int) -> Path:
+        """Checkpoint path for one chunk."""
+        return self.chunk_dir / f"chunk_{chunk_id:04d}.parquet"
+
+    def lock_path(self) -> Path:
+        """Exclusive run lock for this plan."""
+        return self.metadata.plan_dir(self.plan_id) / RUN_LOCK_FILE
+
+
+def resolve_metadata_paths(
+    artifacts_root: str | Path | None = None, plan_id: str = ""
+) -> MetadataPaths:
+    """Resolve the metadata layout from an explicit root or the project defaults."""
+    if artifacts_root is not None:
+        return MetadataPaths(artifacts_root=Path(artifacts_root).resolve())
+    return MetadataPaths(artifacts_root=resolve_paths().artifacts_root)
+
+
+def resolve_run_paths(
+    plan_id: str,
+    artifacts_root: str | Path | None = None,
+    project_paths: ProjectPaths | None = None,
+) -> RunPaths:
+    """Resolve plan-scoped paths for a given plan identifier."""
+    if artifacts_root is not None:
+        metadata = MetadataPaths(artifacts_root=Path(artifacts_root).resolve())
+    elif project_paths is not None:
+        metadata = MetadataPaths(artifacts_root=project_paths.artifacts_root)
+    else:
+        metadata = resolve_metadata_paths()
+    return RunPaths(metadata=metadata, plan_id=plan_id)
+
+
+__all__ = [
+    "ASSIGNMENTS_DIR",
+    "BULK_ARCHIVES_DIR",
+    "CHUNKS_DIR",
+    "FACTS_DIR",
+    "FACTS_STORE_FILE",
+    "FINGERPRINTS_FILE_NAME",
+    "INPUT_DIR",
+    "INPUT_MANIFEST_FILE",
+    "METADATA_DIR",
+    "PARTS_DIR",
+    "PLANS_DIR",
+    "RECEIPT_FILE",
+    "ROSTER_DIR",
+    "RUN_LOCK_FILE",
+    "MetadataPaths",
+    "RunPaths",
+    "resolve_metadata_paths",
+    "resolve_run_paths",
+]

@@ -1,0 +1,81 @@
+{
+  "firm": "DE",
+  "accession": "0001558370-24-016169",
+  "cik": "0000315189",
+  "sic_code": 3523,
+  "sector": "Industrials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Statement of Consolidated Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1790,
+      1831
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total",
+        "reported_value": 51716000000.0,
+        "table_value": 51716,
+        "line_number": 1806,
+        "snippet": "Total                                                        51,716      61,251      52,577"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total",
+        "reported_value": 42510000000.0,
+        "table_value": 42510,
+        "line_number": 1816,
+        "snippet": "Total                                                        42,510      48,232      43,450"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Provision for income taxes",
+        "reported_value": 2094000000.0,
+        "table_value": 2094,
+        "line_number": 1820,
+        "snippet": "Provision for income taxes                                    2,094       2,871       2,007"
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Net Income",
+        "reported_value": 7088000000.0,
+        "table_value": 7088,
+        "line_number": 1827,
+        "snippet": "Net Income                                                    7,088      10,155       7,130"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income Attributable to Deere & Company",
+        "reported_value": 7100000000.0,
+        "table_value": 7100,
+        "line_number": 1830,
+        "snippet": "Net Income Attributable to Deere & Company                  $ 7,100    $ 10,166     $ 7,131"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "NetIncomeLoss = ProfitLoss - NetIncomeLossAttributableToNoncontrollingInterest",
+      "left_concept": "us-gaap:NetIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:ProfitLoss",
+          "value": 7088000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:NetIncomeLossAttributableToNoncontrollingInterest",
+          "value": -12000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 7100000000.0,
+      "target_value": 7100000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

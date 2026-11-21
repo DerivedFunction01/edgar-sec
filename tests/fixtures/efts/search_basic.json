@@ -1,0 +1,703 @@
+{
+ "took": 41,
+ "timed_out": false,
+ "_shards": {
+  "total": 50,
+  "successful": 50,
+  "skipped": 0,
+  "failed": 0
+ },
+ "hits": {
+  "total": {
+   "value": 10000,
+   "relation": "gte"
+  },
+  "max_score": 8.393227,
+  "hits": [
+   {
+    "_index": "edgar_file",
+    "_id": "0001185185-15-000457:ex21-1.htm",
+    "_score": 8.393227,
+    "_source": {
+     "ciks": [
+      "0001418121"
+     ],
+     "period_ending": "2014-12-31",
+     "file_num": [
+      "000-53603"
+     ],
+     "display_names": [
+      "Apple Hospitality REIT, Inc.  (APLE)  (CIK 0001418121)"
+     ],
+     "xsl": null,
+     "sequence": 3,
+     "root_forms": [
+      "10-K"
+     ],
+     "file_date": "2015-03-06",
+     "biz_states": [
+      "VA"
+     ],
+     "sics": [
+      "6798"
+     ],
+     "form": "10-K",
+     "adsh": "0001185185-15-000457",
+     "film_num": [
+      "15682227"
+     ],
+     "biz_locations": [
+      "Richmond, VA"
+     ],
+     "file_type": "EX-21.1",
+     "file_description": "EX-21.1",
+     "inc_states": [
+      "VA"
+     ],
+     "items": []
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001047469-03-041604:a2124888zex-14_1.htm",
+    "_score": 8.381369,
+    "_source": {
+     "ciks": [
+      "0000320193"
+     ],
+     "period_ending": "2003-09-27",
+     "file_num": [
+      "000-10030"
+     ],
+     "display_names": [
+      "APPLE COMPUTER INC  (AAPL)  (CIK 0000320193)"
+     ],
+     "xsl": null,
+     "sequence": 4,
+     "root_forms": [
+      "10-K"
+     ],
+     "file_date": "2003-12-19",
+     "biz_states": [
+      "CA"
+     ],
+     "sics": [
+      "3571"
+     ],
+     "form": "10-K",
+     "adsh": "0001047469-03-041604",
+     "film_num": [
+      "031066037"
+     ],
+     "biz_locations": [
+      "Cupertino, CA"
+     ],
+     "file_type": "EX-14.1",
+     "file_description": "EX-14.1",
+     "inc_states": [
+      "CA"
+     ],
+     "items": []
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001213900-11-001691:f10k2010ex10ii_snap.htm",
+    "_score": 8.381116,
+    "_source": {
+     "ciks": [
+      "0001355839"
+     ],
+     "period_ending": "2010-12-31",
+     "file_num": [
+      "000-52176"
+     ],
+     "display_names": [
+      "Snap Interactive, Inc  (PALT)  (CIK 0001355839)"
+     ],
+     "xsl": null,
+     "sequence": 3,
+     "root_forms": [
+      "10-K"
+     ],
+     "file_date": "2011-03-31",
+     "biz_states": [
+      "NY"
+     ],
+     "sics": [
+      "7389"
+     ],
+     "form": "10-K",
+     "adsh": "0001213900-11-001691",
+     "film_num": [
+      "11726144"
+     ],
+     "biz_locations": [
+      "New York, NY"
+     ],
+     "file_type": "EX-10.2",
+     "file_description": "REGISTERED APPLE DEVELOPER AGREEMENT, BY AND BETWEEN SNAP INTERACTIVE, INC. AND APPLE INC.",
+     "inc_states": [
+      "DE"
+     ],
+     "items": []
+    }
+   }
+  ]
+ },
+ "aggregations": {
+  "entity_filter": {
+   "doc_count_error_upper_bound": 978,
+   "sum_other_doc_count": 644297,
+   "buckets": [
+    {
+     "key": "LendingClub Corp  (LC)  (CIK 0001409970)",
+     "doc_count": 5220
+    },
+    {
+     "key": "UBS AG  (AMNA, AMND, AMTR, AMUB, BDCX, BDCZ, CEFD, DJCB, ESUS, FEDL, HDLB, IFED, IWDL, IWFL, IWML, MLPB)  (CIK 0001114446)",
+     "doc_count": 4638
+    },
+    {
+     "key": "GOLDMAN SACHS GROUP INC  (GS, GSCE, GS-PA, GS-PC, GS-PD)  (CIK 0000886982)",
+     "doc_count": 4416
+    },
+    {
+     "key": "GS Finance Corp.  (CIK 0001419828)",
+     "doc_count": 3989
+    },
+    {
+     "key": "iSHARES TRUST  (CIK 0001100663)",
+     "doc_count": 3975
+    },
+    {
+     "key": "FEDERAL NATIONAL MORTGAGE ASSOCIATION FANNIE MAE  (FNMA, FNMAG, FNMAH, FNMAI, FNMAJ, FNMAK, FNMAL, FNMAM, FNMAN, FNMAO, FNMAS, FNMAT, FNMFM, FNMFN)  (CIK 0000310522)",
+     "doc_count": 3029
+    },
+    {
+     "key": "EQ ADVISORS TRUST  (CIK 0001027263)",
+     "doc_count": 2712
+    },
+    {
+     "key": "JNL SERIES TRUST  (CIK 0000933691)",
+     "doc_count": 2689
+    },
+    {
+     "key": "PROSHARES TRUST  (CIK 0001174610)",
+     "doc_count": 2506
+    },
+    {
+     "key": "DFA INVESTMENT DIMENSIONS GROUP INC  (CIK 0000355437)",
+     "doc_count": 2350
+    },
+    {
+     "key": "Global X Funds  (CIK 0001432353)",
+     "doc_count": 2140
+    },
+    {
+     "key": "JPMORGAN CHASE & CO  (JPM, AMJB, JPM-PC, JPM-PD, JPM-PJ, JPM-PK, JPM-PL, JPM-PM)  (CIK 0000019617)",
+     "doc_count": 2111
+    },
+    {
+     "key": "SPDR SERIES TRUST  (CIK 0001064642)",
+     "doc_count": 2055
+    },
+    {
+     "key": "CITIGROUP INC  (C, C-PN)  (CIK 0000831001)",
+     "doc_count": 1834
+    },
+    {
+     "key": "GOLDMAN SACHS TRUST  (CIK 0000822977)",
+     "doc_count": 1813
+    },
+    {
+     "key": "WisdomTree Trust  (CIK 0001350487)",
+     "doc_count": 1782
+    },
+    {
+     "key": "APPLE INC  (AAPL)  (CIK 0000320193)",
+     "doc_count": 1757
+    },
+    {
+     "key": "MORGAN STANLEY  (MS, MS-PA, MS-PE, MS-PF, MS-PI, MS-PK, MS-PL, MS-PO, MS-PP, MS-PQ, MSTLW)  (CIK 0000895421)",
+     "doc_count": 1696
+    },
+    {
+     "key": "Direxion Shares ETF Trust  (CIK 0001424958)",
+     "doc_count": 1677
+    },
+    {
+     "key": "SUNAMERICA SERIES TRUST  (CIK 0000892538)",
+     "doc_count": 1634
+    },
+    {
+     "key": "HSBC USA INC /MD/  (CIK 0000083246)",
+     "doc_count": 1625
+    },
+    {
+     "key": "PIMCO FUNDS  (CIK 0000810893)",
+     "doc_count": 1589
+    },
+    {
+     "key": "Citigroup Global Markets Holdings Inc.  (CIK 0000200245)",
+     "doc_count": 1587
+    },
+    {
+     "key": "Apple Hospitality REIT, Inc.  (APLE)  (CIK 0001418121)",
+     "doc_count": 1569
+    },
+    {
+     "key": "NATIONWIDE VARIABLE INSURANCE TRUST  (CIK 0000353905)",
+     "doc_count": 1529
+    },
+    {
+     "key": "INVESCO EXCHANGE-TRADED FUND TRUST  (CIK 0001209466)",
+     "doc_count": 1485
+    },
+    {
+     "key": "PACIFIC SELECT FUND  (CIK 0000813900)",
+     "doc_count": 1441
+    },
+    {
+     "key": "ProFunds  (CIK 0001039803)",
+     "doc_count": 1371
+    },
+    {
+     "key": "FIDELITY SALEM STREET TRUST  (CIK 0000035315)",
+     "doc_count": 1245
+    },
+    {
+     "key": "JPMorgan Chase Financial Co. LLC  (CIK 0001665650)",
+     "doc_count": 1239
+    }
+   ]
+  },
+  "sic_filter": {
+   "doc_count_error_upper_bound": 402,
+   "sum_other_doc_count": 39513,
+   "buckets": [
+    {
+     "key": "6021",
+     "doc_count": 14953
+    },
+    {
+     "key": "6211",
+     "doc_count": 10426
+    },
+    {
+     "key": "6798",
+     "doc_count": 9644
+    },
+    {
+     "key": "7372",
+     "doc_count": 8165
+    },
+    {
+     "key": "6189",
+     "doc_count": 6857
+    },
+    {
+     "key": "6199",
+     "doc_count": 6697
+    },
+    {
+     "key": "6029",
+     "doc_count": 5689
+    },
+    {
+     "key": "6022",
+     "doc_count": 3837
+    },
+    {
+     "key": "6111",
+     "doc_count": 3766
+    },
+    {
+     "key": "3571",
+     "doc_count": 3641
+    },
+    {
+     "key": "7389",
+     "doc_count": 3441
+    },
+    {
+     "key": "3674",
+     "doc_count": 2875
+    },
+    {
+     "key": "7374",
+     "doc_count": 2729
+    },
+    {
+     "key": "7370",
+     "doc_count": 2597
+    },
+    {
+     "key": "6770",
+     "doc_count": 2249
+    },
+    {
+     "key": "7371",
+     "doc_count": 1629
+    },
+    {
+     "key": "2834",
+     "doc_count": 1511
+    },
+    {
+     "key": "3841",
+     "doc_count": 1449
+    },
+    {
+     "key": "6282",
+     "doc_count": 1423
+    },
+    {
+     "key": "4813",
+     "doc_count": 1268
+    },
+    {
+     "key": "5961",
+     "doc_count": 1197
+    },
+    {
+     "key": "3663",
+     "doc_count": 1192
+    },
+    {
+     "key": "6331",
+     "doc_count": 1070
+    },
+    {
+     "key": "7373",
+     "doc_count": 991
+    },
+    {
+     "key": "6500",
+     "doc_count": 944
+    },
+    {
+     "key": "4841",
+     "doc_count": 895
+    },
+    {
+     "key": "7812",
+     "doc_count": 892
+    },
+    {
+     "key": "0000",
+     "doc_count": 891
+    },
+    {
+     "key": "6794",
+     "doc_count": 878
+    },
+    {
+     "key": "4899",
+     "doc_count": 861
+    }
+   ]
+  },
+  "biz_states_filter": {
+   "doc_count_error_upper_bound": 862,
+   "sum_other_doc_count": 60348,
+   "buckets": [
+    {
+     "key": "NY",
+     "doc_count": 108366
+    },
+    {
+     "key": "CA",
+     "doc_count": 87354
+    },
+    {
+     "key": "MA",
+     "doc_count": 60292
+    },
+    {
+     "key": "IL",
+     "doc_count": 37708
+    },
+    {
+     "key": "PA",
+     "doc_count": 37572
+    },
+    {
+     "key": "TX",
+     "doc_count": 28487
+    },
+    {
+     "key": "OH",
+     "doc_count": 24101
+    },
+    {
+     "key": "MD",
+     "doc_count": 19599
+    },
+    {
+     "key": "NJ",
+     "doc_count": 18883
+    },
+    {
+     "key": "FL",
+     "doc_count": 15529
+    },
+    {
+     "key": "VA",
+     "doc_count": 14609
+    },
+    {
+     "key": "CO",
+     "doc_count": 14540
+    },
+    {
+     "key": "WI",
+     "doc_count": 14240
+    },
+    {
+     "key": "CT",
+     "doc_count": 12253
+    },
+    {
+     "key": "MN",
+     "doc_count": 12155
+    },
+    {
+     "key": "MI",
+     "doc_count": 9723
+    },
+    {
+     "key": "NC",
+     "doc_count": 9722
+    },
+    {
+     "key": "DE",
+     "doc_count": 9274
+    },
+    {
+     "key": "WA",
+     "doc_count": 8312
+    },
+    {
+     "key": "X0",
+     "doc_count": 7603
+    },
+    {
+     "key": "A6",
+     "doc_count": 7341
+    },
+    {
+     "key": "GA",
+     "doc_count": 7323
+    },
+    {
+     "key": "V8",
+     "doc_count": 7288
+    },
+    {
+     "key": "MO",
+     "doc_count": 7090
+    },
+    {
+     "key": "AZ",
+     "doc_count": 6195
+    },
+    {
+     "key": "IN",
+     "doc_count": 5987
+    },
+    {
+     "key": "IA",
+     "doc_count": 5747
+    },
+    {
+     "key": "DC",
+     "doc_count": 4924
+    },
+    {
+     "key": "KS",
+     "doc_count": 4654
+    },
+    {
+     "key": "TN",
+     "doc_count": 4128
+    }
+   ]
+  },
+  "form_filter": {
+   "doc_count_error_upper_bound": 385,
+   "sum_other_doc_count": 28788,
+   "buckets": [
+    {
+     "key": "13F-HR",
+     "doc_count": 255062
+    },
+    {
+     "key": "NPORT-P",
+     "doc_count": 161870
+    },
+    {
+     "key": "N-CSR",
+     "doc_count": 26256
+    },
+    {
+     "key": "N-Q",
+     "doc_count": 25741
+    },
+    {
+     "key": "N-CSRS",
+     "doc_count": 23500
+    },
+    {
+     "key": "N-PX",
+     "doc_count": 23161
+    },
+    {
+     "key": "424B2",
+     "doc_count": 17728
+    },
+    {
+     "key": "8-K",
+     "doc_count": 16432
+    },
+    {
+     "key": "10-K",
+     "doc_count": 13814
+    },
+    {
+     "key": "10-Q",
+     "doc_count": 12778
+    },
+    {
+     "key": "424B3",
+     "doc_count": 8497
+    },
+    {
+     "key": "FWP",
+     "doc_count": 8060
+    },
+    {
+     "key": "S-1",
+     "doc_count": 6367
+    },
+    {
+     "key": "485BPOS",
+     "doc_count": 5172
+    },
+    {
+     "key": "DEF 14A",
+     "doc_count": 5099
+    },
+    {
+     "key": "6-K",
+     "doc_count": 4057
+    },
+    {
+     "key": "ABS-15G",
+     "doc_count": 3865
+    },
+    {
+     "key": "NPORT-EX",
+     "doc_count": 3703
+    },
+    {
+     "key": "4",
+     "doc_count": 3555
+    },
+    {
+     "key": "487",
+     "doc_count": 3190
+    },
+    {
+     "key": "N-30D",
+     "doc_count": 2437
+    },
+    {
+     "key": "20-F",
+     "doc_count": 2362
+    },
+    {
+     "key": "N-MFP2",
+     "doc_count": 2319
+    },
+    {
+     "key": "497",
+     "doc_count": 2152
+    },
+    {
+     "key": "N-MFP",
+     "doc_count": 1955
+    },
+    {
+     "key": "DRS",
+     "doc_count": 1910
+    },
+    {
+     "key": "S-4",
+     "doc_count": 1848
+    },
+    {
+     "key": "POS AM",
+     "doc_count": 1504
+    },
+    {
+     "key": "425",
+     "doc_count": 1493
+    },
+    {
+     "key": "F-1",
+     "doc_count": 1311
+    }
+   ]
+  }
+ },
+ "query": {
+  "_source": {
+   "exclude": [
+    "doc_text"
+   ]
+  },
+  "query": {
+   "bool": {
+    "must": [
+     {
+      "match_phrase": {
+       "doc_text": "apple"
+      }
+     }
+    ],
+    "must_not": [],
+    "should": [],
+    "filter": []
+   }
+  },
+  "from": 0,
+  "size": 100,
+  "aggregations": {
+   "form_filter": {
+    "terms": {
+     "field": "root_forms",
+     "size": 30
+    }
+   },
+   "entity_filter": {
+    "terms": {
+     "field": "display_names.raw",
+     "size": 30
+    }
+   },
+   "sic_filter": {
+    "terms": {
+     "field": "sics",
+     "size": 30
+    }
+   },
+   "biz_states_filter": {
+    "terms": {
+     "field": "biz_states",
+     "size": 30
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,81 @@
+{
+  "firm": "DAL",
+  "accession": "0000027904-25-000004",
+  "cik": "0000027904",
+  "sic_code": 4512,
+  "sector": "Transportation",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1689,
+      1744
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total operating revenue",
+        "reported_value": 61643000000.0,
+        "table_value": 61643,
+        "line_number": 1699,
+        "snippet": "Total operating revenue                                 61,643      58,048      50,582"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating expense",
+        "reported_value": 55648000000.0,
+        "table_value": 55648,
+        "line_number": 1717,
+        "snippet": "Total operating expense                                 55,648      52,527      46,921"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income",
+        "reported_value": 5995000000.0,
+        "table_value": 5995,
+        "line_number": 1720,
+        "snippet": "Operating Income                                         5,995       5,521       3,661"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income Before Income Taxes",
+        "reported_value": 4658000000.0,
+        "table_value": 4658,
+        "line_number": 1731,
+        "snippet": "Income Before Income Taxes                               4,658       5,608       1,914"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income",
+        "reported_value": 3457000000.0,
+        "table_value": 3457,
+        "line_number": 1736,
+        "snippet": "Net Income                                             $ 3,457     $ 4,609     $ 1,318"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = RevenueFromContractWithCustomerExcludingAssessedTax - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 61643000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 55648000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 5995000000.0,
+      "target_value": 5995000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

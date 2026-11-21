@@ -1,0 +1,158 @@
+"""Lightweight acquisition handoff and manifest contracts."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import TypedDict
+
+from edgar_sec.pipelines.document_planning.schemas import (
+    MATCHER_VERSION,
+    OPERATION_INPUT_SCHEMA,
+    OPERATION_INPUT_SCHEMA_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
+    PLAN_RELATION_SCHEMAS,
+    PROFILE_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    TARGET_COLUMNS,
+    TARGET_OPERATION_SCHEMA,
+    TARGET_OPERATION_SCHEMA_VERSION,
+    TARGET_SCHEMA,
+    TARGET_SCHEMA_VERSION,
+)
+
+RUN_SCHEMA_VERSION = "3"
+ACQUISITION_CONTRACT_VERSION = "3"
+WORK_ORDER_SCHEMA_VERSION = "4"
+RESOLVED_OPERATION_SCHEMA_VERSION = 1
+RECEIPT_SCHEMA_VERSION = "1"
+
+
+class PartDescriptor(TypedDict):
+    path: str
+    row_count: int
+    byte_size: int
+    sha256: str
+
+
+class AcquisitionRunManifest(TypedDict):
+    run_id: str
+    run_schema_version: str
+    acquisition_contract_version: str
+    target_plan_id: str
+    target_plan_digest: str
+    bundle_schema_version: int
+    target_schema_version: int
+    target_operation_schema_version: int
+    source_request_schema_version: int
+    operation_input_schema_version: int
+    resolved_operation_schema_version: int
+    matcher_version: str
+    catalog_plan_id: str
+    catalog_plan_digest: str
+    inventory_snapshot_id: str | None
+    inventory_snapshot_digest: str | None
+    work_order_schema_version: str
+    work_order_parts: list[PartDescriptor]
+    work_order_relations: dict[str, dict[str, object]]
+    target_row_count: int
+    executable_count: int
+    skipped_count: int
+    run_state_schema_version: int
+    run_digest: str
+
+
+@dataclass(frozen=True, slots=True)
+class StagedBodyRef:
+    run_id: str
+    target_id: str
+    path: Path
+    sha256: str
+    byte_size: int
+    selected_filename: str | None
+    source_response_path: Path | None
+    source_response_sha256: str
+    source_response_byte_size: int
+
+
+@dataclass(frozen=True, slots=True)
+class FixtureBodyRef:
+    capture_id: str
+    target_id: str
+    path: Path
+    sha256: str
+    byte_size: int
+    selected_filename: str
+
+
+def validate_selected_filename(value: object) -> str | None:
+    if value is None:
+        return None
+    if (
+        not isinstance(value, str)
+        or not value.strip()
+        or value in {".", ".."}
+        or "/" in value
+        or "\\" in value
+        or any(ord(character) < 32 or ord(character) == 127 for character in value)
+    ):
+        raise ValueError("selected filename must be a safe leaf name")
+    return value
+
+
+class BodyConsumptionReceipt(TypedDict):
+    receipt_schema_version: str
+    run_id: str
+    target_id: str
+    source_response_sha256: str
+    selected_sha256: str
+    processing_run_id: str
+    consumed_at_utc: str
+
+
+def target_relation_schema():
+    return TARGET_SCHEMA
+
+
+def target_relation_schema_version() -> int:
+    return TARGET_SCHEMA_VERSION
+
+
+def target_plan_bundle_schema_version() -> int:
+    return PLAN_BUNDLE_SCHEMA_VERSION
+
+
+def target_plan_matcher_version() -> str:
+    return MATCHER_VERSION
+
+
+__all__ = [
+    "ACQUISITION_CONTRACT_VERSION",
+    "MATCHER_VERSION",
+    "OPERATION_INPUT_SCHEMA",
+    "OPERATION_INPUT_SCHEMA_VERSION",
+    "PLAN_BUNDLE_SCHEMA_VERSION",
+    "PLAN_RELATION_SCHEMAS",
+    "PROFILE_SCHEMA_VERSION",
+    "RECEIPT_SCHEMA_VERSION",
+    "RESOLVED_OPERATION_SCHEMA_VERSION",
+    "RUN_SCHEMA_VERSION",
+    "SOURCE_REQUEST_SCHEMA",
+    "SOURCE_REQUEST_SCHEMA_VERSION",
+    "TARGET_COLUMNS",
+    "TARGET_OPERATION_SCHEMA",
+    "TARGET_OPERATION_SCHEMA_VERSION",
+    "TARGET_SCHEMA",
+    "TARGET_SCHEMA_VERSION",
+    "WORK_ORDER_SCHEMA_VERSION",
+    "AcquisitionRunManifest",
+    "BodyConsumptionReceipt",
+    "PartDescriptor",
+    "StagedBodyRef",
+    "target_relation_schema",
+    "target_relation_schema_version",
+    "target_plan_bundle_schema_version",
+    "target_plan_matcher_version",
+    "validate_selected_filename",
+]
