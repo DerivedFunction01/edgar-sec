@@ -43,8 +43,8 @@ from edgar_sec.engine.xbrl.schema.models import (
     qname_local,
     split_concept_qname,
 )
-from edgar_sec.engine.xbrl.solve.antichain import AntiChainValidator
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.core.antichain import AntiChainValidator
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     StatementGraph,
     build_statement_graph,
 )

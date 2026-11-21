@@ -15,7 +15,7 @@ from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.foundation.runtime import paths as foundation_paths
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.paths import DAGPaths
-from edgar_sec.infra.storage.dag.publication import read_pointer
+from edgar_sec.infra.storage.dag.working.publication import read_pointer
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 
 #: Store contract names; the one place the store shape is spelled.

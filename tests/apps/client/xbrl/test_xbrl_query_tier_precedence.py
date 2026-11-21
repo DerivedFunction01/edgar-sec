@@ -2,8 +2,8 @@
 
 import pytest
 
-from edgar_sec.engine.xbrl.solve.query import QueryMode, QueryStatus
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.query import QueryMode, QueryStatus
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 from tests.apps.client.xbrl.xbrl_support import (
     _SYNTHETIC_ACCESSION,
     _canned_result,

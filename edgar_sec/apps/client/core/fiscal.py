@@ -14,7 +14,7 @@ from edgar_sec.engine.xbrl.normalize.filed_metadata import (
 )
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     FinancialQueryEngine,
     FinancialQueryResult,
@@ -22,8 +22,8 @@ from edgar_sec.engine.xbrl.solve.query import (
     QueryStatus,
 )
 from edgar_sec.apps.client.core.composition import CompositionResult
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     StatementGraph,
     StatementNode,
     period_rank,

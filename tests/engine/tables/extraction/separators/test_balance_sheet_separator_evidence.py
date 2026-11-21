@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import edgar_sec.engine.tables.extraction.separators.balance_sheet_separator_evidence as _bse
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
@@ -18,8 +18,10 @@ from edgar_sec.engine.tables.extraction.separators.balance_sheet_separator_specs
     BALANCE_SHEET_SEPARATOR_SPECS,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
 )
@@ -27,8 +29,10 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import FamilyScore
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    FamilyScore,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_BALANCE_SHEET_SEPARATOR,
     TEST_BALANCE_SHEET_SEPARATOR,
     profile_for,
@@ -36,6 +40,10 @@ from edgar_sec.engine.tables.extraction.core.profiles import (
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 from edgar_sec.foundation.text.dates import (
     STRICT_YEAR_TOKEN_PATTERN as _HOME_STRICT_YEAR,
+)
+from edgar_sec.engine.tables.numeric_cells import (
+    DIGIT_RE as _HOME_DIGIT,
+    WRAPPED_NUMERIC_CELL_RE as _HOME_WRAPPED_NUMERIC,
 )
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     header_keys as _PENSION_HEADER_KEYS,
@@ -112,9 +120,9 @@ def test_recognizer_homes_and_frozen_text():
     assert _bse.RE_WHITESPACE is _HOME_WHITESPACE
     assert _bse.STRICT_YEAR_TOKEN_PATTERN is _HOME_STRICT_YEAR
     assert _bse.HEADER_YEAR_RE.pattern == r"\b(?:19|20)\d{2}\b"
-    assert (
-        _bse.NUMERIC_SHARE_CELL_RE.pattern == r"\(?-?\$?\s*\d[\d,]*(?:\.\d+)?\s*\)?\)?"
-    )
+    assert _bse.WRAPPED_NUMERIC_CELL_RE is _HOME_WRAPPED_NUMERIC
+    assert _bse.DIGIT_RE is _HOME_DIGIT
+    assert _HOME_WRAPPED_NUMERIC.pattern == r"\(?-?\$?\s*\d[\d,]*(?:\.\d+)?\s*\)?\)?"
 
 
 # ---------------- the ten legs ----------------

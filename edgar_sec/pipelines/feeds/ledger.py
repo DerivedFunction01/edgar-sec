@@ -18,7 +18,7 @@ import pyarrow as pa
 from edgar_sec.domain.feeds.models import FilingEvent
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.infra.storage.dag.anti_join import filter_candidate_delta
+from edgar_sec.infra.storage.dag.working.anti_join import filter_candidate_delta
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
@@ -26,7 +26,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import (
+from edgar_sec.infra.storage.dag.working.publication import (
     publish_node,
     snapshot_tip as ledger_tip,
 )

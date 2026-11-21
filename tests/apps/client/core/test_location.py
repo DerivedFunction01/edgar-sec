@@ -12,7 +12,7 @@ from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
 from edgar_sec.engine.xbrl.storage.storage import presentation_arcs_from_arrow_table
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-from tests.apps.client.test_cohort_facts import (
+from tests.apps.client.xbrl.test_cohort_facts import (
     _ROLE,
     _SNAPSHOT_ACCESSION,
     _publish_fabricated_snapshot,

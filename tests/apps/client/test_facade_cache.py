@@ -19,7 +19,7 @@ from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
-from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_cohort_table
 from edgar_sec.engine.xbrl.storage.storage import (
     declarations_from_arrow_table,
     read_declarations_parquet,

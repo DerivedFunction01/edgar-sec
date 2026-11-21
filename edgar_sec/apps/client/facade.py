@@ -591,7 +591,7 @@ class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
         )
         from edgar_sec.apps.client.xbrl import Xbrl
         from edgar_sec.engine.xbrl.parsing.filing_parser import parse_filing_xbrl
-        from edgar_sec.engine.xbrl.solve.scoping import build_lineages
+        from edgar_sec.engine.xbrl.solve.core.scoping import build_lineages
         from edgar_sec.foundation.runtime.paths import resolve_paths
 
         if filing_ref(filing) is None:

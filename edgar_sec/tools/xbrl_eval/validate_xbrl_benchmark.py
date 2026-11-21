@@ -19,7 +19,7 @@ from edgar_sec.engine.xbrl.discovery.cohort import (
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.xbrl_review.paths import xbrl_paths
 

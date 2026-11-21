@@ -3,8 +3,8 @@
 ## Purpose
 
 Refusal evidence over claimed families: the term vetoes (statement and note
-channels, over the shared veto core) and the PPE veto pair (evidence and
-specs) that the claiming chain composes ahead of the precision pass.
+channels, over the shared veto core) and the veto pairs (PPE, precision,
+spanning) in evidence and specs that the claiming chain composes in that order.
 
 ## Contracts
 
@@ -12,7 +12,7 @@ specs) that the claiming chain composes ahead of the precision pass.
   `cascade.competition`'s composed chain — the PPE pass over the gated set
   first, the precision pass second; a veto never issues a claim of its own.
 - **Veto terms are data in the veto modules' tables**, read over text
-  normalized by `core.normalize`; no veto re-implements normalization.
+  normalized by `core.text.normalize`; no veto re-implements normalization.
 
 ## Deliberate gaps
 

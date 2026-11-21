@@ -10,7 +10,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from edgar_sec.engine.tables.extraction.specs.deferred_tax_specs import (
+from edgar_sec.engine.tables.extraction.specs.families.deferred_tax_specs import (
     A4_STUB_TERMS,
     A5_STUB_TERM,
     DTA_TERMS,
@@ -24,13 +24,15 @@ from edgar_sec.engine.tables.extraction.specs.deferred_tax_specs import (
     VAL_ALLOW_TERMS,
     WALK_ROW_TERMS,
 )
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.registry import PRIMARY_STATEMENT_FAMILIES
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.engine.tables.numeric_cells import is_strict_numeric_cell
 
 if TYPE_CHECKING:
-    from edgar_sec.engine.tables.extraction.cascade.classify import Classification
+    from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
+        Classification,
+    )
 
 FAMILY = "deferred_tax"
 SEAT_DETAIL_PREFIX = "deferred_tax seat:"
@@ -139,7 +141,7 @@ def apply_deferred_tax_seat(
     finish: Callable[..., Classification],
 ) -> None:
     """Seat the claims in a filing's classification results."""
-    from edgar_sec.engine.tables.extraction.cascade.classify import Evidence
+    from edgar_sec.engine.tables.extraction.cascade.scoring.classify import Evidence
 
     claims = seat_claims(tables, [result.family for result in results])
     for position, detail in claims.items():

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.entities import is_valid_cusip
+from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     cover_field_has_layout_residue,
     has_descriptive_numeric_qualifier,

@@ -3,18 +3,18 @@
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.annual.location import location_priors
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
     TableKind,
     candidate_scores,
     classify_filing,
     classify_table,
 )
-from edgar_sec.engine.tables.extraction.core.context import (
+from edgar_sec.engine.tables.extraction.core.text.context import (
     NoteRef,
     SectionRef,
     TableContext,

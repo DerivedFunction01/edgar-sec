@@ -24,30 +24,30 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.concept_table import (
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import (
     CohortEntry,
     ConceptTable,
     build_cohort_table,
     build_concept_table,
 )
-from edgar_sec.engine.xbrl.solve.equivalence import (
+from edgar_sec.engine.xbrl.solve.concepts.equivalence import (
     UNRELATED,
     RankedEquivalent,
     classify_ladder_pair,
     classify_pair,
 )
-from edgar_sec.engine.xbrl.solve.evidence_index import (
+from edgar_sec.engine.xbrl.solve.cohort.evidence_index import (
     ConceptEvidence,
     FilingEvidenceRecord,
     build_evidence_index,
     build_filing_evidence,
 )
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     FinancialQueryResult,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 from edgar_sec.engine.xbrl.storage.storage import write_facts_parquet
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import (

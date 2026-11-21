@@ -20,12 +20,12 @@ from edgar_sec.apps.client.statements.topics import (
 from edgar_sec.engine.xbrl.evidence.subsumption import MemberSubsumption
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import DefinitionArc, XbrlFact, qname_local
-from edgar_sec.engine.xbrl.solve.identities import movement_sign
-from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
+from edgar_sec.engine.xbrl.solve.core.identities import movement_sign
+from edgar_sec.engine.xbrl.solve.statements.rollforward_graphs import (
     EquityComponentRollforward,
     EquityRollforwardGraph,
 )
-from edgar_sec.engine.xbrl.solve.statement import StatementNode, period_rank
+from edgar_sec.engine.xbrl.solve.statements.statement import StatementNode, period_rank
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 

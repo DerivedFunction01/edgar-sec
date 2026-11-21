@@ -20,8 +20,8 @@ from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.sec_http.errors import PermanentHttpError
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.compaction import compact_lineage
-from edgar_sec.infra.storage.dag.retention import analyze_retention
+from edgar_sec.infra.storage.dag.working.compaction import compact_lineage
+from edgar_sec.infra.storage.dag.working.retention import analyze_retention
 from edgar_sec.infra.storage.dag.tags import create_tag, read_tag
 from edgar_sec.infra.sec_http.metrics import HttpMetrics
 from edgar_sec.infra.sec_http.streaming import StreamedResponse

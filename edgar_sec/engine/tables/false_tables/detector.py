@@ -28,7 +28,7 @@ from ..toc.patterns import (
 )
 
 if TYPE_CHECKING:
-    from ..ascii_html.model import TableGeometry
+    from ..ascii_html.model.model import TableGeometry
 
 _RE_NUMERIC_SEPARATOR = re.compile(r"^[-=\s]+$")
 _RE_UNAMBIGUOUS_MARKER = re.compile(r"\[\d{1,3}\]|[\*\†\‡\§\#]+")

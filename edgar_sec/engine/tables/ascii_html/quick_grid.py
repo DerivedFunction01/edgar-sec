@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from .cell import normalize_cell_whitespace
+from .model.cell import normalize_cell_whitespace
 
 if TYPE_CHECKING:
     from edgar_sec.engine.document.html.tree import FastHtmlNode

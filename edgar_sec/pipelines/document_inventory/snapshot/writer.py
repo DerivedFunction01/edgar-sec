@@ -66,7 +66,7 @@ from edgar_sec.pipelines.document_inventory.snapshot.anti_join import (
 )
 from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotPublication
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.publication import (
+from edgar_sec.infra.storage.dag.working.publication import (
     PublicationLock,
     PublicationLockError,
     StaleParentError,
@@ -79,13 +79,13 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_ENUMERATION_SPEC,
     INVENTORY_RELATIONS,
 )
-from edgar_sec.infra.storage.dag.doctor import _resolve_part_path
+from edgar_sec.infra.storage.dag.operator.doctor import _resolve_part_path
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
 )
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,

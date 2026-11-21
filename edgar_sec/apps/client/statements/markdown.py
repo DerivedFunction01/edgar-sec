@@ -23,7 +23,7 @@ from edgar_sec.apps.client.statements.rendering import (
 )
 from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
 from edgar_sec.engine.xbrl.schema.models import qname_local
-from edgar_sec.engine.xbrl.solve.statement import StatementGraph
+from edgar_sec.engine.xbrl.solve.statements.statement import StatementGraph
 
 
 def _md(text: str) -> str:

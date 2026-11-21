@@ -9,13 +9,13 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
-from edgar_sec.engine.tables.extraction.evidence.input_class_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.input_class_evidence import (
     input_class_evidence_for_geometry,
 )
-from edgar_sec.engine.tables.extraction.evidence.stock_comp_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.equity.stock_comp_evidence import (
     StockCompText,
     evaluate_stock_comp,
     legs_for,
@@ -24,7 +24,7 @@ from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_spe
     STOCK_COMP_SEPARATOR_SPECS,
     StockCompSeparatorSpec,
 )
-from edgar_sec.engine.tables.extraction.specs.stock_comp_specs import (
+from edgar_sec.engine.tables.extraction.specs.families.stock_comp_specs import (
     STOCK_COMP_EVIDENCE_SPECS,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -75,7 +75,7 @@ def separator_surfaces_for(table) -> StockCompSeparatorSurfaces:
     """The priced surface readings over one typed table: the seat
     verdict from the family's own evaluator, and the bookend /
     warrant / available reads over the geometry channels."""
-    from edgar_sec.engine.tables.extraction.cascade.geometry_text import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
         geometry_text_from_table,
     )
 
@@ -195,7 +195,7 @@ def apply_stock_comp_assignment(geometries, results):
     determined other-family seat has seated the same geometry
     (assign_other; the input-class seat for the anchor family).
     """
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

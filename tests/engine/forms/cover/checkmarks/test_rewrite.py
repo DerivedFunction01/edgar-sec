@@ -24,7 +24,7 @@ from edgar_sec.engine.forms.cover.checkmarks.solver import (
 )
 from edgar_sec.engine.forms.cover.models import BoundaryMethod, CoverBoundary
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 
 
 def _boundary(text: str) -> CoverBoundary:

@@ -6,7 +6,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.evidence.subsumption import MemberSubsumption
-from edgar_sec.engine.xbrl.solve.identities import identity_verified
+from edgar_sec.engine.xbrl.solve.core.identities import identity_verified
 
 CLEAN_PARTITION = "clean_partition"
 OVERLAPPING_PARTITIONS = "overlapping_partitions"

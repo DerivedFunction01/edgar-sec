@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from edgar_sec.apps.client.models import FilingsResult
     from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.domain.document.aggregate import FilingAggregate
-    from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries
+    from edgar_sec.engine.xbrl.solve.series.assembly import StitchedSeries
 
 
 @dataclass(frozen=True, slots=True)

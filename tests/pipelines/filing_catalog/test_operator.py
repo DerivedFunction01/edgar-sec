@@ -113,7 +113,7 @@ def test_snapshot_console_launches_interactively(
     calls: list[tuple[Any, list[str] | None]] = []
     monkeypatch.setattr(operator, "resolve_filing_catalog_paths", lambda: paths)
     monkeypatch.setattr(
-        "edgar_sec.infra.storage.dag.menu.run_dag_menu",
+        "edgar_sec.infra.storage.dag.operator.menu.run_dag_menu",
         lambda config, argv=None: calls.append((config, argv)) or 0,
     )
 

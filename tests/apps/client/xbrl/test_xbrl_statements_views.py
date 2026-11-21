@@ -1,6 +1,6 @@
 """Tests proving statement topic views, fair-value hierarchy, and composer parity."""
 
-from edgar_sec.engine.xbrl.solve.composer import StatementComposer
+from edgar_sec.engine.xbrl.solve.statements.composer import StatementComposer
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.apps.client.xbrl.xbrl_support import _create_xbrl_facade, _sub_root
 from tests.engine.xbrl.solve.conftest import (

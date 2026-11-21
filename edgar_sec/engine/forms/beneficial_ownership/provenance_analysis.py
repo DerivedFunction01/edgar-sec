@@ -3,7 +3,7 @@ from __future__ import annotations
 import xml.etree.ElementTree as ET
 from typing import Any
 
-from edgar_sec.engine.forms.common.extraction import local_name
+from edgar_sec.engine.forms.common.fields.extraction import local_name
 
 
 def _field_target_exists(root: ET.Element, field_path: str) -> bool:

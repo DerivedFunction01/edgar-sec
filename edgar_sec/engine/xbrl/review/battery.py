@@ -12,12 +12,12 @@ from dataclasses import dataclass
 from typing import Any
 
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     QueryMode,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 
 from edgar_sec.engine.xbrl.review.battery_entries import (
     BatteryEntry,

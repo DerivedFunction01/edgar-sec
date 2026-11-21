@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_specs import (

@@ -66,12 +66,12 @@ from edgar_sec.engine.forms.cover.reflow import (
 from edgar_sec.engine.forms.cover.tables.cleaner import clean_cover_tables
 from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
 from edgar_sec.engine.forms.cover.toc.models import TocSpan
-from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks_in_span
+from edgar_sec.engine.forms.common.marks.marks import canonicalize_filled_marks_in_span
 from edgar_sec.engine.forms.sections.models import NotesSequence, SectionSequence
 from edgar_sec.engine.reflow.engine.mapper import build_line_mapper
 from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
 from edgar_sec.engine.reflow.types import ReflowPolicy, ReflowResult
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 
 
 #: Routes carrying text eligible for prose reflow. Markup, XML, binary, and paper

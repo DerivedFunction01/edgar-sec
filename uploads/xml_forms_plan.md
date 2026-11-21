@@ -572,7 +572,7 @@ from enum import StrEnum
 
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
-from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.model.model import ResolvedGrid
 
 
 class SectionRole(StrEnum):

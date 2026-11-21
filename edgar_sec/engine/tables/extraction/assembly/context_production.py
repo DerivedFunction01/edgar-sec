@@ -12,7 +12,7 @@ import re
 from dataclasses import dataclass, replace
 
 from edgar_sec.engine.forms.normalize import NormalizationResult
-from edgar_sec.engine.tables.extraction.core.context import (
+from edgar_sec.engine.tables.extraction.core.text.context import (
     BreakEvidence,
     BreakRef,
     NoteRef,
@@ -24,8 +24,11 @@ from edgar_sec.engine.tables.extraction.seats.genre_seat import (
     exhibit_stub_cell,
     index_named_label,
 )
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
-from edgar_sec.engine.tables.extraction.core.regions import RegionPath, derive_regions
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.regions import (
+    RegionPath,
+    derive_regions,
+)
 from edgar_sec.engine.tables.extraction.seats.toc_gate import (
     grid_page_ref_share,
     page_ref_cell,

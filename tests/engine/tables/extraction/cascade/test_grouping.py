@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.cascade.grouping import (
     grouping_signatures,
     has_balance_pair,

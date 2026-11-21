@@ -25,7 +25,7 @@ from edgar_sec.domain.taxonomy.jurisdictions import (
     EDGAR_JURISDICTION_CODES,
     edgar_jurisdiction_code_in_text,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     FieldKind,
     FieldSpec,
     build_scalar_evidence_record,
@@ -49,11 +49,11 @@ from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     REPORTING_PERSON_XML_SLOTS,
 )
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
-from edgar_sec.engine.forms.common.numbers import (
+from edgar_sec.engine.forms.common.values.numbers import (
     is_narrative_numeric_reference,
     normalize_schema_number,
 )
-from edgar_sec.engine.forms.common.dates import (
+from edgar_sec.engine.forms.common.values.dates import (
     format_iso_date,
     normalize_iso_date,
     reported_year,
@@ -67,8 +67,8 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     RE_GROUP_OPTION,
 )
-from edgar_sec.engine.forms.common.marks import resolve_checked_labeled_option
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.marks.marks import resolve_checked_labeled_option
+from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
 from edgar_sec.engine.forms.common.signatures.names import clean_signature_name
 
 

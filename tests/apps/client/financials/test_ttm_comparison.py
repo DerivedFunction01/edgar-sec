@@ -22,7 +22,7 @@ from edgar_sec.apps.client.financials.ttm_comparison import (
     facts_ttm,
     facts_ttm_from_store,
 )
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 from edgar_sec.pipelines.metadata_sync.facts.facts_store import open_facts_store
 
 _CIK = 1234

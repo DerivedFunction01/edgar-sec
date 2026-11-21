@@ -10,8 +10,8 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     BENEFICIAL_OWNERSHIP_XML_SPEC,
 )
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
-from edgar_sec.engine.forms.common.dates import external_reference_year
-from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
+from edgar_sec.engine.forms.common.values.dates import external_reference_year
+from edgar_sec.engine.forms.common.xml.native_xml import passthrough_sec_xml
 from edgar_sec.engine.forms.normalize import normalize_document
 from .parser import parse_beneficial_ownership_document
 from .render_to_xml import build_beneficial_ownership_xml

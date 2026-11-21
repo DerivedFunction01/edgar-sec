@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.classification import (
+from edgar_sec.engine.tables.extraction.core.subjects.classification import (
     Classification,
     Evidence,
 )
-from edgar_sec.engine.tables.extraction.cascade.detail_agreement import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.detail_agreement import (
     DETAIL_AGREEMENT_FLOOR,
     DETAIL_AGREEMENT_POINTS,
     find_detail_agreement,
@@ -16,8 +16,8 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
-from edgar_sec.engine.tables.extraction.core.placement import placement_facts
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.text.placement import placement_facts
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     TEST_PLACEMENT_CONSISTENCY,
 )
 from edgar_sec.engine.tables.extraction.core.registry import (

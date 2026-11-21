@@ -18,7 +18,7 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.family_scaffold import (
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import (
     first_group as _first_group,
     name_before_label as _name_before_label,
 )

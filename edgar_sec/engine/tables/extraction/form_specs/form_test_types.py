@@ -6,7 +6,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.profiles import PROV_DECLARED_SPECS
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROV_DECLARED_SPECS,
+)
 
 
 @dataclass(frozen=True, slots=True)

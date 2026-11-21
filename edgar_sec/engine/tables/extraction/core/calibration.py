@@ -12,7 +12,7 @@ from edgar_sec.engine.tables.extraction.core.registry import (
     PatternSpec,
     ProsePatternSpec,
 )
-from edgar_sec.engine.tables.extraction.core.subject_vocabulary import (
+from edgar_sec.engine.tables.extraction.core.subjects.subject_vocabulary import (
     STEP2_PATTERN_ENTRIES,
     STEP3_PATTERN_ENTRIES,
 )

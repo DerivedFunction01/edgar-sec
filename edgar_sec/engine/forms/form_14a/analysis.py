@@ -14,7 +14,7 @@ from edgar_sec.engine.forms.analysis import (
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.row_extraction import scan_numeric_cells
+from edgar_sec.engine.forms.common.fields.row_extraction import scan_numeric_cells
 from edgar_sec.engine.forms.cover.registrant import (
     parse_registrant_identity,
     previous_content_line,

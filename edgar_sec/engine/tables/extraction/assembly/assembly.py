@@ -9,19 +9,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
 
-from edgar_sec.engine.tables.extraction.evidence.admission_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     JOINT_TEST_ID,
     evaluate_commitments_joint,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
     Classification,
     Evidence,
     TableKind,
     classify_filing,
 )
-from edgar_sec.engine.tables.extraction.core.context import Scale, TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import Scale, TableContext
 from edgar_sec.engine.tables.extraction.seats.genre_seat import FULL_REFUSAL_PREFIXES
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.policy import (
     ClassificationPolicy,
     default_policy,

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
 from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
     PENSION_ANCHOR_SPECS,
     PensionText,
@@ -145,6 +147,51 @@ def test_prose_after_completes_allocation_context() -> None:
         prose_after="Assets of the pension plan are held in trust.",
     )
     assert _anchors(completed) == frozenset({"allocation"})
+
+
+def test_multiemployer_leg_fires_on_plan_table() -> None:
+    text = PensionText(
+        grid_text=(
+            "EIN/Pension Plan Number | Reported Status | FIP/RP Status | "
+            "Contributions | Automotive Industries Pension Plan critical "
+            "implemented"
+        ),
+        lead="The following table outlines our participation in "
+        "multiemployer plans considered significant",
+    )
+    assert _anchors(text) == frozenset({"multiemployer"})
+
+
+def test_multiemployer_leg_reads_collective_bargaining_context() -> None:
+    text = PensionText(
+        grid_text=(
+            "EIN/Plan number | Zone status Year Ended | FIP/RP status "
+            "pending/implemented | Expiration dates of "
+            "collective-bargaining agreements"
+        )
+    )
+    assert _anchors(text) == frozenset({"multiemployer"})
+
+
+def test_multiemployer_leg_needs_context() -> None:
+    text = PensionText(
+        grid_text="EIN/Pension Plan Number | FIP/RP Status | Contributions",
+        lead="The following table outlines our participation in retirement plans",
+    )
+    assert "multiemployer" not in _anchors(text)
+
+
+def test_multiemployer_leg_needs_status_and_identification() -> None:
+    no_status = PensionText(
+        grid_text="EIN/Pension Plan Number | Contributions",
+        lead="participation in multiemployer plans",
+    )
+    assert "multiemployer" not in _anchors(no_status)
+    no_plan_number = PensionText(
+        grid_text="EIN | FIP/RP Status | Contributions",
+        lead="participation in multiemployer plans",
+    )
+    assert "multiemployer" not in _anchors(no_plan_number)
 
 
 def test_evaluate_reports_admission_and_detail() -> None:

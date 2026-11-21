@@ -18,13 +18,13 @@ from edgar_sec.domain.taxonomy.jurisdictions import (
     EDGAR_JURISDICTION_CODES,
     edgar_jurisdiction_code_in_text,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     FieldKind,
     FieldSpec,
     extract_value,
 )
-from edgar_sec.engine.forms.common.numbers import normalize_schema_number
-from edgar_sec.engine.forms.common.tables import strip_separator_runs
+from edgar_sec.engine.forms.common.values.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.tables.tables import strip_separator_runs
 
 
 def _first_value(person: ReportingPersonCover, key: str | int) -> str | None:

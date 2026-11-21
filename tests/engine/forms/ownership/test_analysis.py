@@ -7,7 +7,7 @@ from edgar_sec.engine.forms.ownership.analysis import (
     analyze_ownership_review_case,
     summarize_ownership_cases,
 )
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
 
 SAMPLE_CLEAN_XML = b"""<?xml version="1.0" encoding="utf-8"?>
 <ownershipDocument>

@@ -9,7 +9,7 @@ from edgar_sec.engine.forms.form144.securities import (
     parse_table_i_rows,
     parse_table_ii_rows,
 )
-from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.model.model import ResolvedGrid
 
 SAMPLE_HTML = """
 <html><body>

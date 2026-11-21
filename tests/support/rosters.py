@@ -8,7 +8,7 @@ from typing import Any
 
 import pyarrow as pa
 
-from edgar_sec.pipelines.metadata_sync.roster import Roster, write_roster_rows
+from edgar_sec.pipelines.metadata_sync.core.roster import Roster, write_roster_rows
 from tests.support.fixtures import catalog_fixture_path
 from tests.support.scratch import _make_scratch_dir
 

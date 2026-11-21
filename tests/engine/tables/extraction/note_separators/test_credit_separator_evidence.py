@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.note_separators.credit_separator_evidence import (
     CreditSeparatorText,
     evaluate_credit_separator,
@@ -25,8 +27,10 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import FamilyScore
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    FamilyScore,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_CREDIT_SEPARATOR,
     TEST_CREDIT_SEPARATOR,
     profile_for,

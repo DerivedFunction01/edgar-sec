@@ -5,8 +5,10 @@ The cached word-boundary compiler lives in
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.cascade import geometry_scoring
-from edgar_sec.engine.tables.extraction.evidence import derivatives_evidence
+from edgar_sec.engine.tables.extraction.cascade.geometry import geometry_scoring
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet import (
+    derivatives_evidence,
+)
 
 
 def test_binding_is_the_derivatives_home() -> None:

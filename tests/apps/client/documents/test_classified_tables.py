@@ -14,7 +14,10 @@ from edgar_sec.apps.client.caching.content_cache import ContentCache
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.forms.cover.profiles import get_profile
-from edgar_sec.engine.tables.extraction.core.profiles import PROFILES, registry_state
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROFILES,
+    registry_state,
+)
 
 _HTML_10K = b"""<html><body>
 <p>UNITED STATES SECURITIES AND EXCHANGE COMMISSION</p>

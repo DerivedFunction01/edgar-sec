@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.seats.seat_test_specs import (
     SEAT_TEST_SPECS_BY_FAMILY,

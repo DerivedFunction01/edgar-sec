@@ -9,7 +9,7 @@ from edgar_sec.domain.world.currencies import (
     SINGLE_CHARACTER_SYMBOL_CLASS,
     SINGLE_CHARACTER_SYMBOLS,
 )
-from edgar_sec.engine.forms.common import numbers
+from edgar_sec.engine.forms.common.values import numbers
 from edgar_sec.engine.forms.form144.sale_parser import _USD_PREFIX_SPELLINGS
 from edgar_sec.engine.tables import numeric_cells
 

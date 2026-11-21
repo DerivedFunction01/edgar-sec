@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.note_titles import (
+from edgar_sec.engine.tables.extraction.core.text.note_titles import (
     NOTE_TITLE_SPECS,
     NOTE_TITLES_BY_FAMILY,
 )

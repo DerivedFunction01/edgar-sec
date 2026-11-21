@@ -8,7 +8,7 @@ aggregator read. Data only — no evaluator logic lives here.
 
 ## Contracts
 
-- **Every spec module reads its family's profile from `core.profiles`**: the
+- **Every spec module reads its family's profile from `core.subjects.profiles`**: the
   profile registry is the single home of the supported family set.
 - **Every pattern, bound, and exclusion carries its measured value** and a
   provenance reference to the calibration record it came from (the parent

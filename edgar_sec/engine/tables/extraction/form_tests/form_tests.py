@@ -6,35 +6,39 @@ competition; passed tests feed both competitions as evidence.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.evidence.admission_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     EVALUATORS as ADMISSION_EVALUATORS,
 )
-from edgar_sec.engine.tables.extraction.evidence.aro_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.aro_evidence import (
     evaluate_form_test_aro,
 )
 from edgar_sec.engine.tables.extraction.form_tests.composition import (
     evaluate_composition,
 )
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     evaluate_form_test_core_form,
 )
-from edgar_sec.engine.tables.extraction.evidence.derivatives_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.derivatives_evidence import (
     evaluate_form_test_derivatives,
 )
-from edgar_sec.engine.tables.extraction.evidence.eps_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.equity.eps_evidence import (
     evaluate_form_test_eps,
     evaluate_form_test_eps_detector,
 )
-from edgar_sec.engine.tables.extraction.evidence.inventory_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.inventory_evidence import (
     evaluate_form_test_inventory,
 )
-from edgar_sec.engine.tables.extraction.evidence.labor_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.equity.eps_refusal_evidence import (
+    evaluate_form_test_eps_adjacency_refusal,
+    evaluate_form_test_eps_proforma_refusal,
+)
+from edgar_sec.engine.tables.extraction.evidence.form.labor_evidence import (
     evaluate_form_test_labor,
 )
-from edgar_sec.engine.tables.extraction.evidence.lease_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.lease_evidence import (
     evaluate_form_test_lease,
 )
-from edgar_sec.engine.tables.extraction.evidence.stock_comp_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.equity.stock_comp_evidence import (
     evaluate_form_test_stock_comp,
 )
 from edgar_sec.engine.tables.extraction.form_tests.measure_set import (
@@ -49,7 +53,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_combination_evidence imp
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     evaluate_form_test_pension_routed,
 )
-from edgar_sec.engine.tables.extraction.evidence.ppe_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.ppe_evidence import (
     evaluate_form_test_ppe,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
@@ -59,8 +63,8 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
     FormTestSpec,
 )
-from edgar_sec.engine.tables.extraction.core.placement import PlacementFacts
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.text.placement import PlacementFacts
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     TEST_ARO_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,
@@ -74,6 +78,8 @@ from edgar_sec.engine.tables.extraction.core.profiles import (
     TEST_DERIVATIVES_EVIDENCE,
     TEST_EPS_DETECTOR,
     TEST_EPS_EVIDENCE,
+    TEST_EPS_ADJACENCY_REFUSAL,
+    TEST_EPS_PROFORMA_REFUSAL,
     TEST_EQUITY_SEPARATOR,
     TEST_FORM_SEPARATION,
     TEST_INVENTORY_EVIDENCE,
@@ -100,7 +106,7 @@ from edgar_sec.engine.tables.extraction.core.profiles import (
     TEST_WALK,
     TEST_WARRANTY_EVIDENCE,
 )
-from edgar_sec.engine.tables.extraction.evidence.restructuring_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.income_statement.restructuring_evidence import (
     evaluate_form_test_restructuring,
 )
 from edgar_sec.engine.tables.extraction.form_tests.separator_form_tests import (
@@ -125,15 +131,15 @@ from edgar_sec.engine.tables.extraction.form_tests.signal_form_tests import (
 from edgar_sec.engine.tables.extraction.seats.statement_seat import (
     evaluate_statement_seat,
 )
-from edgar_sec.engine.tables.extraction.evidence.credit_losses_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.credit_losses_evidence import (
     evaluate_form_test_credit_losses,
 )
-from edgar_sec.engine.tables.extraction.evidence.tax_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.income_statement.tax_evidence import (
     evaluate_form_test_tax,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.engine.tables.extraction.form_tests.walk_form_tests import _evaluate_walk
-from edgar_sec.engine.tables.extraction.evidence.warranty_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.balance_sheet.warranty_evidence import (
     evaluate_form_test_warranty,
 )
 from edgar_sec.engine.tables.extraction.form_tests.year_ladder import (
@@ -272,6 +278,38 @@ def _evaluate_eps(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
 
 def _evaluate_eps_detector(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     result = evaluate_form_test_eps_detector(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.evaluable and not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_eps_adjacency_refusal(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_eps_adjacency_refusal(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        result.evaluable and not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_eps_proforma_refusal(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_eps_proforma_refusal(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,
@@ -477,6 +515,8 @@ _EVALUATORS = {
     TEST_FORM_SEPARATION: _evaluate_form_separation,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_EPS_DETECTOR: _evaluate_eps_detector,
+    TEST_EPS_ADJACENCY_REFUSAL: _evaluate_eps_adjacency_refusal,
+    TEST_EPS_PROFORMA_REFUSAL: _evaluate_eps_proforma_refusal,
     TEST_PPE_EVIDENCE: _evaluate_ppe,
     TEST_RESTRUCTURING_EVIDENCE: _evaluate_restructuring,
     TEST_ARO_EVIDENCE: _evaluate_aro,

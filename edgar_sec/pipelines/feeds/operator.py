@@ -94,7 +94,7 @@ def status(state: WizardState) -> None:
 
 def open_feeds_dag_console(state: WizardState) -> None:
     """Launch the interactive DAG lifecycle console for ledger snapshots."""
-    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from edgar_sec.infra.storage.dag.operator.menu import DAGMenuConfig, run_dag_menu
     from .specs import FEED_RELATION_SPECS
 
     config = DAGMenuConfig(

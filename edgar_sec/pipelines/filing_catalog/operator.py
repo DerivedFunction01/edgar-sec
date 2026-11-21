@@ -201,7 +201,7 @@ def _ask_parent_plan() -> tuple[str, int] | None:
 
 
 def _action_materialize() -> None:
-    from edgar_sec.infra.storage.dag.menu import prompt_dag_target
+    from edgar_sec.infra.storage.dag.operator.menu import prompt_dag_target
     from .paths import resolve_metadata_paths
 
     meta_paths = resolve_metadata_paths()
@@ -369,7 +369,7 @@ def _action_status() -> None:
 
 def open_catalog_dag_console() -> None:
     """Launch interactive DAG lifecycle console for filing catalog snapshots."""
-    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from edgar_sec.infra.storage.dag.operator.menu import DAGMenuConfig, run_dag_menu
     from .specs import CATALOG_RELATION_SPECS
 
     paths = resolve_filing_catalog_paths()

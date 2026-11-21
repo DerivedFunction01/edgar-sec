@@ -28,7 +28,7 @@ from edgar_sec.apps.client.financials.financials_ttm import (
     _discrete_quarters,
     _ttm_window,
 )
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 
 if TYPE_CHECKING:
     from edgar_sec.pipelines.metadata_sync.facts.facts_store import StoredFact

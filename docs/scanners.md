@@ -51,8 +51,8 @@ private copy wherever it appears, not only a duplicated name.
   one sanctioned export surface, recorded as a data table the scanner consumes
   (word token in `foundation/text/words.py`, full date, year, and month in
   `foundation/text/dates.py`, scale patterns in `engine/tables/patterns.py`,
-  extraction normalisers in `extraction/core/normalize.py`, the classifier registry in
-  `extraction/core/profiles.py`, work-item ids in
+  extraction normalisers in `extraction/core/text/normalize.py`, the classifier registry in
+  `extraction/core/subjects/profiles.py`, work-item ids in
   `pipelines/table_classification/planner.py`); a new family is a new
   table row, not new rule code. Bans definitions of a family's names outside its
   home, with no exceptions — assignment detection is statement-level (a keyword
@@ -70,11 +70,11 @@ private copy wherever it appears, not only a duplicated name.
   `engine/tables/numeric_cells.py`, private scale vocabularies (scale-word
   alternations and `in <scale>` labels) outside `engine/tables/patterns.py`,
   and private percent recognizers (digit cores with a `%` tail and
-  percent-sign alternations) outside `engine/forms/common/numbers.py`.
+  percent-sign alternations) outside `engine/forms/common/values/numbers.py`.
 - `page-patterns`: Bans private page-reference cores (plain, page-no., and letter-dash forms as spelled in pattern source) outside `foundation/text/patterns.py`, the page-reference vocabulary's one home; page-marker extraction shapes (page N of M, whole-line page labels, optional-prefix line classifiers, compositions over the home's fragments) are not flagged.
 - `period-patterns`: Bans private period-phrase recognizers outside `foundation/text/dates.py`, private total-row recognizers outside `engine/tables/extraction/core/typed_rows.py`, private whitespace-collapse literals outside `foundation/text/patterns.py` and `foundation/text/normalize.py`, and private table-tag recognizers outside `foundation/text/patterns.py`.
-- `helper-duplicates`: Bans function bodies duplicated across modules or against the scaffold and operator-kit homes, and private parameterized-get helpers (`return x.get("<key>", {})`) outside `engine/forms/common/family_scaffold.py`.
-- `identifier-patterns`: Bans private identifier recognizers (accession cores and digits, CIK member names, commission file caption/number, EIN, registration-number values, CUSIP value class) outside `domain/identity.py`, `engine/forms/common/entities.py`, and `pipelines/metadata_sync/paths.py`; SQL regexp literals, SEC URL paths, and the sanctioned divergences are allowed.
+- `helper-duplicates`: Bans function bodies duplicated across modules or against the scaffold and operator-kit homes, and private parameterized-get helpers (`return x.get("<key>", {})`) outside `engine/forms/common/scaffold/family_scaffold.py`.
+- `identifier-patterns`: Bans private identifier recognizers (accession cores and digits, CIK member names, commission file caption/number, EIN, registration-number values, CUSIP value class) outside `domain/identity.py`, `engine/forms/common/identity/entities.py`, and `pipelines/metadata_sync/paths.py`; SQL regexp literals, SEC URL paths, and the sanctioned divergences are allowed.
 - `refcell-patterns`: Bans private note/item/part reference cores (caption cores as spelled in pattern source) outside `engine/tables/toc/patterns.py`, the reference vocabulary's one home; slot prefixes, boundary terms, item ranges, and the full `[IVXLCDM]` PART composition are not flagged.
 - `sql-interpolation`: Bans SQL assembled from unescaped values at a query sink. It
   inspects the argument of `execute` / `executemany` / `executescript` and reports an
@@ -94,9 +94,9 @@ private copy wherever it appears, not only a duplicated name.
   names and `form ==` comparisons — in generic code, so form-specific
   code stays confined to the form packages (`edgar_sec/domain/forms/`,
   the form-specific `engine/forms/` packages, and their tests).
-- `form-vocabulary`: Bans private CUSIP regexes outside `engine/forms/common/entities.py`,
+- `form-vocabulary`: Bans private CUSIP regexes outside `engine/forms/common/identity/entities.py`,
   DOM table markup regexes outside legacy ASCII table unwrappers, and duplicate unit
-  suffix literals outside `engine/forms/common/numbers.py`.
+  suffix literals outside `engine/forms/common/values/numbers.py`.
 - `sec-surface`: Bans SEC URL shapes constructed anywhere in the codebase that the
   `domain/sec_urls.py` rule table cannot classify into a governed surface, and any
   classified or builder-named surface with no freshness-policy row in the SEC settings

@@ -1,6 +1,6 @@
 """Contract tests for the subject-evidence map data and loader."""
 
-from edgar_sec.engine.tables.extraction.core.subject_evidence import (
+from edgar_sec.engine.tables.extraction.core.subjects.subject_evidence import (
     CHANNELS,
     CLOSURE_POLICY,
     MAP_VERSION,

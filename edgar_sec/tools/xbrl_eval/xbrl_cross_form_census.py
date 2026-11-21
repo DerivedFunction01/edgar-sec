@@ -22,12 +22,12 @@ from edgar_sec.engine.xbrl.review.cross_form import (
     summarize_cross_form,
 )
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     FinancialQueryEngine,
     QueryMode,
 )
-from edgar_sec.engine.xbrl.solve.scoping import (
+from edgar_sec.engine.xbrl.solve.core.scoping import (
     AmendmentLineage,
     FactScope,
     FilingRef,
@@ -35,9 +35,9 @@ from edgar_sec.engine.xbrl.solve.scoping import (
     fact_key,
     supersede_facts,
 )
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list

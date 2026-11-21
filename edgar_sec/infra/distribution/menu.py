@@ -22,7 +22,7 @@ from edgar_sec.foundation.runtime.render import (
     RenderComponent,
     render_output,
 )
-from edgar_sec.infra.storage.dag.menu import _rendered
+from edgar_sec.infra.storage.dag.operator.menu import _rendered
 
 from .cli import cmd_commands, cmd_export, cmd_import, cmd_list, cmd_worker
 from .discovery import discover_bundles, resolve_bundle_choice

@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.form_specs.composition_specs import (
     CompositionSpec,
     composition_spec_for,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES,
     TEST_COMPOSITION_TWIN,
 )

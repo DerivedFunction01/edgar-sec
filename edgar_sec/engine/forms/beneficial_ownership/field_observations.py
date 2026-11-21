@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import xml.etree.ElementTree as ET
 
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     deep_element_index,
     grouped_deep_elements,
 )

@@ -11,7 +11,11 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from edgar_sec.domain.document.aggregate import FilingAggregate
-from edgar_sec.engine.xbrl.solve.scoping import FilingRef, base_form, build_lineages
+from edgar_sec.engine.xbrl.solve.core.scoping import (
+    FilingRef,
+    base_form,
+    build_lineages,
+)
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.caching.cache import DocumentCache

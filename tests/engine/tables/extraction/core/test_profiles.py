@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     FORM_TESTS,
     KIND_GENRE_SEAT,
     PROFILES,

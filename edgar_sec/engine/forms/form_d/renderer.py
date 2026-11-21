@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING
 from edgar_sec.domain.forms.families.form_d.models import FormDDocument
 from edgar_sec.domain.forms.families.form_d.taxonomy import FORMD_XML_SPEC
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
-from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
-from edgar_sec.engine.forms.common.xml_builder import (
+from edgar_sec.engine.forms.common.xml.native_xml import passthrough_sec_xml
+from edgar_sec.engine.forms.common.xml.xml_builder import (
     add_text_element,
     canonical_xml_output,
     child_element,

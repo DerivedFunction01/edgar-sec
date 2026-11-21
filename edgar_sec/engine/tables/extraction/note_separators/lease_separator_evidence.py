@@ -9,7 +9,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
     norml,
 )
@@ -151,7 +151,7 @@ def apply_lease_assignment(geometries, results):
     seat has seated the same geometry (assign_sibling_seat).
     It only removes claims, so the primary gate stays final.
     """
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

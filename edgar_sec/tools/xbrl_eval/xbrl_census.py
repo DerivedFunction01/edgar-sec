@@ -16,9 +16,9 @@ from edgar_sec.engine.xbrl.review.benchmark import (
     summarize_census,
 )
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.query import QueryMode, QueryStatus
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.core.query import QueryMode, QueryStatus
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.tools.xbrl_eval.xbrl_census_corpus import (
@@ -661,10 +661,10 @@ def run_pair_gate() -> object:
         evaluate_relations,
     )
     from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-    from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortLookup
-    from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
-    from edgar_sec.engine.xbrl.solve.query import FinancialQueryEngine
-    from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+    from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortLookup
+    from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_cohort_table
+    from edgar_sec.engine.xbrl.solve.core.query import FinancialQueryEngine
+    from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
     from edgar_sec.tools.xbrl_eval.xbrl_census_corpus import (
         latest_scoped_fact,
         latest_undimensioned_fact,
@@ -716,8 +716,8 @@ def run_battery_gate() -> object:
     """Evaluate the answerability battery against the seed bundles."""
     from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
     from edgar_sec.engine.xbrl.review.battery import BATTERY_SET, evaluate_battery
-    from edgar_sec.engine.xbrl.solve.query import FinancialQueryEngine
-    from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+    from edgar_sec.engine.xbrl.solve.core.query import FinancialQueryEngine
+    from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
     from edgar_sec.tools.xbrl_eval.xbrl_census_corpus import (
         load_seed_arcs,
         load_seed_facts,

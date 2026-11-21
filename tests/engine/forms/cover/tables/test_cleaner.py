@@ -5,7 +5,7 @@ from __future__ import annotations
 from edgar_sec.engine.forms.cover.models import BoundaryMethod, CoverBoundary
 from edgar_sec.engine.forms.cover.tables.cleaner import clean_cover_tables
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 
 
 def test_clean_cover_tables_unwraps_report_period_table() -> None:

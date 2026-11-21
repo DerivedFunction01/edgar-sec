@@ -17,7 +17,7 @@ from edgar_sec.engine.tables.extraction.separators.combined_operations_separator
     MEASURE_SET_TEST_ID,
     CombinedOperationsSeparatorSpec,
 )
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
@@ -25,7 +25,7 @@ from edgar_sec.engine.tables.extraction.form_tests.measure_set import (
     evaluate_measure_set,
     group_presence,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_MEASURE_SET,
 )
@@ -33,7 +33,7 @@ from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 
 if TYPE_CHECKING:
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         CompetitionResult,
     )
 
@@ -186,7 +186,7 @@ def _rank_key(geometry, result: CompetitionResult, family: str):
 
 def _refuse(result: CompetitionResult, family: str, note: str) -> CompetitionResult:
     """Drop one family's claim, stamping the act on its score."""
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

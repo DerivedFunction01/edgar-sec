@@ -19,7 +19,7 @@ from edgar_sec.engine.forms.exhibit_resolution import (
 )
 from edgar_sec.engine.forms.normalize import normalize_document
 from edgar_sec.engine.tables.extraction.assembly.assembly import assemble
-from edgar_sec.engine.tables.extraction.cascade.classify import classify_filing
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_filing
 from edgar_sec.engine.tables.extraction.assembly.context_production import (
     DocumentInput,
     produce_contexts,

@@ -27,7 +27,7 @@ from edgar_sec.engine.document_processing.acquisition_capabilities import (
     resolve_acquisition_capability,
 )
 from edgar_sec.engine.document_processing.capabilities import operation_output_kind
-from edgar_sec.engine.forms.common.unparsed import (
+from edgar_sec.engine.forms.common.xml.unparsed import (
     UNPARSED_SECTIONS_FILE,
     serialize_unparsed_sections,
 )

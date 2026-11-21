@@ -26,7 +26,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     ordered_parts_fingerprint,
 )
-from edgar_sec.infra.storage.dag.publication import publish_node, read_pointer
+from edgar_sec.infra.storage.dag.working.publication import publish_node, read_pointer
 from edgar_sec.infra.storage.dag.spec import RelationSpec
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
 

@@ -20,8 +20,8 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import COMMISSION_FILE_CAPTION_RE
-from edgar_sec.engine.forms.common.family_scaffold import (
+from edgar_sec.engine.forms.common.identity.entities import COMMISSION_FILE_CAPTION_RE
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import (
     name_before_label as _name_before_label,
 )
 from edgar_sec.engine.forms.cover.registrant import (

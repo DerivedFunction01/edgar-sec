@@ -11,6 +11,14 @@ carries its own exemptions inline, so the rule a scanner enforces and the files 
 cannot apply to stay one edit in one place. There is no configuration file here: a
 line that trips a scanner can only be silenced by changing the scanner.
 
+The registry and the shared support modules (`base`, `files`, `lines`) live at
+this package's root. The scanner modules are grouped by family into
+subpackages: `patterns` (recognizer-pattern cores and their registry),
+`forms` (form-domain rules), `structure` (layering, file shape, shims, and
+duplication), `runtime` (environment, resources, exits, and secrets), and
+`mechanics` (IO, SQL, regex, and string construction). The test tree mirrors
+the same groups.
+
 ## Contracts
 
 **Guarantees this package makes to its callers**
@@ -37,8 +45,9 @@ shim is usually announced in prose rather than in code.
 **Obligations callers place on this package**
 
 - Run the gate from the repository root, because discovery is cwd-anchored.
-- A new scanner means: a module in this package, an entry in `ALL_SCANNERS`, a
-  mirrored `tests/foundation/scanners/test_<name>.py`, and a line in the
+- A new scanner means: a module in the family subpackage its subject belongs
+  to, an entry in `ALL_SCANNERS`, a mirrored
+  `tests/foundation/scanners/<family>/test_<name>.py`, and a line in the
   `docs/scanners.md` catalog.
 - Do not raise a finding from a comment when the rule is about code. Turn off
   comment skipping only when the prose is the point.

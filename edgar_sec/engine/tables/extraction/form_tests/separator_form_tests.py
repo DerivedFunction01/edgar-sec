@@ -39,7 +39,7 @@ from edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_e
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
     evaluate_form_test_lease_separator,
 )
-from edgar_sec.engine.tables.extraction.evidence.form_separation_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.form_separation_evidence import (
     evaluate_form_test_form_separation,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (

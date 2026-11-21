@@ -24,9 +24,15 @@ from edgar_sec.engine.xbrl.schema.models import (
     XbrlFact,
     qname_local,
 )
-from edgar_sec.engine.xbrl.solve.concept_table import ConceptRecord, ConceptTable
-from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFact, CohortFactMatch
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer, TokenizedFact
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import (
+    ConceptRecord,
+    ConceptTable,
+)
+from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortFact, CohortFactMatch
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import (
+    ConceptTokenizer,
+    TokenizedFact,
+)
 from edgar_sec.engine.xbrl.storage.storage import (
     facts_from_arrow_table as _facts_from_arrow_table,
 )
@@ -34,8 +40,8 @@ from edgar_sec.engine.xbrl.taxonomy.archive import CURRENT_SLICES, load_slice
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.resolution import compile_virtual_views
-from edgar_sec.infra.storage.dag.traversal import walk_lineage
+from edgar_sec.infra.storage.dag.working.resolution import compile_virtual_views
+from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
 from edgar_sec.pipelines.xbrl_review.paths import xbrl_paths
 from edgar_sec.pipelines.xbrl_review.snapshot.specs import XBRL_RELATIONS

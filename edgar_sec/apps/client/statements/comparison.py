@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Any
 
 from edgar_sec.apps.client.statements.markdown import comparison_to_markdown
 from edgar_sec.apps.client.statements.rendering import render_comparison_table
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 
 if TYPE_CHECKING:
     from edgar_sec.infra.storage.corpus_index import CorpusIndex

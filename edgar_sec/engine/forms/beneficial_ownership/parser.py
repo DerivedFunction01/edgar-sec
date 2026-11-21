@@ -23,11 +23,11 @@ from edgar_sec.engine.document.page_markers.candidates import looks_like_prose
 from edgar_sec.engine.document.page_markers.signatures import (
     find_signature_regions,
 )
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     is_boilerplate_entity_name,
     is_valid_entity_name,
 )
-from edgar_sec.engine.forms.common.tables import strip_markup_tags
+from edgar_sec.engine.forms.common.tables.tables import strip_markup_tags
 from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_signature_candidate,
 )
@@ -36,7 +36,7 @@ from edgar_sec.engine.forms.common.signatures.names import (
     is_valid_signature_name,
 )
 from edgar_sec.engine.forms.common.signatures.patterns import OFFICER_TITLE_RE
-from edgar_sec.engine.forms.common.dates import normalize_iso_date, reported_year
+from edgar_sec.engine.forms.common.values.dates import normalize_iso_date, reported_year
 from edgar_sec.engine.forms.normalize import NormalizationResult
 from edgar_sec.engine.forms.sections.items.candidates import extract_section_candidates
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
@@ -55,7 +55,7 @@ from edgar_sec.engine.forms.common.signatures.beneficial_ownership import (
     extract_beneficial_ownership_signature_block,
     locate_signature_region,
 )
-from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.values.numbers import normalize_schema_number
 from .vocabulary import (
     REPORTING_PERSON_SLOT_NUMBERS_13D,
     REPORTING_PERSON_SLOT_NUMBERS_13G,

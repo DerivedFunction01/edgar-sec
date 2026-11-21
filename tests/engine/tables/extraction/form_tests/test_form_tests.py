@@ -2,17 +2,19 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import candidate_scores
-from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import score_geometry
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import candidate_scores
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    score_geometry,
+)
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     geometry_text_from_table,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
@@ -25,7 +27,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
 from edgar_sec.engine.tables.extraction.form_specs.walk_specs import (
     WALK_SPECS_BY_TEST_ID,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     FORM_TESTS,
     TEST_SEGMENT_FORM,
     TEST_WALK,

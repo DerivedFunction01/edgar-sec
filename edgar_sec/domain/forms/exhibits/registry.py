@@ -4,43 +4,47 @@ from __future__ import annotations
 
 from edgar_sec.domain.forms.common.exhibits import ExhibitIdentity, ExhibitPack
 from edgar_sec.domain.forms.exhibits.coverage import get_coverage_entry
-from edgar_sec.domain.forms.exhibits.packs import (
-    ex1,
-    ex2,
+from edgar_sec.domain.forms.exhibits.packs.tier1 import (
     ex3_1,
     ex3_2,
     ex4,
+    ex10,
+    ex21,
+    ex23,
+    ex24,
+    ex31_i,
+    ex32,
+)
+from edgar_sec.domain.forms.exhibits.packs.tier2 import (
+    ex1,
+    ex2,
     ex5,
     ex8,
-    ex9,
-    ex10,
-    ex13,
     ex14,
     ex15,
     ex16,
     ex17,
     ex18,
     ex19,
-    ex20,
-    ex21,
     ex22,
-    ex23,
-    ex24,
     ex25,
-    ex31_i,
+    ex97,
+    ex99,
+    ex107,
+)
+from edgar_sec.domain.forms.exhibits.packs.tier3 import (
+    ex9,
+    ex13,
+    ex20,
     ex31_ii,
-    ex32,
     ex33,
     ex34,
     ex35,
     ex36,
     ex95,
     ex96,
-    ex97,
     ex98,
-    ex99,
     ex106,
-    ex107,
 )
 
 _PACK_BY_CODE: dict[tuple[str, str], ExhibitPack] = {

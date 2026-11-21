@@ -21,7 +21,7 @@ from edgar_sec.engine.xbrl.review.chains import CHAIN_SET
 from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
 from tests.support.fixtures import cohort_registry_path, fixture_path
 
 
@@ -161,8 +161,8 @@ def synthetic_lookup(tmp_path: Path):
     """Two one-filing bundles with payables and a euro-denominated twin."""
     from edgar_sec.domain.identity import AccessionNumber
     from edgar_sec.engine.xbrl.schema.models import XbrlFact
-    from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortLookup
-    from edgar_sec.engine.xbrl.solve.concept_table import (
+    from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortLookup
+    from edgar_sec.engine.xbrl.solve.concepts.concept_table import (
         CohortEntry,
         build_cohort_table,
     )

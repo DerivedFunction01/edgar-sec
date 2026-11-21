@@ -27,9 +27,9 @@ from edgar_sec.apps.client.statements.rendering import (
     segment_breakdown_to_dataframe,
     statement_to_dataframe,
 )
-from edgar_sec.engine.xbrl.solve.antichain import AntiChainOutcome
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
-from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
+from edgar_sec.engine.xbrl.solve.core.antichain import AntiChainOutcome
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.statements.rollforward_graphs import (
     CashRollforwardGraph,
     EquityComponentRollforward,
     EquityRollforwardGraph,
@@ -40,7 +40,7 @@ from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
     PensionRollforwardSide,
     SegmentBreakdownGraph,
 )
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     DebtStructureGraph,
     DerivativePortfolioGraph,
     StatementGraph,

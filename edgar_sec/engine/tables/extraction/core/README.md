@@ -5,7 +5,10 @@
 The shared foundation of the extraction package: the context model (`context`),
 typed-row structuring (`typed_rows`), the measured registry (`registry`) and the
 family profile registry (`profiles`), and the text, period, and placement
-primitives every other extraction subpackage builds on.
+primitives every other extraction subpackage builds on. The package groups
+into `subjects/` (profiles, classification, and subject vocabulary) and
+`text/` (context and the text primitives); calibration, policy, the
+registry, typed rows, and validation stay at the root.
 
 ## Contracts
 
@@ -18,8 +21,8 @@ primitives every other extraction subpackage builds on.
   a family outside the registry does not compete — absence is the whole
   mechanism, never a code branch.
 - **The subject-evidence map is data, not code**: `subject_evidence` loads the
-  versioned flat map beside it (`subject_evidence_map.json`, next to the
-  registry); it carries free-text evidence only.
+  versioned flat map beside it (`subject_evidence_map.json`, in `subjects/`);
+  it carries free-text evidence only.
 - **Region is hard context** (`regions`): a geometry inside a signature region
   is never a statement candidate, whatever its vocabulary scores.
 

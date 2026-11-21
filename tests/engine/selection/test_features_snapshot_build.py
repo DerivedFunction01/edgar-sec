@@ -15,7 +15,7 @@ from edgar_sec.engine.selection.features import (
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.engine.selection.snapshot import SnapshotPaths, feature_branch_name
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.retention import analyze_retention
+from edgar_sec.infra.storage.dag.working.retention import analyze_retention
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths

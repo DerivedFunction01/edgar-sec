@@ -6,18 +6,18 @@ Grids mirror named Step 6 specimen shapes; facts ride the context.
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.annual.location import section_scopes
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import classify_table
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_table
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import (
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
     geometry_text_from_table,
 )
-from edgar_sec.engine.tables.extraction.core.context import (
+from edgar_sec.engine.tables.extraction.core.text.context import (
     NoteRef,
     SectionRef,
     TableContext,

@@ -18,7 +18,7 @@ import tarfile
 import tempfile
 from pathlib import Path
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 RETIRED_REF = "06af1209"

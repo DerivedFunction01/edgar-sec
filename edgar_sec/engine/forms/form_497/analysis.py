@@ -12,8 +12,8 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import extract_cusip_near_caption
-from edgar_sec.engine.forms.common.registrant_scan import (
+from edgar_sec.engine.forms.common.identity.entities import extract_cusip_near_caption
+from edgar_sec.engine.forms.common.identity.registrant_scan import (
     FORM_497_SCAN,
     scan_registrant_name,
 )

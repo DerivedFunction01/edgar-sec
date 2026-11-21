@@ -4,7 +4,7 @@ from edgar_sec.apps.client.core.kernel import FilingKernel
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
-from edgar_sec.engine.xbrl.solve.scoping import FilingRef, build_lineages
+from edgar_sec.engine.xbrl.solve.core.scoping import FilingRef, build_lineages
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import (
     load_seed_calculation_arcs,

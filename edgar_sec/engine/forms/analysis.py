@@ -24,7 +24,7 @@ from edgar_sec.engine.forms.cover.models import (
 from edgar_sec.engine.forms.cover.profiles import get_profile
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.forms.sections.notes.detector import detect_notes_sequence
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 from edgar_sec.engine.tables.protection.tags import (
     find_table_spans,
     strip_table_wrapper_tags,

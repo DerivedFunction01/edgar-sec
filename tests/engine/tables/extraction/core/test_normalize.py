@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.engine.tables.extraction.core.normalize import (
+from edgar_sec.engine.tables.extraction.core.text.normalize import (
     collapse_text,
     normalize_label,
     normalize_text,

@@ -16,27 +16,27 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
 )
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     IRS_RE,
     is_boilerplate_entity_name,
     is_street_address_value,
 )
-from edgar_sec.engine.forms.common.marks import (
+from edgar_sec.engine.forms.common.marks.marks import (
     canonicalize_mark_tokens,
     mark_state_in,
     resolve_checked_labeled_option,
 )
-from edgar_sec.engine.forms.common.numbers import (
+from edgar_sec.engine.forms.common.values.numbers import (
     is_zero_marker,
     normalize_integer_stripping_units,
     normalize_schema_number,
     strip_unit_suffix,
 )
-from edgar_sec.engine.forms.common.statutory import (
+from edgar_sec.engine.forms.common.phrases.statutory import (
     HEADER_LEAK_RE,
     strip_form_prompt_prefix,
 )
-from edgar_sec.engine.forms.common.tables import strip_markup_tags
+from edgar_sec.engine.forms.common.tables.tables import strip_markup_tags
 from edgar_sec.engine.forms.cover.registrant import extract_irs_number
 from edgar_sec.engine.tables.toc.patterns import RE_SEE_REFERENCE
 from edgar_sec.foundation.regex.builder import build_alternation

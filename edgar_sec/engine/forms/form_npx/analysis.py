@@ -7,8 +7,8 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.families.form_npx.models import FormNPxDocument
-from edgar_sec.engine.forms.common.entities import is_valid_cusip
-from edgar_sec.engine.forms.common.family_scaffold import empty_report
+from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import empty_report
 from edgar_sec.engine.forms.form_npx.xml_parser import parse_npx_xml
 
 _CORE_FIELDS = (

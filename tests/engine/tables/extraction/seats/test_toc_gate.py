@@ -2,16 +2,16 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.cascade.classify import (
+from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
     classify_filing,
     classify_table,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.seats.toc_gate import toc_refusal, toc_signals
 from edgar_sec.engine.tables.extraction.core.typed_rows import (
     CaptionInfo,

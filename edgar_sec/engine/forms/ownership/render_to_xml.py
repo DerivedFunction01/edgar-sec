@@ -14,12 +14,12 @@ from edgar_sec.domain.forms.families.ownership.taxonomy import (
 )
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
-from edgar_sec.engine.forms.common.dates import (
+from edgar_sec.engine.forms.common.values.dates import (
     external_reference_year,
     normalize_iso_date,
     resolve_reference_year,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     FieldKind,
     FieldSpec,
     add_field_element,
@@ -29,26 +29,26 @@ from edgar_sec.engine.forms.common.extraction import (
     extract_value,
     normalize_value,
 )
-from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
-from edgar_sec.engine.forms.common.row_extraction import (
+from edgar_sec.engine.forms.common.xml.native_xml import passthrough_sec_xml
+from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.fields.row_extraction import (
     RowSpec,
     normalize_row_record,
     row_field as _row_field,
 )
-from edgar_sec.engine.forms.ownership.field_specs import OWNERSHIP_METADATA_FIELDS
+from edgar_sec.engine.forms.ownership.specs.field_specs import OWNERSHIP_METADATA_FIELDS
 from edgar_sec.engine.forms.ownership.footnotes import parse_footnotes
-from edgar_sec.engine.forms.ownership.metadata_parser import parse_metadata
-from edgar_sec.engine.forms.ownership.row_specs import (
+from edgar_sec.engine.forms.ownership.parsers.metadata_parser import parse_metadata
+from edgar_sec.engine.forms.ownership.specs.row_specs import (
     OWNERSHIP_TABLE_I_ROW_SPEC,
     OWNERSHIP_TABLE_II_ROW_SPEC,
 )
-from edgar_sec.engine.forms.ownership.table_common import (
+from edgar_sec.engine.forms.ownership.tables.table_common import (
     DerivativeTransaction,
     NonDerivativeTransaction,
 )
-from edgar_sec.engine.forms.ownership.table_i import parse_table_i_rows
-from edgar_sec.engine.forms.ownership.table_ii import parse_table_ii_rows
+from edgar_sec.engine.forms.ownership.tables.table_i import parse_table_i_rows
+from edgar_sec.engine.forms.ownership.tables.table_ii import parse_table_ii_rows
 from edgar_sec.engine.forms.ownership.sections import (
     OwnershipSections,
     partition_ownership_tables,
@@ -398,7 +398,7 @@ def render_ownership_to_xml(
         and sections.table_i is None
         and sections.table_ii is None
     ):
-        from edgar_sec.engine.forms.ownership.ascii_parser import (
+        from edgar_sec.engine.forms.ownership.ascii.ascii_parser import (
             parse_ascii_ownership,
         )
 
@@ -408,7 +408,7 @@ def render_ownership_to_xml(
 
     from html import unescape
 
-    from edgar_sec.engine.forms.common.tables import strip_markup_tags
+    from edgar_sec.engine.forms.common.tables.tables import strip_markup_tags
 
     text_lines = tuple(
         line

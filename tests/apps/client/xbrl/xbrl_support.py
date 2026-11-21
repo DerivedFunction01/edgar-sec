@@ -9,16 +9,16 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     FinancialQueryEngine,
     FinancialQueryResult,
     QueryMode,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
-from edgar_sec.engine.xbrl.solve.statement import StatementGraph
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.statements.statement import StatementGraph
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import (
     load_seed_calculation_arcs,

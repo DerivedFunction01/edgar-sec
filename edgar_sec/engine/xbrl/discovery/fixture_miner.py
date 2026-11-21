@@ -27,7 +27,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     ConceptDeclaration,
     qname_local,
 )
-from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom
+from edgar_sec.engine.xbrl.solve.concepts.equivalence import presumed_atom
 from edgar_sec.engine.xbrl.storage.storage import declarations_from_arrow_table
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
 from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup

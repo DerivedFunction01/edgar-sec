@@ -7,14 +7,14 @@ import json
 import pyarrow.parquet as pq
 
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     FinancialQueryEngine,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
-from edgar_sec.engine.xbrl.solve.verification import DoubleCountVerifier
+from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.evaluation.verification import DoubleCountVerifier
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.support.corpus import (
     bundle_dir,

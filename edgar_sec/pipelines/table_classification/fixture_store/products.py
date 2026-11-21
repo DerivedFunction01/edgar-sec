@@ -23,7 +23,7 @@ from edgar_sec.engine.forms.sections.models import (
     ResolvedSection,
     SectionSequence,
 )
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     HorizontalAlign,
     ResolvedGrid,
     TableGeometry,

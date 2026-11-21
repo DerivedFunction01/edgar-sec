@@ -15,14 +15,14 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
 from edgar_sec.domain.taxonomy.jurisdictions import clean_entity_name
 from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
 from edgar_sec.engine.document.page_markers.candidates import looks_like_prose
-from edgar_sec.engine.forms.common.entities import (
+from edgar_sec.engine.forms.common.identity.entities import (
     CUSIP_RE,
     ORGANIZATION_SUFFIX_RE,
     is_boilerplate_entity_name,
     is_valid_cusip,
     parse_cusip,
 )
-from edgar_sec.engine.forms.common.tables import (
+from edgar_sec.engine.forms.common.tables.tables import (
     parse_address_parts,
     strip_markup_tags,
     strip_separator_runs,

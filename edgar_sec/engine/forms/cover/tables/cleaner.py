@@ -9,7 +9,7 @@ import re
 from collections.abc import Sequence
 
 from edgar_sec.engine.forms.cover.models import CoverBoundary
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 from edgar_sec.engine.tables.patterns import RE_TABLE_BLOCK
 from edgar_sec.foundation.regex.builder import build_alternation
 

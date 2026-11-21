@@ -7,11 +7,11 @@ from edgar_sec.domain.forms.families.form_c.models import (
     FormCDocument,
 )
 from edgar_sec.domain.forms.families.form_c.taxonomy import kind_of
-from edgar_sec.engine.forms.common.edgar_submission import (
+from edgar_sec.engine.forms.common.scaffold.edgar_submission import (
     edgar_header_from_root,
     edgar_submission_root,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     count_deep_elements,
     find_child_element,
     find_element_path,

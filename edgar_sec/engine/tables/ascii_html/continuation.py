@@ -16,7 +16,7 @@ from ..numeric_cells import ALL_CURRENCY_SYMBOLS, is_financial_placeholder
 from ..tokens import is_numeric_cell
 
 if TYPE_CHECKING:
-    from .model import SourceCell, SourceTable
+    from .model.model import SourceCell, SourceTable
 
 _CONTINUED_TOKENS = build_alternation(
     ["continued", "cont'd", "contd", "continuation"],
@@ -165,7 +165,7 @@ def fuse_source_tables(
     header_rows_to_drop: int = 1,
 ) -> SourceTable:
     """Fuse table B's data rows into table A, adjusting row indices."""
-    from .model import SourceCell, SourceTable
+    from .model.model import SourceCell, SourceTable
 
     merged_rows: list[tuple[SourceCell, ...]] = list(table_a.rows)
     start_r_idx = len(merged_rows)

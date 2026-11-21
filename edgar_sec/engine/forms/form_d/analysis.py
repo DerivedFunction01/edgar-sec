@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 import xml.etree.ElementTree as ET
 
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     local_name,
     xml_element_text_or_none,
 )

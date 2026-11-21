@@ -10,14 +10,16 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.vetoes.term_veto_notes import NOTE_VETO_ENTRIES
 from edgar_sec.engine.tables.extraction.vetoes.term_veto_statements import (
     STATEMENT_VETO_ENTRIES,
 )
 
 if TYPE_CHECKING:
-    from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+        GeometryText,
+    )
 
 
 @dataclass(frozen=True, slots=True)

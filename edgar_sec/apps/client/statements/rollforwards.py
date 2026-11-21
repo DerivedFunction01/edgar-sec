@@ -17,15 +17,18 @@ from edgar_sec.apps.client.statements.topics import (
 )
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact, qname_local
-from edgar_sec.engine.xbrl.solve.identities import identity_verified, negative_roles
-from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
+from edgar_sec.engine.xbrl.solve.core.identities import (
+    identity_verified,
+    negative_roles,
+)
+from edgar_sec.engine.xbrl.solve.statements.rollforward_graphs import (
     FairValueHierarchyGraph,
     FairValueHierarchyRow,
     Level3RollforwardGraph,
     PensionFundedStatusGraph,
     PensionRollforwardSide,
 )
-from edgar_sec.engine.xbrl.solve.statement import StatementNode, period_rank
+from edgar_sec.engine.xbrl.solve.statements.statement import StatementNode, period_rank
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 _ClassKey = tuple[tuple[str, str], ...]

@@ -14,8 +14,8 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.query import QueryStatus
-from edgar_sec.engine.xbrl.solve.unaccumulate import NON_ADDITIVE_ITEM_TYPE
+from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
+from edgar_sec.engine.xbrl.solve.series.unaccumulate import NON_ADDITIVE_ITEM_TYPE
 
 _CIK = 320193
 _Q1 = "0000320193-23-000011"

@@ -26,7 +26,7 @@ from edgar_sec.engine.document.html.tags import (
 from edgar_sec.engine.tables.ascii_html.converter import (
     convert_html_tables_to_ascii_with_metadata,
 )
-from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.ascii_html.model.model import TableGeometry
 from edgar_sec.foundation.text.normalize import RE_MULTI_BLANKS
 from edgar_sec.engine.tables.false_tables.unwrapper import (
     cleanup_false_tables_with_metadata,

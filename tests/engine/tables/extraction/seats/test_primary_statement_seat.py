@@ -6,17 +6,17 @@ summaries, recasts, compositions and sibling statements.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.core.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.seats.seat_test_specs import (
     SEAT_TEST_SPECS_BY_FAMILY,
     SeatTestSpec,
 )
-from edgar_sec.engine.tables.extraction.core.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES,
     PROFILES_BY_FAMILY,
     TEST_PRIMARY_STATEMENT_SEAT,

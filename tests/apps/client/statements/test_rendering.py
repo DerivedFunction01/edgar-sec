@@ -2,7 +2,7 @@
 
 from edgar_sec.apps.client.statements.rendering import statement_to_dataframe
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     StatementEdge,
     StatementGraph,
     StatementNode,

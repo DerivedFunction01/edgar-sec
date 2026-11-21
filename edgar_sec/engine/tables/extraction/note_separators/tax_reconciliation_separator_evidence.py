@@ -9,8 +9,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.forms.common.numbers import SCHEMA_PERCENT_RE
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.forms.common.values.numbers import SCHEMA_PERCENT_RE
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.note_separators.tax_reconciliation_separator_specs import (

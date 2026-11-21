@@ -12,10 +12,13 @@ from edgar_sec.domain.forms.families.form144.taxonomy import (
     FORM144_LIVE_TEST_TYPES,
     FORM144_SUBMISSION_TYPES,
 )
-from edgar_sec.engine.forms.common.extraction import local_name, validate_xml_schema
+from edgar_sec.engine.forms.common.fields.extraction import (
+    local_name,
+    validate_xml_schema,
+)
 from edgar_sec.engine.forms.form144.field_specs import FORM144_FIELD_SPECS
-from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
-from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
+from edgar_sec.engine.forms.common.phrases.statutory import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.xml.unparsed import load_unparsed_sections
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE

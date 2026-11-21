@@ -11,7 +11,7 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.facing_sheet import facing_sheet_fields
+from edgar_sec.engine.forms.common.identity.facing_sheet import facing_sheet_fields
 
 
 def analyze_form_f4_review_case(

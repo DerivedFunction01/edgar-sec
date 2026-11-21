@@ -5,7 +5,7 @@ from pathlib import Path
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.discovery.cohort import SeedFiling
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.scoping import FilingRef, build_lineages
+from edgar_sec.engine.xbrl.solve.core.scoping import FilingRef, build_lineages
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import LoadedFiling
 from edgar_sec.domain.forms.common.aliases import is_transition_form

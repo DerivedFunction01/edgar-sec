@@ -11,7 +11,7 @@ from edgar_sec.domain.forms.families.form_nmfp.models import (
 from edgar_sec.domain.forms.families.form_nmfp.taxonomy import (
     N_MFP_GENERATION_BY_NAMESPACE,
 )
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     find_child_element,
     find_child_elements,
     xml_element_text_or_none,

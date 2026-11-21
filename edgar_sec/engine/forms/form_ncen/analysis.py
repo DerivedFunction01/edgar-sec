@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.families.form_ncen.models import FormNCenDocument
-from edgar_sec.engine.forms.common.family_scaffold import empty_report
+from edgar_sec.engine.forms.common.scaffold.family_scaffold import empty_report
 from edgar_sec.engine.forms.form_ncen.xml_parser import parse_ncen_xml
 
 _CORE_FIELDS = (

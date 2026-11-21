@@ -5,7 +5,7 @@ from __future__ import annotations
 import xml.etree.ElementTree as ET
 
 from edgar_sec.domain.forms.families.form_ncen.models import FormNCenDocument
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     count_deep_elements,
     find_child_element,
     find_child_elements,

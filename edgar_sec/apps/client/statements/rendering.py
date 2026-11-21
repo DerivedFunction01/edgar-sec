@@ -17,7 +17,7 @@ from edgar_sec.apps.client.statements.display import (
 from edgar_sec.apps.client.core.facts import member_display_name
 from edgar_sec.apps.client.core.fiscal import statement_year_classes
 from edgar_sec.apps.client.statements.presentation import PresentationView
-from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
+from edgar_sec.engine.xbrl.solve.statements.rollforward_graphs import (
     CashRollforwardGraph,
     EquityRollforwardGraph,
     FairValueHierarchyGraph,
@@ -25,7 +25,7 @@ from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
     PensionFundedStatusGraph,
     SegmentBreakdownGraph,
 )
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     DebtStructureGraph,
     DerivativePortfolioGraph,
     StatementGraph,

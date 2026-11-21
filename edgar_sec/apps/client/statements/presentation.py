@@ -16,7 +16,7 @@ from edgar_sec.apps.client.statements.display import filing_header
 from edgar_sec.apps.client.core.facts import concept_display_name
 from edgar_sec.apps.client.core.fiscal import duration_length_class
 from edgar_sec.engine.xbrl.schema.models import PresentationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.statement import period_rank
+from edgar_sec.engine.xbrl.solve.statements.statement import period_rank
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.core.kernel import FilingKernel

@@ -7,14 +7,14 @@ import pytest
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
 from edgar_sec.engine.tables.ascii_html.diagnostics import evaluate_table_confidence
-from edgar_sec.engine.tables.ascii_html.model import (
+from edgar_sec.engine.tables.ascii_html.model.model import (
     HorizontalAlign,
     ResolvedGrid,
     SourceTable,
     SpanGroup,
     TextLayoutDiagnostic,
 )
-from edgar_sec.engine.tables.ascii_html.spans import extract_source_table
+from edgar_sec.engine.tables.ascii_html.geometry.spans import extract_source_table
 
 EMPTY_GRID = ResolvedGrid(rows=(), column_alignments=(), column_widths=())
 pytest_approx = pytest.approx

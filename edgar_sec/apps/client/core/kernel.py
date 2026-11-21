@@ -26,19 +26,19 @@ from edgar_sec.engine.xbrl.schema.models import (
     PresentationArc,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.composer import StatementComposer
-from edgar_sec.engine.xbrl.solve.scoping import (
+from edgar_sec.engine.xbrl.solve.statements.composer import StatementComposer
+from edgar_sec.engine.xbrl.solve.core.scoping import (
     AmendmentLineage,
     covering_lineage,
     supersede_facts,
 )
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     BalanceSheetGraph,
     CashFlowGraph,
     IncomeStatementGraph,
     period_rank,
 )
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 

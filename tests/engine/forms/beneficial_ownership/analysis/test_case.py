@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from edgar_sec.engine.forms.beneficial_ownership.analysis.case import analyze_case
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
 
 SAMPLE_XML = """<edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D">
   <schemaVersion>X0202</schemaVersion>

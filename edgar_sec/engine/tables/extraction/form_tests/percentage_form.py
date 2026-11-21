@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.forms.common.numbers import clean_numeric
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.forms.common.values.numbers import clean_numeric
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.form_specs.percentage_form_specs import (
     PERCENTAGE_SPECS_BY_FAMILY,

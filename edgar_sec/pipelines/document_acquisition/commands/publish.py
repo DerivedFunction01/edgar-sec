@@ -6,7 +6,7 @@ import argparse
 import json
 import sys
 
-from edgar_sec.infra.storage.dag.publication import StaleParentError
+from edgar_sec.infra.storage.dag.working.publication import StaleParentError
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.snapshot.errors import SnapshotError
 from edgar_sec.pipelines.document_acquisition.snapshot.writer import (

@@ -89,6 +89,16 @@ GROUPED_INTEGER_FRAGMENT = r"[\d,]+"
 # any Unicode decimal digit; sites compose this fragment, never re-spell it.
 UNICODE_NUMERIC_CORE = r"\d[\d,]*(?:\.\d+)?"
 
+# The wrapped-cell grammar: an optional open paren, sign, and dollar
+# around the Unicode numeric core, with up to two closing parens.
+# The separator evidence reads compose this one export.
+WRAPPED_NUMERIC_CELL_RE = re.compile(
+    r"\(?-?\$?\s*" + UNICODE_NUMERIC_CORE + r"\s*\)?\)?"
+)
+
+# A single Unicode decimal digit, anywhere in the text.
+DIGIT_RE = re.compile(r"\d")
+
 # Comma-grouped and decimal figures as they appear inside a line of text.
 # The figure variant is the two-or-more-places shape financial figures carry.
 GROUPED_AMOUNT_RE = re.compile(GROUPED_AMOUNT_CORE)
@@ -141,6 +151,7 @@ __all__ = [
     "CURRENCY_TOKEN_RE",
     "DECIMAL_AMOUNT_RE",
     "DECIMAL_FIGURE_RE",
+    "DIGIT_RE",
     "EUROPEAN_COMMA_DECIMAL_RE",
     "FINANCIAL_PLACEHOLDERS",
     "GROUPED_AMOUNT_RE",
@@ -153,6 +164,7 @@ __all__ = [
     "SUFFIX_SYMBOLS",
     "UNIT_SYMBOLS",
     "UNIT_TOKEN_RE",
+    "WRAPPED_NUMERIC_CELL_RE",
     "is_financial_placeholder",
     "is_numeric_cell",
     "is_numeric_start",

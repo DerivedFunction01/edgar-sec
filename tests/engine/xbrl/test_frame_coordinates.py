@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 
 from edgar_sec.engine.xbrl.frame_coordinates import resolve_frame_coordinate
-from edgar_sec.engine.xbrl.solve.concept_table import build_concept_table
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_concept_table
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 
 

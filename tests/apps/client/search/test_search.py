@@ -3,7 +3,7 @@
 from edgar_sec.apps.client.core.facts import build_display_records
 from edgar_sec.apps.client.search.search import resolve_search_targets, search_facts
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.solve.equivalence import NEAR
+from edgar_sec.engine.xbrl.solve.concepts.equivalence import NEAR
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import load_seed_facts
 

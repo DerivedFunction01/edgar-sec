@@ -19,7 +19,7 @@ from edgar_sec.foundation.runtime.paths import (
 )
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.infra.storage.dag.paths import DAGPaths
-from edgar_sec.infra.storage.dag.publication import PUBLICATION_LOCK_FILE
+from edgar_sec.infra.storage.dag.working.publication import PUBLICATION_LOCK_FILE
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
     review_run_paths,

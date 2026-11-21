@@ -11,7 +11,7 @@ import hashlib
 import math
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     SIGNATURE_TERMS,
 )
 

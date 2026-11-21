@@ -10,7 +10,7 @@ import re
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 
 from .continuation import detect_table_continuation, fuse_source_tables
-from .model import (
+from .model.model import (
     DEFAULT_RENDER_BUDGET,
     RenderBudget,
     ResolvedGrid,
@@ -22,7 +22,7 @@ from .model import (
 )
 from .quick_grid import quick_extract_table_grid
 from .renderer import render_source_table
-from .spans import build_span_matrix, extract_source_table
+from .geometry.spans import build_span_matrix, extract_source_table
 
 _RE_TABLE_WRAPPER = re.compile(
     r"<table\b[^>]*>(?P<body>.*)</table\s*>\s*$",

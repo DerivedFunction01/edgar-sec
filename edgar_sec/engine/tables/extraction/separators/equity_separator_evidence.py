@@ -179,7 +179,7 @@ def apply_equity_assignment(geometries, results):
     """Filing-level pass: a strictly dominated equity candidate
     is eliminated; runs before the primary gate's final pass.
     """
-    from edgar_sec.engine.tables.extraction.cascade.geometry_scoring import (
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
         FamilyScore,

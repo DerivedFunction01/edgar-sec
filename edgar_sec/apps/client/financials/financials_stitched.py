@@ -10,13 +10,13 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass
 
-from edgar_sec.engine.xbrl.solve.assembly import (
+from edgar_sec.engine.xbrl.solve.series.assembly import (
     SeriesBreak,
     StitchedSeries,
     _key_matches,
 )
-from edgar_sec.engine.xbrl.solve.stitched import StitchedValue
-from edgar_sec.engine.xbrl.solve.unaccumulate import (
+from edgar_sec.engine.xbrl.solve.series.stitched import StitchedValue
+from edgar_sec.engine.xbrl.solve.series.unaccumulate import (
     DerivationRefusal,
     QuarterDerivation,
     derive_discrete_quarters,

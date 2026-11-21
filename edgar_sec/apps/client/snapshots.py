@@ -29,8 +29,8 @@ from edgar_sec.engine.selection.predicates import date_selection_sql
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.resolution import compile_virtual_views
-from edgar_sec.infra.storage.dag.traversal import LineageChain, walk_lineage
+from edgar_sec.infra.storage.dag.working.resolution import compile_virtual_views
+from edgar_sec.infra.storage.dag.working.traversal import LineageChain, walk_lineage
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.snapshot.specs import (
@@ -94,7 +94,7 @@ class SnapshotConsole:
 
     def gc(self, *, dry_run: bool = False) -> dict[str, Any]:
         """Collect unreferenced snapshots and reclaim disk space."""
-        from edgar_sec.infra.storage.dag.retention import (
+        from edgar_sec.infra.storage.dag.working.retention import (
             analyze_retention,
             purge_unreferenced,
         )

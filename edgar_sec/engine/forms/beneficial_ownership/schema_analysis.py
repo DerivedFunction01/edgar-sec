@@ -15,7 +15,7 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13G_SUBMISSION_TYPES,
 )
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
-from edgar_sec.engine.forms.common.extraction import (
+from edgar_sec.engine.forms.common.fields.extraction import (
     FieldKind,
     FieldSpec,
     RequiredElement,

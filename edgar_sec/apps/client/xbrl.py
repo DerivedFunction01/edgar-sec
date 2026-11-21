@@ -59,33 +59,33 @@ from edgar_sec.engine.xbrl.schema.models import (
     PresentationArc,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.query import (
+from edgar_sec.engine.xbrl.solve.core.query import (
     FinancialQuery,
     FinancialQueryEngine,
     FinancialQueryResult,
     QueryMode,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import (
+from edgar_sec.engine.xbrl.solve.core.scoping import (
     AmendmentLineage,
     FactScope,
     FilingRef,
     build_lineages,
 )
-from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
-from edgar_sec.engine.xbrl.solve.statement import (
+from edgar_sec.engine.xbrl.solve.core.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.statements.statement import (
     StatementGraph,
     StatementNode,
     build_statement_graph,
 )
-from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFactMatch
-from edgar_sec.engine.xbrl.solve.cohort_scan import iter_cohort_batches
-from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry, ConceptTable
-from edgar_sec.engine.xbrl.solve.evidence_index import (
+from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortFactMatch
+from edgar_sec.engine.xbrl.solve.cohort.cohort_scan import iter_cohort_batches
+from edgar_sec.engine.xbrl.solve.concepts.concept_table import CohortEntry, ConceptTable
+from edgar_sec.engine.xbrl.solve.cohort.evidence_index import (
     FilingEvidenceRecord,
     build_filing_evidence,
 )
-from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.solve.concepts.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.storage.storage import (
     calculation_arcs_from_arrow_table,
     declarations_from_arrow_table,

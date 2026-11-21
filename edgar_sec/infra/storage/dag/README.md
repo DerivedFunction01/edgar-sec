@@ -45,7 +45,7 @@ and provides two-tier retention analysis.
 ### Usage examples
 
 ```bash
-.venv/bin/python -m edgar_sec.infra.storage.dag.cli --help
+.venv/bin/python -m edgar_sec.infra.storage.dag.operator.cli --help
 ```
 
 ## Deliberate gaps

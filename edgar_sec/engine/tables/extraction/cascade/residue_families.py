@@ -9,8 +9,10 @@ from __future__ import annotations
 import re
 
 from edgar_sec.domain.world.geography import place_terms
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 
 CONTENT_GATED_FAMILIES = (
     "segment_reporting",

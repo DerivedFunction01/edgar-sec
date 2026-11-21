@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.separators.balance_sheet_separator_specs
     BALANCE_SHEET_SEPARATOR_SPECS,
     BalanceSheetSeparatorSpec,
 )
-from edgar_sec.engine.tables.extraction.evidence.core_form_evidence import (
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
@@ -25,16 +25,11 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS,
     MONTH_TOKENS,
 )
-from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
+from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, WRAPPED_NUMERIC_CELL_RE
 from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 
-# The priced numeric-share recognizer: a cell counts as numeric
-# when it is wholly a loose amount, or carries a digit and an
-# amount fragment; its core composes the numeric-cells fragment.
-NUMERIC_SHARE_CELL_RE = re.compile(r"\(?-?\$?\s*" + UNICODE_NUMERIC_CORE + r"\s*\)?\)?")
 HEADER_YEAR_RE = re.compile(rf"\b{STRICT_YEAR_TOKEN_PATTERN}\b")
-_DIGIT_RE = re.compile(r"\d")
 
 
 class BalanceSheetSeparatorText:
@@ -76,8 +71,8 @@ def _numeric_share(rows) -> float:
             if not cell:
                 continue
             total += 1
-            if NUMERIC_SHARE_CELL_RE.fullmatch(cell.replace("$", "").strip()) or (
-                _DIGIT_RE.search(cell) and NUMERIC_SHARE_CELL_RE.search(cell)
+            if WRAPPED_NUMERIC_CELL_RE.fullmatch(cell.replace("$", "").strip()) or (
+                DIGIT_RE.search(cell) and WRAPPED_NUMERIC_CELL_RE.search(cell)
             ):
                 numeric += 1
     return round(numeric / total, 3) if total else 0.0

@@ -18,8 +18,8 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import extract_registration_number
-from edgar_sec.engine.forms.common.facing_sheet import facing_sheet_fields
+from edgar_sec.engine.forms.common.identity.entities import extract_registration_number
+from edgar_sec.engine.forms.common.identity.facing_sheet import facing_sheet_fields
 from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 
 _INSTRUCTION_PATTERNS: tuple[re.Pattern[str], ...] = (

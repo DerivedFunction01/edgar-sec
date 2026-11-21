@@ -565,7 +565,7 @@ def open_metadata_distrib_console(state: WizardState) -> None:
 
 def open_metadata_dag_console(state: WizardState) -> None:
     """Launch the interactive DAG lifecycle console for metadata sync snapshots."""
-    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from edgar_sec.infra.storage.dag.operator.menu import DAGMenuConfig, run_dag_menu
     from ..core.specs import METADATA_RELATION_SPECS
 
     config = DAGMenuConfig(

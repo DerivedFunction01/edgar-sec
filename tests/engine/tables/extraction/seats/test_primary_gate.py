@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 from edgar_sec.engine.tables.extraction.cascade.filing_competition import compete_filing
-from edgar_sec.engine.tables.extraction.cascade.geometry_text import GeometryText
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    GeometryText,
+)
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
     missing_sections,
     section_presence,
     statement_clusters,
 )
-from edgar_sec.engine.tables.extraction.core.signature_profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     SignatureTerm,
 )
 
@@ -248,5 +250,7 @@ def test_inherited_claim_cannot_resurrect_past_the_gate() -> None:
     assert results[1].claims == ()
     trail = results[1].scores["equity_statement"].evidence
     gate = [entry for entry in trail if entry.channel == "gate"]
-    assert len(gate) == 1
-    assert gate[0].detail == ("equity assignment: strictly dominated candidate")
+    assert [entry.detail for entry in gate] == [
+        "equity assignment: strictly dominated candidate",
+        "primary gate: missing beginning_balances, ending_balances",
+    ]

@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 
 from edgar_sec.engine.forms.form144.analysis import analyze_case, summarize_cases
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
 
 SAMPLE_XML = """<?xml version="1.0" encoding="utf-8"?>
 <edgarSubmission xmlns="http://www.sec.gov/edgar/ownership">

@@ -11,7 +11,7 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.ica_head import ica_cover_fields
+from edgar_sec.engine.forms.common.identity.ica_head import ica_cover_fields
 
 
 def analyze_form_nq_review_case(

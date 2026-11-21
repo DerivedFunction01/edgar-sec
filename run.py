@@ -102,7 +102,7 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         id="dag",
         label="Snapshot DAG Console",
         description="Interactive DAG lineage, swimlane graphs, tags, branches, and maintenance",
-        module="edgar_sec.infra.storage.dag.operator",
+        module="edgar_sec.infra.storage.dag.operator.operator",
         group="Apps & Consoles",
     ),
 )

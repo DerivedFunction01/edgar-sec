@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.normalize import normalize_label
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_label
 from edgar_sec.engine.tables.extraction.core.registry import IDENTITIES_BY_FAMILY
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 
