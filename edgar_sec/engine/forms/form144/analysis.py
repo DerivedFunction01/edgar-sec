@@ -17,6 +17,10 @@ from edgar_sec.engine.forms.common.fields.extraction import (
     validate_xml_schema,
 )
 from edgar_sec.engine.forms.form144.field_specs import FORM144_FIELD_SPECS
+from edgar_sec.engine.forms.form144.patterns import (
+    AREA_CODE_3DIGIT_RE,
+    ZIP_5DIGIT_RE,
+)
 from edgar_sec.engine.forms.common.phrases.statutory import HEADER_LEAK_RE
 from edgar_sec.engine.forms.common.xml.unparsed import load_unparsed_sections
 from edgar_sec.engine.document.html.tree import parse_html
@@ -43,8 +47,6 @@ _BOILERPLATE_TERMS = (
 )
 _UNDERSCORE_FILL_RE = re.compile(r"_{2,}")
 _HYPHEN_FILL_RE = re.compile(r"-{3,}")
-_ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
-_AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
 _BOILERPLATE_LEAK_ALT = build_alternation(
     (
         "address of issuer",
@@ -383,7 +385,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
 
     for qty_field in ("noOfUnitsSold", "noOfUnitsOutstanding"):
         for val in tag_values.get(qty_field, []):
-            if _ZIP_5DIGIT_RE.fullmatch(val) and int(val) % 100 != 0:
+            if ZIP_5DIGIT_RE.fullmatch(val) and int(val) % 100 != 0:
                 anomalies.append(
                     {
                         "accession": accession,
@@ -401,7 +403,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                 )
 
     for val in tag_values.get("aggregateMarketValue", []):
-        if _AREA_CODE_3DIGIT_RE.fullmatch(val):
+        if AREA_CODE_3DIGIT_RE.fullmatch(val):
             anomalies.append(
                 {
                     "accession": accession,

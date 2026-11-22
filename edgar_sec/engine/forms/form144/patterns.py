@@ -23,6 +23,10 @@ SEC_FILE_LABEL_RE = re.compile(
     re.IGNORECASE,
 )
 SEC_FILE_BARE_RE = re.compile(r"\b([0-9]{1,3}-[0-9]{4,7})\b")
+# Anchored fixed-width digit recognizers shared by the analysis and
+# sale-parsing reads of issuer and broker contact fields.
+ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
+AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
 _NOTICE_DATE_PAT = rf"({RE_FULL_DATE.pattern}|{NUMERIC_DATE_RE.pattern})"
 NOTICE_DATE_LABEL_RE = re.compile(
     rf"(?:(?:date of notice|date\s*:?)\s*[:\s]*{_NOTICE_DATE_PAT}|{_NOTICE_DATE_PAT}\s*date of notice)",

@@ -31,7 +31,11 @@ from edgar_sec.engine.forms.common.values.numbers import (
     normalize_decimal_stripping_currency,
     normalize_integer_stripping_units,
 )
-from edgar_sec.engine.forms.form144.patterns import SEC_FILE_BARE_RE
+from edgar_sec.engine.forms.form144.patterns import (
+    AREA_CODE_3DIGIT_RE,
+    SEC_FILE_BARE_RE,
+    ZIP_5DIGIT_RE,
+)
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -65,8 +69,6 @@ _CURRENCY_CODE_PREFIX_RE = re.compile(rf"^(?:{_CURRENCY_CODE_ALT})\s*", re.I)
 _APPROX_TILDE_RE = re.compile(r"^~+\s*")
 _TRAILING_COMMA_RE = re.compile(r",\s*$")
 _CURRENCY_AMOUNT_RE = re.compile(rf"\$\s*{UNICODE_NUMERIC_CORE}")
-_ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
-_AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
 
 _BOILERPLATE_TITLE_ALT = build_alternation(
     (
@@ -241,7 +243,7 @@ def _extract_units(text: str) -> int | None:
     cleaned = FILLER_RUN_RE.sub("", text).strip()
     if not cleaned:
         return None
-    if _ZIP_5DIGIT_RE.fullmatch(cleaned) and int(cleaned) % 100 != 0:
+    if ZIP_5DIGIT_RE.fullmatch(cleaned) and int(cleaned) % 100 != 0:
         return None
     if YEAR_TOKEN_RE.fullmatch(cleaned) and 1990 <= int(cleaned) <= 2025:
         return None
@@ -547,7 +549,7 @@ def parse_proposed_sale_box_3(
                 raw_c = c.strip()
                 if (
                     isinstance(num, int)
-                    and _ZIP_5DIGIT_RE.fullmatch(raw_c)
+                    and ZIP_5DIGIT_RE.fullmatch(raw_c)
                     and num % 100 != 0
                 ):
                     continue

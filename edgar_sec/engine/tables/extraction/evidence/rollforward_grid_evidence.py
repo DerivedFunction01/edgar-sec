@@ -7,11 +7,10 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.numeric_cells import GROUPED_INTEGER_FRAGMENT
+from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, GROUPED_INTEGER_FRAGMENT
 from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
 
 _YEAR_RE = re.compile(rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b")
-_DIGIT_RE = re.compile(r"\d")
 _NON_ALPHA_RE = re.compile(r"[^a-z# ]")
 _RATE_RE = re.compile(r"\brate\b")
 # _NUM_RE recomposed from the homed digit/comma fragment; the %? tail
@@ -106,7 +105,7 @@ class RollforwardGridFeatures:
 
 
 def _norm_phrase(text: str) -> str:
-    text = _DIGIT_RE.sub("#", text.lower())
+    text = DIGIT_RE.sub("#", text.lower())
     text = _NON_ALPHA_RE.sub(" ", text)
     return " ".join(text.split())
 
