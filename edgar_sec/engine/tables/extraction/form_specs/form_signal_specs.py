@@ -469,7 +469,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "quarterly_item8_total_revenues",
         "QUARTERLY",
-        ("loc_item8", "present[total revenues]"),
+        ("loc_item8", "present[total revenues]", "qtr_hdr"),
         0,
         0,
         2,

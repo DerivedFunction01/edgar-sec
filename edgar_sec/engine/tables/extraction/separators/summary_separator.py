@@ -13,7 +13,11 @@ from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
     SUMMARY_SEPARATOR_SPECS,
     SummarySeparatorSpec,
 )
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.dates import (
+    MONTH_WORD_RE,
+    QUARTER_LABEL_RE,
+    YEAR_TOKEN_SEARCH_RE,
+)
 
 _LEAD_CHARS = 1500
 
@@ -31,6 +35,7 @@ class SeparatorFeatures:
     has_total_row: bool
     last_stub_total: bool
     nongaap_prose: bool = False
+    qtr_hdr: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -78,6 +83,11 @@ def separator_features(table) -> SeparatorFeatures:
         has_total_row=any(stub.lower().startswith("total") for stub in stubs),
         last_stub_total=bool(stubs) and stubs[-1].lower().startswith("total"),
         nongaap_prose="non-gaap" in (lead + " " + after_lead).lower(),
+        qtr_hdr=(
+            len(MONTH_WORD_RE.findall(header_text)) >= 4
+            or "quarter" in header_text
+            or bool(QUARTER_LABEL_RE.search(header_text))
+        ),
     )
 
 
@@ -93,6 +103,8 @@ def _atom_holds(atom: str, features: SeparatorFeatures) -> bool:
         return features.rows <= int(atom.removeprefix("rows<="))
     if atom.startswith("cols<="):
         return features.rows > 0 and features.cols <= int(atom.removeprefix("cols<="))
+    if atom == "qtr_hdr":
+        return features.qtr_hdr
     if atom == "summar_lead":
         return features.summar_lead
     if atom == "nongaap_prose":
