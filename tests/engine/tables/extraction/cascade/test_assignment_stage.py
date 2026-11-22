@@ -117,6 +117,73 @@ def test_group_role_follows_geometry_shape():
     assert out.groups[0].role == "standalone"
 
 
+def _channeled_score(family, channels):
+    return FamilyScore(family, sum(channels.values()), channels, ())
+
+
+def _removed(family, channels):
+    geometry = GeometryText(caption="Statements")
+    entering = _result(family, scores={family: _channeled_score(family, channels)})
+    assigned = CompetitionResult(
+        claims=(), contested=(), scores=entering.scores, groups=()
+    )
+    (out,) = preserve_assignment_claims([geometry], [entering], [assigned])
+    return out
+
+
+def test_context_only_income_statement_claim_stays_removed():
+    out = _removed("income_statement", {"context": 10.4566})
+    assert out.claims == ()
+    assert out.groups == ()
+
+
+def test_mixed_channel_income_statement_claim_stays_removed():
+    out = _removed("income_statement", {"context": 2.9724, "signature": 0.7362})
+    assert out.claims == ()
+    assert out.groups == ()
+
+
+def test_own_evidence_income_statement_claim_reseated():
+    out = _removed("income_statement", {"signature": 11.0})
+    assert out.claims == ("income_statement",)
+    assert out.groups[0].channels == {"signature": 11.0}
+
+
+def test_zero_context_income_statement_claim_reseated():
+    out = _removed("income_statement", {"context": 0.0, "signature": 9.0})
+    assert out.claims == ("income_statement",)
+
+
+def test_context_carried_other_family_claim_reseated():
+    out = _removed("equity_statement", {"context": 8.2888})
+    assert out.claims == ("equity_statement",)
+    assert out.groups[0].family == "equity_statement"
+
+
+def test_refusal_leaves_sibling_reseat_intact():
+    geometry = GeometryText(caption="Statements")
+    entering = _result(
+        "income_statement",
+        "cash_flow",
+        scores={
+            "income_statement": _channeled_score(
+                "income_statement", {"context": 8.2888}
+            ),
+            "cash_flow": _score("cash_flow"),
+        },
+    )
+    assigned = _result("cash_flow", groups=(_group("cash_flow"),))
+    assigned = CompetitionResult(
+        claims=assigned.claims,
+        contested=assigned.contested,
+        scores=entering.scores,
+        groups=assigned.groups,
+    )
+    (out,) = preserve_assignment_claims([geometry], [entering], [assigned])
+    assert out.claims == ("cash_flow",)
+    assert [g.family for g in out.groups] == ["cash_flow"]
+
+
 def test_stage_restores_a_real_pass_removal():
     geometry = GeometryText(stubs=("Asset retirement obligations",))
     groups = (

@@ -10,6 +10,7 @@ from __future__ import annotations
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimGroup,
     CompetitionResult,
+    FamilyScore,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
@@ -58,19 +59,36 @@ def _claim_role(geometry: GeometryText) -> str:
     )
 
 
+def _refused_reseat(family: str, score: FamilyScore | None) -> bool:
+    """Whether preservation refuses to re-seat a removed claim.
+
+    An income_statement claim whose score carries
+    context-channel points stays removed.
+    """
+    return (
+        family == "income_statement"
+        and score is not None
+        and score.by_channel.get("context", 0.0) > 0
+    )
+
+
 def preserve_assignment_claims(
     geometries: list[GeometryText] | tuple[GeometryText, ...],
     entering: list[CompetitionResult],
     assigned: list[CompetitionResult],
 ) -> list[CompetitionResult]:
-    """Re-seat the claims the assignment passes removed.
-
-    The family's score (which removal keeps) carries the claim
-    back in; its grouped return is rebuilt from that score.
+    """Re-seat the claims the assignment passes removed, rebuilt
+    from each family's score — a claim the refusal names (an
+    income_statement score with context points) stays removed.
     """
     out: list[CompetitionResult] = []
     for geometry, before, result in zip(geometries, entering, assigned, strict=True):
-        missing = [f for f in before.claims if f not in result.claims]
+        missing = [
+            family
+            for family in before.claims
+            if family not in result.claims
+            and not _refused_reseat(family, result.scores.get(family))
+        ]
         if not missing:
             out.append(result)
             continue
