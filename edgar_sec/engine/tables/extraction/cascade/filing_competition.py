@@ -34,6 +34,7 @@ from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
+    CHANNELS as SIGNATURE_CHANNELS,
     CONTAINMENT_EDGES,
     INHERITANCE_FACTORS,
     LADDER_EDGE_TERMS,
@@ -42,11 +43,64 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
     LadderTerm,
     SignatureTerm,
 )
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
+    FOOTNOTE_TAIL_RE,
+)
 
 
 # Inheritance lends a fragment the discounted evidence of the
 # nearest preceding claim in its note or section; a note title
 # shared with 2+ same-family claims lends that family tie evidence.
+
+
+def _ppe_signature_sum(result: CompetitionResult) -> float:
+    """A result's PPE signature-channel mass (context excluded)."""
+    score = result.scores.get("ppe")
+    if score is None:
+        return 0.0
+    return sum(score.by_channel.get(name, 0.0) for name in SIGNATURE_CHANNELS)
+
+
+def _sole_depreciation_expense_row(geometry: GeometryText) -> bool:
+    """The geometry's sole labeled row is a depreciation-expense
+    line: a one-row depreciation summary, spared suppression."""
+    labels = [normalize_text(stub) for stub in geometry.stubs if stub.strip()]
+    if len(labels) != 1:
+        return False
+    return FOOTNOTE_TAIL_RE.sub("", labels[0]).strip() == "depreciation expense"
+
+
+def apply_ppe_formation_suppression(
+    geometries: list[GeometryText] | tuple[GeometryText, ...],
+    results: list[CompetitionResult],
+) -> list[CompetitionResult]:
+    """Suppress the formed set's signature-less PPE claims: a
+    context-only claim does not seat beside a signature-earned
+    PPE claim, unless its geometry is a depreciation summary."""
+    if not any(
+        "ppe" in result.claims and _ppe_signature_sum(result) > 0.0
+        for result in results
+    ):
+        return list(results)
+    out: list[CompetitionResult] = []
+    for geometry, result in zip(geometries, results, strict=True):
+        if "ppe" not in result.claims or _ppe_signature_sum(result) > 0.0:
+            out.append(result)
+            continue
+        if _sole_depreciation_expense_row(geometry):
+            out.append(result)
+            continue
+        out.append(
+            CompetitionResult(
+                claims=tuple(f for f in result.claims if f != "ppe"),
+                contested=tuple(f for f in result.contested if f != "ppe"),
+                scores=result.scores,
+                foreign_explained=result.foreign_explained,
+                groups=tuple(g for g in result.groups if g.family != "ppe"),
+            )
+        )
+    return out
 
 
 def compete_filing(
@@ -141,6 +195,10 @@ def compete_filing(
     # the filing's formed candidate set and only remove claims;
     # the stage preserves the claims they remove.
     results = apply_assignment_stage(geometries, results)
+    # Formation suppression (priced): a signature-less PPE
+    # claim never enters the gate/veto population where the
+    # filing seats a signature-earned PPE claim.
+    results = apply_ppe_formation_suppression(geometries, results)
     # The primary hard gates refuse claims whose necessary
     # sections are missing over the statement cluster; the PPE,
     # precision, and spanning vetoes read gate-final claims.
