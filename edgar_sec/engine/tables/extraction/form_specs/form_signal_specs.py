@@ -438,10 +438,22 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "mda_net_loss_summar_lead",
         "MD&A-SUMMARY",
-        ("present[net loss]", "summar_lead"),
+        ("present[net loss]", "summar_lead", "rows<=12"),
         0,
         0,
         1,
+        0,
+    ),
+    # The quarterly-information guard on the is9
+    # release: a quarterly results summary under
+    # quarter heads is a summary, not a member.
+    SummarySeparatorSpec(
+        "mda_quarterly_information",
+        "MD&A-SUMMARY",
+        ("present[summary of quarterly information]", "qtr_hdr"),
+        0,
+        0,
+        0,
         0,
     ),
     SummarySeparatorSpec(

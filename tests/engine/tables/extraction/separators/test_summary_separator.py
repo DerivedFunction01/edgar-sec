@@ -93,6 +93,47 @@ def test_mda_summar_lead_at_item7() -> None:
     assert _rules(table) == ("mda_item7_summar_lead",)
 
 
+def test_mda_net_loss_summar_lead_rows_bound() -> None:
+    small = _table(
+        (("Net loss", "(5)"), ("Revenue", "10")),
+        section=SectionRef(item="ITEM 7", title=None),
+        prose_before="The following table summarizes our results.",
+    )
+    assert "mda_net_loss_summar_lead" in _rules(small)
+    tall_rows = (("Net loss", "(5)"),) + tuple((f"Line {i}", "1") for i in range(12))
+    tall = _table(
+        tall_rows,
+        section=SectionRef(item="ITEM 7", title=None),
+        prose_before="The following table summarizes our results.",
+    )
+    assert "mda_net_loss_summar_lead" not in _rules(tall)
+
+
+def test_mda_quarterly_information_refused() -> None:
+    rows = (
+        (("2020 Quarters", "First", "Second", "Third", "Fourth"),)
+        + (("Net loss", "(5)", "(4)", "(6)", "(3)"),)
+        + tuple((f"Line {i}", "1", "1", "1", "1") for i in range(12))
+    )
+    lead = (
+        "Note 18 - Summary of Quarterly Information (Unaudited). "
+        "A summary of quarterly information is as follows."
+    )
+    table = _table(rows, prose_before=lead)
+    assert "mda_quarterly_information" in _rules(table)
+    assert "mda_net_loss_summar_lead" not in _rules(table)
+    no_phrase = _table(rows, prose_before="The following table summarizes our results.")
+    assert "mda_quarterly_information" not in _rules(no_phrase)
+    no_quarter_heads = (
+        (("Year", "First", "Second", "Third", "Fourth"),)
+        + (("Net loss", "(5)", "(4)", "(6)", "(3)"),)
+        + tuple((f"Line {i}", "1", "1", "1", "1") for i in range(12))
+    )
+    assert "mda_quarterly_information" not in _rules(
+        _table(no_quarter_heads, prose_before=lead)
+    )
+
+
 def test_mda_cash_flow_activities_pair() -> None:
     table = _table(
         (
