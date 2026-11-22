@@ -114,10 +114,46 @@ def test_mda_composed_item7_rows12() -> None:
 
 def test_quarterly_named_rule_at_item8() -> None:
     table = _table(
-        (("Total revenues", "10"), ("Cost of revenues", "4")),
+        (
+            ("", "Q1", "Q2", "Q3", "Q4"),
+            ("Total revenues", "10", "11", "12", "13"),
+            ("Cost of revenues", "4", "5", "6", "7"),
+        ),
         section=SectionRef(item="ITEM 8", title=None),
     )
     assert "quarterly_item8_total_revenues" in _rules(table)
+
+
+def test_quarterly_rule_reads_month_columns_and_quarter_word() -> None:
+    months = _table(
+        (
+            ("", "March 31, 2024", "June 30, 2024", "September 30, 2024"),
+            ("", "December 31, 2024", "", ""),
+            ("Total revenues", "10", "11", "12"),
+        ),
+        section=SectionRef(item="ITEM 8", title=None),
+    )
+    assert "quarterly_item8_total_revenues" in _rules(months)
+    word = _table(
+        (
+            ("", "Quarter Ended March 31, 2024"),
+            ("Total revenues", "10"),
+        ),
+        section=SectionRef(item="ITEM 8", title=None),
+    )
+    assert "quarterly_item8_total_revenues" in _rules(word)
+
+
+def test_quarterly_rule_silent_on_the_annual_item8_form() -> None:
+    table = _table(
+        (
+            ("", "Year Ended December 31, 2023", "Year Ended December 31, 2022"),
+            ("Total revenues", "10", "9"),
+            ("Cost of revenues", "4", "3"),
+        ),
+        section=SectionRef(item="ITEM 8", title=None),
+    )
+    assert "quarterly_item8_total_revenues" not in _rules(table)
 
 
 _NONGAAP_RULES = ("nongaap_income_tax", "nongaap_years3", "nongaap_rows12")
