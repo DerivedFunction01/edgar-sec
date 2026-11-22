@@ -165,7 +165,7 @@ def evaluate_comprehensive_income_separator(
         legs.append("host_equity")
     if features.detail_taxcol:
         legs.append("detail_taxcol")
-    if features.guarantor:
+    if features.guarantor and not features.core_complete:
         legs.append("guarantor")
     fired = bool(legs)
     detail = (

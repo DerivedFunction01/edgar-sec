@@ -90,8 +90,15 @@ def evaluate_balance_sheet_separator(
     hdr_keys = header_keys(tuple(text.headers))
     year_count = len(HEADER_YEAR_RE.findall(" ".join(text.headers)))
     numeric_share = _numeric_share(text.rows)
+    closing_pair = (
+        "total assets" in stub_keys
+        and any(k.startswith("total liabilities") for k in stub_keys)
+        and any(k in stub_keys for k in spec.equity_total_keys)
+    )
     fired: list[str] = []
     for leg in spec.legs:
+        if closing_pair and leg.leg_id in spec.closing_pair_exempt_legs:
+            continue
         if leg.kind == "rows" and len(text.rows) <= leg.limit:
             fired.append(leg.leg_id)
         elif leg.kind == "years" and year_count >= leg.limit:

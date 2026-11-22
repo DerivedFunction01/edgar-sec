@@ -351,12 +351,12 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
         0,
     ),
     SummarySeparatorSpec(
-        "mda_financing_operating_rows12",
+        "mda_financing_operating_rows11",
         "MD&A-SUMMARY",
         (
             "present[financing activities]",
             "present[operating activities]",
-            "rows<=12",
+            "rows<=11",
         ),
         0,
         0,

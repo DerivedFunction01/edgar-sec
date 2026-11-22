@@ -172,6 +172,28 @@ def test_leg_stub_noncurrent_assets():
     assert "stub:noncurrent assets" in _eval(text).legs
 
 
+_CLOSING_PAIR = (
+    "Total assets | 100 | 90",
+    "Total liabilities | 60 | 55",
+    "Total equity | 40 | 35",
+)
+
+
+def test_closing_pair_silences_the_exempt_legs():
+    pair = "\n".join(_CLOSING_PAIR)
+    issuer = "Issuer | 2024 | 2023\n" + pair
+    assert "hdr:issuer" not in _eval(issuer).legs
+    noncurrent = "Item | 2024 | 2023\n" + pair + "\nNoncurrent assets | 5 | 6"
+    assert "stub:noncurrent assets" not in _eval(noncurrent).legs
+
+
+def test_exempt_leg_fires_without_the_closing_pair():
+    text = (
+        "Item | 2024 | 2023\nTotal liabilities | 60 | 55\nTotal common equity | 40 | 35"
+    )
+    assert "stub:total common equity" in _eval(text).legs
+
+
 def test_leg_numeric_share_below_floor():
     lines = ["Item | alpha | beta"] + ["Label | gamma | delta"] * 13
     verdict = _eval("\n".join(lines))

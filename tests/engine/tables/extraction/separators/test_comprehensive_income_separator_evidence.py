@@ -158,8 +158,13 @@ def test_leg_detail_taxcol():
 
 
 def test_leg_guarantor():
+    rows = ("Guarantor subsidiaries | 5 | 5", "Cash | 3 | 3")
+    assert "guarantor" in _eval(_text(" | 2024 | 2023", rows)).legs
+
+
+def test_guarantor_leg_yields_to_a_complete_core():
     rows = (*_CORE_ROWS, "Guarantor subsidiaries | 5 | 5")
-    assert _eval(_text(" | 2024 | 2023", rows)).legs == ("guarantor",)
+    assert _eval(_text(" | 2024 | 2023", rows)).legs == ()
 
 
 def test_plain_comprehensive_income_statement_is_clear():

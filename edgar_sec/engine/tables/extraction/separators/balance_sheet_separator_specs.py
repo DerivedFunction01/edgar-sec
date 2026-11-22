@@ -28,6 +28,11 @@ class BalanceSheetSeparatorSpec:
     family: str
     legs: tuple[BalanceSheetSeparatorLeg, ...]
     accrued_stub_phrases: tuple[str, ...]
+    # The closing-pair exemption: these legs stay silent when the
+    # grid closes the balance-sheet identity (a total-assets stub,
+    # a total-liabilities stub, and an equity-total stub key).
+    closing_pair_exempt_legs: tuple[str, ...] = ()
+    equity_total_keys: tuple[str, ...] = ()
 
 
 BALANCE_SHEET_SEPARATOR_SPECS = {
@@ -57,6 +62,21 @@ BALANCE_SHEET_SEPARATOR_SPECS = {
             "accrued professional services",
             "accrued construction costs",
             "total accrued liabilities",
+        ),
+        closing_pair_exempt_legs=(
+            "hdr:issuer",
+            "stub:noncurrent assets",
+        ),
+        equity_total_keys=(
+            "total equity",
+            "total common equity",
+            "total stockholders equity",
+            "total shareholders equity",
+            "total stockholders deficit",
+            "total shareholders deficit",
+            "total members equity",
+            "total partners capital",
+            "total capital",
         ),
     ),
 }

@@ -101,7 +101,17 @@ def test_mda_cash_flow_activities_pair() -> None:
             ("Net increase in cash", "5"),
         )
     )
-    assert "mda_financing_operating_rows12" in _rules(table)
+    assert "mda_financing_operating_rows11" in _rules(table)
+
+
+def test_mda_financing_operating_silent_at_twelve_rows() -> None:
+    rows = (
+        (("Net cash provided by operating activities", "10"),)
+        + tuple((f"Line {i}", "1") for i in range(10))
+        + (("Net cash used in financing activities", "(5)"),)
+    )
+    assert len(rows) == 12
+    assert "mda_financing_operating_rows11" not in _rules(_table(rows))
 
 
 def test_mda_composed_item7_rows12() -> None:
