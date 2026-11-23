@@ -206,7 +206,7 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 557 rows.
+# priced records after the ruled holds and release; 553 rows.
 _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "hard"): 6,
     ("aoci_rollforward", "body", "scored"): 13,
@@ -228,7 +228,7 @@ _GROUP_COUNTS = {
     ("debt_maturity", "lead", "scored"): 11,
     ("deferred_tax", "body", "hard"): 5,
     ("deferred_tax", "body", "scored"): 7,
-    ("deferred_tax", "lead", "hard"): 7,
+    ("deferred_tax", "lead", "hard"): 6,
     ("deferred_tax", "lead", "scored"): 5,
     ("derivatives_hedging", "body", "hard"): 4,
     ("derivatives_hedging", "body", "scored"): 4,
@@ -236,7 +236,7 @@ _GROUP_COUNTS = {
     ("derivatives_hedging", "lead", "scored"): 5,
     ("eps_reconciliation", "body", "hard"): 10,
     ("eps_reconciliation", "body", "scored"): 9,
-    ("eps_reconciliation", "lead", "hard"): 7,
+    ("eps_reconciliation", "lead", "hard"): 4,
     ("eps_reconciliation", "lead", "scored"): 23,
     ("equity_statement", "body", "hard"): 9,
     ("equity_statement", "body", "scored"): 16,
@@ -291,15 +291,39 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 557
+    assert len(rows) == 553
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 209
+    assert tiers.count("hard") == 205
     assert tiers.count("scored") == 348
+
+
+def test_eps_v3_terms_leave_lead_hard() -> None:
+    rows = _all_rows()
+    # V3 (EPS recall packet): the three terms leave the
+    # eps_reconciliation lead/hard set; the rest stands.
+    dropped = {"acquisition", "share of", "or for"}
+    assert not any(("eps_reconciliation", t, "lead", "hard") in rows for t in dropped)
+    kept = (
+        "comprehensive loss",
+        "discussion and analysis",
+        "issuer purchases",
+        "fiscal year",
+    )
+    assert all(("eps_reconciliation", t, "lead", "hard") in rows for t in kept)
+
+
+def test_deferred_tax_revenue_lead_hard_row_removed() -> None:
+    rows = _all_rows()
+    # VA1 (DT recall packet): "revenue" leaves the deferred_tax
+    # lead/hard set; the rest of the set stands as priced.
+    assert ("deferred_tax", "revenue", "lead", "hard") not in rows
+    assert ("deferred_tax", "cash flow", "lead", "hard") in rows
+    assert ("deferred_tax", "depreciation", "lead", "hard") in rows
 
 
 def test_build_act_exclusions_of_record() -> None:
@@ -353,7 +377,6 @@ def test_dagger_rows_landed_hard_as_priced() -> None:
     rows = _all_rows()
     dagger_rows = {
         ("income_statement", "products and", "lead"),
-        ("eps_reconciliation", "share of", "lead"),
         ("tax_reconciliation", "three months", "body"),
         ("tax_reconciliation", "months ended", "body"),
         ("stock_comp_rollforward", "year ended", "body"),

@@ -22,11 +22,8 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         (
             "comprehensive loss",
             "discussion and analysis",
-            "acquisition",
             "issuer purchases",
-            "share of",
             "fiscal year",
-            "or for",
         ),
     ),
     (
@@ -168,7 +165,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         "hard",
         (
             "cash flow",
-            "revenue",
             "depreciation",
             "other comprehensive",
             "allowance for credit losses",
