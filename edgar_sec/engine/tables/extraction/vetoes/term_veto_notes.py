@@ -165,7 +165,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         "hard",
         (
             "cash flow",
-            "revenue",
             "depreciation",
             "other comprehensive",
             "allowance for credit losses",

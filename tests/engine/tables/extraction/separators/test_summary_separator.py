@@ -109,6 +109,22 @@ def test_mda_net_loss_summar_lead_rows_bound() -> None:
     assert "mda_net_loss_summar_lead" not in _rules(tall)
 
 
+def test_mda_item7_income_tax_rows_bound() -> None:
+    small = _table(
+        (("Income tax expense", "10"), ("Net income", "40")),
+        section=SectionRef(item="ITEM 7", title=None),
+    )
+    assert "mda_item7_income_tax" in _rules(small)
+    tall_rows = (("Income tax expense", "10"),) + tuple(
+        (f"Line {i}", "1") for i in range(13)
+    )
+    tall = _table(
+        tall_rows,
+        section=SectionRef(item="ITEM 7", title=None),
+    )
+    assert "mda_item7_income_tax" not in _rules(tall)
+
+
 def test_mda_quarterly_information_refused() -> None:
     rows = (
         (("2020 Quarters", "First", "Second", "Third", "Fourth"),)

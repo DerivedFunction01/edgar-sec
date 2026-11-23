@@ -411,7 +411,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "mda_item7_income_tax",
         "MD&A-SUMMARY",
-        ("loc_item7", "present[income tax]"),
+        ("loc_item7", "present[income tax]", "rows<=12"),
         0,
         0,
         1,

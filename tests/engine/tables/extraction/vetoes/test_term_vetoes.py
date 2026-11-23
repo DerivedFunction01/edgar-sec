@@ -206,7 +206,7 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 554 rows.
+# priced records after the ruled holds and release; 553 rows.
 _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "hard"): 6,
     ("aoci_rollforward", "body", "scored"): 13,
@@ -228,7 +228,7 @@ _GROUP_COUNTS = {
     ("debt_maturity", "lead", "scored"): 11,
     ("deferred_tax", "body", "hard"): 5,
     ("deferred_tax", "body", "scored"): 7,
-    ("deferred_tax", "lead", "hard"): 7,
+    ("deferred_tax", "lead", "hard"): 6,
     ("deferred_tax", "lead", "scored"): 5,
     ("derivatives_hedging", "body", "hard"): 4,
     ("derivatives_hedging", "body", "scored"): 4,
@@ -291,14 +291,14 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 554
+    assert len(rows) == 553
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 206
+    assert tiers.count("hard") == 205
     assert tiers.count("scored") == 348
 
 
@@ -315,6 +315,15 @@ def test_eps_v3_terms_leave_lead_hard() -> None:
         "fiscal year",
     )
     assert all(("eps_reconciliation", t, "lead", "hard") in rows for t in kept)
+
+
+def test_deferred_tax_revenue_lead_hard_row_removed() -> None:
+    rows = _all_rows()
+    # VA1 (DT recall packet): "revenue" leaves the deferred_tax
+    # lead/hard set; the rest of the set stands as priced.
+    assert ("deferred_tax", "revenue", "lead", "hard") not in rows
+    assert ("deferred_tax", "cash flow", "lead", "hard") in rows
+    assert ("deferred_tax", "depreciation", "lead", "hard") in rows
 
 
 def test_build_act_exclusions_of_record() -> None:
