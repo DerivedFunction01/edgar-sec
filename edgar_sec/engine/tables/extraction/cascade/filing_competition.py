@@ -8,6 +8,7 @@ from edgar_sec.engine.tables.extraction.cascade.assignment_stage import (
     apply_assignment_stage,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition import (
+    CLAIM_FLOOR,
     INHERITANCE_FACTOR,
     INHERITANCE_MAX_DISTANCE,
     TIE_POINTS,
@@ -15,8 +16,10 @@ from edgar_sec.engine.tables.extraction.cascade.competition import (
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimEvidence,
+    ClaimGroup,
     CompetitionResult,
     FamilyScore,
+    _explained_foreign,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
@@ -24,6 +27,12 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_evidence import (
     apply_ppe_vetoes,
     capture_claim_stages,
+    passed_form_test_details,
+)
+from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
+    ADMISSION_FORM_TEST_DETAILS,
+    OVSEAT_SIG_FLOOR,
+    OVSEAT_TERM,
 )
 from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
     apply_precision_vetoes,
@@ -32,6 +41,9 @@ from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
     apply_spanning_vetoes,
 )
 from edgar_sec.engine.tables.extraction.seats.cover_seat import apply_cover_seat
+from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
+    term_veto_hits,
+)
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -99,6 +111,63 @@ def apply_ppe_formation_suppression(
                 scores=result.scores,
                 foreign_explained=result.foreign_explained,
                 groups=tuple(g for g in result.groups if g.family != "ppe"),
+            )
+        )
+    return out
+
+
+def apply_ppe_veto_override_seat(
+    geometries: list[GeometryText] | tuple[GeometryText, ...],
+    results: list[CompetitionResult],
+) -> list[CompetitionResult]:
+    """Veto-override seat at the suppression seam's output:
+    competition ran veto-intact, so no claim is displaced;
+    a claim-free geometry seats PPE on either leg's terms."""
+    out: list[CompetitionResult] = []
+    for geometry, result in zip(geometries, results, strict=True):
+        score = result.scores.get("ppe")
+        if result.claims or score is None:
+            out.append(result)
+            continue
+        hard = (term_veto_hits(geometry).get("ppe") or {}).get("hard")
+        # Leg F: both form tests pass, hard hit absent or
+        # the override term. Leg S: the override term hit,
+        # signature and total each clearing their floor.
+        leg_f = set(ADMISSION_FORM_TEST_DETAILS) <= passed_form_test_details(
+            score
+        ) and (hard is None or hard == OVSEAT_TERM)
+        leg_s = (
+            hard == OVSEAT_TERM
+            and _ppe_signature_sum(result) >= OVSEAT_SIG_FLOOR
+            and score.total >= CLAIM_FLOOR
+        )
+        if not (leg_f or leg_s):
+            out.append(result)
+            continue
+        _, explained = _explained_foreign("ppe", result.scores, CONTAINMENT_EDGES)
+        role = (
+            "continuation"
+            if geometry.is_fragment
+            else "head"
+            if geometry.caption.strip()
+            else "standalone"
+        )
+        group = ClaimGroup(
+            "ppe",
+            score.total,
+            "admission",
+            role,
+            dict(score.by_channel),
+            tuple(e.detail for e in score.evidence if e.channel == "veto"),
+            sum(explained.values()),
+        )
+        out.append(
+            CompetitionResult(
+                claims=tuple(result.claims) + ("ppe",),
+                contested=result.contested,
+                scores=result.scores,
+                foreign_explained=result.foreign_explained,
+                groups=tuple(result.groups) + (group,),
             )
         )
     return out
@@ -200,6 +269,10 @@ def compete_filing(
     # claim never enters the gate/veto population where the
     # filing seats a signature-earned PPE claim.
     results = apply_ppe_formation_suppression(geometries, results)
+    # Veto-override seat (priced): at the suppression seam's
+    # output, a claim-free geometry seats PPE on its form
+    # tests or its signature despite the one hard term.
+    results = apply_ppe_veto_override_seat(geometries, results)
     # The primary hard gates refuse claims whose necessary
     # sections are missing over the statement cluster; the PPE,
     # precision, and spanning vetoes read gate-final claims.

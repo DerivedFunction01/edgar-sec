@@ -9,6 +9,7 @@ from typing import NamedTuple
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
+    ADMISSION_FORM_TEST_DETAILS,
     CLASS_TERMS,
     HOST_MIN_SHARED_KEYS,
     LEAD_BALANCE_MIN,
@@ -59,6 +60,27 @@ def _signature_sum(score) -> float:
     if score is None:
         return 0.0
     return sum(score.by_channel.get(name, 0.0) for name in SIGNATURE_CHANNELS)
+
+
+def passed_form_test_details(score) -> set:
+    """A score's passed form-test evidence details."""
+    return {
+        entry.detail
+        for entry in score.evidence
+        if entry.channel == "form_test" and entry.detail.endswith(" passed")
+    }
+
+
+def _form_test_admission_seat(result) -> bool:
+    """The claim is a form-test admission seat: group state
+    admission, with both form tests passed in its evidence."""
+    group = next((g for g in result.groups if g.family == PPE_FAMILY), None)
+    if group is None or group.state != "admission":
+        return False
+    score = result.scores.get(PPE_FAMILY)
+    if score is None:
+        return False
+    return set(ADMISSION_FORM_TEST_DETAILS) <= passed_form_test_details(score)
 
 
 def _host_claim_fires(geometry, result) -> bool:
@@ -182,12 +204,15 @@ def _fired_legs(geometries, results, stages, index):
         legs.append(LEG_LEAD_BALANCE)
     if _context_carried_fires(geometries, results, index, result):
         legs.append(LEG_CONTEXT_CARRIED)
-    if _weak_signature_fires(geometry, result):
-        legs.append(LEG_WEAK_SIGNATURE)
-    if _coex_lead_fires(result):
-        legs.append(LEG_COEX_LEAD)
-    if _statement_form_fires(geometry):
-        legs.append(LEG_STATEMENT_FORM)
+    # The precision packet's legs skip a form-test admission
+    # seat: its evidence, not the veto, earned the claim.
+    if not _form_test_admission_seat(result):
+        if _weak_signature_fires(geometry, result):
+            legs.append(LEG_WEAK_SIGNATURE)
+        if _coex_lead_fires(result):
+            legs.append(LEG_COEX_LEAD)
+        if _statement_form_fires(geometry):
+            legs.append(LEG_STATEMENT_FORM)
     return tuple(legs)
 
 

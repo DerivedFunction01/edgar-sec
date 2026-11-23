@@ -6,14 +6,20 @@ from __future__ import annotations
 
 from edgar_sec.engine.tables.extraction.cascade.filing_competition import (
     apply_ppe_formation_suppression,
+    apply_ppe_veto_override_seat,
+    compete_filing,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
     FamilyScore,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
 )
 
 
@@ -147,3 +153,121 @@ def test_other_sole_row_labels_are_suppressed() -> None:
         geometry = GeometryText(stubs=(label,), data_rows=1)
         out = _suppress([(_blank(), _earned()), (geometry, carried)])
         assert out[1].claims == ("debt_maturity",)
+
+
+_ACQUISITION_GRID = "Costs Capitalized Subsequent to Acquisition"
+_BOTH_PASSED = (
+    ClaimEvidence("form_test", "ppe_evidence passed", 3.0),
+    ClaimEvidence("form_test", "ppe_row_bound passed", 1.0),
+)
+
+
+def _unclaimed(
+    total: float,
+    channels: dict[str, float],
+    evidence: tuple[ClaimEvidence, ...] = (),
+) -> CompetitionResult:
+    score = FamilyScore("ppe", total, dict(channels), tuple(evidence))
+    return CompetitionResult(claims=(), contested=(), scores={"ppe": score})
+
+
+def _seat(
+    pairs: list[tuple[GeometryText, CompetitionResult]],
+) -> list[CompetitionResult]:
+    return apply_ppe_veto_override_seat(
+        [geometry for geometry, _ in pairs],
+        [result for _, result in pairs],
+    )
+
+
+def test_leg_f_seats_despite_the_acquisition_veto() -> None:
+    result = _unclaimed(2.5, {"form_test": 4.0, "veto": -1.5}, _BOTH_PASSED)
+    geometry = GeometryText(grid_text=_ACQUISITION_GRID)
+    out = _seat([(geometry, result)])
+    assert out[0].claims == ("ppe",)
+    group = out[0].groups[-1]
+    assert group.family == "ppe"
+    assert group.state == "admission"
+    assert group.score == 2.5
+    assert out[0].scores is result.scores
+    assert out[0].foreign_explained is result.foreign_explained
+
+
+def test_leg_f_seats_with_no_hard_hit() -> None:
+    result = _unclaimed(2.5, {"form_test": 4.0}, _BOTH_PASSED)
+    out = _seat([(_blank(), result)])
+    assert out[0].claims == ("ppe",)
+
+
+def test_leg_f_needs_both_form_tests() -> None:
+    result = _unclaimed(3.0, {"form_test": 3.0}, _BOTH_PASSED[:1])
+    geometry = GeometryText(grid_text=_ACQUISITION_GRID)
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_leg_s_seats_on_signature_over_the_veto() -> None:
+    channels = {"lead_title": 2.41, "leadin": 2.41, "stub": 2.24, "veto": -1.5}
+    evidence = (_BOTH_PASSED[1], ClaimEvidence("veto", "term:lease", -1.5))
+    result = _unclaimed(6.56, channels, evidence)
+    geometry = GeometryText(grid_text=_ACQUISITION_GRID)
+    out = _seat([(geometry, result)])
+    assert out[0].claims == ("ppe",)
+    assert out[0].groups[-1].state == "admission"
+
+
+def test_leg_s_needs_the_signature_floor() -> None:
+    result = _unclaimed(6.0, {"stub": 4.0, "veto": -1.5})
+    geometry = GeometryText(grid_text=_ACQUISITION_GRID)
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_leg_s_needs_the_claim_floor() -> None:
+    result = _unclaimed(4.5, {"stub": 7.06, "veto": -2.56})
+    geometry = GeometryText(grid_text=_ACQUISITION_GRID)
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_seat_never_displaces_a_claim() -> None:
+    claimed = _result(("balance_sheet",), {"stub": 9.0})
+    out = _seat([(_blank(), claimed)])
+    assert out[0] is claimed
+    scored = _unclaimed(2.5, {"form_test": 4.0}, _BOTH_PASSED)
+    claimed_ppe = CompetitionResult(claims=("ppe",), contested=(), scores=scored.scores)
+    out = _seat([(_blank(), claimed_ppe)])
+    assert out[0] is claimed_ppe
+
+
+def test_seat_passes_unscored_results_through() -> None:
+    result = CompetitionResult(claims=(), contested=(), scores={})
+    out = _seat([(_blank(), result)])
+    assert out[0] is result
+    assert apply_ppe_veto_override_seat([], []) == []
+
+
+def test_seat_group_carries_role_and_veto_flags() -> None:
+    evidence = _BOTH_PASSED + (ClaimEvidence("veto", "term:depreciation", -1.5),)
+    result = _unclaimed(2.5, {"form_test": 4.0, "veto": -1.5}, evidence)
+    geometry = GeometryText(caption="Schedule III", grid_text=_ACQUISITION_GRID)
+    out = _seat([(geometry, result)])
+    group = out[0].groups[-1]
+    assert group.role == "head"
+    assert group.veto_flags == ("term:depreciation",)
+    assert group.channels == {"form_test": 4.0, "veto": -1.5}
+
+
+def test_compete_filing_seats_the_vetoed_schedule() -> None:
+    outcomes = (
+        FormTestOutcome("ppe", "ppe_evidence", "form", True, True, 0, 3.0, ""),
+        FormTestOutcome("ppe", "ppe_row_bound", "form", True, True, 0, 1.0, ""),
+    )
+    geometry = GeometryText(
+        stubs=("Elm Street Apartments", "Oak Plaza"),
+        grid_text=_ACQUISITION_GRID,
+        form_tests=outcomes,
+    )
+    out = compete_filing([geometry])
+    assert out[0].claims == ("ppe",)
+    assert out[0].groups[-1].state == "admission"

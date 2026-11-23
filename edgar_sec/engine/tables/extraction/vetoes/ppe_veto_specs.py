@@ -28,6 +28,13 @@ WEAK_CLASS_DIVERSITY_MAX = 1
 STATEMENT_MIN_DATA_ROWS = 30
 STATEMENT_MIN_NUMERIC_CELLS = 100
 
+# The veto-override seat (recall pricing): the hard term
+# a seat may override, its signature floor, and the
+# form-test pair marking a form-test admission seat.
+OVSEAT_TERM = "acquisition"
+OVSEAT_SIG_FLOOR = 5.0
+ADMISSION_FORM_TEST_DETAILS = ("ppe_evidence passed", "ppe_row_bound passed")
+
 # PPE asset-class terms: a geometry's class diversity is
 # the count of these terms its normalized stubs carry.
 CLASS_TERMS = (

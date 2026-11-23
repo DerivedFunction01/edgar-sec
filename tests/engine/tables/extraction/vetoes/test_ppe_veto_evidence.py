@@ -7,6 +7,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
     FamilyScore,
@@ -399,3 +400,66 @@ def test_note_names_the_new_legs_in_order():
     )
     assert "ppe" not in results[0].claims
     assert _gate_details(results[0]) == ["ppe veto: B6sig5div1, Bstmt30x100"]
+
+
+_BOTH_PASSED = (
+    ClaimEvidence("form_test", "ppe_evidence passed", 3.0),
+    ClaimEvidence("form_test", "ppe_row_bound passed", 1.0),
+)
+
+
+def _seated_result(total, channels, evidence, state="admission", families=("ppe",)):
+    scores = {
+        "ppe": FamilyScore("ppe", total, dict(channels), tuple(evidence)),
+    }
+    groups = [ClaimGroup("ppe", total, state, "standalone", dict(channels), (), 0.0)]
+    for family in families:
+        if family == "ppe":
+            continue
+        scores[family] = _score(family, 2.0)
+        groups.append(ClaimGroup(family, 2.0, "claimed", "standalone", {}, (), 0.0))
+    return CompetitionResult(
+        claims=tuple(families),
+        contested=(),
+        scores=scores,
+        groups=tuple(groups),
+    )
+
+
+def test_packet_legs_skip_a_form_test_admission_seat():
+    geo = GeometryText(stubs=("Land",))
+    results = _apply([geo], [_seated_result(3.0, {"stub": 3.0}, _BOTH_PASSED)])
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_packet_legs_skip_statement_form_on_an_admission_seat():
+    geo = GeometryText(data_rows=34, numeric_cells=102)
+    results = _apply([geo], [_seated_result(9.0, {"stub": 9.0}, _BOTH_PASSED)])
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_skip_needs_both_form_tests_passed():
+    geo = GeometryText(stubs=("Land",))
+    results = _apply([geo], [_seated_result(3.0, {"stub": 3.0}, _BOTH_PASSED[1:])])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: B6sig5div1"]
+
+
+def test_skip_needs_the_admission_state():
+    geo = GeometryText(stubs=("Land",))
+    seated = _seated_result(3.0, {"stub": 3.0}, _BOTH_PASSED, state="claimed")
+    results = _apply([geo], [seated])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: B6sig5div1"]
+
+
+def test_priced_legs_still_fire_on_an_admission_seat():
+    geo = GeometryText(stubs=("Total Assets", "Total Liabilities", "Land"))
+    seated = _seated_result(
+        3.0, {"stub": 3.0}, _BOTH_PASSED, families=("ppe", "balance_sheet")
+    )
+    results = _apply([geo], [seated])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: H2claim"]
