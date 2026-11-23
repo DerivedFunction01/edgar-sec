@@ -1,6 +1,6 @@
 """PPE veto pass: set-level refusals over gate-final claims.
 The dominance leg prices rival presence on the pre-gate
-claim stage; the other legs read the gate-final results.
+claim stage; the rest read gate-final results and geometry.
 """
 
 from __future__ import annotations
@@ -9,16 +9,24 @@ from typing import NamedTuple
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
+    CLASS_TERMS,
     HOST_MIN_SHARED_KEYS,
     LEAD_BALANCE_MIN,
+    LEG_COEX_LEAD,
     LEG_CONTEXT_CARRIED,
     LEG_DOMINANCE,
     LEG_HOST_CLAIM,
     LEG_LEAD_BALANCE,
+    LEG_STATEMENT_FORM,
+    LEG_WEAK_SIGNATURE,
     PPE_FAMILY,
     PROSE_CHANNELS,
     SIGNATURE_CHANNELS,
+    STATEMENT_MIN_DATA_ROWS,
+    STATEMENT_MIN_NUMERIC_CELLS,
     STRONG_STUB_KEYS,
+    WEAK_CLASS_DIVERSITY_MAX,
+    WEAK_SIG_MAX,
 )
 
 
@@ -119,6 +127,48 @@ def _context_carried_fires(geometries, results, index, result) -> bool:
     return False
 
 
+def _class_diversity(geometry) -> int:
+    """Distinct PPE asset-class terms across the stubs."""
+    text = " || ".join({normalize_text(stub) for stub in geometry.stubs})
+    return sum(1 for term in CLASS_TERMS if term in text)
+
+
+def _weak_signature_fires(geometry, result) -> bool:
+    """Weak-band signature mass over near-single-class stubs."""
+    score = result.scores.get(PPE_FAMILY)
+    if score is None:
+        return False
+    if _signature_sum(score) > WEAK_SIG_MAX:
+        return False
+    return _class_diversity(geometry) <= WEAK_CLASS_DIVERSITY_MAX
+
+
+def _coex_lead_fires(result) -> bool:
+    """A rival claims the geometry at gate and the PPE
+    signature is lead-only (stub, caption, notehead empty)."""
+    score = result.scores.get(PPE_FAMILY)
+    if score is None:
+        return False
+    if not any(family != PPE_FAMILY for family in result.claims):
+        return False
+    channels = score.by_channel
+    if channels.get("stub", 0.0) != 0.0:
+        return False
+    if channels.get("caption", 0.0) != 0.0:
+        return False
+    if channels.get("notehead", 0.0) != 0.0:
+        return False
+    return _signature_sum(score) > 0.0
+
+
+def _statement_form_fires(geometry) -> bool:
+    """Statement-length geometry: row and numeric mass."""
+    return (
+        geometry.data_rows >= STATEMENT_MIN_DATA_ROWS
+        and geometry.numeric_cells >= STATEMENT_MIN_NUMERIC_CELLS
+    )
+
+
 def _fired_legs(geometries, results, stages, index):
     """Every priced leg firing on one PPE-claimed geometry."""
     geometry = geometries[index]
@@ -132,6 +182,12 @@ def _fired_legs(geometries, results, stages, index):
         legs.append(LEG_LEAD_BALANCE)
     if _context_carried_fires(geometries, results, index, result):
         legs.append(LEG_CONTEXT_CARRIED)
+    if _weak_signature_fires(geometry, result):
+        legs.append(LEG_WEAK_SIGNATURE)
+    if _coex_lead_fires(result):
+        legs.append(LEG_COEX_LEAD)
+    if _statement_form_fires(geometry):
+        legs.append(LEG_STATEMENT_FORM)
     return tuple(legs)
 
 

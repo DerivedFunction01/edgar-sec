@@ -17,9 +17,33 @@ LEG_HOST_CLAIM = "H2claim"
 LEG_DOMINANCE = "LBdomF"
 LEG_LEAD_BALANCE = "L6bal0.4"
 LEG_CONTEXT_CARRIED = "D1c_true"
+LEG_WEAK_SIGNATURE = "B6sig5div1"
+LEG_COEX_LEAD = "AcoexLead"
+LEG_STATEMENT_FORM = "Bstmt30x100"
 
 HOST_MIN_SHARED_KEYS = 2
 LEAD_BALANCE_MIN = 0.4
+WEAK_SIG_MAX = 5.0
+WEAK_CLASS_DIVERSITY_MAX = 1
+STATEMENT_MIN_DATA_ROWS = 30
+STATEMENT_MIN_NUMERIC_CELLS = 100
+
+# PPE asset-class terms: a geometry's class diversity is
+# the count of these terms its normalized stubs carry.
+CLASS_TERMS = (
+    "land",
+    "building",
+    "machinery",
+    "equipment",
+    "furniture",
+    "vehicle",
+    "leasehold",
+    "construction in progress",
+    "computer",
+    "fixtures",
+    "improvements",
+    "capitalized",
+)
 
 PROSE_CHANNELS = ("leadin", "lead_title", "caption", "notehead")
 
