@@ -1,4 +1,4 @@
-"""Period keys over gate text lines, in the priced shape.
+"""Period keys over gate text lines.
 
 The extraction evidence gates' shared line-level period vocabulary.
 """
@@ -19,8 +19,8 @@ _MONTH_WORD_RE = re.compile(rf"\b(?:{_MONTH_ALT})\b", re.IGNORECASE)
 
 
 def priced_years(line: str) -> list[str]:
-    """The line's years in the priced shape (19xx/20xx only)."""
-    return [y for y in YEAR_TOKEN_SEARCH_RE.findall(line) if y[:2] in ("19", "20")]
+    """The line's year tokens, the foundation's full-range shape."""
+    return YEAR_TOKEN_SEARCH_RE.findall(line)
 
 
 def numeric_dates(line: str) -> list[str]:
@@ -51,11 +51,10 @@ def starts_with_numeric_date(stripped: str) -> bool:
 
 
 def starts_with_period(line: str) -> bool:
-    """A bare line opening with a month, a priced year, or a date."""
+    """A bare line opening with a month, a year, or a date."""
     stripped = line.strip(" |")
     if _MONTH_WORD_RE.match(stripped):
         return True
-    year = YEAR_TOKEN_SEARCH_RE.match(stripped)
-    if year is not None and year.group(0)[:2] in ("19", "20"):
+    if YEAR_TOKEN_SEARCH_RE.match(stripped):
         return True
     return starts_with_numeric_date(stripped)

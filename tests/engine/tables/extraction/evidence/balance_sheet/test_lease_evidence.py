@@ -195,3 +195,8 @@ def test_empty_grid_is_unevaluable() -> None:
     assert not outcome.passed
     assert not outcome.evaluable
     assert outcome.detail == "no grid rows"
+
+
+def test_year_labels_count_the_full_range() -> None:
+    text = LeaseText(rows=(("2024", "1"), ("2025", "1"), ("2100", "1")))
+    assert text.year_labels == 3

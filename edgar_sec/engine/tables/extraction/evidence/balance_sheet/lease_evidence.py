@@ -17,14 +17,8 @@ from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 
 
 def _year_labels(text: str) -> int:
-    """Distinct 19xx/20xx year tokens: the priced label count."""
-    return len(
-        {
-            year
-            for year in YEAR_TOKEN_SEARCH_RE.findall(text)
-            if year[:2] in ("19", "20")
-        }
-    )
+    """Distinct year tokens, full-range: the label count."""
+    return len(set(YEAR_TOKEN_SEARCH_RE.findall(text)))
 
 
 @dataclass(frozen=True, slots=True)

@@ -379,3 +379,8 @@ def test_assignment_leaves_other_families_alone():
     )
     assert ANCHOR in results[0].claims
     assert "balance_sheet" in results[1].claims
+
+
+def test_year_span_prod_counts_the_full_range():
+    text = LeaseSeparatorText("2024 | 5\n2025 | 5\n2100 | 5")
+    assert _lse.year_span_prod(text) == 3

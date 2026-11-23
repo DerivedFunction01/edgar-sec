@@ -507,3 +507,15 @@ def test_assignment_leaves_other_families():
     assert "aro_rollforward" not in results[0].claims
     assert "warranty" in results[0].claims
     assert "balance_sheet" in results[1].claims
+
+
+def test_bookend_years_read_the_full_range() -> None:
+    text = AroText(
+        caption="",
+        prose="",
+        lines=(
+            "balance at january 1, 2100 | 5",
+            "balance at december 31, 2101 | 7",
+        ),
+    )
+    assert aro_legs(text, SPEC)["bookend_f2"]

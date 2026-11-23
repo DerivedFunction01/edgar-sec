@@ -92,11 +92,7 @@ def year_span_prod(text: LeaseSeparatorText) -> int:
     """Distinct year tokens over stub + header (the priced surface)."""
     stubs = " ".join(r[0] for r in text.rows if r and r[0])
     header = " ".join(text.rows[0]) if text.rows else ""
-    years = {
-        y
-        for y in YEAR_TOKEN_SEARCH_RE.findall(stubs + " " + header)
-        if y[:2] in ("19", "20")
-    }
+    years = set(YEAR_TOKEN_SEARCH_RE.findall(stubs + " " + header))
     return len(years)
 
 

@@ -69,10 +69,8 @@ def _windows(text: AroText) -> tuple[str, str, str]:
 
 
 def _years(line: str) -> list[str]:
-    """Year tokens on a line, the priced 19xx/20xx shape only."""
-    return [
-        year for year in YEAR_TOKEN_SEARCH_RE.findall(line) if year[:2] in ("19", "20")
-    ]
+    """Year tokens on a line, the foundation's full-range shape."""
+    return YEAR_TOKEN_SEARCH_RE.findall(line)
 
 
 def _months(line: str) -> list[str]:
@@ -97,8 +95,7 @@ def _opens_with_period(stripped: str) -> bool:
     """A bare dated line: opens with a month, year, or numeric date."""
     if _MONTH_TOKEN_RE.match(stripped):
         return True
-    year = YEAR_TOKEN_SEARCH_RE.match(stripped)
-    if year is not None and year.group(0)[:2] in ("19", "20"):
+    if YEAR_TOKEN_SEARCH_RE.match(stripped):
         return True
     date = NUMERIC_DATE_RE.match(stripped)
     return date is not None and date.group(0).count("/") == 2
