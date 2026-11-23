@@ -326,30 +326,63 @@ _LADDER_ONLY = (
 def test_assignment_refuses_when_debt_seat_seated():
     results = apply_lease_assignment(
         [GeometryText(form_tests=_SEATED)],
+        [_result(FAMILY)],
+    )
+    assert FAMILY not in results[0].claims
+    evidence = results[0].scores[FAMILY].evidence
+    assert any(
+        item.detail == "lease assignment: geometry seated to debt_maturity"
+        for item in evidence
+    )
+
+
+def test_assignment_refuses_when_geometry_co_claimed():
+    results = apply_lease_assignment(
+        [GeometryText()],
+        [_result(FAMILY, "balance_sheet")],
+    )
+    assert FAMILY not in results[0].claims
+    assert "balance_sheet" in results[0].claims
+    evidence = results[0].scores[FAMILY].evidence
+    assert any(
+        item.detail == "lease assignment: geometry co-claimed" for item in evidence
+    )
+
+
+def test_assignment_co_claim_note_takes_precedence_over_debt_seat():
+    results = apply_lease_assignment(
+        [GeometryText(form_tests=_SEATED)],
         [_result(FAMILY, ANCHOR)],
     )
     assert FAMILY not in results[0].claims
     assert ANCHOR in results[0].claims
     evidence = results[0].scores[FAMILY].evidence
     assert any(
-        item.channel == "gate" and "lease assignment" in item.detail
-        for item in evidence
+        item.detail == "lease assignment: geometry co-claimed" for item in evidence
     )
+    assert not any("seated to debt_maturity" in item.detail for item in evidence)
+
+
+def test_assignment_keeps_unopposed_solo_claim():
+    results = apply_lease_assignment(
+        [GeometryText()],
+        [_result(FAMILY)],
+    )
+    assert FAMILY in results[0].claims
 
 
 def test_assignment_keeps_claim_when_admission_fails():
     results = apply_lease_assignment(
         [GeometryText(form_tests=_LADDER_ONLY)],
-        [_result(FAMILY, ANCHOR)],
+        [_result(FAMILY)],
     )
     assert FAMILY in results[0].claims
-    assert ANCHOR in results[0].claims
 
 
 def test_assignment_keeps_claim_when_outcomes_absent():
     results = apply_lease_assignment(
         [GeometryText()],
-        [_result(FAMILY, ANCHOR)],
+        [_result(FAMILY)],
     )
     assert FAMILY in results[0].claims
 

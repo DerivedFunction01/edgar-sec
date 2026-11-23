@@ -21,7 +21,9 @@ from edgar_sec.engine.tables.extraction.pension.pension_combination_specs import
     PensionCombinationSpec,
 )
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
+    PensionRoutedText,
     header_keys,
+    read_routed,
     stub_key,
 )
 
@@ -133,7 +135,12 @@ def evaluate_pension_combination(
         return PensionCombinationVerdict(False, "revenue_stub")
     host = _host_family(read.stub_keys)
     if host is not None:
-        return PensionCombinationVerdict(False, f"host_stubkey (host {host})")
+        # The host leg yields to the same benefit-payments read
+        # as the routed separator's host leg: benefit terms on a
+        # stub year ladder are the estimated-benefit-payments form.
+        routed = read_routed(PensionRoutedText(text.table_text, text.caption_stack))
+        if not (routed.benefit_terms and routed.stub_year_ladder):
+            return PensionCombinationVerdict(False, f"host_stubkey (host {host})")
     if not read.stub_keys:
         guarantee = bool(read.offset_tokens & GUARANTEE_TOKENS)
         if guarantee:

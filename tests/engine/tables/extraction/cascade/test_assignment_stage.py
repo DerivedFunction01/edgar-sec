@@ -184,6 +184,39 @@ def test_refusal_leaves_sibling_reseat_intact():
     assert [g.family for g in out.groups] == ["cash_flow"]
 
 
+def _removed_with_evidence(family, detail):
+    geometry = GeometryText(caption="Statements")
+    note = (ClaimEvidence("gate", detail, 0.0),)
+    entering = _result(family, scores={family: _score(family, 11.0, note)})
+    assigned = CompetitionResult(
+        claims=(), contested=(), scores=entering.scores, groups=()
+    )
+    (out,) = preserve_assignment_claims([geometry], [entering], [assigned])
+    return out
+
+
+def test_co_claimed_lease_claim_stays_removed():
+    out = _removed_with_evidence(
+        "lease_maturity", "lease assignment: geometry co-claimed"
+    )
+    assert out.claims == ()
+    assert out.groups == ()
+
+
+def test_debt_seated_lease_claim_reseated():
+    out = _removed_with_evidence(
+        "lease_maturity", "lease assignment: geometry seated to debt_maturity"
+    )
+    assert out.claims == ("lease_maturity",)
+
+
+def test_co_claimed_note_does_not_refuse_other_families():
+    out = _removed_with_evidence(
+        "balance_sheet", "lease assignment: geometry co-claimed"
+    )
+    assert out.claims == ("balance_sheet",)
+
+
 def test_stage_restores_a_real_pass_removal():
     geometry = GeometryText(stubs=("Asset retirement obligations",))
     groups = (

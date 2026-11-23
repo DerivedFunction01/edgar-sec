@@ -66,7 +66,9 @@ def test_stub_key_drops_digits_months_and_truncates():
 
 
 def test_read_header_features_come_from_the_homed_derivation():
-    read = _pre._read(PensionRoutedText("Funded status of the plan | 2024 | 2023"))
+    read = _pre.read_routed(
+        PensionRoutedText("Funded status of the plan | 2024 | 2023")
+    )
     hdr_features = {f for f in read.features if f.startswith("hdr:")}
     expected = {
         f"hdr:{k}" for k in header_keys(("Funded status of the plan", "2024", "2023"))
@@ -197,6 +199,19 @@ def test_increment_host2_supp():
     verdict = _eval("Operating lease obligations | 5\nTotal | 9\nRent expense | 3")
     assert not verdict.admitted
     assert verdict.detail == "inc:host2_supp (host commitments_contingencies)"
+
+
+def test_host_leg_yields_to_the_benefit_payments_ladder():
+    rows = [" | Pension Benefits | Post-Retirement Medical Benefits"]
+    rows += [f"{year} | 10 | 4" for year in range(2024, 2029)]
+    rows += ["Thereafter | 50 | 20", "Total | 100 | 40"]
+    verdict = _eval("\n".join(rows))
+    assert verdict.admitted
+    assert verdict.detail.startswith("ext:benefit_payments")
+    bare = [" | Amount"] + rows[1:]
+    refused = _eval("\n".join(bare))
+    assert not refused.admitted
+    assert refused.detail.startswith("inc:host2_supp")
 
 
 def test_increment_hdr_item201d():

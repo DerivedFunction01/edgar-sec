@@ -143,9 +143,9 @@ def debt_seat_claimed(form_tests) -> bool:
 
 
 def apply_lease_assignment(geometries, results):
-    """Filing-level pass: a lease claim is refused when the debt
-    seat has seated the same geometry (assign_sibling_seat).
-    It only removes claims, so the primary gate stays final.
+    """Filing-level pass: a lease claim is refused when another
+    family claims the same geometry, or when the debt seat has
+    seated it (assign_sibling_seat); it only removes claims.
     """
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
@@ -158,7 +158,10 @@ def apply_lease_assignment(geometries, results):
     for i, result in enumerate(results):
         if family not in result.claims:
             continue
-        if debt_seat_claimed(geometries[i].form_tests):
+        others = [name for name in result.claims if name != family]
+        if others:
+            refused[i] = "lease assignment: geometry co-claimed"
+        elif debt_seat_claimed(geometries[i].form_tests):
             refused[i] = "lease assignment: geometry seated to debt_maturity"
     if not refused:
         return list(results)

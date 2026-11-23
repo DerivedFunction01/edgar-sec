@@ -60,11 +60,18 @@ def _claim_role(geometry: GeometryText) -> str:
 
 
 def _refused_reseat(family: str, score: FamilyScore | None) -> bool:
-    """Whether preservation refuses to re-seat a removed claim.
-
-    An income_statement claim whose score carries
-    context-channel points stays removed.
+    """Whether preservation refuses to re-seat a removed claim:
+    an income_statement claim with context-channel points, or a
+    lease_maturity claim refused as co-claimed, stays removed.
     """
+    if (
+        family == "lease_maturity"
+        and score is not None
+        and any(
+            e.detail == "lease assignment: geometry co-claimed" for e in score.evidence
+        )
+    ):
+        return True
     return (
         family == "income_statement"
         and score is not None

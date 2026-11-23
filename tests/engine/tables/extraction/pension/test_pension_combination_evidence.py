@@ -110,6 +110,32 @@ def test_host_leg_kills_on_balance_at_key():
     assert verdict.detail == "host_stubkey (host aoci_rollforward)"
 
 
+_LADDER_ROWS = [f"{year} | 10 | 4" for year in range(2024, 2029)]
+
+
+def test_host_leg_yields_to_the_benefit_payments_ladder():
+    rows = [" | Pension Benefits | Post-Retirement Medical Benefits"]
+    rows += _LADDER_ROWS
+    rows += ["Thereafter | 50 | 20", "Total | 100 | 40"]
+    verdict = _eval("\n".join(rows))
+    assert verdict.admitted
+    assert verdict.detail == "clear"
+
+
+def test_host_leg_holds_without_benefit_terms():
+    rows = [" | Amount"] + _LADDER_ROWS
+    rows += ["Thereafter | 50 | 20", "Total | 100 | 40"]
+    verdict = _eval("\n".join(rows))
+    assert not verdict.admitted
+    assert verdict.detail == "host_stubkey (host debt_maturity)"
+
+
+def test_host_leg_holds_without_the_year_ladder():
+    verdict = _eval(" | Pension Benefits\nThereafter | 50\nTotal | 100\nApples | 3")
+    assert not verdict.admitted
+    assert verdict.detail == "host_stubkey (host debt_maturity)"
+
+
 def test_guarantee_leg_kills_when_stub_surface_is_empty():
     verdict = _eval(
         "| Guarantees with customers | 5\n| Guarantees - other | 3\n"

@@ -106,7 +106,9 @@ class _Read:
     max_raw_mult: int
 
 
-def _read(text: PensionRoutedText) -> _Read:
+def read_routed(text: PensionRoutedText) -> _Read:
+    """The routed read over one table — the shared recognizer
+    the combination separator's host yield also consumes."""
     lines = [ln for ln in text.table_text.split("\n") if ln.strip()]
     rows = [[c.strip() for c in ln.split("|")] for ln in lines]
     stubs = [r[0] for r in rows if r and r[0]]
@@ -219,7 +221,7 @@ def evaluate_pension_routed(
     text: PensionRoutedText, spec: PensionRoutedSpec = PENSION_ROUTED_SPEC
 ) -> PensionRoutedVerdict:
     """Evaluate the routed separator over one table's text."""
-    read = _read(text)
+    read = read_routed(text)
     kind = _route(read.stub_keys)
     if kind is not None:
         if kind == "payments":
@@ -238,7 +240,10 @@ def evaluate_pension_routed(
             False, f"inc:cap_payments_due (host {spec.payments_due_host})"
         )
     host = _best_host(read.all_keys, spec.host_min_hits)
-    if host is not None:
+    # The host leg yields to the benefit-payments read: a table
+    # carrying benefit terms on a stub year ladder is the priced
+    # estimated-benefit-payments form, not a host supplement.
+    if host is not None and not (read.benefit_terms and read.stub_year_ladder):
         return PensionRoutedVerdict(False, f"inc:host2_supp (host {host})")
     if spec.item201d_phrase in read.blobs["hdr"] or (
         spec.item201d_phrase in read.blobs["col"]
