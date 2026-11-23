@@ -45,6 +45,7 @@ from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNELS as SIGNATURE_CHANNELS,
@@ -283,4 +284,7 @@ def compete_filing(
     # Formation seat (priced): cover identity is read from the
     # filing's front matter, upstream of every table decision;
     # the seat claims only geometries the chain left unclaimed.
-    return apply_cover_seat(geometries, spanned)
+    covered = apply_cover_seat(geometries, spanned)
+    # Formation seat (priced): segment_reporting seats on the
+    # gate-final unclaimed set its own floor cannot reach.
+    return apply_segment_seat(geometries, covered)

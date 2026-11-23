@@ -9,9 +9,12 @@ from __future__ import annotations
 import re
 
 from edgar_sec.domain.world.geography import place_terms
+from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
+from edgar_sec.engine.tables.patterns import SCALE_PATTERNS
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 
 CONTENT_GATED_FAMILIES = (
@@ -185,6 +188,56 @@ def segment_grid(geometry: GeometryText) -> bool:
     if framed and geographic_terms_present(geometry) and "total" in grid:
         return True
     return bool(framed and "geographic" in framing and "total" in grid)
+
+
+_PERIOD_WORDS = (
+    "ended",
+    "months",
+    "years",
+    "quarter",
+    "dollars",
+    "except",
+    "change",
+)
+_PERIOD_WORDS_RE = re.compile(
+    rf"(?:{build_alternation(_PERIOD_WORDS, auto_escape=True)})"
+)
+_SCALE_HEADER_NAMES = (
+    "thousands",
+    "millions",
+)
+_SCALE_HEADER_RES = tuple(
+    pattern for pattern, name in SCALE_PATTERNS if name in _SCALE_HEADER_NAMES
+)
+
+
+def _is_period_header(header: str) -> bool:
+    """A header cell that dates or scales a column, not a partition."""
+    return bool(
+        YEAR_TOKEN_SEARCH_RE.search(header)
+        or _PERIOD_WORDS_RE.search(header)
+        or any(pattern.search(header) for pattern in _SCALE_HEADER_RES)
+    )
+
+
+def segment_header_partition(geometry: GeometryText) -> bool:
+    """A total column among three or more non-period headers."""
+    headers = [h.strip().lower() for h in geometry.headers if h.strip()]
+    non_period = [h for h in headers if not _is_period_header(h)]
+    total_col = any(
+        h == "total" or h.startswith("total ") or "consolidated" in h
+        for h in non_period
+    )
+    return total_col and len(non_period) >= 3
+
+
+def segment_geographic_partition(geometry: GeometryText) -> bool:
+    """Three or more geographic terms, closed by a total stub."""
+    stubs = [s.strip().lower() for s in geometry.stubs]
+    total_stub = any(
+        s == "total" or s.startswith("total ") or s.startswith("total:") for s in stubs
+    )
+    return total_stub and len(geographic_terms_present(geometry)) >= 3
 
 
 def corroborates(family: str, geometry: GeometryText) -> bool:

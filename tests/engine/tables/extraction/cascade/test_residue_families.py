@@ -17,7 +17,9 @@ from edgar_sec.engine.tables.extraction.cascade.residue_families import (
     content_score,
     corroborates,
     geographic_terms_present,
+    segment_geographic_partition,
     segment_grid,
+    segment_header_partition,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 
@@ -258,3 +260,40 @@ def test_note_claim_refuses_expense_grid_in_segment_note() -> None:
     )
     result = classify_table(_table(rows, "Segment Information"))  # type: ignore[arg-type]
     assert result.family != "segment_reporting"
+
+
+def test_header_partition_reads_a_total_column() -> None:
+    grid = GeometryText(headers=("North America", "Europe", "Asia Pacific", "Total"))
+    assert segment_header_partition(grid)
+
+
+def test_header_partition_reads_a_consolidated_column() -> None:
+    grid = GeometryText(headers=("Domestic", "Foreign", "Consolidated Total"))
+    assert segment_header_partition(grid)
+
+
+def test_header_partition_needs_three_non_period_headers() -> None:
+    dated = GeometryText(headers=("2023", "2024", "Total"))
+    assert not segment_header_partition(dated)
+    worded = GeometryText(headers=("Three Months Ended", "Six Months Ended", "Total"))
+    assert not segment_header_partition(worded)
+
+
+def test_header_partition_needs_a_total_column() -> None:
+    grid = GeometryText(headers=("North America", "Europe", "Asia Pacific", "Other"))
+    assert not segment_header_partition(grid)
+
+
+def test_geographic_partition_reads_places_closed_by_a_total() -> None:
+    grid = GeometryText(stubs=("United States", "Canada", "Mexico", "Total"))
+    assert segment_geographic_partition(grid)
+
+
+def test_geographic_partition_needs_a_total_stub() -> None:
+    grid = GeometryText(stubs=("United States", "Canada", "Mexico", "Other"))
+    assert not segment_geographic_partition(grid)
+
+
+def test_geographic_partition_needs_three_places() -> None:
+    grid = GeometryText(stubs=("United States", "Canada", "Total"))
+    assert not segment_geographic_partition(grid)
