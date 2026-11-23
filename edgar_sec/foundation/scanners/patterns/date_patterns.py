@@ -51,6 +51,27 @@ _NARROWED_YEAR_LIST_RE = re.compile(
     rf"(?:19|20){_YEAR_TAIL}"
 )
 
+# The century pair as quoted literals, in either order or quote style,
+# and a two-character prefix slice ([:2] or [0:2]).
+_CENTURY_LITERAL = r"[\"'](?:19|20)[\"']"
+_CENTURY_PAIR = rf"{_CENTURY_LITERAL}\s*,\s*{_CENTURY_LITERAL}"
+_PREFIX_SLICE = r"\[\s*(?:0\s*)?:\s*2\s*\]"
+_OPEN_LITERAL = r"[\(\[\{]"
+
+# The same narrowing spelled as a string test instead of a regex: a
+# century-pair membership or equality test on a prefix slice, or a
+# century startswith. These evade the alternation shapes above.
+_NARROWED_CENTURY_MEMBERSHIP_RE = re.compile(
+    rf"{_PREFIX_SLICE}\s*(?:not\s+)?in\s*{_OPEN_LITERAL}\s*{_CENTURY_PAIR}"
+)
+_NARROWED_CENTURY_EQUALITY_RE = re.compile(
+    rf"{_PREFIX_SLICE}\s*(?:==|!=)\s*{_CENTURY_LITERAL}"
+    rf"|{_CENTURY_LITERAL}\s*(?:==|!=)\s*[\w.()]*{_PREFIX_SLICE}"
+)
+_NARROWED_CENTURY_STARTSWITH_RE = re.compile(
+    r"\.startswith\(\s*\(?\s*[\"'](?:19|20)[\"']"
+)
+
 # The module that owns the date vocabulary.
 _HOME = "edgar_sec/foundation/text/dates.py"
 
@@ -86,6 +107,20 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
             path,
             number,
             "narrowed year alternation in a regex",
+            _YEAR_HINT,
+        )
+    if (
+        _NARROWED_CENTURY_MEMBERSHIP_RE.search(line)
+        or _NARROWED_CENTURY_EQUALITY_RE.search(line)
+        or _NARROWED_CENTURY_STARTSWITH_RE.search(line)
+    ):
+        if path == _HOME and _SANCTIONED_NARROWED_RE.match(line):
+            return None
+        return finding(
+            "date-patterns",
+            path,
+            number,
+            "narrowed year century-prefix filter",
             _YEAR_HINT,
         )
     if path == _HOME:

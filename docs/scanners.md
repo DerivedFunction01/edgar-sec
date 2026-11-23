@@ -46,8 +46,11 @@ private copy wherever it appears, not only a duplicated name.
   narrowed-year alternations (`(19|20)` / `(?:19|20)` century groups and
   `19\d{2}|20\d{2}`-style year alternations, in any digit spelling or as
   alternation-builder list items) outside `foundation/text/dates.py`, whose
-  year patterns span the full 1900-9999 range. Year literals as data are not
-  flagged; the rule targets regex pattern source.
+  year patterns span the full 1900-9999 range. The same narrowing spelled as
+  a string test is banned with it: a century-pair membership or equality
+  test on a two-character prefix slice (`y[:2] in ("19", "20")`) or a
+  century `startswith`. Year literals as data are not flagged; the rule
+  targets regex pattern source and century-prefix tests.
 - `pattern-registry`: The intent registry: each recognizer family has one home and
   one sanctioned export surface, recorded as a data table the scanner consumes
   (word token in `foundation/text/words.py`, full date, year, and month in
