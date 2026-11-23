@@ -31,6 +31,7 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
     apply_spanning_vetoes,
 )
+from edgar_sec.engine.tables.extraction.seats.cover_seat import apply_cover_seat
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -205,4 +206,8 @@ def compete_filing(
     gated = apply_primary_gate(geometries, results)
     vetoed = apply_ppe_vetoes(geometries, gated, stages)
     precise = apply_precision_vetoes(geometries, vetoed)
-    return apply_spanning_vetoes(geometries, precise)
+    spanned = apply_spanning_vetoes(geometries, precise)
+    # Formation seat (priced): cover identity is read from the
+    # filing's front matter, upstream of every table decision;
+    # the seat claims only geometries the chain left unclaimed.
+    return apply_cover_seat(geometries, spanned)

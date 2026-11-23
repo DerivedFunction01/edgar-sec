@@ -86,6 +86,7 @@ class GeometryText:
     section_form: str | None = None
     section_part: str | None = None
     section_title: str | None = None
+    table_index: int = 0
 
     @property
     def stub_text(self) -> str:
@@ -152,4 +153,5 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         section_form=section.form if section else None,
         section_part=section.part if section else None,
         section_title=section.title if section else None,
+        table_index=context.table_index,
     )

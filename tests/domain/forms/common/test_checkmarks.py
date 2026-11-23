@@ -3,7 +3,10 @@ from __future__ import annotations
 from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
+    CHECKED_SYMBOLS,
     CHECKMARK_MARK_RE,
+    COVER_LAYOUT_GLYPHS,
+    UNCHECKED_SYMBOLS,
     MARK_CHARACTERS,
     RE_FILLED_CHECKED,
     font_bullet_glyph_state,
@@ -144,3 +147,10 @@ def test_symbol_font_remnants_need_the_bare_context() -> None:
 def test_a_letter_glyph_inside_a_word_is_never_a_mark() -> None:
     assert CHECKMARK_MARK_RE.search("Novotný") is None
     assert CHECKMARK_MARK_RE.search("Dvořák ý") is not None
+
+
+def test_cover_layout_glyphs_are_the_ballot_glyphs() -> None:
+    assert COVER_LAYOUT_GLYPHS == ("☐", "☑", "☒", "🗹", "🗷")
+    assert "☐" in UNCHECKED_SYMBOLS
+    assert "☑" in CHECKED_SYMBOLS
+    assert "☒" in CHECKED_SYMBOLS

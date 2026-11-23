@@ -189,6 +189,37 @@ COVER_EVIDENCE_TERMS: tuple[str, ...] = (
     "interactive data file",
 )
 
+# The cover page's own field vocabulary, in normalized-text
+# form: the registrant block, the securities block, and the
+# check-box block of an annual or quarterly cover.
+COVER_LAYOUT_TERMS: tuple[str, ...] = (
+    "title of each class",
+    "title of class",
+    "state or other jurisdiction of incorporation",
+    "state of incorporation",
+    "jurisdiction of incorporation",
+    "commission file number",
+    "employer identification no",
+    "employer identification number",
+    "irs employer identification",
+    "par value",
+    "securities registered pursuant to section 12",
+    "securities registered pursuant to section 15",
+    "registered pursuant to section 12",
+    "name of exchange on which registered",
+    "exchange on which registered",
+    "trading symbol",
+    "check the appropriate box",
+    EMERGING_GROWTH_COMPANY,
+    SHELL_COMPANY,
+    _REGISTRANT_CHARTER_TERM,
+    "name of registrant",
+    "former name if changed since last report",
+    "fiscal year end",
+    "date of commencement",
+    "indicate by check mark",
+)
+
 STATE_INCORPORATION_RE = re.compile(
     rf"\(?\s*{build_alternation(COVER_LABELS['state_of_incorporation'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
     re.IGNORECASE,
@@ -264,6 +295,7 @@ __all__ = [
     "COVER_EVIDENCE_TERMS",
     "COVER_LABELS",
     "COVER_LABELS_FLAT",
+    "COVER_LAYOUT_TERMS",
     "COVER_START_IDENTITY_TERMS",
     "EMERGING_GROWTH_COMPANY",
     "ERROR_CORRECTION_TERM",

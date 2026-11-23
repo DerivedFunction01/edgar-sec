@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from edgar_sec.domain.forms.common.vocabulary import (
     COVER_LABELS,
+    COVER_LAYOUT_TERMS,
     FILER_ACCELERATED,
     FILER_EMERGING_GROWTH,
     FILER_LARGE_ACCELERATED,
@@ -45,3 +46,11 @@ def test_cover_labels_are_grouped_and_nonempty() -> None:
     }
     for label, terms in COVER_LABELS.items():
         assert terms, f"cover label group {label} is empty"
+
+
+def test_cover_layout_terms_are_the_cover_field_vocabulary() -> None:
+    assert len(COVER_LAYOUT_TERMS) == 25
+    assert "title of each class" in COVER_LAYOUT_TERMS
+    assert "securities registered pursuant to section 15" in COVER_LAYOUT_TERMS
+    assert "name of exchange on which registered" in COVER_LAYOUT_TERMS
+    assert all(term == term.lower() for term in COVER_LAYOUT_TERMS)

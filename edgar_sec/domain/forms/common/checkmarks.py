@@ -74,6 +74,10 @@ CHECKED_SYMBOLS = (
 )
 UNCHECKED_SYMBOLS = ("☐", "□", "¨")
 
+# The ballot glyphs a cover's filer-status and class blocks
+# carry, as extracted grid text preserves them.
+COVER_LAYOUT_GLYPHS = ("☐", "☑", "☒", "🗹", "🗷")
+
 # Filled geometric glyphs remain available for explicit filer-grid geometry.
 CONTEXT_CHECKED_SYMBOLS = ("●", "■", "▪", "•")
 CONTEXT_UNCHECKED_SYMBOLS = ("o", "O")
@@ -371,6 +375,7 @@ __all__ = [
     "CHECKMARK_MARK_TOKENS",
     "CONTEXT_CHECKED_SYMBOLS",
     "CONTEXT_UNCHECKED_SYMBOLS",
+    "COVER_LAYOUT_GLYPHS",
     "FILLED_CHECKED_PATTERN",
     "FONT_BULLET_GLYPH_MAPPINGS",
     "FONT_GLYPH_MAPPINGS",
