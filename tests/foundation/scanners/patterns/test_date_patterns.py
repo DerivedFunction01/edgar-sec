@@ -215,6 +215,125 @@ def test_allows_full_range_year_composition(synthetic_repo: Path) -> None:
     assert date_patterns.scan_date_patterns() == []
 
 
+def test_flags_century_prefix_filter_on_the_six_known_sites(
+    synthetic_repo: Path,
+) -> None:
+    # The exact lines of main 038321b8, pulled from git before the cure.
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/tables/extraction/core/text/period_keys.py": (
+                "    return [y for y in YEAR_TOKEN_SEARCH_RE.findall(line)"
+                ' if y[:2] in ("19", "20")]\n'
+                "    if year is not None and year.group(0)[:2]"
+                ' in ("19", "20"):\n'
+            ),
+            "edgar_sec/engine/tables/extraction/evidence/balance_sheet/"
+            "aro_evidence.py": (
+                "        year for year in YEAR_TOKEN_SEARCH_RE.findall(line)"
+                ' if year[:2] in ("19", "20")\n'
+                "    if year is not None and year.group(0)[:2]"
+                ' in ("19", "20"):\n'
+            ),
+            "edgar_sec/engine/tables/extraction/evidence/balance_sheet/"
+            "lease_evidence.py": ('            if year[:2] in ("19", "20")\n'),
+            "edgar_sec/engine/tables/extraction/note_separators/"
+            "lease_separator_evidence.py": ('        if y[:2] in ("19", "20")\n'),
+        },
+    )
+    findings = date_patterns.scan_date_patterns()
+    assert len(findings) == 6
+    assert {f.message for f in findings} == {"narrowed year century-prefix filter"}
+    assert all("YEAR_TOKEN_SEARCH_RE" in f.hint for f in findings)
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        '    if y[:2] in ("20", "19"):\n',
+        "    if y[:2] in ('19', '20'):\n",
+        '    if y[:2] in ["19", "20"]:\n',
+        '    if y[:2] in {"19", "20"}:\n',
+        '    if y[0:2] in ("19", "20"):\n',
+        '    if y[:2] not in ("19", "20"):\n',
+        '    if token.startswith("19"):\n',
+        "    if token.startswith('20'):\n",
+        '    if token.startswith(("19", "20")):\n',
+        "    if token.startswith(('20', '19')):\n",
+        '    if y[:2] == "19" or y[:2] == "20":\n',
+        '    if "19" == year.group(0)[:2]:\n',
+    ],
+)
+def test_flags_century_prefix_filter_spelling_variants(
+    synthetic_repo: Path, line: str
+) -> None:
+    _build_repo(synthetic_repo, {"edgar_sec/engine/thing.py": line})
+    findings = date_patterns.scan_date_patterns()
+    assert [f.message for f in findings] == ["narrowed year century-prefix filter"]
+
+
+def test_allows_century_pair_as_data(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                'CODES = {"19": ("a",), "20": ("b",)}\n'
+                'ITEMS = ("19", "20")\n'
+                "def pick(code):\n"
+                "    return code in ITEMS\n"
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
+def test_allows_non_century_prefix_tests(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "def a(label, day, sha, entry, other, token):\n"
+                '    x = label.startswith("total")\n'
+                '    y = token.startswith("20x")\n'
+                "    z = day[:4] == str(2024)\n"
+                '    w = sha[:2] == "ab"\n'
+                "    v = entry[:2] > other[:2]\n"
+                "    return x and y and z and w and v\n"
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
+def test_flags_century_prefix_filter_in_the_owner_under_any_other_name(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/foundation/text/dates.py": (
+                'def pick(y):\n    return y[:2] in ("19", "20")\n'
+            )
+        },
+    )
+    findings = date_patterns.scan_date_patterns()
+    assert [f.message for f in findings] == ["narrowed year century-prefix filter"]
+
+
+def test_allows_sanctioned_name_in_the_owner_for_the_filter_form(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/foundation/text/dates.py": (
+                'STRICT_YEAR_TOKEN_PATTERN: str = pick(y[:2] in ("19", "20"))\n'
+            )
+        },
+    )
+    assert date_patterns.scan_date_patterns() == []
+
+
 def test_allows_import_of_year_token_search_pattern(
     synthetic_repo: Path,
 ) -> None:
