@@ -13,6 +13,7 @@ from edgar_sec.engine.tables.extraction.specs.families.aro_evidence_specs import
     AroEvidenceSpec,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
+from edgar_sec.engine.tables.extraction.core.text.period_keys import priced_years
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
@@ -68,11 +69,6 @@ def _windows(text: AroText) -> tuple[str, str, str]:
     return (text.caption.lower(), text.prose.lower()[-_PROSE_TAIL:], first)
 
 
-def _years(line: str) -> list[str]:
-    """Year tokens on a line, the foundation's full-range shape."""
-    return YEAR_TOKEN_SEARCH_RE.findall(line)
-
-
 def _months(line: str) -> list[str]:
     """Full month names on a line, the priced grammar."""
     return [match.group(0) for match in _MONTH_TOKEN_RE.finditer(line)]
@@ -85,7 +81,7 @@ def _numeric_dates(line: str) -> list[str]:
 
 def _period_keys(line: str) -> set[tuple[str, str]]:
     """Period keys on one line: years, month names, numeric dates."""
-    keys = {("y", year) for year in _years(line)}
+    keys = {("y", year) for year in priced_years(line)}
     keys.update(("m", month) for month in _months(line))
     keys.update(("d", date) for date in _numeric_dates(line))
     return keys
@@ -128,8 +124,8 @@ def bookend_f2(text: AroText, spec: AroEvidenceSpec) -> bool:
     book_word = any("balance" in ln and "beginning" in ln for ln in lines) and any(
         "balance" in ln and ("ending" in ln or "end of" in ln) for ln in lines
     )
-    dated = [ln for ln in lines if "balance" in ln and _years(ln)]
-    years = {year for ln in dated for year in _years(ln)}
+    dated = [ln for ln in lines if "balance" in ln and priced_years(ln)]
+    years = {year for ln in dated for year in priced_years(ln)}
     months = {name for ln in dated for name in MONTH_NAMES if name in ln}
     book_date = len(dated) >= 2 and (len(years) >= 2 or len(months) >= 2)
     anchors = [ln for ln in lines if any(a in ln for a in spec.anchor_terms)]
@@ -206,7 +202,7 @@ def dated_subject_d(text: AroText, spec: AroEvidenceSpec) -> bool:
     for line in _lower_lines(text):
         if spec.subject_phrase not in line and not _ABBREVIATION_RE.search(line):
             continue
-        if not ((_months(line) and _years(line)) or _numeric_dates(line)):
+        if not ((_months(line) and priced_years(line)) or _numeric_dates(line)):
             continue
         dated += 1
         keys |= _period_keys(line)
