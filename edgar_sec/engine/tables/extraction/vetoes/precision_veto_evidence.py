@@ -13,6 +13,8 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DERIV_HEADER_SECURITIES_TOKEN,
     DERIV_LEAD_TOKEN,
     DERIV_STUB_TOKEN,
+    CREDIT_DOMINANCE_MARGIN,
+    CREDIT_FAMILY,
     CREDIT_LOSSES_CORE,
     DT_FAMILY,
     DT_STUB_BIGRAM,
@@ -21,6 +23,7 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     INV_LEAD_INVENTORY_TOKEN,
     INV_LEAD_TABLES_TOKEN,
     LEG_CREDIT_LOSSES_HOST,
+    LEG_DOMINANT_CO_CLAIM,
     LEG_EPS_HOST_ABSENT,
     LEG_HEADER_LEVEL,
     LEG_HEADER_SECURITIES,
@@ -86,7 +89,7 @@ def _host_present(tokens: ChannelTokens, core: frozenset[str]) -> bool:
     return any(term in tokens.stub or term in tokens.grid for term in core)
 
 
-def _deriv_legs(geometry, tokens: ChannelTokens) -> tuple[str, ...]:
+def _deriv_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """DERIV-1: impostor vocabulary naming the neighbour note."""
     legs = []
     if DERIV_LEAD_TOKEN in tokens.lead:
@@ -100,7 +103,7 @@ def _deriv_legs(geometry, tokens: ChannelTokens) -> tuple[str, ...]:
     return tuple(legs)
 
 
-def _deferred_tax_legs(geometry, tokens: ChannelTokens) -> tuple[str, ...]:
+def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """DT-1: percentage rows, eps host absence, or the bigram."""
     legs = []
     if geometry.pct_row_share > 0:
@@ -112,7 +115,7 @@ def _deferred_tax_legs(geometry, tokens: ChannelTokens) -> tuple[str, ...]:
     return tuple(legs)
 
 
-def _inventory_legs(geometry, tokens: ChannelTokens) -> tuple[str, ...]:
+def _inventory_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """INV-1: credit-losses host content or lead naming."""
     legs = []
     if _host_present(tokens, CREDIT_LOSSES_CORE):
@@ -124,16 +127,37 @@ def _inventory_legs(geometry, tokens: ChannelTokens) -> tuple[str, ...]:
     return tuple(legs)
 
 
+def _credit_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
+    """Credit dominance: a co-claim outscoring credit by the margin."""
+    score = result.scores.get(CREDIT_FAMILY)
+    if score is None:
+        return ()
+    strongest = max(
+        (
+            result.scores[family].total
+            for family in result.claims
+            if family != CREDIT_FAMILY and family in result.scores
+        ),
+        default=None,
+    )
+    if strongest is not None and strongest >= score.total + CREDIT_DOMINANCE_MARGIN:
+        return (LEG_DOMINANT_CO_CLAIM,)
+    return ()
+
+
 _LEG_EVALUATORS = {
     DERIV_FAMILY: _deriv_legs,
     DT_FAMILY: _deferred_tax_legs,
     INV_FAMILY: _inventory_legs,
+    CREDIT_FAMILY: _credit_legs,
 }
 
 
-def _fired_legs(family: str, geometry, tokens: ChannelTokens) -> tuple[str, ...]:
+def _fired_legs(
+    family: str, geometry, tokens: ChannelTokens, result
+) -> tuple[str, ...]:
     evaluator = _LEG_EVALUATORS.get(family)
-    return evaluator(geometry, tokens) if evaluator is not None else ()
+    return evaluator(geometry, tokens, result) if evaluator is not None else ()
 
 
 def apply_precision_vetoes(geometries, results):
@@ -156,7 +180,7 @@ def apply_precision_vetoes(geometries, results):
                 continue
             if tokens is None:
                 tokens = channel_tokens(geometries[index])
-            legs = _fired_legs(family, geometries[index], tokens)
+            legs = _fired_legs(family, geometries[index], tokens, result)
             if legs:
                 fired[(index, family)] = legs
     if not fired:

@@ -1,5 +1,5 @@
-"""Precision veto pass: the DERIV-1, DT-1, and INV-1 legs
-over gate-final claims of their packet families."""
+"""Precision veto pass: the DERIV-1, DT-1, INV-1, and
+credit dominance legs over gate-final claims."""
 
 from __future__ import annotations
 
@@ -201,5 +201,108 @@ def test_inv_legs_report_in_priced_order():
 def test_inv_no_leg_keeps_the_claim():
     geo = GeometryText(caption="Merchandise held", stubs=("Finished goods",))
     results = apply_precision_vetoes([geo], [_result(("inventory",))])
+    assert "inventory" in results[0].claims
+    assert _inv_details(results[0]) == []
+
+
+def _credit_details(result):
+    return _gate_details(result, family="credit_losses_rollforward")
+
+
+def _scored_result(totals, groups=()):
+    return CompetitionResult(
+        claims=tuple(totals),
+        contested=tuple(totals),
+        scores={family: _score(family, total) for family, total in totals.items()},
+        groups=groups,
+    )
+
+
+def test_dominant_co_claim_removes_only_the_credit_claim():
+    geo = GeometryText(stubs=("Provision for credit losses",))
+    groups = (
+        ClaimGroup(
+            "credit_losses_rollforward",
+            5.0,
+            "claimed",
+            "primary",
+            {"stub": 5.0},
+            (),
+            0.0,
+        ),
+        ClaimGroup("cash_flow", 100.56, "claimed", "primary", {"stub": 100.56}, (), 0.0),
+    )
+    results = apply_precision_vetoes(
+        [geo],
+        [
+            _scored_result(
+                {"credit_losses_rollforward": 5.0, "cash_flow": 100.56},
+                groups=groups,
+            )
+        ],
+    )
+    assert "credit_losses_rollforward" not in results[0].claims
+    assert "credit_losses_rollforward" not in results[0].contested
+    assert "cash_flow" in results[0].claims
+    assert results[0].scores["credit_losses_rollforward"].total == 5.0
+    assert _credit_details(results[0]) == ["precision veto: dom:co-claim"]
+    assert [group.family for group in results[0].groups] == ["cash_flow"]
+
+
+def test_co_claim_inside_the_margin_keeps_the_claim():
+    geo = GeometryText(stubs=("Provision for credit losses",))
+    results = apply_precision_vetoes(
+        [geo],
+        [
+            _scored_result(
+                {"credit_losses_rollforward": 5.0, "aoci_rollforward": 7.47}
+            )
+        ],
+    )
+    assert "credit_losses_rollforward" in results[0].claims
+    assert _credit_details(results[0]) == []
+
+
+def test_co_claim_at_the_margin_boundary_fires():
+    geo = GeometryText(stubs=("Provision for credit losses",))
+    results = apply_precision_vetoes(
+        [geo],
+        [_scored_result({"credit_losses_rollforward": 5.0, "cash_flow": 10.0})],
+    )
+    assert "credit_losses_rollforward" not in results[0].claims
+    assert _credit_details(results[0]) == ["precision veto: dom:co-claim"]
+
+
+def test_equal_co_claim_keeps_the_claim():
+    geo = GeometryText(stubs=("Provision for credit losses",))
+    results = apply_precision_vetoes(
+        [geo],
+        [
+            _scored_result(
+                {
+                    "credit_losses_rollforward": 5.0,
+                    "commitments_contingencies": 5.0,
+                }
+            )
+        ],
+    )
+    assert "credit_losses_rollforward" in results[0].claims
+    assert _credit_details(results[0]) == []
+
+
+def test_sole_credit_claim_keeps_the_claim():
+    geo = GeometryText(stubs=("Provision for credit losses",))
+    results = apply_precision_vetoes(
+        [geo], [_scored_result({"credit_losses_rollforward": 5.0})]
+    )
+    assert "credit_losses_rollforward" in results[0].claims
+    assert _credit_details(results[0]) == []
+
+
+def test_dominance_leg_is_credit_scoped():
+    geo = GeometryText(stubs=("Finished goods",))
+    results = apply_precision_vetoes(
+        [geo], [_scored_result({"inventory": 5.0, "cash_flow": 100.56})]
+    )
     assert "inventory" in results[0].claims
     assert _inv_details(results[0]) == []

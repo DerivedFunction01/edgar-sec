@@ -73,6 +73,16 @@ CREDIT_LOSSES_CORE = frozenset(
     }
 )
 
+CREDIT_FAMILY = "credit_losses_rollforward"
+
+# Credit dominance leg name, as the gate note reports it.
+LEG_DOMINANT_CO_CLAIM = "dom:co-claim"
+
+# The priced dominance margin: a co-claimant family's
+# total must clear the credit claim's total by at least
+# this margin for the leg to refuse the credit claim.
+CREDIT_DOMINANCE_MARGIN = 5.0
+
 # Header/caption function words stoplisted from the token
 # pools by the imposter-census standard (v2 cure).
 TOKEN_STOPLIST = frozenset(
