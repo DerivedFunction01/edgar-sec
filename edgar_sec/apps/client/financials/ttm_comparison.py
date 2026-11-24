@@ -20,14 +20,14 @@ from edgar_sec.apps.client.reference.companyfacts import (
     _current_points,
 )
 from edgar_sec.apps.client.core.fiscal import duration_length_class as _length_class
-from edgar_sec.apps.client.financials.financials_ttm import (
-    _TTM_CLASSES,
+from edgar_sec.apps.client.financials.ttm_filters import _TTM_CLASSES
+from edgar_sec.apps.client.financials.ttm_quarters import _discrete_quarters
+from edgar_sec.apps.client.financials.ttm_types import (
     QuarterLegSet,
     SpanLeg,
     TtmResult,
-    _discrete_quarters,
-    _ttm_window,
 )
+from edgar_sec.apps.client.financials.ttm_window import _ttm_window
 from edgar_sec.engine.xbrl.solve.core.query import QueryStatus
 
 if TYPE_CHECKING:

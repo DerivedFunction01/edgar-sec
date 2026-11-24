@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from edgar_sec.apps.client.reference.concept import ConceptResult
     from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.financials.financials_stitched import StitchedFinancials
-    from edgar_sec.apps.client.financials.financials_ttm import TtmResult
+    from edgar_sec.apps.client.financials.ttm_types import TtmResult
     from edgar_sec.apps.client.models import FilingsResult
     from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.domain.document.aggregate import FilingAggregate

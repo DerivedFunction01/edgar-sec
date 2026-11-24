@@ -14,7 +14,7 @@ from edgar_sec.apps.client.reference.companyfacts import (
     CompanyFact,
     CompanyFacts,
 )
-from edgar_sec.apps.client.financials.financials_ttm import TtmResult
+from edgar_sec.apps.client.financials.ttm_types import TtmResult
 from edgar_sec.apps.client.financials.ttm_comparison import (
     compare_ttm,
     facts_eps_ttm,
