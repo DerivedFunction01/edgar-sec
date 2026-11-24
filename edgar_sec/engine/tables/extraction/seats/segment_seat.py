@@ -19,6 +19,10 @@ from edgar_sec.engine.tables.extraction.cascade.residue_families import (
     segment_grid,
     segment_header_partition,
 )
+from edgar_sec.engine.tables.extraction.seats.seat_application import (
+    apply_seat,
+    seat_role,
+)
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import term_veto_hits
 
 FAMILY = "segment_reporting"
@@ -64,13 +68,7 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
         or segment_geographic_partition(geometry)
     ):
         return result
-    role = (
-        "continuation"
-        if geometry.is_fragment
-        else "head"
-        if geometry.caption.strip()
-        else "standalone"
-    )
+    role = seat_role(geometry)
     group = ClaimGroup(
         family=FAMILY,
         score=score.total,
@@ -94,7 +92,4 @@ def apply_segment_seat(
     results: list[CompetitionResult],
 ) -> list[CompetitionResult]:
     """Seat segment claims the chain left unclaimed, per geometry."""
-    return [
-        _seat_one(geometry, result)
-        for geometry, result in zip(geometries, results, strict=True)
-    ]
+    return apply_seat(_seat_one, geometries, results)
