@@ -58,9 +58,9 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import
 from edgar_sec.pipelines.document_acquisition.run_validation import (
     iter_work_order_rows,
 )
-from edgar_sec.pipelines.document_acquisition.execution.target_runner import (
+from edgar_sec.pipelines.document_acquisition.execution.runner_support import (
     AcquisitionTransport,
-    _stream,
+    stream as _stream,
 )
 
 

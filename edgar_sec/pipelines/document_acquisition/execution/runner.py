@@ -45,8 +45,10 @@ from edgar_sec.pipelines.document_acquisition.run_validation import (
     load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
-from edgar_sec.pipelines.document_acquisition.execution.target_runner import (
+from edgar_sec.pipelines.document_acquisition.execution.runner_support import (
     AcquisitionTransport,
+)
+from edgar_sec.pipelines.document_acquisition.execution.target_runner import (
     acquire_target,
 )
 
