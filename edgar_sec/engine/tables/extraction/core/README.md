@@ -3,12 +3,13 @@
 ## Purpose
 
 The shared foundation of the extraction package: the context model (`context`),
-typed-row structuring (`typed_rows`), the measured registry (`registry`) and the
+typed-row structuring (`typed_rows`), the measured registry (`registry`, with
+the constitutive label sequences in `sequences`) and the
 family profile registry (`profiles`), and the text, period, and placement
 primitives every other extraction subpackage builds on. The package groups
 into `subjects/` (profiles, classification, and subject vocabulary) and
 `text/` (context and the text primitives); calibration, policy, the
-registry, typed rows, and validation stay at the root.
+registry, sequences, typed rows, and validation stay at the root.
 
 ## Contracts
 

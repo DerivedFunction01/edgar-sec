@@ -18,10 +18,10 @@ from edgar_sec.engine.tables.extraction.core.registry import (
     FLAVORS,
     IDENTITIES,
     LANDMARK_SPECS,
-    SEQUENCES,
     SHAPE_BOUNDS_BY_FAMILY,
     STRUCTURE_SPECS,
 )
+from edgar_sec.engine.tables.extraction.core.sequences import SEQUENCES
 
 
 def test_every_spec_carries_governed_provenance() -> None:

@@ -49,7 +49,6 @@ from edgar_sec.engine.tables.extraction.core.registry import (
     PROSE_GROUP_QUOTA,
     PROSE_POINTS,
     RESIDUAL_FAMILY,
-    SEQUENCES,
     SHAPE_BOUNDS_BY_FAMILY,
     SHAPE_ENVELOPE_POINTS,
     SHAPE_OVERAGE_PENALTY,
@@ -59,6 +58,7 @@ from edgar_sec.engine.tables.extraction.core.registry import (
     TOKEN_WEIGHT,
     TRIPLE_POINTS,
 )
+from edgar_sec.engine.tables.extraction.core.sequences import SEQUENCES
 from edgar_sec.engine.tables.extraction.cascade.residue_families import (
     CONTENT_GATED_FAMILIES,
     corroborates,

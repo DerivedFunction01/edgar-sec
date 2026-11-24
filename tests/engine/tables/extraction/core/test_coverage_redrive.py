@@ -18,8 +18,8 @@ from edgar_sec.engine.tables.extraction.core.registry import (
     LANDMARKS,
     PROV_COVERAGE_DISCOVERY,
     PROV_COVERAGE_SEED,
-    SEQUENCES,
 )
+from edgar_sec.engine.tables.extraction.core.sequences import SEQUENCES
 from edgar_sec.engine.tables.extraction.core.typed_rows import (
     CaptionInfo,
     ColumnPeriod,
