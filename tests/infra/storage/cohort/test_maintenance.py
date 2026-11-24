@@ -11,9 +11,11 @@ import pytest
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.maintenance import (
-    CatalogUnavailableError,
     audit_cohort_store,
     maintain_cohort_store,
+)
+from edgar_sec.infra.storage.cohort.maintenance_catalog import (
+    CatalogUnavailableError,
 )
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.object_store.store import ObjectStore
