@@ -246,7 +246,7 @@ def make_working_set(accessions: Iterable[str] | None = None, *, result: Any = N
 
     Shared construction for later feed-event and local-search seeds.
     """
-    from edgar_sec.apps.client.operator.operator import WorkingSet
+    from edgar_sec.apps.client.operator.operator_session import WorkingSet
 
     if accessions is None:
         accessions = result_accessions(result) if result is not None else ()
@@ -271,7 +271,7 @@ _key_value = partial(key_value_result, hints=("vars", "peek"))
 def _grid(
     title: str, data: dict[str, Any], headers: tuple[str, ...], rows: tuple, total: int
 ):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     values = {"kind": "grid", "title": title, "data": data, "total": total}
     values["components"] = (Grid(headers=headers, rows=rows),)
@@ -671,7 +671,7 @@ _SPEC_ROWS = (
 
 
 def _spec(row: tuple):
-    from edgar_sec.apps.client.operator.operator import OperationSpec
+    from edgar_sec.apps.client.operator.operator_execution import OperationSpec
 
     op_id, options_type, executor = row
     values = {"id": op_id, "label": _LABELS[op_id], "options_type": options_type}

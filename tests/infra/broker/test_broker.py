@@ -11,7 +11,8 @@ from typing import Any
 import pytest
 
 from edgar_sec.infra.broker.daemon import managed_broker
-from edgar_sec.infra.broker.sec_broker import SecBroker, SecBrokerClient
+from edgar_sec.infra.broker.broker_client import SecBrokerClient
+from edgar_sec.infra.broker.broker_server import SecBroker
 from edgar_sec.infra.sec_http.metrics import HttpMetrics
 
 
@@ -128,7 +129,7 @@ def test_idle_connection_timeout_closes_without_raising(
     def timeout(_connection) -> bytes:
         raise TimeoutError("idle connection")
 
-    monkeypatch.setattr("edgar_sec.infra.broker.sec_broker._recv_frame", timeout)
+    monkeypatch.setattr("edgar_sec.infra.broker.broker_server._recv_frame", timeout)
     connection = Connection()
     broker = SecBroker(
         socket_path=tmp_path / "broker.sock", http_client=_FakeHttpClient({})

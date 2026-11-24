@@ -249,7 +249,7 @@ def _record_summary(record: dict) -> dict[str, Any]:
 
 
 def _past_runs(options: Any, session: Any):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
     from edgar_sec.apps.client.operator.operator_fetch import _absent, _error
 
     title = "Past runs"
@@ -334,7 +334,8 @@ def _inspect(options: RecordOptions, session: Any):
 
 
 def _rerun(options: RecordOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator import REGISTRY, decode_options
+    from edgar_sec.apps.client.operator.operator import REGISTRY
+    from edgar_sec.apps.client.operator.operator_execution import decode_options
     from edgar_sec.apps.client.operator.operator_fetch import _error, _run_fetch
 
     title = "Re-run past run"

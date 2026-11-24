@@ -8,6 +8,8 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.apps.client.operator import operator, operator_fund
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.pipelines.metadata_sync.commands import series_class as commands
 from edgar_sec.pipelines.metadata_sync.reference.series_class import (
     SeriesClassPublishOutcome,
@@ -22,8 +24,8 @@ class _Facade:
         self.artifacts_root = root
 
 
-def _session(tmp_path: Path) -> operator.ClientSession:
-    return operator.ClientSession(_Facade(tmp_path))
+def _session(tmp_path: Path) -> operator_session.ClientSession:
+    return operator_session.ClientSession(_Facade(tmp_path))
 
 
 def _outcome(**overrides) -> commands.SeriesClassRefreshOutcome:
@@ -65,7 +67,9 @@ def test_row_is_registered_with_the_amendments_vocabulary() -> None:
 
 
 def test_status_on_an_empty_root_is_honest_absence(tmp_path: Path) -> None:
-    result = operator.execute_by_id("fund_series_class", _session(tmp_path), {})
+    result = operator_execution.execute_by_id(
+        "fund_series_class", _session(tmp_path), {}
+    )
 
     assert result.error_code is None
     assert result.data["action"] == "status"
@@ -75,7 +79,7 @@ def test_status_on_an_empty_root_is_honest_absence(tmp_path: Path) -> None:
 
 
 def test_reconcile_writes_no_run_record(tmp_path: Path) -> None:
-    result = operator.execute_by_id(
+    result = operator_execution.execute_by_id(
         "fund_series_class", _session(tmp_path), {"action": "reconcile"}
     )
 
@@ -85,7 +89,7 @@ def test_reconcile_writes_no_run_record(tmp_path: Path) -> None:
 
 
 def test_unknown_action_is_invalid_options(tmp_path: Path) -> None:
-    result = operator.execute_by_id(
+    result = operator_execution.execute_by_id(
         "fund_series_class", _session(tmp_path), {"action": "poll"}
     )
 
@@ -104,7 +108,7 @@ def test_refresh_delegates_and_writes_one_run_record(
     monkeypatch.setattr(commands, "refresh_series_class", stub)
     session = _session(tmp_path)
 
-    result = operator.execute_by_id(
+    result = operator_execution.execute_by_id(
         "fund_series_class",
         session,
         {"action": "refresh", "ciks": ["2663"], "force_refresh": True},
@@ -136,7 +140,7 @@ def test_refresh_failure_is_coded_and_recorded(
 
     monkeypatch.setattr(commands, "refresh_series_class", stub)
 
-    result = operator.execute_by_id(
+    result = operator_execution.execute_by_id(
         "fund_series_class", _session(tmp_path), {"action": "refresh"}
     )
 
@@ -149,7 +153,7 @@ def test_refresh_failure_is_coded_and_recorded(
 
 
 def test_workers_below_one_is_invalid_options(tmp_path: Path) -> None:
-    result = operator.execute_by_id(
+    result = operator_execution.execute_by_id(
         "fund_series_class",
         _session(tmp_path),
         {"action": "refresh", "workers": 0},

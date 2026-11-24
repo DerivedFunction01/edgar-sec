@@ -16,7 +16,7 @@ from edgar_sec.foundation.runtime.settings import (
 )
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 from edgar_sec.infra.broker.daemon import managed_broker
-from edgar_sec.infra.broker.sec_broker import SecBrokerClient
+from edgar_sec.infra.broker.broker_client import SecBrokerClient
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.streaming import (
     StreamFailure,

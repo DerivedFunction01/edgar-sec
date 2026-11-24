@@ -12,7 +12,6 @@ from types import SimpleNamespace
 from edgar_sec.apps.client.operator import (
     operator_company,
     operator_config,
-    operator_drill,
     operator_fetch,
     operator_fund,
     operator_run_records,
@@ -21,6 +20,7 @@ from edgar_sec.apps.client.operator import (
     operator_tools,
 )
 from edgar_sec.apps.client.operator import operator_kit as kit
+from edgar_sec.apps.client.operator.drill import operator_drill
 
 
 def test_error_bindings_are_the_kit_home() -> None:

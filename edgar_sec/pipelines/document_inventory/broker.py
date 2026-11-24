@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Literal
 
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.infra.broker.sec_broker import SecBrokerClient
+from edgar_sec.infra.broker.broker_client import SecBrokerClient
 
 __all__ = [
     "DocumentEnvelope",

@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 
 from edgar_sec.apps.client.operator import operator, operator_config
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -109,8 +111,8 @@ class _FakeFacade:
         return SECTION_TEXTS[found.item_identifier] if found else ""
 
 
-def _session(tmp_path: Path, **kwargs) -> operator.ClientSession:
-    return operator.ClientSession(facade=_FakeFacade(tmp_path), **kwargs)
+def _session(tmp_path: Path, **kwargs) -> operator_session.ClientSession:
+    return operator_session.ClientSession(facade=_FakeFacade(tmp_path), **kwargs)
 
 
 def _write(tmp_path: Path, payload, name: str = "config.json") -> Path:
@@ -205,7 +207,7 @@ def test_unknown_format_version_refuses_before_execution(
     payload = json.loads(capsys.readouterr().out)
     assert payload["error_code"] == "unsupported_version"
     assert payload["operations_declared"] == 1
-    assert operator.OpResult(kind="object", error_code="unsupported_version")
+    assert operator_execution.OpResult(kind="object", error_code="unsupported_version")
 
 
 def test_declared_count_and_error_exits(tmp_path: Path, capsys) -> None:
@@ -287,7 +289,7 @@ def test_precedence_mode_and_snapshot_levels(tmp_path: Path) -> None:
     )
     session_default = _session(
         tmp_path,
-        read_context=operator.ReadContext(mode="pipeline", snapshot="keep"),
+        read_context=operator_session.ReadContext(mode="pipeline", snapshot="keep"),
     )
     run = operator_config.run_config_path(session_default, config)
     assert run.ok
@@ -296,7 +298,7 @@ def test_precedence_mode_and_snapshot_levels(tmp_path: Path) -> None:
     assert session_default.read_context.snapshot == "snap-1"
     host = _session(
         tmp_path,
-        read_context=operator.ReadContext(mode="pipeline", snapshot="keep"),
+        read_context=operator_session.ReadContext(mode="pipeline", snapshot="keep"),
     )
     run = operator_config.run_config_path(
         host, config, {"mode": "fast", "snapshot": "main"}
@@ -308,7 +310,7 @@ def test_precedence_mode_and_snapshot_levels(tmp_path: Path) -> None:
     plain = _write(tmp_path, {"format_version": "1.0", "operations": []}, name="p.json")
     untouched = _session(
         tmp_path,
-        read_context=operator.ReadContext(mode="pipeline", snapshot="keep"),
+        read_context=operator_session.ReadContext(mode="pipeline", snapshot="keep"),
     )
     run = operator_config.run_config_path(untouched, plain)
     assert run.session_values["mode"] == "pipeline"
@@ -404,7 +406,9 @@ def test_config_seed_refusal_matches_prompted_refusal(tmp_path: Path, capsys) ->
     assert session.facade.calls == []
     assert operator.main(["--config", str(path)], session=session) == 1
     assert "refused" in capsys.readouterr().out
-    prompted = operator.execute_by_id("seed_query", _session(tmp_path), {"limit": 5})
+    prompted = operator_execution.execute_by_id(
+        "seed_query", _session(tmp_path), {"limit": 5}
+    )
     assert prompted.error_code == run.error_code
     assert prompted.data["message"] == run.set_results[0].data["message"]
 
@@ -440,7 +444,9 @@ def test_menu_load_config_applies_without_running_operations(
             "operations": [{"op": "fetch", "options": {"forms": ["10-K"]}}],
         },
     )
-    result = operator.execute_by_id("load_config", session, {"path": str(path)})
+    result = operator_execution.execute_by_id(
+        "load_config", session, {"path": str(path)}
+    )
     assert result.error_code is None
     assert result.data["operations_declared"] == 1
     assert result.data["operations_run"] == 0
@@ -455,9 +461,9 @@ def test_menu_load_config_applies_without_running_operations(
         if isinstance(item, MenuAction)
     ]
     assert "Load config file" in labels
-    bad = operator.execute_by_id("load_config", session, {"path": ""})
+    bad = operator_execution.execute_by_id("load_config", session, {"path": ""})
     assert bad.error_code == "invalid_options"
-    ghost = operator.execute_by_id(
+    ghost = operator_execution.execute_by_id(
         "load_config", session, {"path": str(tmp_path / "ghost.json")}
     )
     assert ghost.error_code == "not_found"

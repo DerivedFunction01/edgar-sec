@@ -11,7 +11,7 @@ from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
 from .errors import SnapshotCleanupError
 from .models import CleanupReport
-from .writer import read_publication_receipt
+from .receipt import read_publication_receipt
 
 
 def cleanup_transient_run(

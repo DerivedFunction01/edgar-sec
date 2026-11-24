@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from edgar_sec.apps.client.operator import operator, operator_run_records
+from edgar_sec.apps.client.operator import operator_run_records
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.reference.frames import FrameIdentity, FrameResult
 from tests.apps.client.operator.test_operator_company import _session
 
@@ -16,7 +17,7 @@ def test_frames_labelled_cross_check_and_recorded(tmp_path) -> None:
         "period": "CY2024Q4I",
         "limit": 2,
     }
-    result = operator.execute_by_id("frames", session, options)
+    result = operator_execution.execute_by_id("frames", session, options)
     assert result.error_code is None
     assert "cross-check" in result.title
     assert result.data["cross_check"] is True
@@ -41,7 +42,7 @@ def test_frames_absent_frame_is_honest_absence(tmp_path) -> None:
         "unit": "USD",
         "period": "CY2024Q4I",
     }
-    result = operator.execute_by_id("frames", session, options)
+    result = operator_execution.execute_by_id("frames", session, options)
     assert result.error_code == "absent"
     assert result.data["present"] is False
     assert "cross-check" in result.title
@@ -49,6 +50,8 @@ def test_frames_absent_frame_is_honest_absence(tmp_path) -> None:
 
 def test_frames_needs_explicit_coordinates(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("frames", session, {"taxonomy": "us-gaap"})
+    result = operator_execution.execute_by_id(
+        "frames", session, {"taxonomy": "us-gaap"}
+    )
     assert result.error_code == "invalid_options"
     assert operator_run_records.list_records(session) == []

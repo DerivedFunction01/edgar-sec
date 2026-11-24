@@ -14,24 +14,28 @@ from types import SimpleNamespace
 from typing import Any
 
 from edgar_sec.apps.client.documents.attachments import Attachments
-from edgar_sec.apps.client.operator.operator_drill import (
-    DETAIL_LEVELS,
-    _PATH_HELP,
-    _absent,
-    _accession_text,
-    _current_aggregate,
-    _earnings_capable,
-    _error,
-    _f,
-    _gate,
-    _key_value,
+from edgar_sec.apps.client.operator.drill.operator_drill import (
     _prompt_detail,
     _prompt_limit,
+)
+from edgar_sec.apps.client.operator.drill.operator_drill_access import (
+    _absent,
+    _current_aggregate,
+    _earnings_capable,
+    _gate,
     _prose,
     _sequence_context,
     _sole_context,
 )
+from edgar_sec.apps.client.operator.drill.operator_drill_options import (
+    DETAIL_LEVELS,
+    _PATH_HELP,
+)
 from edgar_sec.apps.client.operator.operator_kit import (
+    accession_text as _accession_text,
+    error_result as _error,
+    help_field as _f,
+    key_value_result as _key_value,
     make_module_getattr,
     make_register,
 )
@@ -122,7 +126,7 @@ def _exhibits_list(options: ExhibitsListOptions, session: Any):
         }
         for a in shown
     ]
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     grid = Grid(
         headers=("type", "filename", "description", "size"),
@@ -248,7 +252,7 @@ def _earnings(options: EarningsExhibitOptions, session: Any):
         return _absent(
             "object", title, str(reason), {"accession": str(result.accession)}
         )
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     exhibit = result.exhibit
     components: list[Any] = [
@@ -467,7 +471,7 @@ def _availability(gate: str | None):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator.operator import OperationSpec
+    from edgar_sec.apps.client.operator.operator_execution import OperationSpec
 
     specs = []
     for op_id, options_type, executor, effect, gate in _SPEC_ROWS:

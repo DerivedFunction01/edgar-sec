@@ -19,7 +19,7 @@ from edgar_sec.pipelines.document_acquisition.commands.fixture import (
     cmd_fixture_fill,
 )
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from edgar_sec.pipelines.document_acquisition.review_artifacts.builder import (
+from edgar_sec.pipelines.document_acquisition.review_artifacts.artifact import (
     OBSERVATIONS_FILE,
 )
 

@@ -29,9 +29,11 @@ from edgar_sec.pipelines.document_acquisition.snapshot.errors import (
     ReferentialIntegrityError,
     RunNotPublishableError,
 )
+from edgar_sec.pipelines.document_acquisition.snapshot.receipt import (
+    read_publication_receipt,
+)
 from edgar_sec.pipelines.document_acquisition.snapshot.writer import (
     publish_acquisition_run,
-    read_publication_receipt,
 )
 from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
     write_plan_bundle,

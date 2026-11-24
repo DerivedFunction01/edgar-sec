@@ -8,11 +8,9 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.infra.broker.sec_broker import (
-    HEALTHCHECK_URL,
-    SecBroker,
-    SecBrokerClient,
-)
+from edgar_sec.infra.broker.broker_client import SecBrokerClient
+from edgar_sec.infra.broker.broker_server import SecBroker
+from edgar_sec.infra.broker.sec_broker import HEALTHCHECK_URL
 
 
 @contextmanager

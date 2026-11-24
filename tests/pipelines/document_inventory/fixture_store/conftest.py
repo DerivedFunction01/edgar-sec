@@ -18,7 +18,7 @@ from edgar_sec.foundation.runtime.fixtures import (
     FixturePaths,
     fixture_paths as resolve_fixture_paths,
 )
-from edgar_sec.infra.broker.sec_broker import SecBroker
+from edgar_sec.infra.broker.broker_server import SecBroker
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.pipelines.document_inventory.fixture_store.models import (

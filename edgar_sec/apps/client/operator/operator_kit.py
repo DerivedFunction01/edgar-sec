@@ -19,7 +19,7 @@ def key_value_result(
     title: str, data: dict, rows: Iterable[tuple[str, str]], **extra: Any
 ):
     """A key-value result whose total is its row count."""
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     components = tuple(KeyValueRow(k, v) for k, v in rows)
     return OpResult(
@@ -77,7 +77,7 @@ def error_result(
     kind: str, code: str, title: str, message: str, data: dict | None = None
 ):
     """A coded result with the message as its sole prose component."""
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     return OpResult(
         kind=kind,
@@ -120,7 +120,7 @@ def make_spec() -> Callable[..., Any]:
     """Build a module's spec-row closure over the shared row shape."""
 
     def spec(op_id, label, options_type, effect, kind, executor):
-        from edgar_sec.apps.client.operator.operator import OperationSpec
+        from edgar_sec.apps.client.operator.operator_execution import OperationSpec
 
         return OperationSpec(
             id=op_id,

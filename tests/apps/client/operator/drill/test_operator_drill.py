@@ -5,11 +5,13 @@ from __future__ import annotations
 import zipfile
 from pathlib import Path
 
-from edgar_sec.apps.client.operator import (
-    operator,
+from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator.drill import (
     operator_drill,
     operator_drill_exhibits,
 )
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -234,13 +236,15 @@ def _filing(
 
 
 def _session(tmp_path: Path, filing: FilingAggregate, **facade_kwargs):
-    session = operator.ClientSession(facade=_FakeFacade(tmp_path, **facade_kwargs))
+    session = operator_session.ClientSession(
+        facade=_FakeFacade(tmp_path, **facade_kwargs)
+    )
     session.select_filing(filing.accession.value, aggregate=filing)
     return session
 
 
 def _run(op_id: str, session, options: dict | None = None):
-    return operator.execute_by_id(op_id, session, options or {})
+    return operator_execution.execute_by_id(op_id, session, options or {})
 
 
 def _menu_labels(session) -> list[str]:
@@ -289,7 +293,7 @@ def test_drill_rows_registered_with_availability() -> None:
 def test_select_filing_moves_position_and_header(tmp_path: Path) -> None:
     filing = _filing(tmp_path)
     other = _filing(tmp_path, number=107)
-    session = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    session = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     session.add_set(
         "main",
         [filing.accession.value, other.accession.value],
@@ -307,7 +311,7 @@ def test_select_filing_moves_position_and_header(tmp_path: Path) -> None:
 
 def test_select_from_accessions_only_set_refuses_coded(tmp_path: Path) -> None:
     filing = _filing(tmp_path)
-    session = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    session = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     session.add_set("main", [filing.accession.value])
     result = _run("select_filing", session, {"accession": filing.accession.value})
     assert result.error_code == "refused"
@@ -374,7 +378,7 @@ def test_menu_availability_no_filing_then_capable_then_incapable(
         "XBRL summary",
         "Earnings exhibit",
     )
-    no_filing = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    no_filing = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     for label in gated:
         assert label not in _menu_labels(no_filing)
     capable_agg = SimpleNamespace(
@@ -384,7 +388,7 @@ def test_menu_availability_no_filing_then_capable_then_incapable(
         has_xbrl=True,
         processing_profile=_CURRENT,
     )
-    capable = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    capable = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     capable.select_filing("0000320193-25-000001", aggregate=capable_agg)
     for label in gated:
         assert label in _menu_labels(capable)
@@ -395,7 +399,7 @@ def test_menu_availability_no_filing_then_capable_then_incapable(
         has_xbrl=False,
         processing_profile=SimpleNamespace(family="other"),
     )
-    incapable = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    incapable = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     incapable.select_filing("0000320193-25-000002", aggregate=incapable_agg)
     for label in gated:
         assert label not in _menu_labels(incapable)

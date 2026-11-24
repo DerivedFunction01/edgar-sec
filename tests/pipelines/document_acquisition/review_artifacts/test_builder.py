@@ -22,8 +22,12 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import FixturePlanPin
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.review_artifacts import builder
+from edgar_sec.pipelines.document_acquisition.review_artifacts import case_processing
 from edgar_sec.pipelines.document_acquisition.review_artifacts.analyzer import (
     analyze_review_run,
+)
+from edgar_sec.pipelines.document_acquisition.review_artifacts.artifact import (
+    OBSERVATIONS_FILE,
 )
 from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
     append_test_lazy_index,
@@ -65,7 +69,7 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     index_ref = _fixture(paths)
     calls = []
     process = AcquisitionProcessor.process
-    verify_index = builder.verify_fixture_lazy_index
+    verify_index = case_processing.verify_fixture_lazy_index
     index_verifications = []
 
     def traced_process(self, request):
@@ -77,7 +81,7 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
         return verify_index(paths, fixture_id, accession, expected_sha256)
 
     monkeypatch.setattr(AcquisitionProcessor, "process", traced_process)
-    monkeypatch.setattr(builder, "verify_fixture_lazy_index", traced_index)
+    monkeypatch.setattr(case_processing, "verify_fixture_lazy_index", traced_index)
     output = tmp_path / "review-run"
 
     result = builder.build_review_artifacts(
@@ -90,7 +94,7 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     assert len(index_verifications) == 1
     review_paths = ReviewPaths(output, PIPELINE_REVIEW_MANIFEST_FILE)
     record = json.loads(review_paths.manifest_path.read_text(encoding="utf-8"))
-    artifact_path = output / record["outputs"][builder.OBSERVATIONS_FILE]["path"]
+    artifact_path = output / record["outputs"][OBSERVATIONS_FILE]["path"]
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     assert artifact["artifact_version"] == 4
     assert artifact["fixture"]["body_sha256"] == sha256_bytes(_BODY)
@@ -131,7 +135,7 @@ def test_review_generator_records_fixture_body_verification_failure(
         destination.write_bytes(b"tampered")
         return SimpleNamespace(body_sha256=sha256_bytes(_BODY), byte_size=len(_BODY))
 
-    monkeypatch.setattr(builder, "_materialize_fixture_case", corrupt)
+    monkeypatch.setattr(case_processing, "_materialize_fixture_case", corrupt)
     output = tmp_path / "review-run"
 
     result = builder.build_review_artifacts(

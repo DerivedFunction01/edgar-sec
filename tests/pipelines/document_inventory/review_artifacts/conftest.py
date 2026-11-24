@@ -12,7 +12,7 @@ from edgar_sec.domain.document_inventory.models import (
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.foundation.hashing import sha256_text
-from edgar_sec.infra.broker.sec_broker import SecBroker
+from edgar_sec.infra.broker.broker_server import SecBroker
 from edgar_sec.pipelines.document_inventory.fixture_store.capture import (
     capture_index_pages,
     create_index_fixture,

@@ -6,6 +6,8 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 
 _DATASET_SOURCES = ("bdc_datasets", "mfrr_datasets", "nmfp_datasets")
 
@@ -66,9 +68,9 @@ class _FakeFacade:
         self.calls.append("vacuum_cache")
 
 
-def _session(tmp_path: Path) -> tuple[operator.ClientSession, _FakeFacade]:
+def _session(tmp_path: Path) -> tuple[operator_session.ClientSession, _FakeFacade]:
     facade = _FakeFacade(tmp_path)
-    return operator.ClientSession(facade=facade), facade
+    return operator_session.ClientSession(facade=facade), facade
 
 
 def test_state_rows_effects() -> None:
@@ -81,7 +83,7 @@ def test_state_rows_effects() -> None:
 
 def test_bulk_archive_lists_dataset_sources_by_id(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("bulk_archive", session, {})
+    result = operator_execution.execute_by_id("bulk_archive", session, {})
     assert result.error_code is None
     listed = [entry["source_id"] for entry in result.data["sources"]]
     assert listed == sorted(_DATASET_SOURCES)
@@ -117,8 +119,8 @@ def test_bulk_archive_lists_source_when_facade_root_is_none(
         "edgar_sec.foundation.runtime.paths.resolve_paths",
         lambda: SimpleNamespace(artifacts_root=artifacts_root),
     )
-    session = operator.ClientSession(facade=facade)
-    result = operator.execute_by_id("bulk_archive", session, {})
+    session = operator_session.ClientSession(facade=facade)
+    result = operator_execution.execute_by_id("bulk_archive", session, {})
     assert result.error_code is None
     assert result.data["present"] is True
     listed = [entry["source_id"] for entry in result.data["sources"]]
@@ -128,7 +130,7 @@ def test_bulk_archive_lists_source_when_facade_root_is_none(
 def test_bulk_archive_manifest_as_key_value_rows(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"source_id": "bdc_datasets"}
-    result = operator.execute_by_id("bulk_archive", session, options)
+    result = operator_execution.execute_by_id("bulk_archive", session, options)
     assert result.error_code is None
     assert result.data["manifest"]["member_count"] == 2
     assert result.data["manifest"]["sha256"] == "ab" * 32
@@ -139,35 +141,37 @@ def test_bulk_archive_manifest_as_key_value_rows(tmp_path) -> None:
 
 def test_bulk_archive_unstored_source_is_absent(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("bulk_archive", session, {"source_id": "nope"})
+    result = operator_execution.execute_by_id(
+        "bulk_archive", session, {"source_id": "nope"}
+    )
     assert result.error_code == "absent"
     assert result.data["present"] is False
 
 
-def _facts_session(tmp_path: Path) -> operator.ClientSession:
+def _facts_session(tmp_path: Path) -> operator_session.ClientSession:
     facade = _FakeFacade(
         tmp_path,
         extra_members={"companyfacts_bulk": {"CIK0000320193.json": b'{"cik": 320193}'}},
     )
-    return operator.ClientSession(facade=facade)
+    return operator_session.ClientSession(facade=facade)
 
 
 def test_bulk_archive_companyfacts_source_arrives_by_data(tmp_path) -> None:
     session = _facts_session(tmp_path)
-    result = operator.execute_by_id("bulk_archive", session, {})
+    result = operator_execution.execute_by_id("bulk_archive", session, {})
     assert result.error_code is None
     listed = [entry["source_id"] for entry in result.data["sources"]]
     assert "companyfacts_bulk" in listed
     assert listed == sorted([*_DATASET_SOURCES, "companyfacts_bulk"])
 
-    manifest = operator.execute_by_id(
+    manifest = operator_execution.execute_by_id(
         "bulk_archive", session, {"source_id": "companyfacts_bulk"}
     )
     assert manifest.error_code is None
     assert manifest.data["source_id"] == "companyfacts_bulk"
     assert manifest.data["manifest"]["member_count"] == 2
 
-    member = operator.execute_by_id(
+    member = operator_execution.execute_by_id(
         "bulk_archive_member",
         session,
         {"source_id": "companyfacts_bulk", "member": "CIK0000320193.json"},
@@ -180,7 +184,7 @@ def test_bulk_archive_companyfacts_source_arrives_by_data(tmp_path) -> None:
 def test_bulk_member_reads_bytes_through_dataset_source(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"source_id": "nmfp_datasets", "member": "sub.tsv"}
-    result = operator.execute_by_id("bulk_archive_member", session, options)
+    result = operator_execution.execute_by_id("bulk_archive_member", session, options)
     assert result.error_code is None
     assert result.data["bytes"] == len(b"hello member")
     assert result.data["saved"] is False
@@ -194,7 +198,7 @@ def test_bulk_member_save_reports_path_and_size(tmp_path) -> None:
         "member": "sub.tsv",
         "save_path": str(target),
     }
-    result = operator.execute_by_id("bulk_archive_member", session, options)
+    result = operator_execution.execute_by_id("bulk_archive_member", session, options)
     assert result.error_code is None
     assert result.data["saved"] is True
     assert result.data["save_path"] == str(target)
@@ -205,21 +209,21 @@ def test_bulk_member_save_reports_path_and_size(tmp_path) -> None:
 def test_bulk_member_unknown_member_is_not_found(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"source_id": "bdc_datasets", "member": "missing.tsv"}
-    result = operator.execute_by_id("bulk_archive_member", session, options)
+    result = operator_execution.execute_by_id("bulk_archive_member", session, options)
     assert result.error_code == "not_found"
 
 
 def test_bulk_member_unstored_source_is_absent(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"source_id": "nope", "member": "sub.tsv"}
-    result = operator.execute_by_id("bulk_archive_member", session, options)
+    result = operator_execution.execute_by_id("bulk_archive_member", session, options)
     assert result.error_code == "absent"
     assert result.data["present"] is False
 
 
 def test_cache_state_renders_both_tiers(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("cache_state", session, {})
+    result = operator_execution.execute_by_id("cache_state", session, {})
     assert result.error_code is None
     labels = [row.label for row in result.components]
     assert "responses.entries" in labels
@@ -230,7 +234,7 @@ def test_cache_state_renders_both_tiers(tmp_path) -> None:
 def test_cache_state_unavailable_is_absent(tmp_path) -> None:
     session, facade = _session(tmp_path)
     facade.stats = None
-    result = operator.execute_by_id("cache_state", session, {})
+    result = operator_execution.execute_by_id("cache_state", session, {})
     assert result.error_code == "absent"
     assert result.data["present"] is False
 
@@ -239,7 +243,7 @@ def test_cache_clear_refuses_without_the_exact_token(tmp_path) -> None:
     session, facade = _session(tmp_path)
     for confirm in ("", "cache", "cache_vacuum", " CACHE_CLEAR "):
         options = {"confirm": confirm}
-        result = operator.execute_by_id("cache_clear", session, options)
+        result = operator_execution.execute_by_id("cache_clear", session, options)
         assert result.error_code == "refused"
     assert facade.calls == []
 
@@ -247,7 +251,7 @@ def test_cache_clear_refuses_without_the_exact_token(tmp_path) -> None:
 def test_cache_clear_with_the_typed_token(tmp_path) -> None:
     session, facade = _session(tmp_path)
     options = {"confirm": "cache_clear"}
-    result = operator.execute_by_id("cache_clear", session, options)
+    result = operator_execution.execute_by_id("cache_clear", session, options)
     assert result.error_code is None
     assert result.data["cleared"] == {"documents": 1, "responses": 2}
     assert facade.calls == ["clear_cache"]
@@ -256,7 +260,7 @@ def test_cache_clear_with_the_typed_token(tmp_path) -> None:
 def test_cache_vacuum_refuses_without_the_exact_token(tmp_path) -> None:
     session, facade = _session(tmp_path)
     options = {"confirm": "cache_clear"}
-    result = operator.execute_by_id("cache_vacuum", session, options)
+    result = operator_execution.execute_by_id("cache_vacuum", session, options)
     assert result.error_code == "refused"
     assert facade.calls == []
 
@@ -264,7 +268,7 @@ def test_cache_vacuum_refuses_without_the_exact_token(tmp_path) -> None:
 def test_cache_vacuum_with_the_typed_token(tmp_path) -> None:
     session, facade = _session(tmp_path)
     options = {"confirm": "cache_vacuum"}
-    result = operator.execute_by_id("cache_vacuum", session, options)
+    result = operator_execution.execute_by_id("cache_vacuum", session, options)
     assert result.error_code is None
     assert result.data["vacuumed"] is True
     assert facade.calls == ["vacuum_cache"]
