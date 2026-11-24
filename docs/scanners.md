@@ -44,6 +44,12 @@ private copy wherever it appears, not only a duplicated name.
   `tests/fixtures/`), and code spans or fenced blocks inside a document. Exemptions: the
   date-vocabulary home (`foundation/text/date_patterns.py`) and the module's sanctioned sites,
   content-bearing specimens and record pointers excused by file and fragment.
+- `denylist`: **Fails the gate** on a tracked text line containing a literal from the
+  provisioned denylist. Resolution: the file named by `STARTER_DENYLIST_FILE` wins and
+  never falls back (set but unreadable resolves to no list); otherwise
+  `var/config/denylist.txt` when present. A finding names the path and line only — the
+  literal and the line's content are never printed. Exemptions: the denylist file
+  itself and the scanner mirror tests. With no list provisioned, reports nothing.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
 - `sha256-validation`: Bans duplicate SHA-256 string validation (regex, length/all, or letters in a set) outside `foundation.hashing.is_sha256_hex_digest`; SQL validation is not scanned.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces the no-shims rule).

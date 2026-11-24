@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .base import SEVERITY_ERROR, SEVERITY_NOTICE, Scanner, ScannerFinding
+from .content.denylist import SCANNER as DENYLIST_SCANNER
 from .content.living_dates import SCANNER as LIVING_DATES_SCANNER
 from .forms.form_isolation import SCANNER as FORM_ISOLATION_SCANNER
 from .forms.form_vocabulary import SCANNER as FORM_VOCABULARY_SCANNER
@@ -69,6 +70,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     IDENTIFIER_PATTERNS_SCANNER,
     PERIOD_PATTERNS_SCANNER,
     FOLDER_DENSITY_SCANNER,
+    DENYLIST_SCANNER,
 )
 
 __all__ = [
@@ -76,6 +78,7 @@ __all__ = [
     "BATCH_DEFAULTS_SCANNER",
     "CLEAN_EXIT_SCANNER",
     "DATE_PATTERNS_SCANNER",
+    "DENYLIST_SCANNER",
     "ENV_SCANNER",
     "FORM_ISOLATION_SCANNER",
     "FORM_VOCABULARY_SCANNER",
