@@ -18,7 +18,9 @@ from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.families.annual.processing import (
     PROFILE as ANNUAL_PROFILE,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import STRATUM_ANNUAL
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    STRATUM_ANNUAL,
+)
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.tools.table_extraction_corpus.defects import DefectRegister
 from edgar_sec.tools.table_extraction_corpus.extract import extract_filing

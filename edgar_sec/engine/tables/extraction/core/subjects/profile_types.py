@@ -10,6 +10,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROSE_WINDOW_NONE,
 )
 
+
 @dataclass(frozen=True, slots=True)
 class SupportState:
     """Measured support for one family: precision/recall per stratum."""
@@ -48,4 +49,3 @@ class FamilyProfile:
     shape: str | None = None
     note: str = ""
     provenance: str = PROV_FAMILY_SUPPORT
-
