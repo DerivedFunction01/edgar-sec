@@ -145,7 +145,7 @@ _CENSUS_SCOPED_CLUSTERS = (
                 "_precision_rank",
             ),
             (
-                "edgar_sec/engine/xbrl/solve/evaluation/counter_solver.py",
+                "edgar_sec/engine/xbrl/solve/evaluation/counter_keys.py",
                 "_precision_tolerance",
             ),
         }
@@ -154,7 +154,7 @@ _CENSUS_SCOPED_CLUSTERS = (
     frozenset(
         {
             ("edgar_sec/engine/xbrl/solve/core/breakdown.py", "_local_name"),
-            ("edgar_sec/engine/xbrl/solve/evaluation/counter_solver.py", "_local_name"),
+            ("edgar_sec/engine/xbrl/solve/evaluation/counter_keys.py", "_local_name"),
         }
     ),
     # T-16 `_utc_now` / `_now_iso`

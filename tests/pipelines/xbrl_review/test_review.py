@@ -15,12 +15,14 @@ from edgar_sec.engine.xbrl.schema.models import (
     ConceptDeclaration,
     XbrlFact,
 )
-from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import (
+from edgar_sec.engine.xbrl.solve.evaluation.counter_hypotheses import AuditHypothesis
+from edgar_sec.engine.xbrl.solve.evaluation.counter_quarantine import (
     QUARANTINE_REASONS,
-    AuditHypothesis,
+    QuarantinedFact,
+)
+from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import (
     CounterSolver,
     CounterSolverOutcome,
-    QuarantinedFact,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.infra.storage.parquet import write_parquet_table

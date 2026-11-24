@@ -16,10 +16,8 @@ from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.concepts.concept_table import build_cohort_table
-from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import (
-    CounterSolver,
-    QuarantinedFact,
-)
+from edgar_sec.engine.xbrl.solve.evaluation.counter_quarantine import QuarantinedFact
+from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import CounterSolver
 from edgar_sec.engine.xbrl.solve.cohort.evidence_index import (
     FilingEvidenceRecord,
     build_evidence_index,

@@ -3,11 +3,11 @@
 from dataclasses import fields
 
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import (
+from edgar_sec.engine.xbrl.solve.evaluation.counter_quarantine import (
     QUARANTINE_REASONS,
-    CounterSolver,
     QuarantinedFact,
 )
+from edgar_sec.engine.xbrl.solve.evaluation.counter_solver import CounterSolver
 from edgar_sec.engine.xbrl.schema.models import CalculationArc
 from tests.engine.xbrl.solve.evaluation.counter_solver.conftest import (
     _ARCS,
