@@ -101,7 +101,7 @@ def test_validate_xbrl_benchmark_census_gate(tmp_path: Path, monkeypatch) -> Non
 
 def test_validate_xbrl_benchmark_pairs_gate(tmp_path: Path, monkeypatch) -> None:
     """Verify --pairs passes on a clean pair report and fails on a regression."""
-    import edgar_sec.tools.xbrl_eval.xbrl_census as census_module
+    import edgar_sec.tools.xbrl_eval.xbrl_census_gates as gates_module
     from edgar_sec.engine.xbrl.review.benchmark_pairs import PairReport
 
     out_json = tmp_path / "benchmark.json"
@@ -115,13 +115,13 @@ def test_validate_xbrl_benchmark_pairs_gate(tmp_path: Path, monkeypatch) -> None
         "--pairs",
     ]
     monkeypatch.setattr(
-        census_module,
+        gates_module,
         "run_pair_gate",
         lambda: PairReport(total=14, passed=14, failures=()),
     )
     assert main(args) == 0
     monkeypatch.setattr(
-        census_module,
+        gates_module,
         "run_pair_gate",
         lambda: PairReport(
             total=14, passed=13, failures=("pair: expected tier=exact",)
@@ -204,6 +204,7 @@ def _passing_cross_form_summary() -> dict:
 def test_validate_xbrl_benchmark_all_gates(tmp_path: Path, monkeypatch) -> None:
     """Verify --all runs the whole standing stack green at the pins."""
     import edgar_sec.tools.xbrl_eval.xbrl_census as census_module
+    import edgar_sec.tools.xbrl_eval.xbrl_census_gates as gates_module
     import edgar_sec.tools.xbrl_eval.xbrl_cross_form_census as cross_module
     import edgar_sec.tools.xbrl_eval.xbrl_k1_census as k1_module
     from edgar_sec.engine.xbrl.review.battery import BatteryReport
@@ -228,12 +229,12 @@ def test_validate_xbrl_benchmark_all_gates(tmp_path: Path, monkeypatch) -> None:
         cross_module, "run_cross_form", lambda *a, **k: _passing_cross_form_summary()
     )
     monkeypatch.setattr(
-        census_module,
+        gates_module,
         "run_pair_gate",
         lambda: PairReport(total=17, passed=17, failures=()),
     )
     monkeypatch.setattr(
-        census_module,
+        gates_module,
         "run_battery_gate",
         lambda: BatteryReport(total=188, passed=188, failures=(), results=()),
     )

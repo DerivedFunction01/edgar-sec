@@ -234,7 +234,7 @@ def main(argv: list[str] | None = None) -> int:
             for failure in dei_score.failures:
                 sys.stdout.write(f"  {failure}\n")
     if args.pairs:
-        from edgar_sec.tools.xbrl_eval.xbrl_census import run_pair_gate
+        from edgar_sec.tools.xbrl_eval.xbrl_census_gates import run_pair_gate
 
         pair_report = run_pair_gate()
         sys.stdout.write(f"{'-' * 60}\nSeeded Cross-Firm Pair Set:\n")
@@ -247,7 +247,7 @@ def main(argv: list[str] | None = None) -> int:
             for failure in pair_report.failures:
                 sys.stdout.write(f"  {failure}\n")
     if args.battery:
-        from edgar_sec.tools.xbrl_eval.xbrl_census import run_battery_gate
+        from edgar_sec.tools.xbrl_eval.xbrl_census_gates import run_battery_gate
 
         battery_report = run_battery_gate()
         sys.stdout.write(f"{'-' * 60}\nAnswerability Battery:\n")

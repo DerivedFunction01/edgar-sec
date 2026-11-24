@@ -48,7 +48,8 @@ from edgar_sec.pipelines.xbrl_review.bundles import (
     registry_filings,
 )
 from edgar_sec.pipelines.xbrl_review.cohort import canonical_probe_cohort_path
-from edgar_sec.tools.xbrl_eval.xbrl_census import run_evaluation, values_equal
+from edgar_sec.tools.xbrl_eval.xbrl_census import run_evaluation
+from edgar_sec.tools.xbrl_eval.xbrl_census_replay import values_equal
 from edgar_sec.tools.xbrl_eval.xbrl_census_corpus import (
     ASSETS_Q,
     CASH_Q,
