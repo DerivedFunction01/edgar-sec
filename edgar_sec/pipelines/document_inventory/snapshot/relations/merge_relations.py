@@ -12,13 +12,13 @@ from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import sql_identifier, sql_path_list
 from edgar_sec.pipelines.document_inventory.checkpoint import OUTCOME_SCHEMA
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.errors import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
     ValidationFailedError,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_relations import (
     COHORT_ACCESSIONS_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ENUMERATION_SCHEMA,

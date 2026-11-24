@@ -15,7 +15,7 @@ from edgar_sec.infra.storage.dag.manifest import (
 from edgar_sec.infra.storage.dag.working.publication import read_pointer
 from edgar_sec.infra.storage.dag.spec import RelationSpec
 from edgar_sec.infra.storage.parquet import read_parquet_table, write_parquet_table
-from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+from edgar_sec.pipelines.document_inventory.snapshot.query.reader import (
     get_accession_bundle,
     get_accessions_by_cik,
     get_accessions_by_source_cik,
@@ -23,11 +23,11 @@ from edgar_sec.pipelines.document_inventory.snapshot.reader import (
     get_active_entries,
     query_accessions,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.specs import INVENTORY_RELATIONS
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import INVENTORY_RELATIONS
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 
 SCHEMA = pa.schema([("id", pa.string()), ("val", pa.int64())])

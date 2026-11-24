@@ -16,12 +16,12 @@ from edgar_sec.infra.storage.parquet import (
     read_parquet_table,
     write_parquet_table,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ENUMERATION_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
     INVENTORY_ACCESSION_SOURCES_SPEC,
     INVENTORY_ACCESSIONS_SPEC,
     INVENTORY_ENTRIES_SPEC,

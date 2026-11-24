@@ -4,6 +4,14 @@
 
 Own inventory snapshot relations, pre-fetch plan projection, and bounded merge primitives.
 
+The package is grouped by intent:
+
+- `contracts/` — error types, immutable metadata, Arrow schemas, relation specifications.
+- `relations/` — merge-relation construction and relation part writing.
+- `publication/` — attempt and candidate staging, validation, installation, pointer-last publication.
+- `projection/` — catalog-plan projection into transient work orders.
+- `query/` — point-lookup reads and snapshot inspection.
+
 ## Contracts
 
 - Candidate and current accession/source relations remain in Parquet or DuckDB; the

@@ -7,8 +7,8 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.inspect import inspect_snapshot
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.query.inspect import inspect_snapshot
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
 )
 

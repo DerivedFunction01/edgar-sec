@@ -48,24 +48,24 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     validate_work_order,
     write_work_order,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.errors import BaseSnapshotError
-from edgar_sec.pipelines.document_inventory.snapshot.projection_inputs import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import BaseSnapshotError
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_inputs import (
     base_snapshot_parts,
     catalog_plan_parts,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection_manifest import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_manifest import (
     intent_id,
     read_projection_manifest,
     run_manifest,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_relations import (
     COHORT_ACCESSIONS_SCHEMA,
     COHORT_SOURCES_SCHEMA,
     hash_relations,
     validate_output_schema,
     work_items,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection_staging import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_staging import (
     build_work_candidates,
     check_metadata_against_base,
     normalize_observations,
@@ -73,7 +73,7 @@ from edgar_sec.pipelines.document_inventory.snapshot.projection_staging import (
     stage_cohort_tables,
     stage_plan_targets,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     LOOKUP_LAYOUT_VERSION,
     SNAPSHOT_RELATION_VERSION,
 )

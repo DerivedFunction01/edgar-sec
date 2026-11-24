@@ -15,7 +15,7 @@ from edgar_sec.infra.storage.dag.working.query import compile_pruned_views
 from edgar_sec.infra.storage.dag.working.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.specs import INVENTORY_RELATIONS
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import INVENTORY_RELATIONS
 
 
 def inspect_snapshot(

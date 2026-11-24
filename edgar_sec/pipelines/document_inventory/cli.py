@@ -12,7 +12,7 @@ from edgar_sec.infra.storage.dag.operator.cli import (
     dispatch_dag_subcommand,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
     INVENTORY_RELATIONS,
 )
 

@@ -33,42 +33,42 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     InventoryRunManifest,
     read_run_manifest,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.anti_join import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.anti_join import (
     StagingRelations,
     anti_join,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.attempt_staging import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.attempt_staging import (
     _copy_committed_attempts,
     _validate_input,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.errors import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
     ValidationFailedError,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.installation import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.installation import (
     _make_parent_input_dirs,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.merge_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.relations.merge_relations import (
     _create_merge_relations,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotPublication
-from edgar_sec.pipelines.document_inventory.snapshot.projection_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.models import SnapshotPublication
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_relations import (
     COHORT_ACCESSIONS_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.relation_parts import (
+from edgar_sec.pipelines.document_inventory.snapshot.relations.relation_parts import (
     _write_relation_part,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
     INVENTORY_ACCESSIONS_SPEC,
     INVENTORY_ACCESSION_SOURCES_SPEC,
     INVENTORY_ENTRIES_SPEC,
     INVENTORY_ENUMERATION_SPEC,
     INVENTORY_RELATIONS,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.validation import validate_snapshot
+from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import validate_snapshot
 
 __all__ = ["publish_committed_chunks"]
 

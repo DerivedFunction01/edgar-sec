@@ -13,10 +13,10 @@ from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.infra.storage.duckdb import copy_query_to_parquet
 from edgar_sec.infra.storage.parquet import read_parquet_key_bounds
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.errors import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
     ValidationFailedError,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.merge_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.relations.merge_relations import (
     _RELATION_SCHEMAS,
 )
 

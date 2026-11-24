@@ -19,7 +19,7 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     validate_run_manifest,
     write_run_manifest,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     LOOKUP_LAYOUT_VERSION,
     SNAPSHOT_RELATION_VERSION,
 )

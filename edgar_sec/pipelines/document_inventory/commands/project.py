@@ -10,7 +10,7 @@ import pyarrow.parquet as pq
 from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
     project_catalog_plan,
 )
 from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (

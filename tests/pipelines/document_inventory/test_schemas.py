@@ -7,11 +7,11 @@ from edgar_sec.pipelines.document_inventory.schemas import (
     INVENTORY_ENTRIES_SPEC,
     INVENTORY_RELATIONS,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
     INVENTORY_ACCESSIONS_SPEC as SNAPSHOT_ACCESSIONS_SPEC,
     INVENTORY_ACCESSION_SOURCES_SPEC as SNAPSHOT_ACCESSION_SOURCES_SPEC,
     INVENTORY_ENTRIES_SPEC as SNAPSHOT_ENTRIES_SPEC,

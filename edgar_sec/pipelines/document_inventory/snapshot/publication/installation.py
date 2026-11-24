@@ -11,10 +11,10 @@ from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.infra.storage.atomic import _fsync_dir
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.merge_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.relations.merge_relations import (
     _parent_relation_files,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.validation import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import (
     validate_snapshot,
 )
 

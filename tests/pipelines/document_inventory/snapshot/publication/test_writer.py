@@ -38,7 +38,7 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     write_run_manifest,
     write_work_order,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.errors import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
     ValidationFailedError,
 )
 from edgar_sec.infra.storage.dag.working.publication import (
@@ -46,16 +46,16 @@ from edgar_sec.infra.storage.dag.working.publication import (
     PublicationLockError,
     StaleParentError,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+from edgar_sec.pipelines.document_inventory.snapshot.query.reader import (
     get_active_entries,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ENUMERATION_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.validation import validate_snapshot
-from edgar_sec.pipelines.document_inventory.snapshot.writer import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import validate_snapshot
+from edgar_sec.pipelines.document_inventory.snapshot.publication.writer import (
     publish_committed_chunks,
 )
 

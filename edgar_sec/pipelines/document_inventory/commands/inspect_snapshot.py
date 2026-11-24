@@ -9,7 +9,7 @@ from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.inspect import inspect_snapshot
+from edgar_sec.pipelines.document_inventory.snapshot.query.inspect import inspect_snapshot
 
 
 def cmd_inspect_snapshot(args: argparse.Namespace) -> int:

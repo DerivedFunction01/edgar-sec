@@ -27,7 +27,7 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
 from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     load_run_status,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
     project_catalog_plan,
 )
 from edgar_sec.pipelines.filing_catalog.paths import FilingCatalogPaths

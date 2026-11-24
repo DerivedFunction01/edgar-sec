@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     load_run_state,
     load_run_status,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.writer import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.writer import (
     publish_committed_chunks,
 )
 
