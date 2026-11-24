@@ -5,7 +5,11 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 
-from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator import (
+    operator_execution,
+    operator_registry,
+    operator_session,
+)
 from edgar_sec.apps.client.reference.companyfacts import fetch_company_facts
 from edgar_sec.apps.client.reference.concept import ConceptResult
 from edgar_sec.apps.client.reference.frames import FrameIdentity, FrameResult, FrameRow
@@ -194,25 +198,25 @@ class _FakeFacade:
         return {"responses": {"entries": 3}}
 
 
-def _session(tmp_path: Path) -> tuple[operator.ClientSession, _FakeFacade]:
+def _session(tmp_path: Path) -> tuple[operator_session.ClientSession, _FakeFacade]:
     facade = _FakeFacade(tmp_path)
-    return operator.ClientSession(facade=facade), facade
+    return operator_session.ClientSession(facade=facade), facade
 
 
 def test_company_and_frames_effects() -> None:
-    assert operator.REGISTRY["company"].effect == "reads_state"
-    assert operator.REGISTRY["company_filings"].effect == "reads_state"
-    assert operator.REGISTRY["company_concept"].effect == "reads_state"
-    assert operator.REGISTRY["frames"].effect == "external"
+    assert operator_registry.REGISTRY["company"].effect == "reads_state"
+    assert operator_registry.REGISTRY["company_filings"].effect == "reads_state"
+    assert operator_registry.REGISTRY["company_concept"].effect == "reads_state"
+    assert operator_registry.REGISTRY["frames"].effect == "external"
 
 
 def test_help_examples_name_a_tag_and_duration_period() -> None:
     from edgar_sec.apps.client.operator.operator_discovery import operation_help
 
-    concept = operation_help(operator.REGISTRY["company_concept"])
+    concept = operation_help(operator_registry.REGISTRY["company_concept"])
     tag_help = next(f["help"] for f in concept["options"] if f["name"] == "tag")
     assert "Revenues" in tag_help
-    frames = operation_help(operator.REGISTRY["frames"])
+    frames = operation_help(operator_registry.REGISTRY["frames"])
     frame_tag = next(f["help"] for f in frames["options"] if f["name"] == "tag")
     period = next(f["help"] for f in frames["options"] if f["name"] == "period")
     assert "Revenues" in frame_tag
@@ -223,7 +227,7 @@ def test_help_examples_name_a_tag_and_duration_period() -> None:
 def test_company_ticker_resolves_directly(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"identifier": "AAPL", "include": ["profile"]}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.error_code is None
     assert result.data["resolution"]["via"] == "ticker"
     assert result.data["sections"]["profile"]["status"] == "ok"
@@ -233,7 +237,7 @@ def test_company_ticker_resolves_directly(tmp_path) -> None:
 def test_company_cik_resolves_directly(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"identifier": "320193", "include": ["profile"]}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.data["resolution"]["via"] == "cik"
     assert result.data["company"]["name"] == "Apple Inc"
 
@@ -241,7 +245,7 @@ def test_company_cik_resolves_directly(tmp_path) -> None:
 def test_company_exact_name_resolves_with_candidates(tmp_path) -> None:
     session, facade = _session(tmp_path)
     options = {"identifier": "Acme Anvils", "include": ["profile"]}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.error_code is None
     assert result.data["resolution"]["via"] == "name"
     candidates = result.data["resolution"]["candidates"]
@@ -257,7 +261,9 @@ def test_company_near_tie_refuses_with_scored_candidates(tmp_path) -> None:
         {"name": "Acme Alpha Inc", "cik": "111", "tickers": []},
         {"name": "Acme Beta Inc", "cik": "222", "tickers": []},
     ]
-    result = operator.execute_by_id("company", session, {"identifier": "Acme"})
+    result = operator_execution.execute_by_id(
+        "company", session, {"identifier": "Acme"}
+    )
     assert result.error_code == "refused"
     candidates = result.data["candidates"]
     assert len(candidates) == 2
@@ -269,7 +275,7 @@ def test_company_unknown_name_is_not_a_placeholder(tmp_path) -> None:
     session, facade = _session(tmp_path)
     facade.candidate_entries = []
     options = {"identifier": "Nonexistent Name"}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.error_code == "not_found"
     assert result.data["candidates"] == []
     assert "sections" not in result.data
@@ -355,7 +361,7 @@ def _production_session(tmp_path, monkeypatch):
         lambda: SimpleNamespace(artifacts_root=artifacts_root),
     )
     facade = _ProductionShapeFacade(tmp_path)
-    return operator.ClientSession(facade=facade), facade
+    return operator_session.ClientSession(facade=facade), facade
 
 
 def test_company_name_resolves_from_catalog_when_facade_root_is_none(
@@ -367,7 +373,7 @@ def test_company_name_resolves_from_catalog_when_facade_root_is_none(
     assert not hasattr(facade, "name_candidates")
     assert not hasattr(facade, "company_name_candidates")
     options = {"identifier": "Apple", "include": ["profile"]}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.error_code is None
     assert result.data["resolution"]["via"] == "name"
     candidates = result.data["resolution"]["candidates"]
@@ -384,7 +390,9 @@ def test_company_ambiguous_name_refuses_from_catalog_when_root_is_none(
 ) -> None:
     session, facade = _production_session(tmp_path, monkeypatch)
     assert facade.artifacts_root is None
-    result = operator.execute_by_id("company", session, {"identifier": "American"})
+    result = operator_execution.execute_by_id(
+        "company", session, {"identifier": "American"}
+    )
     assert result.error_code == "refused"
     candidates = result.data["candidates"]
     assert len(candidates) >= 2
@@ -395,7 +403,9 @@ def test_company_ambiguous_name_refuses_from_catalog_when_root_is_none(
 
 def test_company_composite_accounts_a_failing_section(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("company", session, {"identifier": "BRKN"})
+    result = operator_execution.execute_by_id(
+        "company", session, {"identifier": "BRKN"}
+    )
     assert result.error_code is None
     sections = result.data["sections"]
     assert sections["profile"]["status"] == "ok"
@@ -408,14 +418,14 @@ def test_company_composite_accounts_a_failing_section(tmp_path) -> None:
 def test_company_include_is_a_closed_set(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"identifier": "AAPL", "include": ["bogus"]}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.error_code == "invalid_options"
 
 
 def test_company_facts_cross_check_renders_four_outcome_classes(tmp_path) -> None:
     session, facade = _session(tmp_path)
     options = {"identifier": "AAPL", "include": ["facts_cross_check"]}
-    result = operator.execute_by_id("company", session, options)
+    result = operator_execution.execute_by_id("company", session, options)
     assert result.error_code is None
     assert "company_facts:0000320193" in facade.calls
     section = result.data["sections"]["facts_cross_check"]
@@ -438,7 +448,9 @@ def test_company_facts_cross_check_renders_four_outcome_classes(tmp_path) -> Non
 
 def test_company_default_sections_include_facts_cross_check(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("company", session, {"identifier": "AAPL"})
+    result = operator_execution.execute_by_id(
+        "company", session, {"identifier": "AAPL"}
+    )
     assert result.error_code is None
     section = result.data["sections"]["facts_cross_check"]
     assert section["status"] == "ok"
@@ -448,7 +460,7 @@ def test_company_default_sections_include_facts_cross_check(tmp_path) -> None:
 def test_company_filings_row_seeds_a_named_set(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"identifier": "AAPL", "into": "apple"}
-    result = operator.execute_by_id("company_filings", session, options)
+    result = operator_execution.execute_by_id("company_filings", session, options)
     assert result.error_code is None
     assert (result.total, result.shown) == (2, 2)
     assert result.data["set"] == "apple"
@@ -458,7 +470,7 @@ def test_company_filings_row_seeds_a_named_set(tmp_path) -> None:
 def test_company_concept_values_as_returned(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"identifier": "AAPL", "taxonomy": "us-gaap", "tag": "Assets"}
-    result = operator.execute_by_id("company_concept", session, options)
+    result = operator_execution.execute_by_id("company_concept", session, options)
     assert result.error_code is None
     assert result.data["provenance"] == "SEC-reported, exactly as reported"
     assert result.data["values"][0]["value"] == 100
@@ -470,12 +482,14 @@ def test_company_concept_empty_is_absent(tmp_path) -> None:
     session, facade = _session(tmp_path)
     facade.apple.concept_values = ()
     options = {"identifier": "AAPL", "taxonomy": "us-gaap", "tag": "Assets"}
-    result = operator.execute_by_id("company_concept", session, options)
+    result = operator_execution.execute_by_id("company_concept", session, options)
     assert result.error_code == "absent"
     assert result.data["present"] is False
 
 
 def test_company_concept_needs_explicit_coordinates(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("company_concept", session, {"identifier": "AAPL"})
+    result = operator_execution.execute_by_id(
+        "company_concept", session, {"identifier": "AAPL"}
+    )
     assert result.error_code == "invalid_options"

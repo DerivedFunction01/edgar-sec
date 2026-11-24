@@ -164,7 +164,7 @@ def _financials_section(company: Any) -> dict[str, Any]:
 
 
 def _execute_company(options: CompanyOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
     from edgar_sec.apps.client.operator.operator_company_facts import (
         facts_check_section,
     )
@@ -233,7 +233,7 @@ def _execute_company(options: CompanyOptions, session: Any):
 
 
 def _execute_company_filings(options: CompanyFilingsOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
     from edgar_sec.apps.client.operator.operator_selection import store_working_set
 
     title = "Company filings"
@@ -271,7 +271,7 @@ def _execute_company_filings(options: CompanyFilingsOptions, session: Any):
 
 
 def _execute_company_concept(options: CompanyConceptOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     title = "Company concept"
     if not (options.taxonomy and options.tag):

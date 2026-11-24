@@ -231,7 +231,7 @@ def _execute(options: FundSeriesClassOptions, session: Any):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator.operator import OperationSpec
+    from edgar_sec.apps.client.operator.operator_specs import OperationSpec
 
     return (
         OperationSpec(

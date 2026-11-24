@@ -8,9 +8,13 @@ from datetime import date, datetime
 from pathlib import Path
 
 from edgar_sec.apps.client.operator import (
-    operator,
     operator_run_records,
     operator_selection,
+)
+from edgar_sec.apps.client.operator import (
+    operator_execution,
+    operator_registry,
+    operator_session,
 )
 from edgar_sec.apps.client.operator import operator_tools
 from edgar_sec.apps.client.search.efts import (
@@ -159,9 +163,9 @@ class _FakeFacade:
         return {"responses": {"entries": 3}}
 
 
-def _session(tmp_path: Path) -> tuple[operator.ClientSession, _FakeFacade]:
+def _session(tmp_path: Path) -> tuple[operator_session.ClientSession, _FakeFacade]:
     facade = _FakeFacade(tmp_path)
-    return operator.ClientSession(facade=facade), facade
+    return operator_session.ClientSession(facade=facade), facade
 
 
 def test_new_tool_rows_have_the_ruled_effects() -> None:
@@ -174,7 +178,7 @@ def test_new_tool_rows_have_the_ruled_effects() -> None:
         "local_search_seed": "mutates_selection",
     }
     for op_id, effect in effects.items():
-        assert operator.REGISTRY[op_id].effect == effect
+        assert operator_registry.REGISTRY[op_id].effect == effect
 
 
 def test_feed_events_absent_ledger_is_prose_absence(tmp_path) -> None:
@@ -182,7 +186,7 @@ def test_feed_events_absent_ledger_is_prose_absence(tmp_path) -> None:
     facade.feed_result = FeedEventsResult(
         events=(), snapshot_id=None, ledger_present=False
     )
-    result = operator.execute_by_id("feed_events", session, {})
+    result = operator_execution.execute_by_id("feed_events", session, {})
     assert result.error_code == "absent"
     assert result.data["present"] is False
     assert result.total == result.shown == 0
@@ -193,7 +197,9 @@ def test_feed_events_absent_ledger_is_prose_absence(tmp_path) -> None:
 
 def test_feed_events_present_grid_declares_total_vs_shown(tmp_path) -> None:
     session, facade = _session(tmp_path)
-    result = operator.execute_by_id("feed_events", session, {"forms": ["8-K"]})
+    result = operator_execution.execute_by_id(
+        "feed_events", session, {"forms": ["8-K"]}
+    )
     assert result.error_code is None
     assert (result.total, result.shown) == (3, 3)
     assert result.data["snapshot_id"] == "tip-1"
@@ -203,7 +209,7 @@ def test_feed_events_present_grid_declares_total_vs_shown(tmp_path) -> None:
 
 def test_feed_seed_stores_event_accessions(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("feed_seed", session, {"into": "feed"})
+    result = operator_execution.execute_by_id("feed_seed", session, {"into": "feed"})
     assert result.error_code is None
     assert result.data["count"] == 3
     assert session.sets["feed"].accessions == frozenset({"A1", "A2", "A3"})
@@ -215,7 +221,7 @@ def test_feed_seed_absent_ledger_seeds_nothing(tmp_path) -> None:
     facade.feed_result = FeedEventsResult(
         events=(), snapshot_id=None, ledger_present=False
     )
-    result = operator.execute_by_id("feed_seed", session, {"into": "feed"})
+    result = operator_execution.execute_by_id("feed_seed", session, {"into": "feed"})
     assert result.error_code == "absent"
     assert "feed" not in session.sets
 
@@ -223,7 +229,7 @@ def test_feed_seed_absent_ledger_seeds_nothing(tmp_path) -> None:
 def test_efts_search_declares_result_total_vs_shown(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"text": "revenue", "limit": 2}
-    result = operator.execute_by_id("efts_search", session, options)
+    result = operator_execution.execute_by_id("efts_search", session, options)
     assert result.error_code is None
     assert result.total == 250
     assert result.shown == 2
@@ -234,13 +240,15 @@ def test_efts_search_declares_result_total_vs_shown(tmp_path) -> None:
 
 def test_efts_search_blank_query_is_invalid_options(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id("efts_search", session, {})
+    result = operator_execution.execute_by_id("efts_search", session, {})
     assert result.error_code == "invalid_options"
 
 
 def test_efts_capture_refuses_unconfirmed_and_writes_nothing(tmp_path) -> None:
     session, facade = _session(tmp_path)
-    result = operator.execute_by_id("efts_capture", session, {"text": "revenue"})
+    result = operator_execution.execute_by_id(
+        "efts_capture", session, {"text": "revenue"}
+    )
     assert result.error_code == "refused"
     assert not any(name == "capture" for name, _ in facade.calls)
     assert operator_run_records.list_records(session) == []
@@ -249,7 +257,7 @@ def test_efts_capture_refuses_unconfirmed_and_writes_nothing(tmp_path) -> None:
 def test_efts_capture_confirmed_records_the_external_run(tmp_path) -> None:
     session, facade = _session(tmp_path)
     options = {"text": "revenue", "confirm": True}
-    result = operator.execute_by_id("efts_capture", session, options)
+    result = operator_execution.execute_by_id("efts_capture", session, options)
     assert result.error_code is None
     assert result.data["capture"]["directory"] == str(facade.capture_result.directory)
     assert result.data["capture"]["query_hash"] == "abc123"
@@ -272,7 +280,9 @@ def test_local_search_coverage_block_is_verbatim(tmp_path) -> None:
         coverage=coverage,
         not_in_corpus=("A9",),
     )
-    result = operator.execute_by_id("local_search", session, {"query": "revenue"})
+    result = operator_execution.execute_by_id(
+        "local_search", session, {"query": "revenue"}
+    )
     expected = json.loads(json.dumps(asdict(coverage)))
     carried = json.loads(json.dumps(result.data["coverage"]))
     assert carried == expected
@@ -290,7 +300,9 @@ def test_local_search_not_in_corpus_is_not_a_no_match(tmp_path) -> None:
         coverage=_coverage(targets=(TargetVerdict("A9", False),)),
         not_in_corpus=("A9",),
     )
-    result = operator.execute_by_id("local_search", session, {"query": "revenue"})
+    result = operator_execution.execute_by_id(
+        "local_search", session, {"query": "revenue"}
+    )
     assert result.data["not_in_corpus"] == ["A9"]
     assert result.data["no_match"] is False
 
@@ -300,20 +312,22 @@ def test_local_search_no_match_is_distinguishable(tmp_path) -> None:
     facade.search_result = SearchResult(
         query="revenue", mode="bm25", hits=(), coverage=_coverage()
     )
-    result = operator.execute_by_id("local_search", session, {"query": "revenue"})
+    result = operator_execution.execute_by_id(
+        "local_search", session, {"query": "revenue"}
+    )
     assert result.data["not_in_corpus"] == []
     assert result.data["no_match"] is True
 
 
 def test_local_search_seed_and_intersect(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    seeded = operator.execute_by_id(
+    seeded = operator_execution.execute_by_id(
         "local_search_seed", session, {"query": "revenue", "into": "hits"}
     )
     assert seeded.error_code is None
     assert session.sets["hits"].accessions == frozenset({"A1", "A2"})
     session.add_set("main", ["A1", "A3"])
-    narrowed = operator.execute_by_id(
+    narrowed = operator_execution.execute_by_id(
         "local_search_seed",
         session,
         {"query": "revenue", "into": "main", "action": "intersect"},
@@ -347,7 +361,7 @@ def test_efts_gatherers_prompt_each_bool_once(tmp_path, monkeypatch) -> None:
 
 def test_local_search_seed_refuses_unknown_action(tmp_path) -> None:
     session, _ = _session(tmp_path)
-    result = operator.execute_by_id(
+    result = operator_execution.execute_by_id(
         "local_search_seed", session, {"query": "revenue", "action": "union"}
     )
     assert result.error_code == "invalid_options"

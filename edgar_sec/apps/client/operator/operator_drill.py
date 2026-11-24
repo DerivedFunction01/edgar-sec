@@ -201,7 +201,7 @@ def _prose(
     context: dict[str, Any],
     extra: dict[str, Any],
 ):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     if detail not in DETAIL_LEVELS:
         return _error(
@@ -359,7 +359,7 @@ def _sections_list(options: SectionsListOptions, session: Any):
         }
         for s in shown
     ]
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     grid = Grid(
         headers=("item", "title", "start", "end"),
@@ -433,7 +433,7 @@ def _notes_list(options: NotesListOptions, session: Any):
         }
         for n in shown
     ]
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     grid = Grid(
         headers=("number", "label", "title", "start", "end"),
@@ -592,7 +592,7 @@ def _availability(gate: str | None):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator.operator import OperationSpec
+    from edgar_sec.apps.client.operator.operator_specs import OperationSpec
 
     specs = []
     for op_id, options_type, executor, effect, requires, gate in _SPEC_ROWS:

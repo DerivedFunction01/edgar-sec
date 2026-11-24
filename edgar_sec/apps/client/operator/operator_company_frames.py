@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 
 def _execute_frames(options: FramesOptions, session: Any):
     from edgar_sec.apps.client.operator import operator_run_records as records
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     title = (
         f"Frames cross-check: {options.taxonomy}:{options.tag} "

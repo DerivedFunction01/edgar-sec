@@ -142,7 +142,7 @@ def _invalid(message: str) -> _Refusal:
 def _registry(registry: Mapping[str, Any] | None) -> Mapping[str, Any]:
     if registry is not None:
         return registry
-    from edgar_sec.apps.client.operator.operator import REGISTRY
+    from edgar_sec.apps.client.operator.operator_registry import REGISTRY
 
     return REGISTRY
 
@@ -176,7 +176,7 @@ def _parse_session(raw: Any) -> dict[str, Any]:
 
 
 def _decode(registry: Mapping[str, Any], spec_id: str, raw: Mapping[str, Any]):
-    from edgar_sec.apps.client.operator.operator import decode_options
+    from edgar_sec.apps.client.operator.operator_execution import decode_options
 
     return decode_options(registry[spec_id], dict(raw))
 
@@ -417,7 +417,7 @@ def execute_config(
         return ConfigRun(error_code=refusal.code, error_message=refusal.message, **base)
     _apply_session(session, values)
     base.update(session_values=values, session_sources=sources)
-    from edgar_sec.apps.client.operator.operator import execute_operation
+    from edgar_sec.apps.client.operator.operator_execution import execute_operation
 
     set_results: list = []
     for plan in parsed.sets:
@@ -479,7 +479,7 @@ def run_config_path(
 
 
 def _error_result(code: str, title: str, message: str, data: dict | None = None):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     return OpResult(
         kind="key_value",
@@ -491,7 +491,7 @@ def _error_result(code: str, title: str, message: str, data: dict | None = None)
 
 
 def _execute_load_config(options: LoadConfigOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
     from edgar_sec.foundation.runtime.render import KeyValueRow
 
     title = "Load config"
@@ -535,7 +535,7 @@ def _execute_load_config(options: LoadConfigOptions, session: Any):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator.operator import OperationSpec
+    from edgar_sec.apps.client.operator.operator_specs import OperationSpec
 
     return (
         OperationSpec(
@@ -567,7 +567,7 @@ GATHERERS: dict[str, Callable[[Any], Any]] = {"load_config": _gather_load_config
 
 
 def _argv_error(code: str, message: str, json_output: bool) -> int:
-    from edgar_sec.apps.client.operator.operator import OpResult
+    from edgar_sec.apps.client.operator.operator_results import OpResult
 
     result = OpResult(
         kind="object",

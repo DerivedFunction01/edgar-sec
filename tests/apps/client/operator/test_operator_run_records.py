@@ -4,13 +4,14 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.apps.client.operator import operator, operator_run_records
+from edgar_sec.apps.client.operator import operator_run_records
+from edgar_sec.apps.client.operator import operator_registry
 
 
 def test_registry_contains_record_rows() -> None:
     ids = {spec.id for spec in operator_run_records.build_specs()}
     assert ids == {"past_runs", "inspect_past_run", "rerun_past_run"}
-    assert ids <= set(operator.REGISTRY)
+    assert ids <= set(operator_registry.REGISTRY)
     assert operator_run_records.SPECS
     assert operator_run_records.GATHERERS == {}
     registry: dict = {}

@@ -11,6 +11,11 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.apps.client.operator import operator, operator_selection
+from edgar_sec.apps.client.operator import (
+    operator_execution,
+    operator_registry,
+    operator_session,
+)
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -73,11 +78,11 @@ class _FakeFacade:
 
 
 def _run(op_id: str, session, options: dict | None = None):
-    return operator.execute_by_id(op_id, session, options or {})
+    return operator_execution.execute_by_id(op_id, session, options or {})
 
 
 def _session_with_sets(tmp_path: Path):
-    session = operator.ClientSession(facade=_FakeFacade())
+    session = operator_session.ClientSession(facade=_FakeFacade())
     res_a = _result(tmp_path, [(1, "10-K"), (2, "10-Q"), (3, "10-K"), (4, "8-K")])
     res_b = _result(tmp_path, [(3, "10-K"), (4, "8-K"), (5, "10-Q"), (6, "10-K")])
     session.add_set("a", operator_selection.result_accessions(res_a), result=res_a)
@@ -87,7 +92,7 @@ def _session_with_sets(tmp_path: Path):
 
 def test_registry_contains_selection_rows() -> None:
     ids = {row[0] for row in operator_selection._SPEC_ROWS}
-    assert ids <= set(operator.REGISTRY)
+    assert ids <= set(operator_registry.REGISTRY)
     assert operator_selection.SPECS
     assert {spec.id for spec in operator_selection.SPECS} == ids
     registry: dict = {}
@@ -100,7 +105,7 @@ def test_registry_contains_selection_rows() -> None:
 def test_seed_query_uses_session_read_context(tmp_path: Path) -> None:
     result = _result(tmp_path, [(1, "10-K"), (2, "10-Q")])
     facade = _FakeFacade(fetch_result=result)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     session.read_context.mode = "pipeline"
     session.read_context.snapshot = "v1"
     outcome = _run(
@@ -130,7 +135,7 @@ def test_seed_query_uses_session_read_context(tmp_path: Path) -> None:
 
 def test_seed_query_refusal_binds_without_facade_call() -> None:
     facade = _FakeFacade()
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     for options in ({}, {"limit": 10}, {"into": "x", "limit": 1}):
         outcome = _run("seed_query", session, options)
         assert outcome.error_code == "refused"
@@ -142,7 +147,7 @@ def test_seed_query_refusal_binds_without_facade_call() -> None:
 def test_seed_snapshot_query_and_refusal(tmp_path: Path) -> None:
     result = _result(tmp_path, [(7, "10-K")])
     facade = _FakeFacade(snapshot_result=result)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     session.read_context.snapshot = "snap1"
     outcome = _run("seed_snapshot", session, {"into": "snap", "forms": ["10-K"]})
     assert outcome.error_code is None
@@ -158,7 +163,7 @@ def test_seed_snapshot_query_and_refusal(tmp_path: Path) -> None:
 def test_seed_company_and_refusal(tmp_path: Path) -> None:
     result = _result(tmp_path, [(8, "10-Q")])
     facade = _FakeFacade(company_result=result)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run(
         "seed_company", session, {"into": "co", "identifier": "AAPL", "forms": ["10-Q"]}
     )
@@ -196,7 +201,7 @@ def test_seed_company_with_name_seeds_from_resolved_company(
             return [{"name": "Apple Inc", "cik": "320193", "tickers": ["AAPL"]}]
 
     facade = _NameFacade()
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run(
         "seed_company", session, {"into": "co", "identifier": "Apple", "limit": 3}
     )
@@ -219,7 +224,7 @@ def test_seed_company_raw_backend_error_does_not_leak_sql(tmp_path: Path) -> Non
         def company_candidates(self, query):
             return []
 
-    session = operator.ClientSession(facade=_RaisingFacade())
+    session = operator_session.ClientSession(facade=_RaisingFacade())
     outcome = _run("seed_company", session, {"into": "co", "identifier": "Apple"})
     assert outcome.error_code == "not_found"
     payload = json.dumps(outcome.to_payload())
@@ -230,7 +235,7 @@ def test_seed_company_raw_backend_error_does_not_leak_sql(tmp_path: Path) -> Non
 
 
 def test_seed_dataset_json_shapes_and_parquet(tmp_path: Path) -> None:
-    session = operator.ClientSession(facade=_FakeFacade())
+    session = operator_session.ClientSession(facade=_FakeFacade())
     dicts = tmp_path / "rows.json"
     dicts.write_text(
         json.dumps([{"accession": _acc(1), "form": "10-K"}, {"accession": _acc(2)}]),
@@ -258,7 +263,7 @@ def test_seed_dataset_json_shapes_and_parquet(tmp_path: Path) -> None:
 
 
 def test_seed_dataset_refusals() -> None:
-    session = operator.ClientSession(facade=_FakeFacade())
+    session = operator_session.ClientSession(facade=_FakeFacade())
     assert _run("seed_dataset", session, {}).error_code == "refused"
     missing = _run("seed_dataset", session, {"file": "/no/such/dataset.json"})
     assert missing.error_code == "not_found"
@@ -266,7 +271,7 @@ def test_seed_dataset_refusals() -> None:
 
 def test_argv_host_refusals_and_success(tmp_path: Path, capsys) -> None:
     facade = _FakeFacade(fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     argv = ["--op", "seed_query", "--options", '{"limit": 5}', "--json"]
     assert operator.main(argv, session=session) == 1
     assert json.loads(capsys.readouterr().out)["error_code"] == "refused"
@@ -474,13 +479,13 @@ def _fake_prompt(answers: dict[str, str]):
 def test_gatherers_cover_selection_rows(monkeypatch) -> None:
     ids = {row[0] for row in operator_selection._SPEC_ROWS}
     assert set(operator_selection.GATHERERS) == ids
-    assert ids <= set(operator.GATHERERS)
+    assert ids <= set(operator_registry.GATHERERS)
     monkeypatch.setattr(
         operator_selection,
         "prompt_text",
         _fake_prompt({"tickers": "AAPL", "forms": "10-K"}),
     )
-    session = operator.ClientSession(facade=_FakeFacade())
+    session = operator_session.ClientSession(facade=_FakeFacade())
     options = operator_selection.GATHERERS["seed_query"](session)
     assert isinstance(options, operator_selection.SeedQueryOptions)
     assert options.tickers == ("AAPL",)
@@ -490,7 +495,7 @@ def test_gatherers_cover_selection_rows(monkeypatch) -> None:
 
 def test_menu_action_gathers_then_executes(tmp_path: Path, monkeypatch, capsys) -> None:
     facade = _FakeFacade(fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     monkeypatch.setattr(
         operator_selection, "prompt_text", _fake_prompt({"forms": "10-K"})
     )

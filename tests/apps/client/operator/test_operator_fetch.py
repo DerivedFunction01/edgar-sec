@@ -14,6 +14,11 @@ from edgar_sec.apps.client.operator import (
     operator_fetch,
     operator_run_records,
 )
+from edgar_sec.apps.client.operator import (
+    operator_execution,
+    operator_registry,
+    operator_session,
+)
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -117,7 +122,7 @@ class _FakeFacade:
 
 
 def _run(op_id: str, session, options: dict | None = None):
-    return operator.execute_by_id(op_id, session, options or {})
+    return operator_execution.execute_by_id(op_id, session, options or {})
 
 
 def _record(session, record_id: str) -> dict:
@@ -141,9 +146,9 @@ def test_registry_contains_fetch_rows() -> None:
         "snapshot_current",
         "snapshot_checkout",
     }
-    assert ids <= set(operator.REGISTRY)
+    assert ids <= set(operator_registry.REGISTRY)
     assert operator_fetch.SPECS
-    assert operator.GATHERERS["fetch"] is operator_fetch._gather_fetch
+    assert operator_registry.GATHERERS["fetch"] is operator_fetch._gather_fetch
     effects = {s.id: s.effect for s in operator_fetch.build_specs()}
     assert effects["fetch"] == "external"
     assert effects["set_read_context"] == "moves_position"
@@ -152,7 +157,7 @@ def test_registry_contains_fetch_rows() -> None:
 
 
 def test_set_read_context_moves_mode_and_snapshot(tmp_path: Path) -> None:
-    session = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    session = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     outcome = _run("set_read_context", session, {"mode": "snapshot", "snapshot": "v2"})
     assert outcome.error_code is None
     assert outcome.data == {"mode": "snapshot", "snapshot": "v2"}
@@ -171,7 +176,7 @@ def test_seed_fetch_fast_engine_and_record_contents(tmp_path: Path) -> None:
     facade = _FakeFacade(
         tmp_path, fetch_result=result, stats=[_STATS_BEFORE, _STATS_AFTER]
     )
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"tickers": ["AAPL"], "forms": ["10-K"]})
     assert outcome.error_code is None
     assert outcome.data["engine"] == "fast"
@@ -218,7 +223,7 @@ def test_seed_fetch_fast_engine_and_record_contents(tmp_path: Path) -> None:
 
 def test_fetch_mode_option_updates_context_before_fetch(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"forms": ["10-K"], "mode": "pipeline"})
     assert outcome.error_code is None
     assert session.read_context.mode == "pipeline"
@@ -230,7 +235,7 @@ def test_fetch_mode_option_updates_context_before_fetch(tmp_path: Path) -> None:
 
 def test_engine_reflects_routing_not_declaration(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"accessions": [_acc(1)]})
     assert outcome.error_code is None
     assert outcome.data["engine"] == "pipeline"
@@ -246,7 +251,7 @@ def test_engine_follows_result_run_identity(tmp_path: Path) -> None:
         tmp_path, [(1, "10-K")], run_id="snapshot-snap-9", snapshot_id="snap-9"
     )
     facade = _FakeFacade(tmp_path, fetch_result=result)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"tickers": ["AAPL"]})
     assert outcome.data["engine"] == "snapshot"
     assert _record(session, outcome.data["record_id"])["engine"] == "snapshot"
@@ -256,7 +261,7 @@ def test_fetch_cache_absent_when_stats_unavailable(tmp_path: Path) -> None:
     facade = _FakeFacade(
         tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]), stats=[None]
     )
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"forms": ["10-K"]})
     assert outcome.error_code is None
     assert outcome.data["cache"] is None
@@ -265,7 +270,7 @@ def test_fetch_cache_absent_when_stats_unavailable(tmp_path: Path) -> None:
 
 def test_seed_fetch_refusal_binds_without_facade_call(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     for options in ({}, {"limit": 5}, {"roles": ["ex-101"]}):
         outcome = _run("fetch", session, options)
         assert outcome.error_code == "refused"
@@ -276,7 +281,7 @@ def test_seed_fetch_refusal_binds_without_facade_call(tmp_path: Path) -> None:
 def test_set_fetch_member_failure_beside_successes(tmp_path: Path) -> None:
     returned = _result(tmp_path, [(1, "10-K"), (2, "10-Q")])
     facade = _FakeFacade(tmp_path, fetch_result=returned)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     session.add_set("work", [_acc(1), _acc(2), _acc(3)])
     outcome = _run("fetch", session, {})
     assert outcome.error_code is None
@@ -329,7 +334,7 @@ class _StubResult:
 
 def test_payload_outcome_failure_is_coded_beside_success(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_StubResult())
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"accessions": [_acc(1), _acc(2)]})
     assert outcome.error_code is None
     accounting = outcome.data["member_accounting"]
@@ -344,7 +349,7 @@ def test_payload_outcome_failure_is_coded_beside_success(tmp_path: Path) -> None
 def test_facade_failure_returns_external_failure_and_records(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path, stats=[_STATS_BEFORE, _STATS_AFTER])
     facade.fetch_error = RuntimeError("boom")
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     outcome = _run("fetch", session, {"forms": ["10-K"]})
     assert outcome.error_code == "external_failure"
     assert outcome.data["record_id"] == session.last_run_record
@@ -360,7 +365,7 @@ def test_facade_failure_returns_external_failure_and_records(tmp_path: Path) -> 
 
 def test_past_runs_list_inspect_and_bounds(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     empty = _run("past_runs", session, {})
     assert empty.error_code == "absent"
     assert empty.data["present"] is False
@@ -390,11 +395,11 @@ def test_rerun_set_record_reproduces_selection_exactly(tmp_path: Path) -> None:
         return _result(tmp_path, rows)
 
     facade = _FakeFacade(tmp_path, fetch_result=_dynamic)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     session.add_set("work", [_acc(3), _acc(1), _acc(2)])
     original = _run("fetch", session, {})
     record_id = original.data["record_id"]
-    fresh = operator.ClientSession(facade=facade)
+    fresh = operator_session.ClientSession(facade=facade)
     rerun = _run("rerun_past_run", fresh, {"record_id": record_id})
     assert rerun.error_code is None
     assert facade.calls[-1][1]["accessions"] == (_acc(1), _acc(2), _acc(3))
@@ -409,7 +414,7 @@ def test_rerun_set_record_reproduces_selection_exactly(tmp_path: Path) -> None:
 
 def test_rerun_seed_record_repeats_declaration(tmp_path: Path) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     original = _run(
         "fetch", session, {"tickers": ["AAPL"], "forms": ["10-K"], "limit": 5}
     )
@@ -429,7 +434,7 @@ def test_rerun_seed_record_repeats_declaration(tmp_path: Path) -> None:
 
 
 def test_snapshot_absence_renders_as_absence(tmp_path: Path) -> None:
-    session = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    session = operator_session.ClientSession(facade=_FakeFacade(tmp_path))
     for op_id in ("snapshot_list", "snapshot_tags", "snapshot_branches"):
         outcome = _run(op_id, session, {})
         assert outcome.error_code == "absent"
@@ -448,7 +453,7 @@ def test_snapshot_listing_and_checkout_repoints_reads(tmp_path: Path) -> None:
         snapshot_result=_result(tmp_path, [(7, "10-K")]),
         console=_populated_console(),
     )
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     listing = _run("snapshot_list", session, {})
     assert listing.error_code is None
     assert (listing.total, listing.shown) == (1, 1)
@@ -481,7 +486,7 @@ def test_snapshot_checkout_by_id_and_fetch_uses_context(tmp_path: Path) -> None:
         ),
         console=_populated_console(),
     )
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     assert _run("snapshot_checkout", session, {"selector": "snap-1"}).error_code is None
     _run("set_read_context", session, {"mode": "snapshot"})
     outcome = _run("fetch", session, {"forms": ["10-K"]})
@@ -506,7 +511,7 @@ def test_gather_fetch_echoes_resolved_dates_and_confirms(monkeypatch, capsys) ->
     monkeypatch.setattr(
         operator_fetch, "prompt_confirm", lambda prompt, default=False: True
     )
-    session = operator.ClientSession(facade=_FakeFacade(Path("/tmp")))
+    session = operator_session.ClientSession(facade=_FakeFacade(Path("/tmp")))
     options = operator_fetch.GATHERERS["fetch"](session)
     assert options.tickers == ("AAPL",)
     assert options.forms == ("10-K",)
@@ -523,7 +528,7 @@ def test_gather_fetch_declined_confirmation_runs_nothing(monkeypatch) -> None:
     monkeypatch.setattr(
         operator_fetch, "prompt_confirm", lambda prompt, default=False: False
     )
-    session = operator.ClientSession(facade=_FakeFacade(Path("/tmp")))
+    session = operator_session.ClientSession(facade=_FakeFacade(Path("/tmp")))
     with pytest.raises(RuntimeError):
         operator_fetch.GATHERERS["fetch"](session)
 
@@ -532,7 +537,7 @@ def test_menu_snapshot_checkout_prompts_for_selector(
     tmp_path: Path, monkeypatch
 ) -> None:
     facade = _FakeFacade(tmp_path, console=_populated_console())
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     monkeypatch.setattr(operator_fetch, "prompt_text", _fake_prompt({"selector": "v1"}))
     menu = operator.build_operator_menu(session)
     action = next(
@@ -546,7 +551,7 @@ def test_menu_snapshot_checkout_prompts_for_selector(
 
 def test_menu_fetch_action_gathers_then_executes(tmp_path: Path, monkeypatch) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]))
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     monkeypatch.setattr(operator_fetch, "prompt_text", _fake_prompt({"forms": "10-K"}))
     monkeypatch.setattr(
         operator_fetch, "prompt_confirm", lambda prompt, default=False: True

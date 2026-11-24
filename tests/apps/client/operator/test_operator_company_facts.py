@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator import operator_session
 from edgar_sec.apps.client.reference.companyfacts import CompanyFact, CompanyFacts
 from edgar_sec.apps.client.operator.operator_company_facts import facts_check_section
 from edgar_sec.domain.identity import AccessionNumber
@@ -64,7 +64,7 @@ def test_section_renders_counts_and_rows_per_outcome() -> None:
         ),
     )
     facade = _FakeFacade(document)
-    session = operator.ClientSession(facade=facade)
+    session = operator_session.ClientSession(facade=facade)
     company = _company(
         (
             _parsed("us-gaap:Assets", 10.0, "2024-09-28"),
@@ -95,7 +95,7 @@ def test_section_without_parsed_surface_is_all_facts_only() -> None:
     document = CompanyFacts(
         cik=1, entity_name="Acme", facts=(_fact("Assets", 10.0, "2024-09-28"),)
     )
-    session = operator.ClientSession(facade=_FakeFacade(document))
+    session = operator_session.ClientSession(facade=_FakeFacade(document))
     company = SimpleNamespace(xbrl=lambda: None)
 
     section = facts_check_section(company, session, "0000000001")
@@ -115,7 +115,7 @@ def test_section_caps_rendered_rows_and_declares_the_clamp() -> None:
         entity_name="Acme",
         facts=tuple(_fact("Assets", float(n), f"20{n:02d}-01-01") for n in range(60)),
     )
-    session = operator.ClientSession(facade=_FakeFacade(document))
+    session = operator_session.ClientSession(facade=_FakeFacade(document))
 
     section = facts_check_section(_company(()), session, "0000000001")
 
