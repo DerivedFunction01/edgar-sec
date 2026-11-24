@@ -33,6 +33,11 @@ _TEXT_CAP = 6000
 _MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)
 _MONTH_WORD_RE = re.compile(rf"\b(?:{_MONTH_ALT})\b", re.IGNORECASE)
 
+# Heading boundaries in the prose surface: a numbered note
+# heading or an all-caps statement title line.
+_HEADING_NUMBERED_RE = re.compile(r"\n\s*\d{1,2}\.\s+[A-Z]")
+_HEADING_CAPS_RE = re.compile(r"\n[ A-Z][A-Z0-9 ,&()'’\-]{7,}(?=\n|$)")
+
 
 @dataclass(frozen=True, slots=True)
 class RestructuringText:
@@ -65,6 +70,27 @@ class RestructuringEvidence:
 
 
 _REFUSED_NO_SPEC = RestructuringEvidence(False, "no gate spec for test id")
+
+
+def _last_match_start(pattern: re.Pattern[str], text: str) -> int:
+    """Start index of the pattern's last match, or -1 when none."""
+    start = -1
+    for match in pattern.finditer(text):
+        start = match.start()
+    return start
+
+
+def _prose_anchor(prose: str, prose_l: str, terms: tuple[str, ...]) -> bool:
+    """The prose arm's boundary discipline: the last subject
+    mention must follow the last heading boundary in the prose."""
+    subject_pos = max((prose_l.rfind(term) for term in terms), default=-1)
+    if subject_pos < 0:
+        return False
+    heading_pos = max(
+        _last_match_start(_HEADING_NUMBERED_RE, prose),
+        _last_match_start(_HEADING_CAPS_RE, prose),
+    )
+    return subject_pos > heading_pos
 
 
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
@@ -197,7 +223,7 @@ def evaluate_restructuring_evidence(
         term in cap_l or term in prose_l[-spec.prose_tail_chars :] or term in first_line
         for term in terms
     )
-    prose = any(term in prose_l for term in terms)
+    prose = _prose_anchor(text.prose, prose_l, terms)
     if not (lead or prose):
         return RestructuringEvidence(False, "subject not anchored")
     forms = _bookends(spec, lines_l, first_line)

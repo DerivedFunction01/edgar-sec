@@ -326,6 +326,78 @@ def test_employee_separation_walk_is_admitted():
     assert result.admitted
 
 
+def test_prose_subject_across_a_numbered_heading_is_refused():
+    # The mention sits in the prior note's narrative; a numbered
+    # heading boundary separates it from this table.
+    prose = (
+        "The Club Monaco restructuring plan recorded restructuring charges "
+        "against the remaining liability for the year. "
+        "\n13. Income Taxes\n"
+        + "The provision for income taxes reflects domestic and foreign "
+        "pretax income for the periods presented. " * 12
+    )
+    result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert not result.admitted
+    assert result.detail == "subject not anchored"
+
+
+def test_prose_subject_after_a_numbered_heading_is_admitted():
+    prose = (
+        "The components of income before taxes follow. "
+        "\n13. Income Taxes\n"
+        + "The provision for income taxes reflects domestic and foreign "
+        "pretax income for the periods presented. " * 6
+        + "The company also recorded restructuring charges under the plan. "
+        + "Further detail follows in the notes to the financial statements. " * 12
+    )
+    result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert result.admitted
+    assert "subject prose" in result.detail
+
+
+def test_prose_subject_across_a_caps_title_is_refused():
+    # The mention is incidental prose; an all-caps statement
+    # title boundary separates it from this table.
+    prose = (
+        "In connection with a restructuring of our international holdings, "
+        "the company identified distributable foreign earnings. "
+        "\nCONDENSED CONSOLIDATED STATEMENTS OF EQUITY\n"
+        + "Further detail follows in the notes to the financial statements. " * 12
+    )
+    result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert not result.admitted
+    assert result.detail == "subject not anchored"
+
+
+def test_last_prose_mention_after_the_boundary_governs():
+    prose = (
+        "The restructuring narrative for the prior year follows. "
+        "\n13. Income Taxes\n"
+        + "The provision for income taxes reflects domestic and foreign "
+        "pretax income for the periods presented. " * 6
+        + "The current year restructuring charges are described below. "
+        + "Further detail follows in the notes to the financial statements. " * 12
+    )
+    result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert result.admitted
+    assert "subject prose" in result.detail
+
+
+def test_caption_anchor_ignores_the_prose_boundary():
+    prose = (
+        "The Club Monaco restructuring plan recorded restructuring charges "
+        "against the remaining liability for the year. "
+        "\n13. Income Taxes\n"
+        + "The provision for income taxes reflects domestic and foreign "
+        "pretax income for the periods presented. " * 12
+    )
+    result = _verdict(
+        _WALK, caption_stack=("Restructuring Charges",), prose_before=prose
+    )
+    assert result.admitted
+    assert "subject lead" in result.detail
+
+
 def test_charge_incidence_table_stays_outside_the_walk_gate():
     # The incidence sub-kind carries no accrual walk; the term
     # set does not seat it (a determination split, not built).
