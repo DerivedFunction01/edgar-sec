@@ -36,8 +36,7 @@ def _result(families, groups=()):
 def _apply(geometries, results, stages=None):
     if stages is None:
         stages = tuple(
-            ClaimStage(claims=result.claims, scores=result.scores)
-            for result in results
+            ClaimStage(claims=result.claims, scores=result.scores) for result in results
         )
     return apply_precision_vetoes(geometries, results, stages)
 
@@ -275,9 +274,7 @@ def test_debt_missing_own_stage_score_keeps_the_claim():
 
 def test_debt_ladder_passed_keeps_the_claim():
     geo = _debt_geometry()
-    evidence = (
-        ClaimEvidence("form_test", "debt_maturity_year_ladder passed", 3.0),
-    )
+    evidence = (ClaimEvidence("form_test", "debt_maturity_year_ladder passed", 3.0),)
     results = _apply(
         [geo],
         [_result(("debt_maturity",))],
