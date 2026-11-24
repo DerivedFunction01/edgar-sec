@@ -480,3 +480,11 @@ def test_case_inventory_delta_ignores_small_scope_churn() -> None:
     delta = profile_search.case_inventory_delta(baseline, current)
 
     assert not profile_search.material_case_inventory_change(delta)
+
+
+def test_refinement_continues_above_regressing_four_worker_probe() -> None:
+    assert profile_search.next_refinement(8, {0, 2, 4, 8, 16}, 16) == 12
+
+
+def test_resume_candidate_list_excludes_completed_trials() -> None:
+    assert profile_search.adaptive_worker_candidates([0, 2, 4, 8], 8, {0, 2, 4}) == [8]

@@ -233,8 +233,10 @@ def run_tests(
                 scope_key,
             )
             from edgar_sec.tools.workers.pytest_worker_profiles import (
-                _resource_ceiling,
                 choose_fast_workers_for_scope,
+            )
+            from edgar_sec.tools.workers.worker_profile_calibration import (
+                _resource_ceiling,
             )
 
             profile = load_profiles(default_cache_path(Path.cwd())).get(
