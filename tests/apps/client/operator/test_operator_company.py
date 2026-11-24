@@ -5,11 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 
-from edgar_sec.apps.client.operator import (
-    operator,
-    operator_company,
-    operator_run_records,
-)
+from edgar_sec.apps.client.operator import operator
 from edgar_sec.apps.client.reference.companyfacts import fetch_company_facts
 from edgar_sec.apps.client.reference.concept import ConceptResult
 from edgar_sec.apps.client.reference.frames import FrameIdentity, FrameResult, FrameRow
@@ -222,17 +218,6 @@ def test_help_examples_name_a_tag_and_duration_period() -> None:
     assert "Revenues" in frame_tag
     assert "CY2024" in period
     assert "CY2024Q4I" in period
-
-
-def test_scoring_exact_and_clear_winner() -> None:
-    entries = [
-        {"name": "Acme Anvils Inc", "cik": "111", "tickers": []},
-        {"name": "Acme Rockets Inc", "cik": "222", "tickers": []},
-    ]
-    scored = operator_company.score_name_candidates("Acme Anvils", entries)
-    assert scored[0]["cik"] == "111"
-    assert scored[0]["score"] >= 0.98
-    assert scored[0]["score"] - scored[1]["score"] >= 0.15
 
 
 def test_company_ticker_resolves_directly(tmp_path) -> None:
@@ -494,50 +479,3 @@ def test_company_concept_needs_explicit_coordinates(tmp_path) -> None:
     session, _ = _session(tmp_path)
     result = operator.execute_by_id("company_concept", session, {"identifier": "AAPL"})
     assert result.error_code == "invalid_options"
-
-
-def test_frames_labelled_cross_check_and_recorded(tmp_path) -> None:
-    session, _ = _session(tmp_path)
-    options = {
-        "taxonomy": "us-gaap",
-        "tag": "Assets",
-        "unit": "USD",
-        "period": "CY2024Q4I",
-        "limit": 2,
-    }
-    result = operator.execute_by_id("frames", session, options)
-    assert result.error_code is None
-    assert "cross-check" in result.title
-    assert result.data["cross_check"] is True
-    assert result.data["provenance"] == "SEC frame aggregates"
-    assert (result.total, result.shown) == (3, 2)
-    records = operator_run_records.list_records(session)
-    assert len(records) == 1
-    assert records[0]["operation"] == "frames"
-    assert records[0]["selection"]["tag"] == "Assets"
-
-
-def test_frames_absent_frame_is_honest_absence(tmp_path) -> None:
-    session, facade = _session(tmp_path)
-    facade.frame_result = FrameResult(
-        frame=FrameIdentity("us-gaap", "Assets", "USD", "CY2024Q4I"),
-        label="",
-        rows=(),
-    )
-    options = {
-        "taxonomy": "us-gaap",
-        "tag": "Assets",
-        "unit": "USD",
-        "period": "CY2024Q4I",
-    }
-    result = operator.execute_by_id("frames", session, options)
-    assert result.error_code == "absent"
-    assert result.data["present"] is False
-    assert "cross-check" in result.title
-
-
-def test_frames_needs_explicit_coordinates(tmp_path) -> None:
-    session, _ = _session(tmp_path)
-    result = operator.execute_by_id("frames", session, {"taxonomy": "us-gaap"})
-    assert result.error_code == "invalid_options"
-    assert operator_run_records.list_records(session) == []

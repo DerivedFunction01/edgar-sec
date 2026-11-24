@@ -350,7 +350,9 @@ def _execute_seed_company(options: SeedCompanyOptions, session: Any):
         return _error("key_value", "refused", title, "seed refused: no identifier")
     if _bad_limit(options.limit):
         return _error("key_value", "invalid_options", title, "limit below 1")
-    from edgar_sec.apps.client.operator.operator_company import _resolve_company
+    from edgar_sec.apps.client.operator.operator_company_resolution import (
+        _resolve_company,
+    )
 
     company, resolution, failure = _resolve_company(
         session, options.identifier, "key_value"

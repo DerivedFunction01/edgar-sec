@@ -1,18 +1,21 @@
-"""Company rows and the frames and company-facts cross-checks.
+"""Company rows: the composite landing and its filings and concept rows.
 
-Name resolution is closed here, at the operation layer: scored candidates
-over the catalog's name data, an exact or clear winner resolving, a
-near-tie refusing with the candidates listed.
+Name scoring, name resolution, and the frames cross-check home in the
+sibling modules beside this one.
 """
 
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import asdict, dataclass
-from datetime import UTC, datetime
-from difflib import SequenceMatcher
+from dataclasses import dataclass
 from typing import Any
 
+from edgar_sec.apps.client.operator.operator_company_frames import _execute_frames
+from edgar_sec.apps.client.operator.operator_company_resolution import (
+    _cik_text,
+    _company_summary,
+    _resolve_company,
+)
 from edgar_sec.apps.client.operator.operator_kit import (
     gather_options as _generic,
     help_field as _f,
@@ -21,10 +24,8 @@ from edgar_sec.apps.client.operator.operator_kit import (
     make_register,
 )
 from edgar_sec.apps.client.operator.operator_tools import (
-    empty_accounting,
     error_result,
     json_native,
-    record_external_run,
 )
 from edgar_sec.foundation.runtime.render import Grid, ProseRow
 
@@ -37,7 +38,6 @@ __all__ = [
     "FramesOptions",
     "build_specs",
     "register",
-    "score_name_candidates",
 ]
 
 
@@ -46,31 +46,6 @@ _INCLUDE_HELP = "Sections to include, drawn from the closed set (profile, recent
 _LIMIT_HELP = "Maximum rows shown; total versus shown is declared. Refused below 1."
 
 INCLUDE_SECTIONS = ("profile", "recent_filings", "financials", "facts_cross_check")
-_SCORE_THRESHOLD = 0.6
-_SCORE_MARGIN = 0.15
-_EXACT_SCORE = 0.98
-_SUFFIX_TOKENS = frozenset(
-    {
-        "inc",
-        "corp",
-        "corporation",
-        "company",
-        "co",
-        "ltd",
-        "llc",
-        "plc",
-        "lp",
-        "sa",
-        "nv",
-        "ag",
-        "holdings",
-        "holding",
-        "group",
-        "the",
-        "and",
-        "of",
-    }
-)
 
 
 @dataclass(frozen=True, slots=True)
@@ -132,228 +107,6 @@ class FramesOptions:
         "CY2024Q4I for an instant).",
     )
     limit: int = _f(20, _LIMIT_HELP)
-
-
-def _normalize(text: str) -> tuple[str, frozenset[str]]:
-    cleaned = "".join(ch if ch.isalnum() else " " for ch in text.casefold())
-    words = cleaned.split()
-    tokens = frozenset(word for word in words if word not in _SUFFIX_TOKENS)
-    return " ".join(words), tokens
-
-
-def _score(
-    query_norm: str,
-    query_tokens: frozenset,
-    entry_norm: str,
-    entry_tokens: frozenset,
-) -> float:
-    if query_norm and query_norm == entry_norm:
-        return 1.0
-    if query_tokens and query_tokens == entry_tokens:
-        return _EXACT_SCORE
-    score = 0.0
-    if query_tokens and entry_tokens:
-        common = len(query_tokens & entry_tokens)
-        if common:
-            score = max(score, common / len(query_tokens | entry_tokens))
-            if query_tokens <= entry_tokens or entry_tokens <= query_tokens:
-                ratio = min(len(query_tokens), len(entry_tokens)) / max(
-                    len(query_tokens), len(entry_tokens)
-                )
-                score = max(score, 0.8 + 0.15 * ratio)
-    if query_norm and entry_norm:
-        if query_norm in entry_norm or entry_norm in query_norm:
-            score = max(score, 0.85)
-        ratio = SequenceMatcher(None, query_norm, entry_norm).ratio()
-        score = max(score, ratio * 0.92)
-    return round(min(score, 0.97), 4)
-
-
-def _entry_parts(entry: Any) -> tuple[str, str, list[str]]:
-    if isinstance(entry, dict):
-        raw_name = entry.get("name", "")
-        raw_cik = entry.get("cik", "")
-        raw_tickers = entry.get("tickers", ()) or ()
-    else:
-        raw_name = getattr(entry, "name", "")
-        raw_cik = getattr(entry, "cik", "")
-        raw_tickers = getattr(entry, "tickers", ()) or ()
-    cik = getattr(raw_cik, "value", raw_cik)
-    return str(raw_name), str(cik), [str(t) for t in raw_tickers]
-
-
-def _entry_dict(entry: Any) -> dict[str, Any]:
-    entry_name, cik, tickers = _entry_parts(entry)
-    return {"name": entry_name, "cik": cik, "tickers": tickers}
-
-
-def score_name_candidates(query: str, entries: Any) -> list[dict[str, Any]]:
-    """Score catalog name entries against ``query``, best first."""
-    query_norm, query_tokens = _normalize(query)
-    scored: list[dict[str, Any]] = []
-    for entry in entries:
-        entry_name, cik, tickers = _entry_parts(entry)
-        if not entry_name:
-            continue
-        entry_norm, entry_tokens = _normalize(entry_name)
-        value = _score(query_norm, query_tokens, entry_norm, entry_tokens)
-        if value > 0:
-            scored.append(
-                {"name": entry_name, "cik": cik, "tickers": tickers, "score": value}
-            )
-    scored.sort(key=lambda item: (-item["score"], item["name"], item["cik"]))
-    return scored[:10]
-
-
-def _catalog_entries(session: Any, query: str) -> list[dict[str, Any]]:
-    """Name entries from the landed catalog's company-profiles snapshot.
-
-    The same profiles parquet the facade resolver reads; a SQL prefilter
-    on the query's longest token bounds what reaches Python scoring.
-    """
-    facade = session.facade
-    for attribute in (
-        "company_candidates",
-        "name_candidates",
-        "company_name_candidates",
-    ):
-        provider = getattr(facade, attribute, None)
-        if callable(provider):
-            try:
-                return [_entry_dict(item) for item in provider(query)]
-            except TypeError:
-                return [_entry_dict(item) for item in provider()]
-    artifacts = getattr(facade, "artifacts_root", None)
-    if not artifacts:
-        try:
-            from edgar_sec.foundation.runtime.paths import resolve_paths
-
-            artifacts = resolve_paths().artifacts_root
-        except Exception:  # noqa: BLE001 - no readable root reads as no candidates
-            return []
-    try:
-        from edgar_sec.infra.storage.duckdb import connect
-        from edgar_sec.pipelines.filing_catalog.paths import (
-            SNAPSHOT_FILE,
-            resolve_filing_catalog_paths,
-        )
-
-        paths = resolve_filing_catalog_paths(artifacts)
-        if not list(paths.snapshots_root.glob(f"**/{SNAPSHOT_FILE}")):
-            return []
-        pattern = str(paths.snapshots_root / "**" / SNAPSHOT_FILE)
-        tokens = [word for word in _normalize(query)[0].split() if len(word) >= 3]
-        token = max(tokens, key=len) if tokens else query.strip()
-        sql = (
-            "SELECT cik, identity, listings FROM read_parquet(?) "
-            "WHERE upper(identity.name) LIKE '%' || upper(?) || '%' LIMIT 500"
-        )
-        with connect() as con:
-            rows = con.execute(sql, [pattern, token]).fetchall()
-    except Exception:  # noqa: BLE001 - no readable catalog reads as no candidates
-        return []
-    entries: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    for cik, identity, listings in rows:
-        identity = identity or {}
-        key = str(cik) or str(identity.get("name") or "")
-        if key in seen:
-            continue
-        seen.add(key)
-        entries.append(
-            {
-                "name": str(identity.get("name") or ""),
-                "cik": str(cik),
-                "tickers": [
-                    str(item["ticker"])
-                    for item in (listings or ())
-                    if isinstance(item, dict) and "ticker" in item
-                ],
-            }
-        )
-    return entries
-
-
-def _cik_text(company: Any) -> str:
-    cik = getattr(company, "cik", None)
-    if cik is None:
-        profile = getattr(company, "profile", None)
-        cik = getattr(profile, "cik", None)
-    to_10digit = getattr(cik, "to_10digit", None)
-    if callable(to_10digit):
-        return str(to_10digit())
-    value = getattr(cik, "value", cik)
-    return str(value) if value is not None else ""
-
-
-def _is_placeholder(company: Any, identifier: str) -> bool:
-    """The resolver's unresolved-name placeholder: CIK 1 named as the query."""
-    profile = getattr(company, "profile", None)
-    cik = getattr(profile, "cik", None)
-    value = getattr(cik, "value", cik)
-    return value in (1, "1") and str(getattr(profile, "name", "")) == identifier
-
-
-def _company_summary(company: Any) -> dict[str, Any]:
-    return {
-        "name": str(getattr(company, "name", "") or ""),
-        "cik": _cik_text(company),
-        "tickers": [str(t) for t in (getattr(company, "tickers", ()) or ())],
-    }
-
-
-def _resolve_company(session: Any, identifier: str, kind: str):
-    """Resolve to (company, resolution, error); exactly one of company/error."""
-    title = "Company"
-    ident = identifier.strip()
-    if not ident:
-        return (
-            None,
-            {},
-            error_result(kind, "refused", title, "company refused: no identifier"),
-        )
-    facade = session.facade
-    if ident.isdigit():
-        return facade.company(ident), {"via": "cik", "identifier": ident}, None
-    try:
-        direct = facade.company(ident)
-    except Exception:  # noqa: BLE001 - an unresolvable ticker falls to names
-        direct = None
-    if direct is not None and not _is_placeholder(direct, ident):
-        return direct, {"via": "ticker", "identifier": ident}, None
-    candidates = score_name_candidates(ident, _catalog_entries(session, ident))
-    resolution = {"via": "name", "identifier": ident, "candidates": candidates}
-    if not candidates or candidates[0]["score"] < _SCORE_THRESHOLD:
-        return (
-            None,
-            resolution,
-            error_result(
-                kind,
-                "not_found",
-                title,
-                f"no company name matches: {ident}",
-                {"candidates": candidates},
-            ),
-        )
-    top = candidates[0]
-    second = candidates[1] if len(candidates) > 1 else None
-    exact_clear = top["score"] >= _EXACT_SCORE and (
-        second is None or second["score"] < top["score"]
-    )
-    margin_clear = second is None or top["score"] - second["score"] >= _SCORE_MARGIN
-    if not (exact_clear or margin_clear):
-        return (
-            None,
-            resolution,
-            error_result(
-                kind,
-                "refused",
-                title,
-                f"name is ambiguous: {ident}; refusing to pick between candidates",
-                {"candidates": candidates},
-            ),
-        )
-    return facade.company(top["cik"]), resolution, None
 
 
 def _profile_section(company: Any) -> dict[str, Any]:
@@ -590,117 +343,6 @@ def _execute_company_concept(options: CompanyConceptOptions, session: Any):
         total=len(rows),
         shown=len(shown),
         hints=("frames",),
-    )
-
-
-def _execute_frames(options: FramesOptions, session: Any):
-    from edgar_sec.apps.client.operator import operator_run_records as records
-    from edgar_sec.apps.client.operator.operator import OpResult
-
-    title = (
-        f"Frames cross-check: {options.taxonomy}:{options.tag} "
-        f"({options.unit}, {options.period})"
-    )
-    if not (options.taxonomy and options.tag and options.unit and options.period):
-        return error_result(
-            "grid",
-            "invalid_options",
-            title,
-            "frames needs explicit taxonomy, tag, unit, and period coordinates",
-        )
-    if options.limit < 1:
-        return error_result("grid", "invalid_options", title, "limit below 1")
-    started = datetime.now(UTC)
-    cache_before = records.cache_stats(session)
-    selection = {
-        "kind": "frame",
-        "taxonomy": options.taxonomy,
-        "tag": options.tag,
-        "unit": options.unit,
-        "period": options.period,
-    }
-    try:
-        result = session.facade.frames(
-            options.taxonomy, options.tag, options.unit, options.period
-        )
-    except Exception as exc:  # noqa: BLE001 - a facade failure is a coded result
-        record_id, _ = record_external_run(
-            session,
-            operation="frames",
-            options_data=asdict(options),
-            selection=selection,
-            started=started,
-            cache_before=cache_before,
-            engine="frames",
-            result_info={"label": "", "row_count": 0},
-            accounting=empty_accounting("facade call raised before any result"),
-            error_code="external_failure",
-            error=str(exc),
-        )
-        return error_result(
-            "grid", "external_failure", title, str(exc), {"record_id": record_id}
-        )
-    all_rows = [
-        {
-            "cik": int(row.cik),
-            "entity_name": str(row.entity_name),
-            "value": row.value,
-            "end": str(row.end),
-        }
-        for row in result.rows
-    ]
-    accounting = records.member_accounting([str(r["cik"]) for r in all_rows], None)
-    record_id, _ = record_external_run(
-        session,
-        operation="frames",
-        options_data=asdict(options),
-        selection=selection,
-        started=started,
-        cache_before=cache_before,
-        engine="frames",
-        result_info={"label": str(result.label), "row_count": len(all_rows)},
-        accounting=accounting,
-    )
-    shown = all_rows[: options.limit]
-    data = {
-        "cross_check": True,
-        "provenance": "SEC frame aggregates",
-        "frame": {
-            "taxonomy": options.taxonomy,
-            "tag": options.tag,
-            "unit": options.unit,
-            "period": options.period,
-        },
-        "label": str(result.label),
-        "rows": shown,
-        "record_id": record_id,
-        "present": bool(all_rows),
-    }
-    if not all_rows:
-        return OpResult(
-            kind="grid",
-            title=title,
-            components=(ProseRow("frame absent: the SEC frame has no rows"),),
-            data=data,
-            total=0,
-            shown=0,
-            error_code="absent",
-            hints=("company_concept",),
-        )
-    grid = Grid(
-        headers=("cik", "entity", "value", "end"),
-        rows=tuple(
-            (str(r["cik"]), r["entity_name"], str(r["value"]), r["end"]) for r in shown
-        ),
-    )
-    return OpResult(
-        kind="grid",
-        title=title,
-        components=(grid,),
-        data=data,
-        total=len(all_rows),
-        shown=len(shown),
-        hints=("company_concept",),
     )
 
 
