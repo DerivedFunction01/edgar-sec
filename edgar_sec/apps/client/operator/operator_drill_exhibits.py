@@ -15,23 +15,27 @@ from typing import Any
 
 from edgar_sec.apps.client.documents.attachments import Attachments
 from edgar_sec.apps.client.operator.operator_drill import (
-    DETAIL_LEVELS,
-    _PATH_HELP,
-    _absent,
-    _accession_text,
-    _current_aggregate,
-    _earnings_capable,
-    _error,
-    _f,
-    _gate,
-    _key_value,
     _prompt_detail,
     _prompt_limit,
+)
+from edgar_sec.apps.client.operator.operator_drill_access import (
+    _absent,
+    _current_aggregate,
+    _earnings_capable,
+    _gate,
     _prose,
     _sequence_context,
     _sole_context,
 )
+from edgar_sec.apps.client.operator.operator_drill_options import (
+    DETAIL_LEVELS,
+    _PATH_HELP,
+)
 from edgar_sec.apps.client.operator.operator_kit import (
+    accession_text as _accession_text,
+    error_result as _error,
+    help_field as _f,
+    key_value_result as _key_value,
     make_module_getattr,
     make_register,
 )
