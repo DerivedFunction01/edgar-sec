@@ -1,6 +1,6 @@
 """Precision veto compositions: the priced data.
 
-The Round-3 packet legs per family, the channel token
+The priced packet legs per family, the channel token
 stoplist of the pricing standard, and the derived core
 vocabularies carried as population constants.
 """
@@ -82,6 +82,16 @@ LEG_DOMINANT_CO_CLAIM = "dom:co-claim"
 # total must clear the credit claim's total by at least
 # this margin for the leg to refuse the credit claim.
 CREDIT_DOMINANCE_MARGIN = 5.0
+
+INT_FAMILY = "intangibles"
+GOODWILL_FAMILY = "goodwill_rollforward"
+
+# F1 leg name, in the order the gate note reports it.
+LEG_GOODWILL_HOST = "host:goodwill_rollforward"
+
+# The failed composition evidence detail the F1 leg reads:
+# the recorded failure, never the absence of a pass.
+INT_COMPOSITION_FAILED_DETAIL = "intangibles_composition failed"
 
 # Header/caption function words stoplisted from the token
 # pools by the imposter-census standard (v2 cure).

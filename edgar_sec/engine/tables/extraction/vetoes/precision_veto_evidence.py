@@ -1,5 +1,5 @@
 """Precision veto pass: set-level refusals over gate-final
-claims for the Round-3 precision packets. Tokens come from
+claims for the priced precision packets. Tokens come from
 the shared home tokenizer; legs are the census-priced sets.
 """
 
@@ -7,6 +7,12 @@ from __future__ import annotations
 
 from typing import NamedTuple
 
+from edgar_sec.engine.tables.extraction.core.text.normalize import (
+    normalize_text,
+)
+from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
+    INTANGIBLES_LEXICON,
+)
 from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DERIV_FAMILY,
     DERIV_HEADER_LEVEL_TOKEN,
@@ -19,12 +25,16 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DT_FAMILY,
     DT_STUB_BIGRAM,
     EPS_RECONCILIATION_CORE,
+    GOODWILL_FAMILY,
+    INT_COMPOSITION_FAILED_DETAIL,
+    INT_FAMILY,
     INV_FAMILY,
     INV_LEAD_INVENTORY_TOKEN,
     INV_LEAD_TABLES_TOKEN,
     LEG_CREDIT_LOSSES_HOST,
     LEG_DOMINANT_CO_CLAIM,
     LEG_EPS_HOST_ABSENT,
+    LEG_GOODWILL_HOST,
     LEG_HEADER_LEVEL,
     LEG_HEADER_SECURITIES,
     LEG_LEAD_CONVERTIBLE,
@@ -145,10 +155,39 @@ def _credit_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     return ()
 
 
+def _composition_failed(score) -> bool:
+    """The recorded composition failure in a score's trail."""
+    return any(
+        entry.channel == "form_test" and entry.detail == INT_COMPOSITION_FAILED_DETAIL
+        for entry in score.evidence
+    )
+
+
+def _has_class_stub(geometry) -> bool:
+    """An intangibles class term in the geometry's stubs."""
+    text = " || ".join({normalize_text(stub) for stub in geometry.stubs})
+    return any(term in text for term in INTANGIBLES_LEXICON)
+
+
+def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
+    """F1: a goodwill walk claimed on note-context mass."""
+    score = result.scores.get(INT_FAMILY)
+    if score is None:
+        return ()
+    if not any(group.family == GOODWILL_FAMILY for group in result.groups):
+        return ()
+    if not _composition_failed(score):
+        return ()
+    if _has_class_stub(geometry):
+        return ()
+    return (LEG_GOODWILL_HOST,)
+
+
 _LEG_EVALUATORS = {
     DERIV_FAMILY: _deriv_legs,
     DT_FAMILY: _deferred_tax_legs,
     INV_FAMILY: _inventory_legs,
+    INT_FAMILY: _intangibles_legs,
     CREDIT_FAMILY: _credit_legs,
 }
 
