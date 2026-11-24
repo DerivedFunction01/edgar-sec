@@ -7,6 +7,7 @@ import re
 from datetime import UTC, datetime
 
 from .errors import CohortIdentifierError
+from .models import CohortRecord
 
 _OFFICIAL_SOURCE_NAMES = frozenset(
     {

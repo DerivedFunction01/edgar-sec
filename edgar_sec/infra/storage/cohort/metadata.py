@@ -6,6 +6,7 @@ from collections.abc import Sequence
 from datetime import UTC, datetime
 
 from .errors import CohortIdentifierError
+from .models import CohortRecord
 
 
 class MetadataMixin:
