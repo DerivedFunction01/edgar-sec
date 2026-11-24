@@ -25,7 +25,9 @@ def _result() -> CompetitionResult:
 def test_apply_seat_pairs_each_geometry_with_its_result() -> None:
     seen: list[tuple[GeometryText, CompetitionResult]] = []
 
-    def seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:
+    def seat_one(
+        geometry: GeometryText, result: CompetitionResult
+    ) -> CompetitionResult:
         seen.append((geometry, result))
         return result
 
@@ -37,7 +39,9 @@ def test_apply_seat_pairs_each_geometry_with_its_result() -> None:
 
 
 def test_apply_seat_refuses_a_length_mismatch() -> None:
-    def seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:
+    def seat_one(
+        geometry: GeometryText, result: CompetitionResult
+    ) -> CompetitionResult:
         return result
 
     with pytest.raises(ValueError):
