@@ -66,7 +66,7 @@ _SANCTIONED_SITES = (
     # token is validated by AccessionNumber.from_any, whose accepted
     # set (any hyphen placement over 18 digits) no strict-core
     # composition reproduces; composing flips served headers whose
-    # hyphenation is non-canonical (Wave 2 priced stop, 2026-11-15).
+    # hyphenation is non-canonical (Wave 2 priced stop).
     ("edgar_sec/engine/feeds/parser_atom.py", "_ACCESSION_RE"),
     (
         "edgar_sec/pipelines/document_acquisition/feed/feed_inventory.py",
@@ -74,7 +74,7 @@ _SANCTIONED_SITES = (
     ),
     # Accession digits in ASCII spelling: re-pointing to the home's
     # `\d{18}` widens the verdict to Unicode decimal digits in a
-    # catalog contract check (Wave 2 priced stop, 2026-11-15).
+    # catalog contract check (Wave 2 priced stop).
     ("edgar_sec/pipelines/document_planning/catalog_scope.py", "_ACCESSION_RE"),
     # A complete-submission filename shape (accession + ".txt"), a
     # document-numbering format shape, not a recognizer definition.
@@ -84,22 +84,22 @@ _SANCTIONED_SITES = (
     ("edgar_sec/pipelines/metadata_sync/core/planner.py", "_SHARD_MEMBER_RE"),
     # Form 11-K's caption is singular-only ("number", never
     # "numbers"); the homed caption's plural widens its cover
-    # verdicts (Wave 2 priced stop, 2026-11-15).
+    # verdicts (Wave 2 priced stop).
     ("edgar_sec/engine/forms/form_11k/analysis.py", "commission file (?:number|no"),
     # Form 425's caption allows whitespace runs between the caption
     # words; the homed caption's literal spaces narrow it (Wave 2
-    # priced stop, 2026-11-15).
+    # priced stop).
     ("edgar_sec/engine/forms/form_425/analysis.py", "_FILE_CAPTION_RE"),
     # Form SD's EIN-shaped anchor is the hyphenated alternative only;
     # the homed IRS_RE's bare 9-digit alternative would anchor file
-    # numbers beside any 9-digit run (Wave 2 priced stop, 2026-11-15).
+    # numbers beside any 9-digit run (Wave 2 priced stop).
     ("edgar_sec/engine/forms/form_sd/analysis.py", "_EIN_RE"),
     # Registration values with family semantics the homed extractor
     # narrows or reshapes: 424B takes any 3-digit prefix and no
     # two-digit suffix; 497 takes any 3-digit prefix; FWP captures a
     # multi-number caption group and finds its tokens unanchored;
     # FN's label value excludes spaced hyphens its fallback covers
-    # (Wave 2 priced stops, 2026-11-15).
+    # (Wave 2 priced stops).
     ("edgar_sec/engine/forms/form_424b/analysis.py", r"\d{3}-\d{3,}"),
     ("edgar_sec/engine/forms/form_497/analysis.py", r"\d{3}-\d{3,}"),
     ("edgar_sec/engine/forms/form_fwp/analysis.py", r"\d{3}-\d{3,}"),

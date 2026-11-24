@@ -96,7 +96,7 @@ def _band_label(year: int) -> str:
     return "out-of-range"
 
 
-# XBRL-package presence measured 2026-11-01 per band on a mixed seed
+# XBRL-package presence measured per band on a mixed seed
 # and non-seed sample of the flagged pool (17/17, 7/60, 60/60, 60/60);
 # the record is .artifacts/run-logs/2026-11-01-xbrl-package-presence.md.
 PACKAGE_PRESENCE_BY_BAND = {

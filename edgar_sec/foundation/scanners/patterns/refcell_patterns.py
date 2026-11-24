@@ -51,7 +51,7 @@ _TAIL_FRAGMENTS = (
 # The module that owns the reference vocabulary.
 _ALLOWED_PREFIXES = ("edgar_sec/engine/tables/toc/patterns.py",)
 
-# Sanctioned divergences (coordinator rulings, 2026-11-15), transcribed
+# Sanctioned divergences (coordinator rulings), transcribed
 # from the census register: the schema-surface composites in numbers.py.
 _SANCTIONED_SITES = (
     ("edgar_sec/engine/forms/common/values/numbers.py", "_SCHEMA_FOOTNOTE_LABEL_ALT"),

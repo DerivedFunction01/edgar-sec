@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .base import SEVERITY_ERROR, SEVERITY_NOTICE, Scanner, ScannerFinding
+from .content.living_dates import SCANNER as LIVING_DATES_SCANNER
 from .forms.form_isolation import SCANNER as FORM_ISOLATION_SCANNER
 from .forms.form_vocabulary import SCANNER as FORM_VOCABULARY_SCANNER
 from .forms.tables_form_literals import SCANNER as TABLES_FORM_LITERALS_SCANNER
@@ -56,6 +57,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     SQL_INTERPOLATION_SCANNER,
     STRING_LOOKUP_SCANNER,
     PROSE_LENGTH_SCANNER,
+    LIVING_DATES_SCANNER,
     FORM_ISOLATION_SCANNER,
     FORM_VOCABULARY_SCANNER,
     SEC_SURFACE_SCANNER,
@@ -84,6 +86,7 @@ __all__ = [
     "LAYERS_SCANNER",
     "LEGACY_SHIMS_SCANNER",
     "LENGTH_SCANNER",
+    "LIVING_DATES_SCANNER",
     "MONEY_PATTERNS_SCANNER",
     "PAGE_PATTERNS_SCANNER",
     "PATHS_SCANNER",

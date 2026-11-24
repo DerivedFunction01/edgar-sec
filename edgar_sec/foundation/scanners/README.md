@@ -15,9 +15,9 @@ The registry and the shared support modules (`base`, `files`, `lines`) live at
 this package's root. The scanner modules are grouped by family into
 subpackages: `patterns` (recognizer-pattern cores and their registry),
 `forms` (form-domain rules), `structure` (layering, file shape, shims, and
-duplication), `runtime` (environment, resources, exits, and secrets), and
-`mechanics` (IO, SQL, regex, and string construction). The test tree mirrors
-the same groups.
+duplication), `runtime` (environment, resources, exits, and secrets),
+`mechanics` (IO, SQL, regex, and string construction), and `content`
+(document and comment text). The test tree mirrors the same groups.
 
 ## Contracts
 

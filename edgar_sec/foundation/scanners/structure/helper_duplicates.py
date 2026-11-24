@@ -23,7 +23,7 @@ _HOMES = (
     "edgar_sec/infra/storage/dag/working/publication.py",
 )
 
-# Sanctioned divergences (coordinator rulings, 2026-11-15), transcribed
+# Sanctioned divergences (coordinator rulings), transcribed
 # from the census register: near-miss pairs whose bodies diverge in
 # served semantics; this scanner measures identical bodies, never them.
 _SANCTIONED_DIVERGENCES = (
@@ -31,7 +31,7 @@ _SANCTIONED_DIVERGENCES = (
     ("edgar_sec/apps/client/operator/operator.py", "_error_result"),
 )
 
-# Census scope statement (coordinator ruling, 2026-11-16; full text in
+# Census scope statement (coordinator ruling; full text in
 # the census register): the census's unnamed remainder plus TC-14, out
 # of cure scope only while a cluster's full site set matches an entry.
 _CENSUS_SCOPED_CLUSTERS = (
@@ -224,7 +224,7 @@ _CENSUS_SCOPED_CLUSTERS = (
             ("edgar_sec/pipelines/filing_catalog/publication.py", "sorted_keys"),
         }
     ),
-    # TC-14 cli `main` — coordinator-ruled KEEP (2026-11-16)
+    # TC-14 cli `main` — coordinator-ruled KEEP
     frozenset(
         {
             ("edgar_sec/pipelines/datasets/cli.py", "main"),

@@ -251,7 +251,7 @@ BATTERY_SET: tuple[BatteryEntry, ...] = (
     _e("googl-net-income", BASIC, "GOOGL", _GOOGL, _NI, 100_118_000_000.0, **_D24),
     # Basic tier, repair extension — JPM, APD, AMZN (FY2023), DIS, whose
     # bundles were regenerated from their registry filings in the
-    # 2026-10-26 corpus-integrity repair. AMZN and DIS file no
+    # corpus-integrity repair. AMZN and DIS file no
     # undimensioned Liabilities total, so they carry no liabilities entry.
     _e(
         "jpm-cash",

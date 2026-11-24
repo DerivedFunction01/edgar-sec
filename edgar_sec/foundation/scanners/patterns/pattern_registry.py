@@ -183,8 +183,8 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
             # core term of the determination instrument, carried as
             # supporting vocabulary and matched by whole-key equality,
             # never a recognizer); sanctioned by name at the
-            # coordinator seat, 2026-11-18, on the term-veto
-            # priced-data disposition (2026-11-17).
+            # coordinator seat, on the term-veto
+            # priced-data disposition.
             "in thousands",
         ),
         "shapes": (),

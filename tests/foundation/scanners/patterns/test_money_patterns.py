@@ -397,7 +397,7 @@ def test_allows_sec_url_paths(synthetic_repo: Path) -> None:
 
 
 def test_proposal_number_recognizer_is_sanctioned(synthetic_repo: Path) -> None:
-    # Proposal numbers, not amounts (coordinator ruling, 2026-11-15).
+    # Proposal numbers, not amounts (coordinator ruling).
     _build_repo(
         synthetic_repo,
         {
@@ -424,7 +424,7 @@ def test_percent_mark_membership_data_is_sanctioned(synthetic_repo: Path) -> Non
 
 def test_pension_routed_scale_datum_is_sanctioned(synthetic_repo: Path) -> None:
     # Priced host-vocabulary datum of the determination instrument,
-    # sanctioned by name (coordinator ruling, 2026-11-18).
+    # sanctioned by name (coordinator ruling).
     _build_repo(
         synthetic_repo,
         {

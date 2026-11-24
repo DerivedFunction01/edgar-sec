@@ -82,7 +82,7 @@ _SANCTIONED_SITES = (
     # reproduces their verdicts ("1,23", "5.5" count), and the narrative
     # sibling diverges from numbers.py's surface on both sides — each
     # side holds members the other lacks (coordinator ruling,
-    # 2026-11-15, Wave 2 priced stops F10 + narrative sibling).
+    # Wave 2 priced stops F10 + narrative sibling).
     (
         "edgar_sec/engine/forms/beneficial_ownership/analysis/xml_audit.py",
         "_MULTI_CLASS_VALUE_RE",
@@ -97,16 +97,16 @@ _SANCTIONED_SITES = (
     ),
     # Proposal numbers ("1.1", "2.3"), not amounts — the decimal core
     # trips on the shape; allowlisted, the money rule is not narrowed
-    # (coordinator ruling, 2026-11-15).
+    # (coordinator ruling).
     ("edgar_sec/engine/forms/form_npx/ascii_parser.py", "_PROPOSAL_NO_RE"),
     # Literal percent-mark membership data (a tuple tested with `in`),
     # not a recognizer definition (parent classification on the
-    # evidence, coordinator ruling, 2026-11-15).
+    # evidence, coordinator ruling).
     (
         "edgar_sec/engine/tables/extraction/form_tests/percentage_form.py",
         'in ("%", "percent")',
     ),
-    # Ruling 3 (coordinator, 2026-11-15): the probe-priced verdict-change
+    # Ruling 3 (coordinator): the probe-priced verdict-change
     # sites stand as sanctioned divergences, transcribed from the census
     # register; a sweep reads zero unexpected findings against this list.
     ("edgar_sec/engine/document/page_markers/content_lines.py", "_has_amount_figures"),
@@ -141,7 +141,7 @@ _SANCTIONED_SITES = (
     # (term_vetoes.py and its decomposed data modules): the terms are
     # evidence data matched as substrings, not recognizers or pattern
     # text — the grouping.py class above. Disposition-sanctioned on
-    # priced evidence (main's revisited disposition, 2026-11-17, on
+    # priced evidence (main's revisited disposition, on
     # the Ruling 3 precedent): the fire selected 1 of 6 identical-kind
     # priced terms by its first word, a scanner precision gap on this
     # class, not a duplication; main's disposition is the
@@ -174,8 +174,8 @@ _SANCTIONED_SITES = (
     # core term of the determination instrument, carried in
     # HOST_SUPP_VOCAB as supporting vocabulary and matched by
     # whole-key equality, not a recognizer or pattern text.
-    # Sanctioned by name at the coordinator seat, 2026-11-18, on the
-    # term-veto priced-data disposition above (2026-11-17); recorded
+    # Sanctioned by name at the coordinator seat, on the
+    # term-veto priced-data disposition above; recorded
     # in the pattern registry's pension-routed row.
     (
         "edgar_sec/engine/tables/extraction/pension/pension_routed_specs.py",

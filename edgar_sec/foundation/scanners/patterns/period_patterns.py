@@ -42,7 +42,7 @@ _TABLE_TAG_RE = re.compile(
     r"re\.compile\(.*<(?:table|TABLE)\b|re\.compile\(.*</?(?:table|TABLE)>"
 )
 
-# Sanctioned divergence (coordinator ruling, 2026-11-15), transcribed from
+# Sanctioned divergence (coordinator ruling), transcribed from
 # the census register: the 11-K joint period-caption x month-name capture;
 # every home composition widens its anchor or duplicates the date capture.
 _SANCTIONED_SITES = (

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 
 CODE_SUFFIXES: tuple[str, ...] = (".py", ".js", ".mjs", ".ts", ".tsx", ".css")
@@ -30,6 +31,27 @@ def discover_python_files() -> list[str]:
         if (repo_root / root_file).exists():
             py_files.append(root_file)
     return sorted(py_files)
+
+
+def tracked_paths(root: Path) -> list[str] | None:
+    """Return the tracked paths under ``root`` (git ls-files), sorted.
+
+    None when git cannot answer (not a repository, git missing): the
+    caller falls back to walking the tree.
+    """
+    try:
+        result = subprocess.run(
+            ["git", "ls-files"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return None
+    if result.returncode != 0:
+        return None
+    return sorted(result.stdout.splitlines())
 
 
 def discover_code_files() -> list[str]:

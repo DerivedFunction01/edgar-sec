@@ -9,7 +9,7 @@ Provides native XML pass-through, streaming XML parsing of the `edgarSubmission`
 ## Contracts
 
 - **Byte-Identical Native Pass-Through**: Submissions conforming to the official 13F XML technical specification (v1.9) pass through with byte identity via `passthrough_sec_xml` against `FORM13F_XML_SPEC`.
-- **Dollars Invariant**: The domain model carries holding values in dollars; documents from the thousands era (text era, and XML periods before 2023-01-03 per spec v1.7) are normalized at parse time when the document carries its report period.
+- **Dollars Invariant**: The domain model carries holding values in dollars; documents from the thousands era (text era, and XML periods before the spec v1.7 era boundary) are normalized at parse time when the document carries its report period.
 - **Completeness Checks**: When a parsed document carries both holdings rows and the summary totals, the analyzer compares row count against `tableEntryTotal` and the value sum against `tableValueTotal`, recording discrepancies as review signals.
 
 ## Deliberate gaps

@@ -20,7 +20,7 @@ class ManagerAddress:
 class InfoTableRow:
     """One holding row of the 13F information table.
 
-    ``value`` is in dollars (spec v1.7, effective 2023-01-03).
+    ``value`` is in dollars (spec v1.7).
     """
 
     name_of_issuer: str

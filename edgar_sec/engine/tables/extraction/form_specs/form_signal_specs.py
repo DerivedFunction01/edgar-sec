@@ -240,7 +240,7 @@ class SummarySeparatorSpec:
 
 # The S1 covers of record: SELECTED-DATA pooled cap-0, MD&A-SUMMARY
 # leg cap-0 covers plus the composed loc_item7/rows<=12 cell, and
-# the QUARTERLY named rule (s1price run 2, 2026-11-18).
+# the QUARTERLY named rule (s1price run 2).
 SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "selected_data_present_data_years4",
@@ -488,7 +488,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
         0,
     ),
     # The NONGAAP-SUMMARY legs (F7 combination pricing,
-    # greenfield-ci-f7combo-price run 2026-11-20): the
+    # greenfield-ci-f7combo-price run): the
     # non-GAAP prose marker conjoined with one separator
     # atom each; priced on the imposter-census claim base
     # (517 falses / 2,310 trues), counts in the seat

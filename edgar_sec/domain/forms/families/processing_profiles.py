@@ -266,7 +266,7 @@ PROFILE_ARS = DocumentProcessingProfile(
 )
 
 
-# Raw-ride profiles (2026-11-05 disposition): the primary is a native
+# Raw-ride profiles (standing disposition): the primary is a native
 # XML submission, so no text path exists and no family package is built.
 PROFILE_NCR = DocumentProcessingProfile(
     family="N-CR",

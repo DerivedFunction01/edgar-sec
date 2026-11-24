@@ -38,6 +38,12 @@ private copy wherever it appears, not only a duplicated name.
   and call its method instead.
 - `prose-length`: **Fails the gate** on a docstring or comment block over its cap. Enforces the
   prose caps (see the comments-and-docstrings binding in `AGENTS.md`), with tighter caps for tests.
+- `living-dates`: **Fails the gate** on a date form in a living surface: doc lines, Python
+  comments and docstrings, script comments, and config-file comments, over the tracked
+  population. Dates as data pass — string literals, fixtures, specimen corpora (`uploads/`,
+  `tests/fixtures/`), and code spans or fenced blocks inside a document. Exemptions: the
+  date-vocabulary home (`foundation/text/dates.py`) and the module's sanctioned sites,
+  content-bearing specimens and record pointers excused by file and fragment.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
 - `sha256-validation`: Bans duplicate SHA-256 string validation (regex, length/all, or letters in a set) outside `foundation.hashing.is_sha256_hex_digest`; SQL validation is not scanned.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces the no-shims rule).
