@@ -19,7 +19,7 @@ from edgar_sec.engine.xbrl.solve.core.query import (
 )
 from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
 
-from edgar_sec.engine.xbrl.review.battery_entries import (
+from edgar_sec.engine.xbrl.review.battery_entry import (
     BatteryEntry,
 )
 from edgar_sec.engine.xbrl.review.battery_entries import (

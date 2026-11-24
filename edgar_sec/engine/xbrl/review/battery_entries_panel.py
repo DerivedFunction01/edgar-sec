@@ -6,7 +6,7 @@ facts; net income and revenue cross-checked against the bundle traces.
 
 from __future__ import annotations
 
-from edgar_sec.engine.xbrl.review.battery_entries import (
+from edgar_sec.engine.xbrl.review.battery_entry import (
     BASIC,
     BatteryEntry,
     _CASH,

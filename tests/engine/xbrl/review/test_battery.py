@@ -5,7 +5,7 @@ from collections import Counter
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.review.battery import BATTERY_SET, evaluate_battery
-from edgar_sec.engine.xbrl.review.battery_entries import (
+from edgar_sec.engine.xbrl.review.battery_entry import (
     BASIC,
     COMPLEX,
     TEXTBOOK,
