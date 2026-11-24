@@ -4,7 +4,7 @@ SEC Form 13F institutional holdings processing and semantic review analysis (Lay
 
 ## Purpose
 
-Provides native XML pass-through, streaming XML parsing of the `edgarSubmission` cover/summary and the `informationTable` holdings documents into typed domain models, a fixed-column ASCII parser for pre-2013-05-20 text filings, canonical XML rendering through the shared builder, and semantic review analysis with holdings completeness checks.
+Provides native XML pass-through, streaming XML parsing of the `edgarSubmission` cover/summary and the `informationTable` holdings documents into typed domain models, a fixed-column ASCII parser for text-era filings, canonical XML rendering through the shared builder, and semantic review analysis with holdings completeness checks.
 
 ## Contracts
 

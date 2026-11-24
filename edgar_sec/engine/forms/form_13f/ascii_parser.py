@@ -1,4 +1,4 @@
-"""Parser for pre-2013-05-20 Form 13F plain-text filings.
+"""Parser for Form 13F plain-text filings of the text era.
 
 The text era carries cover page, summary page, and the fixed-column
 information table in one body; table column spans come from the
