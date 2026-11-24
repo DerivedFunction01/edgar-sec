@@ -4,6 +4,7 @@ credit dominance, and labor legs over gate-final claims."""
 from __future__ import annotations
 
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
     FamilyScore,

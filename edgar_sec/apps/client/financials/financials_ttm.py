@@ -8,11 +8,7 @@ from __future__ import annotations
 
 from edgar_sec.apps.client.financials.financials_cash import CashFlowServing
 from edgar_sec.apps.client.financials.financials_eps import _SHARES_ATOMS
-from edgar_sec.apps.client.financials.financials_series import (
-    OCF_EXCLUDED_MODS,
-    REVENUE_EXCLUDED_MODS,
-    _calc_distance,
-)
+from edgar_sec.apps.client.financials.financials_series import _calc_distance
 from edgar_sec.apps.client.financials.ttm_filters import (
     _EPS_METRICS,
     _FLOW_GROUPS,
