@@ -230,7 +230,9 @@ def test_dominant_co_claim_removes_only_the_credit_claim():
             (),
             0.0,
         ),
-        ClaimGroup("cash_flow", 100.56, "claimed", "primary", {"stub": 100.56}, (), 0.0),
+        ClaimGroup(
+            "cash_flow", 100.56, "claimed", "primary", {"stub": 100.56}, (), 0.0
+        ),
     )
     results = apply_precision_vetoes(
         [geo],
@@ -253,11 +255,7 @@ def test_co_claim_inside_the_margin_keeps_the_claim():
     geo = GeometryText(stubs=("Provision for credit losses",))
     results = apply_precision_vetoes(
         [geo],
-        [
-            _scored_result(
-                {"credit_losses_rollforward": 5.0, "aoci_rollforward": 7.47}
-            )
-        ],
+        [_scored_result({"credit_losses_rollforward": 5.0, "aoci_rollforward": 7.47})],
     )
     assert "credit_losses_rollforward" in results[0].claims
     assert _credit_details(results[0]) == []
