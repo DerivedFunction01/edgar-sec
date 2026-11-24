@@ -385,7 +385,9 @@ def test_rega_entries_registered_without_schemas() -> None:
 
 
 def test_ars_entry_registered_on_generic_segmentation_profile() -> None:
-    from edgar_sec.domain.forms.families.processing_profiles import PROFILE_ARS
+    from edgar_sec.domain.forms.families.processing_standalone_profiles import (
+        PROFILE_ARS,
+    )
 
     entry = get_family_entry("ARS")
     assert entry is not None

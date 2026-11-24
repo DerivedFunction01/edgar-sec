@@ -7,10 +7,10 @@ from types import SimpleNamespace
 import pytest
 
 from edgar_sec.domain.forms.families.annual.checkmarks import ANNUAL_CHECKBOX_SCHEMA
-from edgar_sec.domain.forms.families.processing_profiles import (
+from edgar_sec.domain.forms.families.processing_catalog import (
     FAMILY_PROCESSING_PROFILES,
-    get_family_entry,
 )
+from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.engine.forms.cover.checkmarks.candidates import extract_table_candidates
 from edgar_sec.engine.forms.cover.checkmarks.models import (
     CheckboxCandidate,
