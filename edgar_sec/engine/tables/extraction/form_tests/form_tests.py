@@ -64,7 +64,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestSpec,
 )
 from edgar_sec.engine.tables.extraction.core.text.placement import PlacementFacts
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_ARO_EVIDENCE,
     TEST_ADMISSION_EVIDENCE,
     TEST_BALANCE_SHEET_SEPARATOR,

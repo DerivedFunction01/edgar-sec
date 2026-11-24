@@ -31,9 +31,11 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     norm,
     stub_key,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_PENSION_ROUTED,
     TEST_PENSION_ROUTED,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table

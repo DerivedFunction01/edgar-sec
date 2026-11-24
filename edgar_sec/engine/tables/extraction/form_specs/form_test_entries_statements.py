@@ -6,7 +6,7 @@ registry, composed into FORM_TEST_SPECS by form_test_specs.
 from __future__ import annotations
 
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_EPS_REFUSAL_PRICING,
     PROV_EPS_TRANSFER_PRICING,
     PROV_R18_SEAT_PRICING,

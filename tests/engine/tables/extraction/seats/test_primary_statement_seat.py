@@ -16,10 +16,12 @@ from edgar_sec.engine.tables.extraction.seats.seat_test_specs import (
     SEAT_TEST_SPECS_BY_FAMILY,
     SeatTestSpec,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_PRIMARY_STATEMENT_SEAT,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES,
     PROFILES_BY_FAMILY,
-    TEST_PRIMARY_STATEMENT_SEAT,
 )
 from edgar_sec.engine.tables.extraction.core.registry import (
     CORE_FAMILIES,

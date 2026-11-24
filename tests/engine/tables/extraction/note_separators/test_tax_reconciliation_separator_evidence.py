@@ -26,10 +26,12 @@ from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_fo
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_TAX_RECONCILIATION_SEPARATOR,
     TEST_TAX_EVIDENCE,
     TEST_TAX_RECONCILIATION_SEPARATOR,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.note_separators.tax_reconciliation_separator_evidence import (

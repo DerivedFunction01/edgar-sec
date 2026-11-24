@@ -22,7 +22,7 @@ from edgar_sec.engine.tables.extraction.note_separators.deferred_tax_separator_e
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
     fired_separator_outcome as fired_lease_separator_outcome,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,

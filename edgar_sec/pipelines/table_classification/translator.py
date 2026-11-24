@@ -9,9 +9,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.subjects.profile_types import (
+    FamilyProfile,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES,
-    FamilyProfile,
     registry_fingerprint,
     registry_state,
 )

@@ -19,7 +19,7 @@ from edgar_sec.engine.tables.extraction.evidence.form.input_class_evidence impor
 from edgar_sec.engine.tables.extraction.specs.input_class_specs import (
     INPUT_CLASS_EVIDENCE_SPECS,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_R18_SEAT_PRICING,
 )
 

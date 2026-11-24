@@ -27,9 +27,11 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
     CompetitionResult,
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_STOCK_COMP_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_evidence import (

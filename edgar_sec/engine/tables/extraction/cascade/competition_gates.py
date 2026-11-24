@@ -31,7 +31,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     failing_pension_routed_outcome,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_CORE_FORM,
     TEST_PENSION_COMBINATION,
     TEST_PENSION_ROUTED,

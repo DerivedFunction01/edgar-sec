@@ -27,11 +27,13 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
     CompetitionResult,
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_LEASE_SEPARATOR,
     TEST_ADMISSION_EVIDENCE,
     TEST_LADDER,
     TEST_LEASE_SEPARATOR,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (

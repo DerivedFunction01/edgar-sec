@@ -2,16 +2,18 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     FORM_TESTS,
     KIND_GENRE_SEAT,
-    PROFILES,
-    PROFILES_BY_FAMILY,
     TEST_COMPOSITION_TWIN,
     TEST_LADDER,
     TEST_PERCENTAGE_FORM,
     TEST_PRIMARY_STATEMENT_SEAT,
     TEST_WALK,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROFILES,
+    PROFILES_BY_FAMILY,
     competing_families,
     profile_for,
 )

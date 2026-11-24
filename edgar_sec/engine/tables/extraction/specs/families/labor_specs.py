@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import PROV_S6B_PRICING
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import PROV_S6B_PRICING
 
 
 @dataclass(frozen=True, slots=True)

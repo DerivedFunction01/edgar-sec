@@ -5,7 +5,7 @@ the final competition results, as priced.
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_SIGNATURE_ABSENCE,
 )
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_specs import (

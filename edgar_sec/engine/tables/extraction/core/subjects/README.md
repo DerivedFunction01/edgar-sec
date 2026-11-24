@@ -9,6 +9,8 @@ subject-evidence map, the subject vocabulary, and classification.
 | Concern | Modules |
 | :--- | :--- |
 | Family classification | [classification.py](classification.py) |
+| Profile registry vocabulary | [profile_constants.py](profile_constants.py) |
+| Profile types | [profile_types.py](profile_types.py) |
 | Family profile registry | [profiles.py](profiles.py) |
 | Signature profiles | [signature_profiles.py](signature_profiles.py) |
 | Measured subject-evidence map | [subject_evidence.py](subject_evidence.py) |

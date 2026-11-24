@@ -41,10 +41,12 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
 from edgar_sec.engine.tables.extraction.specs.measure_set_specs import (
     MEASURE_SET_SPECS_BY_TEST_ID,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_COMBINED_OPERATIONS_SEPARATOR,
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_MEASURE_SET,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import (

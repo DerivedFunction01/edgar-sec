@@ -17,7 +17,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.core.text.placement import placement_facts
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_PLACEMENT_CONSISTENCY,
 )
 from edgar_sec.engine.tables.extraction.core.registry import (

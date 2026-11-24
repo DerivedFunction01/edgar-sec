@@ -9,7 +9,7 @@ from edgar_sec.domain.commodity_terms import (
     COMMERCIAL_TERMS,
     NPNS_PHRASES,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_DERIVATIVES_EVIDENCE,
 )
 

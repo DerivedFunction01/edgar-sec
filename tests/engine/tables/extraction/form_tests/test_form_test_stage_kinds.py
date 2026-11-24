@@ -16,10 +16,12 @@ from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_fo
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
-    PROFILES,
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_DERIVATIVES_EVIDENCE,
     TEST_SEGMENT_FORM,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROFILES,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import (
     TypedTable,

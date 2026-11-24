@@ -27,7 +27,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
 from edgar_sec.engine.tables.extraction.form_specs.walk_specs import (
     WALK_SPECS_BY_TEST_ID,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     FORM_TESTS,
     TEST_SEGMENT_FORM,
     TEST_WALK,
