@@ -8,9 +8,8 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.apps.client.facade import (
-    Edgar,
-    FacadeCache,
+from edgar_sec.apps.client.facade import Edgar, FacadeCache
+from edgar_sec.apps.client.facade_capacity import (
     derive_content_cache_budget,
     derive_content_disk_budget,
     derive_facade_capacity,

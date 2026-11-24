@@ -52,7 +52,7 @@ def test_edgar_facade_fast_mode_delegation(monkeypatch, tmp_path) -> None:
         return "fast_result"
 
     monkeypatch.setattr(
-        "edgar_sec.apps.client.facade.query_catalog_fast", fake_fast_query
+        "edgar_sec.apps.client.facade_acquisition.query_catalog_fast", fake_fast_query
     )
 
     res = edgar.fetch(forms=["10-K"], ciks=["320193"], mode="fast")
@@ -112,7 +112,7 @@ def test_edgar_fetch_with_filing_query(monkeypatch, tmp_path) -> None:
         return "fast_query_result"
 
     monkeypatch.setattr(
-        "edgar_sec.apps.client.facade.query_catalog_fast", fake_fast_query
+        "edgar_sec.apps.client.facade_acquisition.query_catalog_fast", fake_fast_query
     )
 
     query = FilingQuery(
@@ -341,7 +341,7 @@ def test_edgar_facade_fetch_operation_forwarding(monkeypatch, tmp_path) -> None:
         return "fast_result"
 
     monkeypatch.setattr(
-        "edgar_sec.apps.client.facade.query_catalog_fast", fake_fast_query
+        "edgar_sec.apps.client.facade_acquisition.query_catalog_fast", fake_fast_query
     )
 
     edgar.fetch(
