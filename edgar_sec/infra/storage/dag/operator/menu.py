@@ -32,16 +32,10 @@ from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.runtime.settings.dag import DEFAULT_DAG_GRAPH_LIMIT
 from edgar_sec.foundation.runtime.settings.interactive import DEFAULT_PAGE_SIZE
 from edgar_sec.infra.storage.dag.paths import DAGPaths, STAGING_PREFIX
-from .cli import (
-    cmd_branch,
-    cmd_checkout,
-    cmd_compact,
-    cmd_doctor,
-    cmd_gc,
-    cmd_publish,
-    cmd_status,
-    cmd_tag,
-)
+from .inspection import cmd_status
+from .maintenance import cmd_compact, cmd_doctor, cmd_gc
+from .pointers import cmd_checkout, cmd_publish
+from .refs import cmd_branch, cmd_tag
 from ..catalog import DAGCatalog
 from ..working.publication import list_branches, read_pointer, read_pointer_id
 from ..working.renderer import DAGSwimlaneRenderer, build_graph_nodes

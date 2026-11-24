@@ -7,10 +7,13 @@ SQL console, the interactive menu, and the integrity doctor.
 
 Binds the store core at the parent root (catalog, manifest, paths, spec,
 tags) and the working engine in `working/` into the commands an operator
-runs: `cli` carries the subcommand surface (branch, checkout, doctor, gc,
-log, publish, status, tag), `console` the snapshot SQL console, `menu` the
-interactive target/action menu, `operator` the menu entry point, and
-`doctor` the graph integrity audit.
+runs: `cli` carries the argparse wiring and dispatch for the subcommand
+surface, whose command bodies are homed by responsibility in `inspection`
+(status, log), `pointers` (checkout, publish), `refs` (branch, tag), and
+`maintenance` (doctor, compact, gc), with the shared JSON emitter in
+`output`; `console` the snapshot SQL console, `menu` the interactive
+target/action menu, `operator` the menu entry point, and `doctor` the
+graph integrity audit.
 
 ## Contracts
 

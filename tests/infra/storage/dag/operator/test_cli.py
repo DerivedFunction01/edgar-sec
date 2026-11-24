@@ -4,18 +4,15 @@ from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.operator.cli import (
-    cmd_branch,
-    cmd_checkout,
+from edgar_sec.infra.storage.dag.operator.cli import main
+from edgar_sec.infra.storage.dag.operator.inspection import cmd_log, cmd_status
+from edgar_sec.infra.storage.dag.operator.maintenance import (
     cmd_compact,
     cmd_doctor,
     cmd_gc,
-    cmd_log,
-    cmd_publish,
-    cmd_status,
-    cmd_tag,
-    main,
 )
+from edgar_sec.infra.storage.dag.operator.pointers import cmd_checkout, cmd_publish
+from edgar_sec.infra.storage.dag.operator.refs import cmd_branch, cmd_tag
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
