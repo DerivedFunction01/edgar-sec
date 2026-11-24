@@ -121,11 +121,10 @@ different root. The version of record is `__version__` in
 `edgar_sec/__init__.py`, wired through `[tool.hatch.version]`.
 
 To install the package itself into another environment, use uv with a
-built wheel, a local checkout, or git:
+built wheel or a local checkout:
 
 ```bash
 uv pip install /path/to/edgar-sec
-uv pip install "git+https://github.com/DerivedFunction01/edgar-sec"
 ```
 
 The wheel ships the `edgar_sec` package without the tools layer; the
