@@ -40,21 +40,45 @@ VOCABULARY_HOME = "edgar_sec/foundation/text/dates.py"
 _SANCTIONED_SITES: tuple[tuple[str, str], ...] = (
     ("edgar_sec/engine/document/page_markers/eligibility.py", "April 27, 2015"),
     ("edgar_sec/engine/document/page_markers/eligibility.py", "DECEMBER 31, 2025"),
-    ("edgar_sec/engine/forms/earnings/README.md", "2026-11-08-table-taxonomy-measurement.md"),
-    ("edgar_sec/domain/forms/families/current/taxonomy.py", "2026-11-08-sixk-census.md"),
-    ("edgar_sec/tools/measurement/measurement.py", "2026-11-14-greenfield-step2a/taxonomy.json"),
-    ("edgar_sec/tools/fixtures/fixture_planning.py", "2026-11-01-xbrl-package-presence.md"),
+    (
+        "edgar_sec/engine/forms/earnings/README.md",
+        "2026-11-08-table-taxonomy-measurement.md",
+    ),
+    (
+        "edgar_sec/domain/forms/families/current/taxonomy.py",
+        "2026-11-08-sixk-census.md",
+    ),
+    (
+        "edgar_sec/tools/measurement/measurement.py",
+        "2026-11-14-greenfield-step2a/taxonomy.json",
+    ),
+    (
+        "edgar_sec/tools/fixtures/fixture_planning.py",
+        "2026-11-01-xbrl-package-presence.md",
+    ),
     ("edgar_sec/pipelines/datasets/README.md", "2026-11-08-bdc-ic-dataset-probe.md"),
     (
         "edgar_sec/tools/table_extraction_corpus/README.md",
         "2026-11-08-table-extraction-successor.md",
     ),
-    ("edgar_sec/engine/tables/extraction/vetoes/term_vetoes.py", "2026-11-16-greenfield-step6-v2-"),
-    ("edgar_sec/engine/xbrl/review/census_expectations.py", "2026-11-01-derivation-direction-fix.md"),
-    ("edgar_sec/engine/xbrl/review/census_expectations.py", "2026-11-09-rp-partner-coverage-impl.md"),
+    (
+        "edgar_sec/engine/tables/extraction/vetoes/term_vetoes.py",
+        "2026-11-16-greenfield-step6-v2-",
+    ),
+    (
+        "edgar_sec/engine/xbrl/review/census_expectations.py",
+        "2026-11-01-derivation-direction-fix.md",
+    ),
+    (
+        "edgar_sec/engine/xbrl/review/census_expectations.py",
+        "2026-11-09-rp-partner-coverage-impl.md",
+    ),
     ("tests/engine/selection/test_predicates.py", "2008-03-31 is Q1"),
     ("tests/engine/selection/test_source.py", "December 2023 row"),
-    ("tests/apps/client/financials/test_ttm_comparison.py", "closing TTM 620 at 2024-09-30"),
+    (
+        "tests/apps/client/financials/test_ttm_comparison.py",
+        "closing TTM 620 at 2024-09-30",
+    ),
 )
 
 # Archive directory conventions: a path under a finished-plan
