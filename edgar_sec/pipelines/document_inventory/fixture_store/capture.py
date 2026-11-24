@@ -16,7 +16,7 @@ from edgar_sec.domain.document_inventory.models import (
 from edgar_sec.foundation.compression import compress_payload
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
-from edgar_sec.infra.broker.sec_broker import SecBroker
+from edgar_sec.infra.broker.broker_server import SecBroker
 from edgar_sec.pipelines.document_inventory.fixture_store._db import (
     load_manifest,
     now_iso,
