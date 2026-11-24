@@ -346,7 +346,8 @@ def test_prose_subject_after_a_numbered_heading_is_admitted():
         "The components of income before taxes follow. "
         "\n13. Income Taxes\n"
         + "The provision for income taxes reflects domestic and foreign "
-        "pretax income for the periods presented. " * 6
+        "pretax income for the periods presented. "
+        * 6
         + "The company also recorded restructuring charges under the plan. "
         + "Further detail follows in the notes to the financial statements. " * 12
     )
@@ -362,7 +363,8 @@ def test_prose_subject_across_a_caps_title_is_refused():
         "In connection with a restructuring of our international holdings, "
         "the company identified distributable foreign earnings. "
         "\nCONDENSED CONSOLIDATED STATEMENTS OF EQUITY\n"
-        + "Further detail follows in the notes to the financial statements. " * 12
+        + "Further detail follows in the notes to the financial statements. "
+        * 12
     )
     result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
     assert not result.admitted
@@ -374,7 +376,8 @@ def test_last_prose_mention_after_the_boundary_governs():
         "The restructuring narrative for the prior year follows. "
         "\n13. Income Taxes\n"
         + "The provision for income taxes reflects domestic and foreign "
-        "pretax income for the periods presented. " * 6
+        "pretax income for the periods presented. "
+        * 6
         + "The current year restructuring charges are described below. "
         + "Further detail follows in the notes to the financial statements. " * 12
     )
