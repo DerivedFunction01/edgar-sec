@@ -46,9 +46,7 @@ def stage_plan_targets(
     locator_path: Path,
 ) -> None:
     connection.execute(_projection_sql(parts))
-    target_rows = connection.execute("SELECT count(*) FROM raw_targets").fetchone()[
-        0
-    ]
+    target_rows = connection.execute("SELECT count(*) FROM raw_targets").fetchone()[0]
     if target_rows != plan["selected_rows"]:
         raise CohortInputError(
             "invalid_bundle", detail="read target row count differs from the plan"
