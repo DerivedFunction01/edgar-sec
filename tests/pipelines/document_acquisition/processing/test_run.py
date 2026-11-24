@@ -38,8 +38,10 @@ from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     get_operation_state,
     operation_attempt_id,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     append_attempt_and_update_target,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_target_state,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (

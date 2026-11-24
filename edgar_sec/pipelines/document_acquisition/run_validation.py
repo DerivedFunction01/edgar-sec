@@ -17,9 +17,11 @@ from edgar_sec.foundation.runtime.settings.parquet import (
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    SCHEMA_VERSION as RUN_STATE_SCHEMA_VERSION,
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     validate_run_state,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.schema import (
+    SCHEMA_VERSION as RUN_STATE_SCHEMA_VERSION,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import (
     ACQUISITION_CONTRACT_VERSION,

@@ -12,7 +12,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
 from edgar_sec.pipelines.document_acquisition.run_state.models import (
     AttemptEvidenceGroup,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     append_attempt_and_update_target,
     commit_attempts_and_update_target,
     initialize_run_state,

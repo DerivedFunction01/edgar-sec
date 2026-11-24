@@ -64,7 +64,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
     get_attempt_evidence_group,
     list_target_attempts,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_attempt,
     get_target_state,
 )

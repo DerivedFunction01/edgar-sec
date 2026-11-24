@@ -18,7 +18,7 @@ from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_p
 from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
     list_target_attempts,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_target_state,
     inspect_run_state,
 )

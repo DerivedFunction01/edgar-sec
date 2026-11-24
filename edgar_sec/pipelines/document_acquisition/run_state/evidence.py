@@ -12,11 +12,13 @@ from edgar_sec.pipelines.document_acquisition.run_state.models import (
     AttemptEvidenceGroup,
     _acquisition_attempt_from_row,
 )
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
+    _url_value,
+)
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     RunStateError,
     _connect,
     _require_schema,
-    _url_value,
 )
 
 _RESOLUTION_SCHEMA_VERSION = "1"

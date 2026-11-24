@@ -15,7 +15,7 @@ from edgar_sec.pipelines.document_acquisition.commands.common import (
 )
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     summarize_target_state,
 )
 from edgar_sec.pipelines.document_acquisition.execution.runner import (

@@ -257,7 +257,7 @@ def _connect(database_path: Path, *, readonly: bool) -> sqlite3.Connection:
     if connection.execute("PRAGMA foreign_keys").fetchone()[0] != 1:
         connection.close()
         raise RuntimeError("SQLite foreign-key enforcement is unavailable")
-    from edgar_sec.pipelines.document_acquisition.run_state.store import SCHEMA_VERSION
+    from edgar_sec.pipelines.document_acquisition.run_state.schema import SCHEMA_VERSION
 
     if connection.execute("PRAGMA user_version").fetchone()[0] != SCHEMA_VERSION:
         connection.close()

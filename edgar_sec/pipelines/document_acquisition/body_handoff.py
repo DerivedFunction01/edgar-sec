@@ -19,11 +19,11 @@ from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.foundation.runtime.paths import validate_safe_id
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    RunStateError,
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_attempt,
     get_target_state,
 )
+from edgar_sec.pipelines.document_acquisition.run_state.store import RunStateError
 from edgar_sec.pipelines.document_acquisition.schemas import (
     BodyConsumptionReceipt,
     RECEIPT_SCHEMA_VERSION,

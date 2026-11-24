@@ -22,8 +22,10 @@ from edgar_sec.pipelines.document_acquisition.processing.worker import process_t
 from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     iter_operation_states,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     append_attempt_and_update_target,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_target_state,
 )
 from tests.acquisition_run_fixture import make_acquisition_run

@@ -24,8 +24,10 @@ from edgar_sec.pipelines.document_acquisition.models import (
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.locks import RunLock
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     commit_attempts_and_update_target,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_target_state,
     inspect_run_state,
     iter_target_state_pairs,

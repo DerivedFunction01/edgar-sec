@@ -28,10 +28,14 @@ from edgar_sec.pipelines.document_acquisition.run_state.models import (
     WorkOrderOperationSeed,
     WorkOrderTargetSeed,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    SCHEMA_VERSION as RUN_STATE_SCHEMA_VERSION,
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     initialize_run_state,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     validate_run_state,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.schema import (
+    SCHEMA_VERSION as RUN_STATE_SCHEMA_VERSION,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import (
     ACQUISITION_CONTRACT_VERSION,

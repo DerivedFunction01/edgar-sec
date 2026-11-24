@@ -5,7 +5,7 @@ import sqlite3
 from datetime import UTC, datetime
 
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_target_state,
 )
 from tests.pipelines.document_acquisition.execution.runner_fixtures import (
@@ -155,7 +155,7 @@ def test_scan_resolution_is_recorded_in_run_state(tmp_path) -> None:
     from edgar_sec.pipelines.document_acquisition.run_state.models import (
         WorkOrderTargetSeed,
     )
-    from edgar_sec.pipelines.document_acquisition.run_state.store import (
+    from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
         commit_attempts_and_update_target,
         initialize_run_state,
     )

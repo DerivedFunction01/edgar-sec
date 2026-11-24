@@ -45,7 +45,7 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
 from edgar_sec.pipelines.document_acquisition.execution.runner import (
     execute_acquisition_run,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import get_target_state
+from edgar_sec.pipelines.document_acquisition.run_state.queries import get_target_state
 from edgar_sec.pipelines.document_acquisition.schemas import (
     target_plan_bundle_schema_version,
     target_plan_matcher_version,

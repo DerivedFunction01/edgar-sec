@@ -36,7 +36,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     iter_operation_states,
     operation_attempt_id,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
     get_target_state,
     iter_target_state_pairs,
 )

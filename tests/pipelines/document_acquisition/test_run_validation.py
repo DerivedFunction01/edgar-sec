@@ -4,7 +4,7 @@ import pyarrow.parquet as pq
 from edgar_sec.pipelines.document_acquisition.run_state.models import (
     WorkOrderTargetSeed,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     initialize_run_state,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (

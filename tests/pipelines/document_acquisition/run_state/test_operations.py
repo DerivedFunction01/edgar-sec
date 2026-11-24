@@ -22,13 +22,15 @@ from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     list_operation_attempts,
     operation_attempt_id,
 )
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    RunStateError,
+from edgar_sec.pipelines.document_acquisition.run_state.mutations import (
     append_attempt_and_update_target,
-    get_target_state,
     initialize_run_state,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.queries import (
+    get_target_state,
     validate_run_state,
 )
+from edgar_sec.pipelines.document_acquisition.run_state.store import RunStateError
 
 
 def _operation() -> WorkOrderOperationSeed:
