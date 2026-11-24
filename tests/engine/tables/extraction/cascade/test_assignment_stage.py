@@ -150,9 +150,7 @@ def test_own_evidence_income_statement_claim_reseated():
 
 
 def test_zero_context_income_statement_claim_reseated():
-    out = _removed(
-        "income_statement", {"context": 0.0, "stub": 3.0, "signature": 9.0}
-    )
+    out = _removed("income_statement", {"context": 0.0, "stub": 3.0, "signature": 9.0})
     assert out.claims == ("income_statement",)
 
 
