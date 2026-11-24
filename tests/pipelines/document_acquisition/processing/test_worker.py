@@ -8,8 +8,10 @@ from types import SimpleNamespace
 import pytest
 
 from edgar_sec.domain.document.route import DocumentRoute
-from edgar_sec.pipelines.document_acquisition.processing.worker import (
+from edgar_sec.pipelines.document_acquisition.processing.errors import (
     ProcessingError,
+)
+from edgar_sec.pipelines.document_acquisition.processing.worker import (
     process_target,
 )
 from tests.support.processing import (
@@ -477,6 +479,7 @@ def test_raw_only_processing_is_file_backed_and_skips_engine(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.worker_operations as processing_operations
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -489,7 +492,9 @@ def test_raw_only_processing_is_file_backed_and_skips_engine(
         raise AssertionError("raw identity must not invoke the processing engine")
 
     monkeypatch.setattr(processing, "read_bounded_source", forbidden_materialization)
-    monkeypatch.setattr(processing.AcquisitionProcessor, "process", forbidden_engine)
+    monkeypatch.setattr(
+        processing_operations.AcquisitionProcessor, "process", forbidden_engine
+    )
     metadata_refs = []
     verified_refs = []
     receipt_calls = []
@@ -582,7 +587,7 @@ def test_form_xml_without_registered_handler_is_unsupported(
     tmp_path: Path,
 ) -> None:
     from edgar_sec.domain.document.path_facts import DocumentPathFacts
-    from edgar_sec.pipelines.document_acquisition.processing.worker import (
+    from edgar_sec.pipelines.document_acquisition.processing.worker_operations import (
         _operation_results,
     )
 
@@ -629,8 +634,8 @@ def test_form4_xml_with_registered_handler_succeeds(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     from edgar_sec.domain.document.path_facts import DocumentPathFacts
-    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
-    from edgar_sec.pipelines.document_acquisition.processing.worker import (
+    import edgar_sec.pipelines.document_acquisition.processing.worker_operations as processing_operations
+    from edgar_sec.pipelines.document_acquisition.processing.worker_operations import (
         _operation_results,
     )
 
@@ -664,13 +669,15 @@ def test_form4_xml_with_registered_handler_succeeds(
     body = request.body.path.read_bytes()
     processing_id = "proc_form4_xml_test"
     engine_requests = []
-    engine_process = processing.AcquisitionProcessor.process
+    engine_process = processing_operations.AcquisitionProcessor.process
 
     def traced_process(self, engine_request):
         engine_requests.append(engine_request)
         return engine_process(self, engine_request)
 
-    monkeypatch.setattr(processing.AcquisitionProcessor, "process", traced_process)
+    monkeypatch.setattr(
+        processing_operations.AcquisitionProcessor, "process", traced_process
+    )
     results = _operation_results(
         request,
         paths,
