@@ -26,9 +26,11 @@ from edgar_sec.engine.tables.extraction.specs.families.labor_specs import (
     LABOR_EVIDENCE_SPECS,
     LABOR_EVIDENCE_SPECS_BY_TEST_ID,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_S6B_PRICING,
     TEST_LABOR_FORM,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.registry import FAMILY_PRIORITY

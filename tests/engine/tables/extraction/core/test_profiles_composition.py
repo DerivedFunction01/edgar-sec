@@ -13,9 +13,11 @@ from edgar_sec.engine.tables.extraction.form_specs.composition_specs import (
     CompositionSpec,
     composition_spec_for,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES,
-    TEST_COMPOSITION_TWIN,
 )
 
 TWIN_FAMILIES = {

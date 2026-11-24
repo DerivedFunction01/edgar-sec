@@ -22,8 +22,10 @@ from edgar_sec.engine.tables.extraction.specs.families.tax_evidence_specs import
     TAX_EVIDENCE_SPECS,
     TAX_EVIDENCE_SPECS_BY_TEST_ID,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_TAX_EVIDENCE,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (

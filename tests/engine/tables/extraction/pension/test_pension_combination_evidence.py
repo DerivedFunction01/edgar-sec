@@ -27,9 +27,11 @@ from edgar_sec.engine.tables.extraction.pension.pension_combination_evidence imp
     evaluate_form_test_pension_combination,
     evaluate_pension_combination,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_PENSION_COMBINATION,
     TEST_PENSION_COMBINATION,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table

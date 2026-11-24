@@ -25,7 +25,7 @@ from edgar_sec.engine.tables.extraction.form_tests.measure_set import (
     evaluate_measure_set,
     group_presence,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_MEASURE_SET,
 )

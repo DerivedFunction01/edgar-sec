@@ -16,9 +16,11 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
 from edgar_sec.engine.tables.extraction.form_specs.year_ladder_specs import (
     YEAR_LADDER_SPECS,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_LADDER,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES_BY_FAMILY,
-    TEST_LADDER,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 from edgar_sec.engine.tables.extraction.form_tests.year_ladder import (

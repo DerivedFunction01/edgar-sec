@@ -28,8 +28,10 @@ from edgar_sec.engine.tables.extraction.specs.families.derivatives_evidence_spec
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     FORM_TEST_SPECS,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_DERIVATIVES_EVIDENCE,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (

@@ -23,7 +23,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_entries_statements 
     STATEMENT_FORM_TEST_ENTRIES,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_STEP2_PRICING,
     TEST_LADDER,
 )

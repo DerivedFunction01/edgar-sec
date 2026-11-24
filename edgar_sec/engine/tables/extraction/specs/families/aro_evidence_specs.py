@@ -8,7 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import PROV_ARO_BASE
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    PROV_ARO_BASE,
+)
 
 
 @dataclass(frozen=True, slots=True)

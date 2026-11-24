@@ -33,10 +33,12 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
     FormTestOutcome,
 )
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
-    PROFILES_BY_FAMILY,
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_STEP7_PRICING,
     TEST_ADMISSION_EVIDENCE,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+    PROFILES_BY_FAMILY,
 )
 from edgar_sec.engine.tables.extraction.core.registry import (
     ASSIGNMENT_FLOOR,

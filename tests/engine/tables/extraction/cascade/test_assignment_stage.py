@@ -40,7 +40,7 @@ def test_removed_claim_reseated_with_rebuilt_group():
         "income_statement",
         "cash_flow",
         scores={
-            "income_statement": _score("income_statement", 9.5, veto),
+            "income_statement": _score("income_statement", 11.5, veto),
             "cash_flow": _score("cash_flow"),
         },
     )
@@ -56,8 +56,8 @@ def test_removed_claim_reseated_with_rebuilt_group():
     restored = next(g for g in out.groups if g.family == "income_statement")
     assert restored.state == "claimed"
     assert restored.role == "head"
-    assert restored.score == 9.5
-    assert restored.channels == {"signature": 9.5}
+    assert restored.score == 11.5
+    assert restored.channels == {"signature": 11.5}
     assert restored.veto_flags == ("hard:test term",)
     assert restored.explained_foreign == 0.0
 
@@ -150,7 +150,7 @@ def test_own_evidence_income_statement_claim_reseated():
 
 
 def test_zero_context_income_statement_claim_reseated():
-    out = _removed("income_statement", {"context": 0.0, "signature": 9.0})
+    out = _removed("income_statement", {"context": 0.0, "stub": 3.0, "signature": 9.0})
     assert out.claims == ("income_statement",)
 
 
@@ -182,6 +182,89 @@ def test_refusal_leaves_sibling_reseat_intact():
     (out,) = preserve_assignment_claims([geometry], [entering], [assigned])
     assert out.claims == ("cash_flow",)
     assert [g.family for g in out.groups] == ["cash_flow"]
+
+
+def _removed_co_claimed(family, channels, co_family):
+    geometry = GeometryText(caption="Statements of Operations and Income")
+    entering = _result(
+        family,
+        co_family,
+        scores={
+            family: _channeled_score(family, channels),
+            co_family: _score(co_family),
+        },
+    )
+    assigned = _result(co_family, groups=(_group(co_family),))
+    assigned = CompetitionResult(
+        claims=assigned.claims,
+        contested=assigned.contested,
+        scores=entering.scores,
+        groups=assigned.groups,
+    )
+    (out,) = preserve_assignment_claims([geometry], [entering], [assigned])
+    return out
+
+
+def test_coci_co_claimed_income_statement_claim_stays_removed():
+    out = _removed_co_claimed(
+        "income_statement",
+        {"signature": 11.0},
+        "combined_operations_ci",
+    )
+    assert out.claims == ("combined_operations_ci",)
+    assert [g.family for g in out.groups] == ["combined_operations_ci"]
+
+
+def test_other_co_claim_income_statement_claim_reseated():
+    out = _removed_co_claimed(
+        "income_statement",
+        {"signature": 11.0},
+        "comprehensive_income",
+    )
+    assert out.claims == ("comprehensive_income", "income_statement")
+
+
+def test_coci_co_claim_does_not_refuse_other_families():
+    out = _removed_co_claimed(
+        "cash_flow",
+        {"signature": 11.0},
+        "combined_operations_ci",
+    )
+    assert out.claims == ("combined_operations_ci", "cash_flow")
+
+
+def test_thin_stub_income_statement_claim_stays_removed():
+    out = _removed(
+        "income_statement",
+        {"stub": 2.24, "notehead": 6.19, "form_test": 1.0, "veto": -1.5},
+    )
+    assert out.claims == ()
+    assert out.groups == ()
+
+
+def test_stub_at_bound_income_statement_claim_stays_removed():
+    out = _removed("income_statement", {"stub": 2.25, "signature": 7.0})
+    assert out.claims == ()
+
+
+def test_stubless_low_total_income_statement_claim_stays_removed():
+    out = _removed("income_statement", {"notehead": 7.93})
+    assert out.claims == ()
+
+
+def test_thin_stub_at_score_floor_income_statement_claim_reseated():
+    out = _removed("income_statement", {"stub": 2.25, "signature": 7.75})
+    assert out.claims == ("income_statement",)
+
+
+def test_stub_above_bound_income_statement_claim_reseated():
+    out = _removed("income_statement", {"stub": 4.5, "signature": 3.0})
+    assert out.claims == ("income_statement",)
+
+
+def test_thin_stub_shape_other_family_claim_reseated():
+    out = _removed("equity_statement", {"stub": 2.24, "notehead": 5.69})
+    assert out.claims == ("equity_statement",)
 
 
 def _removed_with_evidence(family, detail):

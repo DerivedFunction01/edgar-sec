@@ -41,9 +41,11 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS as _PENSION_STOP_TOKENS,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_COREFIN_COMPINCOME,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table

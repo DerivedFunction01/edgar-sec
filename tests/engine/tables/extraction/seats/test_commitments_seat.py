@@ -25,9 +25,11 @@ from edgar_sec.engine.tables.extraction.core.text.context import (
     SectionRef,
     TableContext,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    SEAT_GEOMETRY_TEXT,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES_BY_FAMILY,
-    SEAT_GEOMETRY_TEXT,
 )
 from edgar_sec.engine.tables.extraction.cascade.residue_families import corroborates
 from edgar_sec.engine.tables.extraction.core.typed_rows import (

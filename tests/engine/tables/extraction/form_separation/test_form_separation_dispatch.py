@@ -19,7 +19,7 @@ from edgar_sec.engine.tables.extraction.form_tests.form_tests import (
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_FORM_SEPARATION,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table

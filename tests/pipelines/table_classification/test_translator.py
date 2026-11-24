@@ -4,12 +4,16 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     STRATUM_ANNUAL,
     STRATUM_QUARTERLY,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profile_types import (
     ExhibitLink,
     FamilyProfile,
     SupportState,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     registry_state,
 )
 from edgar_sec.pipelines.table_classification.translator import (

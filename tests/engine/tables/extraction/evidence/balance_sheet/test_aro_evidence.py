@@ -30,8 +30,10 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
     CompetitionResult,
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_ARO_EVIDENCE,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table

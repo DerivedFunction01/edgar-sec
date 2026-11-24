@@ -14,10 +14,12 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     header_keys as _PENSION_HEADER_KEYS,
     stub_key as _PENSION_STUB_KEY,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_CASCADE_G4_FORM_SEPARATION,
     PROV_RELATED_PARTY_FORM_SEPARATION,
     TEST_FORM_SEPARATION,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 

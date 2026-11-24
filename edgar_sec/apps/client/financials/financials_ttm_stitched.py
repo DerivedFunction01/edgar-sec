@@ -8,19 +8,21 @@ derived them from legs the span selection itself picked.
 from __future__ import annotations
 
 from edgar_sec.apps.client.financials.financials_eps import _SHARES_ATOMS
-from edgar_sec.apps.client.financials.financials_ttm import (
+from edgar_sec.apps.client.financials.ttm_filters import (
     _EPS_METRICS,
     _FLOW_GROUPS,
     _INSTANT_METRICS,
     _SHARE_METRICS,
     _TTM_CLASSES,
+    _AtomFilter,
+)
+from edgar_sec.apps.client.financials.ttm_quarters import _discrete_quarters
+from edgar_sec.apps.client.financials.ttm_types import (
     QuarterLegSet,
     SpanLeg,
     TtmResult,
-    _AtomFilter,
-    _discrete_quarters,
-    _ttm_window,
 )
+from edgar_sec.apps.client.financials.ttm_window import _ttm_window
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.atoms import Atom

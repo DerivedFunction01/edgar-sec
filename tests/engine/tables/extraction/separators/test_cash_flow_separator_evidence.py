@@ -40,9 +40,11 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
     section_presence as _HOME_SECTION_PRESENCE,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_CASH_FLOW_CASCADE,
     TEST_CASH_FLOW_SEPARATOR,
+)
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table

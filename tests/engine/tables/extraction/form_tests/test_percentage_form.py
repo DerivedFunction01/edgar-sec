@@ -19,9 +19,11 @@ from edgar_sec.engine.tables.extraction.form_specs.percentage_form_specs import 
     PERCENTAGE_SPECS,
     PERCENTAGE_SPECS_BY_FAMILY,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_PERCENTAGE_FORM,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROFILES_BY_FAMILY,
-    TEST_PERCENTAGE_FORM,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import (
     TypedTable,

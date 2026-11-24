@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
-from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_SIGNATURE_ABSENCE,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
