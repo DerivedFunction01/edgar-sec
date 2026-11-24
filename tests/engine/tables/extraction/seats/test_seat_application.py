@@ -63,12 +63,13 @@ def test_seat_applier_binds_a_decision_under_its_public_name() -> None:
 
 
 def test_seat_role_names_a_fragment_a_continuation() -> None:
-    assert seat_role(GeometryText(is_fragment=True)) == "continuation"
+    assert seat_role(GeometryText(stubs=("Revenue",))) == "continuation"
 
 
 def test_seat_role_names_a_captioned_geometry_a_head() -> None:
     assert seat_role(GeometryText(caption="Segment information")) == "head"
 
 
-def test_seat_role_names_a_bare_geometry_standalone() -> None:
-    assert seat_role(GeometryText()) == "standalone"
+def test_seat_role_names_a_long_uncaptioned_geometry_standalone() -> None:
+    stubs = tuple(f"Line {n}" for n in range(9))
+    assert seat_role(GeometryText(stubs=stubs)) == "standalone"
