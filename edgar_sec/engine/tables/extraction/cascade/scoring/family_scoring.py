@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.calibration import (
-    PATTERNS,
-    PROSE_PATTERNS,
-)
+from edgar_sec.engine.tables.extraction.core.prose_patterns import PROSE_PATTERNS
+from edgar_sec.engine.tables.extraction.core.term_patterns import PATTERNS
 from edgar_sec.engine.tables.extraction.core.subjects.classification import Evidence
 from edgar_sec.engine.tables.extraction.seats.commitments_seat import (
     FAMILY as COMMITMENTS_FAMILY,

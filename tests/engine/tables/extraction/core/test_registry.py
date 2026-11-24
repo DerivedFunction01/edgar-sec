@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.calibration import (
+from edgar_sec.engine.tables.extraction.core.location_strengths import (
     LOCATION_STRENGTHS,
-    PATTERNS,
-    PROSE_PATTERNS,
 )
+from edgar_sec.engine.tables.extraction.core.prose_patterns import PROSE_PATTERNS
+from edgar_sec.engine.tables.extraction.core.term_patterns import PATTERNS
 from edgar_sec.engine.tables.extraction.cascade.negative_evidence import (
     NEGATIVE_EVIDENCE,
 )

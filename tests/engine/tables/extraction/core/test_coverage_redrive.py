@@ -7,7 +7,8 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.core.calibration import PATTERNS, PROSE_PATTERNS
+from edgar_sec.engine.tables.extraction.core.prose_patterns import PROSE_PATTERNS
+from edgar_sec.engine.tables.extraction.core.term_patterns import PATTERNS
 from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_table
 from edgar_sec.engine.tables.extraction.core.text.context import (
     SectionRef,
