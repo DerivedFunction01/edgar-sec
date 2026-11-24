@@ -80,7 +80,7 @@ def test_pool_path_matches_sequential() -> None:
 def test_extended_factories_registered_in_battery_and_driver() -> None:
     """Plan/fund factories stay wired into both standing surfaces."""
     from edgar_sec.tools.xbrl_eval.facade_battery import _STATEMENT_CALLS
-    from edgar_sec.tools.xbrl_eval.statement_view_driver import STATEMENT_FACTORIES
+    from edgar_sec.tools.xbrl_eval.statement_view_vocabulary import STATEMENT_FACTORIES
 
     for name in (
         "plan_net_assets",
