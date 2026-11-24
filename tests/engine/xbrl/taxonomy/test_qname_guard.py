@@ -22,6 +22,8 @@ JSON_FIELD_ALLOWLIST = {
 DICT_KEY_ALLOWLIST: dict[str, set[str]] = {
     "engine/xbrl/parsing/instance_parser.py": set(),
     "engine/xbrl/review/benchmark.py": set(),
+    "engine/xbrl/review/benchmark_census.py": set(),
+    "engine/xbrl/review/benchmark_pairs.py": set(),
     "engine/xbrl/solve/concepts/candidates.py": set(),
 }
 

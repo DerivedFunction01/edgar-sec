@@ -7,12 +7,12 @@ from pathlib import Path
 import sys
 
 from edgar_sec.engine.xbrl.review.benchmark import (
-    CENSUS_EXPECTATIONS,
     BenchmarkReport,
     BenchmarkTestResult,
     run_benchmark,
-    score_census,
 )
+from edgar_sec.engine.xbrl.review.benchmark_census import score_census
+from edgar_sec.engine.xbrl.review.census_expectations import CENSUS_EXPECTATIONS
 from edgar_sec.engine.xbrl.discovery.cohort import (
     canonical_seed_cohort_path,
     load_seed_cohort,

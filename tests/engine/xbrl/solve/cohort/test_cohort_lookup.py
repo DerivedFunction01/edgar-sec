@@ -536,7 +536,7 @@ def test_equivalent_facts_flag_superseded_originals(
 
 def test_pair_set_holds_over_the_seed_cohort(seed_lookup: CohortLookup) -> None:
     """Every seeded cross-firm pair holds at its expected tier, live."""
-    from edgar_sec.engine.xbrl.review.benchmark import PAIR_SET, evaluate_pairs
+    from edgar_sec.engine.xbrl.review.benchmark_pairs import PAIR_SET, evaluate_pairs
 
     source_facts = {}
     for spec in PAIR_SET:

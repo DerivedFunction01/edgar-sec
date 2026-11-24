@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.engine.xbrl.review.benchmark import CensusScore, _ADVERSE_CLASSES
+from edgar_sec.engine.xbrl.review.benchmark_census import CensusScore, _ADVERSE_CLASSES
 
 
 def block_key(form: str, taxonomy: str, period_shape: str) -> str:

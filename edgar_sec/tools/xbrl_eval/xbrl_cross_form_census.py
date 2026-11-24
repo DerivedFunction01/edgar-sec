@@ -14,7 +14,7 @@ from edgar_sec.engine.xbrl.normalize.filed_metadata import (
     filed_metadata,
     focus_length_class,
 )
-from edgar_sec.engine.xbrl.review.benchmark import _ADVERSE_CLASSES
+from edgar_sec.engine.xbrl.review.benchmark_census import _ADVERSE_CLASSES
 from edgar_sec.engine.xbrl.review.cross_form import (
     CROSS_FORM_EXPECTATIONS,
     block_key,

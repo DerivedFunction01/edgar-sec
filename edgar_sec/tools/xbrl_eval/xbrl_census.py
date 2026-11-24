@@ -10,11 +10,11 @@ from datetime import date
 from pathlib import Path
 
 from edgar_sec.apps.client.xbrl import Xbrl
-from edgar_sec.engine.xbrl.review.benchmark import (
-    CENSUS_EXPECTATIONS,
+from edgar_sec.engine.xbrl.review.benchmark_census import (
     score_census,
     summarize_census,
 )
+from edgar_sec.engine.xbrl.review.census_expectations import CENSUS_EXPECTATIONS
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.core.query import QueryMode, QueryStatus
 from edgar_sec.engine.xbrl.solve.core.scoping import FactScope
@@ -651,7 +651,7 @@ if __name__ == "__main__":
 
 def run_pair_gate() -> object:
     """Evaluate the seeded pair set and longitudinal relations, grounded."""
-    from edgar_sec.engine.xbrl.review.benchmark import (
+    from edgar_sec.engine.xbrl.review.benchmark_pairs import (
         PAIR_SET,
         PairReport,
         evaluate_pairs,

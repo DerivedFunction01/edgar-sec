@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.engine.xbrl.review.benchmark import CensusScore
+from edgar_sec.engine.xbrl.review.benchmark_census import CensusScore
 
 _CLASSIFICATIONS = ("served-faithful", "served-honest", "blocked")
 

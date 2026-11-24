@@ -13,12 +13,9 @@ from typing import Any
 from edgar_sec.engine.xbrl.discovery.cohort import load_canonical_union_cohort
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.review.battery import BATTERY_SET, evaluate_battery
-from edgar_sec.engine.xbrl.review.benchmark import (
-    CENSUS_EXPECTATIONS,
-    PAIR_SET,
-    evaluate_pairs,
-    score_census,
-)
+from edgar_sec.engine.xbrl.review.benchmark_census import score_census
+from edgar_sec.engine.xbrl.review.benchmark_pairs import PAIR_SET, evaluate_pairs
+from edgar_sec.engine.xbrl.review.census_expectations import CENSUS_EXPECTATIONS
 from edgar_sec.engine.xbrl.review.relations import RELATION_SET, evaluate_relations
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortLookup

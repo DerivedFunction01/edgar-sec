@@ -51,7 +51,7 @@ def test_validate_xbrl_benchmark_missing_cohort() -> None:
 
 def _passing_census_summary() -> dict:
     """A census summary matching the scored expectations exactly."""
-    from edgar_sec.engine.xbrl.review.benchmark import CENSUS_EXPECTATIONS
+    from edgar_sec.engine.xbrl.review.census_expectations import CENSUS_EXPECTATIONS
 
     populations = {}
     for name, exp in CENSUS_EXPECTATIONS.items():
@@ -102,7 +102,7 @@ def test_validate_xbrl_benchmark_census_gate(tmp_path: Path, monkeypatch) -> Non
 def test_validate_xbrl_benchmark_pairs_gate(tmp_path: Path, monkeypatch) -> None:
     """Verify --pairs passes on a clean pair report and fails on a regression."""
     import edgar_sec.tools.xbrl_eval.xbrl_census as census_module
-    from edgar_sec.engine.xbrl.review.benchmark import PairReport
+    from edgar_sec.engine.xbrl.review.benchmark_pairs import PairReport
 
     out_json = tmp_path / "benchmark.json"
     args = [
@@ -207,7 +207,7 @@ def test_validate_xbrl_benchmark_all_gates(tmp_path: Path, monkeypatch) -> None:
     import edgar_sec.tools.xbrl_eval.xbrl_cross_form_census as cross_module
     import edgar_sec.tools.xbrl_eval.xbrl_k1_census as k1_module
     from edgar_sec.engine.xbrl.review.battery import BatteryReport
-    from edgar_sec.engine.xbrl.review.benchmark import PairReport
+    from edgar_sec.engine.xbrl.review.benchmark_pairs import PairReport
 
     out_json = tmp_path / "benchmark.json"
     args = [

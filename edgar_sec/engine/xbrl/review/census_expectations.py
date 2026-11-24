@@ -2,7 +2,7 @@
 
 The probe row is loaded from census_probe_expectation.json beside
 this module; the remaining rows are adjudicated literals, their
-movements cited at the table. benchmark.score_census consumes it.
+movements cited at the table. benchmark_census.score_census consumes it.
 """
 
 from __future__ import annotations
