@@ -526,6 +526,7 @@ def test_malformed_xml_remains_raw_only_without_registered_exporters(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.worker_operations as operations
 
     paths, request = _minimal_request(tmp_path)
     malformed_xml = b"<root><unclosed>"
@@ -565,7 +566,7 @@ def test_malformed_xml_remains_raw_only_without_registered_exporters(
         operations=(request.operations[0], text, xml),
     )
     monkeypatch.setattr(
-        processing.AcquisitionProcessor,
+        operations.AcquisitionProcessor,
         "process",
         lambda *_args, **_kwargs: pytest.fail("unsupported XML reached the engine"),
     )
