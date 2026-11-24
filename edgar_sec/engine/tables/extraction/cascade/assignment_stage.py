@@ -51,10 +51,12 @@ ASSIGNMENT_PASSES = (
 )
 
 
-def _refused_reseat(family: str, score: FamilyScore | None) -> bool:
+def _refused_reseat(
+    family: str, score: FamilyScore | None, claims: tuple[str, ...]
+) -> bool:
     """Whether preservation refuses to re-seat a removed claim:
-    an income_statement claim with context-channel points, or a
-    lease_maturity claim refused as co-claimed, stays removed.
+    the income_statement legs (context-carried, co-claimed by
+    combined_operations_ci, thin-stub) and the lease leg.
     """
     if (
         family == "lease_maturity"
@@ -64,10 +66,12 @@ def _refused_reseat(family: str, score: FamilyScore | None) -> bool:
         )
     ):
         return True
+    if family != "income_statement" or score is None:
+        return False
     return (
-        family == "income_statement"
-        and score is not None
-        and score.by_channel.get("context", 0.0) > 0
+        score.by_channel.get("context", 0.0) > 0
+        or "combined_operations_ci" in claims
+        or (score.by_channel.get("stub", 0.0) <= 2.25 and score.total < 10.0)
     )
 
 
@@ -77,8 +81,8 @@ def preserve_assignment_claims(
     assigned: list[CompetitionResult],
 ) -> list[CompetitionResult]:
     """Re-seat the claims the assignment passes removed, rebuilt
-    from each family's score — a claim the refusal names (an
-    income_statement score with context points) stays removed.
+    from each family's score — a claim the refusal names stays
+    removed.
     """
     out: list[CompetitionResult] = []
     for geometry, before, result in zip(geometries, entering, assigned, strict=True):
@@ -86,7 +90,7 @@ def preserve_assignment_claims(
             family
             for family in before.claims
             if family not in result.claims
-            and not _refused_reseat(family, result.scores.get(family))
+            and not _refused_reseat(family, result.scores.get(family), before.claims)
         ]
         if not missing:
             out.append(result)
