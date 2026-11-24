@@ -7,7 +7,7 @@ derived them from legs the span selection itself picked.
 
 from __future__ import annotations
 
-from edgar_sec.apps.client.financials.financials_core import _SHARES_ATOMS
+from edgar_sec.apps.client.financials.financials_eps import _SHARES_ATOMS
 from edgar_sec.apps.client.financials.financials_ttm import (
     _EPS_METRICS,
     _FLOW_GROUPS,

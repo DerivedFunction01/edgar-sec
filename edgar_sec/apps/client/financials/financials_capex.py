@@ -6,10 +6,8 @@ the payments side and the purchase side, exclusion-guarded throughout.
 
 from __future__ import annotations
 
-from edgar_sec.apps.client.financials.financials_core import (
-    _FALLBACK_LENGTH_CLASSES,
-    FinancialsCore,
-)
+from edgar_sec.apps.client.financials.financials_core import FinancialsCore
+from edgar_sec.apps.client.financials.financials_series import _FALLBACK_LENGTH_CLASSES
 
 
 # Metric-definition exclusions at the scalar-selection seam: concepts

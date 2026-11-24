@@ -15,8 +15,8 @@ from edgar_sec.apps.client.financials.financials_capex import (
     CAPEX_PURCHASE_MODS,
 )
 from edgar_sec.apps.client.financials.financials_cash import CashFlowServing
-from edgar_sec.apps.client.financials.financials_core import (
-    _SHARES_ATOMS,
+from edgar_sec.apps.client.financials.financials_eps import _SHARES_ATOMS
+from edgar_sec.apps.client.financials.financials_series import (
     OCF_EXCLUDED_MODS,
     REVENUE_EXCLUDED_MODS,
     _calc_distance,

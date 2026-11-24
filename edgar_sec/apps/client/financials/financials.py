@@ -6,7 +6,7 @@ from collections.abc import Callable
 
 from edgar_sec.apps.client.core.catalog import build_catalog
 from edgar_sec.apps.client.statements.comparison import DERIVED_MARGINS
-from edgar_sec.apps.client.financials.financials_core import (
+from edgar_sec.apps.client.financials.financials_series import (
     OCF_EXCLUDED_MODS,
     REVENUE_EXCLUDED_MODS,
 )

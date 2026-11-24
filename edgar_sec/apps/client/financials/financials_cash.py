@@ -15,7 +15,7 @@ from edgar_sec.apps.client.financials.financials_capex import (
     CAPEX_EXCLUDED_MODS,
     CapexServing,
 )
-from edgar_sec.apps.client.financials.financials_core import OCF_EXCLUDED_MODS
+from edgar_sec.apps.client.financials.financials_series import OCF_EXCLUDED_MODS
 from edgar_sec.apps.client.core.fiscal import composition_span_class, node_length_class
 
 
