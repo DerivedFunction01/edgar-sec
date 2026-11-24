@@ -1,5 +1,5 @@
-"""Precision veto pass: the DERIV-1, DT-1, INV-1, F1, and
-credit dominance legs over gate-final claims."""
+"""Precision veto pass: the DERIV-1, DT-1, INV-1, F1,
+credit dominance, and labor legs over gate-final claims."""
 
 from __future__ import annotations
 
@@ -383,3 +383,90 @@ def test_unrecorded_composition_keeps_the_claim():
     results = apply_precision_vetoes([geo], [_int_result((), _int_groups())])
     assert "intangibles" in results[0].claims
     assert _int_details(results[0]) == []
+
+
+def _labor_details(result):
+    return _gate_details(result, family="labor_contracts")
+
+
+def test_employer_form_removes_only_the_labor_claim():
+    geo = GeometryText(
+        headers=(
+            "Pension Protection Act",
+            "EIN/Pension Plan Number",
+            "FIP/RP Status(b)(c)",
+        )
+    )
+    groups = (
+        ClaimGroup(
+            "labor_contracts", 5.0, "claimed", "primary", {"gate": 5.0}, (), 0.0
+        ),
+        ClaimGroup("pension", 44.34, "claimed", "primary", {"stub": 44.34}, (), 0.0),
+    )
+    results = apply_precision_vetoes(
+        [geo], [_result(("labor_contracts", "pension"), groups=groups)]
+    )
+    assert "labor_contracts" not in results[0].claims
+    assert "labor_contracts" not in results[0].contested
+    assert "pension" in results[0].claims
+    assert _labor_details(results[0]) == ["precision veto: hdr:employer-form"]
+    assert [group.family for group in results[0].groups] == ["pension"]
+
+
+def test_ein_slash_header_form_fires():
+    geo = GeometryText(headers=("EIN/Plan number", "Zone status Year Ended"))
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" not in results[0].claims
+    assert _labor_details(results[0]) == ["precision veto: hdr:employer-form"]
+
+
+def test_ein_token_header_fires():
+    geo = GeometryText(headers=("EIN Pension", "Pension Protection Act Zone Status"))
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" not in results[0].claims
+    assert _labor_details(results[0]) == ["precision veto: hdr:employer-form"]
+
+
+def test_fip_rp_phrase_alone_fires():
+    geo = GeometryText(headers=("FIP/RP status pending/implemented",))
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" not in results[0].claims
+    assert _labor_details(results[0]) == ["precision veto: hdr:employer-form"]
+
+
+def test_form_vocabulary_off_the_headers_keeps_the_claim():
+    geo = GeometryText(
+        caption="Pension Protection Act",
+        headers=("Agreement", "Expiration"),
+        stubs=("EIN plan number", "Zone status"),
+    )
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" in results[0].claims
+    assert _labor_details(results[0]) == []
+
+
+def test_true_claim_headers_keep_the_claim():
+    geo = GeometryText(
+        headers=(
+            "Location",
+            "Number of Unions",
+            "Number of Union- Represented Employees",
+            "Expiration Date",
+        )
+    )
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" in results[0].claims
+    assert _labor_details(results[0]) == []
+
+
+def test_ein_inside_a_longer_word_keeps_the_claim():
+    geo = GeometryText(headers=("Reinsurance recoverable", "Treaty year"))
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" in results[0].claims
+    assert _labor_details(results[0]) == []
+
+
+def test_employer_form_is_family_scoped():
+    geo = GeometryText(headers=("EIN/Plan number", "Zone status"))
+    results = apply_precision_vetoes([geo], [_result(("pension",))])
+    assert "pension" in results[0].claims

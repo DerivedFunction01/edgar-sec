@@ -31,8 +31,13 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     INV_FAMILY,
     INV_LEAD_INVENTORY_TOKEN,
     INV_LEAD_TABLES_TOKEN,
+    LABOR_EIN_PREFIX,
+    LABOR_EIN_TOKEN,
+    LABOR_FAMILY,
+    LABOR_FORM_PHRASES,
     LEG_CREDIT_LOSSES_HOST,
     LEG_DOMINANT_CO_CLAIM,
+    LEG_EMPLOYER_FORM,
     LEG_EPS_HOST_ABSENT,
     LEG_GOODWILL_HOST,
     LEG_HEADER_LEVEL,
@@ -183,12 +188,25 @@ def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...
     return (LEG_GOODWILL_HOST,)
 
 
+def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
+    """Labor: the multiemployer-plan form signature, read
+    from the geometry's headers directly."""
+    for header in geometry.headers or ():
+        text = normalize_text(header)
+        if LABOR_EIN_TOKEN in text.split() or LABOR_EIN_PREFIX in text:
+            return (LEG_EMPLOYER_FORM,)
+        if any(phrase in text for phrase in LABOR_FORM_PHRASES):
+            return (LEG_EMPLOYER_FORM,)
+    return ()
+
+
 _LEG_EVALUATORS = {
     DERIV_FAMILY: _deriv_legs,
     DT_FAMILY: _deferred_tax_legs,
     INV_FAMILY: _inventory_legs,
     INT_FAMILY: _intangibles_legs,
     CREDIT_FAMILY: _credit_legs,
+    LABOR_FAMILY: _labor_legs,
 }
 
 

@@ -61,6 +61,18 @@ LEG_LEAD_INVENTORY = "lead:inventory"
 INV_LEAD_TABLES_TOKEN = "tables"
 INV_LEAD_INVENTORY_TOKEN = "inventory"
 
+LABOR_FAMILY = "labor_contracts"
+
+# Labor leg names, in the order the gate note reports them.
+LEG_EMPLOYER_FORM = "hdr:employer-form"
+
+# The multiemployer-plan form signature, read over the
+# geometry's normalized headers: an EIN token or the
+# EIN/plan-number header form, or a form phrase.
+LABOR_EIN_TOKEN = "ein"
+LABOR_EIN_PREFIX = "ein/"
+LABOR_FORM_PHRASES = ("pension protection act", "fip/rp", "zone status")
+
 # Derived core vocabulary of the credit_losses_rollforward
 # host, derived as the eps host's core above.
 CREDIT_LOSSES_CORE = frozenset(
