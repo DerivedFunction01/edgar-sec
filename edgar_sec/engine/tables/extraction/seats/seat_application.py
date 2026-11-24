@@ -37,3 +37,23 @@ def apply_seat(
         seat_one(geometry, result)
         for geometry, result in zip(geometries, results, strict=True)
     ]
+
+
+SeatApplier = Callable[
+    [list[GeometryText] | tuple[GeometryText, ...], list[CompetitionResult]],
+    list[CompetitionResult],
+]
+
+
+def seat_applier(seat_one: SeatOne, name: str) -> SeatApplier:
+    """Bind one seat's per-geometry decision as its apply pass."""
+
+    def apply(
+        geometries: list[GeometryText] | tuple[GeometryText, ...],
+        results: list[CompetitionResult],
+    ) -> list[CompetitionResult]:
+        return apply_seat(seat_one, geometries, results)
+
+    apply.__name__ = name
+    apply.__qualname__ = name
+    return apply

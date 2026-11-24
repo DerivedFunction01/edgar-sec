@@ -14,6 +14,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 )
 from edgar_sec.engine.tables.extraction.seats.seat_application import (
     apply_seat,
+    seat_applier,
     seat_role,
 )
 
@@ -46,6 +47,19 @@ def test_apply_seat_refuses_a_length_mismatch() -> None:
 
     with pytest.raises(ValueError):
         apply_seat(seat_one, [GeometryText()], [])
+
+
+def test_seat_applier_binds_a_decision_under_its_public_name() -> None:
+    def seat_one(
+        geometry: GeometryText, result: CompetitionResult
+    ) -> CompetitionResult:
+        return result
+
+    apply = seat_applier(seat_one, "apply_example_seat")
+    assert apply.__name__ == "apply_example_seat"
+    geometries = [GeometryText()]
+    results = [_result()]
+    assert apply(geometries, results) == results
 
 
 def test_seat_role_names_a_fragment_a_continuation() -> None:

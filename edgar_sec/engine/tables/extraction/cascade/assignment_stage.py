@@ -27,6 +27,9 @@ from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence
 from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_evidence import (
     apply_stock_comp_assignment,
 )
+from edgar_sec.engine.tables.extraction.seats.seat_application import (
+    seat_role,
+)
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     apply_combined_operations_assignment,
 )
@@ -46,17 +49,6 @@ ASSIGNMENT_PASSES = (
     apply_aro_assignment,
     apply_lease_assignment,
 )
-
-
-def _claim_role(geometry: GeometryText) -> str:
-    """A claim's grouped-return role, as compete() stamps it."""
-    return (
-        "continuation"
-        if geometry.is_fragment
-        else "head"
-        if geometry.caption.strip()
-        else "standalone"
-    )
 
 
 def _refused_reseat(family: str, score: FamilyScore | None) -> bool:
@@ -112,7 +104,7 @@ def preserve_assignment_claims(
                     family=family,
                     score=score.total,
                     state="claimed",
-                    role=_claim_role(geometry),
+                    role=seat_role(geometry),
                     channels=dict(score.by_channel),
                     veto_flags=tuple(
                         e.detail for e in score.evidence if e.channel == "veto"

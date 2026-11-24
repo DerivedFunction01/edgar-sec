@@ -18,7 +18,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 )
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.seats.seat_application import (
-    apply_seat,
+    seat_applier,
     seat_role,
 )
 
@@ -92,9 +92,4 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     )
 
 
-def apply_cover_seat(
-    geometries: list[GeometryText] | tuple[GeometryText, ...],
-    results: list[CompetitionResult],
-) -> list[CompetitionResult]:
-    """Seat cover claims the chain left unclaimed, per geometry."""
-    return apply_seat(_seat_one, geometries, results)
+apply_cover_seat = seat_applier(_seat_one, "apply_cover_seat")

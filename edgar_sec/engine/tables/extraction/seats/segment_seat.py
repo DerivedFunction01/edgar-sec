@@ -20,7 +20,7 @@ from edgar_sec.engine.tables.extraction.cascade.residue_families import (
     segment_header_partition,
 )
 from edgar_sec.engine.tables.extraction.seats.seat_application import (
-    apply_seat,
+    seat_applier,
     seat_role,
 )
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import term_veto_hits
@@ -87,9 +87,4 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     )
 
 
-def apply_segment_seat(
-    geometries: list[GeometryText] | tuple[GeometryText, ...],
-    results: list[CompetitionResult],
-) -> list[CompetitionResult]:
-    """Seat segment claims the chain left unclaimed, per geometry."""
-    return apply_seat(_seat_one, geometries, results)
+apply_segment_seat = seat_applier(_seat_one, "apply_segment_seat")
