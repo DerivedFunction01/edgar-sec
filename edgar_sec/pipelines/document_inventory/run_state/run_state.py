@@ -47,12 +47,16 @@ from edgar_sec.pipelines.document_inventory.snapshot.projection import (
     PARSER_FINGERPRINT,
     PrefetchProjection,
     SNAPSHOT_RELATION_VERSION,
-    _intent_id,
-    _COHORT_ACCESSIONS_SCHEMA,
-    _COHORT_SOURCES_SCHEMA,
-    _hash_relations,
-    _read_projection_manifest,
-    _validate_output_schema,
+)
+from edgar_sec.pipelines.document_inventory.snapshot.projection_manifest import (
+    intent_id,
+    read_projection_manifest,
+)
+from edgar_sec.pipelines.document_inventory.snapshot.projection_relations import (
+    COHORT_ACCESSIONS_SCHEMA,
+    COHORT_SOURCES_SCHEMA,
+    hash_relations,
+    validate_output_schema,
 )
 
 __all__ = [
@@ -112,7 +116,7 @@ def _read_persisted_projection(
         paths.cancelled_path().resolve().relative_to(paths.run_root.resolve())
     except ValueError as exc:
         raise ValueError("run path escapes the transient inventory root") from exc
-    manifest = _read_projection_manifest(paths.projection_manifest_path())
+    manifest = read_projection_manifest(paths.projection_manifest_path())
     if manifest.get("projection_version") != PROJECTION_VERSION:
         raise ValueError("unsupported projection manifest version")
     if manifest.get("run_id") != paths.run_id:
@@ -157,8 +161,8 @@ def _read_persisted_projection(
     if not isinstance(outputs, dict):
         raise ValueError("projection output records are missing")
     output_specs = {
-        "cohort_accessions": (COHORT_ACCESSIONS_FILE, _COHORT_ACCESSIONS_SCHEMA),
-        "cohort_sources": (COHORT_SOURCES_FILE, _COHORT_SOURCES_SCHEMA),
+        "cohort_accessions": (COHORT_ACCESSIONS_FILE, COHORT_ACCESSIONS_SCHEMA),
+        "cohort_sources": (COHORT_SOURCES_FILE, COHORT_SOURCES_SCHEMA),
         "work_order": (WORK_ORDER_FILE, None),
     }
     if set(outputs) != set(output_specs):
@@ -178,7 +182,7 @@ def _read_persisted_projection(
         if file_sha256(path) != digest:
             raise ValueError(f"projection output digest mismatch: {name}")
         if schema is not None:
-            _validate_output_schema(path, schema)
+            validate_output_schema(path, schema)
         if file_sha256(path) != digest:
             raise ValueError(f"projection output changed while reading: {name}")
 
@@ -188,7 +192,7 @@ def _read_persisted_projection(
         raise ValueError("projection accession row count mismatch")
     if manifest.get("cohort_source_rows") != source_rows:
         raise ValueError("projection source row count mismatch")
-    cohort_fingerprint = _hash_relations(
+    cohort_fingerprint = hash_relations(
         paths.cohort_accessions_path(), paths.cohort_sources_path()
     )
     if manifest.get("cohort_fingerprint") != cohort_fingerprint:
@@ -198,7 +202,7 @@ def _read_persisted_projection(
         raise ValueError("empty base has a manifest digest")
     if base_id is not None and not isinstance(base_manifest_sha, str):
         raise ValueError("projection base manifest digest is missing")
-    expected_run_id = _intent_id(
+    expected_run_id = intent_id(
         catalog_id=catalog_id,
         catalog_plan_id=plan_id,
         base_snapshot_id=base_id,
