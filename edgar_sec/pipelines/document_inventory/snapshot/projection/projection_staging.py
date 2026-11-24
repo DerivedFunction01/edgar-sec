@@ -8,7 +8,9 @@ from typing import Any
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.infra.storage.duckdb import sql_literal, sql_path_list
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import BaseSnapshotError
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
+    BaseSnapshotError,
+)
 
 __all__ = [
     "build_work_candidates",

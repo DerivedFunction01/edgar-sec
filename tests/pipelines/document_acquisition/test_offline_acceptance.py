@@ -69,7 +69,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.query.reader import (
 from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
     project_catalog_plan,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import INVENTORY_RELATIONS
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
+    INVENTORY_RELATIONS,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.publication.writer import (
     publish_committed_chunks,
 )

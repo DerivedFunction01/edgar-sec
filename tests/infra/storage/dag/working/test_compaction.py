@@ -27,7 +27,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import INVENTORY_RELATIONS
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
+    INVENTORY_RELATIONS,
+)
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 
 SCHEMA = pa.schema([("id", pa.string()), ("val", pa.int64())])

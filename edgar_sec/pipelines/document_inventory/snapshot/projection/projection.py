@@ -48,7 +48,9 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     validate_work_order,
     write_work_order,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import BaseSnapshotError
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
+    BaseSnapshotError,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_inputs import (
     base_snapshot_parts,
     catalog_plan_parts,

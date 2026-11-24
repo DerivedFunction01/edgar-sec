@@ -54,7 +54,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ENUMERATION_SCHEMA,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import validate_snapshot
+from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import (
+    validate_snapshot,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.publication.writer import (
     publish_committed_chunks,
 )

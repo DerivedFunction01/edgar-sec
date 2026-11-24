@@ -23,11 +23,15 @@ from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
     ValidationFailedError,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.models import SnapshotMetadata
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.models import (
+    SnapshotMetadata,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_RELATION_VERSION,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import INVENTORY_RELATIONS
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
+    INVENTORY_RELATIONS,
+)
 from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA_VERSION,
 )

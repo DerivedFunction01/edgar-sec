@@ -50,7 +50,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.publication.installation im
 from edgar_sec.pipelines.document_inventory.snapshot.relations.merge_relations import (
     _create_merge_relations,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.models import SnapshotPublication
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.models import (
+    SnapshotPublication,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_relations import (
     COHORT_ACCESSIONS_SCHEMA,
 )
@@ -68,7 +70,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.contracts.specs import (
     INVENTORY_ENUMERATION_SPEC,
     INVENTORY_RELATIONS,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import validate_snapshot
+from edgar_sec.pipelines.document_inventory.snapshot.publication.validation import (
+    validate_snapshot,
+)
 
 __all__ = ["publish_committed_chunks"]
 

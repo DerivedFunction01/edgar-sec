@@ -29,7 +29,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.projection.projection impor
 from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
     project_catalog_plan,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import BaseSnapshotError
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
+    BaseSnapshotError,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
