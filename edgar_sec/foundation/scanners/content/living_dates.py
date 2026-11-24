@@ -13,7 +13,7 @@ import re
 import tokenize
 from pathlib import Path
 
-from edgar_sec.foundation.text.dates import MONTH_PATTERN
+from edgar_sec.foundation.text.dates import MONTH_PATTERN, STRICT_YEAR_TOKEN_PATTERN
 
 from ..base import Scanner, ScannerFinding
 from ..files import tracked_paths
@@ -75,7 +75,7 @@ DAY_MONTH_YEAR_RE = re.compile(
     rf"\b\d{{1,2}}(?:st|nd|rd|th)?\s+{_MONTH}\s+\d{{4}}\b", re.IGNORECASE
 )
 MONTH_YEAR_RE = re.compile(rf"\b{_MONTH}\s+\d{{4}}\b", re.IGNORECASE)
-PAREN_YEAR_RE = re.compile(r"\(\s*(?:19|20)\d{2}\s*\)")
+PAREN_YEAR_RE = re.compile(rf"\(\s*(?:{STRICT_YEAR_TOKEN_PATTERN})\s*\)")
 
 DATE_LEGS = (
     ("iso-date", ISO_DATE_RE),
