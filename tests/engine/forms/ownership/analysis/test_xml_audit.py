@@ -1,13 +1,11 @@
-"""Unit tests for Form 4 ownership review analysis."""
+"""Unit tests for ownership XML audit and schema validation."""
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.ownership.analysis import (
-    analyze_ownership_xml,
-    analyze_ownership_review_case,
+from edgar_sec.engine.forms.ownership.analysis.summary import (
     summarize_ownership_cases,
 )
-from edgar_sec.engine.forms.common.xml.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.ownership.analysis.xml_audit import analyze_ownership_xml
 
 SAMPLE_CLEAN_XML = b"""<?xml version="1.0" encoding="utf-8"?>
 <ownershipDocument>
@@ -75,61 +73,6 @@ def test_analyze_ownership_xml_detects_anomalies_and_unparsed() -> None:
     assert "boilerplate_in_security_title" in kinds
     assert len(res["unparsed_sections"]) == 1
     assert res["unparsed_sections"][0]["table_index"] == "5"
-
-
-def test_review_analysis_loads_common_sidecar(tmp_path) -> None:
-    operations = tmp_path / "operations"
-    operations.mkdir()
-    (operations / "render_to_xml.xml").write_bytes(
-        b"<ownershipDocument><documentType>4</documentType></ownershipDocument>"
-    )
-    (operations / "unparsed_sections.json").write_bytes(
-        serialize_unparsed_sections(
-            [
-                {
-                    "role": "unparsed",
-                    "content_type": "text/html",
-                    "content": "<table>review content</table>",
-                    "table_index": 2,
-                }
-            ]
-        )
-    )
-
-    report = analyze_ownership_review_case(tmp_path, {"accession": "a1"})
-
-    assert report is not None
-    assert report["unparsed_sections"][0]["table_index"] == "2"
-    assert report["unparsed_sections"][0]["snippet"] == (
-        "<table>review content</table>"
-    )
-
-
-def test_summarize_ownership_cases_aggregates_metrics() -> None:
-    rep1 = analyze_ownership_xml(SAMPLE_CLEAN_XML, accession="0001-01-000001")
-    rep2 = analyze_ownership_xml(SAMPLE_ANOMALOUS_XML, accession="0001-01-000002")
-    summary = summarize_ownership_cases([rep1, rep2])
-    assert summary["case_count"] == 2
-    assert summary["anomaly_count"] == 5
-    assert summary["unparsed_section_count"] == 1
-    assert len(summary["unparsed_samples"]) == 1
-    assert "field_completeness" in summary
-    assert summary["field_completeness"]["issuerName"] == "1/2 (50%)"
-
-
-def test_mask_normalized_pattern() -> None:
-    from edgar_sec.engine.forms.ownership.analysis import mask_normalized_pattern
-
-    assert (
-        mask_normalized_pattern("Employee Stock Option 02/06/2002 Grant")
-        == "Employee Stock Option DATE_PATTERN Grant"
-    )
-    assert (
-        mask_normalized_pattern("Statement for June 2001") == "Statement for MONTH ###"
-    )
-    assert mask_normalized_pattern("CIK: 0000123456 filed June 2001") == (
-        "CIK_### filed MONTH ###"
-    )
 
 
 def test_detects_header_leaks_and_signature_boilerplate() -> None:
@@ -238,72 +181,3 @@ def test_analysis_reports_missing_ciks_and_not_applicable_fields() -> None:
     assert "not_applicable_issuerName" not in {
         anomaly["kind"] for anomaly in report["anomalies"]
     }
-
-
-def test_summary_counts_categorical_and_title_values() -> None:
-    xml = b"""<ownershipDocument>
-    <reportingOwner><reportingOwnerRelationship>
-      <isDirector>1</isDirector><isOfficer>0</isOfficer>
-      <isTenPercentOwner>0</isTenPercentOwner><isOther>0</isOther>
-      <officerTitle>Chief Executive Officer</officerTitle>
-    </reportingOwnerRelationship></reportingOwner>
-    <nonDerivativeTable>
-      <nonDerivativeTransaction><securityTitle><value>Common Stock</value></securityTitle>
-        <transactionCoding><transactionCode>P</transactionCode></transactionCoding></nonDerivativeTransaction>
-      <nonDerivativeTransaction><securityTitle><value>Common Stock</value></securityTitle>
-        <transactionCoding><transactionCode>S</transactionCode></transactionCoding></nonDerivativeTransaction>
-      <nonDerivativeHolding><securityTitle><value>Preferred Stock</value></securityTitle></nonDerivativeHolding>
-    </nonDerivativeTable>
-    </ownershipDocument>"""
-
-    report = analyze_ownership_xml(xml, accession="0001-01-000005")
-    summary = summarize_ownership_cases([report])
-    frequencies = summary["value_frequencies"]
-
-    assert frequencies["transactionCode"]["distinct_values"] == 2
-    assert frequencies["transactionCode"]["top_values"] == [
-        {
-            "value": "P",
-            "count": 1,
-            "case_count": 1,
-            "sample_accession": "0001-01-000005",
-        },
-        {
-            "value": "S",
-            "count": 1,
-            "case_count": 1,
-            "sample_accession": "0001-01-000005",
-        },
-    ]
-    assert frequencies["securityTitle"]["distinct_values"] == 2
-    assert frequencies["securityTitle"]["top_values"][0] == {
-        "value": "Common Stock",
-        "count": 2,
-        "case_count": 1,
-        "sample_accession": "0001-01-000005",
-    }
-    assert frequencies["officerTitle"]["top_values"][0]["value"] == (
-        "Chief Executive Officer"
-    )
-    assert frequencies["isDirector"]["top_values"][0]["value"] == "1"
-
-
-def test_option_title_date_is_reported_as_review_signal() -> None:
-    xml = b"""<ownershipDocument>
-    <periodOfReport>2003-04-02</periodOfReport>
-    <issuer><issuerCik>0000000001</issuerCik><issuerName>Acme Inc</issuerName><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
-    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
-    <derivativeTable><derivativeTransaction>
-      <securityTitle><value>BOD 4/1/03 Stock Options (Rights to Buy)</value></securityTitle>
-    </derivativeTransaction></derivativeTable>
-    <ownerSignature><signatureName>Jane Doe</signatureName>
-      <signatureDate>2003-04-02</signatureDate></ownerSignature>
-    </ownershipDocument>"""
-
-    report = analyze_ownership_xml(xml, accession="0001-01-000006")
-    summary = summarize_ownership_cases([report])
-
-    assert not report["anomalies"]
-    assert report["review_signals"][0]["kind"] == "date_in_option_security_title"
-    assert summary["review_signal_count"] == 1
-    assert summary["review_signal_samples"][0]["accession"] == "0001-01-000006"
