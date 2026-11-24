@@ -329,7 +329,7 @@ def _console(session: Any) -> Any:
 
 
 def _snapshot_grid(title: str, message: str, data: dict, headers, rows, total: int):
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     if total == 0:
         return _absent("grid", title, message, data)

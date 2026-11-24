@@ -8,14 +8,12 @@ from datetime import date, datetime
 from pathlib import Path
 
 from edgar_sec.apps.client.operator import (
+    operator,
     operator_run_records,
     operator_selection,
 )
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.operator import operator_tools
 from edgar_sec.apps.client.search.efts import (
     EftsCapture,
@@ -178,7 +176,7 @@ def test_new_tool_rows_have_the_ruled_effects() -> None:
         "local_search_seed": "mutates_selection",
     }
     for op_id, effect in effects.items():
-        assert operator_registry.REGISTRY[op_id].effect == effect
+        assert operator.REGISTRY[op_id].effect == effect
 
 
 def test_feed_events_absent_ledger_is_prose_absence(tmp_path) -> None:

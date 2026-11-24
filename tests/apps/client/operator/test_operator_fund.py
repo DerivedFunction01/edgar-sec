@@ -7,12 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.apps.client.operator import operator_fund
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator, operator_fund
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.pipelines.metadata_sync.commands import series_class as commands
 from edgar_sec.pipelines.metadata_sync.reference.series_class import (
     SeriesClassPublishOutcome,
@@ -61,7 +58,7 @@ def _outcome(**overrides) -> commands.SeriesClassRefreshOutcome:
 
 
 def test_row_is_registered_with_the_amendments_vocabulary() -> None:
-    spec = operator_registry.REGISTRY["fund_series_class"]
+    spec = operator.REGISTRY["fund_series_class"]
 
     assert spec.effect == "external"
     assert spec.requires == "none"

@@ -101,7 +101,7 @@ def _prose(
     context: dict[str, Any],
     extra: dict[str, Any],
 ):
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     if detail not in DETAIL_LEVELS:
         return _error(

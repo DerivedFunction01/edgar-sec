@@ -1,21 +1,139 @@
+"""Client operator execution core: vocabularies, specs, results, dispatch."""
+
 from __future__ import annotations
 
 import types
-from collections.abc import Mapping
-from dataclasses import fields
+from collections.abc import Callable, Mapping
+from dataclasses import dataclass, field, fields, is_dataclass
 from pathlib import Path
 from typing import Any, Union, get_args, get_origin, get_type_hints
 
-from edgar_sec.apps.client.operator.operator_registry import REGISTRY
-from edgar_sec.apps.client.operator.operator_results import OpResult, _error_result
 from edgar_sec.apps.client.operator.operator_session import ClientSession
-from edgar_sec.apps.client.operator.operator_specs import OperationSpec
+from edgar_sec.foundation.runtime.render import ProseRow, RenderComponent
 
 __all__ = [
+    "EFFECTS",
+    "ERROR_CODES",
+    "REQUIREMENTS",
+    "RESULT_KINDS",
+    "OpResult",
+    "OperationSpec",
     "decode_options",
     "execute_by_id",
     "execute_operation",
 ]
+
+
+EFFECTS = frozenset(
+    {"reads_state", "mutates_selection", "moves_position", "external", "destructive"}
+)
+
+
+REQUIREMENTS = frozenset({"none", "selection", "current_filing", "snapshot_context"})
+
+
+RESULT_KINDS = frozenset({"grid", "key_value", "prose", "object"})
+
+
+ERROR_CODES = frozenset(
+    {
+        "invalid_options",
+        "missing_context",
+        "unknown_operation",
+        "refused",
+        "not_found",
+        "absent",
+        "external_failure",
+        "unsupported_version",
+    }
+)
+
+
+@dataclass(frozen=True, slots=True)
+class OpResult:
+    """One operation outcome; ``total``/``shown`` declare the clamp, if any."""
+
+    kind: str
+    title: str = ""
+    components: tuple[RenderComponent, ...] = ()
+    data: dict[str, Any] = field(default_factory=dict)
+    total: int = 0
+    shown: int = 0
+    error_code: str | None = None
+    hints: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.kind not in RESULT_KINDS:
+            raise ValueError(f"unknown result kind: {self.kind!r}")
+        if self.error_code is not None and self.error_code not in ERROR_CODES:
+            raise ValueError(f"unknown error code: {self.error_code!r}")
+        if self.total < 0 or self.shown < 0 or self.shown > self.total:
+            raise ValueError("shown must lie between 0 and total")
+
+    def to_payload(self) -> dict[str, Any]:
+        """The JSON-native rendering every operation offers."""
+        message: str | None = None
+        if self.error_code is not None:
+            prose = next(
+                (row.text for row in self.components if isinstance(row, ProseRow)),
+                None,
+            )
+            carried = self.data.get("message")
+            message = (
+                prose if prose is not None else (str(carried) if carried else None)
+            )
+        return {
+            "kind": self.kind,
+            "title": self.title,
+            "data": self.data,
+            "total": self.total,
+            "shown": self.shown,
+            "error_code": self.error_code,
+            "message": message,
+            "hints": list(self.hints),
+        }
+
+
+Executor = Callable[[Any, ClientSession], OpResult]
+
+
+@dataclass(frozen=True, slots=True)
+class OperationSpec:
+    """One registry row: typed options, closed vocabularies, one executor."""
+
+    id: str
+    label: str
+    options_type: type
+    effect: str
+    requires: str
+    result_kind: str
+    hints: tuple[str, ...] = ()
+    executor: Executor | None = None
+    available: Callable[[ClientSession], bool] | None = None
+
+    def __post_init__(self) -> None:
+        if self.effect not in EFFECTS:
+            raise ValueError(f"unknown effect: {self.effect!r}")
+        if self.requires not in REQUIREMENTS:
+            raise ValueError(f"unknown requirement: {self.requires!r}")
+        if self.result_kind not in RESULT_KINDS:
+            raise ValueError(f"unknown result kind: {self.result_kind!r}")
+        if not is_dataclass(self.options_type):
+            raise ValueError(f"options_type is not a dataclass: {self.options_type!r}")
+        if not callable(self.executor):
+            raise ValueError(f"executor is not callable for operation {self.id!r}")
+
+
+def _error_result(
+    kind: str, code: str, title: str, message: str, data: dict[str, Any] | None = None
+) -> OpResult:
+    return OpResult(
+        kind=kind,
+        title=title,
+        components=(ProseRow(message),) if message else (),
+        data=data or {},
+        error_code=code,
+    )
 
 
 def _coerce(value: Any, annotation: Any) -> Any:
@@ -142,6 +260,8 @@ def execute_by_id(
     registry: Mapping[str, OperationSpec] | None = None,
 ) -> OpResult:
     """Resolve, decode, and execute one operation by registry id."""
+    from edgar_sec.apps.client.operator.operator import REGISTRY
+
     specs = REGISTRY if registry is None else registry
     spec = specs.get(op_id)
     if spec is None:

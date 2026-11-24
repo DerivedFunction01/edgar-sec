@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field
 
-from edgar_sec.apps.client.operator import operator_results, operator_specs
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.operator.operator_discovery import (
     help_components,
     listing_components,
@@ -25,14 +25,14 @@ class _Options:
 
 
 def _spec():
-    return operator_specs.OperationSpec(
+    return operator_execution.OperationSpec(
         id="probe",
         label="Probe",
         options_type=_Options,
         effect="reads_state",
         requires="none",
         result_kind="prose",
-        executor=lambda options, session: operator_results.OpResult(kind="prose"),
+        executor=lambda options, session: operator_execution.OpResult(kind="prose"),
     )
 
 

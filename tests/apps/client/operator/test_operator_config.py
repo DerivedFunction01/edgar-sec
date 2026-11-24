@@ -6,12 +6,8 @@ import json
 from pathlib import Path
 
 from edgar_sec.apps.client.operator import operator, operator_config
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_results,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -133,15 +129,12 @@ def _example_path() -> Path:
 
 
 def test_registry_contains_load_config_row() -> None:
-    assert "load_config" in operator_registry.REGISTRY
-    spec = operator_registry.REGISTRY["load_config"]
+    assert "load_config" in operator.REGISTRY
+    spec = operator.REGISTRY["load_config"]
     assert spec.effect == "reads_state"
     assert spec.result_kind == "key_value"
     assert operator_config.SPECS
-    assert (
-        operator_registry.GATHERERS["load_config"]
-        is operator_config._gather_load_config
-    )
+    assert operator.GATHERERS["load_config"] is operator_config._gather_load_config
 
 
 def test_example_config_executes_end_to_end(tmp_path: Path) -> None:
@@ -214,7 +207,7 @@ def test_unknown_format_version_refuses_before_execution(
     payload = json.loads(capsys.readouterr().out)
     assert payload["error_code"] == "unsupported_version"
     assert payload["operations_declared"] == 1
-    assert operator_results.OpResult(kind="object", error_code="unsupported_version")
+    assert operator_execution.OpResult(kind="object", error_code="unsupported_version")
 
 
 def test_declared_count_and_error_exits(tmp_path: Path, capsys) -> None:

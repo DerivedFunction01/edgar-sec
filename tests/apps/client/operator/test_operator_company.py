@@ -5,11 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.reference.companyfacts import fetch_company_facts
 from edgar_sec.apps.client.reference.concept import ConceptResult
 from edgar_sec.apps.client.reference.frames import FrameIdentity, FrameResult, FrameRow
@@ -204,19 +202,19 @@ def _session(tmp_path: Path) -> tuple[operator_session.ClientSession, _FakeFacad
 
 
 def test_company_and_frames_effects() -> None:
-    assert operator_registry.REGISTRY["company"].effect == "reads_state"
-    assert operator_registry.REGISTRY["company_filings"].effect == "reads_state"
-    assert operator_registry.REGISTRY["company_concept"].effect == "reads_state"
-    assert operator_registry.REGISTRY["frames"].effect == "external"
+    assert operator.REGISTRY["company"].effect == "reads_state"
+    assert operator.REGISTRY["company_filings"].effect == "reads_state"
+    assert operator.REGISTRY["company_concept"].effect == "reads_state"
+    assert operator.REGISTRY["frames"].effect == "external"
 
 
 def test_help_examples_name_a_tag_and_duration_period() -> None:
     from edgar_sec.apps.client.operator.operator_discovery import operation_help
 
-    concept = operation_help(operator_registry.REGISTRY["company_concept"])
+    concept = operation_help(operator.REGISTRY["company_concept"])
     tag_help = next(f["help"] for f in concept["options"] if f["name"] == "tag")
     assert "Revenues" in tag_help
-    frames = operation_help(operator_registry.REGISTRY["frames"])
+    frames = operation_help(operator.REGISTRY["frames"])
     frame_tag = next(f["help"] for f in frames["options"] if f["name"] == "tag")
     period = next(f["help"] for f in frames["options"] if f["name"] == "period")
     assert "Revenues" in frame_tag

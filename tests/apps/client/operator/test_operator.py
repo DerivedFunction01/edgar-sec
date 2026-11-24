@@ -1,4 +1,4 @@
-"""Tests for the client operator session, registry, and hosts."""
+"""Tests for the client operator registry and hosts."""
 
 from __future__ import annotations
 
@@ -10,17 +10,14 @@ from dataclasses import dataclass, field, is_dataclass
 import pytest
 
 from edgar_sec.apps.client import cli
-from edgar_sec.apps.client.operator import operator
 from edgar_sec.apps.client.operator import (
+    operator,
     operator_execution,
-    operator_registry,
-    operator_results,
     operator_session,
-    operator_specs,
 )
 from edgar_sec.apps.client.operator.operator_discovery import operation_listing
 from edgar_sec.foundation.runtime.interactive import MenuAction
-from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
+from edgar_sec.foundation.runtime.render import Grid, KeyValueRow
 from tests.support.fixtures import TESTS_ROOT
 
 
@@ -46,7 +43,7 @@ class _ProbeOptions:
 
 def _probe_executor(options, session):
     rows = (("a", "1"), ("b", "2"))[: options.limit]
-    return operator_results.OpResult(
+    return operator_execution.OpResult(
         kind="grid",
         title="Probe",
         components=(Grid(headers=("k", "v"), rows=rows),),
@@ -68,7 +65,7 @@ def _probe_spec(**overrides):
         "executor": _probe_executor,
     }
     values.update(overrides)
-    return operator_specs.OperationSpec(**values)
+    return operator_execution.OperationSpec(**values)
 
 
 def _session() -> operator_session.ClientSession:
@@ -76,15 +73,15 @@ def _session() -> operator_session.ClientSession:
 
 
 def test_registry_integrity() -> None:
-    assert operator_registry.REGISTRY
-    ids = [spec.id for spec in operator_registry.REGISTRY.values()]
+    assert operator.REGISTRY
+    ids = [spec.id for spec in operator.REGISTRY.values()]
     assert len(ids) == len(set(ids))
-    for spec in operator_registry.REGISTRY.values():
+    for spec in operator.REGISTRY.values():
         assert is_dataclass(spec.options_type)
         assert callable(spec.executor)
-        assert spec.effect in operator_specs.EFFECTS
-        assert spec.requires in operator_specs.REQUIREMENTS
-        assert spec.result_kind in operator_results.RESULT_KINDS
+        assert spec.effect in operator_execution.EFFECTS
+        assert spec.requires in operator_execution.REQUIREMENTS
+        assert spec.result_kind in operator_execution.RESULT_KINDS
 
 
 def test_closed_vocabularies_reject_outside_values() -> None:
@@ -93,17 +90,17 @@ def test_closed_vocabularies_reject_outside_values() -> None:
     with pytest.raises(ValueError):
         _probe_spec(requires="everything")
     with pytest.raises(ValueError):
-        operator_results.OpResult(kind="grid", error_code="made_up_code")
+        operator_execution.OpResult(kind="grid", error_code="made_up_code")
     with pytest.raises(ValueError):
-        operator_registry.assemble_registry((_probe_spec(),), (_probe_spec(),))
+        operator.assemble_registry((_probe_spec(),), (_probe_spec(),))
 
 
 def test_registry_walking_listing_and_json() -> None:
-    listing = operation_listing(operator_registry.REGISTRY)
-    assert listing["total"] == listing["shown"] == len(operator_registry.REGISTRY)
+    listing = operation_listing(operator.REGISTRY)
+    assert listing["total"] == listing["shown"] == len(operator.REGISTRY)
     entries = {entry["id"]: entry for entry in listing["operations"]}
     session = _session()
-    for spec in operator_registry.REGISTRY.values():
+    for spec in operator.REGISTRY.values():
         entry = entries[spec.id]
         assert entry["label"] == spec.label
         assert entry["effect"] == spec.effect
@@ -119,58 +116,12 @@ def test_registry_walking_listing_and_json() -> None:
         assert result.kind == spec.result_kind
         assert (
             result.error_code is None
-            or result.error_code in operator_results.ERROR_CODES
+            or result.error_code in operator_execution.ERROR_CODES
         )
         payload = json.loads(json.dumps(result.to_payload()))
         assert payload["total"] == result.total
         assert payload["shown"] == result.shown
         assert payload["data"] == result.data
-
-
-def test_session_state_and_lazy_facade() -> None:
-    facade = _FakeFacade()
-    session = operator_session.ClientSession(facade=facade)
-    assert session.facade is facade
-    assert facade.calls == []
-    fresh = operator_session.ClientSession()
-    assert fresh._facade is None
-    result = _FakeResult(["A1", "A2"])
-    working = session.add_set("tech", ["A1", "A2", "A1"], result=result)
-    assert working.accessions == frozenset({"A1", "A2"})
-    assert working.result is result
-    assert session.current_set is working
-    assert session.satisfies("selection")
-    assert not session.satisfies("current_filing")
-    session.select_filing("A1", aggregate=result)
-    assert session.satisfies("current_filing")
-    assert session.last_run_record == ""
-
-
-def test_execute_custom_spec_and_context_refusal() -> None:
-    session = _session()
-    spec = _probe_spec()
-    refused = operator_execution.execute_operation(spec, session, _ProbeOptions())
-    assert refused.error_code == "missing_context"
-    session.select_filing("A1")
-    result = operator_execution.execute_operation(spec, session, _ProbeOptions(limit=1))
-    assert result.error_code is None
-    assert (result.total, result.shown) == (2, 1)
-    assert isinstance(result.components[0], Grid)
-
-
-def test_decode_options_coerces_and_refuses() -> None:
-    spec = _probe_spec()
-    assert operator_execution.decode_options(spec, {"limit": "3"}).limit == 3
-    assert operator_execution.decode_options(spec, None).limit == 5
-    with pytest.raises(ValueError):
-        operator_execution.decode_options(spec, {"bogus": 1})
-    result = operator_execution.execute_by_id(
-        "probe", _session(), {"limit": "x"}, registry={"probe": spec}
-    )
-    assert result.error_code == "invalid_options"
-    unknown = operator_execution.execute_by_id("nope", _session())
-    assert unknown.error_code == "unknown_operation"
-    assert json.dumps(unknown.to_payload())
 
 
 def test_session_header_renders_four_facts() -> None:
@@ -192,9 +143,7 @@ def _menu_labels(session, registry=None) -> list[str]:
 
 
 def test_menu_gates_rows_on_requirement() -> None:
-    registry = operator_registry.assemble_registry(
-        operator_registry.REGISTRY.values(), (_probe_spec(),)
-    )
+    registry = operator.assemble_registry(operator.REGISTRY.values(), (_probe_spec(),))
     session = _session()
     labels = _menu_labels(session, registry)
     assert "Probe operation" in labels
@@ -206,12 +155,10 @@ def test_menu_gates_rows_on_requirement() -> None:
 
 
 def test_menu_unmet_row_refuses_without_gathering(monkeypatch, capsys) -> None:
-    registry = operator_registry.assemble_registry(
-        operator_registry.REGISTRY.values(), (_probe_spec(),)
-    )
+    registry = operator.assemble_registry(operator.REGISTRY.values(), (_probe_spec(),))
     gathered: list[bool] = []
     monkeypatch.setitem(
-        operator_registry.GATHERERS, "probe", lambda session: gathered.append(True)
+        operator.GATHERERS, "probe", lambda session: gathered.append(True)
     )
     menu = operator.build_operator_menu(_session(), registry=registry)
     action = next(
@@ -228,7 +175,7 @@ def test_menu_gather_value_error_renders_invalid_options(monkeypatch, capsys) ->
     def bad_gather(session):
         raise ValueError("invalid year '1'")
 
-    monkeypatch.setitem(operator_registry.GATHERERS, "session_summary", bad_gather)
+    monkeypatch.setitem(operator.GATHERERS, "session_summary", bad_gather)
     menu = operator.build_operator_menu(_session())
     action = next(
         item
@@ -261,7 +208,7 @@ def test_argv_list_operations_text_and_json(capsys) -> None:
     assert "include_sets" in out
     assert operator.main(["--list-operations", "--json"]) == 0
     payload = json.loads(capsys.readouterr().out)
-    assert payload["total"] == len(operator_registry.REGISTRY)
+    assert payload["total"] == len(operator.REGISTRY)
     entry = payload["operations"][0]
     assert entry["id"] == "session_summary"
     assert entry["options"][0]["name"] == "include_sets"
@@ -291,18 +238,6 @@ def test_argv_op_help_is_generated(capsys) -> None:
     assert "Selects whether named working sets are listed" in out
     assert "True" in out
     assert "--op session_summary --options" in out
-
-
-def test_payload_message_carries_error_prose_only() -> None:
-    session = _session()
-    refused = operator_execution.execute_by_id("session_summary", session, {"bogus": 1})
-    assert refused.error_code == "invalid_options"
-    payload = refused.to_payload()
-    assert payload["message"]
-    assert "bogus" in payload["message"]
-    ok = operator_execution.execute_by_id("session_summary", session, {})
-    assert ok.error_code is None
-    assert ok.to_payload()["message"] is None
 
 
 def test_runpy_route_sibling_result_and_refusal() -> None:
@@ -402,15 +337,3 @@ def test_menu_action_executes_and_renders(capsys) -> None:
     out = capsys.readouterr().out
     assert "Session summary" in out
     assert "mode" in out
-
-
-def test_prose_result_kind_serializes() -> None:
-    result = operator_results.OpResult(
-        kind="prose",
-        title="Note",
-        components=(ProseRow("hello"),),
-        data={"text": "hello"},
-        total=1,
-        shown=1,
-    )
-    assert json.loads(json.dumps(result.to_payload()))["data"] == {"text": "hello"}

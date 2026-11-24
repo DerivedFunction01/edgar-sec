@@ -1,3 +1,5 @@
+"""Client operator session state: working sets, read context, position."""
+
 from __future__ import annotations
 
 from collections.abc import Iterable

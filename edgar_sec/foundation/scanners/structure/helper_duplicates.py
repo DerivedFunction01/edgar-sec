@@ -28,7 +28,7 @@ _HOMES = (
 # served semantics; this scanner measures identical bodies, never them.
 _SANCTIONED_DIVERGENCES = (
     ("edgar_sec/apps/client/operator/operator_config.py", "_error_result"),
-    ("edgar_sec/apps/client/operator/operator.py", "_error_result"),
+    ("edgar_sec/apps/client/operator/operator_execution.py", "_error_result"),
 )
 
 # Census scope statement (coordinator ruling; full text in

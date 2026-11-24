@@ -11,11 +11,8 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.apps.client.operator import operator, operator_selection
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -92,7 +89,7 @@ def _session_with_sets(tmp_path: Path):
 
 def test_registry_contains_selection_rows() -> None:
     ids = {row[0] for row in operator_selection._SPEC_ROWS}
-    assert ids <= set(operator_registry.REGISTRY)
+    assert ids <= set(operator.REGISTRY)
     assert operator_selection.SPECS
     assert {spec.id for spec in operator_selection.SPECS} == ids
     registry: dict = {}
@@ -479,7 +476,7 @@ def _fake_prompt(answers: dict[str, str]):
 def test_gatherers_cover_selection_rows(monkeypatch) -> None:
     ids = {row[0] for row in operator_selection._SPEC_ROWS}
     assert set(operator_selection.GATHERERS) == ids
-    assert ids <= set(operator_registry.GATHERERS)
+    assert ids <= set(operator.GATHERERS)
     monkeypatch.setattr(
         operator_selection,
         "prompt_text",

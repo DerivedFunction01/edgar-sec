@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.apps.client.operator import operator_drill_exhibits
-from edgar_sec.apps.client.operator import operator_registry
+from edgar_sec.apps.client.operator import operator, operator_drill_exhibits
 
 
 def test_exhibits_module_rows_register_with_gates() -> None:
@@ -18,7 +17,7 @@ def test_exhibits_module_rows_register_with_gates() -> None:
     }
     for spec in specs.values():
         assert spec.requires == "current_filing"
-        assert operator_registry.REGISTRY[spec.id] is not None
+        assert operator.REGISTRY[spec.id] is not None
     assert specs["xbrl_summary"].available is not None
     assert specs["earnings_exhibit"].available is not None
     assert specs["exhibits_list"].available is None

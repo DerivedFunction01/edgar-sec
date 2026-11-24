@@ -221,7 +221,7 @@ def _event_rows(result: Any) -> list[dict[str, Any]]:
 
 
 def _execute_feed_events(options: FeedEventsOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     title = "Feed events"
     if options.limit is not None and options.limit < 1:
@@ -319,7 +319,7 @@ def coverage_dict(coverage: Any) -> dict[str, Any]:
 
 
 def _execute_efts_search(options: EftsSearchOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     title = "EFTS search"
     if options.limit < 1:
@@ -501,7 +501,7 @@ def _hit_rows(result: Any) -> list[dict[str, Any]]:
 
 
 def _execute_local_search(options: LocalSearchOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     title = "Local text search"
     if not options.query.strip():

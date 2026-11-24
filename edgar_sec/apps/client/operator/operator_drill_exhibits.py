@@ -126,7 +126,7 @@ def _exhibits_list(options: ExhibitsListOptions, session: Any):
         }
         for a in shown
     ]
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     grid = Grid(
         headers=("type", "filename", "description", "size"),
@@ -252,7 +252,7 @@ def _earnings(options: EarningsExhibitOptions, session: Any):
         return _absent(
             "object", title, str(reason), {"accession": str(result.accession)}
         )
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     exhibit = result.exhibit
     components: list[Any] = [
@@ -471,7 +471,7 @@ def _availability(gate: str | None):
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator.operator_specs import OperationSpec
+    from edgar_sec.apps.client.operator.operator_execution import OperationSpec
 
     specs = []
     for op_id, options_type, executor, effect, gate in _SPEC_ROWS:

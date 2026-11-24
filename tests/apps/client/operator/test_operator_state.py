@@ -5,11 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 
 _DATASET_SOURCES = ("bdc_datasets", "mfrr_datasets", "nmfp_datasets")
 
@@ -76,11 +74,11 @@ def _session(tmp_path: Path) -> tuple[operator_session.ClientSession, _FakeFacad
 
 
 def test_state_rows_effects() -> None:
-    assert operator_registry.REGISTRY["bulk_archive"].effect == "reads_state"
-    assert operator_registry.REGISTRY["bulk_archive_member"].effect == "reads_state"
-    assert operator_registry.REGISTRY["cache_state"].effect == "reads_state"
-    assert operator_registry.REGISTRY["cache_clear"].effect == "destructive"
-    assert operator_registry.REGISTRY["cache_vacuum"].effect == "destructive"
+    assert operator.REGISTRY["bulk_archive"].effect == "reads_state"
+    assert operator.REGISTRY["bulk_archive_member"].effect == "reads_state"
+    assert operator.REGISTRY["cache_state"].effect == "reads_state"
+    assert operator.REGISTRY["cache_clear"].effect == "destructive"
+    assert operator.REGISTRY["cache_vacuum"].effect == "destructive"
 
 
 def test_bulk_archive_lists_dataset_sources_by_id(tmp_path) -> None:

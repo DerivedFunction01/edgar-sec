@@ -10,11 +10,8 @@ from edgar_sec.apps.client.operator import (
     operator_drill,
     operator_drill_exhibits,
 )
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -283,11 +280,11 @@ def test_drill_rows_registered_with_availability() -> None:
         "save_payload",
         "save_bundle",
     ):
-        assert op_id in operator_registry.REGISTRY
-    assert operator_registry.REGISTRY["sections_list"].available is not None
-    assert operator_registry.REGISTRY["earnings_exhibit"].available is not None
-    assert operator_registry.REGISTRY["primary_document"].available is None
-    assert operator_registry.REGISTRY["session_summary"].available is None
+        assert op_id in operator.REGISTRY
+    assert operator.REGISTRY["sections_list"].available is not None
+    assert operator.REGISTRY["earnings_exhibit"].available is not None
+    assert operator.REGISTRY["primary_document"].available is None
+    assert operator.REGISTRY["session_summary"].available is None
     assert "select_filing" in operator_drill.GATHERERS
     assert "read_section" in operator_drill.GATHERERS
     assert "read_exhibit" in operator_drill_exhibits.GATHERERS

@@ -14,11 +14,8 @@ from edgar_sec.apps.client.operator import (
     operator_fetch,
     operator_run_records,
 )
-from edgar_sec.apps.client.operator import (
-    operator_execution,
-    operator_registry,
-    operator_session,
-)
+from edgar_sec.apps.client.operator import operator_session
+from edgar_sec.apps.client.operator import operator_execution
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -146,9 +143,9 @@ def test_registry_contains_fetch_rows() -> None:
         "snapshot_current",
         "snapshot_checkout",
     }
-    assert ids <= set(operator_registry.REGISTRY)
+    assert ids <= set(operator.REGISTRY)
     assert operator_fetch.SPECS
-    assert operator_registry.GATHERERS["fetch"] is operator_fetch._gather_fetch
+    assert operator.GATHERERS["fetch"] is operator_fetch._gather_fetch
     effects = {s.id: s.effect for s in operator_fetch.build_specs()}
     assert effects["fetch"] == "external"
     assert effects["set_read_context"] == "moves_position"

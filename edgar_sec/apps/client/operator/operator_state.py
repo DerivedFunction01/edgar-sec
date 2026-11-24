@@ -131,7 +131,7 @@ def _manifest_dict(reference: Any) -> dict[str, Any]:
 
 
 def _execute_bulk_archive(options: BulkArchiveOptions, session: Any):
-    from edgar_sec.apps.client.operator.operator_results import OpResult
+    from edgar_sec.apps.client.operator.operator_execution import OpResult
 
     title = "Bulk archive"
     if options.limit < 1:
@@ -340,7 +340,7 @@ _SPEC_ROWS = (
 
 def build_specs() -> tuple:
     """Build this module's registry rows; operator imports resolve at call time."""
-    from edgar_sec.apps.client.operator.operator_specs import OperationSpec
+    from edgar_sec.apps.client.operator.operator_execution import OperationSpec
 
     return tuple(
         OperationSpec(
