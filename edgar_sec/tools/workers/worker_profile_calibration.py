@@ -13,6 +13,7 @@ from edgar_sec.tools.workers.fast_pytest_worker_calibrator import (
 from edgar_sec.tools.workers.profile_storage import write_profile
 from edgar_sec.tools.workers.worker_profile_cases import case_work, current_cases
 from edgar_sec.tools.workers.worker_profile_inventory import (
+    case_file,
     scope_inventory,
     scope_key,
 )
