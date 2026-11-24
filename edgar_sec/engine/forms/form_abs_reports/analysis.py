@@ -27,7 +27,7 @@ from edgar_sec.engine.forms.cover.registrant import (
     previous_content_line,
 )
 from edgar_sec.engine.tables.protection.tags import find_table_spans
-from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 
 _RULE_KEYS = (
     "rule_15ga_1",

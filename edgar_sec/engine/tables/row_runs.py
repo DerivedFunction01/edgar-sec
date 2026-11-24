@@ -9,7 +9,10 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
-from edgar_sec.foundation.text.dates import COLUMN_YEAR_ROW_RE, PERIOD_SUBHEADING_RE
+from edgar_sec.foundation.text.date_patterns import (
+    COLUMN_YEAR_ROW_RE,
+    PERIOD_SUBHEADING_RE,
+)
 from edgar_sec.foundation.text.patterns import (
     RE_COLUMN_GAP,
     RE_DOT_LEADER,

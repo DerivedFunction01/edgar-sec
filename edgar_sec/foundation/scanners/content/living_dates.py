@@ -13,7 +13,10 @@ import re
 import tokenize
 from pathlib import Path
 
-from edgar_sec.foundation.text.dates import MONTH_PATTERN, STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import (
+    MONTH_PATTERN,
+    STRICT_YEAR_TOKEN_PATTERN,
+)
 
 from ..base import Scanner, ScannerFinding
 from ..files import tracked_paths
@@ -33,7 +36,7 @@ DOC_EXCLUDED_PREFIXES = ("uploads/", "tests/fixtures/")
 
 # The module that owns the date vocabulary states date shapes as
 # its content; it is exempt by the one-home rule.
-VOCABULARY_HOME = "edgar_sec/foundation/text/dates.py"
+VOCABULARY_HOME = "edgar_sec/foundation/text/date_patterns.py"
 
 # Sanctioned sites: content-bearing specimens and record pointers
 # whose date is the content documented, excused by file and fragment.

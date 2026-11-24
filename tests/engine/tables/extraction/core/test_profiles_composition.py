@@ -6,7 +6,7 @@ records named in each spec's provenance.
 
 from __future__ import annotations
 
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.engine.tables.extraction.form_specs.composition_specs import (
     COMPOSITION_SPECS,
     COMPOSITION_SPECS_BY_FAMILY,

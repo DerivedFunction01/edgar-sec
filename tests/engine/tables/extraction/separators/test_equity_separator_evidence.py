@@ -47,9 +47,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
-from edgar_sec.foundation.text.dates import (
-    MONTH_NAMES as _HOME_MONTH_NAMES,
-)
+from edgar_sec.foundation.text.date_patterns import MONTH_NAMES as _HOME_MONTH_NAMES
 
 SPEC = EQUITY_SEPARATOR_SPECS["equity_statement"]
 

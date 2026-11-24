@@ -11,7 +11,7 @@ from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     CORE_FORM_SPECS,
 )
 from edgar_sec.engine.tables.numeric_cells import STRICT_NUMERIC_CELL_RE
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
     RE_FULL_DATE,

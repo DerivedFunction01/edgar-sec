@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from edgar_sec.foundation.text.dates import MONTH_WORD_RE, NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_patterns import MONTH_WORD_RE, NUMERIC_DATE_RE
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 _CIK_MASK_RE = re.compile(r"\bCIK\s*[:#]?\s*\d{1,10}\b", re.IGNORECASE)

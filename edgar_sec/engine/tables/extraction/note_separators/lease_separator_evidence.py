@@ -17,7 +17,7 @@ from edgar_sec.engine.tables.extraction.note_separators.lease_separator_specs im
     LEASE_SEPARATOR_SPECS,
     LeaseSeparatorSpec,
 )
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 __all__ = [
     "LeaseSeparatorText",

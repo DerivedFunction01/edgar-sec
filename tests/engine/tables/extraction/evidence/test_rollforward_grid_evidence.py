@@ -7,7 +7,7 @@ from edgar_sec.engine.tables.extraction.evidence.rollforward_grid_evidence impor
     RollforwardGridText,
     grid_features,
 )
-from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
 
 
 def _features(table_text: str):

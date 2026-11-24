@@ -19,7 +19,7 @@ from edgar_sec.domain.feeds.models import (
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.foundation.hashing import sha256_bytes
-from edgar_sec.foundation.text.dates import ISO_DATE_RE
+from edgar_sec.foundation.text.date_patterns import ISO_DATE_RE
 
 PARSER_FINGERPRINT = "feed-atom-v1"
 

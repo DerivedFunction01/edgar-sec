@@ -44,12 +44,12 @@ from edgar_sec.engine.forms.ownership.tables.relationship_box import (
     parse_relationship_box,
 )
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_RE,
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
-    ParsedDate,
 )
+from edgar_sec.foundation.text.dates import ParsedDate
 
 _METADATA_TABLE_MARKERS = ("table i", "table ii", "non-derivative")
 _OWNER_TEMPLATE_FIELDS = frozenset(

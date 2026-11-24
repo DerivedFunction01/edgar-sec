@@ -16,7 +16,7 @@ from edgar_sec.engine.tables.extraction.specs.measure_set_specs import (
 )
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_PATTERN,

@@ -31,7 +31,7 @@ from edgar_sec.engine.forms.common.signatures.patterns import (
     SIGNATORY_ROLE_RE,
     TITLE_CASE_WORD_RE,
 )
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAME_RE,
     MONTH_RE,
     NUMERIC_DATE_RE,

@@ -12,7 +12,7 @@ from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_tex
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     PROV_PENSION_ANCHOR,
 )
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 
 @dataclass(frozen=True, slots=True)

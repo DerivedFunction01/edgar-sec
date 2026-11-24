@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 if TYPE_CHECKING:
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (

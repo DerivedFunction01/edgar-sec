@@ -7,7 +7,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 from edgar_sec.foundation.regex.builder import build_alternation, compact_alternation
-from edgar_sec.foundation.text.dates import MONTH_RE
+from edgar_sec.foundation.text.date_patterns import MONTH_RE
 from edgar_sec.foundation.text.normalize import RE_MULTI_SPACES
 from edgar_sec.foundation.text.patterns import (
     ITEM_REFERENCE_CORE,

@@ -25,7 +25,7 @@ from edgar_sec.engine.forms.common.phrases.statutory import HEADER_LEAK_RE
 from edgar_sec.engine.forms.common.xml.unparsed import load_unparsed_sections
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
 
 _CORE_FIELDS = (
     "issuerName",

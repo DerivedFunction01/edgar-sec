@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
     SUMMARY_SEPARATOR_SPECS,
     SummarySeparatorSpec,
 )
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_WORD_RE,
     QUARTER_LABEL_RE,
     YEAR_TOKEN_SEARCH_RE,

@@ -26,7 +26,7 @@ from edgar_sec.engine.forms.cover.registrant import (
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 
 _REPORT_KEYS = ("report_annual", "report_transition")
 

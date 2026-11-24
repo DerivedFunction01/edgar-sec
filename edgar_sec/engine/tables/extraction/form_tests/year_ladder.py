@@ -12,11 +12,11 @@ import re
 
 from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     YEAR_TOKEN_PATTERN,
-    is_year_token,
     YEAR_TOKEN_SEARCH_RE,
 )
+from edgar_sec.foundation.text.date_years import is_year_token
 
 from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.core.text.normalize import collapse_text

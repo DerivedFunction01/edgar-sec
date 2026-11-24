@@ -17,7 +17,7 @@ from edgar_sec.engine.tables.extraction.specs.families.stock_comp_specs import (
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.engine.tables.numeric_cells import is_strict_numeric_cell
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_WORD_RE, YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import MONTH_WORD_RE, YEAR_TOKEN_SEARCH_RE
 
 _RANGE2 = re.compile(r"\$?\s*[\d,]+(\.\d+)?\s*(?:[-–—]|\bto\b)\s*\$?\s*[\d,]+(\.\d+)?")
 _OPEN_PREFIX = build_alternation(("less than", "under", "below"))

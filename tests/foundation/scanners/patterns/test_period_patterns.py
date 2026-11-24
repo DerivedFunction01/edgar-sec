@@ -76,7 +76,7 @@ def test_allows_the_dates_home(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 'PERIOD_ENDED_RE = re.compile(r"(?:period|fiscal year) ended\\s+", re.IGNORECASE)\n'
                 'REPORTING_PERIOD_LABEL_RE = re.compile(r"reporting period:\\s*(.*)")\n'
             )
@@ -102,7 +102,7 @@ def test_allows_composition_from_the_home(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                "from edgar_sec.foundation.text.dates import PERIOD_ENDED_PAT\n"
+                "from edgar_sec.foundation.text.date_patterns import PERIOD_ENDED_PAT\n"
                 '_ENDED_RE = re.compile(PERIOD_ENDED_PAT + r"\\s+(.+)")\n'
             )
         },

@@ -17,7 +17,7 @@ from edgar_sec.engine.document.html.tags import (
     PARAGRAPH_TAGS,
     TABLE_AND_PRE_TAGS,
 )
-from edgar_sec.foundation.text.dates import is_year_token
+from edgar_sec.foundation.text.date_years import is_year_token
 
 from ...tokens import PREFIX_SYMBOLS, is_numeric_cell
 from ..model.cell import normalize_cell_whitespace

@@ -43,18 +43,14 @@ from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 from edgar_sec.engine.tables.numeric_cells import (
     STRICT_NUMERIC_CELL_RE as _HOME_STRICT,
 )
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     NUMERIC_DATE_RE as _HOME_NUMERIC_DATE,
 )
-from edgar_sec.foundation.text.dates import (
-    RE_FULL_DATE as _HOME_FULL_DATE,
-)
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import RE_FULL_DATE as _HOME_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN as _HOME_STRICT_MONTH,
 )
-from edgar_sec.foundation.text.dates import (
-    YEAR_TOKEN_RE as _HOME_YEAR_TOKEN,
-)
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE as _HOME_YEAR_TOKEN
 from edgar_sec.foundation.text.patterns import (
     RE_WHITESPACE as _HOME_WHITESPACE,
 )

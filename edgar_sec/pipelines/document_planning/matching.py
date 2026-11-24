@@ -23,7 +23,7 @@ from edgar_sec.domain.sec_urls import (
     validate_archive_url,
 )
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 from .catalog_scope import CatalogScopeAccession
 from .inventory_evidence import InventoryEvidenceRow
 from .profiles import ProfileTarget

@@ -79,7 +79,9 @@ def test_population_excludes_corpora_archives_and_the_date_home(
     _write(tmp_path, "uploads/spec.md", "Expires: December 31, 2026\n")
     _write(tmp_path, "tests/fixtures/corpus.md", "Dated 2020-01-01\n")
     _write(tmp_path, "run-logs/log.md", "Dated 2020-01-01\n")
-    _write(tmp_path, "edgar_sec/foundation/text/dates.py", "# December 31, 2023\n")
+    _write(
+        tmp_path, "edgar_sec/foundation/text/date_patterns.py", "# December 31, 2023\n"
+    )
     _write(tmp_path, "pkg/mod.py", "X = 1\n")
     names = [p.relative_to(tmp_path).as_posix() for p in population(tmp_path)]
     assert names == ["pkg/mod.py"]

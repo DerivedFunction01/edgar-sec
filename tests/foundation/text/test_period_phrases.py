@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import re
 
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     PERIOD_ENDED_PAT,
     PERIOD_ENDED_RE,
     REPORTING_PERIOD_CAPTION_RE,

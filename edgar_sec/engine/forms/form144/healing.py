@@ -8,7 +8,7 @@ import re
 from edgar_sec.domain.forms.families.form144.rules import FORM144_PHRASE_RULES
 from edgar_sec.engine.forms.common.tables.tables import HORIZONTAL_RULE_RE
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import heal_date_fragments
+from edgar_sec.foundation.text.date_fragments import heal_date_fragments
 from edgar_sec.foundation.text.healing import heal_split_lines
 from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL
 

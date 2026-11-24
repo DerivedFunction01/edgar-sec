@@ -25,7 +25,7 @@ from edgar_sec.engine.forms.common.fields.extraction import (
 from edgar_sec.engine.forms.common.values.numbers import normalize_schema_number
 from edgar_sec.engine.forms.common.phrases.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     _SEPARATOR_RUN_RE,
     cover_field_has_layout_residue,

@@ -14,7 +14,7 @@ from edgar_sec.engine.tables.extraction.specs.families.ppe_specs import (
     PpeEvidenceSpec,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     YEAR_TOKEN_PATTERN,
     YEAR_TOKEN_SEARCH_RE,
 )

@@ -43,11 +43,8 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import Token, tokenize
-from edgar_sec.foundation.text.dates import (
-    NUMERIC_DATE_RE,
-    RE_FULL_DATE,
-    parse_date,
-)
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
     compile_evidence_pack,

@@ -32,7 +32,8 @@ from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import 
 )
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import SEC_DATE_FORMATS, parse_date
+from edgar_sec.foundation.text.date_formats import SEC_DATE_FORMATS
+from edgar_sec.foundation.text.dates import parse_date
 
 _FIELD_LABELS: dict[str, tuple[str, ...]] = {
     "issuer_name": (

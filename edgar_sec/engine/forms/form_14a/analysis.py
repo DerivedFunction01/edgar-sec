@@ -21,7 +21,7 @@ from edgar_sec.engine.forms.cover.registrant import (
 )
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.tables.protection.tags import find_table_spans
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE_GAP
 
 _CLASSIFICATION_KEYS = (

@@ -36,7 +36,7 @@ from edgar_sec.engine.forms.ownership.tables.table_common import (
     trailing_ownership_form,
 )
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE
 
 
 def parse_table_ii_rows(

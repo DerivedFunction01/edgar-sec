@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.foundation.text.dates import MONTH_ALIASES, MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import MONTH_ALIASES, MONTH_NAMES
 
 KIND_ORDER = ("cost", "walk", "funded", "assumptions", "assets", "payments")
 

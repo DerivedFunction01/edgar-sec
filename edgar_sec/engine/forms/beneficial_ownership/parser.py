@@ -42,11 +42,11 @@ from edgar_sec.engine.forms.sections.items.candidates import extract_section_can
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.forms.sections.models import CandidateKind, SectionSequence
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_formats import (
     ALL_SEC_DATE_FORMATS,
     SEC_DATE_FORMATS,
-    parse_date,
 )
+from edgar_sec.foundation.text.dates import parse_date
 from .cover_parser import extract_reporting_person_covers
 from .issuer import extract_issuer_metadata
 from .item_subsections import extract_subsections

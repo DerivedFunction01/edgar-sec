@@ -26,7 +26,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     MONTH_TOKENS,
 )
 from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, WRAPPED_NUMERIC_CELL_RE
-from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 
 HEADER_YEAR_RE = re.compile(rf"\b{STRICT_YEAR_TOKEN_PATTERN}\b")

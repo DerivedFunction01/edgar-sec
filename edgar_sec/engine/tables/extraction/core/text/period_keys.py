@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_SEARCH_RE,

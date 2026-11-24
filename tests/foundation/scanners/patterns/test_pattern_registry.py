@@ -186,7 +186,7 @@ def test_allows_seed_definitions_in_their_foundation_homes(
                 'SCALE_PATTERNS = "x"\nUNITS_LABEL_RE = "x"\n'
             ),
             "edgar_sec/foundation/text/words.py": 'WORD_TOKEN_RE = "x"\n',
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 'RE_FULL_DATE = "x"\nYEAR_TOKEN_PATTERN = "x"\n'
                 'YEAR_TOKEN_RE = "x"\nYEAR_TOKEN_SEARCH_RE = "x"\n'
                 'YEAR_IN_TEXT_RE = "x"\n'
@@ -517,7 +517,7 @@ def test_allows_format_shapes_and_homed_compositions(
             "edgar_sec/engine/forms/common/phrases/statutory.py": (
                 '_OMB = re.compile(r"\\b3235-\\d{4}\\b")\n'
             ),
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 '_FMT = re.compile(r"(?P<year>\\d{4})")\n'
             ),
         },

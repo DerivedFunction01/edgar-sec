@@ -10,7 +10,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN,
     STRICT_YEAR_TOKEN_PATTERN,
 )

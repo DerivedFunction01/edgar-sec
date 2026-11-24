@@ -14,10 +14,8 @@ from edgar_sec.engine.document.signatures import (
     is_conformed_signature_line,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
-    NUMERIC_DATE_RE,
-    contains_date,
-)
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE
+from edgar_sec.foundation.text.dates import contains_date
 
 _SIGNATURE_ASTERISK_RE = re.compile(r"^\s*[*]+\s*$")
 

@@ -30,7 +30,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     TEST_MEASURE_SET,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
 
 if TYPE_CHECKING:
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (

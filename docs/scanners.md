@@ -14,7 +14,7 @@ Roster: `ALL_SCANNERS` in `edgar_sec/foundation/scanners/__init__.py`:
 One-home rule (normative for every scanner below): shared regexes, methods,
 and helpers have one homed module per intent — extend the home, never define
 locally. Date/datetime helpers have one shared home
-(`edgar_sec/foundation/text/dates.py`). Enforcement is shape-based at the
+(`edgar_sec/foundation/text/date_patterns.py`). Enforcement is shape-based at the
 gate: the per-family scanners (`pattern-registry`, `page-patterns`,
 `helper-duplicates`, `date-patterns`, and their kin) flag the shape of a
 private copy wherever it appears, not only a duplicated name.
@@ -42,7 +42,7 @@ private copy wherever it appears, not only a duplicated name.
   comments and docstrings, script comments, and config-file comments, over the tracked
   population. Dates as data pass — string literals, fixtures, specimen corpora (`uploads/`,
   `tests/fixtures/`), and code spans or fenced blocks inside a document. Exemptions: the
-  date-vocabulary home (`foundation/text/dates.py`) and the module's sanctioned sites,
+  date-vocabulary home (`foundation/text/date_patterns.py`) and the module's sanctioned sites,
   content-bearing specimens and record pointers excused by file and fragment.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
 - `sha256-validation`: Bans duplicate SHA-256 string validation (regex, length/all, or letters in a set) outside `foundation.hashing.is_sha256_hex_digest`; SQL validation is not scanned.
@@ -51,7 +51,7 @@ private copy wherever it appears, not only a duplicated name.
 - `date-patterns`: Bans private month tables, hand-crafted date patterns, and
   narrowed-year alternations (`(19|20)` / `(?:19|20)` century groups and
   `19\d{2}|20\d{2}`-style year alternations, in any digit spelling or as
-  alternation-builder list items) outside `foundation/text/dates.py`, whose
+  alternation-builder list items) outside `foundation/text/date_patterns.py`, whose
   year patterns span the full 1900-9999 range. The same narrowing spelled as
   a string test is banned with it: a century-pair membership or equality
   test on a two-character prefix slice (`y[:2] in ("19", "20")`) or a
@@ -60,7 +60,7 @@ private copy wherever it appears, not only a duplicated name.
 - `pattern-registry`: The intent registry: each recognizer family has one home and
   one sanctioned export surface, recorded as a data table the scanner consumes
   (word token in `foundation/text/words.py`, full date, year, and month in
-  `foundation/text/dates.py`, scale patterns in `engine/tables/patterns.py`,
+  `foundation/text/date_patterns.py`, scale patterns in `engine/tables/patterns.py`,
   extraction normalisers in `extraction/core/text/normalize.py`, the classifier registry in
   `extraction/core/subjects/profiles.py`, work-item ids in
   `pipelines/table_classification/planner.py`); a new family is a new
@@ -68,7 +68,7 @@ private copy wherever it appears, not only a duplicated name.
   home, with no exceptions — assignment detection is statement-level (a keyword
   argument inside brackets is a use, not a definition), and function names may
   register def-only — and bans the recognizer shapes themselves outside
-  `foundation/text/dates.py`: a bare year recognizer (`\d{4}` as a standalone
+  `foundation/text/date_patterns.py`: a bare year recognizer (`\d{4}` as a standalone
   recognizer), a hard-coded consecutive-year vocabulary, a hand-crafted
   month-name alternation, an any-word month slot in a date pattern, and a
   private recomposition of `MONTH_PATTERN`. Allowlisted
@@ -82,7 +82,7 @@ private copy wherever it appears, not only a duplicated name.
   and private percent recognizers (digit cores with a `%` tail and
   percent-sign alternations) outside `engine/forms/common/values/numbers.py`.
 - `page-patterns`: Bans private page-reference cores (plain, page-no., and letter-dash forms as spelled in pattern source) outside `foundation/text/patterns.py`, the page-reference vocabulary's one home; page-marker extraction shapes (page N of M, whole-line page labels, optional-prefix line classifiers, compositions over the home's fragments) are not flagged.
-- `period-patterns`: Bans private period-phrase recognizers outside `foundation/text/dates.py`, private total-row recognizers outside `engine/tables/extraction/core/typed_rows.py`, private whitespace-collapse literals outside `foundation/text/patterns.py` and `foundation/text/normalize.py`, and private table-tag recognizers outside `foundation/text/patterns.py`.
+- `period-patterns`: Bans private period-phrase recognizers outside `foundation/text/date_patterns.py`, private total-row recognizers outside `engine/tables/extraction/core/typed_rows.py`, private whitespace-collapse literals outside `foundation/text/patterns.py` and `foundation/text/normalize.py`, and private table-tag recognizers outside `foundation/text/patterns.py`.
 - `helper-duplicates`: Bans function bodies duplicated across modules or against the scaffold and operator-kit homes, and private parameterized-get helpers (`return x.get("<key>", {})`) outside `engine/forms/common/scaffold/family_scaffold.py`.
 - `identifier-patterns`: Bans private identifier recognizers (accession cores and digits, CIK member names, commission file caption/number, EIN, registration-number values, CUSIP value class) outside `domain/identity.py`, `engine/forms/common/identity/entities.py`, and `pipelines/metadata_sync/paths.py`; SQL regexp literals, SEC URL paths, and the sanctioned divergences are allowed.
 - `refcell-patterns`: Bans private note/item/part reference cores (caption cores as spelled in pattern source) outside `engine/tables/toc/patterns.py`, the reference vocabulary's one home; slot prefixes, boundary terms, item ranges, and the full `[IVXLCDM]` PART composition are not flagged.
@@ -123,7 +123,7 @@ private copy wherever it appears, not only a duplicated name.
 > keep a rule *enforced* rather than merely *stated*.
 > Each points at infrastructure the repository already ships — the regex builder
 > DSL, the "zero shims" rule, `foundation.serialization.canonical_json`,
-> `infra.storage.atomic.atomic_write_json`, and `foundation.text.dates`. A rule
+> `infra.storage.atomic.atomic_write_json`, and `foundation.text.date_patterns`. A rule
 > with no scanner erodes, because the cost of ignoring it is invisible until the
 > damage is. Each exempts only the module that owns the vocabulary, plus tests
 > and the scanners themselves.

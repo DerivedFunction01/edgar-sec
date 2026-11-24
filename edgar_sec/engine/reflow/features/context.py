@@ -18,7 +18,7 @@ from edgar_sec.engine.tables.protection.tags import (
     TAGGED_TABLE_CLOSE_RE,
     TAGGED_TABLE_OPEN_RE,
 )
-from edgar_sec.foundation.text.dates import RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import RE_FULL_DATE
 from edgar_sec.foundation.text.grammar import (
     FUNCTION_WORDS,
     RE_ARTICLE,

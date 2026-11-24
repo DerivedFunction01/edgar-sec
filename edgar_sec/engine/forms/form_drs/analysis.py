@@ -21,7 +21,7 @@ from edgar_sec.engine.forms.analysis import (
 )
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import RE_FULL_DATE
 
 _BANNER_PHRASES = (
     "as confidentially submitted",

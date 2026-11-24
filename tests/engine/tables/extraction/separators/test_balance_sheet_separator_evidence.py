@@ -38,7 +38,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
     profile_for,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     STRICT_YEAR_TOKEN_PATTERN as _HOME_STRICT_YEAR,
 )
 from edgar_sec.engine.tables.numeric_cells import (

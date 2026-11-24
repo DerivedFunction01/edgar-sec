@@ -42,7 +42,7 @@ from edgar_sec.engine.forms.form144.row_specs import (
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
 
 
 def _integer_or_token(text: str) -> int | str | None:

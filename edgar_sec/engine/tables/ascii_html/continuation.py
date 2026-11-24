@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import is_year_token
+from edgar_sec.foundation.text.date_years import is_year_token
 
 from ..numeric_cells import ALL_CURRENCY_SYMBOLS, is_financial_placeholder
 from ..tokens import is_numeric_cell

@@ -14,7 +14,7 @@ from edgar_sec.engine.forms.common.signatures.patterns import (
     SIG_RULE_RUN_RE,
 )
 from edgar_sec.foundation.text.automaton import Token, tokenize
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     ISO_DATE_RE,
     MONTH_RE,
     NUMERIC_DATE_RE,

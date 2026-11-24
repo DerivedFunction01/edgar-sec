@@ -3,15 +3,13 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
+    NUMERIC_DATE_RE,
     ORDINAL_SUFFIX_PATTERN,
     YEAR_TOKEN_PATTERN,
-    DateComponents,
-    NUMERIC_DATE_RE,
-    ParsedDate,
-    parse_date,
 )
+from edgar_sec.foundation.text.dates import DateComponents, ParsedDate, parse_date
 
 _RE_CALENDAR_YEAR = re.compile(
     rf"(?i)^\s*(?:calendar\s+year|year\s+ended(?:\s+december\s+31,?)?)\s*({YEAR_TOKEN_PATTERN})\s*$"

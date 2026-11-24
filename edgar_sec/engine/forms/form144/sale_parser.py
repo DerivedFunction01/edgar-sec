@@ -39,7 +39,8 @@ from edgar_sec.engine.forms.form144.patterns import (
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE, parse_date
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.dates import parse_date
 
 _SPLIT_EXPLANATION_RE = re.compile(
     r"(?:\s+(?:as of|based on)\b|(?:\s+|(?<=\d))\((?:based on|as of)\b)",

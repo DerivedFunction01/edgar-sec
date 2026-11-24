@@ -34,7 +34,7 @@ from edgar_sec.engine.forms.sections.items.detector import (
 )
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     REPORTING_PERIOD_FROM_PAT,
     YEAR_TOKEN_SEARCH_RE,
 )

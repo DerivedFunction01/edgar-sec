@@ -5,7 +5,7 @@ reliable, so five independent signals are scored and the strongest split over a 
 
 from __future__ import annotations
 
-from edgar_sec.foundation.text.dates import is_year_token
+from edgar_sec.foundation.text.date_years import is_year_token
 
 from ...tokens import is_numeric_cell
 from ..model.model import (

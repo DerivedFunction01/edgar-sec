@@ -11,7 +11,7 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 
-from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,

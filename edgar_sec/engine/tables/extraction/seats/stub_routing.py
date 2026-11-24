@@ -20,7 +20,7 @@ from edgar_sec.engine.tables.extraction.core.registry import RESIDUAL_FAMILY
 from edgar_sec.engine.tables.extraction.core.subjects.subject_evidence import load_map
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import MONTH_NAMES
 
 PROV_S2_DEPTH2_PRICING = "s2-depth2-pricing:2026-11-17"
 

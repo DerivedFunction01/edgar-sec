@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import re
 
-from edgar_sec.foundation.text.dates import MONTH_ALIASES, MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import MONTH_ALIASES, MONTH_NAMES
 
 _TITLE_SPLIT = re.compile(r"\s*\|\s*|\n")
 _SEGMENT_HEADING_MAX_CHARS = 90

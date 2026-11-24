@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Any
 
-from edgar_sec.foundation.text.dates import is_valid_year, parse_year_token
+from edgar_sec.foundation.text.date_years import is_valid_year, parse_year_token
 
 # Real SEC stub suffixes use letters, digits, and dots (``0001.htm``); anything
 # quote- or comment-shaped is rejected here rather than at a predicate compiler.

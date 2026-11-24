@@ -13,7 +13,7 @@ from edgar_sec.engine.tables.extraction.specs.families.lease_specs import (
     LeaseEvidenceSpec,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 
 def _year_labels(text: str) -> int:

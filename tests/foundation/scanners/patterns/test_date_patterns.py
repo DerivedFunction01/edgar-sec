@@ -66,7 +66,7 @@ def test_allows_the_date_vocabulary_owner(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 'MONTH_NAMES = ("january", "february")\n'
                 'STAMP = r"\\d{1,2}/\\d{1,2}/\\d{1,4}"\n'
             )
@@ -80,7 +80,7 @@ def test_allows_import_of_month_pattern(synthetic_repo: Path) -> None:
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                "from edgar_sec.foundation.text.dates import MONTH_PATTERN\n"
+                "from edgar_sec.foundation.text.date_patterns import MONTH_PATTERN\n"
                 "def is_month(text):\n    return bool(text)\n"
             )
         },
@@ -161,7 +161,7 @@ def test_allows_sanctioned_strict_pair_in_the_date_vocabulary_owner(
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 'STRICT_MONTH_PATTERN = "|".join(MONTH_NAMES)\n'
                 'STRICT_YEAR_TOKEN_PATTERN = r"(?:19|20)\\d{2}"\n'
             )
@@ -176,7 +176,7 @@ def test_flags_narrowed_year_in_the_owner_under_any_other_name(
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 '_YEAR_RE = re.compile(r"\\b(?:19|20)\\d{2}\\b")\n'
                 'YEARS = r"19\\d{2}|20\\d{2}"\n'
             )
@@ -184,8 +184,8 @@ def test_flags_narrowed_year_in_the_owner_under_any_other_name(
     )
     findings = date_patterns.scan_date_patterns()
     assert [f.path for f in findings] == [
-        "edgar_sec/foundation/text/dates.py",
-        "edgar_sec/foundation/text/dates.py",
+        "edgar_sec/foundation/text/date_patterns.py",
+        "edgar_sec/foundation/text/date_patterns.py",
     ]
 
 
@@ -311,7 +311,7 @@ def test_flags_century_prefix_filter_in_the_owner_under_any_other_name(
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 'def pick(y):\n    return y[:2] in ("19", "20")\n'
             )
         },
@@ -326,7 +326,7 @@ def test_allows_sanctioned_name_in_the_owner_for_the_filter_form(
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/dates.py": (
+            "edgar_sec/foundation/text/date_patterns.py": (
                 'STRICT_YEAR_TOKEN_PATTERN: str = pick(y[:2] in ("19", "20"))\n'
             )
         },
@@ -341,7 +341,7 @@ def test_allows_import_of_year_token_search_pattern(
         synthetic_repo,
         {
             "edgar_sec/engine/thing.py": (
-                "from edgar_sec.foundation.text.dates import (\n"
+                "from edgar_sec.foundation.text.date_patterns import (\n"
                 "    YEAR_TOKEN_SEARCH_RE,\n"
                 ")\n"
                 "def years(text):\n"

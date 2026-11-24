@@ -8,7 +8,7 @@ from enum import Enum
 
 from edgar_sec.engine.forms.common.values.numbers import clean_numeric
 from edgar_sec.engine.tables.patterns import SCALE_PATTERNS
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_WORD_RE,
     YEAR_TOKEN_RE,
     YEAR_TOKEN_SEARCH_RE,

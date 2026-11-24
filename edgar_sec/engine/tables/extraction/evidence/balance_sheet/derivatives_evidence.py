@@ -22,7 +22,7 @@ from edgar_sec.engine.tables.extraction.specs.families.derivatives_evidence_spec
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.core.typed_rows import RowKind, TypedTable
-from edgar_sec.foundation.text.dates import MONTH_WORD_RE, YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import MONTH_WORD_RE, YEAR_TOKEN_SEARCH_RE
 
 
 def _is_period_label(label: str) -> bool:

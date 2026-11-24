@@ -20,7 +20,7 @@ from edgar_sec.engine.forms.analysis import (
 )
 from edgar_sec.engine.forms.common.identity.entities import extract_registration_number
 from edgar_sec.engine.forms.common.identity.facing_sheet import facing_sheet_fields
-from edgar_sec.foundation.text.dates import MONTH_PATTERN, YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import MONTH_PATTERN, YEAR_TOKEN_PATTERN
 
 _INSTRUCTION_PATTERNS: tuple[re.Pattern[str], ...] = (
     re.compile(

@@ -11,7 +11,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
 from edgar_sec.engine.tables.extraction.specs.form_separation_specs import (
     FORM_SEPARATION_SPECS,
     FormSeparationSpec,

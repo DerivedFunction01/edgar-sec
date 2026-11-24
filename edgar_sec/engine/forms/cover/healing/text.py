@@ -26,7 +26,7 @@ from edgar_sec.engine.tables.protection.tags import (
     mask_tagged_tables,
     restore_tagged_tables,
 )
-from edgar_sec.foundation.text.dates import heal_date_fragments
+from edgar_sec.foundation.text.date_fragments import heal_date_fragments
 from edgar_sec.foundation.text.healing import PhraseSequenceRule, heal_split_lines
 
 

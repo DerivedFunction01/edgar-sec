@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
-from edgar_sec.foundation.text.dates import (
-    MONTH_NAME_RE,
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
+    MONTH_NAME_RE,
     RE_DATE_OR_YEAR,
     RE_FULL_DATE,
     YEAR_IN_TEXT_RE,
     YEAR_TOKEN_RE,
+)
+from edgar_sec.foundation.text.date_years import (
     expand_2digit_year,
     is_valid_year,
     is_year_token,
@@ -78,7 +80,7 @@ def test_year_recognizers_are_full_range_with_no_narrowed_variant() -> None:
 def test_year_token_search_form_shares_the_token_range() -> None:
     """The unanchored search form recognizes the same 1900-9999
     range in text; a bare 4-digit token outside it is not a year."""
-    from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+    from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
     assert YEAR_TOKEN_SEARCH_RE.search("ended December 31, 2024")
     assert YEAR_TOKEN_SEARCH_RE.search("ended December 31, 2100")
@@ -89,7 +91,7 @@ def test_year_token_search_form_shares_the_token_range() -> None:
 def test_month_word_recognizer_is_the_bounded_month_search() -> None:
     """MONTH_WORD_RE is the one homed bounded month-word search:
     standalone months and abbreviations match, substrings do not."""
-    from edgar_sec.foundation.text.dates import MONTH_WORD_RE
+    from edgar_sec.foundation.text.date_patterns import MONTH_WORD_RE
 
     assert MONTH_WORD_RE.findall("January to March 2023") == ["January", "March"]
     assert MONTH_WORD_RE.search("ended Sept. 30")
@@ -125,7 +127,7 @@ def test_expand_2digit_year() -> None:
 
 
 def test_parse_numeric_year() -> None:
-    from edgar_sec.foundation.text.dates import parse_numeric_year
+    from edgar_sec.foundation.text.date_years import parse_numeric_year
 
     assert parse_numeric_year("24") == 2024
     assert parse_numeric_year("99") == 1999
@@ -136,7 +138,7 @@ def test_parse_numeric_year() -> None:
 
 
 def test_extract_years() -> None:
-    from edgar_sec.foundation.text.dates import extract_years
+    from edgar_sec.foundation.text.date_years import extract_years
 
     assert extract_years("Year 2024 and 2025") == [2024, 2025]
     assert extract_years("No years here") == []
@@ -165,7 +167,7 @@ def test_contains_date() -> None:
 
 
 def test_table_year_patterns() -> None:
-    from edgar_sec.foundation.text.dates import (
+    from edgar_sec.foundation.text.date_patterns import (
         COLUMN_YEAR_ROW_RE,
         MONTH_SUFFIX_RE,
         PERIOD_SUBHEADING_RE,
@@ -185,14 +187,14 @@ def test_table_year_patterns() -> None:
 
 
 def test_heal_date_fragments() -> None:
-    from edgar_sec.foundation.text.dates import heal_date_fragments
+    from edgar_sec.foundation.text.date_fragments import heal_date_fragments
 
     assert heal_date_fragments(["December", "31,", "2024"]) == ["December 31, 2024"]
     assert heal_date_fragments(["Dec", "08,", "2024"]) == ["Dec 08, 2024"]
 
 
 def test_heal_date_fragments_idempotent() -> None:
-    from edgar_sec.foundation.text.dates import heal_date_fragments
+    from edgar_sec.foundation.text.date_fragments import heal_date_fragments
 
     once = heal_date_fragments(["December", "31,", "2024"])
     twice = heal_date_fragments(once)
@@ -200,14 +202,14 @@ def test_heal_date_fragments_idempotent() -> None:
 
 
 def test_heal_date_fragments_protects_non_dates() -> None:
-    from edgar_sec.foundation.text.dates import heal_date_fragments
+    from edgar_sec.foundation.text.date_fragments import heal_date_fragments
 
     lines = ["Revenue", "1000000", "Expenses", "500000"]
     assert heal_date_fragments(lines) == lines
 
 
 def test_heal_date_fragments_preserves_prose_with_embedded_date() -> None:
-    from edgar_sec.foundation.text.dates import heal_date_fragments
+    from edgar_sec.foundation.text.date_fragments import heal_date_fragments
 
     lines = [
         "[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)",

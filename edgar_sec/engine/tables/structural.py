@@ -7,7 +7,10 @@ from __future__ import annotations
 import re
 from collections.abc import Callable
 
-from edgar_sec.foundation.text.dates import COLUMN_YEAR_ROW_RE, PERIOD_SUBHEADING_RE
+from edgar_sec.foundation.text.date_patterns import (
+    COLUMN_YEAR_ROW_RE,
+    PERIOD_SUBHEADING_RE,
+)
 from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL, is_separator_line
 from edgar_sec.foundation.text.tokens import (
     is_bullet_line,

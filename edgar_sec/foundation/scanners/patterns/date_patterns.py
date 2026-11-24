@@ -1,14 +1,15 @@
 """Scanner routing date handling through the shared date parser.
 
-``foundation.text.dates`` owns month tables and SEC formats; a module keeping its own month
-list yields a second, drifting answer to "what year is this fiscal period in".
+``foundation.text.date_patterns`` owns the month tables and year recognizers; a module
+keeping its own month list yields a second, drifting answer to "what year is this fiscal
+period in".
 """
 
 from __future__ import annotations
 
 import re
 
-from edgar_sec.foundation.text.dates import MONTH_PATTERN
+from edgar_sec.foundation.text.date_patterns import MONTH_PATTERN
 
 from ..base import Scanner, ScannerFinding
 from ..lines import finding, scan_text_rule
@@ -73,23 +74,24 @@ _NARROWED_CENTURY_STARTSWITH_RE = re.compile(
 )
 
 # The module that owns the date vocabulary.
-_HOME = "edgar_sec/foundation/text/dates.py"
+_HOME = "edgar_sec/foundation/text/date_patterns.py"
 
 # The one sanctioned narrowing: the frozen Step 3 instrument's strict
-# variant, homed in dates.py under exactly these two names. Any other
+# variant, homed in date_patterns.py under exactly these two names. Any other
 # narrowed-year definition — any other name, any other file — flags.
 _SANCTIONED_NARROWED_RE = re.compile(
     r"^(?:STRICT_MONTH_PATTERN|STRICT_YEAR_TOKEN_PATTERN)\s*(?::[^=\n]+)?="
 )
 
 _HINT = (
-    "use MONTH_PATTERN, MONTH_NAMES, and parse_date from "
+    "use MONTH_PATTERN and MONTH_NAMES from "
+    "edgar_sec.foundation.text.date_patterns and parse_date from "
     "edgar_sec.foundation.text.dates instead of a private month table"
 )
 
 _YEAR_HINT = (
     "use YEAR_TOKEN_PATTERN, YEAR_TOKEN_RE, and YEAR_TOKEN_SEARCH_RE from "
-    "edgar_sec.foundation.text.dates instead of a narrowed year pattern; "
+    "edgar_sec.foundation.text.date_patterns instead of a narrowed year pattern; "
     "the foundation year patterns span the full 1900-9999 range"
 )
 

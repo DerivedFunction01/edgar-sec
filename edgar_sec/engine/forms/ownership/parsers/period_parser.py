@@ -9,7 +9,7 @@ from edgar_sec.engine.forms.common.values.periods import (
     BOX5_SPLIT_RE,
     PERIOD_PREFIX_RE,
 )
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
 
 _DIGIT_CHAR_RE = re.compile(r"\d")
 

@@ -8,12 +8,9 @@ from __future__ import annotations
 import re
 
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
-    MONTH_RE,
-    NUMERIC_DATE_RE,
-    is_year_token,
-    parse_date,
-)
+from edgar_sec.foundation.text.date_patterns import MONTH_RE, NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_years import is_year_token
+from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE as _WHITESPACE_RE
 
 _CONTENT_SHAPE_RE = re.compile(

@@ -22,7 +22,7 @@ from edgar_sec.engine.forms.ownership.analysis.fields import (
 )
 from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.engine.forms.ownership.specs.schema import ownership_schema_anomalies
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 

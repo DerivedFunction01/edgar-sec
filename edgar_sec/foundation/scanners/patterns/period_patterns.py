@@ -58,7 +58,7 @@ _SANCTIONED_SITES = (
     ("edgar_sec/engine/forms/form_rega/analysis.py", "semiannual period ended"),
 )
 
-_PERIOD_HOME = "edgar_sec/foundation/text/dates.py"
+_PERIOD_HOME = "edgar_sec/foundation/text/date_patterns.py"
 _TOTAL_HOME = "edgar_sec/engine/tables/extraction/core/typed_rows.py"
 _WHITESPACE_HOMES = (
     "edgar_sec/foundation/text/patterns.py",
@@ -73,7 +73,7 @@ _TABLE_HOMES = (
 
 _PERIOD_HINT = (
     "compose the period phrase from PERIOD_ENDED_PAT, PERIOD_ENDED_RE, and the "
-    "REPORTING_PERIOD recognizers in edgar_sec.foundation.text.dates instead "
+    "REPORTING_PERIOD recognizers in edgar_sec.foundation.text.date_patterns instead "
     "of defining a private copy"
 )
 

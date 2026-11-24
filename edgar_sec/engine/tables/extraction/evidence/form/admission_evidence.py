@@ -11,7 +11,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE, YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE, YEAR_TOKEN_SEARCH_RE
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import TOTAL_ROW_RE, TypedTable

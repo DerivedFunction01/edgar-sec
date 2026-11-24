@@ -34,7 +34,7 @@ from edgar_sec.engine.forms.ownership.patterns import (
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE
 
 _TRANSACTION_CODE_ALT = build_alternation(
     sorted(VALID_TRANSACTION_CODES), auto_escape=True

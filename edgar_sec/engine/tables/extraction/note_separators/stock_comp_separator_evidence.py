@@ -28,7 +28,7 @@ from edgar_sec.engine.tables.extraction.specs.families.stock_comp_specs import (
     STOCK_COMP_EVIDENCE_SPECS,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 __all__ = [
     "StockCompSeparatorSurfaces",

@@ -35,7 +35,7 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import Token, tokenize
-from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_patterns import MONTH_RE, NUMERIC_DATE_RE
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE_GAP
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,

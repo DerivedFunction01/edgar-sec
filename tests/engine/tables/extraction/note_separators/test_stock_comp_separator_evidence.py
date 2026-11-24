@@ -42,7 +42,7 @@ from edgar_sec.engine.tables.extraction.note_separators.stock_comp_separator_spe
     STOCK_COMP_SEPARATOR_SPECS,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     YEAR_TOKEN_SEARCH_RE as _HOME_YEAR_RE,
 )
 

@@ -11,7 +11,7 @@ from edgar_sec.engine.forms.common.identity.registrant_scan import (
 )
 from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
     PERIOD_ENDED_RE,

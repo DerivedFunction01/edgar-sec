@@ -24,7 +24,7 @@ from edgar_sec.engine.tables.extraction.specs.families.restructuring_evidence_sp
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import MONTH_NAMES
 
 # The priced surface is the measurement packet's: prose and grid
 # text each capped at 6000 chars, as the collect's packet() caps.

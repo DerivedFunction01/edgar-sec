@@ -14,7 +14,7 @@ from edgar_sec.engine.forms.common.fields.extraction import (
     extract_value,
 )
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE
 
 _Record = TypeVar("_Record")
 

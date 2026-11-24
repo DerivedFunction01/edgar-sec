@@ -16,7 +16,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     form_test_specs_for,
 )
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
-from edgar_sec.foundation.text.dates import FULL_DATE_STUB_RE
+from edgar_sec.foundation.text.date_patterns import FULL_DATE_STUB_RE
 
 AOCI_STUB_EVIDENCE_MIN = 6.0
 AOCI_GATE_MODE = "seat"

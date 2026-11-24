@@ -21,7 +21,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS,
 )
-from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
 
 _HEADER_LINES = 3
 _YEAR_RE = re.compile(rf"\b{STRICT_YEAR_TOKEN_PATTERN}\b")

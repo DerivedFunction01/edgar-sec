@@ -16,7 +16,7 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTe
 from edgar_sec.engine.tables.extraction.core.text.period_keys import priced_years
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_SEARCH_RE,

@@ -11,7 +11,7 @@ from .content_lines import is_content_line, is_date_line
 from .observations import _ALPHA_WORD_RE, _STANDALONE_TAG_RE, is_table_tag
 from edgar_sec.engine.tables.toc.patterns import ITEM_HEADING_CORE, RE_NOTE_CAPTION
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
 from edgar_sec.foundation.text.patterns import is_separator_line
 
 _ITEM_HEADING_ALT = build_alternation(

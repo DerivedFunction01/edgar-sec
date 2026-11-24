@@ -15,11 +15,11 @@ from edgar_sec.domain.forms.families.form_npx.models import (
 )
 from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     REPORTING_PERIOD_LABEL_RE,
     REPORTING_PERIOD_VALUE_RE,
-    parse_date,
 )
+from edgar_sec.foundation.text.dates import parse_date
 
 _FILE_NUMBER_RE = re.compile(
     r"Investment Company Act file (?:number|no\.)\s*:?\s*([0-9][0-9-]*)",

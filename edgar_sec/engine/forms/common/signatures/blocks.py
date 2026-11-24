@@ -19,13 +19,13 @@ from edgar_sec.engine.forms.common.signatures.patterns import (
     SIG_PERSON_PREFIX_RE,
     SIG_RULE_RUN_RE,
 )
-from edgar_sec.foundation.text.dates import (
+from edgar_sec.foundation.text.date_patterns import (
     ISO_DATE_RE,
     MONTH_SUFFIX_RE,
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
-    parse_date,
 )
+from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 

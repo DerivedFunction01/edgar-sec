@@ -8,7 +8,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, GROUPED_INTEGER_FRAGMENT
-from edgar_sec.foundation.text.dates import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
 
 _YEAR_RE = re.compile(rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b")
 _NON_ALPHA_RE = re.compile(r"[^a-z# ]")

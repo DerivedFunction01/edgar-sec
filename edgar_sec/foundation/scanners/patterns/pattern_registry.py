@@ -2,7 +2,7 @@
 
 Flags a registered name outside its home, and a bare year recognizer,
 month alternation, any-word month slot, or MONTH_PATTERN recomposition
-outside foundation/text/dates.py; allows uses and allowlisted formats.
+outside foundation/text/date_patterns.py; allows uses and allowlisted formats.
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from ..files import discover_python_files
 from ..lines import finding, is_noise, is_scanner_infrastructure
 
 _DATES_HINT = (
-    "use the recognizers from edgar_sec.foundation.text.dates "
+    "use the recognizers from edgar_sec.foundation.text.date_patterns "
     "(YEAR_TOKEN_PATTERN, YEAR_TOKEN_RE, YEAR_TOKEN_SEARCH_RE, "
     "MONTH_PATTERN, MONTH_RE, MONTH_WORD_RE) instead of a private copy"
 )
@@ -27,6 +27,7 @@ _FORMAT_ALLOWLIST = {
     "edgar_sec/domain/sec_urls.py",
     "edgar_sec/engine/forms/common/phrases/statutory.py",
     "edgar_sec/engine/document/signatures.py",
+    "edgar_sec/foundation/text/date_formats.py",
 }
 
 # A bare four-digit recognizer, in either digit spelling.
@@ -121,7 +122,7 @@ def _month_alternation_shape(path: str, line: str) -> str | None:
 RECOGNIZER_FAMILIES: tuple[dict, ...] = (
     {
         "family": "dates",
-        "home": "edgar_sec/foundation/text/dates.py",
+        "home": "edgar_sec/foundation/text/date_patterns.py",
         "names": (
             "RE_FULL_DATE",
             "FULL_DATE_STUB_RE",

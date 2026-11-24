@@ -10,7 +10,7 @@ from edgar_sec.engine.forms.cover.structure import is_preceding_continuation
 from edgar_sec.engine.forms.sections.models import CandidateKind, SectionCandidate
 from edgar_sec.engine.tables.toc.patterns import RE_ITEM_GROUPED, RE_ITEM_HEADING
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_NAME_RE
+from edgar_sec.foundation.text.date_patterns import MONTH_NAME_RE
 
 if TYPE_CHECKING:
     from edgar_sec.domain.forms.common.models import ItemDefinition
