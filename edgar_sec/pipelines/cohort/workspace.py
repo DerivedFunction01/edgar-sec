@@ -16,7 +16,8 @@ from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_siz
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 
-from edgar_sec.infra.storage.cohort.catalog import CohortCatalog, CohortNotFoundError
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.errors import CohortNotFoundError
 from edgar_sec.infra.storage.cohort.models import CohortRecord
 from edgar_sec.infra.storage.cohort.paths import CohortPaths, DATASET_FILE_NAME
 from edgar_sec.pipelines.cohort.operations import (

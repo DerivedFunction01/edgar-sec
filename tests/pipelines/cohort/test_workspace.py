@@ -8,7 +8,8 @@ import pytest
 
 import edgar_sec.pipelines.cohort.workspace as workspace_module
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.cohort.catalog import CohortCatalog, CohortNotFoundError
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.errors import CohortNotFoundError
 from edgar_sec.infra.storage.cohort.maintenance import maintain_cohort_store
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.pipelines.cohort.workspace import CohortWorkspace

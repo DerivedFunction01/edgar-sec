@@ -80,10 +80,8 @@ def _warm_and_resolve_cohort_ticker(
 ) -> int | None:
     """Resolve ticker against official tickers cohort, warming if missing."""
     from edgar_sec.foundation.runtime.paths import resolve_paths
-    from edgar_sec.infra.storage.cohort.catalog import (
-        CohortCatalog,
-        CohortIdentifierError,
-    )
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.errors import CohortIdentifierError
     from edgar_sec.infra.storage.cohort.paths import CohortPaths
     from edgar_sec.pipelines.cohort.sources import refresh_official_source
 
