@@ -5,8 +5,8 @@ from __future__ import annotations
 import zipfile
 from pathlib import Path
 
-from edgar_sec.apps.client.operator import (
-    operator,
+from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator.drill import (
     operator_drill,
     operator_drill_exhibits,
 )

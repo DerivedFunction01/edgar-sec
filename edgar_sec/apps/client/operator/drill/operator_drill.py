@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from typing import Any
 
-from edgar_sec.apps.client.operator.operator_drill_access import (
+from edgar_sec.apps.client.operator.drill.operator_drill_access import (
     _absent,
     _capable,
     _current_aggregate,
@@ -20,7 +20,7 @@ from edgar_sec.apps.client.operator.operator_drill_access import (
     _sequence_context,
     _sole_context,
 )
-from edgar_sec.apps.client.operator.operator_drill_options import (
+from edgar_sec.apps.client.operator.drill.operator_drill_options import (
     DETAIL_LEVELS,
     BackOptions,
     NotesListOptions,

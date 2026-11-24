@@ -146,14 +146,17 @@ def _register_sibling_rows() -> None:
     from edgar_sec.apps.client.operator import (
         operator_company,
         operator_config,
-        operator_drill,
-        operator_drill_exhibits,
         operator_fetch,
         operator_fund,
         operator_run_records,
         operator_selection,
         operator_state,
         operator_tools,
+    )
+
+    from edgar_sec.apps.client.operator.drill import (
+        operator_drill,
+        operator_drill_exhibits,
     )
 
     operator_selection.register(REGISTRY)

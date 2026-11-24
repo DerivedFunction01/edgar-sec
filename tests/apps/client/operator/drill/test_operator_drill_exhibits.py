@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from edgar_sec.apps.client.operator import operator, operator_drill_exhibits
+from edgar_sec.apps.client.operator import operator
+from edgar_sec.apps.client.operator.drill import operator_drill_exhibits
 
 
 def test_exhibits_module_rows_register_with_gates() -> None:

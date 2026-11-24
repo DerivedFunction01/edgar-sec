@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from edgar_sec.apps.client.operator.operator_drill_options import DETAIL_LEVELS
+from edgar_sec.apps.client.operator.drill.operator_drill_options import DETAIL_LEVELS
 from edgar_sec.apps.client.operator.operator_kit import (
     accession_text as _accession_text,
     error_result as _error,

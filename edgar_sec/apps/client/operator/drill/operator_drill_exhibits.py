@@ -14,11 +14,11 @@ from types import SimpleNamespace
 from typing import Any
 
 from edgar_sec.apps.client.documents.attachments import Attachments
-from edgar_sec.apps.client.operator.operator_drill import (
+from edgar_sec.apps.client.operator.drill.operator_drill import (
     _prompt_detail,
     _prompt_limit,
 )
-from edgar_sec.apps.client.operator.operator_drill_access import (
+from edgar_sec.apps.client.operator.drill.operator_drill_access import (
     _absent,
     _current_aggregate,
     _earnings_capable,
@@ -27,7 +27,7 @@ from edgar_sec.apps.client.operator.operator_drill_access import (
     _sequence_context,
     _sole_context,
 )
-from edgar_sec.apps.client.operator.operator_drill_options import (
+from edgar_sec.apps.client.operator.drill.operator_drill_options import (
     DETAIL_LEVELS,
     _PATH_HELP,
 )
