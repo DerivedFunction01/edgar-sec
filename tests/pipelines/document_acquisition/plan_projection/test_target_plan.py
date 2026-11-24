@@ -12,11 +12,15 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import WORK_ORDER_SCHEMA
-from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import (
+from edgar_sec.pipelines.document_acquisition.plan_projection.target_contract import (
     TargetPlanError,
-    _validate_url,
-    _validate_row,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import (
     load_acquisition_work_order,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.target_rows import (
+    _validate_row,
+    _validate_url,
 )
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,

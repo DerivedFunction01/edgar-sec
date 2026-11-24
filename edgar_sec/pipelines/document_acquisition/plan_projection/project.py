@@ -38,8 +38,10 @@ from edgar_sec.pipelines.document_acquisition.schemas import (
     RUN_SCHEMA_VERSION,
     WORK_ORDER_SCHEMA_VERSION,
 )
-from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import (
+from edgar_sec.pipelines.document_acquisition.plan_projection.target_contract import (
     TargetPlanError,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import (
     load_acquisition_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
