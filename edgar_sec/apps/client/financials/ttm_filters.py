@@ -11,7 +11,7 @@ from edgar_sec.apps.client.financials.financials_capex import (
     CAPEX_PURCHASE_ACT_MODS,
     CAPEX_PURCHASE_MODS,
 )
-from edgar_sec.apps.client.financials.financials_core import (
+from edgar_sec.apps.client.financials.financials_series import (
     OCF_EXCLUDED_MODS,
     REVENUE_EXCLUDED_MODS,
 )
