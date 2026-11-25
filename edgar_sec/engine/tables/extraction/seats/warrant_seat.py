@@ -1,10 +1,8 @@
 """Warrant seat: the priced formation seat for warrant tables
 the chain leaves unclaimed or fair_value-claimed.
 
-Final compete_filing pass, legs in priced order: filing seat,
-liability co-seat, intro-clause forms, test-pass co-seat,
-one-short seat, pair seat. Priced on the enlarged adjudicated
-set (register-warrant-activity.md): P .938 / R .938.
+Final compete_filing pass; legs priced on the enlarged
+adjudicated set (register-warrant-activity.md): P .938 / R .938.
 """
 
 from __future__ import annotations
@@ -87,9 +85,8 @@ def _prose_introduces(geometry: GeometryText) -> bool:
 
 def _liability_pass(geometry: GeometryText) -> bool:
     """The liability variant of the rollforward spec, evaluated
-    seat-side: base groups, the exercised-class group extended
-    with extinguishment/surrender, dated bookends folded into
-    the two bookend groups; the subject must be on the table."""
+    seat-side: base groups, extinguishment/surrender in the
+    exercised-class group, dated bookends folded in."""
     outcome = _outcome(geometry, ROLL)
     if outcome is None or len(outcome.groups) != 6:
         return False
