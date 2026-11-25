@@ -148,6 +148,21 @@ def test_comprehensive_known_miss_gain_loss_parenthesized() -> None:
     assert missing_sections(stubs, "comprehensive_income") == ["oci_components"]
 
 
+def test_comprehensive_detector_bare_component_forms() -> None:
+    # Specimen 0000886035-13-000010:78: the components are
+    # listed bare under the net income line, with no "Other
+    # comprehensive income" header stub; the bare component
+    # forms credit oci_components.
+    stubs = (
+        "Net income (1)",
+        "Currency translation gain (loss)",
+        "Defined benefit plan adjustments, net of tax",
+        "Change in fair value of derivatives, net of tax",
+        "Comprehensive income (loss)",
+    )
+    assert missing_sections(stubs, "comprehensive_income") == []
+
+
 def test_combined_detector_is_income_statement_plus_total_ci() -> None:
     stubs = (
         "Total revenues",
