@@ -347,7 +347,7 @@ def test_veto_set_is_complete_as_ruled() -> None:
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 205
+    assert tiers.count("hard") == 202
     assert tiers.count("scored") == 348
 
 
