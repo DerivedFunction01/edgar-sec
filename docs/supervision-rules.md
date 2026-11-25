@@ -73,6 +73,19 @@ names its durable source when it is set; a trigger with
 no durable source is a defect of the expectation, not of
 the work it watches.
 
+The staffable queue is a registry contract: a programme's
+queue is an ordered declaration of work items, landed
+markers, and gated items — an item gated on a marker is
+staffable only when its marker lands. When a measure
+shows fewer distinct families in flight than the queue's
+staffable count, the continuation steer names the next
+unstaffed items as a staffing commission, in queue order.
+The commission clears under the clearing rule above — on
+a later measure showing the families in flight — and on
+nothing else. Items leave the queue by amendment to the
+contract: landed work is pruned, and a marker flips on
+the landing it records.
+
 Child workers are the count: a programme's workers are
 served split by attribution — runs by the programme's own
 coordinator callers in the caller registry, and child
@@ -112,6 +125,68 @@ missing-record defect of its own class, carrying the
 checkpoint gap: the age of the lane's newest checkpoint
 against the armed progress-checkpoint cadence (a mechanism
 default; its value is owned by the bindings layer).
+
+Expected staffing is declared as lane records: one record
+per lane, and each record is a declaration with a
+lifetime. Declare: the staffing seat posts the expected
+lane count and, per lane, an estimated duration and its
+venue — the venue field is always present, and none is a
+standing value for authoring-side lanes, which count
+toward expected and actual exactly as venue lanes do.
+Ping: the declaration stays live only while the lane
+pings; the ping is the lane's own checkpoint writes on
+the supervision cadence, never a separate manual act, and
+a missed ping raises the lane's row at once. Renew: at
+the estimate's end the lane renews with a new estimate or
+terminates; the record shows estimate against actual and
+the renewal count. Terminate: only on an explicit,
+checkable condition drawn from the queue's marker
+vocabulary — never by silence, by expiry, or on the
+lane's own say-so; an expired declaration with no renewal
+and no termination condition met is an escalated row, not
+a closed lane. A lane is not a session: its venue-bound
+steps wait inside the lane's declared gap-wait state, and
+a lane never ends, merges, or hands its item back for
+want of a session — declared lanes exceeding the sessions
+up is the healthy shape. The measure cross-checks three
+signals — lane records, venue run records, and worktree
+activity — and a disagreement among them is a finding,
+not a rounding.
+
+Estimates are part of the record: every todo states its
+completion-time estimate, and every plan states the
+estimate per step in the plan file. Estimates are
+stated at the scale the work runs: a code edit is
+minutes, many under five, and over thirty minutes is
+unlikely for an edit — an edit estimated past thirty
+minutes is debugging, or the step is split. An estimate is
+normally under an hour; a longer one is legitimate only
+for novel work, deep research, or language-model-bound
+work, and the entry states why it takes that long and
+why the estimate should not be lower. A longer estimate
+names the class that floors it, from the closed set of
+long-duration classes: an irreducible serial dependency;
+work CPU-bound at the full worker count; memory-bandwidth-
+or I/O-bound work; limited compute or capacity queueing;
+network-held work; coordination and fan-in, including
+tail latency; hard language-model or algorithmic
+complexity floors; critic and verification runs; certain
+browser work; debugging; and real-time observation windows. The
+discriminator is universal: the elapsed time sits at the
+class's floor with its bottleneck at its measured
+ceiling, and any proposed shortcut names what it
+surrenders. Duration claimed for serial-by-default work,
+polling intervals, re-running from zero, lanes queued
+behind sessions, manufactured approvals, or transport
+round-trips is a justification in no class. An item that
+passes its estimate without completing is overdue: the
+owning thread actuates on it — re-estimates it with the
+reason stated, staffs it, or escalates it — rather than
+merely reporting it again. The estimate lint reads the
+plan and todo surfaces the tree itself declares; an
+entry with no estimate, an estimate over thirty
+minutes without its justification, and a justification
+naming none of the long-duration classes, are findings.
 
 Actuation is part of the measure: a supervision steer that
 cannot reach an agent able to act is itself a defect after
@@ -329,7 +404,7 @@ run-record store, and the fleet capacity source
 an acknowledgement clears nothing.
 
 The classes: idle, serial, stall/seam, orphan,
-unreported, terminal. Idle is armed or doing work with no
+unreported, terminal, unlanded. Idle is armed or doing work with no
 conforming checkpoint past the stall bound and no
 verified blocked basis (Blocked states and claimed
 instructions); serial is a programme with
@@ -395,6 +470,35 @@ and a programme whose runs ride a caller that is
 not its slug stem declares its caller stems in the
 registry, so the attribution stays data, never a
 measure-side special case.
+
+Unlanded: a build the owning programme's own record
+claims complete whose commits are not on main. The
+claim is a progress-checkpoint line naming the commit
+beside a completion word — a build stated complete, a
+gate stated passed — and the measure is ancestry: the
+tick checks the named commit against main, never the
+claim's own word, so a checkpoint claiming "landed"
+for a commit main does not carry is the same gap in
+its sharpest form. A gate verdict is not a landing,
+and a branch push is not one either: the transport
+branch is the landing vehicle, not the landing. A
+claim at least one checkpoint interval old (the
+programme's declared cadence) with the commit still
+off main raises the row to the owning coordinator; it
+re-surfaces every run of the measure until the commit
+lands, and escalates under the programme's declared
+escalation bound like every other class. The row
+clears on the landing itself — ancestry flipping —
+never on a later checkpoint's say-so. A claim whose
+commit cannot be measured (unknown object, no repo
+derivable from the record) raises nothing: honest
+absence over a guessed row. The record vocabulary
+matches the measure: a built-but-unlanded cure is
+recorded "built, unlanded", and "complete" and
+"completed" in a checkpoint are reserved for
+landed-on-main — a checkpoint that spends the closing
+words on branch state manufactures the completion the
+tick then believes.
 
 The actuator ladder, in order; a message alone is
 the weakest form and never counts as the act by
@@ -593,7 +697,11 @@ a group with nothing to report omitted and never filled
 with a placeholder. The done group names the work items
 flipped since the last report wherever work items exist;
 summary-form done is legitimate only at the two closing
-states. Work running past an hour while its thread stays
+states. Completion words are measured words: in a
+checkpoint or a report, "complete" is reserved for
+landed-on-main, and a built-but-unlanded item is stated
+"built, unlanded" — the unlanded gap class reads the
+record on exactly this vocabulary. Work running past an hour while its thread stays
 active states itself under stalling — long-running is
 self-stated at the hour, not discovered after the fact.
 

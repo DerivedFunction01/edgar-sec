@@ -3,14 +3,14 @@
 ## Stay read-only on the codebase — one exception: the plan file
 
 - Treat every task under this skill as read-only planning. Explore and design only. Never change the code being planned.
-- The single permitted write is the plan file itself, under `.plans/` in the target repo (see "Save the plan to `.plans/`" below): creating the `.plans/` and `.plans/finished/` directories, writing or revising the plan file there with `muse.write` / `muse.edit`, and moving a finished plan file into `.plans/finished/`.
-- Do not create any other new files with `muse.write`, `touch` or any other method.
-- Do not modify existing code or config files with `muse.edit` or any other method. Revising the plan file in `.plans/` is the only edit allowed.
+- The single permitted write is the plan file itself, under `.plans/` in the target repo (see "Save the plan to `.plans/`" below): creating the `.plans/` and `.plans/finished/` directories, writing or revising the plan file there with your file-write and file-edit tools, and moving a finished plan file into `.plans/finished/`.
+- Do not create any other new files with your file-write tool, `touch` or any other method.
+- Do not modify existing code or config files with your file-edit tool or any other method. Revising the plan file in `.plans/` is the only edit allowed.
 - Do not delete files. Do not move or copy any file other than a plan file moving from `.plans/` to `.plans/finished/`.
 - Do not create temporary files anywhere, including under /tmp.
 - Do not use redirect operators or heredocs to write to files.
 - Do not run any command that changes system state, including `git add`, `git commit`, package installs and code generators. `mkdir -p` for `.plans/` / `.plans/finished/` and `mv` of a plan file into `.plans/finished/` are the only state-changing commands allowed, and only for those paths.
-- Use `muse.exec` otherwise only for read-only operations such as `ls`, `find`, `grep`, `cat`, `head`, `tail`, `git status`, `git log` and `git diff`.
+- Use your shell tool otherwise only for read-only operations such as `ls`, `find`, `grep`, `cat`, `head`, `tail`, `git status`, `git log` and `git diff`.
 - Stop and state the blocker if completing the plan would require a write outside `.plans/`. Do not make the write anyway.
 
 ## Understand the requirements
@@ -22,7 +22,7 @@
 ## Explore the codebase
 
 - Read every file the user names in the request before searching more broadly.
-- Find existing patterns and conventions with `find` and `grep` through `muse.exec`, then read the matching files with `muse.read`.
+- Find existing patterns and conventions with `find` and `grep` through your shell tool, then read the matching files with your file-read tool.
 - Trace the relevant code paths end to end, from entry point through the layers the change would touch.
 - Identify similar existing features and use them as the reference implementation for naming, structure and testing.
 - Read the repo rules that govern the area, such as an AGENTS.md, a README or a contributing guide, before proposing a structure that conflicts with them.
@@ -86,12 +86,10 @@ List the 3-5 files most critical for implementing this plan, one backticked repo
 ## Finish by showcasing the file, not the plan text
 
 - Do **not** paste the plan verbatim into the chat response. The plan file is the deliverable.
-- **Always** showcase the plan file at the end of every planning turn — the initial plan, every refinement or revision, and any turn that edits the plan to record a decision. No exceptions, and not only when the user asks for the file. Attach it on its own line (`![<plan file name>](sandbox://workspace/<path relative to the workspace>)`) when it lives under the workspace, preceded by one complete standalone sentence; otherwise give a labeled link to the file.
+- **Always** showcase the plan file at the end of every planning turn — the initial plan, every refinement or revision, and any turn that edits the plan to record a decision. No exceptions, and not only when the user asks for the file. Present it as a file attachment on its own line, in your harness's file-presentation form (the bindings are in `harness/README.md`), preceded by one complete standalone sentence; otherwise give a labeled link to the file.
 - Accompany the showcase with a short summary only: what the plan covers in one or two sentences, how many steps it has, the critical files by name, and any open questions that need the user's call.
-- **Always** close with the next actions as tappable options (`muse.create_options`), not just named in prose and not as an open-ended question. Offer at least: implement the plan with the `coding_implementation` skill; refine the plan further (such as for edge cases or a different perspective); and leave it in `.plans/` for review / leave as is. Add other options only when they are real choices for that plan (for example, answering a specific open question).
+- **Always** close with the next actions as tappable options (your harness's tappable-options mechanism, where it provides one; see `harness/README.md`), not just named in prose and not as an open-ended question. Offer at least: implement the plan with the `coding_implementation` skill; refine the plan further (such as for edge cases or a different perspective); and leave it in `.plans/` for review / leave as is. Add other options only when they are real choices for that plan (for example, answering a specific open question).
 
-## Available connectors
+## External services
 
-- The GitHub connector for reading repositories, files, issues and pull requests when the codebase lives on GitHub.
-- Use `muse.connector_search` to find other connectors and `muse.skill_search` to find related skills.
-- If nothing here fits, look on the web for a maintained API or MCP server and set it up with the harness's custom-connector setup skill, or build a custom connector.
+- Work against external services (such as GitHub, when the codebase lives there) through whatever connectors or integrations your harness provides. How a harness exposes and discovers those integrations is that harness's own affair, documented with the harness, never in this skill.

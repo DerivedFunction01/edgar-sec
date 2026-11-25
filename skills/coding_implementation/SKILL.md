@@ -46,10 +46,6 @@
 
 - State any step that was skipped, blocked or left unverified, with the reason, rather than implying full completion.
 
-## Available connectors
+## External services
 
-- The GitHub connector for working with repositories, files, issues and pull requests when the codebase lives on GitHub.
-
-- Use `muse.connector_search` to find other connectors and `muse.skill_search` to find related skills.
-
-- If nothing here fits, look on the web for a maintained API or MCP server and set it up with the harness's custom-connector setup skill, or build a custom connector.
+- External services (such as GitHub) are reached through your harness's connectors and integrations, in whatever form that harness exposes them.

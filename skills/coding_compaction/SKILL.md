@@ -52,8 +52,6 @@
 
 - Reconcile contradictions in favor of the latest verified state and note the correction where the older claim would otherwise mislead the next agent.
 
-## Available connectors
+## External services
 
-- Use `muse.connector_search` to find other connectors and `muse.skill_search` to find related skills.
-
-- If nothing here fits, look on the web for a maintained API or MCP server and set it up with the harness's custom-connector setup skill, or build a custom connector.
+- Connector and integration discovery is harness-specific and stays with the harness, not in this skill.
