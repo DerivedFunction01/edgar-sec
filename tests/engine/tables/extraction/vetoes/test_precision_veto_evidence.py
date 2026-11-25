@@ -125,19 +125,29 @@ def test_pct_rows_leg_fires():
     geo = GeometryText(pct_row_share=0.25, stubs=("Net income",))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" not in results[0].claims
-    assert _dt_details(results[0]) == ["precision veto: pct-rows"]
+    assert _dt_details(results[0]) == [
+        "precision veto: pct-rows, form:noncomposition, form:no-dt-subject"
+    ]
 
 
 def test_eps_host_absence_leg_fires():
-    geo = GeometryText(stubs=("Deferred tax assets", "Valuation allowance"))
+    geo = GeometryText(stubs=("Deferred tax assets", "Accrued liabilities"))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" not in results[0].claims
-    assert _dt_details(results[0]) == ["precision veto: host-absent:eps_reconciliation"]
+    assert _dt_details(results[0]) == [
+        "precision veto: host-absent:eps_reconciliation, form:noncomposition"
+    ]
 
 
 def test_eps_host_present_via_grid_keeps_claim():
     geo = GeometryText(
-        stubs=("Deferred tax assets",), grid_text="diluted shares outstanding"
+        stubs=(
+            "Deferred tax assets",
+            "Net operating loss carryforwards",
+            "Stock compensation",
+            "Valuation allowance",
+        ),
+        grid_text="diluted shares outstanding",
     )
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" in results[0].claims
@@ -148,17 +158,29 @@ def test_stub_bigram_leg_fires():
     geo = GeometryText(stubs=("Income taxes payable",))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" not in results[0].claims
-    assert _dt_details(results[0]) == ["precision veto: bigram:income taxes"]
+    assert _dt_details(results[0]) == [
+        "precision veto: bigram:income taxes, form:noncomposition, form:no-dt-subject"
+    ]
 
 
 def test_dt_legs_report_in_priced_order():
     geo = GeometryText(pct_row_share=0.5, stubs=("Income taxes", "Other"))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
-    assert _dt_details(results[0]) == ["precision veto: pct-rows, bigram:income taxes"]
+    assert _dt_details(results[0]) == [
+        "precision veto: pct-rows, bigram:income taxes, form:noncomposition, "
+        "form:no-dt-subject"
+    ]
 
 
 def test_dt_no_leg_keeps_the_claim():
-    geo = GeometryText(stubs=("Weighted average shares",))
+    geo = GeometryText(
+        stubs=(
+            "Deferred tax assets",
+            "Net operating loss carryforwards",
+            "Accrued liabilities",
+            "Weighted average shares",
+        )
+    )
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" in results[0].claims
     assert _dt_details(results[0]) == []

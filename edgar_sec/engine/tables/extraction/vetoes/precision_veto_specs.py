@@ -28,6 +28,27 @@ LEG_EPS_HOST_ABSENT = "host-absent:eps_reconciliation"
 LEG_STUB_BIGRAM = "bigram:income taxes"
 
 DT_STUB_BIGRAM = "income taxes"
+DT_VALUATION_ALLOWANCE_BIGRAM = "valuation allowance"
+
+# DT-2 leg names (packet DT-COMBO): the composition condition
+# and the priced form tests over the enlarged set.
+LEG_DT_NONCOMPOSITION = "form:noncomposition"
+LEG_DT_TOTALS_ONLY = "form:totals-only"
+LEG_DT_PPA_FORM = "form:purchase-allocation"
+LEG_DT_PROVISION_FORM = "form:provision"
+LEG_DT_UTB_SUBJECT = "form:utb-subject"
+LEG_DT_NO_SUBJECT = "form:no-dt-subject"
+LEG_DT_SCHEDULE_II = "form:schedule-ii"
+
+# DT-2 form phrases, read over normalized stub/header text.
+DT_PPA_PHRASES = (
+    "purchase price",
+    "net tangible assets acquired",
+    "consideration transferred",
+)
+DT_SCHEDULE_II_PHRASE = "deducted from assets"
+DT_UTB_SUBJECT_PHRASE = "unrecognized income tax benefits"
+
 
 # Derived core vocabulary of the eps_reconciliation host:
 # stub tokens at >= 50% frequency over the family's Round-2
