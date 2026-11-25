@@ -62,6 +62,9 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
     SignatureTerm,
 )
 from edgar_sec.engine.tables.extraction.cascade.stamped_gates import apply_stamped_gates
+from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
+    SUMMARY_SEPARATOR_FORM_EXEMPTIONS,
+)
 from edgar_sec.engine.tables.extraction.seats.primary_gate import section_presence
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     hard_veto_form_exemption,
@@ -331,11 +334,20 @@ def compete(
         )
         claims, contested = kept, kept_contested
     # S1 separator gate: a fired statement-summary rule denies
-    # every claim — the priced mass is a composition (a summary
-    # of a statement), claimed by no family (S1 pricing covers).
+    # every claim (S1 pricing covers), except a family named in
+    # SUMMARY_SEPARATOR_FORM_EXEMPTIONS with a companion pass.
     separator = geometry.summary_separator
     if separator is not None and separator.fired and claims:
-        removed, claims, contested = tuple(claims), [], []
+        passed = {o.test_id for o in geometry.form_tests if o.passed}
+        removed = tuple(
+            family
+            for family in claims
+            if not any(
+                t in passed for t in SUMMARY_SEPARATOR_FORM_EXEMPTIONS.get(family, ())
+            )
+        )
+        claims = [family for family in claims if family not in removed]
+        contested = [family for family in contested if family not in removed]
         reach = [family for family in reach if family not in removed]
         scores = dict(scores)
         for family in removed:

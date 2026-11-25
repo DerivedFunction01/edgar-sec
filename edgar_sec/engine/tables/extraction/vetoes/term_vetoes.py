@@ -82,6 +82,10 @@ HARD_VETO_FORM_EXEMPTIONS: dict[tuple[str, str], tuple[str, ...]] = {
         "intangibles_composition",
         "intangibles_core_form",
     ),
+    ("intangibles", "income tax"): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
 }
 
 
