@@ -103,6 +103,21 @@ def test_conjunction_fires_on_the_allocation_form():
     )
 
 
+def test_conjunction_fires_on_the_before_adjustment_form():
+    text = (
+        " | Before Adjustment of Final Allocation of Purchase Price"
+        " | Adjustments | After Adjustment of Final Allocation of"
+        " Purchase Price\n"
+        "Assets acquired:\n"
+        "Cash and cash equivalents | $ | 1,587 | $ | (719) | $ | 868\n"
+        "Goodwill | 2,000 | 100 | 2,100\n"
+        "Liabilities assumed | (300) | 0 | (300)\n"
+        "Total | 4,803 | 110 | 4,913"
+    )
+    verdict = _eval(text)
+    assert verdict.fired
+
+
 def test_packet_and_rows_surfaces_agree():
     rows = (
         ("", "Preliminary allocation", "Final allocation"),

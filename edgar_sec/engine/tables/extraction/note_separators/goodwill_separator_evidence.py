@@ -69,11 +69,10 @@ def evaluate_goodwill_separator(
         if leg.scope != "claim-local":
             continue
         if leg.kind == "allocation_columns":
-            if (
-                "preliminary" in header_zone
-                and "final" in header_zone
-                and allocation_context
-            ):
+            preliminary_side = "preliminary" in header_zone or (
+                "before adjustment" in header_zone
+            )
+            if preliminary_side and "final" in header_zone and allocation_context:
                 legs.append(leg.leg_id)
         elif leg.kind == "goodwill_acquired_line":
             if allocation_context and any(

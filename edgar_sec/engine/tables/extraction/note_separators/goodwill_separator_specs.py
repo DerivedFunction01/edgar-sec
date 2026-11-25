@@ -21,7 +21,8 @@ class GoodwillSeparatorLeg:
 @dataclass(frozen=True)
 class GoodwillSeparatorSpec:
     """One family's separator: the priced legs, held conjunctively.
-    Legs: alloc_columns (preliminary and final allocation columns),
+    Legs: alloc_columns (the preliminary-side column — preliminary
+    or before-adjustment — against the final allocation column),
     goodwill_acquired_line (a goodwill line among the acquired
     assets), no_bookend_walk (no goodwill bookend walk)."""
 
