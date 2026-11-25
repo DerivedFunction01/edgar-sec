@@ -414,3 +414,56 @@ def test_charge_incidence_table_stays_outside_the_walk_gate():
     result = _verdict(rows, caption_stack=("Restructuring Charges by Segment",))
     assert not result.admitted
     assert result.detail == "no bookend pair in any filed form"
+
+
+def test_charges_stub_form_is_admitted():
+    # Cost-type row stubs with values: the seated charges anatomy.
+    rows = (
+        ("Severance costs", "100", "200"),
+        ("Facility exit costs", "50", "60"),
+        ("Employee termination benefits", "10", "20"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert result.admitted
+    assert "charges signature: cost stubs" in result.detail
+
+
+def test_charges_period_form_is_admitted():
+    # Charges-by-period matrix: the cost vocabulary sits in the
+    # column headers, the row labels are fiscal periods.
+    rows = (
+        ("", "Cost of Sales", "Restructuring Charges", "Total"),
+        ("Fiscal 2019", "22", "133", "241"),
+        ("Fiscal 2020", "10", "34", "83"),
+        ("Fiscal 2021", "8", "(15)", "7"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert result.admitted
+    assert "charges signature: period form" in result.detail
+
+
+def test_charges_segment_form_is_admitted():
+    # Charges-by-segment table: the charges vocabulary sits in
+    # the total row, the row labels are business lines.
+    rows = (
+        ("Mobility", "$", "67"),
+        ("Delivery", "32", ""),
+        ("Freight", "7", ""),
+        ("Total restructuring and related charges", "281", ""),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert result.admitted
+    assert "charges signature: segment form" in result.detail
+
+
+def test_charges_with_cash_flow_anatomy_stays_out():
+    # The cash-flow anatomy veto binds every charges form.
+    rows = (
+        ("Cash flows from operating activities", "", ""),
+        ("Severance costs", "100", "200"),
+        ("Facility exit costs", "50", "60"),
+        ("Employee termination benefits", "10", "20"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert not result.admitted
+    assert result.detail == "no bookend pair in any filed form"
