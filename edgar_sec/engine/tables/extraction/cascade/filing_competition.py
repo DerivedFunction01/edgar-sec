@@ -27,6 +27,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_evidence import (
     apply_ppe_vetoes,
     capture_claim_stages,
+    discipline_form_fires,
     passed_form_test_details,
 )
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
@@ -123,7 +124,7 @@ def apply_ppe_veto_override_seat(
 ) -> list[CompetitionResult]:
     """Veto-override seat at the suppression seam's output:
     competition ran veto-intact, so no claim is displaced;
-    a claim-free geometry seats PPE on either leg's terms."""
+    a claim-free geometry seats PPE on any leg's terms."""
     out: list[CompetitionResult] = []
     for geometry, result in zip(geometries, results, strict=True):
         score = result.scores.get("ppe")
@@ -142,7 +143,12 @@ def apply_ppe_veto_override_seat(
             and _ppe_signature_sum(result) >= OVSEAT_SIG_FLOOR
             and score.total >= CLAIM_FLOOR
         )
-        if not (leg_f or leg_s):
+        # Leg D: the discipline form seats with the same
+        # hard-hit tolerance as Leg F.
+        leg_d = (hard is None or hard == OVSEAT_TERM) and discipline_form_fires(
+            geometry, score
+        )
+        if not (leg_f or leg_s or leg_d):
             out.append(result)
             continue
         _, explained = _explained_foreign("ppe", result.scores, CONTAINMENT_EDGES)
@@ -272,7 +278,8 @@ def compete_filing(
     results = apply_ppe_formation_suppression(geometries, results)
     # Veto-override seat (priced): at the suppression seam's
     # output, a claim-free geometry seats PPE on its form
-    # tests or its signature despite the one hard term.
+    # tests, its signature, or its discipline form despite
+    # the one hard term.
     results = apply_ppe_veto_override_seat(geometries, results)
     # The primary hard gates refuse claims whose necessary
     # sections are missing over the statement cluster; the PPE,
