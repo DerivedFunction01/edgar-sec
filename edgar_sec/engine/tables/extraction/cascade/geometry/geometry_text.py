@@ -18,6 +18,11 @@ from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
     leadin_segment,
 )
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
+    LeaseSeparatorText,
+    stub_ladder_purity,
+    year_span_prod,
+)
 from edgar_sec.engine.tables.extraction.separators.summary_separator import (
     SummarySeparatorResult,
     evaluate_summary_separator,
@@ -87,6 +92,8 @@ class GeometryText:
     section_part: str | None = None
     section_title: str | None = None
     table_index: int = 0
+    year_span: int = 0
+    stub_ladder_purity: float = 0.0
 
     @property
     def stub_text(self) -> str:
@@ -118,6 +125,9 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
     headers = tuple(cell for row in context.rows[:zone] for cell in row if cell.strip())
     pct_rows = sum(1 for row in context.rows if any("%" in str(cell) for cell in row))
     pct_row_share = pct_rows / max(len(context.rows), 1)
+    separator_text = LeaseSeparatorText.from_rows(
+        context.rows, context.caption_stack, context.prose_before
+    )
     return GeometryText(
         caption=caption,
         lead=lead_channel_text(caption, context.prose_before or ""),
@@ -154,4 +164,6 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         section_part=section.part if section else None,
         section_title=section.title if section else None,
         table_index=context.table_index,
+        year_span=year_span_prod(separator_text),
+        stub_ladder_purity=stub_ladder_purity(separator_text) or 0.0,
     )

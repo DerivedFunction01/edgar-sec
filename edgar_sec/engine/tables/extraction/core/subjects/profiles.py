@@ -558,13 +558,6 @@ PROFILES: tuple[FamilyProfile, ...] = (
         provenance=PROV_DEMOGRAPHICS,
     ),
     FamilyProfile(
-        "cover_layout",
-        KIND_GENRE_SEAT,
-        None,
-        SEAT_GENRE_REFUSAL,
-        note="genre claimant in the measured vocabulary; no Step 6 family verdict row",
-    ),
-    FamilyProfile(
         "shares_purchased",
         KIND_FAMILY,
         _support(

@@ -286,11 +286,36 @@ def test_co_claimed_lease_claim_stays_removed():
     assert out.groups == ()
 
 
-def test_debt_seated_lease_claim_reseated():
+def test_debt_seated_lease_claim_stays_removed_without_a_filing_debt_claim():
     out = _removed_with_evidence(
         "lease_maturity", "lease assignment: geometry seated to debt_maturity"
     )
-    assert out.claims == ("lease_maturity",)
+    assert out.claims == ()
+    assert out.groups == ()
+
+
+def test_debt_seated_lease_claim_reseated_when_the_filing_seats_debt():
+    geometry = GeometryText(caption="Notes")
+    note = (
+        ClaimEvidence(
+            "gate", "lease assignment: geometry seated to debt_maturity", 0.0
+        ),
+    )
+    entering_lease = _result(
+        "lease_maturity",
+        scores={"lease_maturity": _score("lease_maturity", 11.0, note)},
+    )
+    entering_debt = _result("debt_maturity")
+    assigned_lease = CompetitionResult(
+        claims=(), contested=(), scores=entering_lease.scores, groups=()
+    )
+    out_lease, out_debt = preserve_assignment_claims(
+        [geometry, geometry],
+        [entering_lease, entering_debt],
+        [assigned_lease, entering_debt],
+    )
+    assert out_lease.claims == ("lease_maturity",)
+    assert out_debt.claims == ("debt_maturity",)
 
 
 def test_co_claimed_note_does_not_refuse_other_families():

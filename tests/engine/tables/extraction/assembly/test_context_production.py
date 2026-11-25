@@ -3,7 +3,13 @@
 from __future__ import annotations
 
 from edgar_sec.engine.document.page_markers.models import PageArtifactPolicy
-from edgar_sec.engine.forms.normalize import normalize_document
+from edgar_sec.engine.forms.cover.models import BoundaryMethod, CoverBoundary
+from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
+from edgar_sec.engine.tables.ascii_html.model.model import (
+    ResolvedGrid,
+    TableGeometry,
+    TableRenderResult,
+)
 from edgar_sec.engine.tables.extraction.cascade.scoring.classify import classify_table
 from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.assembly.context_production import (
@@ -98,6 +104,116 @@ def test_closing_span_table_is_genre_refused() -> None:
     assert any(
         evidence.detail.startswith("closing refused") for evidence in result.evidence
     )
+
+
+def _geometry(index: int, rows: tuple, rendered: str) -> TableGeometry:
+    return TableGeometry(
+        table_index=index,
+        render_result=TableRenderResult(
+            ascii_text=rendered,
+            resolved_grid=ResolvedGrid(
+                rows=rows,
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+
+
+_COVER_ROWS = (
+    ("Title of each class", "Trading Symbol"),
+    ("Common Stock", "ACME"),
+)
+_BODY_ROWS = (
+    ("Cash", "100"),
+    ("Total assets", "500"),
+)
+_SPLIT_TEXT = "\n".join(
+    (
+        "ACME CORPORATION",
+        "Title of each class | Trading Symbol",
+        "Common Stock | ACME",
+        "PART I",
+        "ITEM 1. BUSINESS",
+        "Cash | 100",
+        "Total assets | 500",
+    )
+)
+
+
+def _split_production(family: str, end_line: int | None):
+    result = NormalizationResult(
+        text=_SPLIT_TEXT,
+        family=family,
+        representation="html",
+        cover_boundary=CoverBoundary(
+            end_line=end_line,
+            end_offset=None,
+            method=BoundaryMethod.STRUCTURAL,
+            confidence=1.0,
+        ),
+        table_geometries=(
+            _geometry(
+                0,
+                _COVER_ROWS,
+                "Title of each class | Trading Symbol\nCommon Stock | ACME",
+            ),
+            _geometry(1, _BODY_ROWS, "Cash | 100\nTotal assets | 500"),
+        ),
+    )
+    return produce_contexts(DocumentInput("primary", result))
+
+
+def test_cover_boundary_split_excludes_pre_boundary_geometry_10k() -> None:
+    production = _split_production("10-K", 3)
+    document = production.documents[0]
+    assert document.facts.cover_end_line == 3
+    assert document.facts.as_record()["cover_end_line"] == 3
+    assert document.cover_excluded == (0,)
+    assert [context.table_index for context in document.contexts] == [1]
+    assert [record["table_index"] for record in document.records] == [1]
+
+
+def test_cover_boundary_split_excludes_pre_boundary_geometry_10q() -> None:
+    production = _split_production("10-Q", 3)
+    document = production.documents[0]
+    assert document.cover_excluded == (0,)
+    assert [context.table_index for context in document.contexts] == [1]
+
+
+def test_no_cover_boundary_keeps_every_geometry() -> None:
+    production = _split_production("10-K", None)
+    document = production.documents[0]
+    assert document.cover_excluded == ()
+    assert [context.table_index for context in document.contexts] == [0, 1]
+
+
+def test_unlocated_geometry_stays_in_the_input() -> None:
+    result = NormalizationResult(
+        text=_SPLIT_TEXT,
+        family="10-K",
+        representation="html",
+        cover_boundary=CoverBoundary(
+            end_line=3,
+            end_offset=None,
+            method=BoundaryMethod.STRUCTURAL,
+            confidence=1.0,
+        ),
+        table_geometries=(
+            _geometry(
+                0,
+                _COVER_ROWS,
+                "Title of each class | Trading Symbol\nCommon Stock | ACME",
+            ),
+            _geometry(7, _BODY_ROWS, "Not present | 0"),
+        ),
+    )
+    document = produce_contexts(DocumentInput("primary", result)).documents[0]
+    assert document.cover_excluded == (0,)
+    assert document.not_located == (7,)
+    assert [context.table_index for context in document.contexts] == [7]
 
 
 def test_facts_from_result_without_closing_span() -> None:

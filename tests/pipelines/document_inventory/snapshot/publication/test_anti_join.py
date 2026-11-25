@@ -13,7 +13,7 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
     STATUS_FETCH_FAILED,
     STATUS_PARSED,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.anti_join import (
+from edgar_sec.pipelines.document_inventory.snapshot.publication.anti_join import (
     anti_join,
     build_staging,
 )

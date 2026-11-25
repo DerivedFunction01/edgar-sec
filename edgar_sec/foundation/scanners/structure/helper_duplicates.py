@@ -218,7 +218,7 @@ _CENSUS_SCOPED_CLUSTERS = (
     frozenset(
         {
             (
-                "edgar_sec/pipelines/document_inventory/snapshot/projection_inputs.py",
+                "edgar_sec/pipelines/document_inventory/snapshot/projection/projection_inputs.py",
                 "sorted_keys",
             ),
             ("edgar_sec/pipelines/filing_catalog/publication.py", "sorted_keys"),

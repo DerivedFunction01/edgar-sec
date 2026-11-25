@@ -41,18 +41,18 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     validate_run_manifest,
     validate_work_order,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
     ENTRY_SCHEMA_VERSION,
     LOOKUP_LAYOUT_VERSION,
     PARSER_FINGERPRINT,
     PrefetchProjection,
     SNAPSHOT_RELATION_VERSION,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection_manifest import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_manifest import (
     intent_id,
     read_projection_manifest,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection_relations import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection_relations import (
     COHORT_ACCESSIONS_SCHEMA,
     COHORT_SOURCES_SCHEMA,
     hash_relations,

@@ -13,6 +13,7 @@ from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import 
     failing_core_form_outcome as fired_separator_outcome,
     norml,
 )
+from edgar_sec.engine.tables.extraction.core.typed_rows import TOTAL_ROW_RE
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_specs import (
     LEASE_SEPARATOR_SPECS,
     LeaseSeparatorSpec,
@@ -27,6 +28,7 @@ __all__ = [
     "evaluate_form_test_lease_separator",
     "evaluate_lease_separator",
     "fired_separator_outcome",
+    "stub_ladder_purity",
     "subject_fires",
     "subject_surface",
     "year_span_prod",
@@ -94,6 +96,25 @@ def year_span_prod(text: LeaseSeparatorText) -> int:
     header = " ".join(text.rows[0]) if text.rows else ""
     years = set(YEAR_TOKEN_SEARCH_RE.findall(stubs + " " + header))
     return len(years)
+
+
+def stub_ladder_purity(text: LeaseSeparatorText) -> float | None:
+    """Stub ladder purity: ladder cells over non-empty stub cells.
+
+    A stub cell (rows[1:] first cells) is a ladder cell when it
+    carries a year token, a thereafter row, or a total row.
+    """
+    stub_cells = [r[0] for r in text.rows[1:] if r and r[0].strip()]
+    if not stub_cells:
+        return None
+    ladder = sum(
+        1
+        for cell in stub_cells
+        if YEAR_TOKEN_SEARCH_RE.search(cell)
+        or "thereafter" in norml(cell)
+        or TOTAL_ROW_RE.match(cell)
+    )
+    return ladder / len(stub_cells)
 
 
 def subject_surface(text: LeaseSeparatorText, tail: int) -> str:

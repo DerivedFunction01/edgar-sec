@@ -67,6 +67,7 @@ class FilingFacts:
     closing_start: int | None
     closing_kind: str | None
     region_map: tuple[SectionSeat, ...]
+    cover_end_line: int | None
 
     @classmethod
     def from_result(
@@ -104,6 +105,11 @@ class FilingFacts:
             closing_start=closing.start_line if closing is not None else None,
             closing_kind=closing.kind if closing is not None else None,
             region_map=tuple(seats),
+            cover_end_line=(
+                result.cover_boundary.end_line
+                if result.cover_boundary is not None
+                else None
+            ),
         )
 
     def seat_at(self, line: int) -> SectionSeat | None:
@@ -126,6 +132,7 @@ class FilingFacts:
             else None,
             "closing_span": self.closing_start,
             "closing_kind": self.closing_kind,
+            "cover_end_line": self.cover_end_line,
             "region_map": [
                 {
                     "item": seat.item,
@@ -160,6 +167,7 @@ class ProducedDocument:
     token_count: int = 0
     not_located: tuple[int, ...] = ()
     not_located_specimens: tuple[tuple[int, str], ...] = ()
+    cover_excluded: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -475,9 +483,21 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
     records: list[dict] = []
     not_located: list[int] = []
     not_located_specimens: list[tuple[int, str]] = []
+    cover_excluded: list[int] = []
     for geometry, span, rendered in zip(
         result.table_geometries, spans, rendered_sets, strict=True
     ):
+        if (
+            facts.cover_end_line is not None
+            and span is not None
+            and span[0] < facts.cover_end_line
+        ):
+            # The cover-boundary split: a geometry starting
+            # before the boundary is cover, never classification
+            # input; an unlocated geometry cannot be placed
+            # against the boundary and stays in the input.
+            cover_excluded.append(geometry.table_index)
+            continue
         rows = [list(row) for row in geometry.rows]
         captions = list(parse_caption_stack(tuple(tuple(row) for row in rows)).lines)
         issues: list[str] = []
@@ -655,6 +675,7 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
         token_count=len(tokens),
         not_located=tuple(not_located),
         not_located_specimens=tuple(not_located_specimens),
+        cover_excluded=tuple(cover_excluded),
     )
 
 

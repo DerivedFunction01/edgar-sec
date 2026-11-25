@@ -12,14 +12,14 @@ from edgar_sec.infra.storage.dag.manifest import (
     ParentRef,
     PartDescriptor,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+from edgar_sec.pipelines.document_inventory.snapshot.query.reader import (
     get_accessions_by_cik,
     get_accession_bundle,
     get_active_accession,
     get_active_entries,
     query_accessions,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
 )

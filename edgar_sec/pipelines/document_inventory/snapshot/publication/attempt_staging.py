@@ -28,7 +28,7 @@ from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     iter_work_order_chunks,
     validate_work_order,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.errors import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
     ValidationFailedError,
 )
 

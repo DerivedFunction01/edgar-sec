@@ -25,7 +25,6 @@ RETIRED_REF = "06af1209"
 
 TARGET_FAMILIES = (
     "aoci_rollforward",
-    "cover_layout",
     "debt_maturity",
     "derivatives_hedging",
     "equity_statement",

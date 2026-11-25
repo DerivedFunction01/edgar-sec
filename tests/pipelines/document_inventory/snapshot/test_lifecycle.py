@@ -19,10 +19,10 @@ from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     load_run_status,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.projection import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
     project_catalog_plan,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+from edgar_sec.pipelines.document_inventory.snapshot.query.reader import (
     get_accessions_by_source_cik,
     get_active_accession,
     get_active_entries,

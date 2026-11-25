@@ -60,7 +60,6 @@ def _full_inventory() -> dict:
     inventory = _inventory()
     for family in (
         "aoci_rollforward",
-        "cover_layout",
         "debt_maturity",
         "derivatives_hedging",
         "equity_statement",

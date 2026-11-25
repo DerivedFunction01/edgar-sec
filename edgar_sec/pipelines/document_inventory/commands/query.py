@@ -13,7 +13,7 @@ from edgar_sec.foundation.runtime.render import (
     render_output,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot import reader
+from edgar_sec.pipelines.document_inventory.snapshot.query import reader
 
 from .common import resolve_artifacts_root
 

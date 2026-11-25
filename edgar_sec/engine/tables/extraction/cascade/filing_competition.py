@@ -40,11 +40,13 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
     apply_spanning_vetoes,
 )
-from edgar_sec.engine.tables.extraction.seats.cover_seat import apply_cover_seat
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.seats.lease_span_seat import (
+    apply_lease_span_seat,
+)
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -281,10 +283,9 @@ def compete_filing(
     vetoed = apply_ppe_vetoes(geometries, gated, stages)
     precise = apply_precision_vetoes(geometries, vetoed)
     spanned = apply_spanning_vetoes(geometries, precise)
-    # Formation seat (priced): cover identity is read from the
-    # filing's front matter, upstream of every table decision;
-    # the seat claims only geometries the chain left unclaimed.
-    covered = apply_cover_seat(geometries, spanned)
     # Formation seat (priced): segment_reporting seats on the
     # gate-final unclaimed set its own floor cannot reach.
-    return apply_segment_seat(geometries, covered)
+    segmented = apply_segment_seat(geometries, spanned)
+    # Formation seat (priced): lease_maturity seats as the
+    # final pass on span and stub purity, debt-seat guarded.
+    return apply_lease_span_seat(geometries, segmented)

@@ -89,12 +89,12 @@ def test_thin_families_have_no_term_patterns_at_the_bar() -> None:
 
 
 def test_negative_evidence_is_the_retained_veto_set() -> None:
-    assert len(NEGATIVE_EVIDENCE) == 246
+    assert len(NEGATIVE_EVIDENCE) == 235
     calibration = [
         s for s in NEGATIVE_EVIDENCE if s.provenance.startswith("calibration:")
     ]
     repair = [s for s in NEGATIVE_EVIDENCE if s.provenance.startswith("repair:")]
-    assert len(calibration) == 178 and len(repair) == 68
+    assert len(calibration) == 167 and len(repair) == 68
     assert all(spec.member_presence_rate <= 0.01 for spec in calibration)
     assert all(spec.member_presence_rate <= 0.02 for spec in repair)
 

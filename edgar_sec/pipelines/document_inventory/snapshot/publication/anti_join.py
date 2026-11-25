@@ -33,7 +33,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
     PUBLICATION_OUTCOMES_FILE,
     PUBLICATION_SOURCES_FILE,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
 )
 

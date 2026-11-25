@@ -33,8 +33,10 @@ from edgar_sec.pipelines.document_inventory.paths import (
     plan_target_file_path,
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.errors import BaseSnapshotError
-from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.errors import (
+    BaseSnapshotError,
+)
+from edgar_sec.pipelines.document_inventory.snapshot.contracts.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
 )

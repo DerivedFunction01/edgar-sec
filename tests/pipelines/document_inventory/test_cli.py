@@ -171,7 +171,7 @@ def test_cli_query_dispatch(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_inventory.snapshot.reader.query_accessions",
+        "edgar_sec.pipelines.document_inventory.snapshot.query.reader.query_accessions",
         lambda *args, **kwargs: [{"accession": "0000320193-23-000106"}],
     )
     assert (
