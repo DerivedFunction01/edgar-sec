@@ -23,6 +23,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     TERM_VETOES,
     term_veto_hits,
+    term_veto_hits_by_channel,
 )
 from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -70,6 +71,54 @@ def test_hard_lead_hit_removes_the_claim() -> None:
     assert any(
         e.channel == "veto" and e.detail == "hard:issuer purchases" for e in trail
     )
+
+
+_BS_COMPLETE_STUBS = _BS_STUBS + ("Total stockholders' equity",)
+
+
+def test_lead_hard_hit_spares_gate_complete_balance_sheet() -> None:
+    result = compete(
+        _balance_sheet(
+            stubs=_BS_COMPLETE_STUBS,
+            lead="Risks related to the cost of complying with foreign laws.",
+        ),
+        terms=_BS_TERMS,
+        edges=(),
+    )
+    assert result.claims == ("balance_sheet",)
+
+
+def test_lead_hard_hit_bars_incomplete_balance_sheet() -> None:
+    result = compete(
+        _balance_sheet(
+            lead="Risks related to the cost of complying with foreign laws.",
+        ),
+        terms=_BS_TERMS,
+        edges=(),
+    )
+    assert result.claims == ()
+
+
+def test_body_hard_hit_bars_gate_complete_balance_sheet() -> None:
+    result = compete(
+        _balance_sheet(
+            stubs=_BS_COMPLETE_STUBS,
+            lead="Consolidated Balance Sheets",
+            grid_text="Risk factors are discussed elsewhere",
+        ),
+        terms=_BS_TERMS,
+        edges=(),
+    )
+    assert result.claims == ()
+
+
+def test_hits_by_channel_reports_the_lead_channel() -> None:
+    geometry = _balance_sheet(
+        lead="Risks related to the cost of complying with foreign laws.",
+    )
+    by_channel = term_veto_hits_by_channel(geometry)
+    assert by_channel["balance_sheet"]["hard"] == {"lead": "the cost"}
+    assert term_veto_hits(geometry)["balance_sheet"]["hard"] == "the cost"
 
 
 def test_hard_body_hit_removes_the_claim() -> None:

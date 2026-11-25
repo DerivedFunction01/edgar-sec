@@ -8,6 +8,9 @@ from __future__ import annotations
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_SIGNATURE_ABSENCE,
 )
+from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
+    stub_key,
+)
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_specs import (
     BS_FAMILY,
     BS_FILING_RELATIVE_FLOOR,
@@ -39,6 +42,15 @@ def _cf_signature_fires(geometry) -> bool:
     return False
 
 
+def _bs_carries_closing_total(geometry) -> bool:
+    """The geometry carries the statement's combined closing
+    total stub (total liabilities and <equity form>): it is the
+    statement's own tail, not a single-caption fragment."""
+    return any(
+        stub_key(stub).startswith("total liabilities and") for stub in geometry.stubs
+    )
+
+
 def _bs_filing_relative_fires(result, filing_top) -> bool:
     """The claim's score under 0.4x the filing's top score."""
     own = result.scores.get(BS_FAMILY)
@@ -68,7 +80,11 @@ def _fired_legs(geometries, results, index, filing_top):
             legs.append((CF_FAMILY, LEG_CF_DOMINANCE))
         if _cf_signature_fires(geometries[index]):
             legs.append((CF_FAMILY, LEG_CF_SIGNATURE))
-    if BS_FAMILY in result.claims and _bs_filing_relative_fires(result, filing_top):
+    if (
+        BS_FAMILY in result.claims
+        and not _bs_carries_closing_total(geometries[index])
+        and _bs_filing_relative_fires(result, filing_top)
+    ):
         legs.append((BS_FAMILY, LEG_BS_FILING_RELATIVE))
     return tuple(legs)
 

@@ -189,6 +189,18 @@ def test_closing_pair_silences_the_exempt_legs():
     assert "stub:noncurrent assets" not in _eval(noncurrent).legs
 
 
+def test_closing_pair_with_common_equity_total_silences_its_leg():
+    pair = "\n".join(
+        (
+            "Total assets | 100 | 90",
+            "Total liabilities | 60 | 55",
+            "Total common equity | 40 | 35",
+        )
+    )
+    text = "Item | 2024 | 2023\n" + pair
+    assert "stub:total common equity" not in _eval(text).legs
+
+
 def test_exempt_leg_fires_without_the_closing_pair():
     text = (
         "Item | 2024 | 2023\nTotal liabilities | 60 | 55\nTotal common equity | 40 | 35"
