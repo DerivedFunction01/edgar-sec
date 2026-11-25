@@ -54,11 +54,23 @@ def term_veto_hits(geometry: GeometryText) -> dict[str, dict[str, str]]:
     Matching is the pricing's own: normalized substring over the
     channel text; lead reads GeometryText.lead, body the grid.
     """
+    hits: dict[str, dict[str, str]] = {}
+    for family, tiers in term_veto_hits_by_channel(geometry).items():
+        hits[family] = {
+            tier: next(iter(by_channel.values())) for tier, by_channel in tiers.items()
+        }
+    return hits
+
+
+def term_veto_hits_by_channel(
+    geometry: GeometryText,
+) -> dict[str, dict[str, dict[str, str]]]:
+    """First priced hit per family, tier, and channel."""
     texts = {
         "lead": normalize_text(geometry.lead),
         "body": normalize_text(geometry.grid_text),
     }
-    hits: dict[str, dict[str, str]] = {}
+    hits: dict[str, dict[str, dict[str, str]]] = {}
     for spec in TERM_VETOES:
         text = texts[spec.channel]
         if not text:
@@ -66,7 +78,8 @@ def term_veto_hits(geometry: GeometryText) -> dict[str, dict[str, str]]:
         for term in spec.terms:
             if normalize_text(term) in text:
                 tiers = hits.setdefault(spec.family, {})
-                if spec.tier not in tiers:
-                    tiers[spec.tier] = term
+                by_channel = tiers.setdefault(spec.tier, {})
+                if spec.channel not in by_channel:
+                    by_channel[spec.channel] = term
                 break
     return hits

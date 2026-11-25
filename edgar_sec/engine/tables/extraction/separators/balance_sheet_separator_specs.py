@@ -66,6 +66,7 @@ BALANCE_SHEET_SEPARATOR_SPECS = {
         closing_pair_exempt_legs=(
             "hdr:issuer",
             "stub:noncurrent assets",
+            "stub:total common equity",
         ),
         equity_total_keys=(
             "total equity",

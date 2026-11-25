@@ -190,6 +190,21 @@ def test_filing_relative_below_floor_removed():
     ]
 
 
+def test_filing_relative_below_floor_closing_total_kept():
+    geos = [
+        GeometryText(),
+        GeometryText(stubs=("Total liabilities and stockholders' equity",)),
+    ]
+    results = apply_spanning_vetoes(
+        geos,
+        [
+            _result(("balance_sheet",), {"balance_sheet": 60.0}),
+            _result(("balance_sheet",), {"balance_sheet": 16.0}),
+        ],
+    )
+    assert "balance_sheet" in results[1].claims
+
+
 def test_filing_relative_at_floor_kept():
     geos = [GeometryText(), GeometryText()]
     results = apply_spanning_vetoes(

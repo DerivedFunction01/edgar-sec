@@ -95,6 +95,8 @@ PATTERNS: dict[str, tuple[str, ...]] = {
         r"trust corpus",
         r"\btotal net assets\b",
         r"^net assets\s*:?$",
+        r"\bpartnership capital\b",
+        r"policyholders'? surplus",
     ),
     # --- cash_flow ---
     "operating": (

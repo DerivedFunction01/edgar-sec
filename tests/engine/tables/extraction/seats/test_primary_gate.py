@@ -40,6 +40,26 @@ def test_balance_sheet_detector_complete_and_missing_equity() -> None:
     assert missing_sections(incomplete, "balance_sheet") == ["equity"]
 
 
+def test_balance_sheet_detector_noncorporate_equity_captions() -> None:
+    partnership = (
+        "Total assets",
+        "Total liabilities",
+        "Total partnership capital",
+    )
+    assert missing_sections(partnership, "balance_sheet") == []
+    insurer = (
+        "Total assets",
+        "Total liabilities",
+        "Total policyholders' surplus",
+    )
+    assert missing_sections(insurer, "balance_sheet") == []
+    combined = (
+        "Total assets",
+        "Total liabilities and partnership capital",
+    )
+    assert missing_sections(combined, "balance_sheet") == []
+
+
 def test_average_balance_form_has_no_summary_equity() -> None:
     # The re-determination's named ambiguous form: equity exists
     # only inside combined temporary/permanent captions.
