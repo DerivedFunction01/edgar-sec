@@ -47,6 +47,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         groups=(
             (
                 "total number of shares purchased",
+                "total # shares purchased",
                 "total shares purchased",
                 "number of shares purchased",
                 "total number of shares",
