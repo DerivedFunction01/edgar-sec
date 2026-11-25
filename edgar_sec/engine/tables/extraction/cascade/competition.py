@@ -61,7 +61,10 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
     SignatureTerm,
 )
 from edgar_sec.engine.tables.extraction.cascade.stamped_gates import apply_stamped_gates
-from edgar_sec.engine.tables.extraction.seats.primary_gate import section_presence
+from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    cash_flow_lead_veto_scoped,
+    section_presence,
+)
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
     term_veto_hits_by_channel,
@@ -135,6 +138,18 @@ def compete(
             presence = section_presence(geometry.stubs, "balance_sheet")
             if all(presence[s] for s in ("assets", "liabilities", "equity")):
                 del hard_vetoed["balance_sheet"]
+    # Priced scoping (cash_flow): the balance_sheet scoping
+    # generalized — a lead-channel-only hard hit does not bar
+    # cash_flow when the geometry's own stubs prove the
+    # statement in one of the primary gate's shapes (full
+    # section presence, exactly financing missing, or the
+    # supplemental schedule identity). A body hit still bars.
+    if "cash_flow" in hard_vetoed:
+        by_channel = term_veto_hits_by_channel(geometry).get("cash_flow", {})
+        hard_channels = by_channel.get("hard", {})
+        if hard_channels and set(hard_channels) == {"lead"}:
+            if cash_flow_lead_veto_scoped(geometry):
+                del hard_vetoed["cash_flow"]
     if hard_vetoed:
         for family, term in hard_vetoed.items():
             if family in scores:
