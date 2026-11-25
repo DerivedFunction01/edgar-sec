@@ -122,6 +122,20 @@ def test_equity_detector_lexical_and_dated_balance_rows() -> None:
     assert missing_sections(one_dated, "equity_statement") == ["ending_balances"]
 
 
+def test_equity_detector_single_dated_balance_row_closes_bookend() -> None:
+    # Priced (GEQ, equity_statement residual census on e486ceff):
+    # a lone closing balance stub in the "Balance(s) at/as of
+    # <date>" or "Balance(s) <month> <day>, <year>" form is the
+    # statement's ending balance — the opening row sits in the
+    # header band of the single-table quarterly form.
+    as_of = ("Net income", "Dividends on common stock", "Balance as of June 30, 2015")
+    assert missing_sections(as_of, "equity_statement") == []
+    at = ("Stock-based compensation", "Balances at September 30, 2020")
+    assert missing_sections(at, "equity_statement") == []
+    month_first = ("Share-based compensation", "Balance August 2, 2020")
+    assert missing_sections(month_first, "equity_statement") == []
+
+
 def test_comprehensive_detector_and_parenthesized_total() -> None:
     stubs = ("Net income", "Other comprehensive income", "Total comprehensive income")
     assert missing_sections(stubs, "comprehensive_income") == []

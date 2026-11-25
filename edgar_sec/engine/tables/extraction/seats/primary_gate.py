@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
+from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN,
     STRICT_YEAR_TOKEN_PATTERN,
@@ -193,6 +194,8 @@ PATTERNS: dict[str, tuple[str, ...]] = {
         r"end of (the )?(year|period)",
         r"ending balance",
         r"^balance.*\bend of\b",
+        rf"^balances?\s+{build_alternation(['as of', 'at'], auto_escape=True)}\b",
+        rf"^balances?\s+(?:{STRICT_MONTH_PATTERN})\b",
     ),
     "in_period_activity": (
         r"net income",
