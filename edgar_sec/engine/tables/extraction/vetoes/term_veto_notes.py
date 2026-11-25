@@ -23,7 +23,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "comprehensive loss",
             "discussion and analysis",
             "issuer purchases",
-            "fiscal year",
         ),
     ),
     (

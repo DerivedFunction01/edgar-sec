@@ -471,3 +471,91 @@ def test_employer_form_is_family_scoped():
     geo = GeometryText(headers=("EIN/Plan number", "Zone status"))
     results = apply_precision_vetoes([geo], [_result(("pension",))])
     assert "pension" in results[0].claims
+
+
+EPS = "eps_reconciliation"
+
+
+def _eps_details(result):
+    return _gate_details(result, family=EPS)
+
+
+def _eps_result(channels):
+    score = FamilyScore(EPS, sum(channels.values()), dict(channels), ())
+    return CompetitionResult(claims=(EPS,), contested=(EPS,), scores={EPS: score})
+
+
+def test_eps_restatement_face_statement_leg_fires():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations", "Net income"),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS not in results[0].claims
+    assert _eps_details(results[0]) == ["precision veto: restatement:face-statement"]
+
+
+def test_eps_restatement_tokens_without_a_face_statement_keep_the_claim():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Weighted average shares", "Dilutive securities"),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_face_statement_without_restatement_tokens_keeps_the_claim():
+    geo = GeometryText(
+        headers=("Year ended December 31", "Total"),
+        stubs=("Consolidated balance sheet", "Total assets"),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_partial_restatement_token_set_keeps_the_claim():
+    geo = GeometryText(
+        headers=("Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations",),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_context_only_leg_fires():
+    results = apply_precision_vetoes(
+        [GeometryText()], [_eps_result({"context": 18.18})]
+    )
+    assert EPS not in results[0].claims
+    assert _eps_details(results[0]) == ["precision veto: context-only"]
+
+
+def test_eps_own_text_mass_keeps_the_claim():
+    results = apply_precision_vetoes(
+        [GeometryText()], [_eps_result({"context": 18.18, "stub": 4.0})]
+    )
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_legs_report_in_priced_order():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations",),
+    )
+    results = apply_precision_vetoes([geo], [_eps_result({"context": 9.0})])
+    assert _eps_details(results[0]) == [
+        "precision veto: restatement:face-statement, context-only"
+    ]
+
+
+def test_eps_legs_are_family_scoped():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations",),
+    )
+    results = apply_precision_vetoes([geo], [_result(("debt_maturity",))])
+    assert "debt_maturity" in results[0].claims
