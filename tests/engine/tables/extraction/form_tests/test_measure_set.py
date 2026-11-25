@@ -215,6 +215,19 @@ def test_combined_statement_passes_all_three_classes() -> None:
     assert _outcome(table, "combined_operations_ci_measure_set").passed
 
 
+def test_combined_statement_with_no_oci_lines_passes_on_the_core() -> None:
+    table = _table(
+        (
+            ("Operating revenues", "317"),
+            ("Total operating expenses", "280"),
+            ("Operating income", "37"),
+            ("Net income", "18"),
+            ("Comprehensive income", "18"),
+        )
+    )
+    assert _outcome(table, "combined_operations_ci_measure_set").passed
+
+
 def test_standalone_comprehensive_income_is_not_the_combined_form() -> None:
     table = _table(
         (
@@ -226,7 +239,7 @@ def test_standalone_comprehensive_income_is_not_the_combined_form() -> None:
     assert not _outcome(table, "combined_operations_ci_measure_set").passed
 
 
-def test_combined_joint_total_form_passes_the_joint_test_only() -> None:
+def test_combined_joint_total_form_passes_both_tests() -> None:
     table = _table(
         (
             ("Research and development", "$ 63,104"),
@@ -237,7 +250,9 @@ def test_combined_joint_total_form_passes_the_joint_test_only() -> None:
         )
     )
     assert _outcome(table, "combined_operations_ci_joint_measure_set").passed
-    assert not _outcome(table, "combined_operations_ci_measure_set").passed
+    # The joint line carries the terminus and the comprehensive
+    # total in one line, so the core form passes on it too.
+    assert _outcome(table, "combined_operations_ci_measure_set").passed
 
 
 def test_balance_sheet_aoci_lines_are_not_the_combined_form() -> None:

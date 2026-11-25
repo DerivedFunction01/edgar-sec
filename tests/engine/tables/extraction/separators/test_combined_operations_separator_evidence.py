@@ -201,7 +201,7 @@ def test_leg_c1_core_absent():
     assert not verdict.core_satisfied
 
 
-def test_joint_form_ranks_below_full_and_satisfies_core():
+def test_joint_form_ranks_with_full_and_satisfies_core():
     stubs = (
         "Operating income",
         "Net income and comprehensive income",
@@ -220,7 +220,7 @@ def test_joint_form_ranks_below_full_and_satisfies_core():
     verdict = _eval(rows)
     assert not verdict.fired
     assert verdict.core_satisfied
-    assert verdict.form_rank == 1
+    assert verdict.form_rank == 2
 
 
 def test_facts_round_trip_through_the_stamped_outcome():
