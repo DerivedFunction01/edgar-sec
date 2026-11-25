@@ -15,14 +15,13 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
 from edgar_sec.engine.tables.extraction.cascade.residue_families import (
+    segment_caption_name,
     segment_geographic_partition,
     segment_grid,
     segment_header_partition,
+    segment_vocabulary,
 )
-from edgar_sec.engine.tables.extraction.seats.seat_application import (
-    seat_applier,
-    seat_role,
-)
+from edgar_sec.engine.tables.extraction.seats.seat_application import seat_role
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import term_veto_hits
 
 FAMILY = "segment_reporting"
@@ -33,6 +32,11 @@ CORE_FORM_TEST = "segment_reporting_core_form"
 SEAT_FLOOR = 3.5
 SEAT_RATIO = 0.75
 
+# Priced by the caption-as-name register over the frame: the
+# exception point at which both bank supplements convert.
+NAME_SEAT_FLOOR = 1.5
+NAME_SEAT_RATIO = 0.25
+
 
 def _core_form_passed(geometry: GeometryText) -> bool:
     """The family's core form test passed on this geometry."""
@@ -42,7 +46,11 @@ def _core_form_passed(geometry: GeometryText) -> bool:
     return False
 
 
-def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:
+def _seat_one(
+    geometry: GeometryText,
+    result: CompetitionResult,
+    vocabulary: frozenset[str],
+) -> CompetitionResult:
     """Seat segment_reporting on one unclaimed geometry, or don't."""
     if result.claims:
         return result
@@ -52,18 +60,26 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     if "hard" in (term_veto_hits(geometry).get(FAMILY) or {}):
         return result
     score = result.scores.get(FAMILY)
-    if score is None or score.total < SEAT_FLOOR:
+    if score is None:
         return result
     best_other = max(
         (s.total for family, s in result.scores.items() if family != FAMILY),
         default=0.0,
     )
-    if score.total < SEAT_RATIO * best_other:
+    by_name = segment_caption_name(geometry.caption, vocabulary)
+    if by_name:
+        floor, ratio = NAME_SEAT_FLOOR, NAME_SEAT_RATIO
+    else:
+        floor, ratio = SEAT_FLOOR, SEAT_RATIO
+    if score.total < floor:
+        return result
+    if score.total < ratio * best_other:
         return result
     if not _core_form_passed(geometry):
         return result
     if not (
-        segment_grid(geometry)
+        by_name
+        or segment_grid(geometry)
         or segment_header_partition(geometry)
         or segment_geographic_partition(geometry)
     ):
@@ -87,4 +103,15 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     )
 
 
-apply_segment_seat = seat_applier(_seat_one, "apply_segment_seat")
+def apply_segment_seat(
+    geometries: list[GeometryText] | tuple[GeometryText, ...],
+    results: list[CompetitionResult],
+) -> list[CompetitionResult]:
+    """Apply the segment seat across a filing, deriving its
+    segment vocabulary once from its pre-seat segment-claimed
+    geometries and sharing it by every decision in the pass."""
+    vocabulary = segment_vocabulary(geometries, results)
+    return [
+        _seat_one(geometry, result, vocabulary)
+        for geometry, result in zip(geometries, results, strict=True)
+    ]

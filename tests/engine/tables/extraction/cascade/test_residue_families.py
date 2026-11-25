@@ -13,13 +13,19 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     geometry_text_from_table,
 )
 from edgar_sec.engine.tables.extraction.core.text.context import NoteRef, TableContext
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    ClaimGroup,
+    CompetitionResult,
+)
 from edgar_sec.engine.tables.extraction.cascade.residue_families import (
     content_score,
     corroborates,
     geographic_terms_present,
+    segment_caption_name,
     segment_geographic_partition,
     segment_grid,
     segment_header_partition,
+    segment_vocabulary,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 
@@ -297,3 +303,57 @@ def test_geographic_partition_needs_a_total_stub() -> None:
 def test_geographic_partition_needs_three_places() -> None:
     grid = GeometryText(stubs=("United States", "Canada", "Total"))
     assert not segment_geographic_partition(grid)
+
+
+def _seg_result(state: str = "contested") -> CompetitionResult:
+    group = ClaimGroup(
+        family="segment_reporting",
+        score=9.0,
+        state=state,
+        role="head",
+        channels={},
+        veto_flags=(),
+        explained_foreign=0.0,
+    )
+    return CompetitionResult(
+        claims=("segment_reporting",), contested=(), scores={}, groups=(group,)
+    )
+
+
+def test_segment_vocabulary_harvests_pre_seat_stub_names() -> None:
+    grid = GeometryText(
+        stubs=(
+            "Commercial Banking",
+            "Consumer and Small Business Banking",
+            "Total revenues",
+            "Segment income (in millions)",
+            "Commercial Banking in millions",
+            "Corporate and other",
+            "Three months ended",
+            "Banking 2024 results",
+            "Banking",
+        )
+    )
+    assert segment_vocabulary([grid], [_seg_result()]) == frozenset(
+        {"commercial banking", "consumer and small business banking"}
+    )
+
+
+def test_segment_vocabulary_skips_seat_adds_and_unclaimed() -> None:
+    grid = GeometryText(stubs=("Commercial Banking",))
+    assert segment_vocabulary([grid], [_seg_result(state="reach")]) == frozenset()
+    unclaimed = CompetitionResult(claims=(), contested=(), scores={})
+    assert segment_vocabulary([grid], [unclaimed]) == frozenset()
+
+
+def test_segment_caption_name_matches_on_word_boundaries() -> None:
+    vocabulary = frozenset({"commercial banking"})
+    assert segment_caption_name("TABLE 23: Commercial Banking", vocabulary)
+    assert segment_caption_name(
+        "Consumer and Small Business Banking | Commercial Banking",
+        frozenset({"consumer and small business banking"}),
+    )
+    assert not segment_caption_name("Commercial Bankingx results", vocabulary)
+    assert not segment_caption_name("commercial bank", vocabulary)
+    assert not segment_caption_name("Commercial Banking", frozenset())
+    assert not segment_caption_name("", vocabulary)
