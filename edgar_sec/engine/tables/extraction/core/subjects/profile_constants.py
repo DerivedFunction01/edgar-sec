@@ -61,6 +61,7 @@ PROV_RESTRUCTURING_SEPARATOR = "calibration:rollforward-restructuring-pricing"
 PROV_TAX_RECONCILIATION_SEPARATOR = "calibration:tax-reconciliation-separator-pricing"
 PROV_DEFERRED_TAX_SEPARATOR = "calibration:deferred-tax-separator-pricing"
 PROV_LEASE_SEPARATOR = "calibration:lease-separator-pricing"
+PROV_GOODWILL_SEPARATOR = "calibration:goodwill-separator-pricing"
 PROV_RELATED_PARTY_FORM_SEPARATION = "calibration:related-party-form-separation-pricing"
 PROV_CASCADE_G4_FORM_SEPARATION = "calibration:cascade-g4-form-separation-pricing"
 PROV_SEAT_FLOOR_PRICING = "calibration:seat-at-floor-claim-path"
@@ -108,6 +109,7 @@ TEST_RESTRUCTURING_SEPARATOR = "restructuring_separator"
 TEST_TAX_RECONCILIATION_SEPARATOR = "tax_reconciliation_separator"
 TEST_DEFERRED_TAX_SEPARATOR = "deferred_tax_separator"
 TEST_LEASE_SEPARATOR = "lease_separator"
+TEST_GOODWILL_SEPARATOR = "goodwill_separator"
 TEST_FORM_SEPARATION = "form_separation"
 FORM_TESTS = (
     TEST_WALK,
@@ -150,5 +152,6 @@ FORM_TESTS = (
     TEST_TAX_RECONCILIATION_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_LEASE_SEPARATOR,
+    TEST_GOODWILL_SEPARATOR,
     TEST_FORM_SEPARATION,
 )
