@@ -188,6 +188,47 @@ def test_seat_bound_holds_under_the_bookend_exception():
     assert not verdict.fired and verdict.legs == ()
 
 
+def test_seat_bound_holds_under_the_waep_exception_without_bookends():
+    # Price-form grid: exercise-price range buckets under a
+    # weighted-average-exercise-price column, no bookend rows.
+    # The WAEP column excepts the claim from seat_bound on its
+    # own — the price-form variant carries no bookends for Xb.
+    table = _table(
+        [
+            (
+                "Exercise price range",
+                "Shares subject to outstanding options",
+                "Weighted average exercise price",
+            ),
+            ("$0.01 - $5.00", "100", "$2.50"),
+            ("$5.01 - $10.00", "200", "$7.50"),
+            ("$10.01 and above", "50", "$12.00"),
+        ]
+    )
+    surfaces = StockCompSeparatorText.from_table(table).surfaces
+    assert surfaces is not None
+    assert surfaces.col_waep and not surfaces.bookend
+    assert not surfaces.seat_admitted
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert not verdict.fired and verdict.legs == ()
+
+
+def test_waep_exception_does_not_mute_the_warrant_leg():
+    # The WAEP exception touches seat_bound only: warrant
+    # vocabulary under a WAEP column still fires warrant_vocab,
+    # and seat_bound adds nothing beside it.
+    table = _table(
+        [
+            ("", "Warrants", "Weighted average exercise price"),
+            ("Warrants granted", "100", "5.00"),
+            ("Warrants exercised", "10", "5.00"),
+            ("Warrants forfeited", "2", "5.00"),
+        ]
+    )
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert verdict.fired and verdict.legs == ("warrant_vocab",)
+
+
 def test_warrant_vocab_fires_on_an_admitted_geometry():
     table = _table(
         [

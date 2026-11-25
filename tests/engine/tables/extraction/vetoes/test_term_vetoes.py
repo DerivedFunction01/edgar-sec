@@ -99,10 +99,22 @@ def test_lead_hard_hit_bars_incomplete_balance_sheet() -> None:
     assert result.claims == ()
 
 
-def test_body_hard_hit_bars_gate_complete_balance_sheet() -> None:
+def test_body_hard_hit_spares_gate_complete_balance_sheet() -> None:
     result = compete(
         _balance_sheet(
             stubs=_BS_COMPLETE_STUBS,
+            lead="Consolidated Balance Sheets",
+            grid_text="Risk factors are discussed elsewhere",
+        ),
+        terms=_BS_TERMS,
+        edges=(),
+    )
+    assert result.claims == ("balance_sheet",)
+
+
+def test_body_hard_hit_bars_incomplete_balance_sheet() -> None:
+    result = compete(
+        _balance_sheet(
             lead="Consolidated Balance Sheets",
             grid_text="Risk factors are discussed elsewhere",
         ),

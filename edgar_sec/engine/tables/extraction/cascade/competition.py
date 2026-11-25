@@ -82,7 +82,6 @@ from edgar_sec.engine.tables.extraction.seats.primary_gate import section_presen
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     hard_veto_form_exemption,
     term_veto_hits,
-    term_veto_hits_by_channel,
 )
 
 # Calibration constants, derivation-priced by the calibration
@@ -141,18 +140,15 @@ def compete(
     hard_vetoed = {
         family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
     }
-    # Priced scoping (balance_sheet): a lead-channel-only hard
-    # hit reads borrowed prose context, not the table; it does
-    # not bar a geometry whose own stubs carry every necessary
-    # balance_sheet section (the primary gate's completeness,
-    # read at geometry level). A body-channel hit still bars.
+    # Priced scoping (balance_sheet): a hard hit in either
+    # channel reads term context the table's own complete
+    # sections outweigh; it does not bar a geometry whose own
+    # stubs carry every necessary balance_sheet section (the
+    # primary gate's completeness, read at geometry level).
     if "balance_sheet" in hard_vetoed:
-        by_channel = term_veto_hits_by_channel(geometry).get("balance_sheet", {})
-        hard_channels = by_channel.get("hard", {})
-        if hard_channels and set(hard_channels) == {"lead"}:
-            presence = section_presence(geometry.stubs, "balance_sheet")
-            if all(presence[s] for s in ("assets", "liabilities", "equity")):
-                del hard_vetoed["balance_sheet"]
+        presence = section_presence(geometry.stubs, "balance_sheet")
+        if all(presence[s] for s in ("assets", "liabilities", "equity")):
+            del hard_vetoed["balance_sheet"]
     if hard_vetoed:
         for family, term in hard_vetoed.items():
             if family in scores:
