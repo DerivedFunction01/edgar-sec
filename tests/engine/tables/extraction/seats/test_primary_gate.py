@@ -419,3 +419,53 @@ def test_cash_flow_lead_veto_scoped_shapes() -> None:
         )
     )
     assert not cash_flow_lead_veto_scoped(GeometryText(stubs=(_CF_OP, _CF_INV)))
+
+
+def test_cash_flow_gate_spine_pair_waived_any_cluster_size() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP,), note_title="Notes")
+    tail = GeometryText(stubs=(_CF_REC,), note_title="Notes")
+    gated = apply_primary_gate([head, tail], [result, result])
+    assert gated[0].claims == ("cash_flow",)
+    assert gated[1].claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_spine_pair_singleton_waived() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    geometry = GeometryText(stubs=(_CF_OP, _CF_REC))
+    (gated,) = apply_primary_gate([geometry], [result])
+    assert gated.claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_non_spine_pair_still_refused() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP,), note_title="Notes")
+    tail = GeometryText(stubs=(_CF_FIN,), note_title="Notes")
+    gated = apply_primary_gate([head, tail], [result, result])
+    assert gated[0].claims == ()
+    gate = [
+        entry
+        for entry in gated[0].scores["cash_flow"].evidence
+        if entry.channel == "gate"
+    ]
+    assert gate[0].detail == ("primary gate: missing investing, cash_reconciliation")
+
+
+def test_cash_flow_gate_three_present_spine_pair_not_invoked() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP,), note_title="Notes")
+    mid = GeometryText(stubs=(_CF_INV,), note_title="Notes")
+    tail = GeometryText(stubs=(_CF_REC,), note_title="Notes")
+    gated = apply_primary_gate([head, mid, tail], [result, result, result])
+    assert gated[0].claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_reduced_missing_set_is_not_spine_pair() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    geometry = GeometryText(stubs=(_CF_OP,))
+    (gated,) = apply_primary_gate([geometry], [result])
+    assert gated.claims == ()
+    gate = [
+        entry for entry in gated.scores["cash_flow"].evidence if entry.channel == "gate"
+    ]
+    assert gate[0].detail == "primary gate: missing investing, financing"
