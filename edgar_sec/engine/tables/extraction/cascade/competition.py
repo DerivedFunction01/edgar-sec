@@ -25,6 +25,7 @@ from edgar_sec.engine.tables.extraction.seats.genre_seat import (
     geometry_refusal,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    VETO_POINTS,
     ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
@@ -63,6 +64,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
 from edgar_sec.engine.tables.extraction.cascade.stamped_gates import apply_stamped_gates
 from edgar_sec.engine.tables.extraction.seats.primary_gate import section_presence
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
+    hard_veto_form_exemption,
     term_veto_hits,
     term_veto_hits_by_channel,
 )
@@ -139,6 +141,34 @@ def compete(
         for family, term in hard_vetoed.items():
             if family in scores:
                 scores = append_note(scores, family, "veto", f"hard:{term}")
+    # Form-conditioned hard-veto exemption (greenfield
+    # intangibles packet): an exempted hit whose named form
+    # test passed unbars the family, at the scored price.
+    for family, term in list(hard_vetoed.items()):
+        form_tests = hard_veto_form_exemption(family, term)
+        if form_tests is None:
+            continue
+        passed = {o.test_id for o in geometry.form_tests if o.passed}
+        if not any(t in passed for t in form_tests):
+            continue
+        del hard_vetoed[family]
+        score = scores.get(family)
+        if score is None:
+            continue
+        if any(
+            e.channel == "veto" and e.detail.startswith("term:") for e in score.evidence
+        ):
+            scores = append_note(scores, family, "veto", f"exempt:{term}")
+        else:
+            channels = dict(score.by_channel)
+            channels["veto"] = channels.get("veto", 0.0) - VETO_POINTS
+            scores = dict(scores)
+            scores[family] = FamilyScore(
+                family,
+                max(score.total - VETO_POINTS, 0.0),
+                channels,
+                score.evidence + (ClaimEvidence("veto", f"term:{term}", -VETO_POINTS),),
+            )
     ranked = sorted(scores.values(), key=lambda s: -s.total)
     claims: list[str] = []
     contested: list[str] = []

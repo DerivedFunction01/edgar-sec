@@ -122,3 +122,10 @@ CORE_FORM_SPECS = {
         measure_groups=SEGMENT_MEASURE_GROUPS,
     ),
 }
+
+# Form-conditioned core-form gate exemptions (greenfield
+# intangibles packet): the gate does not refuse the named
+# family's claim when the companion form test passed.
+CORE_FORM_GATE_FORM_EXEMPTIONS = {
+    "intangibles": "intangibles_composition",
+}
