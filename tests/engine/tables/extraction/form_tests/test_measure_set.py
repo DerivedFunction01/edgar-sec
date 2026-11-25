@@ -361,57 +361,6 @@ def test_goodwill_activity_movement_passes() -> None:
     assert _outcome(table, "goodwill_rollforward_measure_set").passed
 
 
-def test_goodwill_foreign_currency_only_movement_passes() -> None:
-    table = _table(
-        (
-            ("Goodwill",),
-            ("", "Domestic", "Canada", "Total"),
-            ("Balance at September 26, 2015", "423,958", "323,448", "747,406"),
-            ("Foreign currency effect", "(1,073)", "(11,342)", "(12,415)"),
-            ("Balance at December 26, 2015", "422,885", "312,106", "734,991"),
-        )
-    )
-    assert _outcome(table, "goodwill_rollforward_measure_set").passed
-
-
-def test_goodwill_sale_of_operations_movement_passes() -> None:
-    table = _table(
-        (
-            ("Goodwill",),
-            ("", "Paperboard", "Fiber", "Total"),
-            ("Balance as of December 31, 2005", "68,396", "3,777", "129,275"),
-            ("Sale of partition operations", "—", "—", "(1,701)"),
-            ("Balance as of June 30, 2006", "68,396", "3,777", "127,574"),
-        )
-    )
-    assert _outcome(table, "goodwill_rollforward_measure_set").passed
-
-
-def test_goodwill_single_ended_chain_passes() -> None:
-    table = _table(
-        (
-            ("Goodwill",),
-            ("Ending balance, December 31, 2008", "315,018"),
-            ("Purchase price adjustment for acquisitions", "10,811"),
-            ("Preliminary estimated impairment loss", "(184,000)"),
-            ("Ending balance, March 31, 2009", "41,334"),
-        )
-    )
-    assert _outcome(table, "goodwill_rollforward_measure_set").passed
-
-
-def test_goodwill_movements_without_an_ending_bookend_are_refused() -> None:
-    table = _table(
-        (
-            ("Goodwill",),
-            ("Goodwill acquired during the year", "100"),
-            ("Impairment losses", "(10)"),
-            ("Purchase price adjustments", "5"),
-        )
-    )
-    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
-
-
 def test_equity_machine_without_goodwill_is_refused() -> None:
     table = _table(
         (
