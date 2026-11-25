@@ -10,7 +10,10 @@ from __future__ import annotations
 from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     apply_admissions,
 )
-from edgar_sec.engine.tables.extraction.seats.aoci_gate import aoci_gate_detail
+from edgar_sec.engine.tables.extraction.seats.aoci_gate import (
+    aoci_gate_detail,
+    component_grid,
+)
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     failing_combined_operations_separator_outcome,
 )
@@ -283,6 +286,18 @@ def compete(
     # families' priced seat tests seat them at the claim floor
     # — registry data in seat_floor_specs.SEAT_FLOOR_SPECS.
     scores = apply_seat_floor(geometry, scores, claims, hard_vetoed, floor=CLAIM_FLOOR)
+    # AOCI component-grid seat (priced): a geometry carrying the
+    # family's component-grid form seats aoci_rollforward even
+    # when signature dominance or a protective hard veto bars
+    # the scored claim — the form test is aoci_gate's, and its
+    # movement/column arms keep other families' walks and full
+    # equity statements out.
+    if "aoci_rollforward" not in claims and component_grid(geometry):
+        scores = seat_at_floor(
+            scores, "aoci_rollforward", "aoci component-grid seat", CLAIM_FLOOR
+        )
+        claims.append("aoci_rollforward")
+        reach.append("aoci_rollforward")
     # Combined operations separator gate (priced): a
     # combined_operations_ci claim is refused when the stamped
     # separator outcome fired. It binds after the seat-at-floor
