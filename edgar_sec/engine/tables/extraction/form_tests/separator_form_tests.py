@@ -42,6 +42,9 @@ from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence
 from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evidence import (
     evaluate_form_test_goodwill_separator,
 )
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_foreign_separator_evidence import (
+    evaluate_form_test_goodwill_foreign_separator,
+)
 from edgar_sec.engine.tables.extraction.evidence.form.form_separation_evidence import (
     evaluate_form_test_form_separation,
 )
@@ -230,6 +233,22 @@ def _evaluate_goodwill_separator(
     table: TypedTable, spec: FormTestSpec
 ) -> FormTestOutcome:
     result = evaluate_form_test_goodwill_separator(table, spec)
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        not result.fired,
+        result.evaluable,
+        0,
+        spec.points,
+        result.detail,
+    )
+
+
+def _evaluate_goodwill_foreign_separator(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    result = evaluate_form_test_goodwill_foreign_separator(table, spec)
     return FormTestOutcome(
         spec.family,
         spec.test_id,

@@ -42,6 +42,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_EPS_PROFORMA_REFUSAL,
     TEST_EQUITY_SEPARATOR,
     TEST_FORM_SEPARATION,
+    TEST_GOODWILL_FOREIGN_SEPARATOR,
     TEST_GOODWILL_SEPARATOR,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
@@ -538,7 +539,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
             "unmeasured",
         ),
         SEAT_SIGNATURE,
-        form_tests=(TEST_MEASURE_SET, TEST_GOODWILL_SEPARATOR),
+        form_tests=(
+            TEST_MEASURE_SET,
+            TEST_GOODWILL_SEPARATOR,
+            TEST_GOODWILL_FOREIGN_SEPARATOR,
+        ),
         note="the goodwill rollforward as filed: beginning and "
         "ending bookends, anchored or dated, with at least one "
         "ASC 350 movement between and goodwill as the walked "
