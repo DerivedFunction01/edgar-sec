@@ -79,7 +79,9 @@ def test_seat_is_declared_as_form_test_data():
     assert entry.kind == TEST_TAX_EVIDENCE
     assert entry.points == 0.0
     assert TAX_EVIDENCE_SPECS_BY_TEST_ID[entry.test_id] is SPEC
-    assert SPEC.seat_veto_precedence_terms == ("ended march",)
+    assert SPEC.stub_anchor_terms == ("statutory", "computed expected")
+    assert SPEC.seat_veto_precedence_terms == ("ended march", "total")
+    assert SPEC.seat_veto_precedence_floor_terms == ("total",)
     assert TEST_TAX_EVIDENCE in profile_for("tax_reconciliation").form_tests
 
 
@@ -92,6 +94,18 @@ def test_both_legs_admit():
         SPEC,
     )
     assert verdict.admitted
+
+
+def test_computed_expected_anchor_admits():
+    verdict = evaluate_tax_evidence(
+        TaxText(
+            stub_text="computed expected income tax benefit state income taxes",
+            lead_text="the provision for income taxes consists of",
+        ),
+        SPEC,
+    )
+    assert verdict.admitted
+    assert "computed expected" in verdict.detail
 
 
 def test_anchor_alone_refuses():
@@ -231,6 +245,31 @@ def test_seat_replaces_the_scored_claim_with_its_own():
     assert result.claims == ("tax_reconciliation",)
     trail = result.scores["tax_reconciliation"].evidence
     assert any(item.channel == "gate" and "displaces" in item.detail for item in trail)
+
+
+def test_seat_outranks_the_total_body_veto_above_the_floor():
+    geometry = GeometryText(
+        stubs=(
+            "Income tax at statutory rate",
+            "Reconciling items",
+            "Other adjustments",
+            "Total tax expense",
+        ),
+        grid_text="income tax at statutory rate total tax expense",
+        form_tests=(_passed_outcome(),),
+    )
+    result = compete(geometry, terms=_TAX_TERMS)
+    assert result.claims == ("tax_reconciliation",)
+
+
+def test_total_body_veto_bars_the_seat_below_the_floor():
+    geometry = GeometryText(
+        stubs=("Income tax at statutory rate", "Total tax expense"),
+        grid_text="income tax at statutory rate total tax expense",
+        form_tests=(_passed_outcome(),),
+    )
+    result = compete(geometry, terms=())
+    assert "tax_reconciliation" not in result.claims
 
 
 def test_seat_outranks_the_ended_march_lead_veto():

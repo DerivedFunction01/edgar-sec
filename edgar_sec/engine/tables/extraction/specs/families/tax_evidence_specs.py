@@ -20,6 +20,7 @@ class TaxEvidenceSpec:
     stub_anchor_terms: tuple[str, ...]
     lead_context_terms: tuple[str, ...]
     seat_veto_precedence_terms: tuple[str, ...] = ()
+    seat_veto_precedence_floor_terms: tuple[str, ...] = ()
     provenance: str = PROV_RULING18_PRICING
 
 
@@ -29,9 +30,10 @@ TAX_EVIDENCE_SPECS: dict[str, TaxEvidenceSpec] = {
     "tax_reconciliation": TaxEvidenceSpec(
         family="tax_reconciliation",
         test_id="tax_reconciliation_statutory_anchor_seat",
-        stub_anchor_terms=("statutory",),
+        stub_anchor_terms=("statutory", "computed expected"),
         lead_context_terms=("tax",),
-        seat_veto_precedence_terms=("ended march",),
+        seat_veto_precedence_terms=("ended march", "total"),
+        seat_veto_precedence_floor_terms=("total",),
     ),
 }
 

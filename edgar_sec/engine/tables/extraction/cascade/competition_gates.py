@@ -186,10 +186,18 @@ def apply_tax_seat(claims, contested, scores, geometry, hard_vetoed, floor):
             )
         # Seat precedence: the seat outranks the recorded hard
         # term in its precedence set; any other term bars it.
-        if hard_vetoed.get("tax_reconciliation") in (
-            None,
-            *tax_spec.seat_veto_precedence_terms,
-        ):
+        # A floor term counts only when the family's scored
+        # total clears the claim floor.
+        hard = hard_vetoed.get("tax_reconciliation")
+        tax_score = scores.get("tax_reconciliation")
+        precedence = hard is None or (
+            hard in tax_spec.seat_veto_precedence_terms
+            and (
+                hard not in tax_spec.seat_veto_precedence_floor_terms
+                or (tax_score is not None and tax_score.total >= floor)
+            )
+        )
+        if precedence:
             tax_outcome = next(
                 (o for o in geometry.form_tests if o.test_id == tax_spec.test_id),
                 None,
