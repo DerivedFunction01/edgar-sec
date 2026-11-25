@@ -7,6 +7,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_GOODWILL_SEPARATOR,
+)
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
@@ -24,6 +27,7 @@ __all__ = [
     "RollforwardGridText",
     "evaluate_form_test_goodwill_separator",
     "evaluate_goodwill_separator",
+    "failing_goodwill_separator_outcome",
     "fired_separator_outcome",
 ]
 
@@ -86,6 +90,15 @@ def evaluate_goodwill_separator(
         detail = "separator fired: " + ", ".join(legs)
         return GoodwillSeparatorVerdict(True, True, tuple(legs), detail)
     return GoodwillSeparatorVerdict(False, True, (), "separator clear")
+
+
+def failing_goodwill_separator_outcome(form_tests):
+    """The stamped separator outcome failing this family's gate.
+
+    Delegates to the homed outcome reader in core_form_evidence."""
+    return fired_separator_outcome(
+        form_tests, "goodwill_rollforward", TEST_GOODWILL_SEPARATOR
+    )
 
 
 # ---------------- production wiring (stage adapter + gate) ----------------

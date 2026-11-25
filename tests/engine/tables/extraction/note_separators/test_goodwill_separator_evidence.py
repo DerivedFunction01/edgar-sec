@@ -280,6 +280,22 @@ def test_gate_removes_claim_on_fired_outcome():
     )
 
 
+def test_gate_binds_after_the_measure_set_seat():
+    measure_set = FormTestOutcome(
+        FAMILY,
+        "goodwill_rollforward_measure_set",
+        "measure_set",
+        True,
+        True,
+        0,
+        3.0,
+        "measure set passed",
+    )
+    geometry = GeometryText(form_tests=(measure_set, _outcome(False)))
+    result = compete(geometry, scores=dict(_SCORE))
+    assert FAMILY not in result.claims
+
+
 def test_gate_keeps_claim_on_clear_outcome():
     geometry = GeometryText(form_tests=(_outcome(True),))
     result = compete(geometry, scores=dict(_SCORE))
