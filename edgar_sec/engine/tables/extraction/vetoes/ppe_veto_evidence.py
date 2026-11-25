@@ -8,9 +8,15 @@ from __future__ import annotations
 from typing import NamedTuple
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.specs.families.ppe_specs import (
+    PPE_EVIDENCE_SPECS,
+)
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     ADMISSION_FORM_TEST_DETAILS,
     CLASS_TERMS,
+    DISCIPLINE_CLASS_MIN,
+    DISCIPLINE_NUMERIC_MIN,
+    DISCIPLINE_S3_NUMERIC_MIN,
     HOST_MIN_SHARED_KEYS,
     LEAD_BALANCE_MIN,
     LEG_COEX_LEAD,
@@ -81,6 +87,15 @@ def _form_test_admission_seat(result) -> bool:
     if score is None:
         return False
     return set(ADMISSION_FORM_TEST_DETAILS) <= passed_form_test_details(score)
+
+
+def _discipline_admission_seat(geometry, result) -> bool:
+    """The claim is a discipline-form admission seat: group
+    state admission, the discipline form firing."""
+    group = next((g for g in result.groups if g.family == PPE_FAMILY), None)
+    if group is None or group.state != "admission":
+        return False
+    return discipline_form_fires(geometry, result.scores.get(PPE_FAMILY))
 
 
 def _host_claim_fires(geometry, result) -> bool:
@@ -155,6 +170,44 @@ def _class_diversity(geometry) -> int:
     return sum(1 for term in CLASS_TERMS if term in text)
 
 
+def discipline_form_fires(geometry, score) -> bool:
+    """The geometry carries the PPE discipline form and
+    no balance-sheet head (enlarged-set pricing)."""
+    if score is None or score.total <= 0.0:
+        return False
+    head = [normalize_text(s) for s in geometry.stubs if s.strip()][:8]
+    if any("balance sheet" in s for s in head):
+        return False
+    if any("current assets" in s for s in head) and any("cash" in s for s in head):
+        return False
+    spec = PPE_EVIDENCE_SPECS[PPE_FAMILY]
+    stub_join = " || ".join({normalize_text(s) for s in geometry.stubs})
+    head_join = " || ".join({normalize_text(s) for s in geometry.headers})
+    grid = normalize_text(geometry.grid_text)
+    contra = spec.contra_term in stub_join or spec.contra_term in grid
+    classes = sum(1 for term in CLASS_TERMS if term in stub_join or term in head_join)
+    numeric = (
+        geometry.data_rows >= DISCIPLINE_NUMERIC_MIN
+        and geometry.numeric_cells >= DISCIPLINE_NUMERIC_MIN
+    )
+    net = any(lit in stub_join or lit in grid for lit in spec.net_close_literals)
+    col1 = (
+        spec.col1_header_terms[0] in head_join or spec.col1_header_terms[0] in stub_join
+    ) and contra
+    s3 = (
+        spec.s3_marker_term in grid or any(term in grid for term in spec.s3_cost_terms)
+    ) and "real estate" in grid
+    if classes >= DISCIPLINE_CLASS_MIN and (contra or net) and numeric:
+        return True
+    if col1 and numeric:
+        return True
+    return (
+        s3
+        and geometry.data_rows >= DISCIPLINE_S3_NUMERIC_MIN
+        and geometry.numeric_cells >= DISCIPLINE_S3_NUMERIC_MIN
+    )
+
+
 def _weak_signature_fires(geometry, result) -> bool:
     """Weak-band signature mass over near-single-class stubs."""
     score = result.scores.get(PPE_FAMILY)
@@ -204,9 +257,12 @@ def _fired_legs(geometries, results, stages, index):
         legs.append(LEG_LEAD_BALANCE)
     if _context_carried_fires(geometries, results, index, result):
         legs.append(LEG_CONTEXT_CARRIED)
-    # The precision packet's legs skip a form-test admission
-    # seat: its evidence, not the veto, earned the claim.
-    if not _form_test_admission_seat(result):
+    # The precision packet's legs skip an admission seat
+    # whose form earned the claim: form-test pair or the
+    # discipline form, not the veto, earned it.
+    if not _form_test_admission_seat(result) and not _discipline_admission_seat(
+        geometry, result
+    ):
         if _weak_signature_fires(geometry, result):
             legs.append(LEG_WEAK_SIGNATURE)
         if _coex_lead_fires(result):

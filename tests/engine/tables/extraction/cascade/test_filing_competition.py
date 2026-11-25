@@ -258,6 +258,123 @@ def test_seat_group_carries_role_and_veto_flags() -> None:
     assert group.channels == {"form_test": 4.0, "veto": -1.5}
 
 
+_SCHEDULE_STUBS = (
+    "Land",
+    "Buildings and improvements",
+    "Machinery and equipment",
+    "Less accumulated depreciation",
+    "Property, plant and equipment, net",
+)
+
+
+def test_leg_d_seats_a_discipline_schedule() -> None:
+    result = _unclaimed(12.0, {"stub": 12.0})
+    geometry = GeometryText(stubs=_SCHEDULE_STUBS, data_rows=5, numeric_cells=10)
+    out = _seat([(geometry, result)])
+    assert out[0].claims == ("ppe",)
+    assert out[0].groups[-1].state == "admission"
+
+
+def test_leg_d_seats_the_col1_form() -> None:
+    result = _unclaimed(6.6, {"stub": 6.6})
+    geometry = GeometryText(
+        stubs=("Subscriber system assets, net",),
+        headers=("Gross carrying amount", "Accumulated depreciation"),
+        grid_text="Accumulated depreciation",
+        data_rows=3,
+        numeric_cells=6,
+    )
+    out = _seat([(geometry, result)])
+    assert out[0].claims == ("ppe",)
+
+
+def test_leg_d_seats_classes_carried_in_headers() -> None:
+    result = _unclaimed(4.2, {"stub": 4.2})
+    geometry = GeometryText(
+        stubs=(
+            "Additions during period",
+            "Reconciliation of accumulated depreciation",
+            "Balance at end of period",
+        ),
+        headers=(
+            "SERIES 7",
+            "Reconciliation of Land, Building & Improvements",
+        ),
+        data_rows=15,
+        numeric_cells=15,
+    )
+    out = _seat([(geometry, result)])
+    assert out[0].claims == ("ppe",)
+
+
+def test_leg_d_seats_the_col1_form_carried_in_stubs() -> None:
+    result = _unclaimed(6.6, {"stub": 6.6})
+    geometry = GeometryText(
+        stubs=(
+            "Gross carrying amount",
+            "Accumulated depreciation",
+            "Subscriber system assets, net",
+        ),
+        headers=("(in thousands)", "September 30, 2018"),
+        data_rows=3,
+        numeric_cells=6,
+    )
+    out = _seat([(geometry, result)])
+    assert out[0].claims == ("ppe",)
+
+
+def test_leg_d_refuses_a_balance_sheet_head() -> None:
+    result = _unclaimed(20.0, {"stub": 20.0})
+    geometry = GeometryText(
+        stubs=(
+            "ASSETS",
+            "Current Assets:",
+            "Cash and cash equivalents",
+        )
+        + _SCHEDULE_STUBS,
+        data_rows=9,
+        numeric_cells=30,
+    )
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_leg_d_refuses_a_balance_sheet_title() -> None:
+    result = _unclaimed(20.0, {"stub": 20.0})
+    geometry = GeometryText(
+        stubs=("Condensed Consolidated Balance Sheets",) + _SCHEDULE_STUBS,
+        data_rows=9,
+        numeric_cells=30,
+    )
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_leg_d_needs_a_positive_score() -> None:
+    result = _unclaimed(0.0, {"stub": 0.0})
+    geometry = GeometryText(stubs=_SCHEDULE_STUBS, data_rows=5, numeric_cells=10)
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_leg_d_needs_two_classes() -> None:
+    result = _unclaimed(9.0, {"stub": 9.0})
+    geometry = GeometryText(
+        stubs=("Land", "Less accumulated depreciation"),
+        data_rows=3,
+        numeric_cells=6,
+    )
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
+def test_leg_d_needs_numeric_mass() -> None:
+    result = _unclaimed(9.0, {"stub": 9.0})
+    geometry = GeometryText(stubs=_SCHEDULE_STUBS, data_rows=1, numeric_cells=1)
+    out = _seat([(geometry, result)])
+    assert out[0] is result
+
+
 def test_compete_filing_seats_the_vetoed_schedule() -> None:
     outcomes = (
         FormTestOutcome("ppe", "ppe_evidence", "form", True, True, 0, 3.0, ""),

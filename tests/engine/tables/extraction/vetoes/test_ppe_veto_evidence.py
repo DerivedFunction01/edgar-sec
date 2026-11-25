@@ -440,6 +440,30 @@ def test_packet_legs_skip_statement_form_on_an_admission_seat():
     assert _gate_details(results[0]) == []
 
 
+_DISCIPLINE_STUBS = (
+    "Land",
+    "Buildings and improvements",
+    "Machinery and equipment",
+    "Less accumulated depreciation",
+    "Property, plant and equipment, net",
+)
+
+
+def test_packet_legs_skip_statement_form_on_a_discipline_seat():
+    geo = GeometryText(stubs=_DISCIPLINE_STUBS, data_rows=34, numeric_cells=102)
+    results = _apply([geo], [_seated_result(9.0, {"stub": 9.0}, ())])
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_discipline_skip_needs_the_admission_state():
+    geo = GeometryText(stubs=_DISCIPLINE_STUBS, data_rows=34, numeric_cells=102)
+    seated = _seated_result(9.0, {"stub": 9.0}, (), state="claimed")
+    results = _apply([geo], [seated])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: Bstmt30x100"]
+
+
 def test_skip_needs_both_form_tests_passed():
     geo = GeometryText(stubs=("Land",))
     results = _apply([geo], [_seated_result(3.0, {"stub": 3.0}, _BOTH_PASSED[1:])])

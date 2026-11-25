@@ -35,6 +35,13 @@ OVSEAT_TERM = "acquisition"
 OVSEAT_SIG_FLOOR = 5.0
 ADMISSION_FORM_TEST_DETAILS = ("ppe_evidence passed", "ppe_row_bound passed")
 
+# The discipline seat (Leg D, enlarged-set pricing): the
+# class-diversity and numeric floors of the family's
+# discipline form, and its Schedule III numeric floor.
+DISCIPLINE_CLASS_MIN = 2
+DISCIPLINE_NUMERIC_MIN = 2
+DISCIPLINE_S3_NUMERIC_MIN = 3
+
 # PPE asset-class terms: a geometry's class diversity is
 # the count of these terms its normalized stubs carry.
 CLASS_TERMS = (
