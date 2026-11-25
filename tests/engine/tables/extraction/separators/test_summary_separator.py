@@ -402,13 +402,11 @@ def test_gate_spares_seat_tax_claim_under_mda_fire() -> None:
     assert result.claims == ("tax_reconciliation",)
     debt_evidence = result.scores["debt_maturity"].evidence
     assert any(
-        e.channel == "gate" and "summary separator" in e.detail
-        for e in debt_evidence
+        e.channel == "gate" and "summary separator" in e.detail for e in debt_evidence
     )
     tax_evidence = result.scores["tax_reconciliation"].evidence
     assert any(
-        e.channel == "gate" and "tax seat precedence" in e.detail
-        for e in tax_evidence
+        e.channel == "gate" and "tax seat precedence" in e.detail for e in tax_evidence
     )
 
 

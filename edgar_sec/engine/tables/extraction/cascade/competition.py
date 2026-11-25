@@ -343,8 +343,7 @@ def compete(
                 + (
                     ClaimEvidence(
                         "gate",
-                        f"summary separator: {separator.detail}; "
-                        "tax seat precedence",
+                        f"summary separator: {separator.detail}; tax seat precedence",
                         0.0,
                     ),
                 ),
