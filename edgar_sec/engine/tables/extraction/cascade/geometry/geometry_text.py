@@ -20,7 +20,10 @@ from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
     LeaseSeparatorText,
+    column_mass_shares,
+    period_stub_present,
     stub_ladder_purity,
+    transposed_period_axis,
     year_span_prod,
 )
 from edgar_sec.engine.tables.extraction.separators.summary_separator import (
@@ -94,6 +97,10 @@ class GeometryText:
     table_index: int = 0
     year_span: int = 0
     stub_ladder_purity: float = 0.0
+    period_stub_present: bool | None = None
+    transposed_period_axis: bool | None = None
+    lease_mass_share: float | None = None
+    foreign_mass_share: float | None = None
 
     @property
     def stub_text(self) -> str:
@@ -166,4 +173,12 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         table_index=context.table_index,
         year_span=year_span_prod(separator_text),
         stub_ladder_purity=stub_ladder_purity(separator_text) or 0.0,
+        period_stub_present=period_stub_present(separator_text),
+        transposed_period_axis=transposed_period_axis(separator_text),
+        lease_mass_share=(
+            None
+            if (shares := column_mass_shares(separator_text)) is None
+            else shares[0]
+        ),
+        foreign_mass_share=None if shares is None else shares[1],
     )

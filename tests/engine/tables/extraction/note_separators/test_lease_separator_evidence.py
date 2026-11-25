@@ -453,3 +453,82 @@ def test_geometry_text_carries_span_and_purity():
     geometry = geometry_text_from_table(table, evaluate_stage=False)
     assert geometry.year_span == 3
     assert geometry.stub_ladder_purity == 1.0
+
+
+def test_period_stub_bare_year_and_bands():
+    assert _lse.period_stub_present(LeaseSeparatorText("P | A\n2026 | 1"))
+    assert _lse.period_stub_present(LeaseSeparatorText("P | A\nWithin one year | 1"))
+    assert _lse.period_stub_present(LeaseSeparatorText("P | A\nYear 1 | 1"))
+    assert _lse.period_stub_present(LeaseSeparatorText("P | A\nThereafter | 1"))
+
+
+def test_period_stub_instrument_vintage_is_not_a_period():
+    text = LeaseSeparatorText("P | A\n2019 Credit Agreement | 219.9")
+    assert not _lse.period_stub_present(text)
+
+
+def test_transposed_axis_needs_period_columns_and_lease_stubs():
+    transposed = LeaseSeparatorText(
+        " | Total | 2020 | 2021 | 2022 | Thereafter\n"
+        "Capital lease obligations | 41 | 13 | 10 | 7 | 0"
+    )
+    assert _lse.transposed_period_axis(transposed)
+    balances = LeaseSeparatorText(
+        "(in millions) | 2019 | 2018\n2019 Credit Agreement | 219.9 | —"
+    )
+    assert not _lse.transposed_period_axis(balances)
+
+
+def test_column_mass_shares_combined_grid():
+    text = LeaseSeparatorText(
+        " | Finance Leases | Debt | Total\n"
+        "2023 | 1.6 | 50.4 | 52.0\n2024 | 0.4 | 260.9 | 261.3"
+    )
+    shares = _lse.column_mass_shares(text)
+    assert shares is not None
+    lease_share, foreign_share = shares
+    assert lease_share < 0.01
+    assert foreign_share > 0.5
+
+
+def test_column_mass_shares_none_for_period_columns():
+    text = LeaseSeparatorText(" | 2023 | 2024\nOperating | 1 | 2")
+    assert _lse.column_mass_shares(text) is None
+
+
+def test_stub_refusal_reason_clauses():
+    assert _lse.stub_refusal_reason(False, False, None) is not None
+    assert _lse.stub_refusal_reason(None, None, None) is None
+    assert _lse.stub_refusal_reason(None, False, None) is None
+    assert _lse.stub_refusal_reason(False, True, None) is None
+    assert _lse.stub_refusal_reason(True, False, None) is None
+    assert _lse.stub_refusal_reason(True, False, (0.001, 0.9)) is not None
+    assert _lse.stub_refusal_reason(True, False, (0.4, 0.6)) is None
+
+
+def test_apply_lease_stub_refusal_removes_only_refused_claims():
+    claimed = CompetitionResult(
+        claims=(FAMILY,),
+        contested=(),
+        scores={FAMILY: FamilyScore(FAMILY, 9.0, {"signature": 9.0}, ())},
+        groups=(),
+    )
+    bare = GeometryText(period_stub_present=False, transposed_period_axis=False)
+    (out,) = _lse.apply_lease_stub_refusal([bare], [claimed])
+    assert out.claims == ()
+    assert out.scores[FAMILY].evidence[-1].channel == "gate"
+    period = GeometryText(period_stub_present=True)
+    (kept,) = _lse.apply_lease_stub_refusal([period], [claimed])
+    assert kept.claims == (FAMILY,)
+    unread = GeometryText()
+    (untouched,) = _lse.apply_lease_stub_refusal([unread], [claimed])
+    assert untouched.claims == (FAMILY,)
+
+
+def test_transposed_axis_comparative_years_do_not_qualify():
+    expense = LeaseSeparatorText(
+        " | 2025 | 2024 | 2023\n"
+        "Operating lease expense | 7,734 | 8,245 | 7,685\n"
+        "Total lease expense | 10,413 | 11,697 | 10,757"
+    )
+    assert not _lse.transposed_period_axis(expense)

@@ -47,6 +47,9 @@ from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_
 from edgar_sec.engine.tables.extraction.seats.lease_span_seat import (
     apply_lease_span_seat,
 )
+from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
+    apply_lease_stub_refusal,
+)
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -288,4 +291,8 @@ def compete_filing(
     segmented = apply_segment_seat(geometries, spanned)
     # Formation seat (priced): lease_maturity seats as the
     # final pass on span and stub purity, debt-seat guarded.
-    return apply_lease_span_seat(geometries, segmented)
+    seated = apply_lease_span_seat(geometries, segmented)
+    # Stub refusal (priced): a lease claim with no period stub
+    # or transposed period axis, or a combined grid whose lease
+    # column is a mass sliver, is refused at the final output.
+    return apply_lease_stub_refusal(geometries, seated)
