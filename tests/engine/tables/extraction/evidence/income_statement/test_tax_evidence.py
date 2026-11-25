@@ -255,7 +255,7 @@ def test_seat_outranks_the_total_body_veto_above_the_floor():
             "Other adjustments",
             "Total tax expense",
         ),
-        grid_text="income tax at statutory rate total tax expense",
+        grid_text="statutory rate reconciling items total tax expense",
         form_tests=(_passed_outcome(),),
     )
     result = compete(geometry, terms=_TAX_TERMS)
