@@ -1,5 +1,5 @@
 """Stock comp separator parameter table (TEST_STOCK_COMP_SEPARATOR).
-The priced legs as built: span_ge_5 and the C2 composition
+The priced legs as built: span_ge_5 and the FULLX composition
 (seat_bound, warrant_vocab, available_pool) read one candidate;
 assign_other reads the filing's candidate set.
 """
