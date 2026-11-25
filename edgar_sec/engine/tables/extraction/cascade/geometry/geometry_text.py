@@ -61,6 +61,7 @@ class GeometryText:
     lead_title: str = ""
     lead: str = ""
     prose_after: str = ""
+    prose_tail: str = ""
     stubs: tuple[str, ...] = ()
     closure_closed: bool | None = None
     note_title: str | None = None
@@ -127,6 +128,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         ),
         lead_title=lead_title_text(context.prose_before or ""),
         prose_after=context.prose_after or "",
+        prose_tail=normalize_text(context.prose_before or "")[-300:],
         stubs=stubs,
         note_title=note.title if note else None,
         section_item=section.item if section else None,
