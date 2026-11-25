@@ -1,8 +1,7 @@
 """Goodwill separator evidence (TEST_GOODWILL_SEPARATOR).
 Evaluates the priced allocation-form conjunction over one table's
 grid: a goodwill_rollforward claim is refused when the geometry
-carries preliminary and final allocation columns, a goodwill line
-among the acquired-asset lines, and no goodwill bookend walk."""
+carries the allocation anatomy and no goodwill bookend walk."""
 
 from __future__ import annotations
 

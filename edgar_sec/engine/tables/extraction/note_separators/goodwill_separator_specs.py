@@ -20,11 +20,9 @@ class GoodwillSeparatorLeg:
 
 @dataclass(frozen=True)
 class GoodwillSeparatorSpec:
-    """One family's separator: the priced legs, held conjunctively.
-    Legs: alloc_columns (the preliminary-side column — preliminary
-    or before-adjustment — against the final allocation column),
-    goodwill_acquired_line (a goodwill line among the acquired
-    assets), no_bookend_walk (no goodwill bookend walk)."""
+    """One family's separator: the priced legs, held conjunctively —
+    the preliminary-side and final allocation columns, a goodwill
+    line among the acquired assets, no goodwill bookend walk."""
 
     family: str
     legs: tuple[GoodwillSeparatorLeg, ...]
