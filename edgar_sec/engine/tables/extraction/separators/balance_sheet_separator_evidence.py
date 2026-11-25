@@ -93,7 +93,10 @@ def evaluate_balance_sheet_separator(
     closing_pair = (
         "total assets" in stub_keys
         and any(k.startswith("total liabilities") for k in stub_keys)
-        and any(k in stub_keys for k in spec.equity_total_keys)
+        and (
+            any(k in stub_keys for k in spec.equity_total_keys)
+            or any(k.startswith("total liabilities and") for k in stub_keys)
+        )
     )
     fired: list[str] = []
     for leg in spec.legs:
