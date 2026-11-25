@@ -79,9 +79,9 @@ def test_seat_is_declared_as_form_test_data():
     assert entry.kind == TEST_TAX_EVIDENCE
     assert entry.points == 0.0
     assert TAX_EVIDENCE_SPECS_BY_TEST_ID[entry.test_id] is SPEC
-    assert SPEC.stub_anchor_terms == ("statutory", "computed expected")
-    assert SPEC.seat_veto_precedence_terms == ("ended march", "total")
-    assert SPEC.seat_veto_precedence_floor_terms == ("total",)
+    assert SPEC.stub_anchor_terms == ("statutory", "computed expected", "expected federal")
+    assert SPEC.seat_veto_precedence_terms == ("ended march", "total", "months ended", "form 10-k")
+    assert SPEC.seat_veto_precedence_floor_terms == ("total", "months ended")
     assert TEST_TAX_EVIDENCE in profile_for("tax_reconciliation").form_tests
 
 
@@ -106,6 +106,30 @@ def test_computed_expected_anchor_admits():
     )
     assert verdict.admitted
     assert "computed expected" in verdict.detail
+
+
+def test_quoted_computed_expected_anchor_admits():
+    verdict = evaluate_tax_evidence(
+        TaxText(
+            stub_text='computed "expected" income tax expense state taxes',
+            lead_text="the provision for income taxes consists of",
+        ),
+        SPEC,
+    )
+    assert verdict.admitted
+    assert "computed expected" in verdict.detail
+
+
+def test_expected_federal_anchor_admits():
+    verdict = evaluate_tax_evidence(
+        TaxText(
+            stub_text="expected federal tax state income taxes other",
+            lead_text="the provision for income taxes consists of",
+        ),
+        SPEC,
+    )
+    assert verdict.admitted
+    assert "expected federal" in verdict.detail
 
 
 def test_anchor_alone_refuses():
@@ -282,7 +306,7 @@ def test_seat_outranks_the_ended_march_lead_veto():
     assert result.claims == ("tax_reconciliation",)
 
 
-def test_months_ended_alone_still_bars_the_seat():
+def test_months_ended_bars_the_seat_below_the_floor():
     geometry = GeometryText(
         stubs=("Income tax at statutory rate", "State taxes, net"),
         lead="income taxes for the six months ended june 30, 2013",
@@ -290,6 +314,30 @@ def test_months_ended_alone_still_bars_the_seat():
     )
     result = compete(geometry, terms=())
     assert "tax_reconciliation" not in result.claims
+
+
+def test_seat_outranks_the_months_ended_veto_above_the_floor():
+    geometry = GeometryText(
+        stubs=(
+            "Income tax at statutory rate",
+            "Reconciling items",
+            "Other adjustments",
+        ),
+        grid_text="statutory rate reconciling items twelve months ended",
+        form_tests=(_passed_outcome(),),
+    )
+    result = compete(geometry, terms=_TAX_TERMS)
+    assert result.claims == ("tax_reconciliation",)
+
+
+def test_seat_outranks_the_form_10k_lead_veto():
+    geometry = GeometryText(
+        stubs=("Income tax at statutory rate", "State taxes, net"),
+        lead="2022 form 10-k income taxes reconciliation follows",
+        form_tests=(_passed_outcome(),),
+    )
+    result = compete(geometry, terms=())
+    assert result.claims == ("tax_reconciliation",)
 
 
 def test_an_earlier_recorded_term_still_bars_the_seat():

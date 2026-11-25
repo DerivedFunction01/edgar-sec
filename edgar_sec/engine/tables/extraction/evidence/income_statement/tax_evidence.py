@@ -7,6 +7,7 @@ family; neither leg alone admits.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
@@ -43,10 +44,21 @@ class TaxEvidence:
     detail: str
 
 
+# Anchor matching folds punctuation runs to single spaces, so a
+# quoted or parenthesized caption ('computed "expected" income
+# tax') matches its plain anchor term.
+_FOLD_RUN = re.compile(r"[^a-z0-9]+")
+
+
+def _folded(text: str) -> str:
+    return _FOLD_RUN.sub(" ", text).strip()
+
+
 def evaluate_tax_evidence(text: TaxText, spec: TaxEvidenceSpec) -> TaxEvidence:
     """Admit only when both legs of the conjunction are present."""
+    stub = _folded(text.stub_text)
     anchor = next(
-        (term for term in spec.stub_anchor_terms if term in text.stub_text),
+        (term for term in spec.stub_anchor_terms if _folded(term) in stub),
         None,
     )
     if anchor is None:
