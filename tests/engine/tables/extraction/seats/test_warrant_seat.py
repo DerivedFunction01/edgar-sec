@@ -184,11 +184,33 @@ def test_leg_f_seats_beside_a_seated_sibling() -> None:
     head = GeometryText(form_tests=(_outcome(ROLL, True, (True,) * 6),))
     pair = GeometryText(
         stubs=("warrants granted",),
-        form_tests=(_outcome(ROLL, False, (False, True, False, False, True, False)),),
+        prose_tail=INTRO,
+        form_tests=(
+            _outcome(ROLL, False, (False, True, False, False, False, False)),
+            _outcome(LIST, False, (True, False, False, False)),
+        ),
     )
     out = _seat([head, pair], [_result(), _result()])
     assert out[0].claims == (W,)
     assert out[1].claims == (W,)
+
+
+def test_leg_f_refuses_below_the_candidate_floor() -> None:
+    head = GeometryText(form_tests=(_outcome(ROLL, True, (True,) * 6),))
+    pair = GeometryText(
+        stubs=("warrants granted",),
+        form_tests=(_outcome(ROLL, False, (False, True, False, False, True, False)),),
+    )
+    out = _seat([head, pair], [_result(), _result()])
+    assert out[0].claims == (W,)
+    assert out[1].claims == ()
+
+
+def test_leg_g2_refuses_a_valuation_assumptions_claim() -> None:
+    geometry = GeometryText(form_tests=(_outcome(LIST, True, (True,) * 4),))
+    result = _result(claims=("valuation_model_assumptions",))
+    (out,) = _seat([geometry], [result])
+    assert out is result
 
 
 def test_leg_f_refuses_without_a_seated_sibling() -> None:

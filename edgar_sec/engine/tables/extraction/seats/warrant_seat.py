@@ -143,7 +143,12 @@ def _apply_legs(geometry: GeometryText, result: CompetitionResult) -> Competitio
         return _seat(geometry, result)
     if claims == ("fair_value",) and _prose_introduces(geometry):
         return _seat(geometry, result)
-    if claims and "cover_layout" not in claims and passed:
+    if (
+        claims
+        and "cover_layout" not in claims
+        and "valuation_model_assumptions" not in claims
+        and passed
+    ):
         return _seat(geometry, result)
     if (
         not claims
@@ -171,10 +176,18 @@ def _pair_seat(
     index: int,
 ) -> CompetitionResult:
     """Leg F: a subject- or intro-bearing skeleton geometry seats
-    when a sibling geometry in the filing is warrant-seated."""
+    when a sibling is warrant-seated; the geometry itself must
+    carry candidate-floor evidence (the priced universe)."""
     if FAMILY in result.claims:
         return result
     if base_claims not in ((), ("fair_value",)):
+        return result
+    if not (
+        _test_passed(geometry)
+        or _group_count(geometry, ROLL) >= 3
+        or _group_count(geometry, LIST) >= LIST_MIN
+        or _prose_introduces(geometry)
+    ):
         return result
     if not (_subject_on_table(geometry) or _prose_introduces(geometry)):
         return result
