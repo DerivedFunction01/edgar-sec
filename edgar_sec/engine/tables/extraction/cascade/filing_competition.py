@@ -45,6 +45,9 @@ from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.seats.related_party_seat import (
+    apply_related_party_seat,
+)
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -287,4 +290,7 @@ def compete_filing(
     covered = apply_cover_seat(geometries, spanned)
     # Formation seat (priced): segment_reporting seats on the
     # gate-final unclaimed set its own floor cannot reach.
-    return apply_segment_seat(geometries, covered)
+    segmented = apply_segment_seat(geometries, covered)
+    # Formation seat (priced): related_party seats on the
+    # gate-final unclaimed set its own floor cannot reach.
+    return apply_related_party_seat(geometries, segmented)
