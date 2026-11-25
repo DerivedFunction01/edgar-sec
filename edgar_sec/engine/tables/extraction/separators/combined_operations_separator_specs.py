@@ -31,6 +31,17 @@ class CombinedOperationsSeparatorSpec:
     min_year_columns: int
 
 
+# Location refusals: a combined statement reproduced as a segment-note
+# allocation or comparative-figures restatement is not the family's
+# statement. (field, phrase) pairs over the geometry's text context.
+LOCATION_REFUSALS: tuple[tuple[str, str], ...] = (
+    ("notehead", "segmented information"),
+    ("notehead", "segment information"),
+    ("notehead", "comparative figures"),
+    ("lead_title", "allocation of the statements of operations"),
+    ("leadin", "allocation of the statements of operations"),
+)
+
 COMBINED_OPERATIONS_SEPARATOR_SPECS: dict[str, CombinedOperationsSeparatorSpec] = {
     "combined_operations_ci": CombinedOperationsSeparatorSpec(
         family="combined_operations_ci",
