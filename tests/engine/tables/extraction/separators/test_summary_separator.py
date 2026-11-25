@@ -22,6 +22,9 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
     ContainmentEdge,
     SignatureTerm,
 )
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
+)
 from edgar_sec.engine.tables.extraction.separators.summary_separator import (
     SummarySeparatorResult,
     evaluate_summary_separator,
@@ -365,3 +368,83 @@ def test_gate_silent_when_unstamped_or_unfired() -> None:
         edges=_EDGES,
     )
     assert unfired.claims == ("lease_maturity",)
+
+
+_TAX_SEAT_PASS = FormTestOutcome(
+    "tax_reconciliation",
+    "tax_reconciliation_statutory_anchor_seat",
+    "form",
+    True,
+    True,
+    0,
+    0.0,
+    "tax seat pass",
+)
+
+
+def _tax_geometry(**kwargs: object) -> GeometryText:
+    return GeometryText(
+        caption="Long-term Debt",
+        leadin="Senior notes are outstanding.",
+        stubs=("2026", "Aggregate maturities"),
+        form_tests=(_TAX_SEAT_PASS,),
+        **kwargs,
+    )
+
+
+def test_gate_spares_seat_tax_claim_under_mda_fire() -> None:
+    geometry = _tax_geometry(
+        summary_separator=SummarySeparatorResult(
+            rules=("mda_item7_income_tax_rows12",), sub_masses=("MD&A-SUMMARY",)
+        )
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert result.claims == ("tax_reconciliation",)
+    debt_evidence = result.scores["debt_maturity"].evidence
+    assert any(
+        e.channel == "gate" and "summary separator" in e.detail for e in debt_evidence
+    )
+    tax_evidence = result.scores["tax_reconciliation"].evidence
+    assert any(
+        e.channel == "gate" and "tax seat precedence" in e.detail for e in tax_evidence
+    )
+
+
+def test_gate_denies_tax_claim_under_nongaap_fire() -> None:
+    geometry = _tax_geometry(
+        prose_after="Adjusted results are non-GAAP measures.",
+        summary_separator=SummarySeparatorResult(
+            rules=("nongaap_income_tax", "nongaap_years3"),
+            sub_masses=("NONGAAP-SUMMARY",),
+        ),
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert result.claims == ()
+    tax_evidence = result.scores["tax_reconciliation"].evidence
+    assert any(
+        e.channel == "gate"
+        and "summary separator" in e.detail
+        and "precedence" not in e.detail
+        for e in tax_evidence
+    )
+
+
+def test_gate_denies_tax_claim_under_mixed_mda_nongaap_fire() -> None:
+    geometry = _tax_geometry(
+        summary_separator=SummarySeparatorResult(
+            rules=("mda_item7_income_tax_rows12", "nongaap_years3"),
+            sub_masses=("MD&A-SUMMARY", "NONGAAP-SUMMARY"),
+        )
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert result.claims == ()
+
+
+def test_gate_denies_whole_claim_set_without_a_tax_claim() -> None:
+    geometry = _lease_geometry(
+        summary_separator=SummarySeparatorResult(
+            rules=("mda_item7_income_tax_rows12",), sub_masses=("MD&A-SUMMARY",)
+        )
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert result.claims == ()
