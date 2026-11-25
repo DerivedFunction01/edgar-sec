@@ -120,7 +120,56 @@ def test_seat_refuses_a_hard_vetoed_geometry() -> None:
 
 
 def test_seat_refuses_an_oversize_grid() -> None:
-    out = _seat(_geometry(data_rows=27, numeric_cells=60), _result())
+    out = _seat(_geometry(data_rows=52, numeric_cells=110), _result())
+    assert out.claims == ()
+
+
+def test_seat_fires_on_a_wide_grid_inside_the_row_bound() -> None:
+    out = _seat(_geometry(data_rows=45, numeric_cells=90), _result())
+    assert out.claims == (RP,)
+
+
+def test_seat_fires_past_a_separator_on_corroboration() -> None:
+    geometry = _geometry(
+        summary_separator=SummarySeparatorResult(rules=("mda_rows12",)),
+        stubs=("Due from related parties", "Due to related parties", "Total"),
+    )
+    out = _seat(geometry, _result())
+    assert out.claims == (RP,)
+
+
+def test_seat_fires_past_a_caption_veto_on_corroboration() -> None:
+    geometry = _geometry(
+        grid_text="for the years ended december 31",
+        stubs=("Due from related parties", "Due to related parties", "Total"),
+    )
+    out = _seat(geometry, _result())
+    assert out.claims == (RP,)
+
+
+def test_seat_fires_on_the_affiliate_leg() -> None:
+    geometry = _geometry(
+        lead_title="Amounts due from affiliates",
+        stubs=("Due from affiliates", "Due to affiliates", "Total"),
+    )
+    out = _seat(geometry, _result(0.0))
+    assert out.claims == (RP,)
+
+
+def test_seat_refuses_a_prose_blob_heading() -> None:
+    geometry = _geometry(
+        lead_title=(
+            "The following discussion describes in considerable detail the "
+            "various arrangements and understandings that the company has "
+            "entered into over the course of the periods presented with a "
+            "number of counterparties including certain related party "
+            "arrangements that are more fully described in the accompanying "
+            "notes to the consolidated financial statements included herein "
+            "for the benefit of readers of this annual report on form 10-k "
+            "filed with the securities and exchange commission this year"
+        ),
+    )
+    out = _seat(geometry, _result())
     assert out.claims == ()
 
 

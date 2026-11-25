@@ -22,10 +22,11 @@ from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import term_veto_hits
 
 FAMILY = "related_party"
 
-# Priced over the Round 4 population (77,925 geometries):
-# the composed seat recovers 7 of 7 entered-not-seated
-# members at 0 member touches and 0 truth-none fires.
+# Priced over the re-earned expansion population at the
+# packet tree: the FULLB composition (corroborated guard
+# exceptions, affiliate leg, prose guard, row bound 48).
 HEADING_PHRASES = ("related part", "related person")
+RELATIONAL_HEADING_PHRASES = ("from affiliates", "to affiliates")
 TITLE_PHRASES = ("related part", "related person", "affiliate")
 STUB_PARTY_PHRASES = (
     "related part",
@@ -36,9 +37,11 @@ STUB_PARTY_PHRASES = (
 )
 RELATIONSHIP_PHRASE = "relationship with"
 RELATIONSHIP_CONTEXT = ("subsidiary", "parent compan")
+CAPTION_VETO_TERMS = frozenset({"years", "period"})
+PROSE_HEADING_WORDS = 53
 MIN_DATA_ROWS = 2
 MIN_NUMERIC_CELLS = 2
-MAX_DATA_ROWS = 16
+MAX_DATA_ROWS = 48
 MAX_STUBS = 20
 
 
@@ -65,9 +68,18 @@ def _amounts(geometry: GeometryText) -> bool:
 
 
 def _heading_leg(geometry: GeometryText) -> bool:
-    """The table's own heading names the related-party subject."""
+    """The table's own heading names the related-party
+    subject; a prose-blob heading names nothing."""
     heading = _heading_text(geometry)
+    if len(heading.split()) > PROSE_HEADING_WORDS:
+        return False
     return any(phrase in heading for phrase in HEADING_PHRASES)
+
+
+def _stub_any(geometry: GeometryText) -> bool:
+    """Any stub carries a party form, whatever its title."""
+    stubs = [normalize_text(stub) for stub in geometry.stubs]
+    return any(phrase in stub for stub in stubs for phrase in STUB_PARTY_PHRASES)
 
 
 def _stub_leg(geometry: GeometryText) -> bool:
@@ -89,19 +101,41 @@ def _relationship_leg(geometry: GeometryText) -> bool:
     return any(term in lead for term in RELATIONSHIP_CONTEXT)
 
 
+def _affiliate_leg(geometry: GeometryText) -> bool:
+    """A relational affiliate heading over party-form stubs."""
+    heading = _heading_text(geometry)
+    phrases = HEADING_PHRASES + RELATIONAL_HEADING_PHRASES
+    return any(phrase in heading for phrase in phrases) and _stub_any(geometry)
+
+
+def _hard_terms(hits: dict) -> set[str] | None:
+    """The geometry's hard veto terms for this family."""
+    hard = hits.get("hard")
+    if hard is None:
+        return None
+    if isinstance(hard, str):
+        return {hard}
+    return {str(term) for term in hard}
+
+
 def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:
     """Seat related_party on one unclaimed geometry, or don't."""
     if result.claims:
         return result
+    corroborated = _heading_leg(geometry) and _stub_any(geometry)
     separator = geometry.summary_separator
-    if separator is not None and separator.fired:
+    if separator is not None and separator.fired and not corroborated:
         return result
-    if "hard" in (term_veto_hits(geometry).get(FAMILY) or {}):
+    terms = _hard_terms(term_veto_hits(geometry).get(FAMILY) or {})
+    if terms is not None and not (terms <= CAPTION_VETO_TERMS and corroborated):
         return result
     if not _amounts(geometry):
         return result
     if not (
-        _heading_leg(geometry) or _stub_leg(geometry) or _relationship_leg(geometry)
+        _heading_leg(geometry)
+        or _stub_leg(geometry)
+        or _relationship_leg(geometry)
+        or _affiliate_leg(geometry)
     ):
         return result
     score = result.scores.get(FAMILY)
