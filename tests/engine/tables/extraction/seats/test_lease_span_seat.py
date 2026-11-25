@@ -60,9 +60,7 @@ def _result(
     scores: dict[str, FamilyScore] = {}
     if lease_total is not None:
         scores[LEASE] = FamilyScore(LEASE, lease_total, {"signature": lease_total}, ())
-    return CompetitionResult(
-        claims=claims, contested=(), scores=scores, groups=groups
-    )
+    return CompetitionResult(claims=claims, contested=(), scores=scores, groups=groups)
 
 
 def _seat(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:

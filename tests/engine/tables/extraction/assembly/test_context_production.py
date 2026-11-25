@@ -202,7 +202,11 @@ def test_unlocated_geometry_stays_in_the_input() -> None:
             confidence=1.0,
         ),
         table_geometries=(
-            _geometry(0, _COVER_ROWS, "Title of each class | Trading Symbol\nCommon Stock | ACME"),
+            _geometry(
+                0,
+                _COVER_ROWS,
+                "Title of each class | Trading Symbol\nCommon Stock | ACME",
+            ),
             _geometry(7, _BODY_ROWS, "Not present | 0"),
         ),
     )
