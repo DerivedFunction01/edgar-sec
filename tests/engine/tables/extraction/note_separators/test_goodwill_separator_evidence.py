@@ -118,6 +118,18 @@ def test_conjunction_fires_on_the_before_adjustment_form():
     assert verdict.fired
 
 
+def test_conjunction_fires_with_multiline_header_cells():
+    text = (
+        " | Preliminary\n\nAllocation at\n\n2/12/08 | Adjustments to"
+        " Preliminary Purchase Price | Final Purchase\n\nPrice Allocation\n"
+        "Current assets | $ | 6,956,000 |  | $ | 6,956,000\n"
+        "Goodwill | 59,471,020 | 5,924,000 | 63,029,020\n"
+        "Current liabilities | (7,441,000) |  | (7,441,000)"
+    )
+    verdict = _eval(text)
+    assert verdict.fired
+
+
 def test_packet_and_rows_surfaces_agree():
     rows = (
         ("", "Preliminary allocation", "Final allocation"),

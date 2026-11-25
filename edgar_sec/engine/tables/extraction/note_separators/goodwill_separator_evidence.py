@@ -28,7 +28,7 @@ __all__ = [
     "fired_separator_outcome",
 ]
 
-_HEADER_ROWS = 4
+_HEADER_WINDOW = 2000
 
 
 @dataclass(frozen=True)
@@ -61,7 +61,7 @@ def evaluate_goodwill_separator(
             False, False, (), "separator unevaluable: no grid rows"
         )
     full_text = " ".join(" ".join(cells) for cells in rows).lower()
-    header_zone = " ".join(" ".join(cells) for cells in rows[:_HEADER_ROWS]).lower()
+    header_zone = " ".join(text.table_text.lower().split())[:_HEADER_WINDOW]
     stubs = [next((cell for cell in cells if cell), "").lower() for cells in rows]
     allocation_context = "allocation" in full_text or "acquired" in full_text
     legs: list[str] = []
