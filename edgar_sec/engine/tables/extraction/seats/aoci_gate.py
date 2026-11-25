@@ -1,8 +1,8 @@
 """AOCI claim gates: rollforward-evidence and core-shape verdicts.
 
-Cure 1 gates an equity-seated aoci claim with no rollforward
-evidence; the Step 9 gate requires a standalone claim to carry
-the family's core shape — a balance walk plus an AOCI subject.
+Cure 1 gates an equity-seated aoci claim with no rollforward evidence,
+unless the geometry carries the family's core shape; the Step 9 gate
+requires that core shape — a balance walk plus an AOCI subject.
 """
 
 from __future__ import annotations
@@ -23,6 +23,26 @@ AOCI_GATE_MODE = "seat"
 
 _BALANCE_STUB = re.compile(r"^(balance|aoci at|beginning balance|ending balance)\b")
 
+_MONTHS = (
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+)
+
+
+def _dated_balance(text: str) -> bool:
+    """A balance stub or header carrying a month name."""
+    return text.startswith("balance") and any(m in text for m in _MONTHS)
+
 
 def rollforward_evidence(score) -> bool:
     """Rollforward evidence: framing mass, or a movement-shaped stub."""
@@ -34,9 +54,10 @@ def rollforward_evidence(score) -> bool:
 
 def claim_shape(geometry) -> tuple[bool, bool]:
     """The AOCI core shape, as (walk, subject) legs over the geometry.
-    Walk: both walk-spec anchors hit the stubs, or at least two dated
-    balance stubs; Subject: a movement stub, lead phrase, or components."""
+    Walk: the walk-spec anchors, two dated balance stubs, or a priced
+    dialect; Subject: a movement stub, lead phrase, or components."""
     stubs = [normalize_text(stub) for stub in geometry.stubs]
+    headers = [normalize_text(header) for header in geometry.headers]
     walk_spec = next(
         (
             spec
@@ -54,7 +75,28 @@ def claim_shape(geometry) -> tuple[bool, bool]:
         for stub in stubs
         if _BALANCE_STUB.match(stub) or FULL_DATE_STUB_RE.match(stub)
     )
-    walk = anchored or dated >= 2
+    aoci_dated = sum(
+        1
+        for stub in stubs
+        if stub.startswith("aoci balance") or stub.startswith("aoci at")
+    )
+    # Dialects: dated aoci stubs; the beginning-of-period pair;
+    # a dated stub balance with the beginning balance in the headers.
+    walk = (
+        anchored
+        or dated >= 2
+        or (aoci_dated >= 1 and any("balance" in stub for stub in stubs))
+        or (
+            "balance at beginning of period" in stubs
+            and any(
+                stub.startswith("accumulated other comprehensive") for stub in stubs
+            )
+        )
+        or (
+            any(_dated_balance(stub) for stub in stubs)
+            and any(_dated_balance(header) for header in headers)
+        )
+    )
     spec = AOCI_CLAIM_SHAPE_SPEC
     grid = geometry.grid_text + " " + " ".join(geometry.headers)
     components = sum(1 for term in spec.component_terms if term in grid)
@@ -78,10 +120,16 @@ def aoci_gate_detail(claims: list[str], scores, geometry) -> str | None:
         and "aoci_rollforward" in claims
         and not rollforward_evidence(scores["aoci_rollforward"])
     ):
-        return "aoci: no rollforward evidence"
+        walk, subject = claim_shape(geometry)
+        if not (walk and subject):
+            return "aoci: no rollforward evidence"
     if "aoci_rollforward" in claims and "equity_statement" not in claims:
         walk, subject = claim_shape(geometry)
         if not (walk and subject):
             missing = "walk" if not walk else "subject"
             return f"aoci: claim shape missing {missing}"
+    if "aoci_rollforward" in claims:
+        _, subject = claim_shape(geometry)
+        if not subject:
+            return "aoci: claim shape missing subject"
     return None
