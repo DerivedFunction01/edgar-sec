@@ -1,8 +1,8 @@
 """Input-class evidence seat: canonical classes over the grid.
 
-Evaluates the seat parameters declared as registry data in
-input_class_specs.INPUT_CLASS_EVIDENCE_SPECS; at least
-min_classes distinct classes on the grid text seat the family."""
+Evaluates the parameters in input_class_specs: min_classes
+distinct classes seat the family; a Level 3 group seats on the
+quantitative shape with at least one class from either group."""
 
 from __future__ import annotations
 
@@ -45,9 +45,36 @@ def evaluate_input_class_evidence(
     classes = tuple(t for t in spec.input_classes if t in text.grid_text)
     if len(classes) >= spec.min_classes:
         return InputClassEvidence(True, classes, "input classes: " + ", ".join(classes))
+    level3 = evaluate_level3_evidence(text, spec)
+    if level3.admitted:
+        return level3
     return InputClassEvidence(
         False, classes, f"input classes below {spec.min_classes}: {len(classes)}"
     )
+
+
+def evaluate_level3_evidence(
+    text: InputClassText, spec: InputClassEvidenceSpec
+) -> InputClassEvidence:
+    """The quantitative-shape leg: shape plus one priced class.
+    Shape is the Level 3 caption phrase, or unobservable with
+    valuation and a technique/methodology term, on the grid."""
+    if not spec.level3_input_classes:
+        return InputClassEvidence(False, (), "no level 3 input-class group")
+    grid = text.grid_text
+    shape = "quantitative information about level 3" in grid or (
+        "unobservable" in grid
+        and "valuation" in grid
+        and ("technique" in grid or "methodolog" in grid)
+    )
+    classes = tuple(
+        t for t in spec.input_classes + spec.level3_input_classes if t in grid
+    )
+    if shape and classes:
+        return InputClassEvidence(
+            True, classes, "level 3 quantitative shape, classes: " + ", ".join(classes)
+        )
+    return InputClassEvidence(False, classes, "no level 3 quantitative shape seat")
 
 
 def input_class_evidence_for_geometry(

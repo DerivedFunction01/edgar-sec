@@ -15,12 +15,13 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
 @dataclass(frozen=True, slots=True)
 class InputClassEvidenceSpec:
     """Input-class seat parameters, declared as data.
-    The priced leg: canonical input-class tokens over the grid
-    text; at least min_classes distinct classes seat the family."""
+    Priced leg: min_classes distinct tokens seat the family; a
+    level3_input_classes group seats on the quantitative shape."""
 
     family: str
     input_classes: tuple[str, ...]
     min_classes: int
+    level3_input_classes: tuple[str, ...] = ()
     provenance: str = PROV_R18_SEAT_PRICING
 
 
@@ -53,5 +54,16 @@ INPUT_CLASS_EVIDENCE_SPECS: dict[str, InputClassEvidenceSpec] = {
             "expected dividend",
         ),
         min_classes=3,
+        level3_input_classes=(
+            "prepayment",
+            "default rate",
+            "severity",
+            "pull-through",
+            "discount margin",
+            "probability of success",
+            "market multiple",
+            "contract pricing",
+            "discount applied",
+        ),
     ),
 }

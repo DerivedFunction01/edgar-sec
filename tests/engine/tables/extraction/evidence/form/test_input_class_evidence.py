@@ -162,3 +162,83 @@ def test_no_seat_when_hard_vetoed():
     claims, scores = seat([], {}, hard_vetoed={FAMILY: "some term"})
     assert claims == []
     assert scores == {}
+
+
+LEVEL3_TOKENS = (
+    "prepayment",
+    "default rate",
+    "severity",
+    "pull-through",
+    "discount margin",
+    "probability of success",
+    "market multiple",
+    "contract pricing",
+    "discount applied",
+)
+CAPTION_SHAPE = (
+    "quantitative information about level 3 fair value measurements "
+    "valuation technique unobservable input discount rate"
+)
+TRIPLE_SHAPE = (
+    "valuation technique unobservable inputs range weighted average "
+    "prepayment speed default rate severity"
+)
+
+
+def test_level3_group_verbatim():
+    assert SPEC.level3_input_classes == LEVEL3_TOKENS
+
+
+def test_level3_caption_shape_admits_with_one_class():
+    verdict = input_class_evidence_for_geometry(GeometryText(grid_text=CAPTION_SHAPE))
+    assert verdict.admitted
+    assert verdict.classes_found == ("discount rate",)
+
+
+def test_level3_triple_shape_admits_with_level3_classes():
+    verdict = input_class_evidence_for_geometry(GeometryText(grid_text=TRIPLE_SHAPE))
+    assert verdict.admitted
+    assert "prepayment" in verdict.classes_found
+    assert "severity" in verdict.classes_found
+
+
+def test_level3_shape_without_any_class_refused():
+    verdict = input_class_evidence_for_geometry(
+        GeometryText(
+            grid_text="quantitative information about level 3 "
+            "fair value measurements narrative discussion"
+        )
+    )
+    assert not verdict.admitted
+
+
+def test_level3_class_without_shape_refused():
+    verdict = input_class_evidence_for_geometry(
+        GeometryText(grid_text="the prepayment speed and severity of the pool")
+    )
+    assert not verdict.admitted
+
+
+def test_level3_prose_shape_refused():
+    verdict = input_class_evidence_for_geometry(
+        GeometryText(
+            grid_text="our valuation technique uses unobservable inputs; "
+            "the hierarchy definitions follow in prose"
+        )
+    )
+    assert not verdict.admitted
+
+
+def test_level3_seat_creates_claim_at_floor():
+    claims, scores = seat([], {}, grid_text=CAPTION_SHAPE)
+    assert claims == [FAMILY]
+    assert scores[FAMILY].total == CLAIM_FLOOR
+    assert scores[FAMILY].by_channel == {"gate": CLAIM_FLOOR}
+
+
+def test_level3_seat_beside_fair_value_claim():
+    other = FamilyScore("fair_value", 9.0, {"stub": 9.0}, ())
+    claims, scores = seat(["fair_value"], {"fair_value": other}, grid_text=TRIPLE_SHAPE)
+    assert claims == ["fair_value", FAMILY]
+    assert scores["fair_value"] == other
+    assert scores[FAMILY].total == CLAIM_FLOOR

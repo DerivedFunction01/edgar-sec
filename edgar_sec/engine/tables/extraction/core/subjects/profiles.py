@@ -491,15 +491,17 @@ PROFILES: tuple[FamilyProfile, ...] = (
             None,
             None,
             note="seated Step 3 on the priced input-group measure "
-            "set with the Level 3 refusal; sealed-protocol "
+            "set; the Level 3 quantitative form seated on the "
+            "priced Level 3 input group; sealed-protocol "
             "precision/recall unmeasured",
         ),
         SEAT_SIGNATURE,
         form_tests=(TEST_MEASURE_SET,),
         note="the option-pricing input set as filed (volatility, "
         "dividends, term, risk-free rate, prices, discount rate) "
-        "under any model name; ASC 820 Level 3 unobservable-input "
-        "tables are fair_value content and are refused by term",
+        "under any model name, and the ASC 820 Level 3 "
+        "quantitative-information form (valuation technique, "
+        "unobservable inputs, ranges) as its second form",
         provenance=PROV_STEP3_PRICING,
     ),
     FamilyProfile(
