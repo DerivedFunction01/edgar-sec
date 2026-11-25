@@ -7,7 +7,6 @@ family; neither leg alone admits.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
@@ -17,6 +16,7 @@ from edgar_sec.engine.tables.extraction.specs.families.tax_evidence_specs import
     TaxEvidenceSpec,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
+from edgar_sec.foundation.text.patterns import RE_NON_ALNUM
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,11 +47,8 @@ class TaxEvidence:
 # Anchor matching folds punctuation runs to single spaces, so a
 # quoted or parenthesized caption ('computed "expected" income
 # tax') matches its plain anchor term.
-_FOLD_RUN = re.compile(r"[^a-z0-9]+")
-
-
 def _folded(text: str) -> str:
-    return _FOLD_RUN.sub(" ", text).strip()
+    return RE_NON_ALNUM.sub(" ", text).strip()
 
 
 def evaluate_tax_evidence(text: TaxText, spec: TaxEvidenceSpec) -> TaxEvidence:
