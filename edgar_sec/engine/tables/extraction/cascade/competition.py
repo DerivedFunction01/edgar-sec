@@ -16,6 +16,7 @@ from edgar_sec.engine.tables.extraction.seats.aoci_gate import (
 )
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     failing_combined_operations_separator_outcome,
+    location_refusal_detail,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
@@ -338,6 +339,13 @@ def compete(
     # core refuses — where the sibling separators bind earlier.
     if "combined_operations_ci" in claims:
         fired = failing_combined_operations_separator_outcome(geometry.form_tests)
+        if fired is None:
+            refusal = location_refusal_detail(geometry)
+            if refusal is not None:
+                claims.remove("combined_operations_ci")
+                if "combined_operations_ci" in contested:
+                    contested.remove("combined_operations_ci")
+                scores = append_note(scores, "combined_operations_ci", "gate", refusal)
         if fired is not None:
             claims.remove("combined_operations_ci")
             if "combined_operations_ci" in contested:
