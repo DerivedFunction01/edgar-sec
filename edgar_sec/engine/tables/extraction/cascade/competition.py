@@ -305,7 +305,19 @@ def compete(
     # of a statement), claimed by no family (S1 pricing covers).
     separator = geometry.summary_separator
     if separator is not None and separator.fired and claims:
-        removed, claims, contested = tuple(claims), [], []
+        # Tax precedence (priced): a tax claim at the gate is a
+        # seat admission; it survives a non-NONGAAP fire.
+        keep_tax = (
+            "tax_reconciliation" in claims
+            and "NONGAAP-SUMMARY" not in separator.sub_masses
+        )
+        removed = tuple(
+            family
+            for family in claims
+            if not (keep_tax and family == "tax_reconciliation")
+        )
+        claims = ["tax_reconciliation"] if keep_tax else []
+        contested = [family for family in contested if family not in removed]
         reach = [family for family in reach if family not in removed]
         scores = dict(scores)
         for family in removed:
@@ -318,6 +330,22 @@ def compete(
                 + (
                     ClaimEvidence(
                         "gate", f"summary separator: {separator.detail}", 0.0
+                    ),
+                ),
+            )
+        if keep_tax:
+            gated = scores["tax_reconciliation"]
+            scores["tax_reconciliation"] = FamilyScore(
+                gated.family,
+                gated.total,
+                dict(gated.by_channel),
+                gated.evidence
+                + (
+                    ClaimEvidence(
+                        "gate",
+                        f"summary separator: {separator.detail}; "
+                        "tax seat precedence",
+                        0.0,
                     ),
                 ),
             )
