@@ -167,7 +167,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "total income",
                 "total expenses",
             ),
-            ("net income", "net loss", "net earnings"),
+            ("net income", "net loss", "net earnings", "net (loss) income"),
             (
                 "other comprehensive income",
                 "other comprehensive loss",
@@ -204,6 +204,8 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "net loss and comprehensive",
                 "income and comprehensive income",
                 "loss and comprehensive loss",
+                "net (loss) income and comprehensive",
+                "income and comprehensive (loss) income",
             ),
         ),
         min_groups=2,

@@ -10,23 +10,37 @@ from dataclasses import dataclass, field
 # substrings of normalized stub text. 14 terms are gold-exercised;
 # the last 3 are gold-unexercised flagged choices, in order.
 INTANGIBLES_LEXICON = (
-    "customer relationships",
-    "trade names",
+    "customer relationship",
+    "trade name",
     "core technology",
-    "patents",
-    "licenses",
-    "product lines",
+    "patent",
+    "license",
+    "product line",
     "non-compete",
     "order backlog",
     "internal-use software",
     "existing technology",
     "developed technology",
-    "trademarks",
+    "purchased technology",
+    "trademark",
     "customer list",
+    "customer base",
     "debt offering costs",
     "in-process research and development",  # gold-unexercised
-    "copyrights",  # gold-unexercised
-    "franchise rights",  # gold-unexercised
+    "copyright",  # gold-unexercised
+    "franchise right",  # gold-unexercised
+    "intellectual property",
+    "computer software",
+    "distribution agreement",
+    "publishing agreement",
+    "formulas",
+    "network affiliation",
+    "territory access rights",
+    "land easements",
+    "assembled workforce",
+    "book of business",
+    "management contract",
+    "emission allowances",
 )
 
 # Segment col stoplist, matched against the cell's base form
@@ -121,4 +135,19 @@ CORE_FORM_SPECS = {
         stub_stoplist=SEGMENT_STUB_STOPLIST,
         measure_groups=SEGMENT_MEASURE_GROUPS,
     ),
+}
+
+# Form-conditioned core-form gate exemptions (greenfield
+# intangibles packet): the gate does not refuse the named
+# family's claim when the companion form test passed.
+CORE_FORM_GATE_FORM_EXEMPTIONS = {
+    "intangibles": "intangibles_composition",
+}
+
+
+# Summary-separator exemptions (greenfield intangibles
+# packet): the S1 denial does not refuse the named family's
+# claim when a companion form test passed.
+SUMMARY_SEPARATOR_FORM_EXEMPTIONS = {
+    "intangibles": ("intangibles_composition", "intangibles_core_form"),
 }

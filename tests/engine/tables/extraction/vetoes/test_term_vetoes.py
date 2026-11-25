@@ -255,11 +255,10 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 553 rows.
+# priced records after the ruled holds and release; 549 rows.
 _GROUP_COUNTS = {
-    ("aoci_rollforward", "body", "hard"): 6,
+    ("aoci_rollforward", "body", "hard"): 4,
     ("aoci_rollforward", "body", "scored"): 13,
-    ("aoci_rollforward", "lead", "hard"): 2,
     ("aoci_rollforward", "lead", "scored"): 5,
     ("balance_sheet", "body", "hard"): 30,
     ("balance_sheet", "body", "scored"): 32,
@@ -340,14 +339,14 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 553
+    assert len(rows) == 549
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 205
+    assert tiers.count("hard") == 201
     assert tiers.count("scored") == 348
 
 
@@ -430,11 +429,33 @@ def test_dagger_rows_landed_hard_as_priced() -> None:
         ("tax_reconciliation", "months ended", "body"),
         ("stock_comp_rollforward", "year ended", "body"),
         ("deferred_tax", "credit losses", "lead"),
-        ("aoci_rollforward", "benefit plans", "body"),
-        ("aoci_rollforward", "tax benefit", "body"),
         ("debt_maturity", "senior secured", "lead"),
     }
     assert all((*row, "hard") in rows for row in dagger_rows)
+
+
+def test_aoci_own_vocabulary_hard_terms_released() -> None:
+    rows = _all_rows()
+    # The aoci_rollforward residual packet removes the family's
+    # own-vocabulary hard terms — they bar genuine rollforward
+    # grids on their own component and movement vocabulary.
+    released = {
+        ("aoci_rollforward", "benefit plans", "body"),
+        ("aoci_rollforward", "tax benefit", "body"),
+        ("aoci_rollforward", "income tax", "lead"),
+        ("aoci_rollforward", "reclassification", "lead"),
+    }
+    assert all((*row, "hard") not in rows for row in released)
+    # The protective aoci hard terms stand: "three months ended
+    # march" alone bars generic balance-walk tables with no
+    # AOCI subject from seating as aoci_rollforward.
+    kept = {
+        ("aoci_rollforward", "equity securities", "body"),
+        ("aoci_rollforward", "years", "body"),
+        ("aoci_rollforward", "net sales", "body"),
+        ("aoci_rollforward", "three months ended march", "body"),
+    }
+    assert all((*row, "hard") in rows for row in kept)
 
 
 def test_current_assets_rows_retiered_to_scored() -> None:

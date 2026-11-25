@@ -108,6 +108,17 @@ STAMPED_GATES = (
 )
 
 
+# Form-conditioned stamped-gate exemptions (greenfield
+# intangibles packet): the named gate does not refuse the
+# family's claim when a companion form test passed.
+STAMPED_GATE_FORM_EXEMPTIONS = {
+    ("intangibles", TEST_FORM_SEPARATION): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
+}
+
+
 def apply_stamped_gates(claims, contested, scores, geometry):
     """Refuse claims whose stamped gate outcome fired."""
     for family, test_id, outcome_of in STAMPED_GATES:
@@ -115,6 +126,11 @@ def apply_stamped_gates(claims, contested, scores, geometry):
             continue
         fired = outcome_of(geometry.form_tests, family, test_id)
         if fired is None:
+            continue
+        companions = STAMPED_GATE_FORM_EXEMPTIONS.get((family, test_id))
+        if companions is not None and any(
+            o.test_id in companions and o.passed for o in geometry.form_tests
+        ):
             continue
         claims.remove(family)
         if family in contested:

@@ -10,9 +10,13 @@ from __future__ import annotations
 from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     apply_admissions,
 )
-from edgar_sec.engine.tables.extraction.seats.aoci_gate import aoci_gate_detail
+from edgar_sec.engine.tables.extraction.seats.aoci_gate import (
+    aoci_gate_detail,
+    component_grid,
+)
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     failing_combined_operations_separator_outcome,
+    location_refusal_detail,
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
     SEPARATOR_EXEMPTIONS,
@@ -34,6 +38,7 @@ from edgar_sec.engine.tables.extraction.seats.genre_seat import (
     geometry_refusal,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    VETO_POINTS,
     ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
@@ -70,8 +75,12 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
     SignatureTerm,
 )
 from edgar_sec.engine.tables.extraction.cascade.stamped_gates import apply_stamped_gates
+from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
+    SUMMARY_SEPARATOR_FORM_EXEMPTIONS,
+)
 from edgar_sec.engine.tables.extraction.seats.primary_gate import section_presence
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
+    hard_veto_form_exemption,
     term_veto_hits,
     term_veto_hits_by_channel,
 )
@@ -148,6 +157,34 @@ def compete(
         for family, term in hard_vetoed.items():
             if family in scores:
                 scores = append_note(scores, family, "veto", f"hard:{term}")
+    # Form-conditioned hard-veto exemption (greenfield
+    # intangibles packet): an exempted hit whose named form
+    # test passed unbars the family, at the scored price.
+    for family, term in list(hard_vetoed.items()):
+        form_tests = hard_veto_form_exemption(family, term)
+        if form_tests is None:
+            continue
+        passed = {o.test_id for o in geometry.form_tests if o.passed}
+        if not any(t in passed for t in form_tests):
+            continue
+        del hard_vetoed[family]
+        score = scores.get(family)
+        if score is None:
+            continue
+        if any(
+            e.channel == "veto" and e.detail.startswith("term:") for e in score.evidence
+        ):
+            scores = append_note(scores, family, "veto", f"exempt:{term}")
+        else:
+            channels = dict(score.by_channel)
+            channels["veto"] = channels.get("veto", 0.0) - VETO_POINTS
+            scores = dict(scores)
+            scores[family] = FamilyScore(
+                family,
+                max(score.total - VETO_POINTS, 0.0),
+                channels,
+                score.evidence + (ClaimEvidence("veto", f"term:{term}", -VETO_POINTS),),
+            )
     ranked = sorted(scores.values(), key=lambda s: -s.total)
     claims: list[str] = []
     contested: list[str] = []
@@ -292,6 +329,18 @@ def compete(
     # families' priced seat tests seat them at the claim floor
     # — registry data in seat_floor_specs.SEAT_FLOOR_SPECS.
     scores = apply_seat_floor(geometry, scores, claims, hard_vetoed, floor=CLAIM_FLOOR)
+    # AOCI component-grid seat (priced): a geometry carrying the
+    # family's component-grid form seats aoci_rollforward even
+    # when signature dominance or a protective hard veto bars
+    # the scored claim — the form test is aoci_gate's, and its
+    # movement/column arms keep other families' walks and full
+    # equity statements out.
+    if "aoci_rollforward" not in claims and component_grid(geometry):
+        scores = seat_at_floor(
+            scores, "aoci_rollforward", "aoci component-grid seat", CLAIM_FLOOR
+        )
+        claims.append("aoci_rollforward")
+        reach.append("aoci_rollforward")
     # Combined operations separator gate (priced): a
     # combined_operations_ci claim is refused when the stamped
     # separator outcome fired. It binds after the seat-at-floor
@@ -299,6 +348,13 @@ def compete(
     # core refuses — where the sibling separators bind earlier.
     if "combined_operations_ci" in claims:
         fired = failing_combined_operations_separator_outcome(geometry.form_tests)
+        if fired is None:
+            refusal = location_refusal_detail(geometry)
+            if refusal is not None:
+                claims.remove("combined_operations_ci")
+                if "combined_operations_ci" in contested:
+                    contested.remove("combined_operations_ci")
+                scores = append_note(scores, "combined_operations_ci", "gate", refusal)
         if fired is not None:
             claims.remove("combined_operations_ci")
             if "combined_operations_ci" in contested:
@@ -336,16 +392,25 @@ def compete(
         )
         claims, contested = kept, kept_contested
     # S1 separator gate: a fired statement-summary rule denies
-    # every claim — the priced mass is a composition (a summary
-    # of a statement), claimed by no family (S1 pricing covers).
+    # every claim (S1 pricing covers), except a spared family:
+    # one whose fired rules are a subset of its
+    # SEPARATOR_EXEMPTIONS entry, or one named in
+    # SUMMARY_SEPARATOR_FORM_EXEMPTIONS with a companion pass.
     separator = geometry.summary_separator
     if separator is not None and separator.fired and claims:
         fired_rules = frozenset(separator.rules)
+        passed = {o.test_id for o in geometry.form_tests if o.passed}
         spared = tuple(
             family
             for family in claims
-            if family in SEPARATOR_EXEMPTIONS
-            and fired_rules <= frozenset(SEPARATOR_EXEMPTIONS[family])
+            if (
+                family in SEPARATOR_EXEMPTIONS
+                and fired_rules <= frozenset(SEPARATOR_EXEMPTIONS[family])
+            )
+            or any(
+                t in passed
+                for t in SUMMARY_SEPARATOR_FORM_EXEMPTIONS.get(family, ())
+            )
         )
         removed = tuple(f for f in claims if f not in spared)
         claims = [f for f in claims if f in spared]
