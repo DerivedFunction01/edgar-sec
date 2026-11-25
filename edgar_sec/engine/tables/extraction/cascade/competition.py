@@ -14,6 +14,15 @@ from edgar_sec.engine.tables.extraction.seats.aoci_gate import aoci_gate_detail
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     failing_combined_operations_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
+    SEPARATOR_EXEMPTIONS,
+)
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evidence import (
+    failing_goodwill_separator_outcome,
+)
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_foreign_separator_evidence import (
+    failing_goodwill_foreign_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
     apply_derivatives_gates,
@@ -295,6 +304,32 @@ def compete(
             if "combined_operations_ci" in contested:
                 contested.remove("combined_operations_ci")
             scores = append_note(scores, "combined_operations_ci", "gate", fired.detail)
+    # Goodwill separator gate (priced): a goodwill_rollforward
+    # claim is refused when the stamped separator outcome fired.
+    # It binds after the seat-at-floor channel — this family's
+    # measure-set seat can admit a claim its separator refuses —
+    # where the sibling separators bind earlier.
+    if "goodwill_rollforward" in claims:
+        fired = failing_goodwill_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("goodwill_rollforward")
+            if "goodwill_rollforward" in contested:
+                contested.remove("goodwill_rollforward")
+            scores = append_note(scores, "goodwill_rollforward", "gate", fired.detail)
+    # Goodwill foreign-subject separator gate (priced): a
+    # goodwill_rollforward claim is refused when the stamped
+    # foreign-subject separator outcome fired — the geometry's
+    # stub/header zone binds a foreign walked subject and
+    # goodwill is not a bound subject of that zone. It binds
+    # after the seat-at-floor channel, beside the allocation
+    # separator gate above.
+    if "goodwill_rollforward" in claims:
+        fired = failing_goodwill_foreign_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("goodwill_rollforward")
+            if "goodwill_rollforward" in contested:
+                contested.remove("goodwill_rollforward")
+            scores = append_note(scores, "goodwill_rollforward", "gate", fired.detail)
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes
@@ -305,7 +340,16 @@ def compete(
     # of a statement), claimed by no family (S1 pricing covers).
     separator = geometry.summary_separator
     if separator is not None and separator.fired and claims:
-        removed, claims, contested = tuple(claims), [], []
+        fired_rules = frozenset(separator.rules)
+        spared = tuple(
+            family
+            for family in claims
+            if family in SEPARATOR_EXEMPTIONS
+            and fired_rules <= frozenset(SEPARATOR_EXEMPTIONS[family])
+        )
+        removed = tuple(f for f in claims if f not in spared)
+        claims = [f for f in claims if f in spared]
+        contested = [f for f in contested if f in spared]
         reach = [family for family in reach if family not in removed]
         scores = dict(scores)
         for family in removed:
@@ -318,6 +362,21 @@ def compete(
                 + (
                     ClaimEvidence(
                         "gate", f"summary separator: {separator.detail}", 0.0
+                    ),
+                ),
+            )
+        for family in spared:
+            kept = scores[family]
+            scores[family] = FamilyScore(
+                kept.family,
+                kept.total,
+                dict(kept.by_channel),
+                kept.evidence
+                + (
+                    ClaimEvidence(
+                        "gate",
+                        f"summary separator exempted: {separator.detail}",
+                        0.0,
                     ),
                 ),
             )

@@ -7,6 +7,7 @@ from content in the grid, not from their note's title alone.
 from __future__ import annotations
 
 import re
+from typing import TYPE_CHECKING
 
 from edgar_sec.domain.world.geography import place_terms
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -16,6 +17,11 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 )
 from edgar_sec.engine.tables.patterns import SCALE_PATTERNS
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+
+if TYPE_CHECKING:
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+        CompetitionResult,
+    )
 
 CONTENT_GATED_FAMILIES = (
     "segment_reporting",
@@ -238,6 +244,164 @@ def segment_geographic_partition(geometry: GeometryText) -> bool:
         s == "total" or s.startswith("total ") or s.startswith("total:") for s in stubs
     )
     return total_stub and len(geographic_terms_present(geometry)) >= 3
+
+
+_NAME_PERIOD_WORDS = frozenset(
+    {
+        "quarter",
+        "quarters",
+        "month",
+        "months",
+        "year",
+        "years",
+        "period",
+        "periods",
+        "fiscal",
+        "ended",
+        "ending",
+        "date",
+        "dates",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "annual",
+        "interim",
+        "three",
+        "six",
+        "nine",
+        "twelve",
+    }
+)
+# A candidate name dies if any token is a financial
+# line-item word: segment names name businesses, not rows.
+_NAME_LINE_ITEM_TOKENS = frozenset(
+    {
+        "revenue",
+        "revenues",
+        "income",
+        "profit",
+        "profits",
+        "loss",
+        "losses",
+        "expenditure",
+        "expenditures",
+        "expense",
+        "expenses",
+        "assets",
+        "liabilities",
+        "cash",
+        "flows",
+        "earnings",
+        "margin",
+        "amortization",
+        "depreciation",
+        "taxes",
+        "sales",
+        "cost",
+        "costs",
+        "charges",
+        "benefits",
+    }
+)
+# A candidate name dies if any token is a unit/measure
+# word: names name businesses, not scales. The scale words
+# compose from their home in tables/patterns.
+_NAME_UNIT_TOKENS = frozenset(
+    {"in", "dollars", "usd"}
+    | {name for _pattern, name in SCALE_PATTERNS if name != "hundreds"}
+)
+# A candidate name dies if every token is structural.
+_NAME_STRUCTURAL_TOKENS = frozenset(
+    {
+        "total",
+        "consolidated",
+        "corporate",
+        "eliminations",
+        "elimination",
+        "unallocated",
+        "combined",
+        "company",
+        "parent",
+        "other",
+        "and",
+        "the",
+        "of",
+        "segment",
+        "segments",
+        "reportable",
+    }
+)
+_NAME_TOKEN_RE = re.compile(r"[^a-z0-9&']+")
+
+
+def _name_form(text: str) -> str:
+    """The caption-name channel's word form: lowercase words."""
+    return " ".join(_NAME_TOKEN_RE.sub(" ", (text or "").lower()).split())
+
+
+def _segment_name_candidate(cell: str) -> str | None:
+    """A stub cell as a segment name, or None when it names none."""
+    name = _name_form(cell)
+    if not name:
+        return None
+    tokens = name.split()
+    if not 2 <= len(tokens) <= 6:
+        return None
+    if any(token.isdigit() for token in tokens):
+        return None
+    if any(token in _NAME_PERIOD_WORDS for token in tokens):
+        return None
+    if any(token in _NAME_LINE_ITEM_TOKENS for token in tokens):
+        return None
+    if any(token in _NAME_UNIT_TOKENS for token in tokens):
+        return None
+    if all(token in _NAME_STRUCTURAL_TOKENS for token in tokens):
+        return None
+    if "total" in tokens or "consolidated" in tokens:
+        return None
+    return name
+
+
+def segment_vocabulary(
+    geometries: list[GeometryText] | tuple[GeometryText, ...],
+    results: list[CompetitionResult] | tuple[CompetitionResult, ...],
+) -> frozenset[str]:
+    """Segment names from the filing's pre-seat segment tables' stubs."""
+    names: set[str] = set()
+    for geometry, result in zip(geometries, results, strict=True):
+        if "segment_reporting" not in result.claims:
+            continue
+        if any(
+            group.family == "segment_reporting" and group.state == "reach"
+            for group in result.groups
+        ):
+            continue
+        for stub in geometry.stubs:
+            name = _segment_name_candidate(stub)
+            if name:
+                names.add(name)
+    return frozenset(names)
+
+
+_NAME_WORD_CHARS = frozenset("abcdefghijklmnopqrstuvwxyz0123456789")
+
+
+def segment_caption_name(text: str, vocabulary: frozenset[str]) -> bool:
+    """The caption carries one of the filing's own segment names."""
+    caption = _name_form(text)
+    if not caption or not vocabulary:
+        return False
+    for name in sorted(vocabulary, key=len, reverse=True):
+        start = caption.find(name)
+        while start >= 0:
+            before = caption[start - 1] if start else ""
+            after_at = start + len(name)
+            after = caption[after_at] if after_at < len(caption) else ""
+            if before not in _NAME_WORD_CHARS and after not in _NAME_WORD_CHARS:
+                return True
+            start = caption.find(name, start + 1)
+    return False
 
 
 def corroborates(family: str, geometry: GeometryText) -> bool:

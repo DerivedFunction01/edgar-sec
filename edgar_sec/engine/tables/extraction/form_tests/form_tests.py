@@ -92,6 +92,8 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_STOCK_COMP_EVIDENCE,
     TEST_STOCK_COMP_SEPARATOR,
     TEST_LEASE_SEPARATOR,
+    TEST_GOODWILL_FOREIGN_SEPARATOR,
+    TEST_GOODWILL_SEPARATOR,
     TEST_RESTRUCTURING_SEPARATOR,
     TEST_PERCENTAGE_FORM,
     TEST_PLACEMENT_CONSISTENCY,
@@ -121,6 +123,8 @@ from edgar_sec.engine.tables.extraction.form_tests.separator_form_tests import (
     _evaluate_stock_comp_separator,
     _evaluate_tax_reconciliation_separator,
     _evaluate_lease_separator,
+    _evaluate_goodwill_separator,
+    _evaluate_goodwill_foreign_separator,
     _evaluate_form_separation,
 )
 from edgar_sec.engine.tables.extraction.form_tests.signal_form_tests import (
@@ -512,6 +516,8 @@ _EVALUATORS = {
     TEST_TAX_RECONCILIATION_SEPARATOR: _evaluate_tax_reconciliation_separator,
     TEST_DEFERRED_TAX_SEPARATOR: _evaluate_deferred_tax_separator,
     TEST_LEASE_SEPARATOR: _evaluate_lease_separator,
+    TEST_GOODWILL_SEPARATOR: _evaluate_goodwill_separator,
+    TEST_GOODWILL_FOREIGN_SEPARATOR: _evaluate_goodwill_foreign_separator,
     TEST_FORM_SEPARATION: _evaluate_form_separation,
     TEST_EPS_EVIDENCE: _evaluate_eps,
     TEST_EPS_DETECTOR: _evaluate_eps_detector,

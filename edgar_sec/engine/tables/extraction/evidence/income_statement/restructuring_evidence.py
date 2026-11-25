@@ -93,6 +93,23 @@ def _prose_anchor(prose: str, prose_l: str, terms: tuple[str, ...]) -> bool:
     return subject_pos > heading_pos
 
 
+def _tail_anchor(
+    prose: str, prose_l: str, terms: tuple[str, ...], tail_chars: int
+) -> bool:
+    """The tail lead's boundary discipline: the last subject
+    mention inside the tail window must follow the last heading
+    boundary inside the tail window."""
+    tail_l = prose_l[-tail_chars:]
+    subject_pos = max((tail_l.rfind(term) for term in terms), default=-1)
+    if subject_pos < 0:
+        return False
+    heading_pos = max(
+        _last_match_start(_HEADING_NUMBERED_RE, prose[-tail_chars:]),
+        _last_match_start(_HEADING_CAPS_RE, prose[-tail_chars:]),
+    )
+    return subject_pos > heading_pos
+
+
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
     """The bookend pair in any filed form, with the forms named."""
     begin_row = any("balance" in ln and "beginning" in ln for ln in lines_l)
@@ -219,9 +236,10 @@ def evaluate_restructuring_evidence(
     if loan:
         return RestructuringEvidence(False, "loan context: scope condition")
     terms = spec.subject_terms
-    lead = any(
-        term in cap_l or term in prose_l[-spec.prose_tail_chars :] or term in first_line
-        for term in terms
+    lead = (
+        any(term in cap_l for term in terms)
+        or _tail_anchor(text.prose, prose_l, terms, spec.prose_tail_chars)
+        or any(term in first_line for term in terms)
     )
     prose = _prose_anchor(text.prose, prose_l, terms)
     if not (lead or prose):

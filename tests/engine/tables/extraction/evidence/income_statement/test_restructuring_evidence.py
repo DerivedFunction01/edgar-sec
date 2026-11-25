@@ -403,6 +403,38 @@ def test_caption_anchor_ignores_the_prose_boundary():
     assert "subject lead" in result.detail
 
 
+def test_tail_subject_across_a_heading_is_refused():
+    # The surviving Round 4 false's shape: the only subject
+    # mention sits inside the prose tail, before a heading.
+    filler = (
+        "The provision for income taxes reflects domestic and foreign "
+        "pretax income for the periods presented. "
+    )
+    tail = (
+        "The balances relate to restructuring activities. "
+        "\n13. Income Taxes\n" + filler * 3
+    )
+    prose = "Introductory detail without the subject term.\n" + filler * 8 + tail
+    result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert not result.admitted
+    assert result.detail == "subject not anchored"
+
+
+def test_tail_subject_after_a_heading_is_admitted():
+    filler = (
+        "The provision for income taxes reflects domestic and foreign "
+        "pretax income for the periods presented. "
+    )
+    tail = (
+        "\n13. Income Taxes\n"
+        + filler * 3
+        + ("The balances relate to restructuring activities.")
+    )
+    prose = "Introductory detail without the subject term.\n" + filler * 8 + tail
+    result = _verdict(_WALK, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert result.admitted
+
+
 def test_charge_incidence_table_stays_outside_the_walk_gate():
     # The incidence sub-kind carries no accrual walk; the term
     # set does not seat it (a determination split, not built).
