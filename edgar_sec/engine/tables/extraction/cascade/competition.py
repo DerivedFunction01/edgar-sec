@@ -17,6 +17,9 @@ from edgar_sec.engine.tables.extraction.separators.combined_operations_separator
 from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
     SEPARATOR_EXEMPTIONS,
 )
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evidence import (
+    failing_goodwill_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
     apply_derivatives_gates,
@@ -298,6 +301,18 @@ def compete(
             if "combined_operations_ci" in contested:
                 contested.remove("combined_operations_ci")
             scores = append_note(scores, "combined_operations_ci", "gate", fired.detail)
+    # Goodwill separator gate (priced): a goodwill_rollforward
+    # claim is refused when the stamped separator outcome fired.
+    # It binds after the seat-at-floor channel — this family's
+    # measure-set seat can admit a claim its separator refuses —
+    # where the sibling separators bind earlier.
+    if "goodwill_rollforward" in claims:
+        fired = failing_goodwill_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("goodwill_rollforward")
+            if "goodwill_rollforward" in contested:
+                contested.remove("goodwill_rollforward")
+            scores = append_note(scores, "goodwill_rollforward", "gate", fired.detail)
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes
