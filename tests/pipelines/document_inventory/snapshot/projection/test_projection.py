@@ -23,7 +23,7 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
+from edgar_sec.pipelines.document_inventory.snapshot.projection import (
     projection as projection_module,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.projection.projection import (
