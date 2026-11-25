@@ -41,6 +41,7 @@ from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
     apply_spanning_vetoes,
 )
 from edgar_sec.engine.tables.extraction.seats.cover_seat import apply_cover_seat
+from edgar_sec.engine.tables.extraction.seats.eps_seat import apply_eps_seat
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
@@ -287,4 +288,7 @@ def compete_filing(
     covered = apply_cover_seat(geometries, spanned)
     # Formation seat (priced): segment_reporting seats on the
     # gate-final unclaimed set its own floor cannot reach.
-    return apply_segment_seat(geometries, covered)
+    segmented = apply_segment_seat(geometries, covered)
+    # Formation seat (priced): eps_reconciliation seats on
+    # the gate-final unclaimed set under its priced guard.
+    return apply_eps_seat(geometries, segmented)

@@ -24,7 +24,12 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     CREDIT_LOSSES_CORE,
     DT_FAMILY,
     DT_STUB_BIGRAM,
+    EPS_ADJUSTMENT_TOKENS,
+    EPS_FACE_STATEMENT_PHRASES,
+    EPS_FAMILY,
+    EPS_NON_OWN_CHANNELS,
     EPS_RECONCILIATION_CORE,
+    EPS_RESTATEMENT_TOKENS,
     GOODWILL_FAMILY,
     INT_COMPOSITION_FAILED_DETAIL,
     INT_FAMILY,
@@ -35,6 +40,7 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     LABOR_EIN_TOKEN,
     LABOR_FAMILY,
     LABOR_FORM_PHRASES,
+    LEG_CONTEXT_ONLY,
     LEG_CREDIT_LOSSES_HOST,
     LEG_DOMINANT_CO_CLAIM,
     LEG_EMPLOYER_FORM,
@@ -46,6 +52,7 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     LEG_LEAD_INVENTORY,
     LEG_LEAD_TABLES,
     LEG_PCT_ROWS,
+    LEG_RESTATEMENT_FACE_STATEMENT,
     LEG_STUB_BIGRAM,
     LEG_STUB_CREDIT,
     TOKEN_STOPLIST,
@@ -188,6 +195,44 @@ def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...
     return (LEG_GOODWILL_HOST,)
 
 
+def eps_restatement_face_fires(geometry) -> bool:
+    """EPS-P1: the header token set carries the restatement-
+    adjustment columns and a face statement is named in the
+    header/stub text."""
+    tokens = frozenset(normalize_text(" ".join(geometry.headers)).split())
+    if not any(token in tokens for token in EPS_ADJUSTMENT_TOKENS):
+        return False
+    if not all(token in tokens for token in EPS_RESTATEMENT_TOKENS):
+        return False
+    text = normalize_text(" ".join([*geometry.headers, *geometry.stubs]))
+    return any(phrase in text for phrase in EPS_FACE_STATEMENT_PHRASES)
+
+
+def eps_context_only_fires(result) -> bool:
+    """EPS-P2: the eps score carries no positive own-text
+    channel mass; every positive channel is context or veto."""
+    score = result.scores.get(EPS_FAMILY)
+    if score is None:
+        return False
+    own = sum(
+        value
+        for channel, value in score.by_channel.items()
+        if channel not in EPS_NON_OWN_CHANNELS and value > 0
+    )
+    return own <= 0.0
+
+
+def _eps_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
+    """EPS-P: the restatement face-statement leg, then the
+    context-only leg, in priced order."""
+    legs = []
+    if eps_restatement_face_fires(geometry):
+        legs.append(LEG_RESTATEMENT_FACE_STATEMENT)
+    if eps_context_only_fires(result):
+        legs.append(LEG_CONTEXT_ONLY)
+    return tuple(legs)
+
+
 def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """Labor: the multiemployer-plan form signature, read
     from the geometry's headers directly."""
@@ -207,6 +252,7 @@ _LEG_EVALUATORS = {
     INT_FAMILY: _intangibles_legs,
     CREDIT_FAMILY: _credit_legs,
     LABOR_FAMILY: _labor_legs,
+    EPS_FAMILY: _eps_legs,
 }
 
 
