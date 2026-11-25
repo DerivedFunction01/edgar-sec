@@ -255,7 +255,7 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 549 rows.
+# priced records after the ruled holds and release; 546 rows.
 _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "hard"): 4,
     ("aoci_rollforward", "body", "scored"): 13,
@@ -274,7 +274,7 @@ _GROUP_COUNTS = {
     ("debt_maturity", "body", "hard"): 1,
     ("debt_maturity", "lead", "hard"): 1,
     ("debt_maturity", "lead", "scored"): 11,
-    ("deferred_tax", "body", "hard"): 5,
+    ("deferred_tax", "body", "hard"): 3,
     ("deferred_tax", "body", "scored"): 7,
     ("deferred_tax", "lead", "hard"): 6,
     ("deferred_tax", "lead", "scored"): 5,
@@ -284,7 +284,7 @@ _GROUP_COUNTS = {
     ("derivatives_hedging", "lead", "scored"): 5,
     ("eps_reconciliation", "body", "hard"): 10,
     ("eps_reconciliation", "body", "scored"): 9,
-    ("eps_reconciliation", "lead", "hard"): 4,
+    ("eps_reconciliation", "lead", "hard"): 3,
     ("eps_reconciliation", "lead", "scored"): 23,
     ("equity_statement", "body", "hard"): 9,
     ("equity_statement", "body", "scored"): 16,
@@ -339,14 +339,14 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 549
+    assert len(rows) == 546
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 201
+    assert tiers.count("hard") == 198
     assert tiers.count("scored") == 348
 
 
@@ -360,7 +360,20 @@ def test_eps_v3_terms_leave_lead_hard() -> None:
         "comprehensive loss",
         "discussion and analysis",
         "issuer purchases",
-        "fiscal year",
+    )
+    assert all(("eps_reconciliation", t, "lead", "hard") in rows for t in kept)
+
+
+def test_eps_fiscal_year_term_leaves_lead_hard() -> None:
+    rows = _all_rows()
+    # FINAL-F (eps_reconciliation enlarged-set packet):
+    # "fiscal year" leaves the eps_reconciliation lead/hard
+    # set; the three remaining terms stand.
+    assert ("eps_reconciliation", "fiscal year", "lead", "hard") not in rows
+    kept = (
+        "comprehensive loss",
+        "discussion and analysis",
+        "issuer purchases",
     )
     assert all(("eps_reconciliation", t, "lead", "hard") in rows for t in kept)
 

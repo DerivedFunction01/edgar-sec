@@ -28,6 +28,27 @@ LEG_EPS_HOST_ABSENT = "host-absent:eps_reconciliation"
 LEG_STUB_BIGRAM = "bigram:income taxes"
 
 DT_STUB_BIGRAM = "income taxes"
+DT_VALUATION_ALLOWANCE_BIGRAM = "valuation allowance"
+
+# DT-2 leg names (packet DT-COMBO): the composition condition
+# and the priced form tests over the enlarged set.
+LEG_DT_NONCOMPOSITION = "form:noncomposition"
+LEG_DT_TOTALS_ONLY = "form:totals-only"
+LEG_DT_PPA_FORM = "form:purchase-allocation"
+LEG_DT_PROVISION_FORM = "form:provision"
+LEG_DT_UTB_SUBJECT = "form:utb-subject"
+LEG_DT_NO_SUBJECT = "form:no-dt-subject"
+LEG_DT_SCHEDULE_II = "form:schedule-ii"
+
+# DT-2 form phrases, read over normalized stub/header text.
+DT_PPA_PHRASES = (
+    "purchase price",
+    "net tangible assets acquired",
+    "consideration transferred",
+)
+DT_SCHEDULE_II_PHRASE = "deducted from assets"
+DT_UTB_SUBJECT_PHRASE = "unrecognized income tax benefits"
+
 
 # Derived core vocabulary of the eps_reconciliation host:
 # stub tokens at >= 50% frequency over the family's Round-2
@@ -48,6 +69,30 @@ EPS_RECONCILIATION_CORE = frozenset(
         "weighted",
     }
 )
+
+EPS_FAMILY = "eps_reconciliation"
+
+# EPS-P leg names, in the order the gate note reports them.
+LEG_RESTATEMENT_FACE_STATEMENT = "restatement:face-statement"
+LEG_CONTEXT_ONLY = "context-only"
+
+# EPS-P1: the restatement-adjustment header token set — an
+# adjustment token plus the restated/previously/reported
+# tokens, read over the geometry's normalized headers.
+EPS_ADJUSTMENT_TOKENS = ("adjustment", "adjustments")
+EPS_RESTATEMENT_TOKENS = ("restated", "previously", "reported")
+
+# EPS-P1: a face statement named in the header/stub text.
+EPS_FACE_STATEMENT_PHRASES = (
+    "statement of operations",
+    "statements of operations",
+    "balance sheet",
+    "statement of cash flows",
+    "statements of cash flows",
+)
+
+# EPS-P2: the channels that lend no own-text mass to a score.
+EPS_NON_OWN_CHANNELS = ("context", "veto")
 
 INV_FAMILY = "inventory"
 

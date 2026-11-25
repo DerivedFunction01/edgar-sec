@@ -23,7 +23,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "comprehensive loss",
             "discussion and analysis",
             "issuer purchases",
-            "fiscal year",
         ),
     ),
     (
@@ -177,9 +176,7 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         "body",
         "hard",
         (
-            "balance at beginning",
             "balance at end",
-            "additions",
             "net sales",
             "three months ended june",
         ),

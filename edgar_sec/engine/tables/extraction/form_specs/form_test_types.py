@@ -39,3 +39,4 @@ class FormTestOutcome:
     columns_closed: int
     points: float
     detail: str
+    groups: tuple[bool, ...] = ()

@@ -5,6 +5,7 @@ the shared home tokenizer; legs are the census-priced sets.
 
 from __future__ import annotations
 
+import re
 from typing import NamedTuple
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import (
@@ -24,7 +25,23 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     CREDIT_LOSSES_CORE,
     DT_FAMILY,
     DT_STUB_BIGRAM,
+    DT_PPA_PHRASES,
+    DT_SCHEDULE_II_PHRASE,
+    DT_UTB_SUBJECT_PHRASE,
+    LEG_DT_NONCOMPOSITION,
+    LEG_DT_NO_SUBJECT,
+    LEG_DT_PPA_FORM,
+    LEG_DT_PROVISION_FORM,
+    LEG_DT_SCHEDULE_II,
+    LEG_DT_TOTALS_ONLY,
+    LEG_DT_UTB_SUBJECT,
+    DT_VALUATION_ALLOWANCE_BIGRAM,
+    EPS_ADJUSTMENT_TOKENS,
+    EPS_FACE_STATEMENT_PHRASES,
+    EPS_FAMILY,
+    EPS_NON_OWN_CHANNELS,
     EPS_RECONCILIATION_CORE,
+    EPS_RESTATEMENT_TOKENS,
     GOODWILL_FAMILY,
     INT_COMPOSITION_FAILED_DETAIL,
     INT_FAMILY,
@@ -35,6 +52,7 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     LABOR_EIN_TOKEN,
     LABOR_FAMILY,
     LABOR_FORM_PHRASES,
+    LEG_CONTEXT_ONLY,
     LEG_CREDIT_LOSSES_HOST,
     LEG_DOMINANT_CO_CLAIM,
     LEG_EMPLOYER_FORM,
@@ -46,10 +64,17 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     LEG_LEAD_INVENTORY,
     LEG_LEAD_TABLES,
     LEG_PCT_ROWS,
+    LEG_RESTATEMENT_FACE_STATEMENT,
     LEG_STUB_BIGRAM,
     LEG_STUB_CREDIT,
     TOKEN_STOPLIST,
 )
+from edgar_sec.foundation.text.date_patterns import (
+    FULL_DATE_STUB_RE,
+    MONTH_NAMES,
+    YEAR_TOKEN_SEARCH_RE,
+)
+from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.normalize import collapse_whitespace
 from edgar_sec.foundation.text.words import word_tokens
 
@@ -118,15 +143,150 @@ def _deriv_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     return tuple(legs)
 
 
+_DT_MONTH_STARTS = tuple(name.lower() for name in MONTH_NAMES)
+_DT_PERIOD_PHRASES = (
+    "year ended",
+    "years ended",
+    "as of",
+    "for the year",
+    "for the period",
+)
+_DT_TAX_EXPENSE_RE = re.compile(r"(income )?tax(es)? (expense|benefit)")
+_DT_AMOUNT_ONLY_RE = re.compile(r"[\d,().$%\s-]+")
+_DT_WORD_SPLIT_RE = re.compile(r"[^a-z]+")
+_DT_HEADER_WORDS = frozenset(
+    {
+        "deferred",
+        "tax",
+        "income",
+        "assets",
+        "asset",
+        "liabilities",
+        "liability",
+        "current",
+        "noncurrent",
+        "taxes",
+        "attributable",
+        "to",
+    }
+)
+
+
+def _dt_stub_lines(geometry) -> list[str]:
+    """Normalized stub lines of the geometry, in order."""
+    return [normalize_text(stub) for stub in geometry.stubs or ()]
+
+
+def _dt_is_date_line(text: str) -> bool:
+    """A stub line that is a date or period fragment, read
+    through the foundation date home."""
+    if parse_date(text) is not None or FULL_DATE_STUB_RE.match(text):
+        return True
+    if any(text == m or text.startswith(m + " ") for m in _DT_MONTH_STARTS):
+        return True
+    if YEAR_TOKEN_SEARCH_RE.search(text) and len(text) <= 12:
+        return True
+    return any(phrase in text for phrase in _DT_PERIOD_PHRASES)
+
+
+def _dt_is_header_line(text: str) -> bool:
+    """A subject/header line: only deferred-tax vocabulary words."""
+    words = [w for w in _DT_WORD_SPLIT_RE.split(text) if w]
+    return bool(words) and all(w in _DT_HEADER_WORDS for w in words)
+
+
+def _dt_component_stubs(geometry) -> list[str]:
+    """Hygienic component stubs: stub lines that are component
+    captions, excluding subject headers, date lines, valuation
+    allowance, total/net/gross and classification lines."""
+    kept = []
+    for text in _dt_stub_lines(geometry):
+        if not text or _dt_is_date_line(text) or _dt_is_header_line(text):
+            continue
+        if "valuation allowance" in text:
+            continue
+        if "total" in text or "subtotal" in text or "gross deferred" in text:
+            continue
+        if "net" in text.split() and "deferred" in text:
+            continue
+        if text.startswith("less"):
+            continue
+        if "current" in text and "deferred" in text:
+            continue
+        if (
+            _DT_TAX_EXPENSE_RE.search(text)
+            and "carryforward" not in text
+            and "credit" not in text
+        ):
+            continue
+        if _DT_AMOUNT_ONLY_RE.fullmatch(text):
+            continue
+        kept.append(text)
+    return kept
+
+
+def _dt_va_movement_form(geometry) -> bool:
+    """The S3 member form: a valuation-allowance movement
+    schedule (balance/additions/deductions movement lines)."""
+    text = " || ".join(_dt_stub_lines(geometry))
+    if "valuation allowance" not in text:
+        return False
+    return (
+        "balance at beginning" in text
+        or "beginning balance" in text
+        or ("additions" in text and "deductions" in text)
+    )
+
+
+def _dt_combo_legs(geometry, tokens) -> list[str]:
+    """DT-2 (packet DT-COMBO): the composition condition and
+    the priced form tests, over the geometry's stubs/headers."""
+    legs = []
+    stubs = _dt_stub_lines(geometry)
+    stub_text = " || ".join(stubs)
+    kept = _dt_component_stubs(geometry)
+    if not _dt_va_movement_form(geometry) and len(set(kept)) < 2:
+        legs.append(LEG_DT_NONCOMPOSITION)
+    if kept and all(("current" in k or "noncurrent" in k) for k in kept):
+        legs.append(LEG_DT_TOTALS_ONLY)
+    if any(phrase in stub_text for phrase in DT_PPA_PHRASES):
+        legs.append(LEG_DT_PPA_FORM)
+    if (
+        kept
+        and len(kept) <= 3
+        and all(("tax expense" in k or "tax benefit" in k) for k in kept)
+    ):
+        legs.append(LEG_DT_PROVISION_FORM)
+    if (
+        kept
+        and DT_UTB_SUBJECT_PHRASE in kept[0]
+        and sum(
+            1
+            for k in kept
+            if "unrecognized" in k or "positions taken" in k or "settlements" in k
+        )
+        >= len(kept) / 2
+    ):
+        legs.append(LEG_DT_UTB_SUBJECT)
+    header_text = " || ".join(normalize_text(h) for h in geometry.headers or ())
+    if "deferred tax" not in stub_text and "deferred tax" not in header_text:
+        legs.append(LEG_DT_NO_SUBJECT)
+    if DT_SCHEDULE_II_PHRASE in header_text or DT_SCHEDULE_II_PHRASE in stub_text:
+        legs.append(LEG_DT_SCHEDULE_II)
+    return legs
+
+
 def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """DT-1: percentage rows, eps host absence, or the bigram."""
     legs = []
     if geometry.pct_row_share > 0:
         legs.append(LEG_PCT_ROWS)
     if not _host_present(tokens, EPS_RECONCILIATION_CORE):
-        legs.append(LEG_EPS_HOST_ABSENT)
+        if DT_VALUATION_ALLOWANCE_BIGRAM not in tokens.bigrams:
+            legs.append(LEG_EPS_HOST_ABSENT)
     if DT_STUB_BIGRAM in tokens.bigrams:
         legs.append(LEG_STUB_BIGRAM)
+    legs.extend(_dt_combo_legs(geometry, tokens))
     return tuple(legs)
 
 
@@ -188,6 +348,44 @@ def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...
     return (LEG_GOODWILL_HOST,)
 
 
+def eps_restatement_face_fires(geometry) -> bool:
+    """EPS-P1: the header token set carries the restatement-
+    adjustment columns and a face statement is named in the
+    header/stub text."""
+    tokens = frozenset(normalize_text(" ".join(geometry.headers)).split())
+    if not any(token in tokens for token in EPS_ADJUSTMENT_TOKENS):
+        return False
+    if not all(token in tokens for token in EPS_RESTATEMENT_TOKENS):
+        return False
+    text = normalize_text(" ".join([*geometry.headers, *geometry.stubs]))
+    return any(phrase in text for phrase in EPS_FACE_STATEMENT_PHRASES)
+
+
+def eps_context_only_fires(result) -> bool:
+    """EPS-P2: the eps score carries no positive own-text
+    channel mass; every positive channel is context or veto."""
+    score = result.scores.get(EPS_FAMILY)
+    if score is None:
+        return False
+    own = sum(
+        value
+        for channel, value in score.by_channel.items()
+        if channel not in EPS_NON_OWN_CHANNELS and value > 0
+    )
+    return own <= 0.0
+
+
+def _eps_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
+    """EPS-P: the restatement face-statement leg, then the
+    context-only leg, in priced order."""
+    legs = []
+    if eps_restatement_face_fires(geometry):
+        legs.append(LEG_RESTATEMENT_FACE_STATEMENT)
+    if eps_context_only_fires(result):
+        legs.append(LEG_CONTEXT_ONLY)
+    return tuple(legs)
+
+
 def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """Labor: the multiemployer-plan form signature, read
     from the geometry's headers directly."""
@@ -207,6 +405,7 @@ _LEG_EVALUATORS = {
     INT_FAMILY: _intangibles_legs,
     CREDIT_FAMILY: _credit_legs,
     LABOR_FAMILY: _labor_legs,
+    EPS_FAMILY: _eps_legs,
 }
 
 

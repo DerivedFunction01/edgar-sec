@@ -182,6 +182,9 @@ PATTERNS: dict[str, tuple[str, ...]] = {
         r"unrealized holding gains?\b",
         r"reclassification adjustment",
         r"adjustments? for (pension|postretirement|post-employment)",
+        r"currency translation",
+        r"defined benefit plan adjustments?",
+        r"change in fair value of derivatives",
     ),
     "total_comprehensive_income": (
         r"comprehensive (income|loss)\b",

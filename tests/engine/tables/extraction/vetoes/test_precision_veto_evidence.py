@@ -125,19 +125,29 @@ def test_pct_rows_leg_fires():
     geo = GeometryText(pct_row_share=0.25, stubs=("Net income",))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" not in results[0].claims
-    assert _dt_details(results[0]) == ["precision veto: pct-rows"]
+    assert _dt_details(results[0]) == [
+        "precision veto: pct-rows, form:noncomposition, form:no-dt-subject"
+    ]
 
 
 def test_eps_host_absence_leg_fires():
-    geo = GeometryText(stubs=("Deferred tax assets", "Valuation allowance"))
+    geo = GeometryText(stubs=("Deferred tax assets", "Accrued liabilities"))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" not in results[0].claims
-    assert _dt_details(results[0]) == ["precision veto: host-absent:eps_reconciliation"]
+    assert _dt_details(results[0]) == [
+        "precision veto: host-absent:eps_reconciliation, form:noncomposition"
+    ]
 
 
 def test_eps_host_present_via_grid_keeps_claim():
     geo = GeometryText(
-        stubs=("Deferred tax assets",), grid_text="diluted shares outstanding"
+        stubs=(
+            "Deferred tax assets",
+            "Net operating loss carryforwards",
+            "Stock compensation",
+            "Valuation allowance",
+        ),
+        grid_text="diluted shares outstanding",
     )
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" in results[0].claims
@@ -148,17 +158,29 @@ def test_stub_bigram_leg_fires():
     geo = GeometryText(stubs=("Income taxes payable",))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" not in results[0].claims
-    assert _dt_details(results[0]) == ["precision veto: bigram:income taxes"]
+    assert _dt_details(results[0]) == [
+        "precision veto: bigram:income taxes, form:noncomposition, form:no-dt-subject"
+    ]
 
 
 def test_dt_legs_report_in_priced_order():
     geo = GeometryText(pct_row_share=0.5, stubs=("Income taxes", "Other"))
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
-    assert _dt_details(results[0]) == ["precision veto: pct-rows, bigram:income taxes"]
+    assert _dt_details(results[0]) == [
+        "precision veto: pct-rows, bigram:income taxes, form:noncomposition, "
+        "form:no-dt-subject"
+    ]
 
 
 def test_dt_no_leg_keeps_the_claim():
-    geo = GeometryText(stubs=("Weighted average shares",))
+    geo = GeometryText(
+        stubs=(
+            "Deferred tax assets",
+            "Net operating loss carryforwards",
+            "Accrued liabilities",
+            "Weighted average shares",
+        )
+    )
     results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
     assert "deferred_tax" in results[0].claims
     assert _dt_details(results[0]) == []
@@ -471,3 +493,91 @@ def test_employer_form_is_family_scoped():
     geo = GeometryText(headers=("EIN/Plan number", "Zone status"))
     results = apply_precision_vetoes([geo], [_result(("pension",))])
     assert "pension" in results[0].claims
+
+
+EPS = "eps_reconciliation"
+
+
+def _eps_details(result):
+    return _gate_details(result, family=EPS)
+
+
+def _eps_result(channels):
+    score = FamilyScore(EPS, sum(channels.values()), dict(channels), ())
+    return CompetitionResult(claims=(EPS,), contested=(EPS,), scores={EPS: score})
+
+
+def test_eps_restatement_face_statement_leg_fires():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations", "Net income"),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS not in results[0].claims
+    assert _eps_details(results[0]) == ["precision veto: restatement:face-statement"]
+
+
+def test_eps_restatement_tokens_without_a_face_statement_keep_the_claim():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Weighted average shares", "Dilutive securities"),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_face_statement_without_restatement_tokens_keeps_the_claim():
+    geo = GeometryText(
+        headers=("Year ended December 31", "Total"),
+        stubs=("Consolidated balance sheet", "Total assets"),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_partial_restatement_token_set_keeps_the_claim():
+    geo = GeometryText(
+        headers=("Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations",),
+    )
+    results = apply_precision_vetoes([geo], [_result((EPS,))])
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_context_only_leg_fires():
+    results = apply_precision_vetoes(
+        [GeometryText()], [_eps_result({"context": 18.18})]
+    )
+    assert EPS not in results[0].claims
+    assert _eps_details(results[0]) == ["precision veto: context-only"]
+
+
+def test_eps_own_text_mass_keeps_the_claim():
+    results = apply_precision_vetoes(
+        [GeometryText()], [_eps_result({"context": 18.18, "stub": 4.0})]
+    )
+    assert EPS in results[0].claims
+    assert _eps_details(results[0]) == []
+
+
+def test_eps_legs_report_in_priced_order():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations",),
+    )
+    results = apply_precision_vetoes([geo], [_eps_result({"context": 9.0})])
+    assert _eps_details(results[0]) == [
+        "precision veto: restatement:face-statement, context-only"
+    ]
+
+
+def test_eps_legs_are_family_scoped():
+    geo = GeometryText(
+        headers=("As Previously Reported", "Adjustments", "As Restated"),
+        stubs=("Consolidated statements of operations",),
+    )
+    results = apply_precision_vetoes([geo], [_result(("debt_maturity",))])
+    assert "debt_maturity" in results[0].claims

@@ -43,6 +43,7 @@ from edgar_sec.engine.tables.extraction.evidence.equity.stock_comp_evidence impo
 )
 from edgar_sec.engine.tables.extraction.form_tests.measure_set import (
     evaluate_measure_set,
+    group_presence,
 )
 from edgar_sec.engine.tables.extraction.form_tests.percentage_form import (
     evaluate_percentage_form,
@@ -492,6 +493,7 @@ def _evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> FormTestOutc
         0,
         spec.points,
         result.detail,
+        group_presence(table, spec.test_id),
     )
 
 

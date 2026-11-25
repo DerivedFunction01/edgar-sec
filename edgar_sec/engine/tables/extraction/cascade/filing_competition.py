@@ -42,11 +42,13 @@ from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
     apply_spanning_vetoes,
 )
 from edgar_sec.engine.tables.extraction.seats.cover_seat import apply_cover_seat
+from edgar_sec.engine.tables.extraction.seats.eps_seat import apply_eps_seat
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
+from edgar_sec.engine.tables.extraction.seats.warrant_seat import apply_warrant_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNELS as SIGNATURE_CHANNELS,
@@ -294,4 +296,10 @@ def compete_filing(
     covered = apply_cover_seat(geometries, spanned)
     # Formation seat (priced): segment_reporting seats on the
     # gate-final unclaimed set its own floor cannot reach.
-    return apply_segment_seat(geometries, covered)
+    segmented = apply_segment_seat(geometries, covered)
+    # Formation seat (priced): eps_reconciliation seats on
+    # the gate-final unclaimed set under its priced guard.
+    epsed = apply_eps_seat(geometries, segmented)
+    # Formation seat (priced): warrant_activity seats on the
+    # gate-final set its two form tests cannot claim alone.
+    return apply_warrant_seat(geometries, epsed)
