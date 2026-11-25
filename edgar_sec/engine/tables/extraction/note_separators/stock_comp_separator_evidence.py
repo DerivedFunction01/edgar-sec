@@ -144,13 +144,9 @@ def year_span(text: StockCompSeparatorText) -> int:
 
 
 def _seat_bound_fires(text: StockCompSeparatorText, leg) -> bool:
-    """The seat-bound leg: the seat reader does not admit the
-    geometry and no exception holds. The exceptions are the Xb
-    bookend form (bookends with enough activity rows or a units
-    lead) and the WAEP-column form: a weighted-average-exercise-
-    price column marks the price-form variant of the family,
-    whose grids carry no bookends, so the column excepts on its
-    own. Silent when the text carries no surfaces."""
+    """The seat-bound leg: the seat reader does not admit the geometry
+    and no exception holds (the Xb bookend form, or a WAEP column —
+    the price-form variant carries no bookends). Silent with no surfaces."""
     surfaces = text.surfaces
     if surfaces is None or surfaces.seat_admitted:
         return False
