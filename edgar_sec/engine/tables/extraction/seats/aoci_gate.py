@@ -38,10 +38,46 @@ _MONTHS = (
     "december",
 )
 
+_EQUITY_ACCOUNT_TERMS = (
+    "common stock",
+    "preferred stock",
+    "common shares",
+    "retained earnings",
+    "accumulated deficit",
+    "paid-in capital",
+    "paid in capital",
+    "treasury stock",
+    "total equity",
+    "shareholders' equity",
+    "shareholders’ equity",
+    "stockholders' equity",
+    "total shareholders",
+    "total stockholders",
+    "noncontrolling interest",
+    "non-controlling interest",
+)
+
+_STATEMENT_SECTION_TERMS = (
+    "operating activities",
+    "investing activities",
+    "financing activities",
+)
+
 
 def _dated_balance(text: str) -> bool:
     """A balance stub or header carrying a month name."""
-    return text.startswith("balance") and any(m in text for m in _MONTHS)
+    return text.startswith(("balance", "beginning balance", "ending balance")) and any(
+        m in text for m in _MONTHS
+    )
+
+
+def _movement_stubs(stubs: list[str]) -> int:
+    """Stub lines carrying OCI movement vocabulary."""
+    return sum(
+        1
+        for stub in stubs
+        if "reclassif" in stub or "other comprehensive" in stub or "unrealized" in stub
+    )
 
 
 def rollforward_evidence(score) -> bool:
@@ -81,7 +117,8 @@ def claim_shape(geometry) -> tuple[bool, bool]:
         if stub.startswith("aoci balance") or stub.startswith("aoci at")
     )
     # Dialects: dated aoci stubs; the beginning-of-period pair;
-    # a dated stub balance with the beginning balance in the headers.
+    # a dated stub balance with the beginning balance in the headers;
+    # a bare-date walk (dated stub, dated header, movement stubs).
     walk = (
         anchored
         or dated >= 2
@@ -96,6 +133,11 @@ def claim_shape(geometry) -> tuple[bool, bool]:
             any(_dated_balance(stub) for stub in stubs)
             and any(_dated_balance(header) for header in headers)
         )
+        or (
+            any(FULL_DATE_STUB_RE.match(stub) for stub in stubs)
+            and any(FULL_DATE_STUB_RE.match(header) for header in headers)
+            and _movement_stubs(stubs) >= 2
+        )
     )
     spec = AOCI_CLAIM_SHAPE_SPEC
     grid = geometry.grid_text + " " + " ".join(geometry.headers)
@@ -106,6 +148,37 @@ def claim_shape(geometry) -> tuple[bool, bool]:
         or components >= spec.min_components
     )
     return walk, subject
+
+
+def component_grid(geometry) -> bool:
+    """The component-grid form: an AOCI balance walk over component
+    columns whose stubs carry the OCI movement vocabulary."""
+    stubs = [normalize_text(stub) for stub in geometry.stubs]
+    walk, _ = claim_shape(geometry)
+    if not walk:
+        return False
+    movements = _movement_stubs(stubs)
+    framing = "other comprehensive" in normalize_text(geometry.lead) or (
+        geometry.note_title is not None
+        and "comprehensive" in normalize_text(geometry.note_title)
+    )
+    if not (movements >= 2 or (movements >= 1 and framing)):
+        return False
+    # Negative arms: equity accounts (headers joined — the
+    # account names fragment across header cells — or stub
+    # section lines), statement section lines, and the
+    # purchases/sales pair of a fair-value walk.
+    header_text = " ".join(normalize_text(header) for header in geometry.headers)
+    if any(term in header_text for term in _EQUITY_ACCOUNT_TERMS):
+        return False
+    if any(term in stub for stub in stubs for term in _EQUITY_ACCOUNT_TERMS):
+        return False
+    if any(term in stub for stub in stubs for term in _STATEMENT_SECTION_TERMS):
+        return False
+    return not (
+        any("purchases" in stub for stub in stubs)
+        and any("sales" in stub for stub in stubs)
+    )
 
 
 def aoci_gate_detail(claims: list[str], scores, geometry) -> str | None:
