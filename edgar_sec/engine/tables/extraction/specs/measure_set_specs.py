@@ -141,9 +141,14 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
     ),
     # ASC 220 single continuous statement, typed groups in rank
     # order (CI Step 6 re-derivation, population-priced): descent,
-    # terminus, OCI element, comprehensive total — all four, so a
-    # balance sheet's AOCI line or a standalone CI statement (no
-    # descent) cannot fire. The joint-total form is the test below.
+    # terminus, OCI element, comprehensive total. The core groups
+    # (descent, terminus, comprehensive total) are required and
+    # the OCI group is supporting — a zero-OCI period presents
+    # comprehensive income equal to net income with no OCI lines,
+    # and the supporting group must not veto the core (fv4
+    # residual pricing, combined-operations-ci register). A
+    # standalone CI statement (no descent) still cannot fire.
+    # The joint-total form is the test below.
     "combined_operations_ci_measure_set": MeasureSetSpec(
         groups=(
             (
@@ -175,7 +180,8 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
             ),
             ("comprehensive income", "comprehensive loss", "total comprehensive"),
         ),
-        min_groups=4,
+        min_groups=3,
+        required_groups=(0, 1, 3),
         provenance=PROV_CI_STEP6_PRICING,
     ),
     "combined_operations_ci_joint_measure_set": MeasureSetSpec(
