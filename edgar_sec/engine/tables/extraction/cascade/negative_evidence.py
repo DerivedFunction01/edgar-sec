@@ -123,25 +123,6 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
         "cash_flow",
         0.0,
     ),
-    NegativeSpec("balance_sheet", "accumulated deficit", "cover_layout", 0.0),
-    NegativeSpec("balance_sheet", "stockholders’ equity", "cover_layout", 0.0),
-    NegativeSpec("balance_sheet", "total stockholders’ equity", "cover_layout", 0.0),
-    NegativeSpec(
-        "balance_sheet", "liabilities and stockholders’ equity", "cover_layout", 0.0
-    ),
-    NegativeSpec(
-        "balance_sheet",
-        "total liabilities and stockholders’ equity",
-        "cover_layout",
-        0.0,
-    ),
-    NegativeSpec("balance_sheet", "commitments and contingencies", "cover_layout", 0.0),
-    NegativeSpec(
-        "balance_sheet",
-        "accumulated other comprehensive income (loss)",
-        "cover_layout",
-        0.0,
-    ),
     NegativeSpec("balance_sheet", "accumulated deficit", "debt_maturity", 0.0),
     NegativeSpec("balance_sheet", "stockholders’ equity", "debt_maturity", 0.0),
     NegativeSpec("balance_sheet", "total stockholders’ equity", "debt_maturity", 0.0),
@@ -365,14 +346,6 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
         "cash_flow",
         0.0,
     ),
-    NegativeSpec("income_statement", "collaboration revenue", "cover_layout", 0.0),
-    NegativeSpec("income_statement", "other (income) expense", "cover_layout", 0.0),
-    NegativeSpec(
-        "income_statement",
-        "cost of services (exclusive of depreciation and amortization)",
-        "cover_layout",
-        0.0,
-    ),
     NegativeSpec("income_statement", "collaboration revenue", "debt_maturity", 0.0),
     NegativeSpec("income_statement", "other (income) expense", "debt_maturity", 0.0),
     NegativeSpec(
@@ -457,7 +430,6 @@ NEGATIVE_EVIDENCE: tuple[NegativeSpec, ...] = (
     NegativeSpec("lease_maturity", "less: imputed interest", "aoci_rollforward", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "balance_sheet", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "cash_flow", 0.0),
-    NegativeSpec("lease_maturity", "less: imputed interest", "cover_layout", 0.0),
     NegativeSpec("lease_maturity", "less: imputed interest", "deferred_tax", 0.0),
     NegativeSpec(
         "lease_maturity", "less: imputed interest", "derivatives_hedging", 0.0

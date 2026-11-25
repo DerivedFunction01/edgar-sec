@@ -28,7 +28,6 @@ LOCATION_STRENGTHS: tuple[LocationSpec, ...] = (
         0.238,
         0.013,
     ),
-    LocationSpec("cover_layout", 1, ((None, 1)), 0.0, 0.0),
     LocationSpec(
         "debt_maturity",
         6,

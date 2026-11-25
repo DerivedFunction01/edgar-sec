@@ -228,7 +228,6 @@ def test_admitted_landmarks_and_sequences_are_registered() -> None:
 def test_priority_places_schedule_families_ahead_of_balance_sheet() -> None:
     inserts = (
         "aoci_rollforward",
-        "cover_layout",
         "debt_maturity",
         "derivatives_hedging",
         "intangibles",
