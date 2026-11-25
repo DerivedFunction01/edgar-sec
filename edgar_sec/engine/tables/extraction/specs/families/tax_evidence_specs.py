@@ -32,7 +32,12 @@ TAX_EVIDENCE_SPECS: dict[str, TaxEvidenceSpec] = {
         test_id="tax_reconciliation_statutory_anchor_seat",
         stub_anchor_terms=("statutory", "computed expected", "expected federal"),
         lead_context_terms=("tax",),
-        seat_veto_precedence_terms=("ended march", "total", "months ended", "form 10-k"),
+        seat_veto_precedence_terms=(
+            "ended march",
+            "total",
+            "months ended",
+            "form 10-k",
+        ),
         seat_veto_precedence_floor_terms=("total", "months ended"),
     ),
 }

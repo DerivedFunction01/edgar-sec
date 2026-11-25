@@ -79,8 +79,17 @@ def test_seat_is_declared_as_form_test_data():
     assert entry.kind == TEST_TAX_EVIDENCE
     assert entry.points == 0.0
     assert TAX_EVIDENCE_SPECS_BY_TEST_ID[entry.test_id] is SPEC
-    assert SPEC.stub_anchor_terms == ("statutory", "computed expected", "expected federal")
-    assert SPEC.seat_veto_precedence_terms == ("ended march", "total", "months ended", "form 10-k")
+    assert SPEC.stub_anchor_terms == (
+        "statutory",
+        "computed expected",
+        "expected federal",
+    )
+    assert SPEC.seat_veto_precedence_terms == (
+        "ended march",
+        "total",
+        "months ended",
+        "form 10-k",
+    )
     assert SPEC.seat_veto_precedence_floor_terms == ("total", "months ended")
     assert TEST_TAX_EVIDENCE in profile_for("tax_reconciliation").form_tests
 
