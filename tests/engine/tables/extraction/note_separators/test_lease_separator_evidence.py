@@ -11,6 +11,7 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
 from edgar_sec.engine.tables.extraction.cascade.competition import compete
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
+    geometry_text_from_table,
 )
 from edgar_sec.engine.tables.extraction.core.text.context import TableContext
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
@@ -419,3 +420,36 @@ def test_assignment_leaves_other_families_alone():
 def test_year_span_prod_counts_the_full_range():
     text = LeaseSeparatorText("2024 | 5\n2025 | 5\n2100 | 5")
     assert _lse.year_span_prod(text) == 3
+
+
+def test_stub_ladder_purity_full_ladder():
+    text = LeaseSeparatorText(
+        "Payments | Amount\n2026 | 1\n2027 | 2\nThereafter | 3\nTotal | 6"
+    )
+    assert _lse.stub_ladder_purity(text) == 1.0
+
+
+def test_stub_ladder_purity_mixed_stub():
+    text = LeaseSeparatorText("Payments | Amount\n2026 | 1\nRent expense | 2")
+    assert _lse.stub_ladder_purity(text) == 0.5
+
+
+def test_stub_ladder_purity_none_without_stub_cells():
+    assert _lse.stub_ladder_purity(LeaseSeparatorText("Payments | Amount")) is None
+    assert _lse.stub_ladder_purity(LeaseSeparatorText("")) is None
+
+
+def test_geometry_text_carries_span_and_purity():
+    table = _table(
+        (
+            ("Payments", "Amount"),
+            ("2026", "1"),
+            ("2027", "2"),
+            ("2028", "3"),
+            ("Thereafter", "4"),
+            ("Total", "10"),
+        )
+    )
+    geometry = geometry_text_from_table(table, evaluate_stage=False)
+    assert geometry.year_span == 3
+    assert geometry.stub_ladder_purity == 1.0

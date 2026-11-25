@@ -52,20 +52,23 @@ ASSIGNMENT_PASSES = (
 
 
 def _refused_reseat(
-    family: str, score: FamilyScore | None, claims: tuple[str, ...]
+    family: str,
+    score: FamilyScore | None,
+    claims: tuple[str, ...],
+    filing_seats_debt: bool = False,
 ) -> bool:
     """Whether preservation refuses to re-seat a removed claim:
     the income_statement legs (context-carried, co-claimed by
-    combined_operations_ci, thin-stub) and the lease leg.
+    combined_operations_ci, thin-stub) and the lease legs.
     """
-    if (
-        family == "lease_maturity"
-        and score is not None
-        and any(
-            e.detail == "lease assignment: geometry co-claimed" for e in score.evidence
+    if family == "lease_maturity" and score is not None:
+        details = {e.detail for e in score.evidence}
+        if "lease assignment: geometry co-claimed" in details:
+            return True
+        return (
+            "lease assignment: geometry seated to debt_maturity" in details
+            and not filing_seats_debt
         )
-    ):
-        return True
     if family != "income_statement" or score is None:
         return False
     return (
@@ -84,13 +87,16 @@ def preserve_assignment_claims(
     from each family's score — a claim the refusal names stays
     removed.
     """
+    filing_seats_debt = any("debt_maturity" in result.claims for result in assigned)
     out: list[CompetitionResult] = []
     for geometry, before, result in zip(geometries, entering, assigned, strict=True):
         missing = [
             family
             for family in before.claims
             if family not in result.claims
-            and not _refused_reseat(family, result.scores.get(family), before.claims)
+            and not _refused_reseat(
+                family, result.scores.get(family), before.claims, filing_seats_debt
+            )
         ]
         if not missing:
             out.append(result)
