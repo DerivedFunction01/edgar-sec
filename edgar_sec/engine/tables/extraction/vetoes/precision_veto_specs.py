@@ -65,6 +65,13 @@ LABOR_FAMILY = "labor_contracts"
 
 # Labor leg names, in the order the gate note reports them.
 LEG_EMPLOYER_FORM = "hdr:employer-form"
+LEG_CONTRIBUTIONS_ORPHAN = "hdr:contributions-no-expiration"
+
+# The placement-refined caption leg: a contributions header
+# whose geometry carries no expiration header (the priced
+# genuine form carries the CBA expiration in-geometry).
+LABOR_CONTRIBUTIONS_PHRASE = "contributions of"
+LABOR_EXPIRATION_TOKEN = "expiration"
 
 # The multiemployer-plan form signature, read over the
 # geometry's normalized headers: an EIN token or the

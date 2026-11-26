@@ -31,10 +31,13 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     INV_FAMILY,
     INV_LEAD_INVENTORY_TOKEN,
     INV_LEAD_TABLES_TOKEN,
+    LABOR_CONTRIBUTIONS_PHRASE,
     LABOR_EIN_PREFIX,
     LABOR_EIN_TOKEN,
+    LABOR_EXPIRATION_TOKEN,
     LABOR_FAMILY,
     LABOR_FORM_PHRASES,
+    LEG_CONTRIBUTIONS_ORPHAN,
     LEG_CREDIT_LOSSES_HOST,
     LEG_DOMINANT_CO_CLAIM,
     LEG_EMPLOYER_FORM,
@@ -189,15 +192,22 @@ def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...
 
 
 def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
-    """Labor: the multiemployer-plan form signature, read
-    from the geometry's headers directly."""
-    for header in geometry.headers or ():
-        text = normalize_text(header)
+    """Labor: the multiemployer-plan form signature and the
+    orphaned contributions caption, over the headers."""
+    headers = [normalize_text(header) for header in geometry.headers or ()]
+    legs = []
+    for text in headers:
         if LABOR_EIN_TOKEN in text.split() or LABOR_EIN_PREFIX in text:
-            return (LEG_EMPLOYER_FORM,)
+            legs.append(LEG_EMPLOYER_FORM)
+            break
         if any(phrase in text for phrase in LABOR_FORM_PHRASES):
-            return (LEG_EMPLOYER_FORM,)
-    return ()
+            legs.append(LEG_EMPLOYER_FORM)
+            break
+    if any(LABOR_CONTRIBUTIONS_PHRASE in text for text in headers) and not any(
+        LABOR_EXPIRATION_TOKEN in text for text in headers
+    ):
+        legs.append(LEG_CONTRIBUTIONS_ORPHAN)
+    return tuple(legs)
 
 
 _LEG_EVALUATORS = {

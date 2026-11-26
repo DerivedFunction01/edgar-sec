@@ -471,3 +471,62 @@ def test_employer_form_is_family_scoped():
     geo = GeometryText(headers=("EIN/Plan number", "Zone status"))
     results = apply_precision_vetoes([geo], [_result(("pension",))])
     assert "pension" in results[0].claims
+
+
+def test_contributions_caption_without_expiration_fires():
+    geo = GeometryText(headers=("Contributions of Matson",))
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" not in results[0].claims
+    assert _labor_details(results[0]) == [
+        "precision veto: hdr:contributions-no-expiration"
+    ]
+
+
+def test_contributions_with_in_geometry_expiration_keeps_the_claim():
+    geo = GeometryText(
+        headers=(
+            "Contributions of Safeway (in millions)",
+            "Surcharge imposed (1)",
+            "Expiration date of collective bargaining agreements",
+            "Total collective bargaining agreements",
+        )
+    )
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" in results[0].claims
+    assert _labor_details(results[0]) == []
+
+
+def test_contributions_with_cba_expiration_header_keeps_the_claim():
+    geo = GeometryText(
+        headers=(
+            "Contributions of the Company",
+            "Collective Bargaining Agreement Expiration Date",
+        )
+    )
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" in results[0].claims
+    assert _labor_details(results[0]) == []
+
+
+def test_expiration_without_contributions_keeps_the_claim():
+    geo = GeometryText(
+        headers=("Facility Location", "Union", "Expiration Date", "Employees Covered")
+    )
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" in results[0].claims
+    assert _labor_details(results[0]) == []
+
+
+def test_contributions_leg_is_family_scoped():
+    geo = GeometryText(headers=("Contributions of Matson",))
+    results = apply_precision_vetoes([geo], [_result(("pension",))])
+    assert "pension" in results[0].claims
+
+
+def test_both_labor_legs_report_in_order():
+    geo = GeometryText(headers=("EIN/Plan number", "Contributions of Matson"))
+    results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
+    assert "labor_contracts" not in results[0].claims
+    assert _labor_details(results[0]) == [
+        "precision veto: hdr:employer-form, hdr:contributions-no-expiration"
+    ]
