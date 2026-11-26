@@ -21,10 +21,13 @@ class PpeEvidenceSpec:
     family: str
     test_id: str
     class_terms: tuple[str, ...]
+    specific_terms: tuple[str, ...] = ()
     contra_term: str = "accumulated depreciation"
     net_close_literals: tuple[str, ...] = (
         "property and equipment, net",
         "property, plant and equipment, net",
+        "plant and equipment, net",
+        "fixed assets, net",
     )
     bs_guard_term: str = "total assets"
     lease_guard_terms: tuple[str, ...] = (
@@ -42,7 +45,12 @@ class PpeEvidenceSpec:
     roll_stub_terms: tuple[str, ...] = ("real estate", "gross")
     rights_term: str = "rights"
     depletion_term: str = "depletion"
-    comp_lead_term: str = "property and equipment"
+    comp_lead_terms: tuple[str, ...] = (
+        "property and equipment",
+        "property, plant and equipment",
+        "plant and equipment",
+        "fixed assets",
+    )
     bookend_begin_terms: tuple[str, ...] = ("beginning",)
     bookend_end_terms: tuple[str, ...] = (
         "ending",
@@ -80,6 +88,41 @@ PPE_EVIDENCE_SPECS: dict[str, PpeEvidenceSpec] = {
             "computer",
             "software",
             "improvements",
+        ),
+        specific_terms=(
+            "plant and equipment",
+            "oil and gas properties",
+            "flight equipment",
+            "utility plant",
+            "aircraft",
+            "mineral",
+            "plant in service",
+            "well",
+            "locomotive",
+            "pipeline",
+            "tooling",
+            "fixed assets",
+            "gathering",
+            "network equipment",
+            "track structure",
+            "vessel",
+            "drilling",
+            "roadway",
+            "mineral properties",
+            "mine development",
+            "dies",
+            "electric plant",
+            "rotable",
+            "molds",
+            "rolling stock",
+            "mining equipment",
+            "timber",
+            "generation plant",
+            "tower",
+            "marine",
+            "distribution plant",
+            "fiber",
+            "timberland",
         ),
     ),
 }
