@@ -149,10 +149,7 @@ def _year_bounds_query(
     clauses = [
         "report_date IS NOT NULL",
         "length(report_date) >= 4",
-        (
-            f"CAST(substring(report_date, 1, 4) AS INTEGER)"
-            f" >= 1900"
-        ),
+        (f"CAST(substring(report_date, 1, 4) AS INTEGER) >= 1900"),
     ]
     if forms:
         form_list = ", ".join(sql_literal(form) for form in sorted(forms))
