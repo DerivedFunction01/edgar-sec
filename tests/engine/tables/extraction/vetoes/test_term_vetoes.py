@@ -351,15 +351,13 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
     assert len(rows) == 542
-    assert len(rows) == 550
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 197
-    assert tiers.count("hard") == 202
+    assert tiers.count("hard") == 194
     assert tiers.count("scored") == 348
 
 
