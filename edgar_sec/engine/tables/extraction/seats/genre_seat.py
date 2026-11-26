@@ -10,6 +10,9 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.seats.section_gate import (
     ScopeRow,
@@ -234,7 +237,17 @@ def _facts_refusal(facts: GenreFacts) -> SeatRefusal | None:
 
 def geometry_refusal(geometry) -> SeatRefusal | None:
     """Refuse one competition geometry on its carried facts alone."""
-    return _facts_refusal(GenreFacts.from_geometry(geometry))
+    refusal = _facts_refusal(GenreFacts.from_geometry(geometry))
+    if refusal is not None and refusal.arm == "band":
+        # Yield (priced, inventory Addendum 8): a passed
+        # composition twin seats the geometry as a family's
+        # own table; the front-matter band does not refuse it.
+        if any(
+            outcome.kind == TEST_COMPOSITION_TWIN and outcome.passed
+            for outcome in getattr(geometry, "form_tests", ())
+        ):
+            return None
+    return refusal
 
 
 def table_refusal(table: TypedTable) -> SeatRefusal | None:

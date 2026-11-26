@@ -10,6 +10,9 @@ from typing import NamedTuple
 from edgar_sec.engine.tables.extraction.core.text.normalize import (
     normalize_text,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     INTANGIBLES_LEXICON,
 )
@@ -130,11 +133,25 @@ def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ..
     return tuple(legs)
 
 
+def _composition_passed(geometry, family: str) -> bool:
+    """The family's composition twin passed on this geometry."""
+    return any(
+        outcome.family == family
+        and outcome.kind == TEST_COMPOSITION_TWIN
+        and outcome.passed
+        for outcome in geometry.form_tests
+    )
+
+
 def _inventory_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """INV-1: credit-losses host content or lead naming."""
     legs = []
     if _host_present(tokens, CREDIT_LOSSES_CORE):
-        legs.append(LEG_CREDIT_LOSSES_HOST)
+        # Exemption (priced, inventory Addendum 8): a passed
+        # inventory composition seats the table as inventory's
+        # own; the host leg does not fire.
+        if not _composition_passed(geometry, INV_FAMILY):
+            legs.append(LEG_CREDIT_LOSSES_HOST)
     if INV_LEAD_TABLES_TOKEN in tokens.lead:
         legs.append(LEG_LEAD_TABLES)
     if INV_LEAD_INVENTORY_TOKEN in tokens.lead:

@@ -11,9 +11,15 @@ from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
     lead_title_text,
     leadin_segment,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     ContainmentEdge,
     SignatureTerm,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
 )
 
 _TERMS = (
@@ -646,3 +652,43 @@ def test_pension_prose_after_completion_seats_the_claim() -> None:
     )
     seated = compete(completed, terms=_PENSION_TERMS, edges=())
     assert seated.claims == ("pension",)
+
+
+def _composition_outcome(family: str, passed: bool) -> FormTestOutcome:
+    return FormTestOutcome(
+        family=family,
+        test_id=f"{family}_composition",
+        kind=TEST_COMPOSITION_TWIN,
+        passed=passed,
+        evaluable=True,
+        columns_closed=0,
+        points=0.0,
+        detail="",
+    )
+
+
+_COMPOSITION_GEOMETRY = {
+    "caption": "Long-term Debt and Operating Lease",
+    "leadin": "Senior notes and lease liabilities are presented together.",
+    "notehead": "Leases",
+    "stubs": ("Aggregate maturities", "Total undiscounted lease payments"),
+}
+
+
+def test_composition_failed_foreign_bars_an_uncomposed_claimant() -> None:
+    geometry = GeometryText(**_COMPOSITION_GEOMETRY)
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert result.claims == ("lease_maturity",)
+
+
+def test_composition_passed_claimant_is_not_barred_by_failed_foreign() -> None:
+    geometry = GeometryText(
+        **_COMPOSITION_GEOMETRY,
+        form_tests=(
+            _composition_outcome("debt_maturity", True),
+            _composition_outcome("lease_maturity", False),
+        ),
+    )
+    result = compete(geometry, terms=_TERMS, edges=_EDGES)
+    assert "debt_maturity" in result.claims
+    assert "lease_maturity" in result.claims

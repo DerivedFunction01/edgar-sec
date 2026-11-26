@@ -52,6 +52,9 @@ from edgar_sec.engine.tables.extraction.seats.seat_floor_evidence import (
     apply_seat_floor,
 )
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CONTAINMENT_EDGES,
     LADDER_EDGE_TERMS,
@@ -87,6 +90,22 @@ REACH_MIN_STUB_SHARE: dict[str, float] = {
     "pension": 0.5,
     "deferred_tax": 0.5,
 }
+
+
+def _composition_outcomes(
+    geometry: GeometryText,
+) -> tuple[frozenset[str], frozenset[str]]:
+    """Families whose composition twin passed / failed here."""
+    passed: set[str] = set()
+    failed: set[str] = set()
+    for outcome in geometry.form_tests:
+        if outcome.kind != TEST_COMPOSITION_TWIN:
+            continue
+        if outcome.passed:
+            passed.add(outcome.family)
+        else:
+            failed.add(outcome.family)
+    return frozenset(passed), frozenset(failed - passed)
 
 
 def compete(
@@ -144,12 +163,37 @@ def compete(
     contested: list[str] = []
     explained_all: dict[str, float] = {}
     explained_by: dict[str, dict[str, float]] = {}
+    # Composition bar (priced, inventory Addendum 8): a claimant
+    # whose composition twin passed is not barred by foreign mass
+    # from a family whose composition twin failed on this geometry.
+    comp_passed, comp_failed = _composition_outcomes(geometry)
+    foreign_scores = scores
+    if comp_passed and comp_failed:
+        foreign_scores = {
+            family: (
+                FamilyScore(family, 0.0, {}, sc.evidence)
+                if family in comp_failed
+                else sc
+            )
+            for family, sc in scores.items()
+        }
     for candidate in ranked:
         if candidate.family in hard_vetoed:
             continue
         if candidate.total < CLAIM_FLOOR:
             continue
-        foreign, explained = _explained_foreign(candidate.family, scores, edges)
+        if candidate.family in comp_passed and comp_failed:
+            foreign, explained = _explained_foreign(
+                candidate.family, foreign_scores, edges
+            )
+            scores = append_note(
+                scores,
+                candidate.family,
+                "gate",
+                "composition-failed foreign excluded",
+            )
+        else:
+            foreign, explained = _explained_foreign(candidate.family, scores, edges)
         explained_all.update(explained)
         explained_by[candidate.family] = explained
         if foreign <= FOREIGN_ALLOWANCE:
