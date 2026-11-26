@@ -6,6 +6,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import date
 from functools import lru_cache
+from re import Match
 
 from edgar_sec.foundation.text.date_formats import (
     ALL_SEC_DATE_FORMATS,
@@ -61,13 +62,24 @@ class ParsedDate:
         return self.source
 
 
+def _first_standalone_match(fmt: DateFormat, normalized: str) -> Match[str] | None:
+    """Return the first format match not glued to a longer digit run."""
+    for match in fmt.pattern.finditer(normalized):
+        if match.start() > 0 and normalized[match.start() - 1].isdigit():
+            continue
+        if match.end() < len(normalized) and normalized[match.end()].isdigit():
+            continue
+        return match
+    return None
+
+
 def _parse_date_with_formats(
     normalized: str,
     ordered: Sequence[DateFormat],
     reference_year: int | None,
 ) -> ParsedDate | None:
     for fmt in ordered:
-        match = fmt.pattern.search(normalized)
+        match = _first_standalone_match(fmt, normalized)
         if not match:
             continue
         group_dict = match.groupdict()

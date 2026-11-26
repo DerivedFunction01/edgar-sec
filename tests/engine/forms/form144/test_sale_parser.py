@@ -250,7 +250,7 @@ def test_parse_box_three_columns_with_numbered_marker_cells():
     assert proposed.broker is not None and proposed.broker.name == "Weeden & Co"
     assert proposed.units_to_be_sold == 30000
     assert proposed.units_outstanding == 13761218
-    assert proposed.approx_sale_date == "01-30-09"
+    assert proposed.approx_sale_date == "2009-01-30"
     assert proposed.exchange_name == "NASDAQ"
     assert proposed.aggregate_market_value is None
 
@@ -314,7 +314,7 @@ def test_parse_data_row_continued_after_box3_header():
     assert proposed.units_to_be_sold == 56000
     assert proposed.aggregate_market_value == "1949360"
     assert proposed.units_outstanding == 319200181
-    assert proposed.approx_sale_date == "10/26/09"
+    assert proposed.approx_sale_date == "2009-10-26"
     assert proposed.exchange_name == "NYSE"
 
 
@@ -351,7 +351,7 @@ def test_parse_box3_values_in_spacer_columns_after_marked_labels():
     assert proposed.units_to_be_sold == 12200
     assert proposed.aggregate_market_value == "463600.00"
     assert proposed.units_outstanding == 34602416
-    assert proposed.approx_sale_date == "2/27/04"
+    assert proposed.approx_sale_date == "2004-02-27"
     assert proposed.exchange_name == "NASDAQ"
 
 
@@ -391,7 +391,7 @@ def test_nearby_header_rows_and_trailing_instructions_bound_box3_data():
     assert proposed.units_to_be_sold == 100
     assert proposed.aggregate_market_value == "500"
     assert proposed.units_outstanding == 10000
-    assert proposed.approx_sale_date == "10/26/09"
+    assert proposed.approx_sale_date == "2009-10-26"
     assert proposed.exchange_name == "NYSE"
 
 
