@@ -6,7 +6,6 @@ claim-local legs in firing order, plus the ranking pass.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_specs import (
@@ -21,10 +20,10 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS,
 )
-from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 _HEADER_LINES = 3
-_YEAR_RE = re.compile(rf"\b(?:{YEAR_TOKEN_PATTERN})\b")
+_YEAR_RE = YEAR_TOKEN_SEARCH_RE
 _ACCUMULATED_KEY = "accumulated"
 _TAX_TOKEN = "tax"
 _GUARANTOR_TOKEN = "guarantor"

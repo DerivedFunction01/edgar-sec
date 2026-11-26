@@ -97,6 +97,21 @@ def _month_recomposition_shape(path: str, line: str) -> str | None:
     return None
 
 
+def _year_recomposition_shape(path: str, line: str) -> str | None:
+    if "YEAR_TOKEN_PATTERN" not in line or "re.compile" not in line:
+        return None
+    normalized = line.replace("{{", "{").replace("}}", "}")
+    if re.search(r"re\.compile\(\s*YEAR_TOKEN_PATTERN\s*[,\)]", normalized):
+        return "private year recognizer compiled from YEAR_TOKEN_PATTERN"
+    match = re.search(r"re\.compile\(\s*rf?[\"']([^\"']*)[\"']", normalized)
+    if match is None:
+        return None
+    residue = match.group(1).replace("{YEAR_TOKEN_PATTERN}", "")
+    if residue and all(char in "\\b(?:)" for char in residue):
+        return "private year recognizer composed from YEAR_TOKEN_PATTERN"
+    return None
+
+
 def _any_word_month_shape(path: str, line: str) -> str | None:
     normalized = line.replace("{{", "{").replace("}}", "}")
     if (
@@ -152,6 +167,7 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "shapes": (
             _year_shape,
             _year_vocabulary_shape,
+            _year_recomposition_shape,
             _month_recomposition_shape,
             _any_word_month_shape,
             _month_alternation_shape,

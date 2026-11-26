@@ -7,12 +7,11 @@ legs; the filing-level assignment pass reads the same features.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
-    YEAR_TOKEN_PATTERN,
+    YEAR_TOKEN_SEARCH_RE,
 )
 from edgar_sec.engine.tables.extraction.separators.equity_separator_specs import (
     EQUITY_SEPARATOR_SPECS,
@@ -28,7 +27,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
 )
 
 _HEADER_LINES = 3
-_YEAR_RE = re.compile(rf"\b(?:{YEAR_TOKEN_PATTERN})\b")
+_YEAR_RE = YEAR_TOKEN_SEARCH_RE
 
 
 def _dated_balance_count(raw_stubs) -> int:

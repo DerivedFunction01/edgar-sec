@@ -78,7 +78,8 @@ private copy wherever it appears, not only a duplicated name.
   `foundation/text/date_patterns.py`: a bare year recognizer (`\d{4}` as a standalone
   recognizer), a hard-coded consecutive-year vocabulary, a hand-crafted
   month-name alternation, an any-word month slot in a date pattern, and a
-  private recomposition of `MONTH_PATTERN`. Allowlisted
+  private recomposition of `MONTH_PATTERN`, and a private recomposition of
+  `YEAR_TOKEN_PATTERN` (its bounded search shape, or the bare compile). Allowlisted
   format shapes: SEC archive URLs, OMB numbers, phone and ZIP+4 tails,
   ISO/compact archive, feed, and version date formats, filename numbering, and
   the signer-name termination slot; corpus tools are in scope.

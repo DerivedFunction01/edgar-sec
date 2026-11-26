@@ -557,3 +557,20 @@ def test_every_registered_name_is_defined_in_its_home() -> None:
         "registered names not defined at module level in their home: "
         + ", ".join(sorted(undefined))
     )
+
+
+def test_flags_year_pattern_recomposition_under_a_private_name(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_YEAR_RE = re.compile(rf"\\b(?:{YEAR_TOKEN_PATTERN})\\b")\n'
+                "_BARE = re.compile(YEAR_TOKEN_PATTERN)\n"
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 2
+    assert "YEAR_TOKEN_PATTERN" in findings[0].message

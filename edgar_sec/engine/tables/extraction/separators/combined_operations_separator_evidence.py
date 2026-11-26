@@ -30,7 +30,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_MEASURE_SET,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 if TYPE_CHECKING:
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
@@ -47,7 +47,7 @@ SIBLING_CORE_TEST_IDS = {
     "comprehensive_income": "comprehensive_income_boundary_walk",
 }
 
-_YEAR_RE = re.compile(YEAR_TOKEN_PATTERN)
+_YEAR_RE = YEAR_TOKEN_SEARCH_RE
 _FACTS_RE = re.compile(r"core=([01]) rank=([0-2])")
 _HEADER_ZONE_ROWS = 6
 
