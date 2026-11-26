@@ -7,6 +7,7 @@ base; a vintage label is refused when it is path-like.
 from __future__ import annotations
 
 from edgar_sec.domain.sec_urls import SEC_DATASETS_BASE
+from edgar_sec.foundation.text.date_years import is_year_token
 
 
 def _dataset_vintage(vintage: str) -> str:
@@ -51,7 +52,7 @@ def mfrr_dataset_url(vintage: str) -> str:
 
 def bdc_report_url(year: int) -> str:
     """Return the SEC BDC Report CSV URL for one report year."""
-    if not 2000 <= int(year) <= 2100:
+    if not is_year_token(str(int(year))):
         raise ValueError(f"BDC report year out of range: {year!r}")
     return (
         f"{SEC_DATASETS_BASE}/investment/data/other/"

@@ -329,5 +329,8 @@ def test_dataset_builders_refuse_path_like_vintages() -> None:
 
     with pytest.raises(ValueError):
         bdc_dataset_url("../2025q1")
+    assert bdc_report_url(1999).endswith(
+        "business-development-company-1999.csv"
+    )
     with pytest.raises(ValueError):
-        bdc_report_url(1999)
+        bdc_report_url(1899)

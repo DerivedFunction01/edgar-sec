@@ -36,9 +36,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 )
 from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
-# EDGAR's full-text coverage begins in 1994
-_MIN_PLAUSIBLE_YEAR = 1990
-
 
 def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
     """Return the catalog id named by the current pointer, if any.
@@ -147,12 +144,14 @@ def _year_bounds_query(
     A nonempty selection filters on the parsed alias, so the relation is wrapped here
     and cannot drift from the predicate.
     """
+    # The floor is the recognition shape's lower edge, not a coverage
+    # lock: the bounds report the years the catalog actually holds.
     clauses = [
         "report_date IS NOT NULL",
         "length(report_date) >= 4",
         (
             f"CAST(substring(report_date, 1, 4) AS INTEGER)"
-            f" BETWEEN {_MIN_PLAUSIBLE_YEAR} AND {_current_year()}"
+            f" BETWEEN 1900 AND {_current_year()}"
         ),
     ]
     if forms:
