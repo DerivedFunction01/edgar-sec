@@ -250,6 +250,35 @@ def pension_anchor_legs(geometry):
     return pension_anchor_set(PensionText.from_geometry(geometry), spec)
 
 
+# Priced VETO-RC yield data: the pension stub vocabulary
+# whose majority share marks a geometry as the family's
+# own table under a reclassification caption.
+PENSION_VETO_YIELD_STUB_TERMS = (
+    "pension",
+    "postretirement",
+    "benefit cost",
+    "service cost",
+    "actuarial",
+    "prior service",
+    "net periodic",
+    "benefit obligation",
+)
+
+
+def pension_veto_yielded(geometry, term):
+    """Whether the priced reclassification yield lifts
+    the veto: pension stubs in the majority and an
+    anchor leg carrying the geometry."""
+    if term != "reclassification" or not geometry.stubs:
+        return False
+    share = sum(
+        1
+        for stub in geometry.stubs
+        if any(t in stub.lower() for t in PENSION_VETO_YIELD_STUB_TERMS)
+    ) / len(geometry.stubs)
+    return share >= 0.5 and bool(pension_anchor_legs(geometry))
+
+
 def apply_tax_seat(claims, contested, scores, geometry, hard_vetoed, floor):
     """Run the tax_reconciliation seat: it alone decides claimage."""
     # Ruling 18 seat (tax_reconciliation): the priced statutory-

@@ -38,6 +38,7 @@ from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_pension_gates,
     pension_anchor_legs,
     pension_veto_rescued,
+    pension_veto_yielded,
     apply_tax_seat,
 )
 from edgar_sec.engine.tables.extraction.seats.genre_seat import (
@@ -193,8 +194,12 @@ def compete(
         family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
     }
     # Priced scoping (pension): a hard hit does not bar a
-    # geometry the priced R2 combination rescues.
-    if "pension" in hard_vetoed and pension_veto_rescued(geometry, scores):
+    # geometry the priced R2 combination rescues, nor one
+    # the priced reclassification yield carries.
+    if "pension" in hard_vetoed and (
+        pension_veto_rescued(geometry, scores)
+        or pension_veto_yielded(geometry, hard_vetoed["pension"])
+    ):
         del hard_vetoed["pension"]
     # Priced scoping (balance_sheet): a hard hit in either
     # channel reads term context the table's own complete
