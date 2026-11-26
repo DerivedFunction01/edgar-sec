@@ -76,12 +76,8 @@ _NARROWED_CENTURY_STARTSWITH_RE = re.compile(
 # The module that owns the date vocabulary.
 _HOME = "edgar_sec/foundation/text/date_patterns.py"
 
-# The one sanctioned narrowing: the frozen Step 3 instrument's strict
-# variant, homed in date_patterns.py under exactly these two names. Any other
-# narrowed-year definition — any other name, any other file — flags.
-_SANCTIONED_NARROWED_RE = re.compile(
-    r"^(?:STRICT_MONTH_PATTERN|STRICT_YEAR_TOKEN_PATTERN)\s*(?::[^=\n]+)?="
-)
+# No sanctioned narrowing stands: the (19|20) shape flags
+# everywhere, the date-vocabulary home included.
 
 _HINT = (
     "use MONTH_PATTERN and MONTH_NAMES from "
@@ -102,8 +98,6 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
         or _NARROWED_YEAR_ALT_RE.search(line)
         or _NARROWED_YEAR_LIST_RE.search(line)
     ):
-        if path == _HOME and _SANCTIONED_NARROWED_RE.match(line):
-            return None
         return finding(
             "date-patterns",
             path,
@@ -116,8 +110,6 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
         or _NARROWED_CENTURY_EQUALITY_RE.search(line)
         or _NARROWED_CENTURY_STARTSWITH_RE.search(line)
     ):
-        if path == _HOME and _SANCTIONED_NARROWED_RE.match(line):
-            return None
         return finding(
             "date-patterns",
             path,

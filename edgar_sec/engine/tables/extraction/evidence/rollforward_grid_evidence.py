@@ -8,9 +8,9 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, GROUPED_INTEGER_FRAGMENT
-from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_PATTERN
 
-_YEAR_RE = re.compile(rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b")
+_YEAR_RE = re.compile(rf"\b(?:{YEAR_TOKEN_PATTERN})\b")
 _NON_ALPHA_RE = re.compile(r"[^a-z# ]")
 _RATE_RE = re.compile(r"\brate\b")
 # _NUM_RE recomposed from the homed digit/comma fragment; the %? tail

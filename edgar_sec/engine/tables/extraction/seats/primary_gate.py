@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING
 
 from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN,
-    STRICT_YEAR_TOKEN_PATTERN,
+    YEAR_TOKEN_PATTERN,
 )
 
 if TYPE_CHECKING:
@@ -55,9 +55,9 @@ MEASURE_EXTRA: dict[str, tuple[str, ...]] = {
     "income_statement": ("income_tax",),
 }
 
-_DATE = rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?\s+(?:{STRICT_YEAR_TOKEN_PATTERN})"
+_DATE = rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?\s+(?:{YEAR_TOKEN_PATTERN})"
 _DATE_NOYEAR = (
-    rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?(?:\s+{STRICT_YEAR_TOKEN_PATTERN})?"
+    rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?(?:\s+{YEAR_TOKEN_PATTERN})?"
 )
 
 _NET_CLOSE = (

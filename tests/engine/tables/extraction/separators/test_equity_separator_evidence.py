@@ -50,6 +50,9 @@ from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 from edgar_sec.foundation.text.date_patterns import MONTH_NAMES as _HOME_MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import (
+    YEAR_TOKEN_PATTERN as _HOME_YEAR,
+)
 
 SPEC = EQUITY_SEPARATOR_SPECS["equity_statement"]
 
@@ -105,7 +108,7 @@ def test_recognizer_homes():
     assert _ese.header_keys is _PENSION_HEADER_KEYS
     assert _ese.HEADER_STOP_TOKENS is _PENSION_STOP_TOKENS
     assert _ese.MONTH_NAMES is _HOME_MONTH_NAMES
-    assert _ese._YEAR_RE.pattern == r"\b(?:19|20)\d{2}\b"
+    assert _ese._YEAR_RE.pattern == rf"\b(?:{_HOME_YEAR})\b"
 
 
 # ---------------- the claim-local legs ----------------

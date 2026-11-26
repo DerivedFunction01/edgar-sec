@@ -50,6 +50,10 @@ from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 
+from edgar_sec.foundation.text.date_patterns import (
+    YEAR_TOKEN_PATTERN as _HOME_YEAR,
+)
+
 SPEC = COMPREHENSIVE_INCOME_SEPARATOR_SPECS["comprehensive_income"]
 
 _CORE_ROWS = (
@@ -104,7 +108,7 @@ def test_recognizer_homes():
     assert _cise.stub_key is _PENSION_STUB_KEY
     assert _cise.header_keys is _PENSION_HEADER_KEYS
     assert _cise.HEADER_STOP_TOKENS is _PENSION_STOP_TOKENS
-    assert _cise._YEAR_RE.pattern == r"\b(?:19|20)\d{2}\b"
+    assert _cise._YEAR_RE.pattern == rf"\b(?:{_HOME_YEAR})\b"
 
 
 # ---------------- the claim-local legs ----------------

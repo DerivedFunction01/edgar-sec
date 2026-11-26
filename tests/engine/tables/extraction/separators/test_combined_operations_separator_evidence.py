@@ -54,7 +54,7 @@ from edgar_sec.engine.tables.extraction.core.typed_rows import (
     structure_table,
 )
 from edgar_sec.foundation.text.date_patterns import (
-    STRICT_YEAR_TOKEN_PATTERN as _HOME_STRICT_YEAR,
+    YEAR_TOKEN_PATTERN as _HOME_YEAR,
 )
 
 SPEC = COMBINED_OPERATIONS_SEPARATOR_SPECS["combined_operations_ci"]
@@ -121,7 +121,7 @@ def test_core_group_indices_name_the_typed_core():
 
 
 def test_recognizer_and_presence_homes():
-    assert _evidence._YEAR_RE.pattern == _HOME_STRICT_YEAR
+    assert _evidence._YEAR_RE.pattern == _HOME_YEAR
     assert _evidence.group_presence is measure_set.group_presence
     assert _evidence.evaluate_measure_set is measure_set.evaluate_measure_set
 

@@ -11,7 +11,7 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 
-from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_PATTERN
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,
@@ -35,7 +35,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
 
 _DIGITS_RE = re.compile(r"\b\d+\b")
 _BOOKEND_BEGIN_RE = re.compile(r"beginning|opening balance|balance at (the )?beginning")
-_YEAR_TOKEN_RE = re.compile(rf"^(?:{STRICT_YEAR_TOKEN_PATTERN})$")
+_YEAR_TOKEN_RE = re.compile(rf"^(?:{YEAR_TOKEN_PATTERN})$")
 _HEADER_LINES = 3
 
 

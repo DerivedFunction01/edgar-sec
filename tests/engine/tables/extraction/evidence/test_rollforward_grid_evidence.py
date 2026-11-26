@@ -7,17 +7,17 @@ from edgar_sec.engine.tables.extraction.evidence.rollforward_grid_evidence impor
     RollforwardGridText,
     grid_features,
 )
-from edgar_sec.foundation.text.date_patterns import STRICT_YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_PATTERN
 
 
 def _features(table_text: str):
     return grid_features(RollforwardGridText(table_text))
 
 
-def test_year_reads_are_the_strict_century_form():
-    assert _rge._YEAR_RE.pattern == rf"\b(?:{STRICT_YEAR_TOKEN_PATTERN})\b"
+def test_year_reads_are_the_full_range_form():
+    assert _rge._YEAR_RE.pattern == rf"\b(?:{YEAR_TOKEN_PATTERN})\b"
     features = _features("Item | 2019 | 2100 | 3000")
-    assert features.span == 1
+    assert features.span == 3
 
 
 def test_span_counts_distinct_years_over_all_lines():

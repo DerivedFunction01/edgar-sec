@@ -57,8 +57,9 @@ private copy wherever it appears, not only a duplicated name.
 - `date-patterns`: Bans private month tables, hand-crafted date patterns, and
   narrowed-year alternations (`(19|20)` / `(?:19|20)` century groups and
   `19\d{2}|20\d{2}`-style year alternations, in any digit spelling or as
-  alternation-builder list items) outside `foundation/text/date_patterns.py`, whose
-  year patterns span the full 1900-9999 range. The same narrowing spelled as
+  alternation-builder list items) everywhere, `foundation/text/date_patterns.py`
+  included — no sanctioned narrowed variant stands there; its year patterns
+  span the full 1900-9999 range. The same narrowing spelled as
   a string test is banned with it: a century-pair membership or equality
   test on a two-character prefix slice (`y[:2] in ("19", "20")`) or a
   century `startswith`. Year literals as data are not flagged; the rule

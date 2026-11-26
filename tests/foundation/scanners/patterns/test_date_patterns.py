@@ -155,7 +155,7 @@ def test_flags_narrowed_year_alternation_list(synthetic_repo: Path) -> None:
     assert date_patterns.scan_date_patterns()
 
 
-def test_allows_sanctioned_strict_pair_in_the_date_vocabulary_owner(
+def test_flags_strict_year_shape_in_the_date_vocabulary_owner(
     synthetic_repo: Path,
 ) -> None:
     _build_repo(
@@ -167,7 +167,11 @@ def test_allows_sanctioned_strict_pair_in_the_date_vocabulary_owner(
             )
         },
     )
-    assert date_patterns.scan_date_patterns() == []
+    findings = date_patterns.scan_date_patterns()
+    assert [f.path for f in findings] == [
+        "edgar_sec/foundation/text/date_patterns.py"
+    ]
+    assert findings[0].message == "narrowed year alternation in a regex"
 
 
 def test_flags_narrowed_year_in_the_owner_under_any_other_name(
@@ -320,7 +324,7 @@ def test_flags_century_prefix_filter_in_the_owner_under_any_other_name(
     assert [f.message for f in findings] == ["narrowed year century-prefix filter"]
 
 
-def test_allows_sanctioned_name_in_the_owner_for_the_filter_form(
+def test_flags_sanctioned_name_in_the_owner_for_the_filter_form(
     synthetic_repo: Path,
 ) -> None:
     _build_repo(
@@ -331,7 +335,8 @@ def test_allows_sanctioned_name_in_the_owner_for_the_filter_form(
             )
         },
     )
-    assert date_patterns.scan_date_patterns() == []
+    findings = date_patterns.scan_date_patterns()
+    assert [f.message for f in findings] == ["narrowed year century-prefix filter"]
 
 
 def test_allows_import_of_year_token_search_pattern(

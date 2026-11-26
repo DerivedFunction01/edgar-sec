@@ -273,6 +273,7 @@ def test_month_dialect_is_the_strict_home_token():
     assert not month_day.search("dec. 31")
     month_year = _cfe.DATE_RES[4]
     assert month_year.search("december 2024")
+    assert month_year.search("december 2100")
     assert not month_year.search("december 1800")
 
 

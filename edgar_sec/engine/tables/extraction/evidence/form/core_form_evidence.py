@@ -16,7 +16,6 @@ from edgar_sec.foundation.text.date_patterns import (
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
     STRICT_MONTH_PATTERN,
-    STRICT_YEAR_TOKEN_PATTERN,
     YEAR_TOKEN_PATTERN,
     YEAR_TOKEN_RE,
     YEAR_TOKEN_SEARCH_RE,
@@ -39,7 +38,7 @@ DATE_RES = (
     re.compile(r"\b(?:%s)\s+\d{1,2}\b" % STRICT_MONTH_PATTERN),
     re.compile(r"\b\d{1,2}\s+(?:%s)\b" % STRICT_MONTH_PATTERN),
     re.compile(
-        r"\b(?:%s)\s+(?:%s)\b" % (STRICT_MONTH_PATTERN, STRICT_YEAR_TOKEN_PATTERN)
+        r"\b(?:%s)\s+(?:%s)\b" % (STRICT_MONTH_PATTERN, YEAR_TOKEN_PATTERN)
     ),
 )
 FULLDATE_RES = (
