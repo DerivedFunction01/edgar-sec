@@ -374,8 +374,33 @@ def test_closing_span_yields_to_a_wide_two_row_grid() -> None:
     assert geometry_refusal(geometry) is None
 
 
-def test_closing_span_still_refuses_a_narrow_two_row_grid() -> None:
+def test_closing_span_yields_to_a_narrow_two_row_grid_at_floor_2() -> None:
     facts = {"in_closing_span": True, "closing_kind": "signatures"}
     geometry = _geometry(_NARROW_TWO_ROW_GRID, **facts)
+    assert geometry_refusal(geometry) is None
+
+
+_ONE_ROW_GRID = (
+    ("Month", "Shares", "Price"),
+    ("08/1/06 \u2013 08/31/06", "10,000", "5.00"),
+)
+
+_THIN_TWO_ROW_GRID = (
+    ("Month", "Shares", "Price"),
+    ("August", "10,000", ""),
+    ("September", "", ""),
+)
+
+
+def test_closing_span_still_refuses_a_one_row_grid_at_floor_2() -> None:
+    facts = {"in_closing_span": True, "closing_kind": "signatures"}
+    geometry = _geometry(_ONE_ROW_GRID, **facts)
+    refusal = geometry_refusal(geometry)
+    assert refusal is not None and refusal.arm == "closing_span"
+
+
+def test_closing_span_still_refuses_a_thin_two_row_grid_at_floor_2() -> None:
+    facts = {"in_closing_span": True, "closing_kind": "signatures"}
+    geometry = _geometry(_THIN_TWO_ROW_GRID, **facts)
     refusal = geometry_refusal(geometry)
     assert refusal is not None and refusal.arm == "closing_span"
