@@ -199,6 +199,30 @@ def _qualified_dated(
     return {t for t in dated if t in rows or t in worded or (worded and t in zone)}
 
 
+_HEAD_MONTH_DAY_RE = re.compile(rf"(?:{MONTH_PATTERN})\s*\d{{1,2}}\b")
+
+
+def _head_dated_composition(head_texts: list[str]) -> bool:
+    """True when the head zone carries dated material: a
+    month-day phrase plus a year token among the head cells."""
+    phrase = any(_HEAD_MONTH_DAY_RE.search(t) for t in head_texts)
+    years = any(YEAR_TOKEN_SEARCH_RE.search(t) for t in head_texts)
+    return phrase and years
+
+
+def _stub_position_worded(
+    admitted: set[str],
+    row_texts: list[str],
+    head_stub_texts: list[str],
+) -> bool:
+    """True when the single dated text is balance/subject-worded
+    and stands in a stub position (row label or head stub)."""
+    text = next(iter(admitted))
+    if "balance" not in text and "goodwill" not in text:
+        return False
+    return text in row_texts or text in head_stub_texts
+
+
 def _head_pair(head_texts: list[str], params: MeasureSetSpec) -> bool:
     """Transposed pair: two dated head cells plus a movement
     group among the header cells (HEAD')."""
@@ -272,6 +296,16 @@ def _dated_verdict(
         and _head_pair(head_texts, params)
     ):
         hits = _dated_hits(present, dated, params)
+    if (
+        params.date_bookend_groups
+        and not _groups_admitted(hits, params)
+        and len(admitted) == 1
+        and _stub_position_worded(admitted, row_texts, head_stub_texts)
+        and _head_dated_composition(head_texts)
+    ):
+        hits = list(hits)
+        for index in params.date_bookend_groups:
+            hits[index] = True
     unbound = (
         params.subject_position_bound
         and _groups_admitted(hits, params)

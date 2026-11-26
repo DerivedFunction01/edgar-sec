@@ -202,6 +202,59 @@ def test_goodwill_exchange_only_movement_passes() -> None:
     assert _outcome(table, "goodwill_rollforward_measure_set").passed
 
 
+def test_goodwill_head_carried_beginning_date_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Year ended December 31,", "2012", "2011", "2010"),
+            ("Balance at beginning of period(a)", "48,188", "48,854", "48,357"),
+            ("Business combinations", "43", "97", "556"),
+            ("Dispositions", "(4)", "(685)", "(19)"),
+            ("Balance at December 31,(a)", "48,175", "48,188", "48,854"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_head_stub_bookend_passes() -> None:
+    table = _table(
+        (
+            ("Balance at December 31, 2011", "13,991", "27,156"),
+            ("Goodwill", "", ""),
+            ("Sale of disposed operations", "(14,286)", "—"),
+            ("Goodwill impairment", "—", "(6,406)"),
+            ("Balance at December 31, 2012, 2013 and 2014", "—", "27,156"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_head_cell_date_does_not_credit() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Year ended December 31,", "2012", "Balance at December 31, 2011"),
+            ("Balance at beginning of period", "48,188", "48,854"),
+            ("Dispositions", "(4)", "(685)"),
+            ("Other", "(52)", "(78)"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_unworded_head_stub_date_does_not_credit() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("December 31,", "2018", "2017"),
+            ("Balance at beginning of period", "100", "90"),
+            ("Business combinations", "5", "3"),
+            ("Dispositions", "(4)", "(3)"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
 def test_goodwill_head_year_bookends_pass() -> None:
     table = _table(
         (
