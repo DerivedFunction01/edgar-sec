@@ -28,6 +28,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
     PENSION_ANCHOR_SPECS,
     PensionText,
     evaluate_pension_anchor,
+    pension_anchor_set,
 )
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     failing_pension_routed_outcome,
@@ -223,6 +224,14 @@ def pension_veto_rescued(geometry, scores):
         1 for group in spec.npbc_groups if any(term in stubtext for term in group)
     )
     return groups >= spec.npbc_min_groups
+
+
+def pension_anchor_legs(geometry):
+    """The geometry's pension anchor legs under the base spec."""
+    spec = PENSION_ANCHOR_SPECS.get("pension")
+    if spec is None:
+        return frozenset()
+    return pension_anchor_set(PensionText.from_geometry(geometry), spec)
 
 
 def apply_tax_seat(claims, contested, scores, geometry, hard_vetoed, floor):
