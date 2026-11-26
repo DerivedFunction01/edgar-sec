@@ -223,6 +223,27 @@ def _charges_signature(lines_l: list[str], table_l: str) -> str:
     return ""
 
 
+# Header form: the charge-type vocabulary carried in a walk
+# table's column headers, over a balance-at closing row.
+_CHARGE_TYPE_TERMS = (
+    "severance",
+    "facility closure",
+    "facility exit",
+    "lease termination",
+    "contract termination",
+    "termination benefit",
+    "workforce reduction",
+    "exit cost",
+    "impairment",
+    "relocation",
+)
+
+
+def _charge_type_count(text_l: str) -> int:
+    collapsed = " ".join(text_l.split())
+    return sum(1 for term in _CHARGE_TYPE_TERMS if term in collapsed)
+
+
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
     """The bookend pair in any filed form, with the forms named."""
     begin_row = any("balance" in ln and "beginning" in ln for ln in lines_l)
@@ -264,6 +285,10 @@ def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: s
     if any(a in first_line for a in spec.anchors) and len(horiz_keys) >= 2:
         forms.append("horizontal header")
     forms.extend(_header_forms(spec, lines_l, anchor_lines))
+    if any("balance at" in ln for ln in lines_l) and any(
+        "charge" in ln for ln in lines_l
+    ):
+        forms.append("closing balance")
     return forms
 
 
@@ -355,6 +380,11 @@ def evaluate_restructuring_evidence(
         or any(term in first_line for term in terms)
     )
     prose = _prose_anchor(text.prose, prose_l, terms)
+    header_form = _charge_type_count(first_line) >= 2 and any(
+        "balance at" in ln for ln in lines_l
+    )
+    if header_form:
+        lead = True
     if not (lead or prose):
         return RestructuringEvidence(False, "subject not anchored")
     forms = _bookends(spec, lines_l, first_line)
@@ -370,6 +400,8 @@ def evaluate_restructuring_evidence(
     if not types:
         return RestructuringEvidence(False, "no movement type")
     arm = "prose" if prose and not lead else "lead"
+    if header_form and not prose:
+        arm = "header"
     detail = (
         f"restructuring walk: subject {arm}, bookends {', '.join(forms)}, "
         f"movements {', '.join(sorted(types))}"
