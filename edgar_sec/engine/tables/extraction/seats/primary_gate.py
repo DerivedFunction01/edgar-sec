@@ -391,6 +391,16 @@ def cash_flow_missing_sections(
             missing = []
     if len(missing) == 1:
         missing = []
+    if (
+        presence["operating"]
+        and presence["cash_reconciliation"]
+        and not presence["investing"]
+        and not presence["financing"]
+    ):
+        # Spine-pair waiver: operating + reconciliation
+        # present, both middle sections absent — tested on
+        # presence directly so an earlier waiver cannot widen it.
+        missing = []
     if "investing" in missing and _fund_form(source_stubs):
         missing = [s for s in missing if s != "investing"]
     return missing
