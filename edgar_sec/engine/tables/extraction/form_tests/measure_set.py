@@ -63,9 +63,9 @@ def _present(texts: list[str], phrases: tuple[str, ...]) -> bool:
 
 def _build_dated_bookend_re() -> re.Pattern[str]:
     """Compose the dated-bookend recognizer from the dates home."""
-    md = rf"(?:{MONTH_PATTERN}) \d{{1,2}},? (?:{YEAR_TOKEN_PATTERN})"
+    md = rf"(?:{MONTH_PATTERN})\s*\d{{1,2}},? (?:{YEAR_TOKEN_PATTERN})"
     df = rf"\d{{1,2}} (?:{MONTH_PATTERN}),? (?:{YEAR_TOKEN_PATTERN})"
-    mdy = rf"(?:{MONTH_PATTERN}) \d{{1,2}},?"
+    mdy = rf"(?:{MONTH_PATTERN})\s*\d{{1,2}},?"
     qual = (
         "(?:"
         + "|".join(
@@ -101,11 +101,16 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
         rf"as of year[-\s]end (?:{YEAR_TOKEN_PATTERN})"
     )
     balance_year_end = rf"balances?,?\s+as of year[-\s]end (?:{YEAR_TOKEN_PATTERN})"
+    year_first_year_end = (
+        rf"balances?,?\s+as of (?:{YEAR_TOKEN_PATTERN})\s+year[-\s]end{qual}"
+    )
     alts = (
         rf"{prefix}{core}{qual}",
+        rf"{prefix}{md}{qual}\s+and\s+.+",
         rf"balances?,?\s+(?:{YEAR_TOKEN_PATTERN}){qual}",
         year_end,
         balance_year_end,
+        year_first_year_end,
     )
     return re.compile("^(?:" + "|".join(alts) + ")$")
 

@@ -186,3 +186,93 @@ def test_second_column_movements_without_subject_are_refused() -> None:
         )
     )
     assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_exchange_only_movement_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("(in thousands)",),
+            ("Balance at December 31, 2015", "100"),
+            ("Amortization", "(1)"),
+            ("Foreign exchange", "2"),
+            ("Balance at June 30, 2016", "101"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_amortization_only_movement_fails() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Balance at December 31, 2015", "100"),
+            ("Amortization", "(5)"),
+            ("Balance at June 30, 2016", "95"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_beginning_end_of_the_period_phrases_pass() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Balance, beginning of the period", "100"),
+            ("Business acquisition", "5"),
+            ("Balance, end of the period", "105"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_end_of_the_year_phrase_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Balance at Beginning of the Year", "100"),
+            ("Acquisition", "5"),
+            ("Impairment", "(1)"),
+            ("Foreign Currency Translations", "1"),
+            ("Balance at End of the Year", "105"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_unspaced_month_day_bookend_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Net balance as of August 30, 2014", "100"),
+            ("Goodwill adjustments added through acquisitions", "5"),
+            ("Net balance as of February14, 2015", "105"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_year_first_year_end_bookends_pass() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Balance as of 2014 year end", "100"),
+            ("Currency translation", "1"),
+            ("Acquisition", "5"),
+            ("Balance as of 2015 year end", "106"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_trailing_continuation_bookend_passes() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("Balance as of December 31, 2017", "100"),
+            ("Additions", "5"),
+            ("Impairment", "(1)"),
+            ("Balance as of December 31, 2018 and March 31, 2019", "104"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
