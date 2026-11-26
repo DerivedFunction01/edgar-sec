@@ -233,14 +233,20 @@ def test_filing_date_anchors_two_digit_dates_without_a_report_date() -> None:
     result = render_ownership_to_xml(
         source, SimpleNamespace(family="4", filing_date="2019-12-31")
     )
-    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
-    root = ET.fromstring(xml_bytes)
 
+    # The filing anchor expands 40 by the rolling window to a year
+    # far outside the anchored validation window, so the date is
+    # omitted and recorded unresolved.
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
     assert (
         root.findtext(
             "nonDerivativeTable/nonDerivativeTransaction/transactionDate/value"
         )
-        == "1940-06-01"
+        is None
+    )
+    assert b"normalization.unresolved:table_i[0].transactionDate" in (
+        result.sidecars[0].content
     )
 
 

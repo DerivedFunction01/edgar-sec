@@ -128,7 +128,9 @@ def test_parse_split_phrase_cover_htm() -> None:
     """Cover phrases split across lines or cells still extract."""
     doc = parse_npx_text(_SPLIT_COVER_HTM)
     assert doc.file_number == "811-22632"
-    assert doc.period_of_report == "06/30/2012"
+    # The 2-digit period year has no in-document anchor, so the
+    # reference-year rule leaves it unexpanded, as filed.
+    assert doc.period_of_report == "6/30/12"
 
 
 def test_parse_columnar_layout() -> None:
@@ -138,6 +140,7 @@ def test_parse_columnar_layout() -> None:
     row = doc.vote_rows[0]
     assert row.issuer_name == "State Street"
     assert row.cusip == "857477103"
-    assert row.meeting_date == "04/21/2004"
+    # No in-document anchor for the 2-digit year: kept as filed.
+    assert row.meeting_date == "4/21/04"
     assert row.vote_description == "Elect Directors"
     assert row.how_voted == ("FOR",)

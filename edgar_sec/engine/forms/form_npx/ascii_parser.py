@@ -14,8 +14,10 @@ from edgar_sec.domain.forms.families.form_npx.models import (
     ProxyVoteRow,
 )
 from edgar_sec.engine.forms.common.identity.entities import is_valid_cusip
+from edgar_sec.engine.forms.common.values.dates import reported_year
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
+    NUMERIC_DATE_RE,
     REPORTING_PERIOD_LABEL_RE,
     REPORTING_PERIOD_VALUE_RE,
 )
@@ -65,11 +67,11 @@ _LABEL_LINES = frozenset(
 )
 
 
-def _canonical_date(value: str | None) -> str | None:
+def _canonical_date(value: str | None, reference_year: int | None = None) -> str | None:
     """Normalize a filed date string to the MM/DD/YYYY schema shape."""
     if not value:
         return None
-    parsed = parse_date(value.strip())
+    parsed = parse_date(value.strip(), reference_year=reference_year)
     if parsed is None:
         return value.strip()
     components = parsed.components
@@ -160,7 +162,9 @@ def _issuer_before(lines: list[str], idx: int) -> str:
     return ""
 
 
-def _sgml_block_rows(lines: list[str]) -> list[ProxyVoteRow]:
+def _sgml_block_rows(
+    lines: list[str], reference_year: int | None = None
+) -> list[ProxyVoteRow]:
     """Parse issuer blocks anchored on Meeting Date lines (text layout)."""
     rows: list[ProxyVoteRow] = []
     issuer = ""
@@ -177,7 +181,7 @@ def _sgml_block_rows(lines: list[str]) -> list[ProxyVoteRow]:
             issuer = _issuer_before(lines, idx) or issuer
         date_match = _MEETING_DATE_RE.search(line)
         if date_match:
-            meeting_date = _canonical_date(date_match.group(1)) or ""
+            meeting_date = _canonical_date(date_match.group(1), reference_year) or ""
             continue
         vote_match = _VOTE_LINE_RE.match(line)
         if vote_match and issuer:
@@ -193,7 +197,9 @@ def _sgml_block_rows(lines: list[str]) -> list[ProxyVoteRow]:
     return rows
 
 
-def _columnar_rows(lines: list[str]) -> list[ProxyVoteRow]:
+def _columnar_rows(
+    lines: list[str], reference_year: int | None = None
+) -> list[ProxyVoteRow]:
     """Parse the columnar HTML vote table layout from its cell stream."""
     rows: list[ProxyVoteRow] = []
     idx = 0
@@ -201,8 +207,11 @@ def _columnar_rows(lines: list[str]) -> list[ProxyVoteRow]:
     while idx < len(lines):
         line = lines[idx]
         if len(line) == 9 and is_valid_cusip(line) and idx + 2 < len(lines):
-            date = _canonical_date(lines[idx + 1])
-            if date and parse_date(lines[idx + 1]) is not None:
+            date = _canonical_date(lines[idx + 1], reference_year)
+            if date and (
+                parse_date(lines[idx + 1], reference_year=reference_year) is not None
+                or NUMERIC_DATE_RE.fullmatch(lines[idx + 1].strip()) is not None
+            ):
                 name_parts = [
                     p
                     for p in issuer_parts
@@ -248,9 +257,10 @@ def parse_npx_text(raw_bytes: bytes) -> FormNPxDocument:
     """Parse a text-era Form N-PX filing into the typed domain model."""
     lines = _text_lines(raw_bytes)
     cover = _cover_fields(lines)
-    rows = _sgml_block_rows(lines)
+    reference_year = reported_year((cover["period_of_report"],))
+    rows = _sgml_block_rows(lines, reference_year)
     if not rows:
-        rows = _columnar_rows(lines)
+        rows = _columnar_rows(lines, reference_year)
     return FormNPxDocument(
         submission_type="N-PX",
         vote_rows=tuple(rows),
