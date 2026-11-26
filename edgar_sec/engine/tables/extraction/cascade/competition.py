@@ -6,6 +6,7 @@ explained by a measured containment edge. Closure corroborates.
 """
 
 from __future__ import annotations
+import re
 from edgar_sec.engine.tables.extraction.separators.summary_separator import (
     SummarySeparatorResult,
 )
