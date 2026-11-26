@@ -13,6 +13,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
+from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_evidence import ClaimStage
 from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
     apply_precision_vetoes,
 )
