@@ -127,10 +127,8 @@ _SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
 
 def _sep5_criterion_holds(geometry, cluster_stubs=None) -> bool:
     """Sep-5 criterion form (cash_flow, priced): title leg and presence leg.
-    The stamp rule's verdict is suppressed when both legs hold.
-    The presence leg reads the geometry's statement cluster
-    (priced form): section presence over the cluster's stubs,
-    not the geometry's own stubs alone.
+    The stamp rule's verdict is suppressed when both legs hold; the
+    presence leg reads the geometry's statement cluster (priced form).
     """
     titles = " ".join(
         t for t in (geometry.lead_title or "", geometry.note_title or "") if t
