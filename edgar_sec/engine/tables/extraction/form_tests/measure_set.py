@@ -20,6 +20,7 @@ from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_PATTERN,
+    YEAR_TOKEN_SEARCH_RE,
 )
 
 
@@ -54,7 +55,36 @@ def _texts(table: TypedTable) -> list[str]:
         )
         if joined:
             texts.append(joined)
+    texts.extend(_head_year_variants(texts))
     return [text for text in texts if text]
+
+
+_MONTH_DAY_BOOKEND_RE = re.compile(
+    rf"^(?:gross\s+|net\s+)?balances?,?\s+(?:as\s+of\s+)?"
+    rf"(?:{MONTH_PATTERN})\s*\d{{1,2}},?$"
+)
+
+
+def _head_year_variants(texts: list[str]) -> list[str]:
+    """Dated forms of month-day bookend stubs, years from the texts.
+
+    A balance stub carrying a month and day but no year is dated
+    when the table's own head zone carries the year; the variant
+    appends each carried year (at most four) to each such stub.
+    """
+    years: list[str] = []
+    for text in texts:
+        for year in YEAR_TOKEN_SEARCH_RE.findall(text):
+            if year not in years:
+                years.append(year)
+    if not years:
+        return []
+    return [
+        f"{text} {year}"
+        for text in texts
+        if _MONTH_DAY_BOOKEND_RE.match(text)
+        for year in years[:4]
+    ]
 
 
 def _present(texts: list[str], phrases: tuple[str, ...]) -> bool:

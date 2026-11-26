@@ -202,6 +202,32 @@ def test_goodwill_exchange_only_movement_passes() -> None:
     assert _outcome(table, "goodwill_rollforward_measure_set").passed
 
 
+def test_goodwill_head_year_bookends_pass() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("", "2016", "2015"),
+            ("Gross balance as of January 1,", "306", "325"),
+            ("Foreign currency impact", "(7)", "(19)"),
+            ("Net balance as of December 31,", "299", "306"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_head_year_bookends_without_years_fail() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("", "Current year", "Prior year"),
+            ("Gross balance as of January 1,", "306", "325"),
+            ("Foreign currency impact", "(7)", "(19)"),
+            ("Net balance as of December 31,", "299", "306"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
 def test_goodwill_total_as_of_bookends_pass() -> None:
     table = _table(
         (
