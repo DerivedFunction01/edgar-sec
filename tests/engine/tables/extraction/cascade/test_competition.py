@@ -646,3 +646,79 @@ def test_pension_prose_after_completion_seats_the_claim() -> None:
     )
     seated = compete(completed, terms=_PENSION_TERMS, edges=())
     assert seated.claims == ("pension",)
+
+
+_CF_TERMS = (
+    SignatureTerm("cash_flow", "caption", "statements of cash flows", 2.5, 40, 1),
+    SignatureTerm("cash_flow", "leadin", "cash flows", 2.5, 35, 1),
+    SignatureTerm(
+        "cash_flow", "stub", "cash flows from operating activities", 2.5, 30, 0
+    ),
+    SignatureTerm(
+        "cash_flow", "stub", "cash flows from investing activities", 2.5, 30, 0
+    ),
+    SignatureTerm(
+        "cash_flow", "stub", "cash flows from financing activities", 2.5, 30, 0
+    ),
+    SignatureTerm("cash_flow", "stub", "net increase in cash", 2.5, 30, 0),
+)
+
+_CF_FULL_STUBS = (
+    "Cash flows from operating activities",
+    "Cash flows from investing activities",
+    "Cash flows from financing activities",
+    "Net increase in cash and cash equivalents",
+    "Cash and cash equivalents, beginning of period",
+)
+
+_CF_LEAD_HIT = "Proceeds from issuance of common stock are described below."
+
+
+def test_cash_flow_lead_only_hard_hit_scoped_by_full_presence() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead=_CF_LEAD_HIT,
+        stubs=_CF_FULL_STUBS,
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ("cash_flow",)
+
+
+def test_cash_flow_lead_only_hard_hit_scoped_by_financing_absence() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead=_CF_LEAD_HIT,
+        stubs=(
+            "Cash flows from operating activities",
+            "Cash flows from investing activities",
+            "Net increase in cash and cash equivalents",
+        ),
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ("cash_flow",)
+
+
+def test_cash_flow_lead_hard_hit_bars_without_own_stub_proof() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead=_CF_LEAD_HIT,
+        stubs=("Cash flows from operating activities", "Depreciation expense"),
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ()
+    assert "cash_flow" in result.scores
+
+
+def test_cash_flow_body_hard_hit_still_bars() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead="The statements are presented below.",
+        grid_text="Earnings per share data is omitted from this table.",
+        stubs=_CF_FULL_STUBS,
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ()

@@ -295,6 +295,118 @@ def missing_sections(stubs, family: str) -> list[str]:
     return [s for s in GATE_SETS[family] if not presence[s]]
 
 
+# Fund-form markers (ASC 946): an investment company's portfolio
+# purchases and sales are operating activity; the statement has
+# no investing section by form.
+_FUND_FORM = (
+    re.compile(r"net assets resulting from operations", re.IGNORECASE),
+    re.compile(r"increase \(decrease\) in net assets", re.IGNORECASE),
+    re.compile(r"unrealized\b[^.]*\bon investments?\b", re.IGNORECASE),
+    re.compile(r"appreciation/depreciation on investments?\b", re.IGNORECASE),
+)
+
+# A continuation run split off by a caption change heads itself
+# with the section it continues.
+_CF_SECTION_CAPTION = re.compile(
+    r"cash flows?\s+from\s+(operating|investing|financing)\s+activities",
+    re.IGNORECASE,
+)
+
+# The supplemental schedule's canonical blocks (ASC 230):
+# cash paid for interest/taxes, non-cash investing/financing.
+_SUPPLEMENTAL_MARKERS = (
+    re.compile(r"cash paid during the period for", re.IGNORECASE),
+    re.compile(r"non-cash investing activities", re.IGNORECASE),
+    re.compile(r"non-cash financing activities", re.IGNORECASE),
+    re.compile(r"supplemental\b[^.]*\bcash flow", re.IGNORECASE),
+)
+
+
+def _fund_form(stubs) -> bool:
+    return any(p.search(s) for p in _FUND_FORM for s in stubs)
+
+
+def _supplemental_identity(geometry: GeometryText) -> bool:
+    """A lone geometry is the statement's supplemental schedule
+    when its titles name the statement of cash flows and its
+    stubs carry at least two canonical supplemental blocks."""
+    titles = (
+        geometry.note_title or "",
+        geometry.notehead or "",
+        geometry.caption or "",
+    )
+    if not any("statement of cash flows" in t.lower() for t in titles):
+        return False
+    hits = sum(
+        1 for p in _SUPPLEMENTAL_MARKERS if any(p.search(s) for s in geometry.stubs)
+    )
+    return hits >= 2
+
+
+def _extended_members(
+    geometries: tuple[GeometryText, ...] | list[GeometryText],
+    index: int,
+    clusters: list[tuple[int, ...]],
+) -> tuple[int, ...]:
+    """Cluster members plus an adjacent run's members when that
+    run shares the claim geometry's home and its head caption
+    names a cash-flow section (a split-off continuation)."""
+    members = clusters[index]
+    home = (geometries[index].section_item, geometries[index].note_title)
+    ext = list(members)
+    seen = {tuple(members)}
+    for pos in (members[0] - 1, members[-1] + 1):
+        if 0 <= pos < len(geometries):
+            adj = clusters[pos]
+            if tuple(adj) in seen:
+                continue
+            head = geometries[adj[0]]
+            ahead = (head.section_item, head.note_title)
+            if ahead == home and _CF_SECTION_CAPTION.search(head.caption or ""):
+                ext.extend(adj)
+                seen.add(tuple(adj))
+    return tuple(ext)
+
+
+def cash_flow_missing_sections(
+    geometries: tuple[GeometryText, ...] | list[GeometryText],
+    index: int,
+    clusters: list[tuple[int, ...]],
+) -> list[str]:
+    """The gate's missing set for a cash_flow claim, with
+    the priced section-absence waivers applied."""
+    members = clusters[index]
+    stubs = tuple(stub for m in members for stub in geometries[m].stubs)
+    source_stubs = stubs
+    ext = _extended_members(geometries, index, clusters)
+    if len(ext) > len(members):
+        source_stubs = tuple(stub for m in ext for stub in geometries[m].stubs)
+    presence = section_presence(source_stubs, "cash_flow")
+    missing = [s for s in GATE_SETS["cash_flow"] if not presence[s]]
+    if len(members) == 1:
+        missing = [s for s in missing if s != "cash_reconciliation"]
+        if missing == ["financing"]:
+            missing = []
+        if missing and _supplemental_identity(geometries[index]):
+            missing = []
+    if len(missing) == 1:
+        missing = []
+    if "investing" in missing and _fund_form(source_stubs):
+        missing = [s for s in missing if s != "investing"]
+    return missing
+
+
+def cash_flow_lead_veto_scoped(geometry: GeometryText) -> bool:
+    """Own-stub proof for compete()'s lead-veto scoping: the
+    stubs carry every section, miss exactly financing, or
+    identify the geometry as the supplemental schedule."""
+    presence = section_presence(geometry.stubs, "cash_flow")
+    missing = [s for s in GATE_SETS["cash_flow"] if not presence[s]]
+    if not missing or missing == ["financing"]:
+        return True
+    return _supplemental_identity(geometry)
+
+
 def statement_clusters(
     geometries: tuple[GeometryText, ...] | list[GeometryText],
 ) -> list[tuple[int, ...]]:
@@ -354,11 +466,14 @@ def apply_primary_gate(
         stubs = tuple(
             stub for member in clusters[index] for stub in geometries[member].stubs
         )
-        refused = {
-            family: missing
-            for family in targets
-            if (missing := missing_sections(stubs, family))
-        }
+        refused: dict[str, list[str]] = {}
+        for family in targets:
+            if family == "cash_flow":
+                missing = cash_flow_missing_sections(geometries, index, clusters)
+            else:
+                missing = missing_sections(stubs, family)
+            if missing:
+                refused[family] = missing
         if not refused:
             gated.append(result)
             continue

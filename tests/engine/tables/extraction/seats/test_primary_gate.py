@@ -303,3 +303,148 @@ def test_inherited_claim_cannot_resurrect_past_the_gate() -> None:
         "equity assignment: strictly dominated candidate",
         "primary gate: missing beginning_balances, ending_balances",
     ]
+
+
+_CF_OP = "Cash flows from operating activities"
+_CF_INV = "Cash flows from investing activities"
+_CF_FIN = "Cash flows from financing activities"
+_CF_REC = "Net increase in cash and cash equivalents"
+
+
+def _cf_claim_result():
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+        CompetitionResult,
+        FamilyScore,
+    )
+    from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+        apply_primary_gate,
+    )
+
+    result = CompetitionResult(
+        claims=("cash_flow",),
+        contested=(),
+        scores={"cash_flow": FamilyScore("cash_flow", 50.0, {"stub": 50.0}, ())},
+    )
+    return apply_primary_gate, result
+
+
+def test_cash_flow_gate_singleton_reconciliation_waived() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    geometry = GeometryText(stubs=(_CF_OP, _CF_INV, _CF_FIN))
+    (gated,) = apply_primary_gate([geometry], [result])
+    assert gated.claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_singleton_financing_waived() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    geometry = GeometryText(stubs=(_CF_OP, _CF_INV, _CF_REC))
+    (gated,) = apply_primary_gate([geometry], [result])
+    assert gated.claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_supplemental_schedule_waived() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    geometry = GeometryText(
+        note_title="Statement of Cash Flows",
+        stubs=(
+            "Cash paid during the period for: Interest",
+            "Non-cash investing activities:",
+            "Non-cash financing activities:",
+        ),
+    )
+    (gated,) = apply_primary_gate([geometry], [result])
+    assert gated.claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_exactly_one_missing_any_cluster_size() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP, _CF_INV), note_title="Notes")
+    tail = GeometryText(stubs=(_CF_FIN,), note_title="Notes")
+    gated = apply_primary_gate([head, tail], [result, result])
+    assert gated[0].claims == ("cash_flow",)
+    assert gated[1].claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_continuation_extension_completes() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP,), note_title="Financial Statements")
+    mid = GeometryText(stubs=(_CF_INV,), note_title="Financial Statements")
+    continuation = GeometryText(
+        caption="Cash flows from financing activities:",
+        stubs=(_CF_FIN, "Cash and cash equivalents, beginning of period"),
+        note_title="Financial Statements",
+    )
+    gated = apply_primary_gate([head, mid, continuation], [result, result, result])
+    assert gated[0].claims == ("cash_flow",)
+
+
+def test_cash_flow_gate_uncaptioned_break_still_refused() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP,), note_title="Financial Statements")
+    mid = GeometryText(stubs=(_CF_INV,), note_title="Financial Statements")
+    other = GeometryText(
+        caption="Supplemental schedule",
+        stubs=(_CF_FIN, "Cash and cash equivalents, beginning of period"),
+        note_title="Financial Statements",
+    )
+    gated = apply_primary_gate([head, mid, other], [result, result, result])
+    assert gated[0].claims == ()
+    gate = [
+        entry
+        for entry in gated[0].scores["cash_flow"].evidence
+        if entry.channel == "gate"
+    ]
+    assert gate[0].detail == ("primary gate: missing financing, cash_reconciliation")
+
+
+def test_cash_flow_gate_fund_form_drops_only_investing() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(
+        stubs=(_CF_OP, "Increase (decrease) in net assets resulting from operations"),
+        note_title="Notes",
+    )
+    tail = GeometryText(stubs=(_CF_FIN,), note_title="Notes")
+    gated = apply_primary_gate([head, tail], [result, result])
+    assert gated[0].claims == ()
+    gate = [
+        entry
+        for entry in gated[0].scores["cash_flow"].evidence
+        if entry.channel == "gate"
+    ]
+    assert gate[0].detail == "primary gate: missing cash_reconciliation"
+
+
+def test_cash_flow_gate_two_missing_still_refused() -> None:
+    apply_primary_gate, result = _cf_claim_result()
+    head = GeometryText(stubs=(_CF_OP,), note_title="Notes")
+    tail = GeometryText(stubs=(_CF_INV,), note_title="Notes")
+    gated = apply_primary_gate([head, tail], [result, result])
+    assert gated[0].claims == ()
+    gate = [
+        entry
+        for entry in gated[0].scores["cash_flow"].evidence
+        if entry.channel == "gate"
+    ]
+    assert gate[0].detail == ("primary gate: missing financing, cash_reconciliation")
+
+
+def test_cash_flow_lead_veto_scoped_shapes() -> None:
+    from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+        cash_flow_lead_veto_scoped,
+    )
+
+    assert cash_flow_lead_veto_scoped(
+        GeometryText(stubs=(_CF_OP, _CF_INV, _CF_FIN, _CF_REC))
+    )
+    assert cash_flow_lead_veto_scoped(GeometryText(stubs=(_CF_OP, _CF_INV, _CF_REC)))
+    assert cash_flow_lead_veto_scoped(
+        GeometryText(
+            note_title="Statement of Cash Flows",
+            stubs=(
+                "Cash paid during the period for: Interest",
+                "Non-cash investing activities:",
+                "Non-cash financing activities:",
+            ),
+        )
+    )
+    assert not cash_flow_lead_veto_scoped(GeometryText(stubs=(_CF_OP, _CF_INV)))
