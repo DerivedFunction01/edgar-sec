@@ -192,7 +192,7 @@ def catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int
     current_year = _current_year()
     relation = _target_relation(paths, catalog_id)
     if relation is None:
-        return current_year - 10, current_year
+        return 1900, current_year
     with connect() as con:
         row = con.execute(_year_bounds_query(relation)).fetchone()
     minimum = int(row[0]) if row and row[0] is not None else current_year - 10
