@@ -71,10 +71,20 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
         and geometry.period_steps >= FRAGMENT_STEPS_MIN
         and geometry.stub_ladder_purity >= FRAGMENT_PURITY_MIN
     )
+    # Priced block arm: a short ladder whose block is pure seats
+    # at the standing floor when it carries two period steps, or
+    # one step over a two-year span; corpus population is
+    # exactly 8 trues at zero false cost.
+    block_form = (
+        score.total >= SEAT_FLOOR
+        and geometry.block_purity >= PURITY_MIN
+        and geometry.period_steps >= 1
+        and (geometry.period_steps >= 2 or geometry.year_span >= 2)
+    )
     transposed_form = bool(geometry.transposed_period_axis) and (
         score.total >= TRANSPOSED_FLOOR
     )
-    if not (main_form or fragment_form or transposed_form):
+    if not (main_form or fragment_form or block_form or transposed_form):
         return result
     group = ClaimGroup(
         family=FAMILY,

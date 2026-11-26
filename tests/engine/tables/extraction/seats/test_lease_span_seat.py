@@ -140,7 +140,10 @@ def test_seat_refuses_below_the_period_steps() -> None:
 def test_seat_fires_on_period_purity_for_a_band_ladder() -> None:
     out = _seat(
         _geometry(
-            year_span=0, period_steps=6, stub_ladder_purity=0.33, period_purity=0.89
+            year_span=0,
+            period_steps=6,
+            stub_ladder_purity=0.33,
+            period_purity=0.89,
         ),
         _result(16.0),
     )
@@ -150,7 +153,10 @@ def test_seat_fires_on_period_purity_for_a_band_ladder() -> None:
 def test_seat_refuses_when_both_purities_are_low() -> None:
     out = _seat(
         _geometry(
-            year_span=0, period_steps=6, stub_ladder_purity=0.33, period_purity=0.5
+            year_span=0,
+            period_steps=6,
+            stub_ladder_purity=0.33,
+            period_purity=0.5,
         ),
         _result(16.0),
     )
@@ -203,5 +209,61 @@ def test_seat_refuses_the_transposed_arm_below_its_floor() -> None:
             transposed_period_axis=True,
         ),
         _result(13.0),
+    )
+    assert out.claims == ()
+
+
+def test_seat_fires_the_block_arm_on_a_one_step_two_year_ladder() -> None:
+    out = _seat(
+        _geometry(
+            year_span=2,
+            period_steps=1,
+            stub_ladder_purity=0.5,
+            period_purity=0.5,
+            block_purity=1.0,
+        ),
+        _result(16.0),
+    )
+    assert out.claims == (LEASE,)
+
+
+def test_seat_fires_the_block_arm_on_a_two_step_ladder() -> None:
+    out = _seat(
+        _geometry(
+            year_span=1,
+            period_steps=2,
+            stub_ladder_purity=0.6,
+            period_purity=0.6,
+            block_purity=1.0,
+        ),
+        _result(16.0),
+    )
+    assert out.claims == (LEASE,)
+
+
+def test_seat_refuses_the_block_arm_on_a_one_step_one_year_ladder() -> None:
+    out = _seat(
+        _geometry(
+            year_span=1,
+            period_steps=1,
+            stub_ladder_purity=0.5,
+            period_purity=0.5,
+            block_purity=1.0,
+        ),
+        _result(16.0),
+    )
+    assert out.claims == ()
+
+
+def test_seat_refuses_the_block_arm_below_block_purity() -> None:
+    out = _seat(
+        _geometry(
+            year_span=2,
+            period_steps=2,
+            stub_ladder_purity=0.6,
+            period_purity=0.6,
+            block_purity=0.6,
+        ),
+        _result(16.0),
     )
     assert out.claims == ()
