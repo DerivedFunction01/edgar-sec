@@ -67,11 +67,8 @@ def _quiet_form(geometry: GeometryText) -> bool:
 
 
 # The composed definition's extension clauses, from the
-# fragment-form vocabulary census over the seat's
-# numbered-but-unseated population: each priced singly
-# and in combination over the directed frame at zero
-# falses (composed board 751 / tp 700 / P .9321 /
-# R .7973 in the incremental accounting of record).
+# fragment-form vocabulary census: each priced singly
+# and in combination at zero falses (board 751/700).
 def _rollforward_form(geometry: GeometryText) -> bool:
     """AOCI rollforward row-shape: a balance row, an
     arising-during row, a net amortization row."""
