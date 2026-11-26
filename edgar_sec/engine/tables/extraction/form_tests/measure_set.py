@@ -68,9 +68,8 @@ _MONTH_DAY_BOOKEND_RE = re.compile(
 def _head_year_variants(texts: list[str]) -> list[str]:
     """Dated forms of month-day bookend stubs, years from the texts.
 
-    A balance stub carrying a month and day but no year is dated
-    when the table's own head zone carries the year; the variant
-    appends each carried year (at most four) to each such stub.
+    A balance stub carrying a month and day but no year is dated when
+    the table's own head zone carries the year (at most four appended).
     """
     years: list[str] = []
     for text in texts:
