@@ -70,6 +70,7 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     TOKEN_STOPLIST,
     DEBT_HEADER_YEAR_MAX,
     DEBT_HEADER_YEAR_MIN,
+    DEBT_FAMILY,
     DEBT_NUMERIC_CELLS_MAX,
     LEG_LEADIN_ONLY,
 )
