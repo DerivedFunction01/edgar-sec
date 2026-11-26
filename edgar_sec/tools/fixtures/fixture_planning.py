@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -25,7 +26,27 @@ SEED_COHORT = canonical_seed_cohort_path()
 # checkpoint files without re-gathering.
 SUBSTANTIAL_US_GAAP_FLOOR = 200
 SHARD_MAX_CANDIDATES = 400
-YEAR_BANDS = ((2011, 2014), (2015, 2018), (2019, 2022), (2023, 2026))
+# The gathering window opens at the fixture corpus's start; its ceiling
+# is the current year at run time, never a literal — a filing from a
+# later year bands and counts instead of falling outside every band.
+WINDOW_START = 2011
+
+
+def _current_year() -> int:
+    return datetime.now(UTC).year
+
+
+def _year_bands() -> tuple[tuple[int, int], ...]:
+    ceiling = _current_year()
+    bands = []
+    start = WINDOW_START
+    while start <= ceiling:
+        bands.append((start, min(start + 3, ceiling)))
+        start += 4
+    return tuple(bands)
+
+
+YEAR_BANDS = _year_bands()
 
 
 @dataclass(frozen=True, slots=True)
@@ -55,8 +76,8 @@ SCREENS = {
             "Rule 3-05",
             "financial statements required by Item 9.01",
         ),
-        year_start=2011,
-        year_end=2026,
+        year_start=WINDOW_START,
+        year_end=_current_year(),
     ),
 }
 
@@ -165,9 +186,11 @@ def _catalog_context(catalog_dir: Path | None = None) -> dict[str, Any]:
         ).fetchone()[0]
         total, in_window, xbrl, first, last = con.execute(
             f"""SELECT count(*),
-                  sum(CASE WHEN year(f.filing_date::DATE) BETWEEN 2011 AND 2026
+                  sum(CASE WHEN year(f.filing_date::DATE)
+                           BETWEEN {WINDOW_START} AND {_current_year()}
                            THEN 1 ELSE 0 END),
-                  sum(CASE WHEN year(f.filing_date::DATE) BETWEEN 2011 AND 2026
+                  sum(CASE WHEN year(f.filing_date::DATE)
+                           BETWEEN {WINDOW_START} AND {_current_year()}
                            AND f.is_xbrl THEN 1 ELSE 0 END),
                   min(f.filing_date), max(f.filing_date)
                 FROM {flat}"""
@@ -175,8 +198,8 @@ def _catalog_context(catalog_dir: Path | None = None) -> dict[str, Any]:
     return {
         "ciks": ciks,
         "filings_total": total,
-        "filings_2011_2026": in_window,
-        "xbrl_filings_2011_2026": xbrl,
+        "filings_in_window": in_window,
+        "xbrl_filings_in_window": xbrl,
         "filing_date_min": first,
         "filing_date_max": last,
         "generic_xbrl_scoring_requests": 2 * xbrl,
@@ -208,7 +231,7 @@ def _shards(screen: Screen, population: list[dict[str, Any]]) -> list[dict[str, 
                     "candidates": len(block),
                     "xbrl_flagged": xbrl,
                     "inline_flagged": inline,
-                    "package_presence": PACKAGE_PRESENCE_BY_BAND[band],
+                    "package_presence": PACKAGE_PRESENCE_BY_BAND.get(band),
                     "seed_candidates": sum(1 for r in block if r["seed_filer"]),
                     "estimated_requests": requests,
                     "estimated_seconds_at_cap": round(

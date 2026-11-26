@@ -9,7 +9,9 @@ import pyarrow.parquet as pq
 
 from edgar_sec.tools.fixtures.fixture_planning import (
     SCREENS,
+    YEAR_BANDS,
     Screen,
+    _band_label,
     _population,
     _sample,
     _shards,
@@ -32,6 +34,20 @@ def _record(accession: str, year: int, *, xbrl: bool = True, seed: bool = False)
         "seed_filer": seed,
         "screen": "8ka-901a",
     }
+
+
+def test_year_bands_end_at_the_current_year() -> None:
+    from datetime import UTC, datetime
+
+    assert YEAR_BANDS[0][0] == 2011
+    assert YEAR_BANDS[-1][1] == datetime.now(UTC).year
+    assert _band_label(datetime.now(UTC).year) != "out-of-range"
+
+
+def test_shards_report_no_presence_for_an_unmeasured_band() -> None:
+    shards = _shards(SCREENS["8ka-901a"], [_record("acc-old", 2005)])
+    assert shards[0]["band"] == "out-of-range"
+    assert shards[0]["package_presence"] is None
 
 
 def test_shards_band_and_block_the_population():
