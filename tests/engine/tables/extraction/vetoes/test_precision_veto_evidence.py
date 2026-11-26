@@ -1,5 +1,6 @@
 """Precision veto pass: the DERIV-1, DT-1, INV-1, F1,
-credit dominance, and labor legs over gate-final claims."""
+credit dominance, and labor legs, and the DEBT-P9 leg,
+over gate-final claims."""
 
 from __future__ import annotations
 
@@ -581,3 +582,141 @@ def test_eps_legs_are_family_scoped():
     )
     results = apply_precision_vetoes([geo], [_result(("debt_maturity",))])
     assert "debt_maturity" in results[0].claims
+
+
+def _apply(geometries, results, stages=None):
+    if stages is None:
+        stages = tuple(
+            ClaimStage(claims=result.claims, scores=result.scores) for result in results
+        )
+    return apply_precision_vetoes(geometries, results, stages)
+
+
+def _debt_details(result):
+    return _gate_details(result, family="debt_maturity")
+
+
+def _debt_geometry(**overrides):
+    fields = {
+        "stubs": ("Bank debt", "Current portion", "Long-term bank debt"),
+        "numeric_cells": 12,
+    }
+    fields.update(overrides)
+    return GeometryText(**fields)
+
+
+def _debt_stage(channels, evidence=()):
+    score = FamilyScore("debt_maturity", 9.65, channels, evidence)
+    return (ClaimStage(claims=("debt_maturity",), scores={"debt_maturity": score}),)
+
+
+def test_debt_leadin_only_leg_fires():
+    geo = _debt_geometry()
+    groups = (
+        ClaimGroup(
+            "debt_maturity", 9.65, "claimed", "primary", {"leadin": 9.65}, (), 0.0
+        ),
+    )
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",), groups=groups)],
+        stages=_debt_stage({"leadin": 9.65}),
+    )
+    assert "debt_maturity" not in results[0].claims
+    assert "debt_maturity" not in results[0].contested
+    assert results[0].groups == ()
+    assert results[0].scores["debt_maturity"].total == 11.0
+    assert _debt_details(results[0]) == ["precision veto: leadin-only"]
+
+
+def test_debt_leg_reads_the_stage_not_the_final_score():
+    geo = _debt_geometry()
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"stub": 9.65}),
+    )
+    assert "debt_maturity" in results[0].claims
+    assert _debt_details(results[0]) == []
+
+
+def test_debt_missing_own_stage_score_keeps_the_claim():
+    geo = _debt_geometry()
+    stages = (ClaimStage(claims=("debt_maturity",), scores={}),)
+    results = _apply([geo], [_result(("debt_maturity",))], stages=stages)
+    assert "debt_maturity" in results[0].claims
+
+
+def test_debt_ladder_passed_keeps_the_claim():
+    geo = _debt_geometry()
+    evidence = (ClaimEvidence("form_test", "debt_maturity_year_ladder passed", 3.0),)
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 9.65}, evidence),
+    )
+    assert "debt_maturity" in results[0].claims
+    assert _debt_details(results[0]) == []
+
+
+def test_debt_admission_support_keeps_the_claim():
+    geo = _debt_geometry()
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 7.24, "admission": 5.0}),
+    )
+    assert "debt_maturity" in results[0].claims
+
+
+def test_debt_year_stub_keeps_the_claim():
+    geo = _debt_geometry(stubs=("2027", "2028", "2029"))
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 9.65}),
+    )
+    assert "debt_maturity" in results[0].claims
+
+
+def test_debt_thereafter_stub_keeps_the_claim():
+    geo = _debt_geometry(stubs=("2027", "Thereafter"))
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 9.65}),
+    )
+    assert "debt_maturity" in results[0].claims
+
+
+def test_debt_numeric_mass_over_cap_keeps_the_claim():
+    geo = _debt_geometry(numeric_cells=13)
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 9.65}),
+    )
+    assert "debt_maturity" in results[0].claims
+
+
+def test_debt_header_year_amount_pair_keeps_the_claim():
+    geo = _debt_geometry(headers=("2026", "1,000"))
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 9.65}),
+    )
+    assert "debt_maturity" in results[0].claims
+
+
+def test_debt_header_year_after_year_still_fires():
+    geo = _debt_geometry(headers=("2026", "2027"))
+    results = _apply(
+        [geo],
+        [_result(("debt_maturity",))],
+        stages=_debt_stage({"leadin": 9.65}),
+    )
+    assert "debt_maturity" not in results[0].claims
+    assert _debt_details(results[0]) == ["precision veto: leadin-only"]
+
+

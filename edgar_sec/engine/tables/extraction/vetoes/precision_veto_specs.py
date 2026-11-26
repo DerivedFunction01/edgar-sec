@@ -50,6 +50,18 @@ DT_SCHEDULE_II_PHRASE = "deducted from assets"
 DT_UTB_SUBJECT_PHRASE = "unrecognized income tax benefits"
 
 
+DEBT_FAMILY = "debt_maturity"
+
+# DEBT-P9 leg name, as the gate note reports it: the claim's
+# own-stage support is the leadin channel alone.
+LEG_LEADIN_ONLY = "leadin-only"
+
+# P9's priced bounds: the claim geometry's numeric-cell cap
+# and the header-year window of the year→amount pair test.
+DEBT_NUMERIC_CELLS_MAX = 12
+DEBT_HEADER_YEAR_MIN = 1900
+DEBT_HEADER_YEAR_MAX = 2100
+
 # Derived core vocabulary of the eps_reconciliation host:
 # stub tokens at >= 50% frequency over the family's Round-2
 # member trues, carried verbatim as a population constant.

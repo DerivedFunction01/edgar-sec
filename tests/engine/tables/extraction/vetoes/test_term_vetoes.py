@@ -284,7 +284,6 @@ _GROUP_COUNTS = {
     ("comprehensive_income", "body", "scored"): 13,
     ("comprehensive_income", "lead", "scored"): 11,
     ("debt_maturity", "body", "hard"): 1,
-    ("debt_maturity", "lead", "hard"): 1,
     ("debt_maturity", "lead", "scored"): 11,
     ("deferred_tax", "body", "hard"): 3,
     ("deferred_tax", "body", "scored"): 7,
@@ -351,14 +350,14 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 546
+    assert len(rows) == 545
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 198
+    assert tiers.count("hard") == 197
     assert tiers.count("scored") == 348
 
 
@@ -454,7 +453,6 @@ def test_dagger_rows_landed_hard_as_priced() -> None:
         ("tax_reconciliation", "months ended", "body"),
         ("stock_comp_rollforward", "year ended", "body"),
         ("deferred_tax", "credit losses", "lead"),
-        ("debt_maturity", "senior secured", "lead"),
     }
     assert all((*row, "hard") in rows for row in dagger_rows)
 
@@ -512,3 +510,12 @@ def test_issuer_purchases_rows_exactly_the_six_measured_families() -> None:
             "tax_reconciliation",
         )
     }
+
+
+def test_debt_maturity_senior_secured_lead_hard_row_removed() -> None:
+    rows = _all_rows()
+    # cureV (debt_maturity re-price): "senior secured" leaves the
+    # debt_maturity lead/hard set — the lead names the filer's own
+    # senior secured ladder; the rest of the set stands as priced.
+    assert ("debt_maturity", "senior secured", "lead", "hard") not in rows
+    assert ("debt_maturity", "senior notes", "body", "hard") in rows

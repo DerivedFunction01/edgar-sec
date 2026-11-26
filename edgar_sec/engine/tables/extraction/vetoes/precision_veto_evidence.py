@@ -68,6 +68,10 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     LEG_STUB_BIGRAM,
     LEG_STUB_CREDIT,
     TOKEN_STOPLIST,
+    DEBT_HEADER_YEAR_MAX,
+    DEBT_HEADER_YEAR_MIN,
+    DEBT_NUMERIC_CELLS_MAX,
+    LEG_LEADIN_ONLY,
 )
 from edgar_sec.foundation.text.date_patterns import (
     FULL_DATE_STUB_RE,
@@ -409,9 +413,90 @@ _LEG_EVALUATORS = {
 }
 
 
+def _is_year_token(text: str) -> bool:
+    """A 4-digit year token inside the priced header window."""
+    return (
+        text.isdigit()
+        and len(text) == 4
+        and DEBT_HEADER_YEAR_MIN <= int(text) <= DEBT_HEADER_YEAR_MAX
+    )
+
+
+def _is_numeric_token(text: str) -> bool:
+    """A header cell that parses as a number (marks stripped)."""
+    cleaned = text.replace(",", "").replace("$", "").replace("%", "")
+    cleaned = cleaned.strip("()")
+    try:
+        float(cleaned)
+    except ValueError:
+        return False
+    return True
+
+
+def _header_year_amount_pair(headers) -> bool:
+    """A year header cell immediately followed by a numeric,
+    non-year header cell: the flattened vertical form."""
+    cells = [str(header).strip() for header in headers]
+    return any(
+        _is_year_token(cells[index])
+        and not _is_year_token(cells[index + 1])
+        and _is_numeric_token(cells[index + 1])
+        for index in range(len(cells) - 1)
+    )
+
+
+def _year_stub_present(geometry) -> bool:
+    """A 4-digit-year stub or a thereafter stub."""
+    for stub in geometry.stubs:
+        text = str(stub).strip()
+        if text.isdigit() and len(text) == 4:
+            return True
+        if "thereafter" in normalize_text(stub):
+            return True
+    return False
+
+
+def _ladder_passed(score) -> bool:
+    """The own-stage year-ladder form test passed."""
+    return any(
+        entry.channel == "form_test" and "year_ladder passed" in entry.detail
+        for entry in score.evidence
+    )
+
+
+def _debt_legs(geometry, own_score) -> tuple[str, ...]:
+    """DEBT-P9: leadin-only own support, no maturity-year rows,
+    no flattened year headers, numeric mass at the cap."""
+    if own_score is None:
+        return ()
+    channels = own_score.by_channel
+    if channels.get("leadin", 0.0) <= 0.0:
+        return ()
+    if channels.get("admission", 0.0) > 0.0:
+        return ()
+    if _ladder_passed(own_score):
+        return ()
+    if _year_stub_present(geometry):
+        return ()
+    if geometry.numeric_cells > DEBT_NUMERIC_CELLS_MAX:
+        return ()
+    if _header_year_amount_pair(geometry.headers):
+        return ()
+    return (LEG_LEADIN_ONLY,)
+
+
+_LEG_EVALUATORS = {
+    DERIV_FAMILY: _deriv_legs,
+    DT_FAMILY: _deferred_tax_legs,
+    INV_FAMILY: _inventory_legs,
+}
+
+
 def _fired_legs(
     family: str, geometry, tokens: ChannelTokens, result
 ) -> tuple[str, ...]:
+    if family == DEBT_FAMILY:
+        return _debt_legs(geometry, result.scores.get(family))
     evaluator = _LEG_EVALUATORS.get(family)
     return evaluator(geometry, tokens, result) if evaluator is not None else ()
 
@@ -432,7 +517,7 @@ def apply_precision_vetoes(geometries, results):
     for index, result in enumerate(results):
         tokens = None
         for family in result.claims:
-            if family not in _LEG_EVALUATORS:
+            if family != DEBT_FAMILY and family not in _LEG_EVALUATORS:
                 continue
             if tokens is None:
                 tokens = channel_tokens(geometries[index])

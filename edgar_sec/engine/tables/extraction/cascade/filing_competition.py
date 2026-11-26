@@ -291,7 +291,7 @@ def compete_filing(
     # precision, and spanning vetoes read gate-final claims.
     gated = apply_primary_gate(geometries, results)
     vetoed = apply_ppe_vetoes(geometries, gated, stages)
-    precise = apply_precision_vetoes(geometries, vetoed)
+    precise = apply_precision_vetoes(geometries, vetoed, stages)
     spanned = apply_spanning_vetoes(geometries, precise)
     # Formation seat (priced): cover identity is read from the
     # filing's front matter, upstream of every table decision;
