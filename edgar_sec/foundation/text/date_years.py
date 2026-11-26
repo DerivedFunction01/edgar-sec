@@ -9,8 +9,8 @@ from edgar_sec.foundation.text.date_patterns import (
 )
 
 
-REFERENCE_YEAR_LOOKBACK = 80
-REFERENCE_YEAR_FORWARD = 50
+REFERENCE_YEAR_LOOKBACK = 15
+REFERENCE_YEAR_FORWARD = 20
 
 
 def reference_year_window(reference_year: int) -> tuple[int, int]:

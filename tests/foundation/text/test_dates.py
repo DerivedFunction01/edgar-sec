@@ -32,11 +32,13 @@ def test_year_regex_and_validation() -> None:
     assert YEAR_TOKEN_RE.match("1998") is not None
     assert YEAR_TOKEN_RE.match("1899") is None
     assert is_valid_year(2024, reference_year=2024)
-    assert is_valid_year(1998, reference_year=2024)
+    assert is_valid_year(1998, reference_year=1999)
     assert not is_valid_year(1850, reference_year=2024)
     assert not is_valid_year(2199, reference_year=1999)
     assert not is_valid_year(2076, reference_year=1999)
-    assert is_valid_year(2049, reference_year=1999)
+    assert is_valid_year(2019, reference_year=1999)
+    assert not is_valid_year(2020, reference_year=1999)
+    assert not is_valid_year(1983, reference_year=1999)
     assert is_year_token("2024")
     assert is_year_token("  1998  ")
     assert not is_year_token("202")
