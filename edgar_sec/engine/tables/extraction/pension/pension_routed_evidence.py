@@ -35,7 +35,6 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
 
 _DIGITS_RE = re.compile(r"\b\d+\b")
 _BOOKEND_BEGIN_RE = re.compile(r"beginning|opening balance|balance at (the )?beginning")
-_YEAR_TOKEN_RE = YEAR_TOKEN_RE
 _HEADER_LINES = 3
 
 
@@ -148,7 +147,7 @@ def read_routed(text: PensionRoutedText) -> _Read:
     year_stubs = 0
     for stub in stubs:
         toks = [t for t in norm(stub).replace("-", " ").split() if t not in DROP_TOKS]
-        if toks and all(_YEAR_TOKEN_RE.match(t) for t in toks):
+        if toks and all(YEAR_TOKEN_RE.match(t) for t in toks):
             year_stubs += 1
     benefit_terms = tuple(
         term
