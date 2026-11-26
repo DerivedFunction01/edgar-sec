@@ -29,7 +29,6 @@ from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 
 
-
 class BalanceSheetSeparatorText:
     """One table's grid as the separator reads it: lines of cells."""
 
