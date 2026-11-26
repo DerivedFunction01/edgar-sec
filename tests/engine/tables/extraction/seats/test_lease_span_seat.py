@@ -135,3 +135,23 @@ def test_seat_fires_on_period_steps_below_the_year_span() -> None:
 def test_seat_refuses_below_the_period_steps() -> None:
     out = _seat(_geometry(year_span=2, period_steps=2), _result(16.0))
     assert out.claims == ()
+
+
+def test_seat_fires_on_period_purity_for_a_band_ladder() -> None:
+    out = _seat(
+        _geometry(
+            year_span=0, period_steps=6, stub_ladder_purity=0.33, period_purity=0.89
+        ),
+        _result(16.0),
+    )
+    assert out.claims == (LEASE,)
+
+
+def test_seat_refuses_when_both_purities_are_low() -> None:
+    out = _seat(
+        _geometry(
+            year_span=0, period_steps=6, stub_ladder_purity=0.33, period_purity=0.5
+        ),
+        _result(16.0),
+    )
+    assert out.claims == ()

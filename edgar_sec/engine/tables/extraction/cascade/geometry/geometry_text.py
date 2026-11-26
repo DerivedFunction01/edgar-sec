@@ -22,6 +22,7 @@ from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence
     LeaseSeparatorText,
     column_mass_shares,
     period_step_count,
+    period_purity,
     period_stub_present,
     stub_ladder_purity,
     transposed_period_axis,
@@ -101,6 +102,7 @@ class GeometryText:
     period_stub_present: bool | None = None
     transposed_period_axis: bool | None = None
     period_steps: int = 0
+    period_purity: float = 0.0
     lease_mass_share: float | None = None
     foreign_mass_share: float | None = None
 
@@ -177,6 +179,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         stub_ladder_purity=stub_ladder_purity(separator_text) or 0.0,
         period_stub_present=period_stub_present(separator_text),
         period_steps=period_step_count(separator_text),
+        period_purity=period_purity(separator_text) or 0.0,
         transposed_period_axis=transposed_period_axis(separator_text),
         lease_mass_share=(
             None

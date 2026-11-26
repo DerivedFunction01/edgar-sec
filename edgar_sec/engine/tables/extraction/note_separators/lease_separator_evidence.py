@@ -35,6 +35,7 @@ __all__ = [
     "evaluate_lease_separator",
     "fired_separator_outcome",
     "period_stub_present",
+    "period_purity",
     "period_step_count",
     "stub_ladder_purity",
     "stub_refusal_reason",
@@ -211,6 +212,21 @@ def period_step_count(text: LeaseSeparatorText) -> int:
         for cell in _stub_cells(text)
         if PERIOD_STUB_RE.match(cell.strip()) or YEAR_TOKEN_SEARCH_RE.search(cell)
     )
+
+
+def period_purity(text: LeaseSeparatorText) -> float | None:
+    """Anchored period purity: period-label or total stub cells
+    over non-empty stub cells — the purity read for band-stubbed
+    ladders, whose stubs carry no year tokens."""
+    stub_cells = _stub_cells(text)
+    if not stub_cells:
+        return None
+    ladder = sum(
+        1
+        for cell in stub_cells
+        if PERIOD_STUB_RE.match(cell.strip()) or TOTAL_ROW_RE.match(cell)
+    )
+    return ladder / len(stub_cells)
 
 
 def transposed_period_axis(text: LeaseSeparatorText) -> bool:
@@ -396,7 +412,16 @@ def apply_lease_assignment(geometries, results):
         if others:
             refused[i] = "lease assignment: geometry co-claimed"
         elif debt_seat_claimed(geometries[i].form_tests):
-            refused[i] = "lease assignment: geometry seated to debt_maturity"
+            # Priced guard: the strip's premise is that the
+            # geometry belongs to debt; a lease score dominating
+            # the debt score falsifies it (the priced population
+            # read debt 1.5 against lease 24.6-82.3).
+            lease_score = result.scores.get(family)
+            debt_score = result.scores.get("debt_maturity")
+            lease_total = lease_score.total if lease_score else 0.0
+            debt_total = debt_score.total if debt_score else 0.0
+            if lease_total <= debt_total:
+                refused[i] = "lease assignment: geometry seated to debt_maturity"
     if not refused:
         return list(results)
     out = []

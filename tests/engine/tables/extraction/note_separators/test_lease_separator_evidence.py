@@ -329,7 +329,7 @@ _LADDER_ONLY = (
 def test_assignment_refuses_when_debt_seat_seated():
     results = apply_lease_assignment(
         [GeometryText(form_tests=_SEATED)],
-        [_result(FAMILY)],
+        [_result_scored((FAMILY,), {FAMILY: 11.0, ANCHOR: 20.0})],
     )
     assert FAMILY not in results[0].claims
     evidence = results[0].scores[FAMILY].evidence
@@ -547,3 +547,39 @@ def test_period_step_count_reads():
     assert _lse.period_step_count(partial) == 3
     plain = LeaseSeparatorText("H | A\nCost of revenue | 1\nTotal | 2")
     assert _lse.period_step_count(plain) == 0
+
+
+def test_period_purity_reads():
+    bands = LeaseSeparatorText(
+        " | Operating\nWithin one year | 7.2\nOne to two years | 5.7\n"
+        "Thereafter | 25.6\nTotal lease payments | 52.2"
+    )
+    assert _lse.period_purity(bands) == 1.0
+    years = LeaseSeparatorText("H | A\n2026 | 1\nTotal | 2\nLess: interest | 3")
+    assert _lse.period_purity(years) == 2 / 3
+    plain = LeaseSeparatorText("H | A\nCost of revenue | 1\nTotal | 2")
+    assert _lse.period_purity(plain) == 0.5
+
+
+def _result_scored(claims, totals):
+    scores = {
+        family: FamilyScore(family, total, {"signature": total}, ())
+        for family, total in totals.items()
+    }
+    return CompetitionResult(claims=claims, contested=(), scores=scores)
+
+
+def test_assignment_refuses_when_debt_seat_seated_and_debt_dominates():
+    results = apply_lease_assignment(
+        [GeometryText(form_tests=_SEATED)],
+        [_result_scored((FAMILY,), {FAMILY: 11.0, ANCHOR: 20.0})],
+    )
+    assert FAMILY not in results[0].claims
+
+
+def test_assignment_keeps_claim_when_lease_dominates_the_debt_seat():
+    results = apply_lease_assignment(
+        [GeometryText(form_tests=_SEATED)],
+        [_result_scored((FAMILY,), {FAMILY: 58.5, ANCHOR: 1.5})],
+    )
+    assert FAMILY in results[0].claims

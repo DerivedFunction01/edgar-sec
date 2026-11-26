@@ -47,7 +47,7 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
         return result
     if geometry.year_span < SPAN_MIN and geometry.period_steps < STEPS_MIN:
         return result
-    if geometry.stub_ladder_purity < PURITY_MIN:
+    if geometry.stub_ladder_purity < PURITY_MIN and geometry.period_purity < PURITY_MIN:
         return result
     if debt_seat_claimed(geometry.form_tests):
         return result
