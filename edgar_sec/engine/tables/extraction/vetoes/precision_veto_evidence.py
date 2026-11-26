@@ -486,11 +486,6 @@ def _debt_legs(geometry, own_score) -> tuple[str, ...]:
     return (LEG_LEADIN_ONLY,)
 
 
-_LEG_EVALUATORS = {
-    DERIV_FAMILY: _deriv_legs,
-    DT_FAMILY: _deferred_tax_legs,
-    INV_FAMILY: _inventory_legs,
-}
 
 
 def _fired_legs(
