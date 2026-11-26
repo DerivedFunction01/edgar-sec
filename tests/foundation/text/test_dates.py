@@ -127,7 +127,6 @@ def test_expand_2digit_year() -> None:
     assert expand_2digit_year(24, reference_year=2105) == 2124
 
 
-
 def test_parse_numeric_year() -> None:
     from edgar_sec.foundation.text.date_years import parse_numeric_year
 
@@ -323,7 +322,7 @@ def test_expand_2digit_year_accession_segment_witness() -> None:
     """W2/W3 under the unified rule: segment-shaped 2-digit years
     expand by the rolling window. 89 at a 2026 anchor is 1989 (the
     deleted fixed 90-pivot read 2089); 79 is 1979 (the deleted
-    century_pivot mode read 2079)."""
+    century-pivot mode read 2079)."""
     assert expand_2digit_year(89, reference_year=2026) == 1989
     assert expand_2digit_year(79, reference_year=2026) == 1979
 
