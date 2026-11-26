@@ -546,7 +546,11 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
                 values["notice_phone"].append(phone.group(0))
                 continue
             if value:
-                if field == "cusip" and parse_date(value) is not None:
+                if (
+                    field == "cusip"
+                    and (parsed := parse_date(value)) is not None
+                    and parsed.source == value
+                ):
                     values["event_date"].append(value)
                 elif field == "security_class" and is_valid_cusip(
                     value.strip(), length=9

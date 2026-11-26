@@ -232,7 +232,8 @@ def parse_cusip(value: str | None) -> str | None:
     val = value.strip()
     if is_street_address_value(val) or is_street_or_address_line(val):
         return None
-    if parse_date(val) is not None:
+    parsed = parse_date(val)
+    if parsed is not None and parsed.source == val:
         return None
     val = _CUSIP_FORM_TAIL_RE.sub("", val)
     val = _CUSIP_SECURITY_TAIL_RE.sub("", val)
