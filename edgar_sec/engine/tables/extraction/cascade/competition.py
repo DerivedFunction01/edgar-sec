@@ -6,6 +6,7 @@ explained by a measured containment edge. Closure corroborates.
 """
 
 from __future__ import annotations
+from edgar_sec.engine.tables.extraction.separators.summary_separator import SummarySeparatorResult
 
 from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     apply_admissions,
@@ -20,6 +21,7 @@ from edgar_sec.engine.tables.extraction.separators.combined_operations_separator
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
     SEPARATOR_EXEMPTIONS,
+    SUMMARY_SEPARATOR_SPECS_BY_ID,
 )
 from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evidence import (
     failing_goodwill_separator_outcome,
@@ -79,6 +81,7 @@ from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     SUMMARY_SEPARATOR_FORM_EXEMPTIONS,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    GATE_SETS,
     cash_flow_lead_veto_scoped,
     section_presence,
 )
@@ -109,6 +112,29 @@ REACH_MIN_STUB_SHARE: dict[str, float] = {
     "deferred_tax": 0.5,
 }
 
+
+_SEP5_STAMP = "mda_financing_operating_rows11"
+_SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
+
+
+def _sep5_criterion_holds(geometry) -> bool:
+    """Sep-5 criterion form (cash_flow, priced): the stamp rule's verdict
+    is suppressed for a geometry whose title leg (lead/note title names
+    the statement of cash flows) and presence leg (all four cash_flow
+    sections present over the geometry's stubs) both hold. The priced
+    gold leg (the filing's only gold cash_flow geometry) has no
+    per-geometry production analogue inside compete(); on the priced
+    populations the title single and the gold single each restore
+    exactly the Merrill trio at zero falses, and the presence single is
+    the flood source, so the built conjunction is title and presence.
+    """
+    titles = " ".join(
+        t for t in (geometry.lead_title or "", geometry.note_title or "") if t
+    )
+    if not _SEP5_TITLE_RE.search(titles):
+        return False
+    presence = section_presence(geometry.stubs, "cash_flow")
+    return all(presence[s] for s in GATE_SETS["cash_flow"])
 
 def compete(
     geometry: GeometryText,
@@ -408,6 +434,28 @@ def compete(
     # one whose fired rules are a subset of its
     # SEPARATOR_EXEMPTIONS entry, or one named in
     # SUMMARY_SEPARATOR_FORM_EXEMPTIONS with a companion pass.
+    _sep = geometry.summary_separator
+    if (
+        _sep is not None
+        and _SEP5_STAMP in _sep.rules
+        and "cash_flow" in claims
+        and _sep5_criterion_holds(geometry)
+    ):
+        _remaining = tuple(r for r in _sep.rules if r != _SEP5_STAMP)
+        _sub = tuple(
+            dict.fromkeys(
+                SUMMARY_SEPARATOR_SPECS_BY_ID[r].sub_mass
+                for r in _remaining
+                if r in SUMMARY_SEPARATOR_SPECS_BY_ID
+            )
+        )
+        if _remaining and not _sub:
+            _sub = _sep.sub_masses
+        object.__setattr__(
+            geometry,
+            "summary_separator",
+            SummarySeparatorResult(rules=_remaining, sub_masses=_sub),
+        )
     separator = geometry.summary_separator
     if separator is not None and separator.fired and claims:
         fired_rules = frozenset(separator.rules)

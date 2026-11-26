@@ -537,4 +537,13 @@ SEPARATOR_EXEMPTIONS: dict[str, tuple[str, ...]] = {
         "mda_item2_net_loss",
         "mda_total_row_item2_net_loss",
     ),
+    "goodwill_rollforward": (
+        "mda_item2_sales",
+        "mda_item7_rows12",
+        "mda_item7_sales",
+        "selected_data_last_total_item6",
+    ),
+    "restructuring": (
+        "mda_item2_data",
+    ),
 }
