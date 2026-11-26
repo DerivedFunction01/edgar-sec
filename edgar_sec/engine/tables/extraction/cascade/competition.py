@@ -120,15 +120,8 @@ _SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
 
 
 def _sep5_criterion_holds(geometry) -> bool:
-    """Sep-5 criterion form (cash_flow, priced): the stamp rule's verdict
-    is suppressed for a geometry whose title leg (lead/note title names
-    the statement of cash flows) and presence leg (all four cash_flow
-    sections present over the geometry's stubs) both hold. The priced
-    gold leg (the filing's only gold cash_flow geometry) has no
-    per-geometry production analogue inside compete(); on the priced
-    populations the title single and the gold single each restore
-    exactly the Merrill trio at zero falses, and the presence single is
-    the flood source, so the built conjunction is title and presence.
+    """Sep-5 criterion form (cash_flow, priced): title leg and presence leg.
+    The stamp rule's verdict is suppressed when both legs hold.
     """
     titles = " ".join(
         t for t in (geometry.lead_title or "", geometry.note_title or "") if t
