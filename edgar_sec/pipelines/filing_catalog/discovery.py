@@ -151,7 +151,7 @@ def _year_bounds_query(
         "length(report_date) >= 4",
         (
             f"CAST(substring(report_date, 1, 4) AS INTEGER)"
-            f" BETWEEN 1900 AND {_current_year()}"
+            f" >= 1900"
         ),
     ]
     if forms:
@@ -188,7 +188,7 @@ def _target_relation(paths: FilingCatalogPaths, catalog_id: str) -> str | None:
 
 
 def catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int, int]:
-    """Return the observed report-year range of a catalog, clipped to EDGAR.
+    """Return the observed report-year range of a catalog, as observed.
     The fallback for a selection reaching nothing: bands still must be published, and
     the honest ones come from every year the catalog holds.
     """
