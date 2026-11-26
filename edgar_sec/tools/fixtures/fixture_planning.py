@@ -184,16 +184,18 @@ def _catalog_context(catalog_dir: Path | None = None) -> dict[str, Any]:
         ciks = con.execute(
             f"SELECT count(*) FROM read_parquet({sql_path_list(parts)})"
         ).fetchone()[0]
+        ceiling = _current_year()
         total, in_window, xbrl, first, last = con.execute(
             f"""SELECT count(*),
                   sum(CASE WHEN year(f.filing_date::DATE)
-                           BETWEEN {WINDOW_START} AND {_current_year()}
+                           BETWEEN ? AND ?
                            THEN 1 ELSE 0 END),
                   sum(CASE WHEN year(f.filing_date::DATE)
-                           BETWEEN {WINDOW_START} AND {_current_year()}
+                           BETWEEN ? AND ?
                            AND f.is_xbrl THEN 1 ELSE 0 END),
                   min(f.filing_date), max(f.filing_date)
-                FROM {flat}"""
+                FROM {flat}""",
+            [WINDOW_START, ceiling, WINDOW_START, ceiling],
         ).fetchone()
     return {
         "ciks": ciks,
