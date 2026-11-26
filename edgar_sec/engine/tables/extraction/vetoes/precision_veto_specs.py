@@ -49,6 +49,55 @@ DT_PPA_PHRASES = (
 DT_SCHEDULE_II_PHRASE = "deducted from assets"
 DT_UTB_SUBJECT_PHRASE = "unrecognized income tax benefits"
 
+# DT-S3X (packet DT-S3X): the subject as stated in lead prose, in
+# either dialect, and the closing lines of a composition, read
+# over normalized stub text.
+DT_S3X_SUBJECT_PHRASES = ("deferred tax", "deferred income tax")
+DT_S3X_COMPONENT_TERMS = (
+    "net operating loss",
+    "tax credit",
+    "capital loss",
+    "depreciation",
+    "amortization",
+    "deferred revenue",
+    "accrued",
+    "reserve",
+    "compensation",
+    "inventory",
+    "basis difference",
+    "partnership",
+    "foreign",
+    "state",
+    "research",
+    "lease",
+    "allowance for",
+    "unrealized",
+    "hedg",
+    "pension",
+    "postretirement",
+    "restructuring",
+    "investment",
+    "prepaid",
+    "warrant",
+    "convertible",
+    "share-based",
+    "stock compensation",
+    "bad debt",
+    "charitable",
+    "interest expense",
+    "deferred compensation",
+    "employee benefit",
+)
+DT_S3X_CLOSING_PHRASES = (
+    "total deferred tax",
+    "net deferred tax",
+    "valuation allowance",
+    "total gross",
+    "less valuation",
+    "net deferred",
+)
+
+
 
 DEBT_FAMILY = "debt_maturity"
 

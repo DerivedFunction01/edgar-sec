@@ -803,3 +803,125 @@ def test_both_labor_legs_report_in_order():
     assert _labor_details(results[0]) == [
         "precision veto: hdr:employer-form, hdr:contributions-no-expiration"
     ]
+
+
+
+_S3X_STUBS = (
+    "Deferred income tax assets:",
+    "Net operating loss carryforward",
+    "Stock compensation",
+    "Income taxes payable",
+    "Less: valuation allowance",
+    "Net deferred income tax assets",
+)
+
+
+def test_dt_s3x_relief_seats_a_dialect_composition():
+    geo = GeometryText(
+        stubs=_S3X_STUBS,
+        lead="The components of deferred income tax assets are as follows",
+        grid_text="diluted shares outstanding",
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" in results[0].claims
+    assert _dt_details(results[0]) == []
+
+
+def test_dt_s3x_relief_via_the_composition_form_test():
+    geo = GeometryText(
+        stubs=(
+            "Deferred income tax assets:",
+            "Net operating loss carryforward",
+            "Stock compensation",
+            "Income taxes payable",
+        ),
+        lead_title="Deferred income taxes",
+        grid_text="diluted shares outstanding",
+        form_tests=(
+            FormTestOutcome(
+                "deferred_tax",
+                "deferred_tax_composition",
+                "composition",
+                True,
+                True,
+                0,
+                3.0,
+                "passed",
+            ),
+        ),
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" in results[0].claims
+    assert _dt_details(results[0]) == []
+
+
+def test_dt_s3x_no_relief_without_lead_subject():
+    geo = GeometryText(
+        stubs=_S3X_STUBS,
+        grid_text="diluted shares outstanding",
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" not in results[0].claims
+    assert _dt_details(results[0]) == [
+        "precision veto: bigram:income taxes, form:no-dt-subject"
+    ]
+
+
+def test_dt_s3x_relief_stops_at_other_legs():
+    geo = GeometryText(
+        stubs=_S3X_STUBS,
+        lead="The components of deferred income tax assets are as follows",
+        grid_text="diluted shares outstanding",
+        pct_row_share=0.5,
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" not in results[0].claims
+    assert _dt_details(results[0]) == [
+        "precision veto: pct-rows, bigram:income taxes, form:no-dt-subject"
+    ]
+
+
+def test_dt_s3x_no_relief_for_the_schedule_ii_specimen_shape():
+    geo = GeometryText(
+        stubs=(
+            "Reserves and allowances deducted from asset accounts:",
+            "Valuation allowance for deferred tax assets",
+            "Reserves for non-income taxes",
+        ),
+        grid_text="diluted shares outstanding",
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" not in results[0].claims
+    assert _dt_details(results[0]) == ["precision veto: bigram:income taxes"]
+
+
+def test_dt_s3x_relief_stops_at_the_schedule_ii_form():
+    geo = GeometryText(
+        stubs=_S3X_STUBS,
+        headers=("Reserves and allowances deducted from assets",),
+        lead="The components of deferred income tax assets are as follows",
+        grid_text="diluted shares outstanding",
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" not in results[0].claims
+    assert "form:schedule-ii" in _dt_details(results[0])[0]
+
+
+def test_dt_s3x_no_relief_for_a_reconciliation_with_a_va_line():
+    geo = GeometryText(
+        stubs=(
+            "Net income (loss) before income taxes",
+            "Tax expenses (benefit) at the statutory tax rate",
+            "Permanent differences",
+            "Other adjustments",
+            "Valuation allowance",
+            "Income tax benefit",
+        ),
+        lead="The deferred tax reconciliation is as follows",
+        grid_text="diluted shares outstanding",
+    )
+    results = apply_precision_vetoes([geo], [_result(("deferred_tax",))])
+    assert "deferred_tax" not in results[0].claims
+    assert _dt_details(results[0]) == [
+        "precision veto: bigram:income taxes, form:no-dt-subject"
+    ]

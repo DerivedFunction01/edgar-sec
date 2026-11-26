@@ -30,6 +30,9 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DT_STUB_BIGRAM,
     DT_PPA_PHRASES,
     DT_SCHEDULE_II_PHRASE,
+    DT_S3X_CLOSING_PHRASES,
+    DT_S3X_COMPONENT_TERMS,
+    DT_S3X_SUBJECT_PHRASES,
     DT_UTB_SUBJECT_PHRASE,
     LEG_DT_NONCOMPOSITION,
     LEG_DT_NO_SUBJECT,
@@ -287,6 +290,34 @@ def _dt_combo_legs(geometry, tokens) -> list[str]:
     return legs
 
 
+def _dt_s3x_relief(geometry) -> bool:
+    """DT-S3X relief: lead-prose subject, either dialect, with a
+    composition reading (form test or lexicon with closing)."""
+    lead_text = normalize_text(geometry.lead)
+    title_text = normalize_text(geometry.lead_title)
+    if not any(
+        phrase in lead_text or phrase in title_text for phrase in DT_S3X_SUBJECT_PHRASES
+    ):
+        return False
+    if any(
+        outcome.family == DT_FAMILY
+        and outcome.test_id == "deferred_tax_composition"
+        and outcome.passed
+        for outcome in geometry.form_tests
+    ):
+        return True
+    if _dt_va_movement_form(geometry):
+        return False
+    stubs = _dt_stub_lines(geometry)
+    components = sum(
+        1 for text in stubs if any(term in text for term in DT_S3X_COMPONENT_TERMS)
+    )
+    if components < 2:
+        return False
+    stub_text = " || ".join(stubs)
+    return any(phrase in stub_text for phrase in DT_S3X_CLOSING_PHRASES)
+
+
 def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """DT-1: percentage rows, eps host absence, or the bigram."""
     legs = []
@@ -298,6 +329,9 @@ def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ..
     if DT_STUB_BIGRAM in tokens.bigrams:
         legs.append(LEG_STUB_BIGRAM)
     legs.extend(_dt_combo_legs(geometry, tokens))
+    relief = {LEG_DT_NO_SUBJECT, LEG_STUB_BIGRAM}
+    if legs and set(legs) <= relief and _dt_s3x_relief(geometry):
+        legs = [leg for leg in legs if leg not in relief]
     return tuple(legs)
 
 
