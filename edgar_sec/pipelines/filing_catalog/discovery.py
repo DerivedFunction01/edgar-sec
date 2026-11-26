@@ -36,6 +36,9 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 )
 from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
+# EDGAR's full-text coverage begins in 1994
+_MIN_PLAUSIBLE_YEAR = 1990
+
 
 def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
     """Return the catalog id named by the current pointer, if any.
@@ -144,12 +147,12 @@ def _year_bounds_query(
     A nonempty selection filters on the parsed alias, so the relation is wrapped here
     and cannot drift from the predicate.
     """
-    # The floor is the recognition shape's lower edge, not a coverage
-    # lock: the bounds report the years the catalog actually holds.
+    # The floor is the coverage pin at _MIN_PLAUSIBLE_YEAR: it sits
+    # at the pinned coverage start and excludes nothing held.
     clauses = [
         "report_date IS NOT NULL",
         "length(report_date) >= 4",
-        (f"CAST(substring(report_date, 1, 4) AS INTEGER) >= 1900"),
+        (f"CAST(substring(report_date, 1, 4) AS INTEGER) >= {_MIN_PLAUSIBLE_YEAR}"),
     ]
     if forms:
         form_list = ", ".join(sql_literal(form) for form in sorted(forms))
@@ -192,7 +195,7 @@ def catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int
     current_year = _current_year()
     relation = _target_relation(paths, catalog_id)
     if relation is None:
-        return 1900, current_year
+        return _MIN_PLAUSIBLE_YEAR, current_year
     with connect() as con:
         row = con.execute(_year_bounds_query(relation)).fetchone()
     minimum = int(row[0]) if row and row[0] is not None else current_year - 10
