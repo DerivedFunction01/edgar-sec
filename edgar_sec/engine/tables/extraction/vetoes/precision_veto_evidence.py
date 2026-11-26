@@ -493,19 +493,24 @@ _LEG_EVALUATORS = {
 
 
 def _fired_legs(
-    family: str, geometry, tokens: ChannelTokens, result
+    family: str, geometry, tokens: ChannelTokens, result, own_score=None
 ) -> tuple[str, ...]:
     if family == DEBT_FAMILY:
-        return _debt_legs(geometry, result.scores.get(family))
+        return _debt_legs(
+            geometry,
+            own_score if own_score is not None else result.scores.get(family),
+        )
     evaluator = _LEG_EVALUATORS.get(family)
     return evaluator(geometry, tokens, result) if evaluator is not None else ()
 
 
-def apply_precision_vetoes(geometries, results):
+def apply_precision_vetoes(geometries, results, stages=None):
     """Final pass: remove packet-family claims firing any leg.
 
-    Firings read the input results only, so removals never
-    change another firing.
+    Firings read the input results only, except the debt
+    leg, whose own-score reads the captured claim stages
+    when they are given, so removals never change another
+    firing.
     """
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
@@ -521,7 +526,12 @@ def apply_precision_vetoes(geometries, results):
                 continue
             if tokens is None:
                 tokens = channel_tokens(geometries[index])
-            legs = _fired_legs(family, geometries[index], tokens, result)
+            own_score = (
+                stages[index].scores.get(family)
+                if stages is not None
+                else result.scores.get(family)
+            )
+            legs = _fired_legs(family, geometries[index], tokens, result, own_score)
             if legs:
                 fired[(index, family)] = legs
     if not fired:
