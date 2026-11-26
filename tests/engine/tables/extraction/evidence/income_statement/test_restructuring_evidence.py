@@ -499,3 +499,59 @@ def test_charges_with_cash_flow_anatomy_stays_out():
     result = _verdict(rows, caption_stack=("Restructuring Charges",))
     assert not result.admitted
     assert result.detail == "no bookend pair in any filed form"
+
+
+def test_header_form_is_admitted():
+    # Walk table whose charge-type vocabulary sits in the column
+    # headers, over a total-charge row and a balance-at closing row.
+    rows = (
+        ("Employee severance benefits", "Facility closure costs", "Other", "Total"),
+        ("Total charge", "$ 313", "$ 25", "$ 4", "$ 342"),
+        ("Less: Amounts paid", "287", "—", "—", "287"),
+        ("Non-cash charges", "—", "—", "4", "4"),
+        ("Balance at December 31, 2002", "$ 26", "25", "$ —", "$ 51"),
+    )
+    result = _verdict(rows, caption_stack=("Accrued Liabilities",))
+    assert result.admitted
+    assert "subject header" in result.detail
+    assert "bookends closing balance" in result.detail
+
+
+def test_header_vocabulary_without_balance_at_stays_out():
+    # Two header charge types alone do not anchor: the
+    # balance-at closing row is the header form's second leg.
+    rows = (
+        ("Employee severance benefits", "Facility closure costs", "Other", "Total"),
+        ("Total charge", "$ 313", "$ 25", "$ 4", "$ 342"),
+        ("Less: Amounts paid", "287", "—", "—", "287"),
+        ("Non-cash charges", "—", "—", "4", "4"),
+    )
+    result = _verdict(rows, caption_stack=("Accrued Liabilities",))
+    assert not result.admitted
+    assert result.detail == "subject not anchored"
+
+
+def test_single_header_term_with_balance_at_stays_out():
+    # One header charge type is below the header form's count.
+    rows = (
+        ("Employee severance benefits", "Other", "Total"),
+        ("Total charge", "$ 313", "$ 4", "$ 342"),
+        ("Less: Amounts paid", "287", "—", "287"),
+        ("Balance at December 31, 2002", "$ 26", "$ —", "$ 51"),
+    )
+    result = _verdict(rows, caption_stack=("Accrued Liabilities",))
+    assert not result.admitted
+    assert result.detail == "subject not anchored"
+
+
+def test_header_form_without_charge_line_has_no_bookend():
+    # The closing-balance form needs a charge line as well as
+    # the balance-at row; neither leg alone is a bookend pair.
+    rows = (
+        ("Severance benefits", "Facility closure costs", "Total"),
+        ("Amounts paid", "10", "20", "30"),
+        ("Balance at March 31, 2006", "1", "2", "3"),
+    )
+    result = _verdict(rows, caption_stack=("Accrued Liabilities",))
+    assert not result.admitted
+    assert result.detail == "no bookend pair in any filed form"
