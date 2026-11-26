@@ -169,6 +169,22 @@ def apply_pension_gates(claims, contested, scores, geometry):
         ):
             failed = reader(geometry.form_tests, "pension", kind)
             if failed is not None:
+                # Pension cost-cell yield (priced): the routed
+                # cost cell firing on the movedens leg does not
+                # refuse a claim the geometry's own pension
+                # anchor legs carry.
+                if (
+                    kind == TEST_PENSION_ROUTED
+                    and failed.detail == "kind:cost cell fired (A:movedens_le_0.25)"
+                    and pension_anchor_legs(geometry)
+                ):
+                    scores = append_note(
+                        scores,
+                        "pension",
+                        "gate",
+                        f"{failed.detail}; pension anchor yield",
+                    )
+                    continue
                 claims.remove("pension")
                 if "pension" in contested:
                     contested.remove("pension")
