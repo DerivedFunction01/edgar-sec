@@ -134,6 +134,35 @@ def test_leg_core_gate_balance_without_date_is_not_core():
     assert _eval(_text("Item | 2024 | 2023", rows)).legs == ("core_gate",)
 
 
+def test_leg_core_gate_credited_by_header_carried_date():
+    rows = (
+        "Balance at beginning of period | 500 | 480",
+        *_FILLER,
+        "Balance at end of period | 510 | 490",
+    )
+    text = _text("For the Three Month Period Ended September 30, | 2019 | 2018", rows)
+    assert _eval(text).legs == ()
+
+
+def test_leg_core_gate_credited_for_period_phrased_bookends():
+    rows = (
+        "At beginning of period | 500 | 480",
+        *_FILLER,
+        "At end of period | 510 | 490",
+    )
+    text = _text("Three Months Ended June 30, | 2021 | 2020", rows)
+    assert _eval(text).legs == ()
+
+
+def test_leg_core_gate_bookend_without_any_date_still_fires():
+    rows = (
+        "Balance at beginning of period | 500 | 480",
+        *_FILLER,
+        "Balance at end of period | 510 | 490",
+    )
+    assert _eval(_text("Item | Shares | Amount", rows)).legs == ("core_gate",)
+
+
 def test_leg_stub_total():
     rows = (_BALANCE_ROW, "Total | 900 | 850", *_FILLER[:4])
     assert _eval(_text("Item | 2024 | 2023", rows)).legs == ("stub:total",)

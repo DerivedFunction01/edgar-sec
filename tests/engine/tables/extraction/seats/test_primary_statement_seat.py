@@ -221,6 +221,33 @@ def test_income_descent_first_leg_fails_on_summary_forms() -> None:
     assert _outcome(summary, "income_statement") is None
 
 
+def test_equity_walk_closes_block_stacked_segments() -> None:
+    from edgar_sec.engine.tables.extraction.seats.statement_seat import (
+        _column_walk,
+    )
+
+    spec = _spec("equity_statement")
+    stacked = _table(
+        (
+            ("Balance at beginning of period", (100.0,)),
+            ("Net income", (10.0,)),
+            ("Balance at end of period", (110.0,)),
+            ("Balance at beginning of period", (200.0,)),
+            ("Dividends declared", (-20.0,)),
+            ("Balance at end of period", (180.0,)),
+        )
+    )
+    assert _column_walk(stacked, spec) >= 1
+    single = _table(
+        (
+            ("Balance at beginning of period", (100.0,)),
+            ("Net income", (10.0,)),
+            ("Balance at end of period", (110.0,)),
+        )
+    )
+    assert _column_walk(single, spec) >= 1
+
+
 def test_equity_walk_closes_per_column_and_in_total() -> None:
     spec = _spec("equity_statement")
     columns = {"common_stock": (100.0, 10.0, 110.0), "retained": (50.0, -5.0, 45.0)}

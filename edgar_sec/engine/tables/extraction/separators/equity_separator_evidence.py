@@ -42,6 +42,40 @@ def _dated_balance_count(raw_stubs) -> int:
     return count
 
 
+def _has_period_bookend(raw_stubs) -> bool:
+    """Stub rows that bookend a period, balance-named or not."""
+    for stub in raw_stubs:
+        lowered = (stub or "").lower()
+        if "balance" in lowered and ("beginning" in lowered or "end of" in lowered):
+            return True
+        if (
+            "beginning of period" in lowered
+            or "end of period" in lowered
+            or "beginning of year" in lowered
+            or "end of year" in lowered
+        ):
+            return True
+    return False
+
+
+def _carries_period_date(texts) -> bool:
+    """A year token and a month name anywhere across the texts."""
+    joined = " ".join((text or "").lower() for text in texts)
+    return bool(_YEAR_RE.search(joined)) and any(name in joined for name in MONTH_NAMES)
+
+
+def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:
+    """The stock count, credited to 1 when the statement phrases
+    its bookends without dates and carries the period date on
+    its header or caption surface instead."""
+    count = _dated_balance_count(raw_stubs)
+    if count:
+        return count
+    if _has_period_bookend(raw_stubs) and _carries_period_date(dated_texts):
+        return 1
+    return 0
+
+
 class EquitySeparatorText:
     """The packet text surface the equity cascade reads."""
 
@@ -56,7 +90,10 @@ class EquitySeparatorText:
             key for key in (stub_key(stub) for stub in self.stubs) if key
         )
         self.header_keys = header_keys(self.headers)
-        self.dated_balance_rows = _dated_balance_count(self.raw_stubs)
+        self.dated_balance_rows = _credited_dated_balance_count(
+            self.raw_stubs,
+            list(self.headers) + list(self.caption_stack) + list(self.raw_stubs),
+        )
         years = set()
         for cell in self.headers:
             years.update(_YEAR_RE.findall(cell))
@@ -166,7 +203,9 @@ def equity_candidate_features_from_geometry(geometry, spec) -> EquityCandidateFe
         key for key in (stub_key(stub) for stub in geometry.stubs) if key
     )
     return _candidate_features(
-        _dated_balance_count(geometry.stubs),
+        _credited_dated_balance_count(
+            geometry.stubs, list(geometry.headers) + list(geometry.stubs)
+        ),
         stub_keys,
         header_keys(geometry.headers),
         geometry.grid_rows,
