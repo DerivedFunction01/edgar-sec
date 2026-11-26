@@ -38,19 +38,11 @@ def expand_2digit_year(
     *,
     reference_year: int,
     lookback_years: int = 80,
-    century_pivot: int | None = None,
 ) -> int:
     """Expand a 1- or 2-digit year using a dynamic rolling window relative to a reference year."""
     if year >= 100:
         return year
     anchor = reference_year
-    if century_pivot is not None:
-        current_century = (anchor // 100) * 100
-        prev_century = current_century - 100
-        return (
-            (current_century + year) if year < century_pivot else (prev_century + year)
-        )
-
     base_year = anchor - lookback_years
     base_century = (base_year // 100) * 100
     candidate = base_century + year
@@ -79,7 +71,6 @@ def extract_years(
     *,
     reference_year: int,
     lookback_years: int = 80,
-    century_pivot: int | None = None,
 ) -> list[int]:
     """Extract validated year integers from header-style text."""
     years: list[int] = []
@@ -93,7 +84,6 @@ def extract_years(
                 year,
                 reference_year=reference_year,
                 lookback_years=lookback_years,
-                century_pivot=century_pivot,
             )
         if is_valid_year(year, reference_year):
             years.append(year)
@@ -105,7 +95,6 @@ def parse_numeric_year(
     *,
     reference_year: int,
     lookback_years: int = 80,
-    century_pivot: int | None = None,
 ) -> int | None:
     """Parse a one- to four-digit numeric year token with century expansion."""
     match = NUMERIC_YEAR_RE.search(value.strip())
@@ -117,7 +106,6 @@ def parse_numeric_year(
             year,
             reference_year=reference_year,
             lookback_years=lookback_years,
-            century_pivot=century_pivot,
         )
     if not is_valid_year(year, reference_year):
         return None

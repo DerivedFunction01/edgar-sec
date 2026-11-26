@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import re
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.common.models import ItemDefinition
-from edgar_sec.domain.identity import accession_year
+from edgar_sec.foundation.text.date_years import expand_2digit_year
 from edgar_sec.domain.forms.families.form_tender.models import TenderKind
 from edgar_sec.domain.forms.families.form_tender.taxonomy import (
     SCHEDULE_13E3_ITEMS,
@@ -114,6 +115,21 @@ def _classify_kind(form: str, lines: list[str]) -> TenderKind:
     return TenderKind.SCHEDULE_TO
 
 
+def _accession_year(accession: str) -> int | None:
+    """The filing year in an accession number's two-digit segment,
+    expanded by the foundation's rolling window.
+
+    The taxonomy call site holds no filing reference year, so the
+    expansion anchors on the current year: a named caller defect,
+    to be wired to the filing's own year when the record carries
+    one.
+    """
+    parts = accession.split("-")
+    if len(parts) != 3 or not parts[1].isdigit():
+        return None
+    return expand_2digit_year(int(parts[1]), reference_year=datetime.now(UTC).year)
+
+
 def _taxonomy_for(
     kind: TenderKind, lines: list[str], accession: str
 ) -> tuple[ItemDefinition, ...]:
@@ -123,7 +139,7 @@ def _taxonomy_for(
     if any(_SCHEDULE_TO_TITLE_RE.match(line) for line in head):
         return SCHEDULE_TO_ITEMS
     if any(_SCHEDULE_13E3_TITLE_RE.match(line) for line in head):
-        year = accession_year(accession)
+        year = _accession_year(accession)
         if year is not None and year < 2000:
             return SCHEDULE_13E3_PRIOR_ITEMS
         return SCHEDULE_13E3_ITEMS

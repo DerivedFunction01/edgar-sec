@@ -225,3 +225,35 @@ def test_summarize_cases_aggregates_scorecard(tmp_path: Path) -> None:
     assert scorecard["kind_counts"] == {"schedule_to": 1, "going_private": 1}
     assert scorecard["cusip_count"] == 2
     assert scorecard["designation_counts"]["third_party_tender_offer"] == 1
+
+
+def test_taxonomy_for_13e3_accession_segment_uses_rolling_expansion() -> None:
+    """The 13E-3 taxonomy era reads the accession segment through
+    the unified rolling expansion: segment 89 resolves to 1989 and
+    the prior items, where the deleted fixed pivot read 2089 and
+    the current items. Agreement-band segments (99 pre-2000, 10
+    post-2000) classify exactly as before."""
+    from edgar_sec.domain.forms.families.form_tender.models import TenderKind
+    from edgar_sec.domain.forms.families.form_tender.taxonomy import (
+        SCHEDULE_13E3_ITEMS,
+        SCHEDULE_13E3_PRIOR_ITEMS,
+    )
+    from edgar_sec.engine.forms.form_tender.analysis import _taxonomy_for
+
+    lines = ["SCHEDULE 13E-3"]
+    assert (
+        _taxonomy_for(TenderKind.GOING_PRIVATE, lines, "0000320193-89-000106")
+        is SCHEDULE_13E3_PRIOR_ITEMS
+    )
+    assert (
+        _taxonomy_for(TenderKind.GOING_PRIVATE, lines, "0000320193-99-000106")
+        is SCHEDULE_13E3_PRIOR_ITEMS
+    )
+    assert (
+        _taxonomy_for(TenderKind.GOING_PRIVATE, lines, "0000320193-10-000106")
+        is SCHEDULE_13E3_ITEMS
+    )
+    assert (
+        _taxonomy_for(TenderKind.GOING_PRIVATE, lines, "not-an-accession")
+        is SCHEDULE_13E3_ITEMS
+    )
