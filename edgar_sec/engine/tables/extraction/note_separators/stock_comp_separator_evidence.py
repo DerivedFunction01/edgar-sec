@@ -1,6 +1,6 @@
 """Stock comp separator evidence (TEST_STOCK_COMP_SEPARATOR).
 Evaluates the priced claim-local legs over one table — span_ge_5
-and the C2 composition over the seat verdict and geometry
+and the FULLX composition over the seat verdict and geometry
 surfaces — plus the set-level assign_other leg at filing level.
 """
 
@@ -59,7 +59,7 @@ _AVAILABLE_RE = re.compile(r"\s*available\b")
 
 @dataclass(frozen=True)
 class StockCompSeparatorSurfaces:
-    """The C2 composition's readings over one table: the seat
+    """The FULLX composition's readings over one table: the seat
     verdict and legs, and the geometry channel reads."""
 
     seat_admitted: bool
@@ -69,6 +69,10 @@ class StockCompSeparatorSurfaces:
     bookend: bool
     warrant: bool
     available: bool
+    range_rows: int
+    col_out: bool
+    col_exerc: bool
+    core: bool
 
 
 def separator_surfaces_for(table) -> StockCompSeparatorSurfaces:
@@ -84,17 +88,18 @@ def separator_surfaces_for(table) -> StockCompSeparatorSurfaces:
     seat = evaluate_stock_comp(seat_text, _SEAT_SPEC)
     text = geometry_text_from_table(table, evaluate_stage=False)
     zone = " ".join(list(text.headers) + list(text.stubs)).lower()
-    surfaces = " ".join(
-        list(text.stubs) + list(text.headers) + [text.lead or "", text.caption or ""]
-    ).lower()
     return StockCompSeparatorSurfaces(
         seat_admitted=seat.admitted,
         activity_rows=seat_legs.activity_rows,
         units_lead=seat_legs.units_lead,
         col_waep=seat_legs.col_waep,
         bookend=bool(_BOOKEND_RE.search(zone)),
-        warrant="warrant" in surfaces,
+        warrant="warrant" in zone,
         available=any(_AVAILABLE_RE.match(s.lower()) for s in text.stubs),
+        range_rows=seat_legs.range_rows,
+        col_out=seat_legs.col_out,
+        col_exerc=seat_legs.col_exerc,
+        core=seat_legs.core,
     )
 
 
@@ -145,16 +150,31 @@ def year_span(text: StockCompSeparatorText) -> int:
 
 def _seat_bound_fires(text: StockCompSeparatorText, leg) -> bool:
     """The seat-bound leg: the seat reader does not admit the geometry
-    and no exception holds (the Xb bookend form, or a WAEP column —
-    the price-form variant carries no bookends). Silent with no surfaces."""
+    and no exception holds (the Xb bookend form, a WAEP column, the
+    range-bucket shape, or the legs' own core). Silent with no surfaces."""
     surfaces = text.surfaces
     if surfaces is None or surfaces.seat_admitted:
         return False
-    excepted = surfaces.col_waep or (
-        surfaces.bookend
-        and (surfaces.activity_rows >= leg.limit or surfaces.units_lead)
+    excepted = (
+        surfaces.col_waep
+        or surfaces.core
+        or (
+            surfaces.range_rows >= _SEAT_SPEC.min_range_rows
+            and (surfaces.col_out or surfaces.col_exerc)
+        )
+        or (
+            surfaces.bookend
+            and (surfaces.activity_rows >= leg.limit or surfaces.units_lead)
+        )
     )
     return not excepted
+
+
+def _core_admitted(text: StockCompSeparatorText) -> bool:
+    """The seat admits the geometry and its legs carry the core:
+    the priced silence for the span and available legs."""
+    surfaces = text.surfaces
+    return surfaces is not None and surfaces.seat_admitted and surfaces.core
 
 
 def evaluate_stock_comp_separator(
@@ -169,7 +189,11 @@ def evaluate_stock_comp_separator(
     for leg in spec.legs:
         if leg.scope != "claim-local":
             continue
-        if leg.kind == "span" and year_span(text) >= leg.limit:
+        if (
+            leg.kind == "span"
+            and year_span(text) >= leg.limit
+            and not _core_admitted(text)
+        ):
             fired.append(leg.leg_id)
         elif leg.kind == "seat_bound" and _seat_bound_fires(text, leg):
             fired.append(leg.leg_id)
@@ -183,6 +207,7 @@ def evaluate_stock_comp_separator(
             leg.kind == "available"
             and text.surfaces is not None
             and text.surfaces.available
+            and not _core_admitted(text)
         ):
             fired.append(leg.leg_id)
     if fired:
