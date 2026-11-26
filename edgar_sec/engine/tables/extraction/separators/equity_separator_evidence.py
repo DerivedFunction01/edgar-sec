@@ -25,6 +25,10 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS,
 )
+from edgar_sec.engine.tables.extraction.seats.seat_test_specs import (
+    SEAT_TEST_SPECS_BY_FAMILY,
+)
+from edgar_sec.engine.tables.extraction.seats.statement_seat import _column_walk
 
 _HEADER_LINES = 3
 _YEAR_RE = YEAR_TOKEN_SEARCH_RE
@@ -35,7 +39,7 @@ def _dated_balance_count(raw_stubs) -> int:
     count = 0
     for stub in raw_stubs:
         lowered = (stub or "").lower()
-        if "balance" not in lowered:
+        if "balance" not in lowered and "net assets" not in lowered:
             continue
         if _YEAR_RE.search(lowered) or any(name in lowered for name in MONTH_NAMES):
             count += 1
@@ -59,9 +63,9 @@ def _has_period_bookend(raw_stubs) -> bool:
 
 
 def _carries_period_date(texts) -> bool:
-    """A year token and a month name anywhere across the texts."""
+    """A year token anywhere across the texts."""
     joined = " ".join((text or "").lower() for text in texts)
-    return bool(_YEAR_RE.search(joined)) and any(name in joined for name in MONTH_NAMES)
+    return bool(_YEAR_RE.search(joined))
 
 
 def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:
@@ -120,7 +124,7 @@ class EquitySeparatorVerdict:
 
 
 def evaluate_equity_separator(
-    text: EquitySeparatorText, spec: EquitySeparatorSpec
+    text: EquitySeparatorText, spec: EquitySeparatorSpec, *, walk_closed: bool = False
 ) -> EquitySeparatorVerdict:
     """Fire the claim-local legs in their priced order."""
     if not text.rows:
@@ -128,7 +132,7 @@ def evaluate_equity_separator(
     legs = []
     if len(text.rows) <= spec.max_rows:
         legs.append(f"rows_le_{spec.max_rows}")
-    if len(text.header_years) >= spec.span_years_min:
+    if len(text.header_years) >= spec.span_years_min and not walk_closed:
         legs.append(f"span_ge_{spec.span_years_min}")
     if text.dated_balance_rows == 0:
         legs.append("core_gate")
@@ -278,4 +282,9 @@ def evaluate_form_test_equity_separator(table, spec) -> EquitySeparatorVerdict:
     text = EquitySeparatorText.from_rows(
         context.rows, list(context.caption_stack) + list(table.caption.titles)
     )
-    return evaluate_equity_separator(text, EQUITY_SEPARATOR_SPECS[spec.family])
+    walk_closed = (
+        _column_walk(table, SEAT_TEST_SPECS_BY_FAMILY["equity_statement"]) >= 1
+    )
+    return evaluate_equity_separator(
+        text, EQUITY_SEPARATOR_SPECS[spec.family], walk_closed=walk_closed
+    )

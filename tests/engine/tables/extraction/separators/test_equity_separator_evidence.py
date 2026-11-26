@@ -163,6 +163,34 @@ def test_leg_core_gate_bookend_without_any_date_still_fires():
     assert _eval(_text("Item | Shares | Amount", rows)).legs == ("core_gate",)
 
 
+def test_leg_core_gate_dated_net_assets_row_counts():
+    rows = (
+        *_FILLER[:2],
+        "Net assets as of December 31, 2014 | 500 | 480",
+        *_FILLER[2:],
+    )
+    assert _eval(_text("Item | 2024 | 2023", rows)).legs == ()
+
+
+def test_leg_core_gate_credited_by_year_only_header():
+    rows = (
+        "Balance at beginning of period | 500 | 480",
+        *_FILLER,
+        "Balance at end of period | 510 | 490",
+    )
+    text = _text("For the Year Ended | 2023 | 2022", rows)
+    assert _eval(text).legs == ()
+
+
+def test_leg_span_released_when_walk_closes():
+    text = _text(" | 2023 | 2022 | 2021", (_BALANCE_ROW, *_FILLER))
+    verdict = evaluate_equity_separator(
+        EquitySeparatorText(text), SPEC, walk_closed=True
+    )
+    assert verdict.legs == ()
+    assert _eval(text).legs == ("span_ge_3",)
+
+
 def test_leg_stub_total():
     rows = (_BALANCE_ROW, "Total | 900 | 850", *_FILLER[:4])
     assert _eval(_text("Item | 2024 | 2023", rows)).legs == ("stub:total",)
