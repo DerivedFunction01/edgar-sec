@@ -125,16 +125,20 @@ _SEP5_STAMP = "mda_financing_operating_rows11"
 _SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
 
 
-def _sep5_criterion_holds(geometry) -> bool:
+def _sep5_criterion_holds(geometry, cluster_stubs=None) -> bool:
     """Sep-5 criterion form (cash_flow, priced): title leg and presence leg.
     The stamp rule's verdict is suppressed when both legs hold.
+    The presence leg reads the geometry's statement cluster
+    (priced form): section presence over the cluster's stubs,
+    not the geometry's own stubs alone.
     """
     titles = " ".join(
         t for t in (geometry.lead_title or "", geometry.note_title or "") if t
     )
     if not _SEP5_TITLE_RE.search(titles):
         return False
-    presence = section_presence(geometry.stubs, "cash_flow")
+    stubs = geometry.stubs if cluster_stubs is None else cluster_stubs
+    presence = section_presence(stubs, "cash_flow")
     return all(presence[s] for s in GATE_SETS["cash_flow"])
 
 
@@ -161,6 +165,7 @@ def compete(
     scores: dict[str, FamilyScore] | None = None,
     ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
     scopes: tuple[ScopeRow, ...] = (),
+    cluster_stubs: tuple[str, ...] | None = None,
 ) -> CompetitionResult:
     """Issue claims for one geometry under the dominance rule."""
     if geometry_refusal(geometry) is not None:
@@ -492,7 +497,7 @@ def compete(
         _sep is not None
         and _SEP5_STAMP in _sep.rules
         and "cash_flow" in claims
-        and _sep5_criterion_holds(geometry)
+        and _sep5_criterion_holds(geometry, cluster_stubs)
     ):
         _remaining = tuple(r for r in _sep.rules if r != _SEP5_STAMP)
         _sub = tuple(

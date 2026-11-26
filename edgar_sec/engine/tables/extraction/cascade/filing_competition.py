@@ -46,7 +46,10 @@ from edgar_sec.engine.tables.extraction.seats.eps_seat import apply_eps_seat
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
-from edgar_sec.engine.tables.extraction.seats.primary_gate import apply_primary_gate
+from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    apply_primary_gate,
+    statement_clusters,
+)
 from edgar_sec.engine.tables.extraction.seats.lease_span_seat import (
     apply_lease_span_seat,
 )
@@ -201,9 +204,23 @@ def compete_filing(
     """Compete one filing's geometries with context fed back;
     context lends to unclaimed geometries only and never
     overrides a geometry's own scored claim."""
+    clusters = statement_clusters(geometries)
+
+    def cluster_stubs(index: int) -> tuple[str, ...]:
+        return tuple(
+            stub for member in clusters[index] for stub in geometries[member].stubs
+        )
+
     results = [
-        compete(g, terms, edges, ladder_terms=ladder_terms, scopes=scopes)
-        for g in geometries
+        compete(
+            g,
+            terms,
+            edges,
+            ladder_terms=ladder_terms,
+            scopes=scopes,
+            cluster_stubs=cluster_stubs(index),
+        )
+        for index, g in enumerate(geometries)
     ]
     own_results = list(results)
     claimed_by_title: dict[str, dict[str, int]] = {}
@@ -277,6 +294,7 @@ def compete_filing(
             scores=adjusted,
             ladder_terms=ladder_terms,
             scopes=scopes,
+            cluster_stubs=cluster_stubs(index),
         )
     stages = capture_claim_stages(own_results, results)
     # Set-level assignment stage (priced): the passes run over
