@@ -247,19 +247,19 @@ def test_gate_removes_claim_on_failed_outcome():
 
 
 def test_gate_keeps_claim_on_passed_outcome():
-    geometry = GeometryText(stubs=_ANCHOR_STUBS, form_tests=(_outcome(True),))
+    geometry = GeometryText(data_rows=1, stubs=_ANCHOR_STUBS, form_tests=(_outcome(True),))
     result = compete(geometry, scores=dict(_SCORE))
     assert "pension" in result.claims
 
 
 def test_gate_keeps_claim_when_outcome_absent():
-    geometry = GeometryText(stubs=_ANCHOR_STUBS)
+    geometry = GeometryText(data_rows=1, stubs=_ANCHOR_STUBS)
     result = compete(geometry, scores=dict(_SCORE))
     assert "pension" in result.claims
 
 
 def test_gate_keeps_claim_when_outcome_unevaluable():
-    geometry = GeometryText(
+    geometry = GeometryText(data_rows=1, 
         stubs=_ANCHOR_STUBS, form_tests=(_outcome(False, evaluable=False),)
     )
     result = compete(geometry, scores=dict(_SCORE))
