@@ -192,11 +192,11 @@ def test_goodwill_exchange_only_movement_passes() -> None:
     table = _table(
         (
             ("Goodwill",),
-            ("", "Amount"),
-            ("Balance at December 31, 2015", "100"),
-            ("Amortization", "(1)"),
-            ("Foreign exchange", "2"),
-            ("Balance at June 30, 2016", "101"),
+            ("", "Domestic", "Canada", "Total"),
+            ("Balance at December 31, 2015", "60", "40", "100"),
+            ("Amortization", "(1)", "—", "(1)"),
+            ("Foreign exchange", "1", "1", "2"),
+            ("Balance at June 30, 2016", "60", "41", "101"),
         )
     )
     assert _outcome(table, "goodwill_rollforward_measure_set").passed
