@@ -47,6 +47,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         groups=(
             (
                 "total number of shares purchased",
+                "total # shares purchased",
                 "total shares purchased",
                 "number of shares purchased",
                 "total number of shares",
@@ -167,7 +168,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "total income",
                 "total expenses",
             ),
-            ("net income", "net loss", "net earnings"),
+            ("net income", "net loss", "net earnings", "net (loss) income"),
             (
                 "other comprehensive income",
                 "other comprehensive loss",
@@ -204,15 +205,18 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "net loss and comprehensive",
                 "income and comprehensive income",
                 "loss and comprehensive loss",
+                "net (loss) income and comprehensive",
+                "income and comprehensive (loss) income",
             ),
         ),
         min_groups=2,
         provenance=PROV_CI_STEP6_PRICING,
     ),
-    # ASC 350-20-50-1 rollforward (S4 adjudication base): the
-    # beginning/ending bookends are required and may be carried
-    # by dated stubs; a pass needs the bookends plus one of the
-    # movement groups, with goodwill in walk position.
+    # ASC 350-20-50-1 rollforward (S4 adjudication base, recall
+    # pricing at size): the ending bookend is the required
+    # anchor and may be carried by a dated stub; a pass needs
+    # it plus two further groups, with goodwill in walk
+    # position.
     "goodwill_rollforward_measure_set": MeasureSetSpec(
         groups=(
             (
@@ -242,12 +246,14 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "divestiture",
                 "deduction",
                 "held for sale",
+                "sale of",
             ),
             (
                 "adjustment",
                 "activity",
                 "realignment",
                 "translation",
+                "foreign currency",
                 "deferred tax",
                 "measurement period",
                 "reclassification",
@@ -257,7 +263,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         min_groups=3,
         subject_terms=("goodwill",),
         provenance=PROV_S4_GOODWILL_BASE,
-        required_groups=(0, 1),
+        required_groups=(1,),
         date_bookend_groups=(0, 1),
         dated_bookend_qualified=True,
         subject_position_bound=True,

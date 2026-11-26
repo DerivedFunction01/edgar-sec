@@ -3,8 +3,8 @@
 ## Purpose
 
 Separator evidence and specs for note tables: the credit, deferred tax,
-lease, restructuring, stock comp, and tax reconciliation separators that
-bound one note's tables against its neighbours in a filing.
+goodwill, lease, restructuring, stock comp, and tax reconciliation
+separators that bound one note's tables against its neighbours in a filing.
 
 ## Contracts
 

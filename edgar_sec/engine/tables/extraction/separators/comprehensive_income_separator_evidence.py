@@ -102,7 +102,7 @@ def comprehensive_income_candidate_features(
     )
     header_text = norm(" ".join([*text.caption_stack, *text.headers]))
     return ComprehensiveIncomeCandidateFeatures(
-        row_count=len(text.rows),
+        row_count=len(text.stubs),
         span_years=len(text.span_years),
         core_complete=_core_complete(text.stub_keys, spec),
         hdr_accumulated=_ACCUMULATED_KEY in text.header_keys,

@@ -123,6 +123,30 @@ def test_leg_rows_gt_21():
     assert _eval(_text(" | 2024 | 2023", rows)).legs == ("rows_gt_21",)
 
 
+def test_leg_rows_counts_stub_rows_only():
+    # A condensed multi-column statement whose period headers and
+    # unit titles push the text-row count past 21 while the
+    # statement body stays small: the rows leg reads stub-bearing
+    # rows, so it must not fire (the 0000004904-13-000083:115
+    # shape: 11 stubs under fat headers).
+    rows = (
+        " | Three Months Ended | Six Months Ended",
+        " | September 30, | September 30,",
+        " | 2013 | 2012 | 2013 | 2012",
+        " | (in millions)",
+        "Net income | 100 | 95 | 210 | 190",
+        "Other comprehensive income:",
+        "Unrealized gain on securities | 1 | 1 | 2 | 2",
+        "Foreign currency translation | 1 | 0 | 1 | 0",
+        "Pension adjustment | 0 | 1 | 0 | 1",
+        "Total other comprehensive income | 2 | 2 | 3 | 3",
+        "Comprehensive income | 102 | 97 | 213 | 193",
+        *([" | "] * 12),
+    )
+    verdict = _eval(_text(" | 2024 | 2023", rows))
+    assert "rows_gt_21" not in verdict.legs
+
+
 def test_leg_span_ge_4():
     text = _text(" | 2024 | 2023 | 2022 | 2021", _CORE_ROWS)
     assert _eval(text).legs == ("span_ge_4",)

@@ -99,10 +99,22 @@ def test_lead_hard_hit_bars_incomplete_balance_sheet() -> None:
     assert result.claims == ()
 
 
-def test_body_hard_hit_bars_gate_complete_balance_sheet() -> None:
+def test_body_hard_hit_spares_gate_complete_balance_sheet() -> None:
     result = compete(
         _balance_sheet(
             stubs=_BS_COMPLETE_STUBS,
+            lead="Consolidated Balance Sheets",
+            grid_text="Risk factors are discussed elsewhere",
+        ),
+        terms=_BS_TERMS,
+        edges=(),
+    )
+    assert result.claims == ("balance_sheet",)
+
+
+def test_body_hard_hit_bars_incomplete_balance_sheet() -> None:
+    result = compete(
+        _balance_sheet(
             lead="Consolidated Balance Sheets",
             grid_text="Risk factors are discussed elsewhere",
         ),
@@ -255,11 +267,10 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 553 rows.
+# priced records after the ruled holds and release; 546 rows.
 _GROUP_COUNTS = {
-    ("aoci_rollforward", "body", "hard"): 6,
+    ("aoci_rollforward", "body", "hard"): 4,
     ("aoci_rollforward", "body", "scored"): 13,
-    ("aoci_rollforward", "lead", "hard"): 2,
     ("aoci_rollforward", "lead", "scored"): 5,
     ("balance_sheet", "body", "hard"): 30,
     ("balance_sheet", "body", "scored"): 32,
@@ -273,9 +284,8 @@ _GROUP_COUNTS = {
     ("comprehensive_income", "body", "scored"): 13,
     ("comprehensive_income", "lead", "scored"): 11,
     ("debt_maturity", "body", "hard"): 1,
-    ("debt_maturity", "lead", "hard"): 1,
     ("debt_maturity", "lead", "scored"): 11,
-    ("deferred_tax", "body", "hard"): 5,
+    ("deferred_tax", "body", "hard"): 3,
     ("deferred_tax", "body", "scored"): 7,
     ("deferred_tax", "lead", "hard"): 6,
     ("deferred_tax", "lead", "scored"): 5,
@@ -285,7 +295,7 @@ _GROUP_COUNTS = {
     ("derivatives_hedging", "lead", "scored"): 5,
     ("eps_reconciliation", "body", "hard"): 10,
     ("eps_reconciliation", "body", "scored"): 9,
-    ("eps_reconciliation", "lead", "hard"): 4,
+    ("eps_reconciliation", "lead", "hard"): 3,
     ("eps_reconciliation", "lead", "scored"): 23,
     ("equity_statement", "body", "hard"): 9,
     ("equity_statement", "body", "scored"): 16,
@@ -340,14 +350,14 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 553
+    assert len(rows) == 545
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 205
+    assert tiers.count("hard") == 197
     assert tiers.count("scored") == 348
 
 
@@ -361,7 +371,20 @@ def test_eps_v3_terms_leave_lead_hard() -> None:
         "comprehensive loss",
         "discussion and analysis",
         "issuer purchases",
-        "fiscal year",
+    )
+    assert all(("eps_reconciliation", t, "lead", "hard") in rows for t in kept)
+
+
+def test_eps_fiscal_year_term_leaves_lead_hard() -> None:
+    rows = _all_rows()
+    # FINAL-F (eps_reconciliation enlarged-set packet):
+    # "fiscal year" leaves the eps_reconciliation lead/hard
+    # set; the three remaining terms stand.
+    assert ("eps_reconciliation", "fiscal year", "lead", "hard") not in rows
+    kept = (
+        "comprehensive loss",
+        "discussion and analysis",
+        "issuer purchases",
     )
     assert all(("eps_reconciliation", t, "lead", "hard") in rows for t in kept)
 
@@ -430,11 +453,32 @@ def test_dagger_rows_landed_hard_as_priced() -> None:
         ("tax_reconciliation", "months ended", "body"),
         ("stock_comp_rollforward", "year ended", "body"),
         ("deferred_tax", "credit losses", "lead"),
-        ("aoci_rollforward", "benefit plans", "body"),
-        ("aoci_rollforward", "tax benefit", "body"),
-        ("debt_maturity", "senior secured", "lead"),
     }
     assert all((*row, "hard") in rows for row in dagger_rows)
+
+
+def test_aoci_own_vocabulary_hard_terms_released() -> None:
+    rows = _all_rows()
+    # The aoci_rollforward residual packet removes the family's
+    # own-vocabulary hard terms — they bar genuine rollforward
+    # grids on their own component and movement vocabulary.
+    released = {
+        ("aoci_rollforward", "benefit plans", "body"),
+        ("aoci_rollforward", "tax benefit", "body"),
+        ("aoci_rollforward", "income tax", "lead"),
+        ("aoci_rollforward", "reclassification", "lead"),
+    }
+    assert all((*row, "hard") not in rows for row in released)
+    # The protective aoci hard terms stand: "three months ended
+    # march" alone bars generic balance-walk tables with no
+    # AOCI subject from seating as aoci_rollforward.
+    kept = {
+        ("aoci_rollforward", "equity securities", "body"),
+        ("aoci_rollforward", "years", "body"),
+        ("aoci_rollforward", "net sales", "body"),
+        ("aoci_rollforward", "three months ended march", "body"),
+    }
+    assert all((*row, "hard") in rows for row in kept)
 
 
 def test_current_assets_rows_retiered_to_scored() -> None:
@@ -466,3 +510,12 @@ def test_issuer_purchases_rows_exactly_the_six_measured_families() -> None:
             "tax_reconciliation",
         )
     }
+
+
+def test_debt_maturity_senior_secured_lead_hard_row_removed() -> None:
+    rows = _all_rows()
+    # cureV (debt_maturity re-price): "senior secured" leaves the
+    # debt_maturity lead/hard set — the lead names the filer's own
+    # senior secured ladder; the rest of the set stands as priced.
+    assert ("debt_maturity", "senior secured", "lead", "hard") not in rows
+    assert ("debt_maturity", "senior notes", "body", "hard") in rows

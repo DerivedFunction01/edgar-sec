@@ -9,6 +9,8 @@ from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTe
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_ARO_BASE,
     PROV_CI_STEP6_PRICING,
+    PROV_GOODWILL_FOREIGN_SEPARATOR,
+    PROV_GOODWILL_SEPARATOR,
     PROV_RESTRUCTURING_PRICING,
     PROV_RESTRUCTURING_SEPARATOR,
     PROV_RULING18_PRICING,
@@ -18,6 +20,8 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_TAX_RECONCILIATION_SEPARATOR,
     PROV_WARRANTY_PRICING,
     TEST_ARO_EVIDENCE,
+    TEST_GOODWILL_FOREIGN_SEPARATOR,
+    TEST_GOODWILL_SEPARATOR,
     TEST_LABOR_FORM,
     TEST_MEASURE_SET,
     TEST_RESTRUCTURING_EVIDENCE,
@@ -111,6 +115,20 @@ SEAT_FORM_TEST_ENTRIES: tuple[FormTestSpec, ...] = (
         "goodwill_rollforward_measure_set",
         3.0,
         provenance=PROV_S4_GOODWILL_BASE,
+    ),
+    FormTestSpec(
+        "goodwill_rollforward",
+        TEST_GOODWILL_SEPARATOR,
+        "goodwill_separator",
+        0.0,
+        provenance=PROV_GOODWILL_SEPARATOR,
+    ),
+    FormTestSpec(
+        "goodwill_rollforward",
+        TEST_GOODWILL_FOREIGN_SEPARATOR,
+        "goodwill_foreign_separator",
+        0.0,
+        provenance=PROV_GOODWILL_FOREIGN_SEPARATOR,
     ),
     FormTestSpec(
         "restructuring",

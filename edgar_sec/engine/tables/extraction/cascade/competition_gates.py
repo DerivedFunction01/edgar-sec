@@ -9,6 +9,7 @@ from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import 
     failing_core_form_outcome,
 )
 from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
+    CORE_FORM_GATE_FORM_EXEMPTIONS,
     CORE_FORM_SPECS,
 )
 from edgar_sec.engine.tables.extraction.evidence.balance_sheet.derivatives_evidence import (
@@ -119,6 +120,14 @@ def apply_core_form_gates(claims, contested, scores, geometry):
         failed = failing_core_form_outcome(geometry.form_tests, family, TEST_CORE_FORM)
         if failed is None:
             continue
+        # Form-conditioned exemption (greenfield intangibles
+        # packet): the gate does not refuse a family whose
+        # named companion form test passed on this geometry.
+        companion = CORE_FORM_GATE_FORM_EXEMPTIONS.get(family)
+        if companion is not None and any(
+            o.test_id == companion and o.passed for o in geometry.form_tests
+        ):
+            continue
         claims.remove(family)
         if family in contested:
             contested.remove(family)
@@ -164,6 +173,17 @@ def apply_pension_gates(claims, contested, scores, geometry):
                     contested.remove("pension")
                 scores = append_note(scores, "pension", "gate", failed.detail)
                 break
+    # PENR variant leg 1: a pension claim carrying no
+    # form-test points on a geometry with no data rows.
+    if "pension" in claims:
+        penr_chans = scores["pension"].by_channel
+        if penr_chans.get("form_test", 0.0) == 0.0 and geometry.data_rows == 0:
+            claims.remove("pension")
+            if "pension" in contested:
+                contested.remove("pension")
+            scores = append_note(
+                scores, "pension", "gate", "pension: penr no-form norows"
+            )
     return scores
 
 

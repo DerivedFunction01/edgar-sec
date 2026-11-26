@@ -14,6 +14,7 @@ from edgar_sec.engine.tables.extraction.separators.combined_operations_separator
     COMBINED_OPERATIONS_SEPARATOR_SPECS,
     CORE_GROUP_INDICES,
     JOINT_MEASURE_SET_TEST_ID,
+    LOCATION_REFUSALS,
     MEASURE_SET_TEST_ID,
     CombinedOperationsSeparatorSpec,
 )
@@ -29,6 +30,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_COMBINED_OPERATIONS_SEPARATOR,
     TEST_MEASURE_SET,
 )
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
@@ -145,6 +147,17 @@ def failing_combined_operations_separator_outcome(form_tests):
     return failing_core_form_outcome(
         form_tests, FAMILY, TEST_COMBINED_OPERATIONS_SEPARATOR
     )
+
+
+def location_refusal_detail(geometry) -> str | None:
+    """The location-refusal signal over a geometry's text
+    context, or None: segment-note allocations and
+    comparative-figures reproductions are refused."""
+    for field, phrase in LOCATION_REFUSALS:
+        text = normalize_text(getattr(geometry, field, "") or "")
+        if phrase in text:
+            return f"coci location refusal: {field} '{phrase}'"
+    return None
 
 
 def separator_facts(form_tests) -> tuple[bool, int] | None:

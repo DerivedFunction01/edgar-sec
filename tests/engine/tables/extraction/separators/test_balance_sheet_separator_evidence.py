@@ -209,6 +209,30 @@ def test_exempt_leg_fires_without_the_closing_pair():
     assert "stub:total common equity" in _eval(text).legs
 
 
+def test_closing_pair_silences_the_round5_exempt_legs():
+    pair = "\n".join(_CLOSING_PAIR)
+    ladder = "Item | 2021 | 2022 | 2023 | 2024\n" + pair
+    assert "year_ladder" not in _eval(ladder).legs
+    fair = "Fair value measurements | 2024 | 2023\n" + pair
+    assert "hdr:fair" not in _eval(fair).legs
+    sheet = "Balance sheet data | 2024 | 2023\n" + pair
+    assert "hdr:sheet" not in _eval(sheet).legs
+
+
+def test_combined_closing_stub_satisfies_the_closing_pair():
+    text = (
+        "Item | 2021 | 2022 | 2023 | 2024\n"
+        "Total assets | 100 | 90 | 80 | 70\n"
+        "Total liabilities and stockholders' equity | 100 | 90 | 80 | 70"
+    )
+    assert "year_ladder" not in _eval(text).legs
+    no_assets = (
+        "Item | 2021 | 2022 | 2023 | 2024\n"
+        "Total liabilities and stockholders' equity | 100 | 90 | 80 | 70"
+    )
+    assert "year_ladder" in _eval(no_assets).legs
+
+
 def test_leg_numeric_share_below_floor():
     lines = ["Item | alpha | beta"] + ["Label | gamma | delta"] * 13
     verdict = _eval("\n".join(lines))

@@ -27,6 +27,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_evidence import (
     apply_ppe_vetoes,
     capture_claim_stages,
+    discipline_form_fires,
     passed_form_test_details,
 )
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
@@ -40,6 +41,8 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_evidence import (
     apply_spanning_vetoes,
 )
+from edgar_sec.engine.tables.extraction.seats.cover_seat import apply_cover_seat
+from edgar_sec.engine.tables.extraction.seats.eps_seat import apply_eps_seat
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
     term_veto_hits,
 )
@@ -50,7 +53,11 @@ from edgar_sec.engine.tables.extraction.seats.lease_span_seat import (
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
     apply_lease_stub_refusal,
 )
+from edgar_sec.engine.tables.extraction.seats.related_party_seat import (
+    apply_related_party_seat,
+)
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
+from edgar_sec.engine.tables.extraction.seats.warrant_seat import apply_warrant_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNELS as SIGNATURE_CHANNELS,
@@ -128,7 +135,7 @@ def apply_ppe_veto_override_seat(
 ) -> list[CompetitionResult]:
     """Veto-override seat at the suppression seam's output:
     competition ran veto-intact, so no claim is displaced;
-    a claim-free geometry seats PPE on either leg's terms."""
+    a claim-free geometry seats PPE on any leg's terms."""
     out: list[CompetitionResult] = []
     for geometry, result in zip(geometries, results, strict=True):
         score = result.scores.get("ppe")
@@ -147,7 +154,12 @@ def apply_ppe_veto_override_seat(
             and _ppe_signature_sum(result) >= OVSEAT_SIG_FLOOR
             and score.total >= CLAIM_FLOOR
         )
-        if not (leg_f or leg_s):
+        # Leg D: the discipline form seats with the same
+        # hard-hit tolerance as Leg F.
+        leg_d = (hard is None or hard == OVSEAT_TERM) and discipline_form_fires(
+            geometry, score
+        )
+        if not (leg_f or leg_s or leg_d):
             out.append(result)
             continue
         _, explained = _explained_foreign("ppe", result.scores, CONTAINMENT_EDGES)
@@ -277,22 +289,36 @@ def compete_filing(
     results = apply_ppe_formation_suppression(geometries, results)
     # Veto-override seat (priced): at the suppression seam's
     # output, a claim-free geometry seats PPE on its form
-    # tests or its signature despite the one hard term.
+    # tests, its signature, or its discipline form despite
+    # the one hard term.
     results = apply_ppe_veto_override_seat(geometries, results)
     # The primary hard gates refuse claims whose necessary
     # sections are missing over the statement cluster; the PPE,
     # precision, and spanning vetoes read gate-final claims.
     gated = apply_primary_gate(geometries, results)
     vetoed = apply_ppe_vetoes(geometries, gated, stages)
-    precise = apply_precision_vetoes(geometries, vetoed)
+    precise = apply_precision_vetoes(geometries, vetoed, stages)
     spanned = apply_spanning_vetoes(geometries, precise)
+    # Formation seat (priced): cover identity is read from the
+    # filing's front matter, upstream of every table decision;
+    # the seat claims only geometries the chain left unclaimed.
+    covered = apply_cover_seat(geometries, spanned)
     # Formation seat (priced): segment_reporting seats on the
     # gate-final unclaimed set its own floor cannot reach.
-    segmented = apply_segment_seat(geometries, spanned)
+    segmented = apply_segment_seat(geometries, covered)
     # Formation seat (priced): lease_maturity seats as the
     # final pass on span and stub purity, debt-seat guarded.
     seated = apply_lease_span_seat(geometries, segmented)
     # Stub refusal (priced): a lease claim with no period stub
     # or transposed period axis, or a combined grid whose lease
     # column is a mass sliver, is refused at the final output.
-    return apply_lease_stub_refusal(geometries, seated)
+    refused = apply_lease_stub_refusal(geometries, seated)
+    # Formation seat (priced): eps_reconciliation seats on
+    # the gate-final unclaimed set under its priced guard.
+    epsed = apply_eps_seat(geometries, refused)
+    # Formation seat (priced): related_party seats on the
+    # gate-final unclaimed set its own floor cannot reach.
+    partied = apply_related_party_seat(geometries, epsed)
+    # Formation seat (priced): warrant_activity seats on the
+    # gate-final set its two form tests cannot claim alone.
+    return apply_warrant_seat(geometries, partied)

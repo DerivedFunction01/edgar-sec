@@ -525,3 +525,23 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
 SUMMARY_SEPARATOR_SPECS_BY_ID: dict[str, SummarySeparatorSpec] = {
     spec.rule_id: spec for spec in SUMMARY_SEPARATOR_SPECS
 }
+
+# Separator exemptions (priced, X1/X1E): a registered family's
+# claim is spared the S1 denial when every fired rule is in its
+# exempt set — an MD&A republication of the family's own walk.
+SEPARATOR_EXEMPTIONS: dict[str, tuple[str, ...]] = {
+    "credit_losses_rollforward": (
+        "mda_item7_summar_lead",
+        "mda_item2_data",
+        "mda_item2_sales",
+        "mda_item2_net_loss",
+        "mda_total_row_item2_net_loss",
+    ),
+    "goodwill_rollforward": (
+        "mda_item2_sales",
+        "mda_item7_rows12",
+        "mda_item7_sales",
+        "selected_data_last_total_item6",
+    ),
+    "restructuring": ("mda_item2_data",),
+}

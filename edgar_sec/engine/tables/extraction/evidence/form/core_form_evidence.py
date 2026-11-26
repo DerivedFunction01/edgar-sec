@@ -26,6 +26,7 @@ DASH_CELLS = {"—", "–", "-"}
 LEVEL_RE = re.compile(r"level ([123])\b")
 USEFUL_LIFE_RE = re.compile(r"useful li(?:fe|ves)")
 NET_WORD_RE = re.compile(r"\bnet\b")
+LIFE_WORDING_RE = re.compile(r"useful li(?:fe|ves)|amortization period")
 FOOTNOTE_TAIL_RE = re.compile(r"\(\d+\)$")
 MARKER_ONLY_RE = re.compile(r"^(\([a-z0-9]{1,2}\))+$")
 FULL_PAREN_RE = re.compile(r"^\(.*\)$")
@@ -182,11 +183,7 @@ def _eval_intangibles(t, spec):
         or "gross carrying" in t.table
         or "cost basis" in t.table
     )
-    comp["B"] = (
-        "gross carrying" in t.table
-        and "accumulated amortization" in t.table
-        and NET_WORD_RE.search(t.table) is not None
-    )
+    comp["B"] = "gross carrying" in t.table and "accumulated amortization" in t.table
     comp["C"] = yearrows >= 3 and "amortiz" in t.all
     comp["D"] = "goodwill" in t.all and (
         balance_stub
@@ -194,11 +191,19 @@ def _eval_intangibles(t, spec):
         or "carrying amount of goodwill" in t.prose
     )
     comp["E"] = nclass >= 1 and accum_stub
-    comp["F"] = nclass >= 2 and USEFUL_LIFE_RE.search(t.table) is not None
+    comp["F"] = nclass >= 2 and LIFE_WORDING_RE.search(t.table) is not None
     comp["G"] = (accum_stub and balance_stub) or (
         any("amortization of" in s for s in t.stubs) and balance_stub
     )
-    letters = "".join(k for k in "ABCDEFG" if comp[k])
+    header = []
+    for r in t.rows:
+        if _block_numeric(r):
+            break
+        header.append(" ".join(r))
+    header_text = norml(" ".join(header))
+    header_classes = {term for term in spec.lexicon if term in header_text}
+    comp["H"] = len(header_classes) >= 2 and "accumulated amortization" in t.table
+    letters = "".join(k for k in "ABCDEFGH" if comp[k])
     core = bool(letters)
     detail = "core form: %s (nclass=%d yearrows=%d)" % (
         letters or "-",

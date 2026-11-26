@@ -67,6 +67,9 @@ BALANCE_SHEET_SEPARATOR_SPECS = {
             "hdr:issuer",
             "stub:noncurrent assets",
             "stub:total common equity",
+            "year_ladder",
+            "hdr:fair",
+            "hdr:sheet",
         ),
         equity_total_keys=(
             "total equity",

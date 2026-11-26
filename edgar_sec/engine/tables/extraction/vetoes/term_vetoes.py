@@ -62,6 +62,42 @@ def term_veto_hits(geometry: GeometryText) -> dict[str, dict[str, str]]:
     return hits
 
 
+# Form-conditioned hard-veto exemptions (greenfield intangibles
+# packet): a recorded hard hit on these terms does not bar the
+# family when a named form test passed on the same geometry.
+HARD_VETO_FORM_EXEMPTIONS: dict[tuple[str, str], tuple[str, ...]] = {
+    ("intangibles", "segment"): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
+    ("intangibles", "revenue"): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
+    ("intangibles", "revenues"): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
+    ("intangibles", "cash flow"): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
+    ("intangibles", "income tax"): (
+        "intangibles_composition",
+        "intangibles_core_form",
+    ),
+}
+
+
+def hard_veto_form_exemption(family: str, term: str) -> tuple[str, ...] | None:
+    """The form tests whose pass exempts one recorded hard hit.
+
+    Returns the named form-test ids for an exempted
+    (family, term) pair, or None when the hit bars outright.
+    """
+    return HARD_VETO_FORM_EXEMPTIONS.get((family, term))
+
+
 def term_veto_hits_by_channel(
     geometry: GeometryText,
 ) -> dict[str, dict[str, dict[str, str]]]:

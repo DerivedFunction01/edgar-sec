@@ -42,6 +42,8 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_EPS_PROFORMA_REFUSAL,
     TEST_EQUITY_SEPARATOR,
     TEST_FORM_SEPARATION,
+    TEST_GOODWILL_FOREIGN_SEPARATOR,
+    TEST_GOODWILL_SEPARATOR,
     TEST_INVENTORY_EVIDENCE,
     TEST_LABOR_FORM,
     TEST_LADDER,
@@ -491,15 +493,17 @@ PROFILES: tuple[FamilyProfile, ...] = (
             None,
             None,
             note="seated Step 3 on the priced input-group measure "
-            "set with the Level 3 refusal; sealed-protocol "
+            "set; the Level 3 quantitative form seated on the "
+            "priced Level 3 input group; sealed-protocol "
             "precision/recall unmeasured",
         ),
         SEAT_SIGNATURE,
         form_tests=(TEST_MEASURE_SET,),
         note="the option-pricing input set as filed (volatility, "
         "dividends, term, risk-free rate, prices, discount rate) "
-        "under any model name; ASC 820 Level 3 unobservable-input "
-        "tables are fair_value content and are refused by term",
+        "under any model name, and the ASC 820 Level 3 "
+        "quantitative-information form (valuation technique, "
+        "unobservable inputs, ranges) as its second form",
         provenance=PROV_STEP3_PRICING,
     ),
     FamilyProfile(
@@ -537,7 +541,11 @@ PROFILES: tuple[FamilyProfile, ...] = (
             "unmeasured",
         ),
         SEAT_SIGNATURE,
-        form_tests=(TEST_MEASURE_SET,),
+        form_tests=(
+            TEST_MEASURE_SET,
+            TEST_GOODWILL_SEPARATOR,
+            TEST_GOODWILL_FOREIGN_SEPARATOR,
+        ),
         note="the goodwill rollforward as filed: beginning and "
         "ending bookends, anchored or dated, with at least one "
         "ASC 350 movement between and goodwill as the walked "

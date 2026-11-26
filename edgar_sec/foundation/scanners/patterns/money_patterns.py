@@ -134,6 +134,22 @@ _SANCTIONED_SITES = (
     ),
     ("edgar_sec/engine/forms/ownership/tables/relationship_box.py", r"10\s*%\s*Owner"),
     ("edgar_sec/engine/tables/ascii_html/model/cell.py", "_UNIT_RE"),
+    # Duplication cure (coordinator): the deferred-tax amount-only
+    # cell shape is a probe-priced verdict divergence from the homed
+    # numeric_cells grammars (NUMERIC_CELL_RE /
+    # STRICT_NUMERIC_CELL_RE): over the leg corpus plus edge set
+    # (204 strings) it differs on 7 verdicts vs NUMERIC_CELL_RE and
+    # 14 vs STRICT_NUMERIC_CELL_RE -- it accepts symbol-only cells
+    # ('-', '--', '$', '%', '1-2', '1 234') the homed grammars
+    # reject, and rejects the range form '12/31' NUMERIC_CELL_RE
+    # accepts. The symbol-only acceptance is the priced behaviour:
+    # in _dt_component_stubs an amount-character-only stub line is
+    # not a component caption. Sanctioned divergence, Ruling 3
+    # precedent (probe-priced verdict-change sites).
+    (
+        "edgar_sec/engine/tables/extraction/vetoes/precision_veto_evidence.py",
+        "_DT_AMOUNT_ONLY_RE",
+    ),
     ("edgar_sec/foundation/text/grammar.py", "RE_WORD_TOKEN"),
     ("edgar_sec/engine/forms/form144/patterns.py", "BOX_3C_UNITS_RE"),
     ("edgar_sec/engine/forms/form_424b/analysis.py", "_SHARES_RE"),

@@ -380,7 +380,9 @@ def test_presence_reach_claims_an_unclaimed_pension_geometry() -> None:
         SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
     )
     # The funded-status stub carries the pension gate's core anchor.
-    geometry = GeometryText(stubs=("Pension obligation", "Funded status", "Cash flows"))
+    geometry = GeometryText(
+        data_rows=1, stubs=("Pension obligation", "Funded status", "Cash flows")
+    )
     result = compete(geometry, terms=terms, edges=())
     assert result.claims == ("pension",)
     assert result.groups[0].state == "reach"
@@ -398,6 +400,7 @@ def test_reach_requires_a_stub_share_of_the_family_evidence() -> None:
         SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
     )
     geometry = GeometryText(
+        data_rows=1,
         caption="Pension",
         stubs=("Pension obligation", "Funded status", "Cash flows"),
     )
@@ -600,6 +603,7 @@ def test_pension_claim_without_core_anchor_is_gated() -> None:
 
 def test_pension_claim_with_core_anchor_stands() -> None:
     geometry = GeometryText(
+        data_rows=1,
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         stubs=("Pension expense", "Funded status", "Total"),
@@ -610,6 +614,7 @@ def test_pension_claim_with_core_anchor_stands() -> None:
 
 def test_pension_oci_anchor_seats_the_claim() -> None:
     geometry = GeometryText(
+        data_rows=1,
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         stubs=(
@@ -626,6 +631,7 @@ def test_pension_prose_after_completion_seats_the_claim() -> None:
     # The lead text avoids the family's priced lead veto terms, so
     # the claim forms and the gate is the deciding act.
     bare = GeometryText(
+        data_rows=1,
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         lead="The following table presents the plan holdings.",
@@ -638,6 +644,7 @@ def test_pension_prose_after_completion_seats_the_claim() -> None:
         e.channel == "gate" and e.detail == "pension: no core anchor" for e in trail
     )
     completed = GeometryText(
+        data_rows=1,
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         lead="The following table presents the plan holdings.",
@@ -646,3 +653,79 @@ def test_pension_prose_after_completion_seats_the_claim() -> None:
     )
     seated = compete(completed, terms=_PENSION_TERMS, edges=())
     assert seated.claims == ("pension",)
+
+
+_CF_TERMS = (
+    SignatureTerm("cash_flow", "caption", "statements of cash flows", 2.5, 40, 1),
+    SignatureTerm("cash_flow", "leadin", "cash flows", 2.5, 35, 1),
+    SignatureTerm(
+        "cash_flow", "stub", "cash flows from operating activities", 2.5, 30, 0
+    ),
+    SignatureTerm(
+        "cash_flow", "stub", "cash flows from investing activities", 2.5, 30, 0
+    ),
+    SignatureTerm(
+        "cash_flow", "stub", "cash flows from financing activities", 2.5, 30, 0
+    ),
+    SignatureTerm("cash_flow", "stub", "net increase in cash", 2.5, 30, 0),
+)
+
+_CF_FULL_STUBS = (
+    "Cash flows from operating activities",
+    "Cash flows from investing activities",
+    "Cash flows from financing activities",
+    "Net increase in cash and cash equivalents",
+    "Cash and cash equivalents, beginning of period",
+)
+
+_CF_LEAD_HIT = "Proceeds from issuance of common stock are described below."
+
+
+def test_cash_flow_lead_only_hard_hit_scoped_by_full_presence() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead=_CF_LEAD_HIT,
+        stubs=_CF_FULL_STUBS,
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ("cash_flow",)
+
+
+def test_cash_flow_lead_only_hard_hit_scoped_by_financing_absence() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead=_CF_LEAD_HIT,
+        stubs=(
+            "Cash flows from operating activities",
+            "Cash flows from investing activities",
+            "Net increase in cash and cash equivalents",
+        ),
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ("cash_flow",)
+
+
+def test_cash_flow_lead_hard_hit_bars_without_own_stub_proof() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead=_CF_LEAD_HIT,
+        stubs=("Cash flows from operating activities", "Depreciation expense"),
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ()
+    assert "cash_flow" in result.scores
+
+
+def test_cash_flow_body_hard_hit_still_bars() -> None:
+    geometry = GeometryText(
+        caption="Consolidated Statements of Cash Flows",
+        leadin="The statements of cash flows are presented below.",
+        lead="The statements are presented below.",
+        grid_text="Earnings per share data is omitted from this table.",
+        stubs=_CF_FULL_STUBS,
+    )
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ()

@@ -6,13 +6,31 @@ explained by a measured containment edge. Closure corroborates.
 """
 
 from __future__ import annotations
+import re
+from edgar_sec.engine.tables.extraction.separators.summary_separator import (
+    SummarySeparatorResult,
+)
 
 from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import (
     apply_admissions,
 )
-from edgar_sec.engine.tables.extraction.seats.aoci_gate import aoci_gate_detail
+from edgar_sec.engine.tables.extraction.seats.aoci_gate import (
+    aoci_gate_detail,
+    component_grid,
+)
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     failing_combined_operations_separator_outcome,
+    location_refusal_detail,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
+    SEPARATOR_EXEMPTIONS,
+    SUMMARY_SEPARATOR_SPECS_BY_ID,
+)
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evidence import (
+    failing_goodwill_separator_outcome,
+)
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_foreign_separator_evidence import (
+    failing_goodwill_foreign_separator_outcome,
 )
 from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
@@ -25,6 +43,7 @@ from edgar_sec.engine.tables.extraction.seats.genre_seat import (
     geometry_refusal,
 )
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+    VETO_POINTS,
     ClaimEvidence,
     ClaimGroup,
     CompetitionResult,
@@ -61,8 +80,16 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
     SignatureTerm,
 )
 from edgar_sec.engine.tables.extraction.cascade.stamped_gates import apply_stamped_gates
-from edgar_sec.engine.tables.extraction.seats.primary_gate import section_presence
+from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
+    SUMMARY_SEPARATOR_FORM_EXEMPTIONS,
+)
+from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    GATE_SETS,
+    cash_flow_lead_veto_scoped,
+    section_presence,
+)
 from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
+    hard_veto_form_exemption,
     term_veto_hits,
     term_veto_hits_by_channel,
 )
@@ -87,6 +114,23 @@ REACH_MIN_STUB_SHARE: dict[str, float] = {
     "pension": 0.5,
     "deferred_tax": 0.5,
 }
+
+
+_SEP5_STAMP = "mda_financing_operating_rows11"
+_SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
+
+
+def _sep5_criterion_holds(geometry) -> bool:
+    """Sep-5 criterion form (cash_flow, priced): title leg and presence leg.
+    The stamp rule's verdict is suppressed when both legs hold.
+    """
+    titles = " ".join(
+        t for t in (geometry.lead_title or "", geometry.note_title or "") if t
+    )
+    if not _SEP5_TITLE_RE.search(titles):
+        return False
+    presence = section_presence(geometry.stubs, "cash_flow")
+    return all(presence[s] for s in GATE_SETS["cash_flow"])
 
 
 def compete(
@@ -123,22 +167,59 @@ def compete(
     hard_vetoed = {
         family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
     }
-    # Priced scoping (balance_sheet): a lead-channel-only hard
-    # hit reads borrowed prose context, not the table; it does
-    # not bar a geometry whose own stubs carry every necessary
-    # balance_sheet section (the primary gate's completeness,
-    # read at geometry level). A body-channel hit still bars.
+    # Priced scoping (balance_sheet): a hard hit in either
+    # channel reads term context the table's own complete
+    # sections outweigh; it does not bar a geometry whose own
+    # stubs carry every necessary balance_sheet section (the
+    # primary gate's completeness, read at geometry level).
     if "balance_sheet" in hard_vetoed:
-        by_channel = term_veto_hits_by_channel(geometry).get("balance_sheet", {})
+        presence = section_presence(geometry.stubs, "balance_sheet")
+        if all(presence[s] for s in ("assets", "liabilities", "equity")):
+            del hard_vetoed["balance_sheet"]
+    # Priced scoping (cash_flow): the balance_sheet scoping
+    # generalized — a lead-channel-only hard hit does not bar
+    # cash_flow when the geometry's own stubs prove the
+    # statement in one of the primary gate's shapes (full
+    # section presence, exactly financing missing, or the
+    # supplemental schedule identity). A body hit still bars.
+    if "cash_flow" in hard_vetoed:
+        by_channel = term_veto_hits_by_channel(geometry).get("cash_flow", {})
         hard_channels = by_channel.get("hard", {})
         if hard_channels and set(hard_channels) == {"lead"}:
-            presence = section_presence(geometry.stubs, "balance_sheet")
-            if all(presence[s] for s in ("assets", "liabilities", "equity")):
-                del hard_vetoed["balance_sheet"]
+            if cash_flow_lead_veto_scoped(geometry):
+                del hard_vetoed["cash_flow"]
     if hard_vetoed:
         for family, term in hard_vetoed.items():
             if family in scores:
                 scores = append_note(scores, family, "veto", f"hard:{term}")
+    # Form-conditioned hard-veto exemption (greenfield
+    # intangibles packet): an exempted hit whose named form
+    # test passed unbars the family, at the scored price.
+    for family, term in list(hard_vetoed.items()):
+        form_tests = hard_veto_form_exemption(family, term)
+        if form_tests is None:
+            continue
+        passed = {o.test_id for o in geometry.form_tests if o.passed}
+        if not any(t in passed for t in form_tests):
+            continue
+        del hard_vetoed[family]
+        score = scores.get(family)
+        if score is None:
+            continue
+        if any(
+            e.channel == "veto" and e.detail.startswith("term:") for e in score.evidence
+        ):
+            scores = append_note(scores, family, "veto", f"exempt:{term}")
+        else:
+            channels = dict(score.by_channel)
+            channels["veto"] = channels.get("veto", 0.0) - VETO_POINTS
+            scores = dict(scores)
+            scores[family] = FamilyScore(
+                family,
+                max(score.total - VETO_POINTS, 0.0),
+                channels,
+                score.evidence + (ClaimEvidence("veto", f"term:{term}", -VETO_POINTS),),
+            )
     ranked = sorted(scores.values(), key=lambda s: -s.total)
     claims: list[str] = []
     contested: list[str] = []
@@ -283,6 +364,18 @@ def compete(
     # families' priced seat tests seat them at the claim floor
     # — registry data in seat_floor_specs.SEAT_FLOOR_SPECS.
     scores = apply_seat_floor(geometry, scores, claims, hard_vetoed, floor=CLAIM_FLOOR)
+    # AOCI component-grid seat (priced): a geometry carrying the
+    # family's component-grid form seats aoci_rollforward even
+    # when signature dominance or a protective hard veto bars
+    # the scored claim — the form test is aoci_gate's, and its
+    # movement/column arms keep other families' walks and full
+    # equity statements out.
+    if "aoci_rollforward" not in claims and component_grid(geometry):
+        scores = seat_at_floor(
+            scores, "aoci_rollforward", "aoci component-grid seat", CLAIM_FLOOR
+        )
+        claims.append("aoci_rollforward")
+        reach.append("aoci_rollforward")
     # Combined operations separator gate (priced): a
     # combined_operations_ci claim is refused when the stamped
     # separator outcome fired. It binds after the seat-at-floor
@@ -290,34 +383,103 @@ def compete(
     # core refuses — where the sibling separators bind earlier.
     if "combined_operations_ci" in claims:
         fired = failing_combined_operations_separator_outcome(geometry.form_tests)
+        if fired is None:
+            refusal = location_refusal_detail(geometry)
+            if refusal is not None:
+                claims.remove("combined_operations_ci")
+                if "combined_operations_ci" in contested:
+                    contested.remove("combined_operations_ci")
+                scores = append_note(scores, "combined_operations_ci", "gate", refusal)
         if fired is not None:
             claims.remove("combined_operations_ci")
             if "combined_operations_ci" in contested:
                 contested.remove("combined_operations_ci")
             scores = append_note(scores, "combined_operations_ci", "gate", fired.detail)
+    # Goodwill separator gate (priced): a goodwill_rollforward
+    # claim is refused when the stamped separator outcome fired.
+    # It binds after the seat-at-floor channel — this family's
+    # measure-set seat can admit a claim its separator refuses —
+    # where the sibling separators bind earlier.
+    if "goodwill_rollforward" in claims:
+        fired = failing_goodwill_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("goodwill_rollforward")
+            if "goodwill_rollforward" in contested:
+                contested.remove("goodwill_rollforward")
+            scores = append_note(scores, "goodwill_rollforward", "gate", fired.detail)
+    # Goodwill foreign-subject separator gate (priced): a
+    # goodwill_rollforward claim is refused when the stamped
+    # foreign-subject separator outcome fired — the geometry's
+    # stub/header zone binds a foreign walked subject and
+    # goodwill is not a bound subject of that zone. It binds
+    # after the seat-at-floor channel, beside the allocation
+    # separator gate above.
+    if "goodwill_rollforward" in claims:
+        fired = failing_goodwill_foreign_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("goodwill_rollforward")
+            if "goodwill_rollforward" in contested:
+                contested.remove("goodwill_rollforward")
+            scores = append_note(scores, "goodwill_rollforward", "gate", fired.detail)
     if scopes:
         kept, kept_contested = apply_section_refusals(
             claims, contested, geometry, scopes
         )
         claims, contested = kept, kept_contested
     # S1 separator gate: a fired statement-summary rule denies
-    # every claim — the priced mass is a composition (a summary
-    # of a statement), claimed by no family (S1 pricing covers).
+    # every claim (S1 pricing covers), except a spared family:
+    # one whose fired rules are a subset of its
+    # SEPARATOR_EXEMPTIONS entry, or one named in
+    # SUMMARY_SEPARATOR_FORM_EXEMPTIONS with a companion pass.
+    _sep = geometry.summary_separator
+    if (
+        _sep is not None
+        and _SEP5_STAMP in _sep.rules
+        and "cash_flow" in claims
+        and _sep5_criterion_holds(geometry)
+    ):
+        _remaining = tuple(r for r in _sep.rules if r != _SEP5_STAMP)
+        _sub = tuple(
+            dict.fromkeys(
+                SUMMARY_SEPARATOR_SPECS_BY_ID[r].sub_mass
+                for r in _remaining
+                if r in SUMMARY_SEPARATOR_SPECS_BY_ID
+            )
+        )
+        if _remaining and not _sub:
+            _sub = _sep.sub_masses
+        object.__setattr__(
+            geometry,
+            "summary_separator",
+            SummarySeparatorResult(rules=_remaining, sub_masses=_sub),
+        )
     separator = geometry.summary_separator
     if separator is not None and separator.fired and claims:
+        fired_rules = frozenset(separator.rules)
+        passed = {o.test_id for o in geometry.form_tests if o.passed}
+        spared = tuple(
+            family
+            for family in claims
+            if (
+                family in SEPARATOR_EXEMPTIONS
+                and fired_rules <= frozenset(SEPARATOR_EXEMPTIONS[family])
+            )
+            or any(
+                t in passed for t in SUMMARY_SEPARATOR_FORM_EXEMPTIONS.get(family, ())
+            )
+        )
         # Tax precedence (priced): a tax claim at the gate is a
         # seat admission; it survives a non-NONGAAP fire.
         keep_tax = (
             "tax_reconciliation" in claims
             and "NONGAAP-SUMMARY" not in separator.sub_masses
         )
-        removed = tuple(
-            family
-            for family in claims
-            if not (keep_tax and family == "tax_reconciliation")
-        )
-        claims = ["tax_reconciliation"] if keep_tax else []
-        contested = [family for family in contested if family not in removed]
+        kept = list(spared)
+        if keep_tax and "tax_reconciliation" not in kept:
+            kept.append("tax_reconciliation")
+        removed = tuple(f for f in claims if f not in kept)
+        claims = [f for f in claims if f in kept]
+        contested = [f for f in contested if f in kept]
         reach = [family for family in reach if family not in removed]
         scores = dict(scores)
         for family in removed:
@@ -330,6 +492,21 @@ def compete(
                 + (
                     ClaimEvidence(
                         "gate", f"summary separator: {separator.detail}", 0.0
+                    ),
+                ),
+            )
+        for family in spared:
+            kept_score = scores[family]
+            scores[family] = FamilyScore(
+                kept_score.family,
+                kept_score.total,
+                dict(kept_score.by_channel),
+                kept_score.evidence
+                + (
+                    ClaimEvidence(
+                        "gate",
+                        f"summary separator exempted: {separator.detail}",
+                        0.0,
                     ),
                 ),
             )

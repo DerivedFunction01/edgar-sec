@@ -395,7 +395,6 @@ STATEMENT_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "years",
         ),
     ),
-    ("aoci_rollforward", "lead", "hard", ("income tax", "reclassification")),
     (
         "aoci_rollforward",
         "lead",
@@ -433,8 +432,6 @@ STATEMENT_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         "body",
         "hard",
         (
-            "benefit plans",
-            "tax benefit",
             "equity securities",
             "years",
             "net sales",

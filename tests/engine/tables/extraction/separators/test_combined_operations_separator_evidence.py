@@ -115,7 +115,7 @@ def test_core_group_indices_name_the_typed_core():
     groups = MEASURE_SET_SPECS_BY_TEST_ID[MEASURE_SET_TEST_ID].groups
     assert CORE_GROUP_INDICES == (0, 1, 3)
     assert "gross profit" in groups[0]
-    assert groups[1] == ("net income", "net loss", "net earnings")
+    assert groups[1] == ("net income", "net loss", "net earnings", "net (loss) income")
     assert "other comprehensive income" in groups[2]
     assert "comprehensive income" in groups[3]
 
