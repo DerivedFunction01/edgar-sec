@@ -472,6 +472,37 @@ def statement_clusters(
     return clusters
 
 
+def _ci_components_corroborated(index, geometries, results, clusters) -> bool:
+    """The corroborated components form at the primary gate:
+    the claim geometry is the CI components schedule and a
+    sibling CI claim is gate-complete over its own cluster."""
+    from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_evidence import (
+        comprehensive_income_components_form,
+    )
+    from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_specs import (
+        COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
+    )
+
+    spec = COMPREHENSIVE_INCOME_SEPARATOR_SPECS["comprehensive_income"]
+    if not comprehensive_income_components_form(geometries[index], spec):
+        return False
+    from edgar_sec.engine.tables.extraction.core.text.normalize import (
+        normalize_text,
+    )
+
+    if "comprehensive income" not in normalize_text(geometries[index].caption):
+        return False
+    for other, result in enumerate(results):
+        if other == index or "comprehensive_income" not in result.claims:
+            continue
+        stubs = tuple(
+            stub for member in clusters[other] for stub in geometries[member].stubs
+        )
+        if not missing_sections(stubs, "comprehensive_income"):
+            return True
+    return False
+
+
 def apply_primary_gate(
     geometries: tuple[GeometryText, ...] | list[GeometryText],
     results: list[CompetitionResult],
@@ -505,6 +536,13 @@ def apply_primary_gate(
                 missing = missing_sections(stubs, family)
             if missing:
                 refused[family] = missing
+        if (
+            "comprehensive_income" in refused
+            and set(refused["comprehensive_income"])
+            <= {"net_income", "total_comprehensive_income"}
+            and (_ci_components_corroborated(index, geometries, results, clusters))
+        ):
+            del refused["comprehensive_income"]
         if not refused:
             gated.append(result)
             continue
