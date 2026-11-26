@@ -84,11 +84,18 @@ class ComprehensiveIncomeCandidateFeatures:
 
 
 def _core_complete(stub_keys: frozenset, spec) -> bool:
-    """The determined core: walk head, walk tail, OCI element."""
+    """The determined core: walk head, walk tail, OCI element.
+    The components schedule is the second determined shape:
+    OCI element, walk tail, and a components-total stub."""
     begin = any(term in key for key in stub_keys for term in spec.walk_begin_terms)
     end = any(term in key for key in stub_keys for term in spec.walk_end_terms)
     oci = any(term in key for key in stub_keys for term in spec.oci_terms)
-    return begin and end and oci
+    if begin and end and oci:
+        return True
+    total = any(
+        term in key for key in stub_keys for term in spec.components_total_terms
+    )
+    return bool(oci and end and total)
 
 
 def comprehensive_income_candidate_features(
@@ -195,6 +202,21 @@ def comprehensive_income_core_complete_from_geometry(geometry, spec) -> bool:
         key for key in (stub_key(stub) for stub in geometry.stubs) if len(key) >= 3
     )
     return _core_complete(stub_keys, spec)
+
+
+def comprehensive_income_components_form(geometry, spec) -> bool:
+    """The components-schedule form over a geometry's stubs:
+    OCI content totalled to a components total, with no
+    walk-begin stub (the statement sibling carries the walk)."""
+    stub_keys = frozenset(
+        key for key in (stub_key(stub) for stub in geometry.stubs) if len(key) >= 3
+    )
+    begin = any(term in key for key in stub_keys for term in spec.walk_begin_terms)
+    oci = any(term in key for key in stub_keys for term in spec.oci_terms)
+    total = any(
+        term in key for key in stub_keys for term in spec.components_total_terms
+    )
+    return bool(oci and total and not begin)
 
 
 def apply_comprehensive_income_assignment(geometries, results):

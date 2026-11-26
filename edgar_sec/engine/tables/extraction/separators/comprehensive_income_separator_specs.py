@@ -23,6 +23,7 @@ class ComprehensiveIncomeSeparatorSpec:
     walk_begin_terms: tuple[str, ...]
     walk_end_terms: tuple[str, ...]
     oci_terms: tuple[str, ...]
+    components_total_terms: tuple[str, ...]
     descent_terms: tuple[str, ...]
     equity_host_terms: tuple[str, ...]
     equity_host_min: int
@@ -54,6 +55,7 @@ COMPREHENSIVE_INCOME_SEPARATOR_SPECS: dict[str, ComprehensiveIncomeSeparatorSpec
             "reclassification",
             "securities",
         ),
+        components_total_terms=("other comprehensive",),
         descent_terms=(
             "operating income",
             "income from operations",

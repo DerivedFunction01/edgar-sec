@@ -187,6 +187,44 @@ def apply_pension_gates(claims, contested, scores, geometry):
     return scores
 
 
+# Priced R2 rescue data: the benefits-note placement terms
+# of the hard-veto scoping combination.
+PENSION_VETO_RESCUE_PLACEMENT_TERMS = (
+    "pension",
+    "postretirement",
+    "defined benefit",
+    "benefit plan",
+    "retirement",
+    "employee benefit",
+)
+
+
+def pension_veto_rescued(geometry, scores):
+    """Whether the priced R2 combination lifts the veto:
+    a dominant pension score at strength, placed in a
+    benefits note or carrying the NPBC signature."""
+    score = scores.get("pension")
+    if score is None or score.total < 20.0:
+        return False
+    if any(
+        score.total < other.total
+        for family, other in scores.items()
+        if family != "pension"
+    ):
+        return False
+    title = (geometry.note_title or "").lower()
+    if any(term in title for term in PENSION_VETO_RESCUE_PLACEMENT_TERMS):
+        return True
+    spec = PENSION_ANCHOR_SPECS.get("pension")
+    if spec is None:
+        return False
+    stubtext = geometry.stub_text
+    groups = sum(
+        1 for group in spec.npbc_groups if any(term in stubtext for term in group)
+    )
+    return groups >= spec.npbc_min_groups
+
+
 def apply_tax_seat(claims, contested, scores, geometry, hard_vetoed, floor):
     """Run the tax_reconciliation seat: it alone decides claimage."""
     # Ruling 18 seat (tax_reconciliation): the priced statutory-

@@ -254,6 +254,116 @@ def test_available_pool_fires_on_an_admitted_geometry():
     assert verdict.fired and verdict.legs == ("available_pool",)
 
 
+def test_seat_bound_holds_under_the_range_shape_exception():
+    # Price-form grid whose column heads carry no exercise-price
+    # term: range-bucket stubs over outstanding/exercisable
+    # columns except the claim on their own shape (W1).
+    table = _table(
+        [
+            ("Exercise price range", "Shares outstanding", "Shares exercisable"),
+            ("$0.01 - $5.00", "100", "50"),
+            ("$5.01 - $10.00", "200", "80"),
+            ("$10.01 and above", "50", "20"),
+        ]
+    )
+    surfaces = StockCompSeparatorText.from_table(table).surfaces
+    assert surfaces is not None
+    assert surfaces.range_rows >= 2 and surfaces.col_out and surfaces.col_exerc
+    assert not surfaces.col_waep and not surfaces.seat_admitted
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert not verdict.fired and verdict.legs == ()
+
+
+def test_seat_bound_holds_under_the_core_exception():
+    # A walk the legs read whole (bookends + activity = core)
+    # whose derived seat form fails on the exercisable column:
+    # the core excepts the claim from seat_bound (W2).
+    table = _table(
+        [
+            ("", "Shares", "Shares exercisable"),
+            ("Balance, beginning of year", "100", "40"),
+            ("Granted", "10", "0"),
+            ("Exercised", "(5)", "0"),
+            ("Forfeited", "(2)", "0"),
+            ("Balance, end of year", "103", "45"),
+        ]
+    )
+    surfaces = StockCompSeparatorText.from_table(table).surfaces
+    assert surfaces is not None
+    assert surfaces.core and not surfaces.seat_admitted
+    assert not surfaces.bookend and not surfaces.col_waep
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert not verdict.fired and verdict.legs == ()
+
+
+def test_available_pool_silent_on_an_admitted_core_geometry():
+    # The available read fires on an admitted geometry only
+    # when its legs lack the core (W3).
+    table = _table(
+        [
+            ("Balance, beginning of year", "100"),
+            ("Granted", "10"),
+            ("Exercised", "(5)"),
+            ("Available for issuance", "500"),
+            ("Balance, end of year", "105"),
+        ]
+    )
+    surfaces = StockCompSeparatorText.from_table(table).surfaces
+    assert surfaces is not None
+    assert surfaces.seat_admitted and surfaces.core and surfaces.available
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert not verdict.fired and verdict.legs == ()
+
+
+def test_span_silent_on_an_admitted_core_geometry():
+    # Five year columns over an admitted core walk: the span
+    # leg stays silent (W5).
+    table = _table(
+        [
+            ("", "2019", "2020", "2021", "2022", "2023"),
+            ("Balance, beginning of year", "100", "100", "100", "100", "100"),
+            ("Granted", "10", "10", "10", "10", "10"),
+            ("Exercised", "(5)", "(5)", "(5)", "(5)", "(5)"),
+            ("Balance, end of year", "105", "105", "105", "105", "105"),
+        ]
+    )
+    surfaces = StockCompSeparatorText.from_table(table).surfaces
+    assert surfaces is not None
+    assert surfaces.seat_admitted and surfaces.core
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert not verdict.fired and verdict.legs == ()
+
+
+def test_warrant_vocab_ignores_lead_and_caption_vocabulary():
+    # "Warrant" named only in the caption: the warrant read
+    # runs over stubs + headers, so the leg stays silent (W4b).
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=[
+                    ("Options granted", "100"),
+                    ("Options exercised", "10"),
+                    ("Options forfeited", "2"),
+                ],
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+    context = TableContext(
+        geometry=geometry, caption_stack=("Warrant activity",), prose_before=""
+    )
+    table = structure_table(context)
+    surfaces = StockCompSeparatorText.from_table(table).surfaces
+    assert surfaces is not None and not surfaces.warrant
+    verdict = evaluate_form_test_stock_comp_separator(table, _spec())
+    assert "warrant_vocab" not in verdict.legs
+
+
 def test_c2_legs_stay_silent_on_a_grid_only_text():
     # No typed table, no surfaces: warrant vocabulary in the
     # grid alone never fires the claim-local C2 legs.

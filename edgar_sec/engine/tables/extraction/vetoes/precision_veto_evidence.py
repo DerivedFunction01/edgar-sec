@@ -11,6 +11,9 @@ from typing import NamedTuple
 from edgar_sec.engine.tables.extraction.core.text.normalize import (
     normalize_text,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     INTANGIBLES_LEXICON,
 )
@@ -27,6 +30,9 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DT_STUB_BIGRAM,
     DT_PPA_PHRASES,
     DT_SCHEDULE_II_PHRASE,
+    DT_S3X_CLOSING_PHRASES,
+    DT_S3X_COMPONENT_TERMS,
+    DT_S3X_SUBJECT_PHRASES,
     DT_UTB_SUBJECT_PHRASE,
     LEG_DT_NONCOMPOSITION,
     LEG_DT_NO_SUBJECT,
@@ -48,11 +54,14 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     INV_FAMILY,
     INV_LEAD_INVENTORY_TOKEN,
     INV_LEAD_TABLES_TOKEN,
+    LABOR_CONTRIBUTIONS_PHRASE,
     LABOR_EIN_PREFIX,
     LABOR_EIN_TOKEN,
+    LABOR_EXPIRATION_TOKEN,
     LABOR_FAMILY,
     LABOR_FORM_PHRASES,
     LEG_CONTEXT_ONLY,
+    LEG_CONTRIBUTIONS_ORPHAN,
     LEG_CREDIT_LOSSES_HOST,
     LEG_DOMINANT_CO_CLAIM,
     LEG_EMPLOYER_FORM,
@@ -281,6 +290,34 @@ def _dt_combo_legs(geometry, tokens) -> list[str]:
     return legs
 
 
+def _dt_s3x_relief(geometry) -> bool:
+    """DT-S3X relief: lead-prose subject, either dialect, with a
+    composition reading (form test or lexicon with closing)."""
+    lead_text = normalize_text(geometry.lead)
+    title_text = normalize_text(geometry.lead_title)
+    if not any(
+        phrase in lead_text or phrase in title_text for phrase in DT_S3X_SUBJECT_PHRASES
+    ):
+        return False
+    if any(
+        outcome.family == DT_FAMILY
+        and outcome.test_id == "deferred_tax_composition"
+        and outcome.passed
+        for outcome in geometry.form_tests
+    ):
+        return True
+    if _dt_va_movement_form(geometry):
+        return False
+    stubs = _dt_stub_lines(geometry)
+    components = sum(
+        1 for text in stubs if any(term in text for term in DT_S3X_COMPONENT_TERMS)
+    )
+    if components < 2:
+        return False
+    stub_text = " || ".join(stubs)
+    return any(phrase in stub_text for phrase in DT_S3X_CLOSING_PHRASES)
+
+
 def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """DT-1: percentage rows, eps host absence, or the bigram."""
     legs = []
@@ -292,14 +329,31 @@ def _deferred_tax_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ..
     if DT_STUB_BIGRAM in tokens.bigrams:
         legs.append(LEG_STUB_BIGRAM)
     legs.extend(_dt_combo_legs(geometry, tokens))
+    relief = {LEG_DT_NO_SUBJECT, LEG_STUB_BIGRAM}
+    if legs and set(legs) <= relief and _dt_s3x_relief(geometry):
+        legs = [leg for leg in legs if leg not in relief]
     return tuple(legs)
+
+
+def _composition_passed(geometry, family: str) -> bool:
+    """The family's composition twin passed on this geometry."""
+    return any(
+        outcome.family == family
+        and outcome.kind == TEST_COMPOSITION_TWIN
+        and outcome.passed
+        for outcome in geometry.form_tests
+    )
 
 
 def _inventory_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """INV-1: credit-losses host content or lead naming."""
     legs = []
     if _host_present(tokens, CREDIT_LOSSES_CORE):
-        legs.append(LEG_CREDIT_LOSSES_HOST)
+        # Exemption (priced, inventory Addendum 8): a passed
+        # inventory composition seats the table as inventory's
+        # own; the host leg does not fire.
+        if not _composition_passed(geometry, INV_FAMILY):
+            legs.append(LEG_CREDIT_LOSSES_HOST)
     if INV_LEAD_TABLES_TOKEN in tokens.lead:
         legs.append(LEG_LEAD_TABLES)
     if INV_LEAD_INVENTORY_TOKEN in tokens.lead:
@@ -392,15 +446,22 @@ def _eps_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
 
 
 def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
-    """Labor: the multiemployer-plan form signature, read
-    from the geometry's headers directly."""
-    for header in geometry.headers or ():
-        text = normalize_text(header)
+    """Labor: the multiemployer-plan form signature and the
+    orphaned contributions caption, over the headers."""
+    headers = [normalize_text(header) for header in geometry.headers or ()]
+    legs = []
+    for text in headers:
         if LABOR_EIN_TOKEN in text.split() or LABOR_EIN_PREFIX in text:
-            return (LEG_EMPLOYER_FORM,)
+            legs.append(LEG_EMPLOYER_FORM)
+            break
         if any(phrase in text for phrase in LABOR_FORM_PHRASES):
-            return (LEG_EMPLOYER_FORM,)
-    return ()
+            legs.append(LEG_EMPLOYER_FORM)
+            break
+    if any(LABOR_CONTRIBUTIONS_PHRASE in text for text in headers) and not any(
+        LABOR_EXPIRATION_TOKEN in text for text in headers
+    ):
+        legs.append(LEG_CONTRIBUTIONS_ORPHAN)
+    return tuple(legs)
 
 
 _LEG_EVALUATORS = {

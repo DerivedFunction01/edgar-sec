@@ -372,8 +372,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         "lead",
         "hard",
         (
-            "revenue",
-            "sales and marketing",
             "issuer purchases",
             "assets",
         ),
@@ -385,7 +383,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         (
             "income tax",
             "amortization",
-            "year ended",
             "change",
             "research and development",
         ),

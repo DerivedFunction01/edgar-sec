@@ -11,9 +11,15 @@ from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
     lead_title_text,
     leadin_segment,
 )
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     ContainmentEdge,
     SignatureTerm,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
 )
 
 _TERMS = (

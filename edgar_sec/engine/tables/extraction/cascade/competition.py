@@ -36,6 +36,7 @@ from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
     apply_derivatives_gates,
     apply_pension_gates,
+    pension_veto_rescued,
     apply_tax_seat,
 )
 from edgar_sec.engine.tables.extraction.seats.genre_seat import (
@@ -71,6 +72,9 @@ from edgar_sec.engine.tables.extraction.seats.seat_floor_evidence import (
     apply_seat_floor,
 )
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CONTAINMENT_EDGES,
     LADDER_EDGE_TERMS,
@@ -85,6 +89,7 @@ from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
     GATE_SETS,
+    cash_flow_grantor_veto_scoped,
     cash_flow_lead_veto_scoped,
     section_presence,
 )
@@ -120,17 +125,35 @@ _SEP5_STAMP = "mda_financing_operating_rows11"
 _SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
 
 
-def _sep5_criterion_holds(geometry) -> bool:
+def _sep5_criterion_holds(geometry, cluster_stubs=None) -> bool:
     """Sep-5 criterion form (cash_flow, priced): title leg and presence leg.
-    The stamp rule's verdict is suppressed when both legs hold.
+    The stamp rule's verdict is suppressed when both legs hold; the
+    presence leg reads the geometry's statement cluster (priced form).
     """
     titles = " ".join(
         t for t in (geometry.lead_title or "", geometry.note_title or "") if t
     )
     if not _SEP5_TITLE_RE.search(titles):
         return False
-    presence = section_presence(geometry.stubs, "cash_flow")
+    stubs = geometry.stubs if cluster_stubs is None else cluster_stubs
+    presence = section_presence(stubs, "cash_flow")
     return all(presence[s] for s in GATE_SETS["cash_flow"])
+
+
+def _composition_outcomes(
+    geometry: GeometryText,
+) -> tuple[frozenset[str], frozenset[str]]:
+    """Families whose composition twin passed / failed here."""
+    passed: set[str] = set()
+    failed: set[str] = set()
+    for outcome in geometry.form_tests:
+        if outcome.kind != TEST_COMPOSITION_TWIN:
+            continue
+        if outcome.passed:
+            passed.add(outcome.family)
+        else:
+            failed.add(outcome.family)
+    return frozenset(passed), frozenset(failed - passed)
 
 
 def compete(
@@ -140,6 +163,7 @@ def compete(
     scores: dict[str, FamilyScore] | None = None,
     ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
     scopes: tuple[ScopeRow, ...] = (),
+    cluster_stubs: tuple[str, ...] | None = None,
 ) -> CompetitionResult:
     """Issue claims for one geometry under the dominance rule."""
     if geometry_refusal(geometry) is not None:
@@ -167,6 +191,10 @@ def compete(
     hard_vetoed = {
         family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
     }
+    # Priced scoping (pension): a hard hit does not bar a
+    # geometry the priced R2 combination rescues.
+    if "pension" in hard_vetoed and pension_veto_rescued(geometry, scores):
+        del hard_vetoed["pension"]
     # Priced scoping (balance_sheet): a hard hit in either
     # channel reads term context the table's own complete
     # sections outweigh; it does not bar a geometry whose own
@@ -188,6 +216,12 @@ def compete(
         if hard_channels and set(hard_channels) == {"lead"}:
             if cash_flow_lead_veto_scoped(geometry):
                 del hard_vetoed["cash_flow"]
+    # Priced scoping (cash_flow, grantor): a remaining hard
+    # tier in either channel is scoped when own-stub presence
+    # is exactly the spine pair and the bullion marker fires
+    # (a bullion-only grantor trust has no middle sections).
+    if "cash_flow" in hard_vetoed and cash_flow_grantor_veto_scoped(geometry):
+        del hard_vetoed["cash_flow"]
     if hard_vetoed:
         for family, term in hard_vetoed.items():
             if family in scores:
@@ -225,12 +259,37 @@ def compete(
     contested: list[str] = []
     explained_all: dict[str, float] = {}
     explained_by: dict[str, dict[str, float]] = {}
+    # Composition bar (priced, inventory Addendum 8): a claimant
+    # whose composition twin passed is not barred by foreign mass
+    # from a family whose composition twin failed on this geometry.
+    comp_passed, comp_failed = _composition_outcomes(geometry)
+    foreign_scores = scores
+    if comp_passed and comp_failed:
+        foreign_scores = {
+            family: (
+                FamilyScore(family, 0.0, {}, sc.evidence)
+                if family in comp_failed
+                else sc
+            )
+            for family, sc in scores.items()
+        }
     for candidate in ranked:
         if candidate.family in hard_vetoed:
             continue
         if candidate.total < CLAIM_FLOOR:
             continue
-        foreign, explained = _explained_foreign(candidate.family, scores, edges)
+        if candidate.family in comp_passed and comp_failed:
+            foreign, explained = _explained_foreign(
+                candidate.family, foreign_scores, edges
+            )
+            scores = append_note(
+                scores,
+                candidate.family,
+                "gate",
+                "composition-failed foreign excluded",
+            )
+        else:
+            foreign, explained = _explained_foreign(candidate.family, scores, edges)
         explained_all.update(explained)
         explained_by[candidate.family] = explained
         if foreign <= FOREIGN_ALLOWANCE:
@@ -436,7 +495,7 @@ def compete(
         _sep is not None
         and _SEP5_STAMP in _sep.rules
         and "cash_flow" in claims
-        and _sep5_criterion_holds(geometry)
+        and _sep5_criterion_holds(geometry, cluster_stubs)
     ):
         _remaining = tuple(r for r in _sep.rules if r != _SEP5_STAMP)
         _sub = tuple(
@@ -474,9 +533,19 @@ def compete(
             "tax_reconciliation" in claims
             and "NONGAAP-SUMMARY" not in separator.sub_masses
         )
+        # Charges exemption (priced): a restructuring claim whose
+        # gate pass came through the charges form is a seat
+        # admission; it survives the summary fire — the charges
+        # specimen's only filed form is often the summary instance.
+        keep_charges = "restructuring" in claims and any(
+            ev.channel == "gate" and ev.detail.startswith("restructuring charges:")
+            for ev in scores["restructuring"].evidence
+        )
         kept = list(spared)
         if keep_tax and "tax_reconciliation" not in kept:
             kept.append("tax_reconciliation")
+        if keep_charges and "restructuring" not in kept:
+            kept.append("restructuring")
         removed = tuple(f for f in claims if f not in kept)
         claims = [f for f in claims if f in kept]
         contested = [f for f in contested if f in kept]
@@ -521,6 +590,21 @@ def compete(
                     ClaimEvidence(
                         "gate",
                         f"summary separator: {separator.detail}; tax seat precedence",
+                        0.0,
+                    ),
+                ),
+            )
+        if keep_charges:
+            gated = scores["restructuring"]
+            scores["restructuring"] = FamilyScore(
+                gated.family,
+                gated.total,
+                dict(gated.by_channel),
+                gated.evidence
+                + (
+                    ClaimEvidence(
+                        "gate",
+                        f"summary separator: {separator.detail}; charges seat exemption",
                         0.0,
                     ),
                 ),

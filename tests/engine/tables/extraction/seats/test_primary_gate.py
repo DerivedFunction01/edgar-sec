@@ -498,3 +498,20 @@ def test_cash_flow_gate_reduced_missing_set_is_not_spine_pair() -> None:
         entry for entry in gated.scores["cash_flow"].evidence if entry.channel == "gate"
     ]
     assert gate[0].detail == "primary gate: missing investing, financing"
+
+
+def test_cash_flow_grantor_veto_scoped_shapes() -> None:
+    from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+        cash_flow_grantor_veto_scoped,
+    )
+
+    marker = "Proceeds from gold bullion sold to pay expenses"
+    assert cash_flow_grantor_veto_scoped(GeometryText(stubs=(_CF_OP, marker, _CF_REC)))
+    assert cash_flow_grantor_veto_scoped(
+        GeometryText(stubs=(_CF_OP, _CF_REC), lead_title="Gold Bullion Trust")
+    )
+    assert not cash_flow_grantor_veto_scoped(GeometryText(stubs=(_CF_OP, _CF_REC)))
+    assert not cash_flow_grantor_veto_scoped(
+        GeometryText(stubs=(_CF_OP, _CF_INV, _CF_FIN, _CF_REC), lead_title=marker)
+    )
+    assert not cash_flow_grantor_veto_scoped(GeometryText(stubs=(marker, _CF_REC)))

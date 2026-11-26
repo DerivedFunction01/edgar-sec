@@ -36,6 +36,11 @@ def _texts(table: TypedTable) -> list[str]:
     """The match universe: row labels, header cells and joins, titles."""
     texts = [normalize_text(row.label) for row in table.rows if row.label]
     texts.extend(normalize_text(title) for title in table.caption.titles)
+    for row in table.context.rows:
+        if len(row) > 1 and not normalize_text(row[0]):
+            cell = normalize_text(row[1])
+            if cell:
+                texts.append(cell)
     start = table.caption.consumed_rows
     zone = table.context.rows[start : start + table.header_rows + 2]
     width = max((len(row) for row in zone), default=0)
@@ -61,9 +66,23 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
     md = rf"(?:{MONTH_PATTERN}) \d{{1,2}},? (?:{YEAR_TOKEN_PATTERN})"
     df = rf"\d{{1,2}} (?:{MONTH_PATTERN}),? (?:{YEAR_TOKEN_PATTERN})"
     mdy = rf"(?:{MONTH_PATTERN}) \d{{1,2}},?"
-    qual = r"(?:\s*\([^()]*\)|\s*[-–—]\s*[a-z]+)?"
+    qual = (
+        "(?:"
+        + "|".join(
+            (
+                r"\s*\([^()]*\)",
+                r"\s*[-–—]\s*[a-z]+",
+                r"\s*,\s*as\s+[a-z]+(?:\s+[a-z]+)?",
+            )
+        )
+        + ")?"
+    )
+    connector = "(?:" + "|".join((r"at\s+", r"as at\s+", r"as of\s+")) + ")?"
     prefixes = (
-        rf"balances?,?\s+(?:at\s+|as of\s+)?",
+        rf"balances?,?\s+{connector}",
+        rf"balances?,?\s*[-–—]\s*",
+        rf"net\s+balances?,?\s+(?:at\s+|as of\s+)?",
+        rf"goodwill\s+balances?,?\s+(?:at\s+|as of\s+)?",
         r"as of\s+",
         r"at\s+",
         rf"goodwill,?\s+(?:at\s+|as of\s+)?",
@@ -79,12 +98,14 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
     core = "(?:" + "|".join((md, NUMERIC_DATE_RE.pattern, df, mdy)) + ")"
     year_end = (
         rf"(?:goodwill,?\s+(?:(?:gross|net),?\s*)?)?"
-        rf"as of year-end (?:{YEAR_TOKEN_PATTERN})"
+        rf"as of year[-\s]end (?:{YEAR_TOKEN_PATTERN})"
     )
+    balance_year_end = rf"balances?,?\s+as of year[-\s]end (?:{YEAR_TOKEN_PATTERN})"
     alts = (
         rf"{prefix}{core}{qual}",
         rf"balances?,?\s+(?:{YEAR_TOKEN_PATTERN}){qual}",
         year_end,
+        balance_year_end,
     )
     return re.compile("^(?:" + "|".join(alts) + ")$")
 

@@ -310,6 +310,10 @@ _CF_SECTION_CAPTION = re.compile(
     re.IGNORECASE,
 )
 
+# A grantor trust holding only bullion sells bullion to pay
+# the sponsor fee; the marker is the specimens' own stub.
+_GRANTOR_MARKER = re.compile(r"bullion", re.IGNORECASE)
+
 # The supplemental schedule's canonical blocks (ASC 230):
 # cash paid for interest/taxes, non-cash investing/financing.
 _SUPPLEMENTAL_MARKERS = (
@@ -415,6 +419,25 @@ def cash_flow_lead_veto_scoped(geometry: GeometryText) -> bool:
     return _supplemental_identity(geometry)
 
 
+def cash_flow_grantor_veto_scoped(geometry: GeometryText) -> bool:
+    """Own-stub proof for compete()'s grantor scoping: presence
+    is exactly the spine pair and the bullion marker fires
+    over the geometry's own stubs and titles."""
+    presence = section_presence(geometry.stubs, "cash_flow")
+    if not (
+        presence["operating"]
+        and presence["cash_reconciliation"]
+        and not presence["investing"]
+        and not presence["financing"]
+    ):
+        return False
+    texts = list(geometry.stubs) + [
+        geometry.lead_title or "",
+        geometry.note_title or "",
+    ]
+    return any(_GRANTOR_MARKER.search(t) for t in texts)
+
+
 def statement_clusters(
     geometries: tuple[GeometryText, ...] | list[GeometryText],
 ) -> list[tuple[int, ...]]:
@@ -447,6 +470,37 @@ def statement_clusters(
         run.append(index)
     close_run()
     return clusters
+
+
+def _ci_components_corroborated(index, geometries, results, clusters) -> bool:
+    """The corroborated components form at the primary gate:
+    the claim geometry is the CI components schedule and a
+    sibling CI claim is gate-complete over its own cluster."""
+    from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_evidence import (
+        comprehensive_income_components_form,
+    )
+    from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_specs import (
+        COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
+    )
+
+    spec = COMPREHENSIVE_INCOME_SEPARATOR_SPECS["comprehensive_income"]
+    if not comprehensive_income_components_form(geometries[index], spec):
+        return False
+    from edgar_sec.engine.tables.extraction.core.text.normalize import (
+        normalize_text,
+    )
+
+    if "comprehensive income" not in normalize_text(geometries[index].caption):
+        return False
+    for other, result in enumerate(results):
+        if other == index or "comprehensive_income" not in result.claims:
+            continue
+        stubs = tuple(
+            stub for member in clusters[other] for stub in geometries[member].stubs
+        )
+        if not missing_sections(stubs, "comprehensive_income"):
+            return True
+    return False
 
 
 def apply_primary_gate(
@@ -482,6 +536,13 @@ def apply_primary_gate(
                 missing = missing_sections(stubs, family)
             if missing:
                 refused[family] = missing
+        if (
+            "comprehensive_income" in refused
+            and set(refused["comprehensive_income"])
+            <= {"net_income", "total_comprehensive_income"}
+            and (_ci_components_corroborated(index, geometries, results, clusters))
+        ):
+            del refused["comprehensive_income"]
         if not refused:
             gated.append(result)
             continue

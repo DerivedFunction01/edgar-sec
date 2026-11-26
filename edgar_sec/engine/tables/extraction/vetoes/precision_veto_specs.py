@@ -49,6 +49,54 @@ DT_PPA_PHRASES = (
 DT_SCHEDULE_II_PHRASE = "deducted from assets"
 DT_UTB_SUBJECT_PHRASE = "unrecognized income tax benefits"
 
+# DT-S3X (packet DT-S3X): the subject as stated in lead prose, in
+# either dialect, and the closing lines of a composition, read
+# over normalized stub text.
+DT_S3X_SUBJECT_PHRASES = ("deferred tax", "deferred income tax")
+DT_S3X_COMPONENT_TERMS = (
+    "net operating loss",
+    "tax credit",
+    "capital loss",
+    "depreciation",
+    "amortization",
+    "deferred revenue",
+    "accrued",
+    "reserve",
+    "compensation",
+    "inventory",
+    "basis difference",
+    "partnership",
+    "foreign",
+    "state",
+    "research",
+    "lease",
+    "allowance for",
+    "unrealized",
+    "hedg",
+    "pension",
+    "postretirement",
+    "restructuring",
+    "investment",
+    "prepaid",
+    "warrant",
+    "convertible",
+    "share-based",
+    "stock compensation",
+    "bad debt",
+    "charitable",
+    "interest expense",
+    "deferred compensation",
+    "employee benefit",
+)
+DT_S3X_CLOSING_PHRASES = (
+    "total deferred tax",
+    "net deferred tax",
+    "valuation allowance",
+    "total gross",
+    "less valuation",
+    "net deferred",
+)
+
 
 DEBT_FAMILY = "debt_maturity"
 
@@ -122,6 +170,13 @@ LABOR_FAMILY = "labor_contracts"
 
 # Labor leg names, in the order the gate note reports them.
 LEG_EMPLOYER_FORM = "hdr:employer-form"
+LEG_CONTRIBUTIONS_ORPHAN = "hdr:contributions-no-expiration"
+
+# The placement-refined caption leg: a contributions header
+# whose geometry carries no expiration header (the priced
+# genuine form carries the CBA expiration in-geometry).
+LABOR_CONTRIBUTIONS_PHRASE = "contributions of"
+LABOR_EXPIRATION_TOKEN = "expiration"
 
 # The multiemployer-plan form signature, read over the
 # geometry's normalized headers: an EIN token or the

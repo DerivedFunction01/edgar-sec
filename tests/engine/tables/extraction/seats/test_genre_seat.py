@@ -5,7 +5,15 @@ Grids mirror named Step 6 specimen shapes; facts ride the context.
 
 from __future__ import annotations
 
+from dataclasses import replace
+
 from edgar_sec.domain.forms.families.annual.location import section_scopes
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
+)
 from edgar_sec.engine.tables.ascii_html.model.model import (
     ResolvedGrid,
     TableGeometry,
@@ -272,6 +280,27 @@ def test_cover_securities_table_refused_by_scoped_band() -> None:
     refusal = geometry_refusal(geometry)
     assert refusal is not None and refusal.arm == "band"
     assert compete(geometry).claims == ()
+
+
+def test_band_refusal_yields_to_a_passed_composition() -> None:
+    geometry = _geometry(_COVER_SECURITIES, front_matter=True, numeric_cells=3)
+    assert geometry_refusal(geometry).arm == "band"
+    composed = replace(
+        geometry,
+        form_tests=(
+            FormTestOutcome(
+                family="inventory",
+                test_id="inventory_composition",
+                kind=TEST_COMPOSITION_TWIN,
+                passed=True,
+                evaluable=True,
+                columns_closed=0,
+                points=0.0,
+                detail="",
+            ),
+        ),
+    )
+    assert geometry_refusal(composed) is None
 
 
 def test_contents_page_refused_by_scoped_band() -> None:

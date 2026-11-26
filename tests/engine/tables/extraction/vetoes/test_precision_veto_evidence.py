@@ -14,6 +14,12 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_evidence import ClaimStage
+from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
+    TEST_COMPOSITION_TWIN,
+)
+from edgar_sec.engine.tables.extraction.form_specs.form_test_types import (
+    FormTestOutcome,
+)
 from edgar_sec.engine.tables.extraction.vetoes.precision_veto_evidence import (
     apply_precision_vetoes,
 )
@@ -199,6 +205,27 @@ def test_credit_losses_host_leg_fires():
     assert _inv_details(results[0]) == [
         "precision veto: host:credit_losses_rollforward"
     ]
+
+
+def test_credit_losses_host_leg_yields_to_passed_composition():
+    geo = GeometryText(
+        stubs=("Provision for credit losses",),
+        form_tests=(
+            FormTestOutcome(
+                family="inventory",
+                test_id="inventory_composition",
+                kind=TEST_COMPOSITION_TWIN,
+                passed=True,
+                evaluable=True,
+                columns_closed=0,
+                points=0.0,
+                detail="",
+            ),
+        ),
+    )
+    results = apply_precision_vetoes([geo], [_result(("inventory",))])
+    assert "inventory" in results[0].claims
+    assert _inv_details(results[0]) == []
 
 
 def test_lead_tables_leg_fires():
