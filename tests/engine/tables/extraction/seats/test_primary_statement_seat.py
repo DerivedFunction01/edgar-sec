@@ -12,7 +12,7 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
     TableRenderResult,
 )
 from edgar_sec.engine.tables.extraction.core.text.context import TableContext
-from edgar_sec.engine.tables.extraction.seats.seat_test_specs import (
+from edgar_sec.engine.tables.extraction.seats.specs.seat_test_specs import (
     SEAT_TEST_SPECS_BY_FAMILY,
     SeatTestSpec,
 )

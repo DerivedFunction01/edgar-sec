@@ -24,7 +24,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
 from edgar_sec.engine.tables.extraction.seats.seat_floor_evidence import (
     apply_seat_floor,
 )
-from edgar_sec.engine.tables.extraction.seats.seat_floor_specs import SEAT_FLOOR_SPECS
+from edgar_sec.engine.tables.extraction.seats.specs.seat_floor_specs import SEAT_FLOOR_SPECS
 
 FAMILIES = (
     "credit_losses_rollforward",

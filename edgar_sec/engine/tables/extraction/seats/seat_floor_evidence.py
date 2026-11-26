@@ -6,7 +6,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
     ClaimEvidence,
     FamilyScore,
 )
-from edgar_sec.engine.tables.extraction.seats.seat_floor_specs import SEAT_FLOOR_SPECS
+from edgar_sec.engine.tables.extraction.seats.specs.seat_floor_specs import SEAT_FLOOR_SPECS
 
 
 def _passed_seat_outcome(form_tests, spec):

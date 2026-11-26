@@ -14,7 +14,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
-from edgar_sec.engine.tables.extraction.seats.eps_seat_specs import (
+from edgar_sec.engine.tables.extraction.seats.specs.eps_seat_specs import (
     CANDIDATE_ANATOMY_TERMS,
     CANDIDATE_GRID_TERMS,
     CANDIDATE_LEAD_TERMS,
