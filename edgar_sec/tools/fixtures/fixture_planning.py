@@ -320,10 +320,12 @@ def _screen_from_plan(plan: dict[str, Any]) -> Screen:
 
 
 def screen_from_config(entry: dict[str, Any]) -> Screen:
-    """One config screen entry as a Screen; years default to 2011-2026."""
+    """One config screen entry as a Screen; years default to the
+    gathering window (window start through the current year).
+    """
     if "name" not in entry:
         raise ValueError("each config screen needs a name")
-    years = entry.get("years") or [2011, 2026]
+    years = entry.get("years") or [WINDOW_START, _current_year()]
     forms = entry.get("forms")
     return Screen(
         name=entry["name"],
