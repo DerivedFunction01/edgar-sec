@@ -198,7 +198,7 @@ def catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int
         return _MIN_PLAUSIBLE_YEAR, current_year
     with connect() as con:
         row = con.execute(_year_bounds_query(relation)).fetchone()
-    minimum = int(row[0]) if row and row[0] is not None else current_year - 10
+    minimum = int(row[0]) if row and row[0] is not None else _MIN_PLAUSIBLE_YEAR
     maximum = int(row[1]) if row and row[1] is not None else current_year
     return minimum, maximum
 
