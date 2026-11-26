@@ -20,9 +20,10 @@ from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence import (
     LeaseSeparatorText,
+    block_purity,
     column_mass_shares,
-    period_step_count,
     period_purity,
+    period_step_count,
     period_stub_present,
     stub_ladder_purity,
     transposed_period_axis,
@@ -103,6 +104,7 @@ class GeometryText:
     transposed_period_axis: bool | None = None
     period_steps: int = 0
     period_purity: float = 0.0
+    block_purity: float = 0.0
     lease_mass_share: float | None = None
     foreign_mass_share: float | None = None
 
@@ -180,6 +182,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         period_stub_present=period_stub_present(separator_text),
         period_steps=period_step_count(separator_text),
         period_purity=period_purity(separator_text) or 0.0,
+        block_purity=block_purity(separator_text) or 0.0,
         transposed_period_axis=transposed_period_axis(separator_text),
         lease_mass_share=(
             None

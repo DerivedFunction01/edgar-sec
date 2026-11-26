@@ -583,3 +583,19 @@ def test_assignment_keeps_claim_when_lease_dominates_the_debt_seat():
         [_result_scored((FAMILY,), {FAMILY: 58.5, ANCHOR: 1.5})],
     )
     assert FAMILY in results[0].claims
+
+
+def test_block_purity_reads():
+    tailed = LeaseSeparatorText(
+        "H | A\n2023 | 1\n2024 | 2\nThereafter | 3\n"
+        "Total undiscounted lease payments | 6\nLess: imputed interest | 1\n"
+        "Total lease liabilities | 5"
+    )
+    assert _lse.block_purity(tailed) == 1.0
+    stacked = LeaseSeparatorText(
+        "H | A\n2023 | 1\n2024 | 2\nTotal - operating | 3\n"
+        "Financing leases: | \n2023 | 4\nTotal - finance | 5"
+    )
+    assert _lse.block_purity(stacked) == 4 / 5
+    plain = LeaseSeparatorText("H | A\nCost of revenue | 1\nTotal | 2")
+    assert _lse.block_purity(plain) is None

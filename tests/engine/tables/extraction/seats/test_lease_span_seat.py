@@ -133,7 +133,7 @@ def test_seat_fires_on_period_steps_below_the_year_span() -> None:
 
 
 def test_seat_refuses_below_the_period_steps() -> None:
-    out = _seat(_geometry(year_span=2, period_steps=2), _result(16.0))
+    out = _seat(_geometry(year_span=2, period_steps=1), _result(16.0))
     assert out.claims == ()
 
 
@@ -153,5 +153,55 @@ def test_seat_refuses_when_both_purities_are_low() -> None:
             year_span=0, period_steps=6, stub_ladder_purity=0.33, period_purity=0.5
         ),
         _result(16.0),
+    )
+    assert out.claims == ()
+
+
+def test_seat_fires_on_block_purity_past_a_reconciliation_tail() -> None:
+    out = _seat(
+        _geometry(stub_ladder_purity=0.5, period_purity=0.5, block_purity=1.0),
+        _result(16.0),
+    )
+    assert out.claims == (LEASE,)
+
+
+def test_seat_fires_the_fragment_arm_on_a_short_pure_ladder() -> None:
+    out = _seat(
+        _geometry(year_span=2, period_steps=2, stub_ladder_purity=1.0),
+        _result(11.0),
+    )
+    assert out.claims == (LEASE,)
+
+
+def test_seat_refuses_the_fragment_arm_below_its_floor() -> None:
+    out = _seat(
+        _geometry(year_span=2, period_steps=2, stub_ladder_purity=1.0),
+        _result(7.0),
+    )
+    assert out.claims == ()
+
+
+def test_seat_fires_the_transposed_arm() -> None:
+    out = _seat(
+        _geometry(
+            year_span=0,
+            period_steps=0,
+            stub_ladder_purity=0.0,
+            transposed_period_axis=True,
+        ),
+        _result(14.5),
+    )
+    assert out.claims == (LEASE,)
+
+
+def test_seat_refuses_the_transposed_arm_below_its_floor() -> None:
+    out = _seat(
+        _geometry(
+            year_span=0,
+            period_steps=0,
+            stub_ladder_purity=0.0,
+            transposed_period_axis=True,
+        ),
+        _result(13.0),
     )
     assert out.claims == ()

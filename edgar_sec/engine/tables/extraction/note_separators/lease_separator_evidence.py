@@ -29,6 +29,7 @@ __all__ = [
     "LeaseSeparatorVerdict",
     "apply_lease_assignment",
     "apply_lease_stub_refusal",
+    "block_purity",
     "column_mass_shares",
     "debt_seat_claimed",
     "evaluate_form_test_lease_separator",
@@ -227,6 +228,25 @@ def period_purity(text: LeaseSeparatorText) -> float | None:
         if PERIOD_STUB_RE.match(cell.strip()) or TOTAL_ROW_RE.match(cell)
     )
     return ladder / len(stub_cells)
+
+
+def block_purity(text: LeaseSeparatorText) -> float | None:
+    """Purity over the ladder block: stub cells from the first
+    to the last period-step cell, period-step or total cells
+    over block cells; the reconciliation tail sits outside."""
+    stub_cells = _stub_cells(text)
+
+    def is_step(cell: str) -> bool:
+        return bool(
+            PERIOD_STUB_RE.match(cell.strip()) or YEAR_TOKEN_SEARCH_RE.search(cell)
+        )
+
+    steps = [i for i, cell in enumerate(stub_cells) if is_step(cell)]
+    if not steps:
+        return None
+    block = stub_cells[steps[0] : steps[-1] + 1]
+    good = sum(1 for cell in block if is_step(cell) or TOTAL_ROW_RE.match(cell))
+    return good / len(block)
 
 
 def transposed_period_axis(text: LeaseSeparatorText) -> bool:

@@ -34,6 +34,15 @@ PURITY_MIN = 0.7
 # period steps >= 3 under the seat's other conditions converts
 # exactly 3 short ladders at zero false cost; >= 4 converts none.
 STEPS_MIN = 3
+# Priced fragment arm: a short pure ladder (steps >= 2, ladder
+# purity >= .99) seats at a relieved floor; corpus population
+# is exactly 2 trues at zero false cost.
+FRAGMENT_FLOOR = 8.0
+FRAGMENT_STEPS_MIN = 2
+FRAGMENT_PURITY_MIN = 0.99
+# Priced transposed arm: a transposed period axis seats at 14;
+# corpus population is exactly 1 true at zero false cost.
+TRANSPOSED_FLOOR = 14.0
 
 
 def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:
@@ -43,13 +52,29 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     if any(group.family == FAMILY for group in result.groups):
         return result
     score = result.scores.get(FAMILY)
-    if score is None or score.total < SEAT_FLOOR:
-        return result
-    if geometry.year_span < SPAN_MIN and geometry.period_steps < STEPS_MIN:
-        return result
-    if geometry.stub_ladder_purity < PURITY_MIN and geometry.period_purity < PURITY_MIN:
+    if score is None:
         return result
     if debt_seat_claimed(geometry.form_tests):
+        return result
+    purity_met = (
+        geometry.stub_ladder_purity >= PURITY_MIN
+        or geometry.period_purity >= PURITY_MIN
+        or geometry.block_purity >= PURITY_MIN
+    )
+    main_form = (
+        score.total >= SEAT_FLOOR
+        and (geometry.year_span >= SPAN_MIN or geometry.period_steps >= STEPS_MIN)
+        and purity_met
+    )
+    fragment_form = (
+        score.total >= FRAGMENT_FLOOR
+        and geometry.period_steps >= FRAGMENT_STEPS_MIN
+        and geometry.stub_ladder_purity >= FRAGMENT_PURITY_MIN
+    )
+    transposed_form = bool(geometry.transposed_period_axis) and (
+        score.total >= TRANSPOSED_FLOOR
+    )
+    if not (main_form or fragment_form or transposed_form):
         return result
     group = ClaimGroup(
         family=FAMILY,
