@@ -302,6 +302,10 @@ _CF_SECTION_CAPTION = re.compile(
     re.IGNORECASE,
 )
 
+# A grantor trust holding only bullion sells bullion to pay
+# the sponsor fee; the marker is the specimens' own stub.
+_GRANTOR_MARKER = re.compile(r"bullion", re.IGNORECASE)
+
 # The supplemental schedule's canonical blocks (ASC 230):
 # cash paid for interest/taxes, non-cash investing/financing.
 _SUPPLEMENTAL_MARKERS = (
@@ -405,6 +409,25 @@ def cash_flow_lead_veto_scoped(geometry: GeometryText) -> bool:
     if not missing or missing == ["financing"]:
         return True
     return _supplemental_identity(geometry)
+
+
+def cash_flow_grantor_veto_scoped(geometry: GeometryText) -> bool:
+    """Own-stub proof for compete()'s grantor scoping: presence
+    is exactly the spine pair and the bullion marker fires
+    over the geometry's own stubs and titles."""
+    presence = section_presence(geometry.stubs, "cash_flow")
+    if not (
+        presence["operating"]
+        and presence["cash_reconciliation"]
+        and not presence["investing"]
+        and not presence["financing"]
+    ):
+        return False
+    texts = list(geometry.stubs) + [
+        geometry.lead_title or "",
+        geometry.note_title or "",
+    ]
+    return any(_GRANTOR_MARKER.search(t) for t in texts)
 
 
 def statement_clusters(

@@ -62,6 +62,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import 
 )
 from edgar_sec.engine.tables.extraction.cascade.stamped_gates import apply_stamped_gates
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    cash_flow_grantor_veto_scoped,
     cash_flow_lead_veto_scoped,
     section_presence,
 )
@@ -150,6 +151,12 @@ def compete(
         if hard_channels and set(hard_channels) == {"lead"}:
             if cash_flow_lead_veto_scoped(geometry):
                 del hard_vetoed["cash_flow"]
+    # Priced scoping (cash_flow, grantor): a remaining hard
+    # tier in either channel is scoped when own-stub presence
+    # is exactly the spine pair and the bullion marker fires
+    # (a bullion-only grantor trust has no middle sections).
+    if "cash_flow" in hard_vetoed and cash_flow_grantor_veto_scoped(geometry):
+        del hard_vetoed["cash_flow"]
     if hard_vetoed:
         for family, term in hard_vetoed.items():
             if family in scores:

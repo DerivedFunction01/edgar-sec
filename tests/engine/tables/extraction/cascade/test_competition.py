@@ -722,3 +722,66 @@ def test_cash_flow_body_hard_hit_still_bars() -> None:
     )
     result = compete(geometry, terms=_CF_TERMS, edges=())
     assert result.claims == ()
+
+
+_CF_GRANTOR_STUBS = (
+    "Cash flows from operating activities",
+    "Proceeds from gold bullion sold to pay expenses",
+    "Net increase in cash and cash equivalents",
+    "Cash and cash equivalents, beginning of period",
+)
+_CF_SPINE_STUBS = (
+    "Cash flows from operating activities",
+    "Net cash provided by operating activities",
+    "Net increase in cash and cash equivalents",
+    "Cash and cash equivalents, beginning of period",
+)
+_CF_PER_SHARE_LEAD = (
+    "The trust holds gold bullion; its net asset value per share is published daily."
+)
+_CF_PERIOD_GRID = "For the three months ended June 30, 2024."
+
+
+def _cf_geometry(stubs, **fields) -> GeometryText:
+    base = {
+        "caption": "Statements of Cash Flows",
+        "leadin": "The statements of cash flows are presented below.",
+        "stubs": stubs,
+    }
+    base.update(fields)
+    return GeometryText(**base)
+
+
+def test_cash_flow_grantor_lead_hard_hit_scoped() -> None:
+    geometry = _cf_geometry(_CF_GRANTOR_STUBS, lead=_CF_PER_SHARE_LEAD)
+    assert compete(geometry, terms=_CF_TERMS, edges=()).claims == ("cash_flow",)
+
+
+def test_cash_flow_grantor_body_hard_hit_scoped() -> None:
+    geometry = _cf_geometry(_CF_GRANTOR_STUBS, grid_text=_CF_PERIOD_GRID)
+    assert compete(geometry, terms=_CF_TERMS, edges=()).claims == ("cash_flow",)
+
+
+def test_cash_flow_spine_pair_without_marker_still_bars() -> None:
+    geometry = _cf_geometry(_CF_SPINE_STUBS, lead=_CF_PER_SHARE_LEAD)
+    result = compete(geometry, terms=_CF_TERMS, edges=())
+    assert result.claims == ()
+    assert "cash_flow" in result.scores
+
+
+def test_cash_flow_grantor_marker_full_presence_lead_scoped() -> None:
+    stubs = _CF_FULL_STUBS + ("Proceeds from gold bullion sold to pay expenses",)
+    geometry = _cf_geometry(stubs, lead=_CF_PER_SHARE_LEAD)
+    assert compete(geometry, terms=_CF_TERMS, edges=()).claims == ("cash_flow",)
+
+
+def test_cash_flow_grantor_marker_full_presence_body_still_bars() -> None:
+    stubs = _CF_FULL_STUBS + ("Proceeds from gold bullion sold to pay expenses",)
+    geometry = _cf_geometry(stubs, grid_text=_CF_PERIOD_GRID)
+    assert compete(geometry, terms=_CF_TERMS, edges=()).claims == ()
+
+
+def test_cash_flow_non_trust_spine_pair_body_hit_still_bars() -> None:
+    grid = "Earnings per share data is omitted from this table."
+    geometry = _cf_geometry(_CF_SPINE_STUBS, grid_text=grid)
+    assert compete(geometry, terms=_CF_TERMS, edges=()).claims == ()
