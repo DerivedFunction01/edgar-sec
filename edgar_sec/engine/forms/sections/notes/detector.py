@@ -9,6 +9,7 @@ from edgar_sec.engine.forms.sections.models import (
     CandidateKind,
     NotesSequence,
     ResolvedNote,
+    SectionCandidate,
 )
 from edgar_sec.engine.forms.sections.notes.candidates import extract_note_candidates
 from edgar_sec.engine.forms.sections.sequence import MonotonicSequenceTracker
@@ -28,29 +29,19 @@ def _find_notes_start_line(lines: list[str]) -> int:
     return 0
 
 
-def detect_notes_sequence(
-    text: str,
-    *,
-    scope_span: tuple[int, int] | None = None,
-    payload_sha256: str | None = None,
-    representation_id: str | None = None,
-    renderer_version: str | None = None,
-) -> NotesSequence:
-    """Detect monotonic financial statement footnotes across the notes block."""
-    lines = text.splitlines()
-    total_lines = len(lines)
-    offsets = line_offsets(lines)
+def _identifier_number(token: str) -> int | None:
+    """Map a candidate identifier to its canonical note number."""
+    if token.isdigit():
+        return int(token)
+    if len(token) == 1 and token.isalpha():
+        return ord(token.upper()) - 64
+    return None
 
-    if scope_span is not None:
-        start_line, end_line = scope_span
-    else:
-        start_line = _find_notes_start_line(lines)
-        end_line = total_lines
 
-    raw_candidates = extract_note_candidates(
-        lines, start_line=start_line, end_line=end_line
-    )
-
+def _track_candidates(
+    raw_candidates: list[SectionCandidate],
+) -> tuple[list[ResolvedNote], int, int]:
+    """Run the monotonic tracker over candidates from one scan scope."""
     canonical_order = tuple(range(1, 100))
     tracker = MonotonicSequenceTracker[int](canonical_order)
 
@@ -62,10 +53,10 @@ def detect_notes_sequence(
         if cand.preceded_by_continuation:
             continue
 
-        try:
-            int_ids = tuple(int(x) for x in cand.identifiers)
-        except ValueError:
+        mapped = [_identifier_number(x) for x in cand.identifiers]
+        if any(n is None for n in mapped):
             continue
+        int_ids = tuple(n for n in mapped if n is not None)
 
         if cand.kind == CandidateKind.GROUPED:
             if not tracker.validate_group_contiguity(int_ids):
@@ -94,11 +85,13 @@ def detect_notes_sequence(
             anachronisms += 1
             continue
 
+        token = cand.identifiers[0]
+        label = f"NOTE {token.upper()}" if token.isalpha() else f"NOTE {num}"
         conf = 0.95 if cand.kind == CandidateKind.STANDARD else 0.85
         resolved.append(
             ResolvedNote(
                 note_number=num,
-                note_label=f"NOTE {num}",
+                note_label=label,
                 start_line=cand.line_number,
                 end_line=None,
                 title=cand.title,
@@ -106,6 +99,45 @@ def detect_notes_sequence(
                 confidence=conf,
             )
         )
+
+    return resolved, anachronisms, non_contiguous
+
+
+def detect_notes_sequence(
+    text: str,
+    *,
+    scope_span: tuple[int, int] | None = None,
+    payload_sha256: str | None = None,
+    representation_id: str | None = None,
+    renderer_version: str | None = None,
+) -> NotesSequence:
+    """Detect monotonic financial statement footnotes across the notes block."""
+    lines = text.splitlines()
+    total_lines = len(lines)
+    offsets = line_offsets(lines)
+
+    if scope_span is not None:
+        start_line, end_line = scope_span
+        raw_candidates = extract_note_candidates(
+            lines, start_line=start_line, end_line=end_line
+        )
+        resolved, anachronisms, non_contiguous = _track_candidates(raw_candidates)
+    else:
+        end_line = total_lines
+        start_line = _find_notes_start_line(lines)
+        raw_candidates = extract_note_candidates(
+            lines, start_line=start_line, end_line=end_line
+        )
+        resolved, anachronisms, non_contiguous = _track_candidates(raw_candidates)
+        if start_line > 0 and len(resolved) < 3:
+            retry_candidates = extract_note_candidates(
+                lines, start_line=0, end_line=end_line
+            )
+            retry, retry_anach, retry_noncontig = _track_candidates(retry_candidates)
+            if len(retry) > len(resolved):
+                resolved = retry
+                anachronisms = retry_anach
+                non_contiguous = retry_noncontig
 
     bounded_notes: list[ResolvedNote] = []
     text_len = len(text)
