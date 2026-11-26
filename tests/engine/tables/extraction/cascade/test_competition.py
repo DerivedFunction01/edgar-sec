@@ -380,7 +380,7 @@ def test_presence_reach_claims_an_unclaimed_pension_geometry() -> None:
         SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
     )
     # The funded-status stub carries the pension gate's core anchor.
-    geometry = GeometryText(data_rows=1, stubs=("Pension obligation", "Funded status", "Cash flows"))
+    geometry = GeometryText(data_rows=1, data_rows=1, stubs=("Pension obligation", "Funded status", "Cash flows"))
     result = compete(geometry, terms=terms, edges=())
     assert result.claims == ("pension",)
     assert result.groups[0].state == "reach"
@@ -397,7 +397,7 @@ def test_reach_requires_a_stub_share_of_the_family_evidence() -> None:
         SignatureTerm("pension", "stub", "pension obligation", 1.0, 30, 0),
         SignatureTerm("cash_flow", "stub", "cash flows", 0.4, 90, 80),
     )
-    geometry = GeometryText(data_rows=1, 
+    geometry = GeometryText(data_rows=1, data_rows=1, 
         caption="Pension",
         stubs=("Pension obligation", "Funded status", "Cash flows"),
     )
@@ -599,7 +599,7 @@ def test_pension_claim_without_core_anchor_is_gated() -> None:
 
 
 def test_pension_claim_with_core_anchor_stands() -> None:
-    geometry = GeometryText(data_rows=1, 
+    geometry = GeometryText(data_rows=1, data_rows=1, 
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         stubs=("Pension expense", "Funded status", "Total"),
@@ -609,7 +609,7 @@ def test_pension_claim_with_core_anchor_stands() -> None:
 
 
 def test_pension_oci_anchor_seats_the_claim() -> None:
-    geometry = GeometryText(data_rows=1, 
+    geometry = GeometryText(data_rows=1, data_rows=1, 
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         stubs=(
@@ -625,7 +625,7 @@ def test_pension_oci_anchor_seats_the_claim() -> None:
 def test_pension_prose_after_completion_seats_the_claim() -> None:
     # The lead text avoids the family's priced lead veto terms, so
     # the claim forms and the gate is the deciding act.
-    bare = GeometryText(data_rows=1, 
+    bare = GeometryText(data_rows=1, data_rows=1, 
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         lead="The following table presents the plan holdings.",
@@ -637,7 +637,7 @@ def test_pension_prose_after_completion_seats_the_claim() -> None:
     assert any(
         e.channel == "gate" and e.detail == "pension: no core anchor" for e in trail
     )
-    completed = GeometryText(data_rows=1, 
+    completed = GeometryText(data_rows=1, data_rows=1, 
         caption="Pension Benefits",
         leadin="The pension plan is described below.",
         lead="The following table presents the plan holdings.",
