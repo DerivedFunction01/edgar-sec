@@ -267,8 +267,7 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 546 rows.
-# priced records after the ruled holds and release; 550 rows.
+# priced records after the ruled holds and release; 542 rows.
 _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "hard"): 4,
     ("aoci_rollforward", "body", "scored"): 13,
@@ -351,7 +350,7 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 545
+    assert len(rows) == 542
     assert len(rows) == 550
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
