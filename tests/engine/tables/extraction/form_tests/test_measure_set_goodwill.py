@@ -192,7 +192,7 @@ def test_goodwill_exchange_only_movement_passes() -> None:
     table = _table(
         (
             ("Goodwill",),
-            ("(in thousands)",),
+            ("", "Amount"),
             ("Balance at December 31, 2015", "100"),
             ("Amortization", "(1)"),
             ("Foreign exchange", "2"),
