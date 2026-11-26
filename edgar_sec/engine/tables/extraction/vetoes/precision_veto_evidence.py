@@ -507,12 +507,8 @@ def _fired_legs(
 
 def apply_precision_vetoes(geometries, results, stages=None):
     """Final pass: remove packet-family claims firing any leg.
-
-    Firings read the input results only, except the debt
-    leg, whose own-score reads the captured claim stages
-    when they are given, so removals never change another
-    firing.
-    """
+Firings read the input results only, except the debt leg, whose own-score
+reads the captured claim stages when given, so removals change no other firing."""
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
