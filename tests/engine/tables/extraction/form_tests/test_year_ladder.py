@@ -168,14 +168,14 @@ def test_ladder_year_recognizers_are_range_ruled() -> None:
     assert open_step is not None and open_step.kind == "open"
 
 
-def test_year_cell_uses_the_homed_year_bound() -> None:
+def test_year_cell_uses_the_homed_recognition() -> None:
     """Delta pin: _is_year_cell collapsed onto is_year_token; the
-    private bound was 2199, the home's is 2100."""
+    home's recognition is the full-range 1900-9999 shape."""
     from edgar_sec.engine.tables.extraction.form_tests.year_ladder import _is_year_cell
 
     assert _is_year_cell("2024")
     assert _is_year_cell("2100")
-    assert not _is_year_cell("2150")
+    assert _is_year_cell("2150")
     assert not _is_year_cell("1899")
 
 

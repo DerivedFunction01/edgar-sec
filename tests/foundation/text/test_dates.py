@@ -135,9 +135,10 @@ def test_parse_numeric_year() -> None:
     from edgar_sec.foundation.text.date_years import parse_numeric_year
 
     assert parse_numeric_year("24", reference_year=2024) == 2024
-    assert parse_numeric_year("99", reference_year=2024) == 1999
-    assert parse_numeric_year("00", reference_year=2024) == 2000
+    assert parse_numeric_year("99", reference_year=2005) == 1999
+    assert parse_numeric_year("00", reference_year=2005) == 2000
     assert parse_numeric_year("1899", reference_year=2024) is None
+    assert parse_numeric_year("99", reference_year=2024) is None
     assert parse_numeric_year("95", reference_year=1998) == 1995
     assert parse_numeric_year("01", reference_year=1998) == 2001
 

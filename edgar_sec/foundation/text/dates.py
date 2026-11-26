@@ -20,7 +20,11 @@ from edgar_sec.foundation.text.date_patterns import (
     ORDINAL_SUFFIX_RE,
     month_name_to_index,
 )
-from edgar_sec.foundation.text.date_years import expand_2digit_year, is_valid_year
+from edgar_sec.foundation.text.date_years import (
+    expand_2digit_year,
+    is_valid_year,
+    is_year_token,
+)
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 
@@ -77,6 +81,8 @@ def _parse_date_with_formats(
             if reference_year is None:
                 continue
             year = expand_2digit_year(year, reference_year=reference_year)
+        if not is_year_token(str(year)):
+            continue
         if reference_year is not None and not is_valid_year(year, reference_year):
             continue
         month = month_name_to_index(month_str)

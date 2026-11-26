@@ -243,7 +243,7 @@ def test_parse_box_three_columns_with_numbered_marker_cells():
     </table>
     """
     sections = partition_form144_tables(html)
-    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3, reference_year=2009)
     assert proposed.class_title == "Old Second Bancorp Inc."
     assert proposed.broker is not None and proposed.broker.name == "Weeden & Co"
     assert proposed.units_to_be_sold == 30000
@@ -299,7 +299,7 @@ def test_parse_data_row_continued_after_box3_header():
       <td>10/26/09</td><td>NYSE</td></tr></table>
     """
     sections = partition_form144_tables(html)
-    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3, reference_year=2009)
     assert proposed.class_title == "Ordinary Shares"
     assert proposed.broker is not None
     assert proposed.broker.name == "Morgan Stanley Smith Barney, LLC"
@@ -334,7 +334,7 @@ def test_parse_box3_values_in_spacer_columns_after_marked_labels():
     </tr></table>
     """
     sections = partition_form144_tables(html)
-    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3, reference_year=2004)
     assert proposed.class_title == "Common Shares w/o Par Value"
     assert proposed.broker is not None
     assert proposed.broker.name == "McDonald Investments"
@@ -377,7 +377,7 @@ def test_nearby_header_rows_and_trailing_instructions_bound_box3_data():
     </table>
     """
     sections = partition_form144_tables(html)
-    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3, reference_year=2009)
     assert proposed.class_title == "Common Stock"
     assert proposed.broker is not None and proposed.broker.name == "Example Broker"
     assert proposed.units_to_be_sold == 100

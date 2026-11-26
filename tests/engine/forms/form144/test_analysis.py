@@ -29,7 +29,7 @@ SAMPLE_XML = """<?xml version="1.0" encoding="utf-8"?>
     <securitiesInformation>
       <securitiesClassTitle>Common Stock</securitiesClassTitle>
       <brokerOrMarketmakerDetails><name>Example Broker</name><address><street1>2 Broad Street</street1><city>Boston</city><stateOrCountry>MA</stateOrCountry><zipCode>02110</zipCode></address></brokerOrMarketmakerDetails>
-      <noOfUnitsSold>2500</noOfUnitsSold>
+      <noOfUnitsSold>25000</noOfUnitsSold>
       <aggregateMarketValue>50000.00</aggregateMarketValue>
       <noOfUnitsOutstanding>100000</noOfUnitsOutstanding>
       <approxSaleDate>06-01-2023</approxSaleDate>
