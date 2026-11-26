@@ -7,10 +7,13 @@ legs; the filing-level assignment pass reads the same features.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
+    STRICT_MONTH_PATTERN,
+    YEAR_TOKEN_PATTERN,
     YEAR_TOKEN_SEARCH_RE,
 )
 from edgar_sec.engine.tables.extraction.separators.equity_separator_specs import (
@@ -33,12 +36,20 @@ from edgar_sec.engine.tables.extraction.seats.statement_seat import _column_walk
 _HEADER_LINES = 3
 _YEAR_RE = YEAR_TOKEN_SEARCH_RE
 
+_DATE_ONLY_RE = re.compile(
+    rf"^(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},\s+(?:{YEAR_TOKEN_PATTERN})$",
+    re.IGNORECASE,
+)
+
 
 def _dated_balance_count(raw_stubs) -> int:
     """Stub rows naming a balance together with a date."""
     count = 0
     for stub in raw_stubs:
         lowered = (stub or "").lower()
+        if _DATE_ONLY_RE.match(lowered.strip()):
+            count += 1
+            continue
         if "balance" not in lowered and "net assets" not in lowered:
             continue
         if _YEAR_RE.search(lowered) or any(name in lowered for name in MONTH_NAMES):

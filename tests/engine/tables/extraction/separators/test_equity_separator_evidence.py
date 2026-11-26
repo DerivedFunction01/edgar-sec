@@ -172,6 +172,18 @@ def test_leg_core_gate_dated_net_assets_row_counts():
     assert _eval(_text("Item | 2024 | 2023", rows)).legs == ()
 
 
+def test_leg_core_gate_date_only_balance_rows_count():
+    # Priced (resprice2): statements whose balance rows are
+    # titled by their dates alone credit those rows as dated
+    # balance rows.
+    rows = (
+        "February 28, 2021 | 100",
+        *_FILLER,
+        "May 31, 2021 | 107",
+    )
+    assert _eval(_text("Item | Shares | Total", rows)).legs == ()
+
+
 def test_leg_core_gate_credited_by_year_only_header():
     rows = (
         "Balance at beginning of period | 500 | 480",
