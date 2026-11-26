@@ -76,9 +76,7 @@ def _rollforward_form(geometry: GeometryText) -> bool:
     """AOCI rollforward row-shape: a balance row, an
     arising-during row, a net amortization row."""
     text = geometry.stub_text
-    return (
-        "balance" in text and "arising during" in text and "amortization" in text
-    )
+    return "balance" in text and "arising during" in text and "amortization" in text
 
 
 def _conjoined_form(geometry: GeometryText) -> bool:
@@ -105,9 +103,7 @@ def _asset_return_form(geometry: GeometryText) -> bool:
     """Assets-leg companion: plan assets with an actual
     return or gain."""
     text = geometry.stub_text
-    return "plan assets" in text and (
-        "actual return" in text or "actual gain" in text
-    )
+    return "plan assets" in text and ("actual return" in text or "actual gain" in text)
 
 
 def _capitalized_form(geometry: GeometryText) -> bool:
