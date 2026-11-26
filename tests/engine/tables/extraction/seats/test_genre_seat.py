@@ -32,7 +32,9 @@ from edgar_sec.engine.tables.extraction.core.text.context import (
 )
 from edgar_sec.engine.tables.extraction.assembly.context_production import _grid_facts
 from edgar_sec.engine.tables.extraction.seats.genre_seat import (
+    exhibit_stub_cell,
     geometry_refusal,
+    price_range_cell,
     table_refusal,
 )
 from edgar_sec.engine.tables.extraction.core.policy import ClassificationPolicy
@@ -325,3 +327,55 @@ def test_front_matter_note_table_is_not_band_refused() -> None:
     facts = {"front_matter": True, "numeric_cells": 12}
     geometry = _geometry(grid, **facts)
     assert geometry_refusal(geometry) is None
+
+
+_PRICE_GRID = (
+    ("Exercise Price", "Shares Outstanding", "Shares Exercisable", "WAEP"),
+    ("$0.29 \u2013 0.29", "10,000", "10,000", "0.29"),
+    ("1.80 \u2013 1.94", "20,000", "15,000", "1.87"),
+    ("2.55 \u2013 4.07", "30,000", "25,000", "3.31"),
+    ("5.50 \u2013 7.88", "40,000", "30,000", "6.69"),
+    ("9.32 \u2013 12.75", "50,000", "35,000", "11.03"),
+    ("$0.29 \u2013 12.75", "150,000", "115,000", "5.95"),
+)
+
+_WIDE_TWO_ROW_GRID = (
+    ("Range of Exercise Prices", "Outstanding", "Exercisable", "WAEP", "Life", "Value"),
+    ("$20.00 to $30.00", "40,000", "40,000", "25.00", "5.0", "1,000"),
+    ("$30.50 to $50.00", "60,000", "60,000", "40.00", "6.0", "2,400"),
+)
+
+_NARROW_TWO_ROW_GRID = (
+    ("Month", "Shares", "Price"),
+    ("08/1/06 \u2013 08/31/06", "10,000", "5.00"),
+    ("09/01/06 \u2013 09/30/06", "20,000", "6.00"),
+)
+
+
+def test_price_range_cells_are_not_exhibit_stubs() -> None:
+    assert price_range_cell("1.80 \u2013 1.94")
+    assert price_range_cell("$20.00 to $30.00")
+    assert not exhibit_stub_cell("1.80 \u2013 1.94")
+    assert not exhibit_stub_cell("$0.29 \u2013 0.29")
+    assert exhibit_stub_cell("31.1")
+    assert exhibit_stub_cell("101.INS")
+
+
+def test_price_grid_is_not_exhibit_refused() -> None:
+    facts = _grid_facts([list(row) for row in _PRICE_GRID])
+    assert facts["exhibit_stub_share"] == 0.0
+    context = _context(_PRICE_GRID)
+    assert table_refusal(structure_table(context)) is None
+
+
+def test_closing_span_yields_to_a_wide_two_row_grid() -> None:
+    facts = {"in_closing_span": True, "closing_kind": "signatures"}
+    geometry = _geometry(_WIDE_TWO_ROW_GRID, **facts)
+    assert geometry_refusal(geometry) is None
+
+
+def test_closing_span_still_refuses_a_narrow_two_row_grid() -> None:
+    facts = {"in_closing_span": True, "closing_kind": "signatures"}
+    geometry = _geometry(_NARROW_TWO_ROW_GRID, **facts)
+    refusal = geometry_refusal(geometry)
+    assert refusal is not None and refusal.arm == "closing_span"

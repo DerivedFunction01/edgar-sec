@@ -36,6 +36,8 @@ EMPTY_BODY_MAX_ROWS = 2
 FOLIO_MAX_CELLS = 3
 CLOSING_NUMERIC_CELLS_MIN = 4
 CLOSING_DATA_ROWS_MIN = 3
+CLOSING_WIDE_DATA_ROWS_MIN = 2
+CLOSING_WIDE_ROW_CELLS_MIN = 5
 
 FULL_REFUSAL_PREFIXES = (
     "toc refused",
@@ -52,6 +54,13 @@ _EXHIBIT_STUB_ALTERNATION = build_alternation(
     [r"\d{1,3}\.\d{1,2}\b", r"101\.[A-Z]{3}\b", r"EX[-\s]?\d", r"EXHIBIT\b"]
 )
 _EXHIBIT_STUB_RE = re.compile(rf"^(?:{_EXHIBIT_STUB_ALTERNATION})", re.IGNORECASE)
+_RANGE_DASH_RE = re.compile(
+    r"^\$?\s*\d{1,3}(?:,\d{3})*(?:\.\d+)?\s*[-\u2010-\u2015]\s*\$?\s*\d"
+)
+_RANGE_TO_RE = re.compile(
+    r"^\$?\s*\d{1,3}(?:,\d{3})*(?:\.\d+)?\s+to\s+\$?\s*\d",
+    re.IGNORECASE,
+)
 _INDEX_NAMED_TERMS = (
     "balance sheet",
     "income statement",
@@ -69,8 +78,16 @@ _INDEX_NAMED_TERMS = (
 )
 
 
+def price_range_cell(cell: str) -> bool:
+    """One first cell carrying a numeric price range."""
+    text = cell.strip()
+    return bool(_RANGE_DASH_RE.match(text) or _RANGE_TO_RE.match(text))
+
+
 def exhibit_stub_cell(cell: str) -> bool:
     """One first cell carrying an exhibit number or stub."""
+    if price_range_cell(cell):
+        return False
     return bool(_EXHIBIT_STUB_RE.match(cell.strip()))
 
 
@@ -210,9 +227,13 @@ def _shape_refusal(facts: GenreFacts) -> SeatRefusal | None:
 
 def _statement_content(facts: GenreFacts) -> bool:
     """Statement content: a numeric grid, not a signature block."""
+    if facts.numeric_cells < CLOSING_NUMERIC_CELLS_MIN:
+        return False
+    if facts.data_rows >= CLOSING_DATA_ROWS_MIN:
+        return True
     return (
-        facts.numeric_cells >= CLOSING_NUMERIC_CELLS_MIN
-        and facts.data_rows >= CLOSING_DATA_ROWS_MIN
+        facts.data_rows >= CLOSING_WIDE_DATA_ROWS_MIN
+        and facts.max_row_cells >= CLOSING_WIDE_ROW_CELLS_MIN
     )
 
 
