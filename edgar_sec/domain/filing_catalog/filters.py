@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Any
 
-from edgar_sec.foundation.text.date_years import is_valid_year, parse_year_token
+from edgar_sec.foundation.text.date_years import is_year_token
 
 # Real SEC stub suffixes use letters, digits, and dots (``0001.htm``); anything
 # quote- or comment-shaped is rejected here rather than at a predicate compiler.
@@ -107,7 +107,7 @@ class RecurringDateClause:
                     f"{self.granularity} value {value} is outside 1..{limit}"
                 )
         for year in (self.start_year, self.end_year):
-            if year is not None and not is_valid_year(year):
+            if year is not None and not is_year_token(str(year)):
                 raise ValueError(f"year {year} is outside the valid range")
         if (
             self.start_year is not None
@@ -240,10 +240,9 @@ def _end_of_month(year: int, month: int) -> date:
 
 
 def _parse_year_atom(token: str, source: str) -> int:
-    year = parse_year_token(token)
-    if year is None:
+    if not is_year_token(token):
         raise ValueError(f"invalid year {source!r}")
-    return year
+    return int(token.strip())
 
 
 def _absolute_atom(token: str) -> tuple[date, date]:

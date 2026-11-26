@@ -25,7 +25,7 @@ from edgar_sec.engine.forms.common.phrases.statutory import HEADER_LEAK_RE
 from edgar_sec.engine.forms.common.xml.unparsed import load_unparsed_sections
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.date_years import is_year_token
 
 _CORE_FIELDS = (
     "issuerName",
@@ -393,7 +393,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                         "detail": f"Suspected ZIP code {val} leaked into {qty_field}",
                     }
                 )
-            elif YEAR_TOKEN_RE.fullmatch(val) and 1990 <= int(val) <= 2025:
+            elif is_year_token(val):
                 anomalies.append(
                     {
                         "accession": accession,
@@ -411,7 +411,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                     "detail": f"Suspected telephone area code {val} in aggregateMarketValue",
                 }
             )
-        elif YEAR_TOKEN_RE.fullmatch(val) and 1990 <= int(val) <= 2025:
+        elif is_year_token(val):
             anomalies.append(
                 {
                     "accession": accession,

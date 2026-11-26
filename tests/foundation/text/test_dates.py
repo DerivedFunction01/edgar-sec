@@ -31,9 +31,12 @@ def test_year_regex_and_validation() -> None:
     assert YEAR_TOKEN_RE.match("2024") is not None
     assert YEAR_TOKEN_RE.match("1998") is not None
     assert YEAR_TOKEN_RE.match("1899") is None
-    assert is_valid_year(2024)
-    assert is_valid_year(1998)
-    assert not is_valid_year(1850)
+    assert is_valid_year(2024, reference_year=2024)
+    assert is_valid_year(1998, reference_year=2024)
+    assert not is_valid_year(1850, reference_year=2024)
+    assert not is_valid_year(2199, reference_year=1999)
+    assert not is_valid_year(2076, reference_year=1999)
+    assert is_valid_year(2049, reference_year=1999)
     assert is_year_token("2024")
     assert is_year_token("  1998  ")
     assert not is_year_token("202")
@@ -105,10 +108,10 @@ def test_year_in_text_regex() -> None:
 
 
 def test_expand_2digit_year() -> None:
-    assert expand_2digit_year(24) == 2024
-    assert expand_2digit_year(99) == 1999
-    assert expand_2digit_year(0) == 2000
-    assert expand_2digit_year(2024) == 2024
+    assert expand_2digit_year(24, reference_year=2024) == 2024
+    assert expand_2digit_year(99, reference_year=2024) == 1999
+    assert expand_2digit_year(0, reference_year=2024) == 2000
+    assert expand_2digit_year(2024, reference_year=2024) == 2024
 
     # Historical anchor: 1998 filing (window [1918..2017])
     assert expand_2digit_year(95, reference_year=1998) == 1995
@@ -129,10 +132,10 @@ def test_expand_2digit_year() -> None:
 def test_parse_numeric_year() -> None:
     from edgar_sec.foundation.text.date_years import parse_numeric_year
 
-    assert parse_numeric_year("24") == 2024
-    assert parse_numeric_year("99") == 1999
-    assert parse_numeric_year("00") == 2000
-    assert parse_numeric_year("1899") is None
+    assert parse_numeric_year("24", reference_year=2024) == 2024
+    assert parse_numeric_year("99", reference_year=2024) == 1999
+    assert parse_numeric_year("00", reference_year=2024) == 2000
+    assert parse_numeric_year("1899", reference_year=2024) is None
     assert parse_numeric_year("95", reference_year=1998) == 1995
     assert parse_numeric_year("01", reference_year=1998) == 2001
 
@@ -140,8 +143,8 @@ def test_parse_numeric_year() -> None:
 def test_extract_years() -> None:
     from edgar_sec.foundation.text.date_years import extract_years
 
-    assert extract_years("Year 2024 and 2025") == [2024, 2025]
-    assert extract_years("No years here") == []
+    assert extract_years("Year 2024 and 2025", reference_year=2025) == [2024, 2025]
+    assert extract_years("No years here", reference_year=2025) == []
     # 2-digit years with historical anchor
     assert extract_years("Fiscal '95, '98, and '01", reference_year=1998) == [
         1995,
@@ -305,3 +308,12 @@ def test_parse_date_day_month_slash() -> None:
     assert parse_date("20/01/2023").iso == "2023-01-20"
     assert parse_date("20/01/23", reference_year=2023).iso == "2023-01-20"
     assert parse_date("05/07/2023").iso == "2023-05-07"
+
+
+def test_parse_date_without_reference_applies_no_calendar_window() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    assert parse_date("December 31, 2199") is not None
+    assert parse_date("December 31, 1999", reference_year=1999) is not None
+    assert parse_date("December 31, 2199", reference_year=1999) is None
+    assert parse_date("4/14/03") is None

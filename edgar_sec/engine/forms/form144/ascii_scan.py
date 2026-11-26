@@ -36,6 +36,7 @@ from edgar_sec.engine.forms.form144.patterns import (
     TABLE_I_MARKER_RE,
     is_form144_instruction_line,
 )
+from edgar_sec.foundation.text.date_years import is_year_token
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE_SPLIT
 
@@ -43,7 +44,7 @@ from edgar_sec.foundation.text.patterns import RE_WHITESPACE_SPLIT
 def _is_bare_zip_or_year(val: str, raw: str) -> bool:
     """Return True if token is an unpunctuated 5-digit ZIP or calendar year."""
     return (len(val) == 5 and not val.endswith("00") and "," not in raw) or (
-        len(val) == 4 and 1990 <= int(val) <= 2030 and "," not in raw
+        len(val) == 4 and is_year_token(val) and "," not in raw
     )
 
 

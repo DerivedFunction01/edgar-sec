@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
-
 from edgar_sec.foundation.text.date_patterns import (
     NUMERIC_YEAR_RE,
     TABLE_YEAR_RE,
@@ -11,36 +9,41 @@ from edgar_sec.foundation.text.date_patterns import (
 )
 
 
-DEFAULT_YEAR_UPPER_BOUND = max(2100, datetime.now(UTC).year + 50)
+REFERENCE_YEAR_LOOKBACK = 80
+REFERENCE_YEAR_FORWARD = 50
 
 
-YEAR_RANGE = (1900, DEFAULT_YEAR_UPPER_BOUND)
-
-
-def is_valid_year(year: int, valid_range: tuple[int, int] = YEAR_RANGE) -> bool:
-    """Return whether an integer year falls within the valid range."""
-    return valid_range[0] <= year <= valid_range[1]
-
-
-def is_year_token(value: str, valid_range: tuple[int, int] = YEAR_RANGE) -> bool:
-    """Return whether a string represents a standalone 4-digit calendar year."""
-    v = value.strip()
+def reference_year_window(reference_year: int) -> tuple[int, int]:
+    """Return the validity window anchored on a known reference year."""
     return (
-        len(v) == 4 and v.isdigit() and is_valid_year(int(v), valid_range=valid_range)
+        reference_year - REFERENCE_YEAR_LOOKBACK,
+        reference_year + REFERENCE_YEAR_FORWARD,
     )
+
+
+def is_valid_year(year: int, reference_year: int) -> bool:
+    """Return whether a year falls in the reference year's window."""
+    low, high = reference_year_window(reference_year)
+    return low <= year <= high
+
+
+def is_year_token(value: str) -> bool:
+    """Return whether a string is a standalone 4-digit year token."""
+    v = value.strip()
+    return len(v) == 4 and v.isdigit() and YEAR_TOKEN_RE.match(v) is not None
 
 
 def expand_2digit_year(
     year: int,
     *,
-    reference_year: int | None = None,
+    reference_year: int,
     lookback_years: int = 80,
     century_pivot: int | None = None,
 ) -> int:
     """Expand a 1- or 2-digit year using a dynamic rolling window relative to a reference year."""
     if year >= 100:
         return year
-    anchor = datetime.now(UTC).year if reference_year is None else reference_year
+    anchor = reference_year
     if century_pivot is not None:
         current_century = (anchor // 100) * 100
         prev_century = current_century - 100
@@ -59,14 +62,14 @@ def expand_2digit_year(
 def parse_year_token(
     value: str,
     *,
-    valid_range: tuple[int, int] = YEAR_RANGE,
+    reference_year: int,
 ) -> int | None:
-    """Parse a standalone numeric year token within the valid range."""
+    """Parse a standalone numeric year token valid for the reference year."""
     match = YEAR_TOKEN_RE.match(value.strip())
     if not match:
         return None
     year = int(match.group(1))
-    if not is_valid_year(year, valid_range=valid_range):
+    if not is_valid_year(year, reference_year):
         return None
     return year
 
@@ -74,8 +77,7 @@ def parse_year_token(
 def extract_years(
     text: str,
     *,
-    reference_year: int | None = None,
-    valid_range: tuple[int, int] = YEAR_RANGE,
+    reference_year: int,
     lookback_years: int = 80,
     century_pivot: int | None = None,
 ) -> list[int]:
@@ -93,7 +95,7 @@ def extract_years(
                 lookback_years=lookback_years,
                 century_pivot=century_pivot,
             )
-        if is_valid_year(year, valid_range=valid_range):
+        if is_valid_year(year, reference_year):
             years.append(year)
     return years
 
@@ -101,8 +103,7 @@ def extract_years(
 def parse_numeric_year(
     value: str,
     *,
-    reference_year: int | None = None,
-    valid_range: tuple[int, int] = YEAR_RANGE,
+    reference_year: int,
     lookback_years: int = 80,
     century_pivot: int | None = None,
 ) -> int | None:
@@ -118,18 +119,19 @@ def parse_numeric_year(
             lookback_years=lookback_years,
             century_pivot=century_pivot,
         )
-    if not is_valid_year(year, valid_range=valid_range):
+    if not is_valid_year(year, reference_year):
         return None
     return year
 
 
 __all__ = [
-    "DEFAULT_YEAR_UPPER_BOUND",
-    "YEAR_RANGE",
+    "REFERENCE_YEAR_FORWARD",
+    "REFERENCE_YEAR_LOOKBACK",
     "expand_2digit_year",
     "extract_years",
     "is_valid_year",
     "is_year_token",
     "parse_numeric_year",
     "parse_year_token",
+    "reference_year_window",
 ]

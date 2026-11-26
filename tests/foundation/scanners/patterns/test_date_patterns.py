@@ -168,9 +168,7 @@ def test_flags_strict_year_shape_in_the_date_vocabulary_owner(
         },
     )
     findings = date_patterns.scan_date_patterns()
-    assert [f.path for f in findings] == [
-        "edgar_sec/foundation/text/date_patterns.py"
-    ]
+    assert [f.path for f in findings] == ["edgar_sec/foundation/text/date_patterns.py"]
     assert findings[0].message == "narrowed year alternation in a regex"
 
 

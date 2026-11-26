@@ -56,9 +56,7 @@ MEASURE_EXTRA: dict[str, tuple[str, ...]] = {
 }
 
 _DATE = rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?\s+(?:{YEAR_TOKEN_PATTERN})"
-_DATE_NOYEAR = (
-    rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?(?:\s+{YEAR_TOKEN_PATTERN})?"
-)
+_DATE_NOYEAR = rf"(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},?(?:\s+{YEAR_TOKEN_PATTERN})?"
 
 _NET_CLOSE = (
     r"^net (income|loss|earnings)\b",

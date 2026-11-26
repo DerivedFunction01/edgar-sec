@@ -39,7 +39,7 @@ from edgar_sec.engine.forms.form144.patterns import (
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import UNICODE_NUMERIC_CORE
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
+from edgar_sec.foundation.text.date_years import is_year_token
 from edgar_sec.foundation.text.dates import parse_date
 
 _SPLIT_EXPLANATION_RE = re.compile(
@@ -246,11 +246,11 @@ def _extract_units(text: str) -> int | None:
         return None
     if ZIP_5DIGIT_RE.fullmatch(cleaned) and int(cleaned) % 100 != 0:
         return None
-    if YEAR_TOKEN_RE.fullmatch(cleaned) and 1990 <= int(cleaned) <= 2025:
+    if is_year_token(cleaned):
         return None
     value, is_currency = _extract_leading_number(cleaned)
     if isinstance(value, int) and not is_currency:
-        if 1990 <= value <= 2025 and YEAR_TOKEN_RE.fullmatch(cleaned):
+        if is_year_token(cleaned):
             return None
         return value
     return None
@@ -262,11 +262,7 @@ def _extract_market_value(text: str) -> str | None:
         return None
     if is_street_or_address_line(cleaned):
         return None
-    if (
-        YEAR_TOKEN_RE.fullmatch(cleaned)
-        and "$" not in text
-        and 1990 <= int(cleaned) <= 2025
-    ):
+    if is_year_token(cleaned) and "$" not in text:
         return None
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
     primary = _QUANTITY_PREFIX_RE.sub("", strip_footnote_markers(primary))
@@ -554,11 +550,7 @@ def parse_proposed_sale_box_3(
                     and num % 100 != 0
                 ):
                     continue
-                if (
-                    isinstance(num, int)
-                    and YEAR_TOKEN_RE.fullmatch(raw_c)
-                    and 1990 <= num <= 2025
-                ):
+                if isinstance(num, int) and is_year_token(raw_c):
                     continue
                 numeric_items.append((num, is_curr, c))
             else:

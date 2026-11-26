@@ -7,12 +7,13 @@ from edgar_sec.engine.forms.form144.sale_parser import (
 from edgar_sec.engine.forms.form144.sections import partition_form144_tables
 
 
-def test_extract_units_year_window_unchanged_by_homing():
-    """Zero-delta pin: every use site already paired the recognizer
-    with the 1990-2025 window, so homing changes no outcome."""
+def test_extract_units_year_likeness_is_full_range_recognition():
+    """Year-likeness is the full-range recognizer: any 1900-9999
+    token is a year, never units; 1899 is outside the shape."""
     assert _extract_units("2023") is None
     assert _extract_units("1899") == 1899
-    assert _extract_units("2500") == 2500
+    assert _extract_units("2500") is None
+    assert _extract_units("2026") is None
 
 
 def test_parse_box_three_values_and_human_readable_sale_date():

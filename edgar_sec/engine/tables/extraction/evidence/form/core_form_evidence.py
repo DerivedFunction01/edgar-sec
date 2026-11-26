@@ -37,9 +37,7 @@ DATE_RES = (
     YEAR_TOKEN_RE,
     re.compile(r"\b(?:%s)\s+\d{1,2}\b" % STRICT_MONTH_PATTERN),
     re.compile(r"\b\d{1,2}\s+(?:%s)\b" % STRICT_MONTH_PATTERN),
-    re.compile(
-        r"\b(?:%s)\s+(?:%s)\b" % (STRICT_MONTH_PATTERN, YEAR_TOKEN_PATTERN)
-    ),
+    re.compile(r"\b(?:%s)\s+(?:%s)\b" % (STRICT_MONTH_PATTERN, YEAR_TOKEN_PATTERN)),
 )
 FULLDATE_RES = (
     NUMERIC_DATE_RE,
