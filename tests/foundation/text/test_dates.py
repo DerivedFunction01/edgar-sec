@@ -319,19 +319,15 @@ def test_parse_date_without_reference_applies_no_calendar_window() -> None:
 
 
 def test_expand_2digit_year_accession_segment_witness() -> None:
-    """W2/W3 under the unified rule: segment-shaped 2-digit years
-    expand by the rolling window. 89 at a 2026 anchor is 1989 (the
-    deleted fixed 90-pivot read 2089); 79 is 1979 (the deleted
-    century-pivot mode read 2079)."""
+    """W2/W3 under the unified rule: 89 at a 2026 anchor is 1989 (deleted
+    pivot read 2089); 79 is 1979 (deleted century-pivot mode read 2079)."""
     assert expand_2digit_year(89, reference_year=2026) == 1989
     assert expand_2digit_year(79, reference_year=2026) == 1979
 
 
 def test_expand_2digit_year_band_sweep_at_2026() -> None:
-    """Every 2-digit year lands in the rolling window [1946, 2045]
-    at a 2026 anchor. The agreement band with the deleted pivot
-    (90-99, 00-45) is unchanged; the divergence band (46-89) moves
-    by exactly -100 years."""
+    """Every 2-digit year lands in [1946, 2045] at a 2026 anchor; the
+    agreement band (90-99, 00-45) is unchanged, 46-89 moves by -100."""
 
     def _pivot(yy: int) -> int:
         return 1900 + yy if yy >= 90 else 2000 + yy

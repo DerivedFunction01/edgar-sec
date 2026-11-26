@@ -228,11 +228,8 @@ def test_summarize_cases_aggregates_scorecard(tmp_path: Path) -> None:
 
 
 def test_taxonomy_for_13e3_accession_segment_uses_rolling_expansion() -> None:
-    """The 13E-3 taxonomy era reads the accession segment through
-    the unified rolling expansion: segment 89 resolves to 1989 and
-    the prior items, where the deleted fixed pivot read 2089 and
-    the current items. Agreement-band segments (99 pre-2000, 10
-    post-2000) classify exactly as before."""
+    """Segment 89 resolves to 1989 and the prior items under the rolling
+    expansion (the deleted pivot read 2089); 99 and 10 classify as before."""
     from edgar_sec.domain.forms.families.form_tender.models import TenderKind
     from edgar_sec.domain.forms.families.form_tender.taxonomy import (
         SCHEDULE_13E3_ITEMS,

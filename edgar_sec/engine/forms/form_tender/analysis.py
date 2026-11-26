@@ -116,14 +116,9 @@ def _classify_kind(form: str, lines: list[str]) -> TenderKind:
 
 
 def _accession_year(accession: str) -> int | None:
-    """The filing year in an accession number's two-digit segment,
-    expanded by the foundation's rolling window.
-
-    The taxonomy call site holds no filing reference year, so the
-    expansion anchors on the current year: a named caller defect,
-    to be wired to the filing's own year when the record carries
-    one.
-    """
+    """The filing year in an accession number's two-digit segment, expanded
+    by the foundation's rolling window; the call site holds no reference
+    year, so it anchors on the current year (a named caller defect)."""
     parts = accession.split("-")
     if len(parts) != 3 or not parts[1].isdigit():
         return None
