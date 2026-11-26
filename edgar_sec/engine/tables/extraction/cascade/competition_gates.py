@@ -177,10 +177,7 @@ def apply_pension_gates(claims, contested, scores, geometry):
     # form-test points on a geometry with no data rows.
     if "pension" in claims:
         penr_chans = scores["pension"].by_channel
-        if (
-            penr_chans.get("form_test", 0.0) == 0.0
-            and geometry.data_rows == 0
-        ):
+        if penr_chans.get("form_test", 0.0) == 0.0 and geometry.data_rows == 0:
             claims.remove("pension")
             if "pension" in contested:
                 contested.remove("pension")

@@ -404,8 +404,7 @@ def compete(
                 and fired_rules <= frozenset(SEPARATOR_EXEMPTIONS[family])
             )
             or any(
-                t in passed
-                for t in SUMMARY_SEPARATOR_FORM_EXEMPTIONS.get(family, ())
+                t in passed for t in SUMMARY_SEPARATOR_FORM_EXEMPTIONS.get(family, ())
             )
         )
         removed = tuple(f for f in claims if f not in spared)

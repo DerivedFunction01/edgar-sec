@@ -718,5 +718,3 @@ def test_debt_header_year_after_year_still_fires():
     )
     assert "debt_maturity" not in results[0].claims
     assert _debt_details(results[0]) == ["precision veto: leadin-only"]
-
-
