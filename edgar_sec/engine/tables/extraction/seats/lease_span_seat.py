@@ -30,6 +30,10 @@ FAMILY = "lease_maturity"
 SEAT_FLOOR = 15.0
 SPAN_MIN = 4
 PURITY_MIN = 0.7
+# Priced on the enlarged set + corpus-wide (3,768 geometries):
+# period steps >= 3 under the seat's other conditions converts
+# exactly 3 short ladders at zero false cost; >= 4 converts none.
+STEPS_MIN = 3
 
 
 def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionResult:
@@ -41,7 +45,7 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     score = result.scores.get(FAMILY)
     if score is None or score.total < SEAT_FLOOR:
         return result
-    if geometry.year_span < SPAN_MIN:
+    if geometry.year_span < SPAN_MIN and geometry.period_steps < STEPS_MIN:
         return result
     if geometry.stub_ladder_purity < PURITY_MIN:
         return result

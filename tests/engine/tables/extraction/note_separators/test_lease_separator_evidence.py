@@ -532,3 +532,18 @@ def test_transposed_axis_comparative_years_do_not_qualify():
         "Total lease expense | 10,413 | 11,697 | 10,757"
     )
     assert not _lse.transposed_period_axis(expense)
+
+
+def test_period_step_count_reads():
+    bands = LeaseSeparatorText(
+        " | Operating\nWithin one year | 7.2\nOne to two years | 5.7\n"
+        "Thereafter | 25.6\nTotal lease payments | 52.2"
+    )
+    assert _lse.period_step_count(bands) == 3
+    partial = LeaseSeparatorText(
+        "H | A\n2024 | 16,250\n2025 | 16,670\nJuly & August 2025 | 2,790\n"
+        "Total future minimum lease payments | 35,710"
+    )
+    assert _lse.period_step_count(partial) == 3
+    plain = LeaseSeparatorText("H | A\nCost of revenue | 1\nTotal | 2")
+    assert _lse.period_step_count(plain) == 0

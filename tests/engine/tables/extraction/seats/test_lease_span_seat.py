@@ -125,3 +125,13 @@ def test_seat_refuses_when_the_debt_seat_claims_the_geometry() -> None:
 def test_seat_fires_when_the_debt_seat_does_not_claim() -> None:
     out = _seat(_geometry(form_tests=_DEBT_UNSEATED), _result(16.0))
     assert out.claims == (LEASE,)
+
+
+def test_seat_fires_on_period_steps_below_the_year_span() -> None:
+    out = _seat(_geometry(year_span=2, period_steps=3), _result(16.0))
+    assert out.claims == (LEASE,)
+
+
+def test_seat_refuses_below_the_period_steps() -> None:
+    out = _seat(_geometry(year_span=2, period_steps=2), _result(16.0))
+    assert out.claims == ()

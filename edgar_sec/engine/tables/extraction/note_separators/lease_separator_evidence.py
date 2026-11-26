@@ -35,6 +35,7 @@ __all__ = [
     "evaluate_lease_separator",
     "fired_separator_outcome",
     "period_stub_present",
+    "period_step_count",
     "stub_ladder_purity",
     "stub_refusal_reason",
     "subject_fires",
@@ -199,6 +200,17 @@ def _stub_cells(text: LeaseSeparatorText) -> list[str]:
 def period_stub_present(text: LeaseSeparatorText) -> bool:
     """True when any stub cell is an anchored period label."""
     return any(PERIOD_STUB_RE.match(cell.strip()) for cell in _stub_cells(text))
+
+
+def period_step_count(text: LeaseSeparatorText) -> int:
+    """Period steps on the stub axis: stub cells that are
+    anchored period labels or carry a year token (a partial-year
+    stub counts once, as one step)."""
+    return sum(
+        1
+        for cell in _stub_cells(text)
+        if PERIOD_STUB_RE.match(cell.strip()) or YEAR_TOKEN_SEARCH_RE.search(cell)
+    )
 
 
 def transposed_period_axis(text: LeaseSeparatorText) -> bool:
