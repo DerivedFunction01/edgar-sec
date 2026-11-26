@@ -1,7 +1,7 @@
 """Pension generation seat: the priced generation
 admission for pension tables the scored floor never
 surfaces. Final compete_filing pass: an unclaimed
-geometry seats on note identity or quiet-form stubs.
+geometry seats on note identity and composed-form stubs.
 """
 
 from __future__ import annotations
@@ -66,6 +66,70 @@ def _quiet_form(geometry: GeometryText) -> bool:
     return False
 
 
+# The composed definition's extension clauses, from the
+# fragment-form vocabulary census over the seat's
+# numbered-but-unseated population: each priced singly
+# and in combination over the directed frame at zero
+# falses (composed board 751 / tp 700 / P .9321 /
+# R .7973 in the incremental accounting of record).
+def _rollforward_form(geometry: GeometryText) -> bool:
+    """AOCI rollforward row-shape: a balance row, an
+    arising-during row, a net amortization row."""
+    text = geometry.stub_text
+    return (
+        "balance" in text and "arising during" in text and "amortization" in text
+    )
+
+
+def _conjoined_form(geometry: GeometryText) -> bool:
+    """One stub carrying both NPBC components conjoined:
+    'service and interest cost'."""
+    return any("service and interest cost" in stub for stub in geometry.stubs)
+
+
+def _crediting_form(geometry: GeometryText) -> bool:
+    """Assumptions companion: discount rate stated with
+    a crediting rate."""
+    text = geometry.stub_text
+    return "discount rate" in text and "crediting rate" in text
+
+
+def _return_form(geometry: GeometryText) -> bool:
+    """Assumptions companion: discount rate stated with
+    a rate of return."""
+    text = geometry.stub_text
+    return "discount rate" in text and "rate of return" in text
+
+
+def _asset_return_form(geometry: GeometryText) -> bool:
+    """Assets-leg companion: plan assets with an actual
+    return or gain."""
+    text = geometry.stub_text
+    return "plan assets" in text and (
+        "actual return" in text or "actual gain" in text
+    )
+
+
+def _capitalized_form(geometry: GeometryText) -> bool:
+    """Genuine-only phrase of the census read:
+    'capitalized portion'."""
+    return "capitalized portion" in geometry.stub_text
+
+
+def _definition_form(geometry: GeometryText) -> bool:
+    """The composed definition: the production quiet
+    form or any priced extension clause."""
+    return (
+        _quiet_form(geometry)
+        or _rollforward_form(geometry)
+        or _conjoined_form(geometry)
+        or _crediting_form(geometry)
+        or _return_form(geometry)
+        or _asset_return_form(geometry)
+        or _capitalized_form(geometry)
+    )
+
+
 def _seat_one(
     geometry: GeometryText,
     result: CompetitionResult,
@@ -75,7 +139,7 @@ def _seat_one(
     if result.claims:
         return result
     note_leg = geometry.note_number is not None and geometry.note_number in anchor_notes
-    if not (note_leg and _quiet_form(geometry)):
+    if not (note_leg and _definition_form(geometry)):
         return result
     score = result.scores.get(FAMILY)
     group = ClaimGroup(
@@ -108,7 +172,7 @@ def apply_pension_generation_seat(
         if FAMILY in result.claims and geometry.note_number is not None
     )
     if not anchor_notes and not any(
-        _quiet_form(geometry)
+        _definition_form(geometry)
         for geometry, result in zip(geometries, results, strict=True)
         if not result.claims
     ):
