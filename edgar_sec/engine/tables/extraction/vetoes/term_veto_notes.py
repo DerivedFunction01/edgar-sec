@@ -108,7 +108,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "acquisition",
         ),
     ),
-    ("debt_maturity", "lead", "hard", ("senior secured",)),
     (
         "lease_maturity",
         "lead",
