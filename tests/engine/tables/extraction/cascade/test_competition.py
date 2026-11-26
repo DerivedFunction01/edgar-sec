@@ -735,6 +735,8 @@ def test_cash_flow_body_hard_hit_still_bars() -> None:
     )
     result = compete(geometry, terms=_CF_TERMS, edges=())
     assert result.claims == ()
+
+
 def test_charges_claim_survives_the_summary_separator() -> None:
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
@@ -790,6 +792,8 @@ def test_charges_claim_survives_the_summary_separator() -> None:
         geometry, terms=_TERMS, edges=_EDGES, scores={"restructuring": walk_score}
     )
     assert "restructuring" not in result.claims
+
+
 def _composition_outcome(family: str, passed: bool) -> FormTestOutcome:
     return FormTestOutcome(
         family=family,

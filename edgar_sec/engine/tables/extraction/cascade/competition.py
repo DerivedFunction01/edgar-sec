@@ -136,6 +136,8 @@ def _sep5_criterion_holds(geometry) -> bool:
         return False
     presence = section_presence(geometry.stubs, "cash_flow")
     return all(presence[s] for s in GATE_SETS["cash_flow"])
+
+
 def _composition_outcomes(
     geometry: GeometryText,
 ) -> tuple[frozenset[str], frozenset[str]]:

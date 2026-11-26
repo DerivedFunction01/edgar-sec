@@ -98,7 +98,6 @@ DT_S3X_CLOSING_PHRASES = (
 )
 
 
-
 DEBT_FAMILY = "debt_maturity"
 
 # DEBT-P9 leg name, as the gate note reports it: the claim's

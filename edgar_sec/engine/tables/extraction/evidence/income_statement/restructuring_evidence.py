@@ -112,6 +112,8 @@ def _tail_anchor(
         _last_match_start(_HEADING_CAPS_RE, prose[-tail_chars:]),
     )
     return subject_pos > heading_pos
+
+
 # Charges-incidence signature: the anatomy discipline that
 # separated charges tables at adjudication scale — statement
 # anatomy vetoes plus the three form-specific vocabulary measures.

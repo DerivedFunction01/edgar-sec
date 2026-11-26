@@ -746,6 +746,8 @@ def test_debt_header_year_after_year_still_fires():
     )
     assert "debt_maturity" not in results[0].claims
     assert _debt_details(results[0]) == ["precision veto: leadin-only"]
+
+
 def test_contributions_caption_without_expiration_fires():
     geo = GeometryText(headers=("Contributions of Matson",))
     results = apply_precision_vetoes([geo], [_result(("labor_contracts",))])
@@ -803,7 +805,6 @@ def test_both_labor_legs_report_in_order():
     assert _labor_details(results[0]) == [
         "precision veto: hdr:employer-form, hdr:contributions-no-expiration"
     ]
-
 
 
 _S3X_STUBS = (
