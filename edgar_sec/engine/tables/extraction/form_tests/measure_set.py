@@ -81,6 +81,7 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
     prefixes = (
         rf"balances?,?\s+{connector}",
         rf"balances?,?\s*[-–—]\s*",
+        rf"totals?,?\s+(?:at\s+|as of\s+)?",
         rf"net\s+balances?,?\s+(?:at\s+|as of\s+)?",
         rf"goodwill\s+balances?,?\s+(?:at\s+|as of\s+)?",
         r"as of\s+",

@@ -202,6 +202,32 @@ def test_goodwill_exchange_only_movement_passes() -> None:
     assert _outcome(table, "goodwill_rollforward_measure_set").passed
 
 
+def test_goodwill_total_as_of_bookends_pass() -> None:
+    table = _table(
+        (
+            ("in thousands", "Aggregates", "Asphalt", "Total"),
+            ("Goodwill", "", "", ""),
+            ("Total as of December 31, 2017", "3,030", "91", "3,122"),
+            ("Goodwill of acquired businesses", "41", "0", "41"),
+            ("Total as of June 30, 2018", "3,072", "91", "3,163"),
+        )
+    )
+    assert _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
+def test_goodwill_total_as_of_amortization_only_fails() -> None:
+    table = _table(
+        (
+            ("Goodwill",),
+            ("", "Domestic", "Canada", "Total"),
+            ("Total as of December 31, 2017", "60", "40", "100"),
+            ("Amortization", "(1)", "—", "(1)"),
+            ("Total as of June 30, 2018", "59", "40", "99"),
+        )
+    )
+    assert not _outcome(table, "goodwill_rollforward_measure_set").passed
+
+
 def test_goodwill_amortization_only_movement_fails() -> None:
     table = _table(
         (
