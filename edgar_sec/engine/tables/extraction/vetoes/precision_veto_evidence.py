@@ -486,8 +486,6 @@ def _debt_legs(geometry, own_score) -> tuple[str, ...]:
     return (LEG_LEADIN_ONLY,)
 
 
-
-
 def _fired_legs(
     family: str, geometry, tokens: ChannelTokens, result, own_score=None
 ) -> tuple[str, ...]:
@@ -502,8 +500,8 @@ def _fired_legs(
 
 def apply_precision_vetoes(geometries, results, stages=None):
     """Final pass: remove packet-family claims firing any leg.
-Firings read the input results only, except the debt leg, whose own-score
-reads the captured claim stages when given, so removals change no other firing."""
+    Firings read the input results only, except the debt leg, whose own-score
+    reads the captured claim stages when given, so removals change no other firing."""
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
         ClaimEvidence,
         CompetitionResult,
