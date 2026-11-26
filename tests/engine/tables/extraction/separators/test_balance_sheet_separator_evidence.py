@@ -42,6 +42,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profiles import (
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 from edgar_sec.foundation.text.date_patterns import (
     YEAR_TOKEN_PATTERN as _HOME_YEAR,
+    YEAR_TOKEN_SEARCH_RE as _HOME_SEARCH,
 )
 from edgar_sec.engine.tables.numeric_cells import (
     DIGIT_RE as _HOME_DIGIT,
@@ -120,8 +121,8 @@ def test_recognizer_homes_and_frozen_text():
     assert _bse.header_keys is _PENSION_HEADER_KEYS
     assert _bse.RE_NON_ALNUM is _HOME_NON_ALNUM
     assert _bse.RE_WHITESPACE is _HOME_WHITESPACE
-    assert _bse.YEAR_TOKEN_PATTERN is _HOME_YEAR
-    assert _bse.HEADER_YEAR_RE.pattern == rf"\b(?:{_HOME_YEAR})\b"
+    assert _bse.YEAR_TOKEN_SEARCH_RE is _HOME_SEARCH
+    assert _bse.YEAR_TOKEN_SEARCH_RE.pattern == rf"\b(?:{_HOME_YEAR})\b"
     assert _bse.WRAPPED_NUMERIC_CELL_RE is _HOME_WRAPPED_NUMERIC
     assert _bse.DIGIT_RE is _HOME_DIGIT
     assert _HOME_WRAPPED_NUMERIC.pattern == r"\(?-?\$?\s*\d[\d,]*(?:\.\d+)?\s*\)?\)?"

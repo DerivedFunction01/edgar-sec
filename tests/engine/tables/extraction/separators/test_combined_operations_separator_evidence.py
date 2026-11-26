@@ -121,7 +121,7 @@ def test_core_group_indices_name_the_typed_core():
 
 
 def test_recognizer_and_presence_homes():
-    assert _evidence._YEAR_RE.pattern == _HOME_YEAR
+    assert _evidence._YEAR_RE.pattern == rf"\b(?:{_HOME_YEAR})\b"
     assert _evidence.group_presence is measure_set.group_presence
     assert _evidence.evaluate_measure_set is measure_set.evaluate_measure_set
 

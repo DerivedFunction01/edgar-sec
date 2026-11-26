@@ -28,7 +28,6 @@ from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, WRAPPED_NUMERIC_CELL
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
 
-HEADER_YEAR_RE = YEAR_TOKEN_SEARCH_RE
 
 
 class BalanceSheetSeparatorText:
@@ -87,7 +86,7 @@ def evaluate_balance_sheet_separator(
         )
     stub_keys = {k for k in (stub_key(s) for s in text.stubs) if len(k) >= 3}
     hdr_keys = header_keys(tuple(text.headers))
-    year_count = len(HEADER_YEAR_RE.findall(" ".join(text.headers)))
+    year_count = len(YEAR_TOKEN_SEARCH_RE.findall(" ".join(text.headers)))
     numeric_share = _numeric_share(text.rows)
     closing_pair = (
         "total assets" in stub_keys
