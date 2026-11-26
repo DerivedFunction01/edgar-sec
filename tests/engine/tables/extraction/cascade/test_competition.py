@@ -729,3 +729,58 @@ def test_cash_flow_body_hard_hit_still_bars() -> None:
     )
     result = compete(geometry, terms=_CF_TERMS, edges=())
     assert result.claims == ()
+def test_charges_claim_survives_the_summary_separator() -> None:
+    from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
+        ClaimEvidence,
+        FamilyScore,
+    )
+    from edgar_sec.engine.tables.extraction.separators.summary_separator import (
+        SummarySeparatorResult,
+    )
+
+    geometry = GeometryText(
+        caption="Restructuring Charges",
+        stubs=("Severance costs", "Facility exit costs"),
+        summary_separator=SummarySeparatorResult(
+            rules=("mda_item7_rows12",), sub_masses=("MD&A-SUMMARY",)
+        ),
+    )
+    charges_score = FamilyScore(
+        "restructuring",
+        5.0,
+        {"form_test": 3.0, "gate": 2.0},
+        (
+            ClaimEvidence(
+                "form_test", "restructuring_rollforward_evidence passed", 3.0
+            ),
+            ClaimEvidence(
+                "gate",
+                "restructuring charges: subject prose, charges signature: "
+                "cost stubs 2, numeric rows 6",
+                2.0,
+            ),
+        ),
+    )
+    result = compete(
+        geometry, terms=_TERMS, edges=_EDGES, scores={"restructuring": charges_score}
+    )
+    assert "restructuring" in result.claims
+    walk_score = FamilyScore(
+        "restructuring",
+        5.0,
+        {"form_test": 3.0, "gate": 2.0},
+        (
+            ClaimEvidence(
+                "form_test", "restructuring_rollforward_evidence passed", 3.0
+            ),
+            ClaimEvidence(
+                "gate",
+                "restructuring walk: subject prose, bookends bare pair, movements payment",
+                2.0,
+            ),
+        ),
+    )
+    result = compete(
+        geometry, terms=_TERMS, edges=_EDGES, scores={"restructuring": walk_score}
+    )
+    assert "restructuring" not in result.claims

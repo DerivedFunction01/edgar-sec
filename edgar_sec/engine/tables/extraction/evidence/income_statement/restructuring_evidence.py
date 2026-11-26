@@ -24,7 +24,11 @@ from edgar_sec.engine.tables.extraction.specs.families.restructuring_evidence_sp
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import (
+    MONTH_NAMES,
+    PERIOD_ENDED_PAT,
+    YEAR_TOKEN_PATTERN,
+)
 
 # The priced surface is the measurement packet's: prose and grid
 # text each capped at 6000 chars, as the collect's packet() caps.
@@ -108,6 +112,113 @@ def _tail_anchor(
         _last_match_start(_HEADING_CAPS_RE, prose[-tail_chars:]),
     )
     return subject_pos > heading_pos
+# Charges-incidence signature: the anatomy discipline that
+# separated charges tables at adjudication scale — statement
+# anatomy vetoes plus the three form-specific vocabulary measures.
+_IS_MARKER_RE = re.compile(
+    build_alternation(
+        [
+            "net revenues",
+            r"^revenues\b",
+            "gross margin",
+            "gross profit",
+            r"income \(loss\) from operations",
+            "loss from operations",
+            "income from operations",
+            "cost of revenues",
+            "cost of sales",
+        ]
+    )
+)
+_CF_MARKER_RE = re.compile(
+    build_alternation(
+        [
+            "cash flows from operating",
+            "adjustments to reconcile",
+            "cash flows from operations",
+            r"net cash (provided|used)",
+        ]
+    )
+)
+_COST_STUB_RE = re.compile(
+    build_alternation(
+        [
+            "severance",
+            "termination benefit",
+            "facility",
+            "lease termination",
+            "lease exit",
+            "contract termination",
+            "write-down",
+            "writedown",
+            "other associated",
+            "employee",
+            "retention",
+            "relocation",
+            "exit cost",
+            "one-time termination",
+        ]
+    )
+)
+_PERIOD_ROW_RE = re.compile(
+    build_alternation(
+        [
+            "fiscal",
+            "cumulative",
+            "year ended",
+            "years ended",
+            PERIOD_ENDED_PAT,
+            r"^q[1-4]\b",
+            rf"(?:{YEAR_TOKEN_PATTERN})\s*$",
+        ]
+    )
+)
+
+
+def _charges_signature(lines_l: list[str], table_l: str) -> str:
+    """The charges-incidence signature over one geometry's lines,
+    or an empty string when the anatomy does not carry it."""
+    if "charges" not in table_l and "costs" not in table_l:
+        return ""
+    if any(_CF_MARKER_RE.search(ln) for ln in lines_l):
+        return ""
+    is_markers = sum(1 for ln in lines_l if _IS_MARKER_RE.search(ln))
+    if is_markers >= 2:
+        return ""
+    numeric_rows = 0
+    cost_stubs = 0
+    for ln in lines_l:
+        cells = ln.split("|")
+        if sum(1 for cell in cells if any(ch.isdigit() for ch in cell)) >= 2:
+            numeric_rows += 1
+        if cells and _COST_STUB_RE.search(cells[0]):
+            cost_stubs += 1
+    if numeric_rows >= 3 and cost_stubs >= 2:
+        return (
+            f"charges signature: cost stubs {cost_stubs}, numeric rows {numeric_rows}"
+        )
+    # Period form (feature contrast): the charges-by-
+    # period matrix — cost vocabulary in the column headers, row
+    # labels are periods; no cost-type row stubs exist to count.
+    header = " ".join(lines_l[:2])
+    if "restructuring charges" in header or _COST_STUB_RE.search(header):
+        period_rows = sum(1 for ln in lines_l if _PERIOD_ROW_RE.search(ln))
+        if period_rows >= 3 and numeric_rows >= 3:
+            return (
+                f"charges signature: period form, period rows {period_rows}, "
+                f"numeric rows {numeric_rows}"
+            )
+    # Segment form (feature contrast): the charges-by-
+    # segment table — charges vocabulary in a total row, row labels
+    # are business lines; digit-bearing lines are the row measure.
+    total_rows = sum(1 for ln in lines_l if "total" in ln and "restructuring" in ln)
+    digit_lines = sum(1 for ln in lines_l if any(ch.isdigit() for ch in ln))
+    if total_rows >= 1 and digit_lines >= 3:
+        return (
+            f"charges signature: segment form, total rows {total_rows}, "
+            f"numeric lines {digit_lines}"
+        )
+    return ""
 
 
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
@@ -246,6 +357,12 @@ def evaluate_restructuring_evidence(
         return RestructuringEvidence(False, "subject not anchored")
     forms = _bookends(spec, lines_l, first_line)
     if not forms:
+        charges = _charges_signature(lines_l, table_text.lower())
+        if charges:
+            arm = "prose" if prose and not lead else "lead"
+            return RestructuringEvidence(
+                True, f"restructuring charges: subject {arm}, {charges}"
+            )
         return RestructuringEvidence(False, "no bookend pair in any filed form")
     types = _movement_types(spec, lines_l, first_idx)
     if not types:

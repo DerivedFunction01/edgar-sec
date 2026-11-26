@@ -474,9 +474,19 @@ def compete(
             "tax_reconciliation" in claims
             and "NONGAAP-SUMMARY" not in separator.sub_masses
         )
+        # Charges exemption (priced): a restructuring claim whose
+        # gate pass came through the charges form is a seat
+        # admission; it survives the summary fire — the charges
+        # specimen's only filed form is often the summary instance.
+        keep_charges = "restructuring" in claims and any(
+            ev.channel == "gate" and ev.detail.startswith("restructuring charges:")
+            for ev in scores["restructuring"].evidence
+        )
         kept = list(spared)
         if keep_tax and "tax_reconciliation" not in kept:
             kept.append("tax_reconciliation")
+        if keep_charges and "restructuring" not in kept:
+            kept.append("restructuring")
         removed = tuple(f for f in claims if f not in kept)
         claims = [f for f in claims if f in kept]
         contested = [f for f in contested if f in kept]
@@ -521,6 +531,21 @@ def compete(
                     ClaimEvidence(
                         "gate",
                         f"summary separator: {separator.detail}; tax seat precedence",
+                        0.0,
+                    ),
+                ),
+            )
+        if keep_charges:
+            gated = scores["restructuring"]
+            scores["restructuring"] = FamilyScore(
+                gated.family,
+                gated.total,
+                dict(gated.by_channel),
+                gated.evidence
+                + (
+                    ClaimEvidence(
+                        "gate",
+                        f"summary separator: {separator.detail}; charges seat exemption",
                         0.0,
                     ),
                 ),
