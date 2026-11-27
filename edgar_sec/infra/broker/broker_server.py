@@ -23,6 +23,7 @@ from edgar_sec.infra.broker.sec_broker import (
     _RECLAIM_BYTES_THRESHOLD,
     _SOCKET_BACKLOG,
     _STREAM_FAILURE_CODES,
+    bindable_socket_path,
     _json_dumps,
     _json_loads,
     _recv_frame,
@@ -401,14 +402,15 @@ class SecBroker:
 
     def serve(self) -> None:
         """Bind, accept, and serve connections until stop is signaled."""
-        self.socket_path.parent.mkdir(parents=True, exist_ok=True)
+        bind_path = bindable_socket_path(self.socket_path)
+        bind_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            self.socket_path.unlink()
+            bind_path.unlink()
         except FileNotFoundError:
             pass
         server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         try:
-            server.bind(str(self.socket_path))
+            server.bind(str(bind_path))
             server.listen(_SOCKET_BACKLOG)
         except BaseException as exc:
             self._start_error = exc
@@ -437,7 +439,7 @@ class SecBroker:
             except OSError:
                 pass
             try:
-                self.socket_path.unlink()
+                bind_path.unlink()
             except FileNotFoundError:
                 pass
 

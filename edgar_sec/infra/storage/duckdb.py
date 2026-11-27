@@ -38,6 +38,9 @@ InvalidInputError = duckdb.InvalidInputException
 #: DuckDB versions must read each other's files.
 STORAGE_COMPATIBILITY_VERSION = "v1.5.0"
 
+#: Thread stamp for connections created on the default profile.
+DEFAULT_PROFILE_THREADS = 2
+
 _IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
 
@@ -98,12 +101,23 @@ def connect(
     preserve_insertion_order: bool = False,
 ) -> duckdb.DuckDBPyConnection:
     """Create a DuckDB connection with strict resource bounds derived from the system."""
+    profile_supplied = profile is not None
     if profile is None:
         from edgar_sec.foundation.runtime.resources import derive_resources
 
         profile = derive_resources()
 
-    actual_threads = threads if threads is not None else profile.threads
+    # Default-profile connections stamp 2 threads: an unstamped DuckDB
+    # connection pool runs ~5x cores, and a worker holding several
+    # connections exhausts the host thread budget (census 2026-11-26).
+    # An explicitly supplied profile or thread count is honoured as-is.
+    actual_threads = (
+        threads
+        if threads is not None
+        else profile.threads
+        if profile_supplied
+        else DEFAULT_PROFILE_THREADS
+    )
     actual_memory_limit = (
         memory_limit if memory_limit is not None else profile.memory_limit
     )

@@ -184,11 +184,16 @@ class InventoryPaths:
         identity = hashlib.sha256(
             f"{self.artifacts_root}:{safe_id}".encode("utf-8")
         ).hexdigest()[:24]
-        return (
+        candidate = (
             Path(tempfile.gettempdir())
             / f"edgar-sec-{os.getuid()}"
             / f"{identity}.sock"
         )
+        if len(str(candidate)) >= 100:
+            # AF_UNIX addresses are length-capped; a deep TMPDIR must not
+            # push the runtime socket past the bound this path guarantees.
+            candidate = Path("/tmp") / f"edgar-sec-{os.getuid()}" / f"{identity}.sock"
+        return candidate
 
 
 class InventoryRunPaths:

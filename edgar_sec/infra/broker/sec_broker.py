@@ -6,9 +6,12 @@ ledger), so every live request shares one aggregate pace governed by settings.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import socket
 import struct
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
@@ -19,7 +22,30 @@ __all__ = [
     "BrokerError",
     "BrokerRequestError",
     "StreamedFileResult",
+    "bindable_socket_path",
 ]
+
+#: AF_UNIX addresses are length-capped by the OS (~108 bytes); a socket
+#: path at or over this bound cannot be bound or connected at all.
+MAX_SOCKET_PATH_CHARS = 100
+
+
+def bindable_socket_path(socket_path: str | Path) -> Path:
+    """Return a bindable form of ``socket_path``, identical when it fits.
+
+    A path too long for AF_UNIX is remapped deterministically to a short
+    hashed path, so the server bind and every client connect land on the
+    same address whatever depth the caller's root sits at.
+    """
+    path = Path(socket_path)
+    if len(str(path)) < MAX_SOCKET_PATH_CHARS:
+        return path
+    identity = hashlib.sha256(str(path).encode("utf-8")).hexdigest()[:24]
+    base = Path(tempfile.gettempdir())
+    candidate = base / f"edgar-sec-{os.getuid()}" / f"{identity}.sock"
+    if len(str(candidate)) >= MAX_SOCKET_PATH_CHARS:
+        candidate = Path("/tmp") / f"edgar-sec-{os.getuid()}" / f"{identity}.sock"
+    return candidate
 
 
 PROTOCOL_VERSION = 1

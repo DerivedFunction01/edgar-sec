@@ -17,6 +17,7 @@ from edgar_sec.infra.broker.sec_broker import (
     _json_dumps,
     _json_loads,
     _recv_exactly,
+    bindable_socket_path,
 )
 from edgar_sec.infra.sec_http.metrics import HttpMetrics
 
@@ -47,7 +48,7 @@ class SecBrokerClient:
             sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
             sock.settimeout(_READ_TIMEOUT_S)
             try:
-                sock.connect(str(self.socket_path))
+                sock.connect(str(bindable_socket_path(self.socket_path)))
             except OSError:
                 sock.close()
                 raise

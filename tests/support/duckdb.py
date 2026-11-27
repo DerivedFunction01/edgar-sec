@@ -6,10 +6,17 @@ from pathlib import Path
 
 from edgar_sec.infra.storage.duckdb import Connection, connect
 
+#: Test connections stamp 2 threads each: an unstamped connection pool
+#: runs ~5x cores, and several connections per worker exhaust the host
+#: thread budget (census 2026-11-26).
+TEST_CONNECTION_THREADS = 2
+
 
 def duckdb_connection(database: str | Path | None = None) -> Connection:
     """A test connection through the infra factory, the only test-side seam."""
-    return connect() if database is None else connect(database=database)
+    if database is None:
+        return connect(threads=TEST_CONNECTION_THREADS)
+    return connect(database=database, threads=TEST_CONNECTION_THREADS)
 
 
 __all__ = [
