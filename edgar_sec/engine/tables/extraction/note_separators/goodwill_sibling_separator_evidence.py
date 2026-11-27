@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_GOODWILL_SIBLING_SEPARATOR,
 )
@@ -45,6 +46,12 @@ class GoodwillSiblingSeparatorVerdict:
     detail: str
 
 
+_SIBLING_INDEX = TermIndex(
+    [TermEntry(term, "sibling") for term in SIBLING_CLASS_TERMS]
+    + [TermEntry("goodwill", "goodwill")]
+)
+
+
 def _stubs(rows: list[list[str]]) -> list[str]:
     """The grid's stub rows, lowered: first cell of each row."""
     return [next((cell for cell in cells if cell), "").lower() for cells in rows]
@@ -52,7 +59,7 @@ def _stubs(rows: list[list[str]]) -> list[str]:
 
 def _sibling_mass(stubs: list[str]) -> int:
     """Stub rows carrying a sibling intangibles-class term."""
-    return sum(1 for stub in stubs if any(term in stub for term in SIBLING_CLASS_TERMS))
+    return sum(1 for stub in stubs if "sibling" in _SIBLING_INDEX.scan(stub))
 
 
 def evaluate_goodwill_sibling_separator(
@@ -73,7 +80,7 @@ def evaluate_goodwill_sibling_separator(
             if _sibling_mass(stubs) >= int(leg.limit):
                 legs.append(leg.leg_id)
         elif leg.kind == "goodwill_not_stub_subject":
-            if not any("goodwill" in stub for stub in stubs):
+            if not any("goodwill" in _SIBLING_INDEX.scan(stub) for stub in stubs):
                 legs.append(leg.leg_id)
     priced = tuple(leg.leg_id for leg in spec.legs if leg.scope == "claim-local")
     if tuple(legs) == priced:

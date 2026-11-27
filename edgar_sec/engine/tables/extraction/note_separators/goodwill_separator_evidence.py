@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_GOODWILL_SEPARATOR,
 )
@@ -54,6 +55,17 @@ def _grid_rows(text: RollforwardGridText) -> list[list[str]]:
     return rows
 
 
+_SEPARATOR_INDEX = TermIndex(
+    [
+        TermEntry("allocation", "allocation"),
+        TermEntry("acquired", "acquired"),
+        TermEntry("preliminary", "preliminary"),
+        TermEntry("before adjustment", "before_adjustment"),
+        TermEntry("final", "final"),
+    ]
+)
+
+
 def evaluate_goodwill_separator(
     text: RollforwardGridText, spec: GoodwillSeparatorSpec
 ) -> GoodwillSeparatorVerdict:
@@ -66,16 +78,18 @@ def evaluate_goodwill_separator(
     full_text = " ".join(" ".join(cells) for cells in rows).lower()
     header_zone = " ".join(text.table_text.lower().split())[:_HEADER_WINDOW]
     stubs = [next((cell for cell in cells if cell), "").lower() for cells in rows]
-    allocation_context = "allocation" in full_text or "acquired" in full_text
+    full_kinds = set(_SEPARATOR_INDEX.scan(full_text))
+    header_kinds = set(_SEPARATOR_INDEX.scan(header_zone))
+    allocation_context = "allocation" in full_kinds or "acquired" in full_kinds
     legs: list[str] = []
     for leg in spec.legs:
         if leg.scope != "claim-local":
             continue
         if leg.kind == "allocation_columns":
-            preliminary_side = "preliminary" in header_zone or (
-                "before adjustment" in header_zone
+            preliminary_side = "preliminary" in header_kinds or (
+                "before_adjustment" in header_kinds
             )
-            if preliminary_side and "final" in header_zone and allocation_context:
+            if preliminary_side and "final" in header_kinds and allocation_context:
                 legs.append(leg.leg_id)
         elif leg.kind == "goodwill_acquired_line":
             if allocation_context and any(
