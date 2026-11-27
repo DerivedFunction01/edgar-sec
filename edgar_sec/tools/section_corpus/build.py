@@ -239,9 +239,7 @@ def main(argv: list[str] | None = None) -> int:
     if fetch_jobs:
         user_agent = get_env("SEC_USER_AGENT")
         if not user_agent:
-            raise ValueError(
-                "SEC_USER_AGENT must be set in the process environment"
-            )
+            raise ValueError("SEC_USER_AGENT must be set in the process environment")
         client = SecHttpClient(user_agent=user_agent, rate_limiter=RateLimiter())
         prepare_jobs(fetch_jobs, client)
     for job in jobs:
