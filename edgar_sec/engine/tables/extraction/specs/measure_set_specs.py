@@ -25,6 +25,7 @@ class MeasureSetSpec:
     min_groups: int
     subject_terms: tuple[str, ...] = ()
     refused_terms: tuple[str, ...] = ()
+    refused_section_items: tuple[str, ...] = ()
     provenance: str = PROV_STEP3_PRICING
     required_groups: tuple[int, ...] = ()
     date_bookend_groups: tuple[int, ...] = ()
@@ -80,6 +81,9 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
         min_groups=2,
         provenance=PROV_CI_STEP6_PRICING,
         required_groups=(0, 1),
+        # Exhibit-section refusal, priced on the repaired board:
+        # ITEM 14 fragments kill 2, seated members touched 0.
+        refused_section_items=("ITEM 14",),
     ),
     "valuation_model_assumptions_measure_set": MeasureSetSpec(
         groups=(

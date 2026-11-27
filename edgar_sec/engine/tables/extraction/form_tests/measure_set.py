@@ -317,6 +317,13 @@ def _dated_verdict(
 def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetResult:
     """Evaluate one table against one measure-set spec."""
     params = MEASURE_SET_SPECS_BY_TEST_ID[spec.test_id]
+    section = table.context.section
+    if (
+        params.refused_section_items
+        and section is not None
+        and section.item in params.refused_section_items
+    ):
+        return MeasureSetResult(False, True, f"refused section: {section.item}")
     texts = _texts(table)
     if not texts:
         return MeasureSetResult(False, False, "no stub or header text")
