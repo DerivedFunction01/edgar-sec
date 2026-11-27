@@ -620,9 +620,9 @@ def test_summary_guard_refuses_a_prose_anchor():
     # prose arm is refused by the guard: the priced V3 form
     # requires a lead anchor (caption, note, tail, first line).
     rows = (
-        ("Restructuring charges", "120"),
-        ("Other charges", "45"),
-        ("Administrative expenses", "12"),
+        ("Other charges", "120"),
+        ("Administrative expenses", "45"),
+        ("Selling expenses", "12"),
         ("Total", "177"),
     )
     prose = "The company recorded restructuring charges in the year. " + (
@@ -689,10 +689,11 @@ def test_summary_guard_admits_a_parenthesized_marker():
     # R-A: an anatomy marker inside parentheses (a column
     # qualifier) does not veto — the priced :78 recovery shape.
     rows = (
-        ("", "Restructuring Charges", "Asset Impairment Charges", "Total"),
-        ("2019 Plan (included in Net Sales)", "10", "2", "12"),
-        ("2020 Plan", "8", "1", "9"),
-        ("Total", "18", "3", "21"),
+        ("Program", "Sales Returns (included in Net Sales)", "Cost of Sales", "Operating Expenses", "Total"),
+        ("2019 Plan", "2,625", "-", "13,318", "15,943"),
+        ("2018 Plan", "-", "3,724", "-", "3,724"),
+        ("2017 and Prior Plans", "-", "-", "1,575", "1,575"),
+        ("Total", "2,625", "3,724", "14,893", "21,242"),
     )
     result = _verdict(
         rows,
