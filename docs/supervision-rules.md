@@ -212,7 +212,14 @@ plan-substitute with its formation membership and the
 gate it rides; every todo states its completion-time
 estimate. The categorization and the wall-clock
 discipline in this passage apply to the estimate on
-whichever surface carries it. Estimates are
+whichever surface carries it. The discipline is
+mode-independent: it governs any stated price in any
+artifact or message — a plan, a todo, a register row,
+an account, a census, a ruling, or a chat message. A
+price does not escape the discipline by the
+informality of its surface; accounts and chat are
+where long prices are produced and relayed, and the
+discipline binds where the price is stated. Estimates are
 stated at the scale the work runs: a code edit is
 minutes, many under five, and over thirty minutes is
 unlikely for an edit — an edit estimated past thirty
@@ -246,6 +253,15 @@ presented as a plan's size — in a headline, a ruling, or
 a report — is a mispricing of the same class as an
 unjustified overrun: it is the slack a reader waits
 through.
+
+Bundled scope is unbundled at pricing time. A single
+figure spanning design, build, verification, and
+landing prices none of them: each part prices in its
+own register against its own basis, and the stated
+price is the parts under their declared composition —
+wall-clock where they run in parallel, serial only
+where the dependency is real. A bundle that cannot be
+unbundled has not been priced.
 
 Work prices by category; the category carries the
 number, and a step prices by naming its category. The
@@ -330,6 +346,24 @@ attached to an option, a token's discharge price — obey
 the same discipline as step estimates: wall-clock under
 the declared split, per-item against an inventory where
 one exists, and an over-hour class only at its boundary.
+
+A price is re-derived when its basis changes.
+Exploration completed, an inventory landed, a pass run,
+or scope partially consumed each void the standing
+price: the figure was paying for scope that no longer
+stands. Repeating a price is re-deriving it — a price
+carried into a later artifact or message is stated
+again, and stands only if it survives re-derivation
+against the current basis. A figure relayed because an
+earlier surface stated it — priced-at as an inherited
+label — is a defect of the same class as an unjustified
+overrun.
+
+The overestimate defect names in every mode, not only
+in plan form. Wherever a price is stated, the remedy is
+the same: re-price at the work's actual size, or name
+the long-duration class the price rests on and the
+boundary it meets.
 
 The numeric anchors in this passage — the minutes
 scale, the one-hour cap, the justification threshold —
