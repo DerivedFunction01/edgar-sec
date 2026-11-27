@@ -260,6 +260,56 @@ def _summary_form(lines_l: list[str]) -> str:
     return f"summary form, data rows {data_rows}"
 
 
+
+_SUMMARY_ANATOMY_MARKERS = (
+    "total revenue",
+    "net sales",
+    "total net sales",
+    "total operating expenses",
+    "total operating income",
+    "net pension",
+    "postretirement benefit cost",
+    "total contractual",
+    "total assets",
+    "comprehensive income",
+    "per share",
+    "total lease cost",
+    "deferred tax",
+    "property, plant and equipment",
+    "shipment volume",
+    "total liabilities",
+    "earnings per share",
+    "quarterly financial",
+    "purchase price",
+)
+
+_SUMMARY_CHARGE_VOCAB = (
+    "restructur",
+    "severance",
+    "exit",
+    "impairment",
+    "termination",
+    "charges",
+)
+
+
+def _summary_guard(arm: str, lines_l: list[str], caption_l: str, note_l: str) -> str:
+    """The summary form's precision guard (V3, priced on the
+    adjudicated B3 population): lead anchor only, no competing
+    anatomy in the rows, charge vocabulary in rows or head."""
+    if arm != "lead":
+        return "prose anchor"
+    rows_l = "\n".join(lines_l)
+    if any(marker in rows_l for marker in _SUMMARY_ANATOMY_MARKERS):
+        return "competing anatomy"
+    head_l = note_l + " " + caption_l
+    if not any(word in rows_l for word in _SUMMARY_CHARGE_VOCAB) and not (
+        "restructur" in head_l or "exit" in head_l
+    ):
+        return "no charge vocabulary"
+    return ""
+
+
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
     """The bookend pair in any filed form, with the forms named."""
     begin_row = any("balance" in ln and "beginning" in ln for ln in lines_l)
@@ -422,6 +472,13 @@ def evaluate_restructuring_evidence(
         summary = _summary_form(lines_l)
         if summary:
             arm = "prose" if prose and not lead else "lead"
+            refusal = _summary_guard(
+                arm, lines_l, cap_l, (text.note_title or "").lower()
+            )
+            if refusal:
+                return RestructuringEvidence(
+                    False, f"summary form refused: {refusal}"
+                )
             return RestructuringEvidence(
                 True, f"restructuring summary: subject {arm}, {summary}"
             )
