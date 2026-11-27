@@ -48,6 +48,13 @@ def test_specific_plan_file_reference_is_an_error(tmp_path: Path) -> None:
     assert "portability/untracked-ref" in findings[0].message
 
 
+def test_test_tree_specimens_are_outside_the_generic_legs(
+    tmp_path: Path,
+) -> None:
+    _write(tmp_path, "tests/test_paths.py", "P = '" + "/tmp" + "/x.db'\n")
+    assert scan_tree(tmp_path) == []
+
+
 def test_generic_plans_mention_passes(tmp_path: Path) -> None:
     _write(tmp_path, "note.md", "plans live in a `.plans/` folder\n")
     assert scan_tree(tmp_path) == []

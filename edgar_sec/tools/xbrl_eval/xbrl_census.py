@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import tempfile
 from pathlib import Path
 
 from edgar_sec.apps.client.xbrl import Xbrl
@@ -350,7 +351,9 @@ def run_census(
 def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint: run census populations and write the summary JSON."""
     parser = argparse.ArgumentParser(description="Run the scored XBRL census.")
-    parser.add_argument("--out", default="/tmp/xbrl_census_out")
+    parser.add_argument(
+        "--out", default=str(Path(tempfile.gettempdir()) / "xbrl_census_out")
+    )
     parser.add_argument("--populations", default="probe,span")
     parser.add_argument("--firms", default="")
     args = parser.parse_args(argv)

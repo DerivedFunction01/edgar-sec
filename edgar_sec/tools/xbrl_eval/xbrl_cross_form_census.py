@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
@@ -626,7 +627,9 @@ def run_cross_form(out_dir: Path, catalog_dir: Path | None = None) -> dict:
 def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint: run the cross-form census and score its blocks."""
     parser = argparse.ArgumentParser(description="Run the cross-form XBRL census.")
-    parser.add_argument("--out", default="/tmp/xbrl_cross_form_out")
+    parser.add_argument(
+        "--out", default=str(Path(tempfile.gettempdir()) / "xbrl_cross_form_out")
+    )
     parser.add_argument("--catalog-dir", type=Path, default=None)
     args = parser.parse_args(argv)
     summary = run_cross_form(Path(args.out), catalog_dir=args.catalog_dir)

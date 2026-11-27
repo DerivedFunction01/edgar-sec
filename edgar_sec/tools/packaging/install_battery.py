@@ -84,7 +84,7 @@ def _find_uv() -> str:
     candidate = Path.home() / ".local" / "bin" / "uv"
     if candidate.exists():
         return str(candidate)
-    raise SystemExit("uv not found on PATH or at ~/.local/bin/uv")
+    raise SystemExit(f"uv not found on PATH or at {candidate}")
 
 
 def _run(

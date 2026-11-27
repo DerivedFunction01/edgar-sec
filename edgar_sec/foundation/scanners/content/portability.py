@@ -1,8 +1,9 @@
 """Scanner flagging tracked references a fresh clone cannot resolve.
 Flags absolute or home-anchored paths, specific untracked plan files and
-dated memory logs in tracked text, and tracked code naming another
-repository when a repo set is provisioned. Exemptions: exception
-directives declared in the registry files named in ``EXCEPTION_FILES``."""
+dated memory logs in tracked text outside the test tree (test specimens
+seed such strings as inputs), and tracked code naming another repository
+when a repo set is provisioned. Exemptions: exception directives in the
+registry files named in ``EXCEPTION_FILES``."""
 
 from __future__ import annotations
 
@@ -190,6 +191,9 @@ def scan_tree(root: Path) -> list[ScannerFinding]:
     """Scan one tree root and return the portability findings."""
     findings: list[ScannerFinding] = []
     for path in population(root):
+        relpath = path.relative_to(root).as_posix()
+        if relpath.startswith("tests/"):
+            continue
         findings.extend(_scan_file(root, path))
     findings.extend(_repo_ref_findings(root))
     return findings

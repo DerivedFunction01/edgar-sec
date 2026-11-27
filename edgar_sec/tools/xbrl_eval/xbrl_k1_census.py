@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import tempfile
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Callable
@@ -227,7 +228,9 @@ def run_k1(out_dir: Path) -> dict:
 def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint: run the K1 census and score its pinned blocks."""
     parser = argparse.ArgumentParser(description="Run the XBRL K1 census.")
-    parser.add_argument("--out", default="/tmp/xbrl_k1_out")
+    parser.add_argument(
+        "--out", default=str(Path(tempfile.gettempdir()) / "xbrl_k1_out")
+    )
     args = parser.parse_args(argv)
     summary = run_k1(Path(args.out))
     total = sum(block["k1_facts"] for block in summary["k1_blocks"].values())

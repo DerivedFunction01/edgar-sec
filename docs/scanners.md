@@ -44,6 +44,7 @@ private copy wherever it appears, not only a duplicated name.
   `tests/fixtures/`), and code spans or fenced blocks inside a document. Exemptions: the
   date-vocabulary home (`foundation/text/date_patterns.py`) and the module's sanctioned sites,
   content-bearing specimens and record pointers excused by file and fragment.
+- `portability`: **Fails the gate** on a tracked text line outside the test tree carrying an absolute or home-anchored path or a specific untracked plan file or dated memory log reference, or — with a repo set provisioned (`STARTER_REPO_SET_FILE` wins, else `var/config/repo-set.txt`) — tracked code naming another repository in the set. A finding names the path and line only; the matched content is never printed. Exemptions: exception directives declared in the files named in the scanner's `EXCEPTION_FILES` registry, and the scanner mirror tests.
 - `denylist`: **Fails the gate** on a tracked text line containing a literal from the
   provisioned denylist. Resolution: the file named by `STARTER_DENYLIST_FILE` wins and
   never falls back (set but unreadable resolves to no list); otherwise
