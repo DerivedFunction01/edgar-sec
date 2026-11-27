@@ -217,12 +217,9 @@ def _statement_form_fires(geometry) -> bool:
 
 
 def _core_floor_fires(geometry) -> bool:
-    """No deep-core term in the table's own text (stubs,
-    headers, grid): the claim carries no core evidence
-    of its own (score-decomposition pricing). A geometry
-    carrying no table text at all is not evaluable and
-    the floor abstains, as the seat abstains on a grid
-    with no rows."""
+    """No deep-core term in the table's own text: the claim
+    carries no core evidence of its own. A geometry with no
+    table text is not evaluable; the floor abstains."""
     text = normalize_text(
         " ".join([*geometry.stubs, *geometry.headers, geometry.grid_text])
     )

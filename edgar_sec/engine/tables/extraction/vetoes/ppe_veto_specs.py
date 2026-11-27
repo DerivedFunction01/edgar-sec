@@ -43,11 +43,9 @@ DISCIPLINE_CLASS_MIN = 2
 DISCIPLINE_NUMERIC_MIN = 2
 DISCIPLINE_S3_NUMERIC_MIN = 3
 
-# The core floor (score-decomposition pricing): a claim
-# must carry deep-core evidence of its own in-table. The
-# term set is the decomposition's, as priced over the
-# imposter-census population (kills 10 of 18 falses at
-# 1 of 49 trues).
+# The core floor: a claim must carry deep-core evidence of
+# its own in-table; the decomposition's term set, as priced
+# (kills 10 of 18 falses at 1 of 49 trues, census population).
 CORE_FLOOR_TERMS = (
     "property",
     "plant",
