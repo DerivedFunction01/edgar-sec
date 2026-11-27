@@ -194,6 +194,57 @@ def test_leg_core_gate_credited_by_year_only_header():
     assert _eval(text).legs == ()
 
 
+def test_leg_component_gate_fires_on_aoci_rollforward_form():
+    # Priced (discrimination census): a pure AOCI rollforward
+    # carries dated bookends and OCI movements but no non-OCI
+    # equity component term on its assembled surface.
+    rows = (
+        "(in millions) | 10 | 9 | 19",
+        "Balance at December 31, 2023, net of tax | 500 | 480 | 980",
+        "Amounts before reclassifications | 12 | 9 | 21",
+        "Amounts reclassified out | 3 | 2 | 5",
+        "Total other comprehensive (loss) income | 9 | 7 | 16",
+        "Balance at March 31, 2024, net of tax | 509 | 487 | 996",
+    )
+    header = "(in millions) | Foreign Currency Translation | Pension Plans | Total"
+    assert _eval(_text(header, rows)).legs == ("component_gate",)
+
+
+def test_leg_component_gate_header_carried_components_clear():
+    # Component vocabulary carried on the header surface alone
+    # satisfies the leg (the titled-statement form).
+    rows = (
+        "Net income | 90 | 85",
+        "Issuance of stock for ESPP purchases | 5 | 4",
+        "Exercise of stock options, net of shares withheld | 3 | 2",
+        "Release of restricted stock units and awards | 6 | 5",
+        "Stock-based compensation | 12 | 11",
+        "Balances at September 30, 2020 | 594 | 563",
+    )
+    header = (
+        "Three Months Ended September 30, 2020 | Common Stock and "
+        "Additional Paid-In Capital | Accumulated Other Comprehensive "
+        "Income | Accumulated Deficit | Treasury Stock | "
+        "Total Stockholders' Equity"
+    )
+    assert _eval(_text(header, rows)).legs == ()
+
+
+def test_leg_component_gate_member_equity_form_clears():
+    rows = (
+        "Balances at January 12, 2011 (Inception) | 100 | 90",
+        "Cash capital contributions from Harbinger | 5 | 4",
+        "Net loss and comprehensive loss | 3 | 2",
+        "Balances at September 30, 2011 | 102 | 92",
+        "Return of capital to Harbinger Group Inc | 6 | 5",
+        "Contributed capital from Harbinger Group | 7 | 6",
+        "Net income and comprehensive income | 9 | 8",
+        "Balances at September 30, 2012 | 110 | 99",
+    )
+    header = " | Contributed Capital | Accumulated Deficit | Total Member's Equity"
+    assert _eval(_text(header, rows)).legs == ()
+
+
 def test_leg_span_released_when_walk_closes():
     text = _text(" | 2023 | 2022 | 2021", (_BALANCE_ROW, *_FILLER))
     verdict = evaluate_equity_separator(

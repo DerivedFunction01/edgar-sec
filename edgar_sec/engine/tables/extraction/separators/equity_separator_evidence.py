@@ -79,6 +79,18 @@ def _carries_period_date(texts) -> bool:
     return bool(_YEAR_RE.search(joined))
 
 
+def _carries_component(text, spec) -> bool:
+    """A non-OCI equity component term on the assembled surface:
+    a component stub key, or a component header token."""
+    if any(
+        key.startswith(component)
+        for key in text.stub_keys
+        for component in spec.component_keys
+    ):
+        return True
+    return bool(text.header_keys.intersection(spec.component_header_tokens))
+
+
 def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:
     """The stock count, credited to 1 when the statement phrases
     its bookends without dates and carries the period date on
@@ -147,6 +159,8 @@ def evaluate_equity_separator(
         legs.append(f"span_ge_{spec.span_years_min}")
     if text.dated_balance_rows == 0:
         legs.append("core_gate")
+    if not _carries_component(text, spec):
+        legs.append("component_gate")
     for key in spec.stub_keys:
         if key in text.stub_keys:
             legs.append(f"stub:{key}")

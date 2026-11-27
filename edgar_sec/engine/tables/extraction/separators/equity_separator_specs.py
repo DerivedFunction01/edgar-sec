@@ -22,6 +22,8 @@ class EquitySeparatorSpec:
     core_vocab: tuple[str, ...]
     flow_stub_keys: tuple[str, ...]
     flow_prefix: str
+    component_keys: tuple[str, ...]
+    component_header_tokens: tuple[str, ...]
 
 
 EQUITY_SEPARATOR_SPECS: dict[str, EquitySeparatorSpec] = {
@@ -50,5 +52,30 @@ EQUITY_SEPARATOR_SPECS: dict[str, EquitySeparatorSpec] = {
             "other comprehensive income",
         ),
         flow_prefix="comprehensive income",
+        component_keys=(
+            "common stock",
+            "preferred stock",
+            "retained earnings",
+            "additional paid in capital",
+            "paid in capital",
+            "treasury stock",
+            "contributed capital",
+            "accumulated deficit",
+            "dividends",
+            "share repurchase",
+            "shares issued",
+            "mezzanine equity",
+            "member s equity",
+            "members equity",
+        ),
+        component_header_tokens=(
+            "common",
+            "preferred",
+            "treasury",
+            "mezzanine",
+            "retained",
+            "contributed",
+            "member",
+        ),
     ),
 }
