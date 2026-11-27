@@ -7,7 +7,10 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
     TableGeometry,
     TableRenderResult,
 )
-from edgar_sec.engine.tables.extraction.core.text.context import TableContext
+from edgar_sec.engine.tables.extraction.core.text.context import (
+    SectionRef,
+    TableContext,
+)
 from edgar_sec.engine.tables.extraction.form_tests.form_tests import evaluate_form_tests
 from edgar_sec.engine.tables.extraction.core.typed_rows import (
     TypedTable,
@@ -36,6 +39,24 @@ def _outcome(table: TypedTable, test_id: str):
     return next(o for o in evaluate_form_tests(table) if o.test_id == test_id)
 
 
+def _sectioned_table(rows: tuple[tuple[str, ...], ...], item: str) -> TypedTable:
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=rows,
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+    context = TableContext(geometry=geometry, section=SectionRef(item, None))
+    return structure_table(context)
+
+
 def test_item_703_form_passes_on_its_filed_measures() -> None:
     table = _table(
         (
@@ -51,6 +72,32 @@ def test_item_703_form_passes_on_its_filed_measures() -> None:
             ("October 1 - 31", "10,000", "$ 5.00", "10,000", "1,000,000"),
         )
     )
+    assert _outcome(table, "shares_purchased_measure_set").passed
+
+
+_703_ROWS = (
+    (
+        "Period",
+        "Total Number of Shares Purchased",
+        "Average Price Paid Per Share",
+        "Total Number of Shares Purchased as Part of Publicly "
+        "Announced Plans or Programs",
+        "Maximum Number of Shares that May Yet Be Purchased "
+        "Under the Plans or Programs",
+    ),
+    ("October 1 - 31", "10,000", "$ 5.00", "10,000", "1,000,000"),
+)
+
+
+def test_item_703_form_in_an_exhibit_section_is_refused() -> None:
+    table = _sectioned_table(_703_ROWS, "ITEM 14")
+    outcome = _outcome(table, "shares_purchased_measure_set")
+    assert not outcome.passed
+    assert "refused section: ITEM 14" in outcome.detail
+
+
+def test_item_703_form_in_its_home_section_still_passes() -> None:
+    table = _sectioned_table(_703_ROWS, "ITEM 5")
     assert _outcome(table, "shares_purchased_measure_set").passed
 
 
