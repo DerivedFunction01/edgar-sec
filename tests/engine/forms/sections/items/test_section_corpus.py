@@ -41,10 +41,8 @@ def _taxonomies() -> dict[str, tuple[ItemDefinition, ...]]:
 _TAXONOMIES = _taxonomies()
 _INDEX = json.loads((_CORPUS / "index.json").read_text(encoding="utf-8"))
 
-# Specimens whose texts the re-proof showed regenerable from the EDGAR
-# archives on the corpus builder are not tracked; the registry beside
-# the index names each one with its banked hash, and regen_check.py
-# (beside the corpus) re-verifies them in the tooling layer.
+# Regenerable specimens are not tracked: dropped_texts.json beside the
+# index names each with its banked hash; regen_check.py re-verifies them.
 _DROPPED_PATH = _CORPUS / "dropped_texts.json"
 _DROPPED: dict[str, dict] = (
     {e["id"]: e for e in json.loads(_DROPPED_PATH.read_text(encoding="utf-8"))}

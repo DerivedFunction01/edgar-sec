@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """Re-verify the section corpus's dropped (regenerable) texts.
 
-Tooling layer, not part of the offline gate: re-banks every specimen
-named in dropped_texts.json from the EDGAR archives with the corpus
-builder and checks each against the registry — byte-identical specimens
-by the banked SHA-256, resolutions-preserved specimens by the regen
-baseline equalling the index's reviewed ``expected``.
+Tooling layer: re-banks each dropped_texts.json specimen from the
+archives and checks it against the registry and the index's expected.
 """
 
 from __future__ import annotations
