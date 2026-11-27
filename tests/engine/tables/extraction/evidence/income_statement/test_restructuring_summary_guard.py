@@ -244,9 +244,9 @@ def test_summary_guard_refuses_lending_sense():
         ("Agricultural", "3", "0"),
         ("Total", "18", "3"),
     )
-    prose = (
-        "The company enters into troubled debt restructurings "
-        "with certain borrowers experiencing financial difficulty."
+    prose = ("The company recorded restructuring charges in the year. " * 10) + (
+        "Certain borrowers experiencing financial difficulty "
+        "were granted troubled debt restructurings."
     )
     result = _verdict(
         rows,
