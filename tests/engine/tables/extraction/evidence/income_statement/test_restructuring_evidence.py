@@ -691,8 +691,8 @@ def test_summary_guard_admits_a_parenthesized_marker():
     text = RestructuringText(
         lines=(
             "Program | Sales Returns (included in Net Sales) | Charges | Amount",
-            "2019 Plan | 10 | 2 | 12",
-            "2020 Plan | 8 | 1 | 9",
+            "Plan A | 10 | 2 | 12",
+            "Plan B | 8 | 1 | 9",
             "Total | 18 | 3 | 21",
         ),
         caption="Charges Associated with Restructuring and Other Activities",
