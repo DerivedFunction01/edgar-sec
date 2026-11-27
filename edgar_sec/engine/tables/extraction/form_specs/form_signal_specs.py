@@ -263,7 +263,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "selected_data_last_total_item6",
         "SELECTED-DATA",
-        ("last_stub_total", "loc_item6"),
+        ("last_stub_total", "loc_item6", "years>=4"),
         1,
         0,
         0,
@@ -472,7 +472,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "mda_item7_rows12",
         "MD&A-SUMMARY",
-        ("loc_item7", "rows<=12"),
+        ("loc_item7", "rows<=12", "years>=3"),
         2,
         1,
         0,
