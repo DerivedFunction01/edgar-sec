@@ -29,6 +29,14 @@ MONTHS = frozenset(
     alias for aliases in MONTH_ALIASES for alias in aliases if "." not in alias
 )
 NUM_RE = re.compile(r"\(?-?\$?\s*" + NUMERIC_TOKEN_RE.pattern + r"\s*\)?%?\)?")
+_NON_ALNUM_SPACE_RE = re.compile(r"[^a-z0-9 ]+")
+_WHITESPACE_RUN_RE = re.compile(r"\s+")
+_NUMBER_TOKEN_RE = re.compile(r"\b\d+\b")
+_DIGIT_RE = re.compile(r"\d")
+_BOOKEND_BEGIN_RE = re.compile(
+    r"beginning|opening balance|balance at (the )?beginning"
+)
+_BOOKEND_END_RE = re.compile(r"ending|closing balance|balance at (the )?end")
 DATE_RE = re.compile(
     r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b"
     r"|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
@@ -78,14 +86,14 @@ MOVE_WORDS = {
 def norm(s: str) -> str:
     """Lowercase a text fragment and collapse non-alphanumerics."""
     s = s.lower()
-    s = re.sub(r"[^a-z0-9 ]+", " ", s)
-    return re.sub(r"\s+", " ", s).strip()
+    s = _NON_ALNUM_SPACE_RE.sub(" ", s)
+    return _WHITESPACE_RUN_RE.sub(" ", s).strip()
 
 
 def stub_key(stub: str) -> str:
     """A stub's vocabulary key: numbers and months removed."""
     s = norm(stub)
-    s = re.sub(r"\b\d+\b", " ", s)
+    s = _NUMBER_TOKEN_RE.sub(" ", s)
     toks = [t for t in s.split() if t not in MONTHS and len(t) > 1]
     return " ".join(toks[:8])
 
@@ -113,7 +121,7 @@ def specimen_features(row: dict) -> dict:
             if c:
                 tot_cells += 1
                 if NUM_RE.fullmatch(c.replace("$", "").strip()) or (
-                    re.search(r"\d", c) and NUM_RE.search(c)
+                    _DIGIT_RE.search(c) and NUM_RE.search(c)
                 ):
                     num_cells += 1
                 if "%" in c:
@@ -177,17 +185,8 @@ def specimen_features(row: dict) -> dict:
             for t in (norm(s) for s in stubs)
         )
     )
-    f["bookend_begin"] = int(
-        bool(
-            re.search(
-                r"beginning|opening balance|balance at (the )?beginning",
-                stub_blob,
-            )
-        )
-    )
-    f["bookend_end"] = int(
-        bool(re.search(r"ending|closing balance|balance at (the )?end", stub_blob))
-    )
+    f["bookend_begin"] = int(bool(_BOOKEND_BEGIN_RE.search(stub_blob)))
+    f["bookend_end"] = int(bool(_BOOKEND_END_RE.search(stub_blob)))
     f["has_bookend_pair"] = f["bookend_begin"] and f["bookend_end"]
     move_hits = sum(1 for s in stubs if MOVE_WORDS & set(norm(s).split()))
     f["move_density"] = round(move_hits / max(1, len(stubs)), 3)
