@@ -104,7 +104,7 @@ ROW_BOUND_SPECS: tuple[RowBoundSpec, ...] = (
     RowBoundSpec("equity_statement", 7, 40, ORIENT_EITHER_AXIS, 1.0, 0.562),
     RowBoundSpec("income_statement", 16, 54, ORIENT_FIXED, 0.91, 0.348),
     RowBoundSpec("inventory", 6, 19, ORIENT_FIXED, 1.0, 0.4),
-    RowBoundSpec("ppe", 6, 47, ORIENT_FIXED, 1.0, 0.786),
+    RowBoundSpec("ppe", 6, 60, ORIENT_FIXED, 1.0, 0.786),
     RowBoundSpec("stock_comp_rollforward", 6, 19, ORIENT_EITHER_AXIS, 0.96, 0.737),
     RowBoundSpec("tax_reconciliation", 7, 15, ORIENT_EITHER_AXIS, 1.0, 0.727),
 )
