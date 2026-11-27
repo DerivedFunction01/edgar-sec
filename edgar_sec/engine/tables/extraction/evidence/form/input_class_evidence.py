@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.specs.input_class_specs import (
+    LEVEL3_QUANTITATIVE_CAPTION,
     INPUT_CLASS_EVIDENCE_SPECS,
     InputClassEvidenceSpec,
 )
@@ -62,7 +63,7 @@ def evaluate_level3_evidence(
     if not spec.level3_input_classes:
         return InputClassEvidence(False, (), "no level 3 input-class group")
     grid = text.grid_text
-    shape = "quantitative information about level 3" in grid or (
+    shape = LEVEL3_QUANTITATIVE_CAPTION in grid or (
         "unobservable" in grid
         and "valuation" in grid
         and ("technique" in grid or "methodolog" in grid)
