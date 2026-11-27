@@ -14,7 +14,10 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from edgar_sec.foundation.text.date_patterns import MONTH_ALIASES
+from edgar_sec.foundation.text.date_patterns import (
+    MONTH_ALIASES,
+    STRICT_MONTH_PATTERN,
+)
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 # The instrument's month vocabulary: the home's full names and
@@ -26,8 +29,8 @@ MONTHS = frozenset(
 NUM_RE = re.compile(r"\(?-?\$?\s*\d[\d,]*(\.\d+)?\s*\)?%?\)?")
 YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 DATE_RE = re.compile(
-    r"\b(january|february|march|april|may|june|july|august|september|"
-    r"october|november|december)\s+\d{1,2}\b|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
+    r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b"
+    r"|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
 )
 MOVE_WORDS = {
     "additions",
