@@ -11,6 +11,9 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     stub_key,
 )
+from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    statement_clusters,
+)
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_specs import (
     BS_FAMILY,
     BS_FILING_RELATIVE_FLOOR,
@@ -39,6 +42,14 @@ def _cf_signature_fires(geometry) -> bool:
     for outcome in geometry.form_tests:
         if outcome.family == CF_FAMILY and outcome.kind == TEST_SIGNATURE_ABSENCE:
             return not outcome.passed
+    return False
+
+
+def _cf_signature_passes(geometry) -> bool:
+    """A passing stamped signature-absence outcome."""
+    for outcome in geometry.form_tests:
+        if outcome.family == CF_FAMILY and outcome.kind == TEST_SIGNATURE_ABSENCE:
+            return bool(outcome.passed)
     return False
 
 
@@ -71,14 +82,21 @@ def _filing_top(results) -> float:
     )
 
 
-def _fired_legs(geometries, results, index, filing_top):
+def _fired_legs(geometries, results, index, filing_top, clusters):
     """Every priced leg firing on one claimed geometry."""
     result = results[index]
     legs = []
     if CF_FAMILY in result.claims:
         if _cf_dominance_fires(result):
             legs.append((CF_FAMILY, LEG_CF_DOMINANCE))
-        if _cf_signature_fires(geometries[index]):
+        # The signature read at statement-cluster scope: the
+        # leg fires only when no cluster member carries a
+        # passing signature-absence outcome, so a fragment of
+        # a signature-carrying statement is not refused for
+        # its own stubs alone.
+        if _cf_signature_fires(geometries[index]) and not any(
+            _cf_signature_passes(geometries[member]) for member in clusters[index]
+        ):
             legs.append((CF_FAMILY, LEG_CF_SIGNATURE))
     if (
         BS_FAMILY in result.claims
@@ -102,9 +120,10 @@ def apply_spanning_vetoes(geometries, results):
     )
 
     filing_top = _filing_top(results)
+    clusters = statement_clusters(geometries)
     fired = {}
     for index, result in enumerate(results):
-        legs = _fired_legs(geometries, results, index, filing_top)
+        legs = _fired_legs(geometries, results, index, filing_top, clusters)
         for family, leg in legs:
             fired.setdefault(index, {}).setdefault(family, []).append(leg)
     if not fired:

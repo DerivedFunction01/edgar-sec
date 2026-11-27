@@ -160,6 +160,28 @@ def test_signature_leg_scoped_to_cash_flow():
     assert "balance_sheet" in results[0].claims
 
 
+def test_signature_cluster_member_pass_keeps_claim():
+    frag = GeometryText(form_tests=(_absence_outcome(False),))
+    body = GeometryText(form_tests=(_absence_outcome(True),))
+    results = apply_spanning_vetoes(
+        [frag, body],
+        [_dominant_cf(), _result((), {})],
+    )
+    assert "cash_flow" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_signature_cluster_without_pass_removed():
+    frag = GeometryText(form_tests=(_absence_outcome(False),))
+    other = GeometryText(form_tests=())
+    results = apply_spanning_vetoes(
+        [frag, other],
+        [_dominant_cf(), _result((), {})],
+    )
+    assert "cash_flow" not in results[0].claims
+    assert _gate_details(results[0]) == ["spanning veto: signature"]
+
+
 def test_both_cf_legs_report_together():
     geo = GeometryText(form_tests=(_absence_outcome(False),))
     results = apply_spanning_vetoes(
