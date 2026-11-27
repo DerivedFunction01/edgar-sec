@@ -697,24 +697,58 @@ def _seat_joint_evidence(
 
 
 def _realign_balance_sheet(
-    members: list[_Member], by_position: dict[int, GeometryAssignment]
+    members: list[_Member],
+    groups: list[_Group],
+    sectioned: dict[int, str],
+    by_position: dict[int, GeometryAssignment],
 ) -> None:
     """Realign balance_sheet assignments to compete's gate
-    discipline: an assignment stands only where the primary
-    gate admits the claim, and admitted claims seat it."""
+    discipline, at statement level: a statement's assignment
+    follows the gate's read on its head; joins follow it."""
     texts = [geometry_text_from_table(member.table) for member in members]
     gated = compete_filing_gated(texts)
-    for position, result in enumerate(gated):
+    admitted = {
+        position
+        for position, result in enumerate(gated)
+        if "balance_sheet" in result.claims
+    }
+
+    def seat(position: int, family: str) -> None:
         current = by_position[position]
-        admitted = "balance_sheet" in result.claims
-        if current.family == "balance_sheet" and not admitted:
+        if family == RESIDUAL_FAMILY:
             by_position[position] = GeometryAssignment(
                 current.table_index, RESIDUAL_FAMILY, "residual"
             )
-        elif current.family != "balance_sheet" and admitted:
+        elif current.family != family:
             by_position[position] = GeometryAssignment(
-                current.table_index, "balance_sheet", "winner"
+                current.table_index,
+                family,
+                "winner" if current.role != "join" else "join",
             )
+
+    grouped = set()
+    for group in groups:
+        head = next(
+            (m for m in group.members if m.family == group.family),
+            group.members[0],
+        )
+        grouped.update(m.position for m in group.members)
+        if group.family == "balance_sheet" and head.position not in admitted:
+            for member in group.members:
+                seat(member.position, RESIDUAL_FAMILY)
+        elif group.family != "balance_sheet" and head.position in admitted:
+            for member in group.members:
+                seat(member.position, "balance_sheet")
+    for member in members:
+        if member.position in grouped or member.position in sectioned:
+            continue
+        if member.position in admitted:
+            seat(member.position, "balance_sheet")
+    for position, family in sectioned.items():
+        if family == "balance_sheet" and position not in admitted:
+            seat(position, RESIDUAL_FAMILY)
+        elif family != "balance_sheet" and position in admitted:
+            seat(position, "balance_sheet")
 
 
 def assemble(
@@ -766,7 +800,7 @@ def assemble(
             by_position[member.position] = GeometryAssignment(
                 member.table_index, RESIDUAL_FAMILY, "residual"
             )
-    _realign_balance_sheet(members, by_position)
+    _realign_balance_sheet(members, groups, sectioned, by_position)
     unassigned = [
         by_position[member.position].table_index
         for member in members
