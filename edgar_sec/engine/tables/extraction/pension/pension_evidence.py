@@ -69,8 +69,13 @@ PENSION_ANCHOR_SPECS: dict[str, PensionAnchorSpec] = {
         walk_open_terms=("beginning",),
         walk_close_terms=("end of", "ending"),
         assumptions_anchor_term="discount rate",
-        assumptions_partner_terms=("expected", "compensation", "trend rate"),
-        payments_min_year_stubs=4,
+        assumptions_partner_terms=(
+            "expected",
+            "compensation",
+            "trend rate",
+            "crediting rate",
+        ),
+        payments_min_year_stubs=3,
         payments_context_terms=("benefit", "pension"),
         sensitivity_anchor_terms=("percentage point", "percentage-point"),
         sensitivity_subject_terms=("benefit obligation", "service"),
@@ -81,6 +86,7 @@ PENSION_ANCHOR_SPECS: dict[str, PensionAnchorSpec] = {
             "projected benefit obligation",
             "funded status",
             "underfunded",
+            "benefit obligation",
         ),
         allocation_asset_terms=(
             "equity securities",

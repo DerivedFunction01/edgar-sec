@@ -108,6 +108,7 @@ class GeometryText:
     block_purity: float = 0.0
     lease_mass_share: float | None = None
     foreign_mass_share: float | None = None
+    note_number: int | None = None
 
     @property
     def stub_text(self) -> str:
@@ -154,6 +155,7 @@ def geometry_text_from_table(table, *, evaluate_stage: bool = True) -> GeometryT
         prose_tail=normalize_text(context.prose_before or "")[-300:],
         stubs=stubs,
         note_title=note.title if note else None,
+        note_number=note.number if note else None,
         section_item=section.item if section else None,
         form_tests=evaluate_form_tests(table) if evaluate_stage else (),
         summary_separator=(

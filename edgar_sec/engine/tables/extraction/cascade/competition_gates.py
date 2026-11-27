@@ -28,6 +28,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
     PENSION_ANCHOR_SPECS,
     PensionText,
     evaluate_pension_anchor,
+    pension_anchor_set,
 )
 from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     failing_pension_routed_outcome,
@@ -168,6 +169,22 @@ def apply_pension_gates(claims, contested, scores, geometry):
         ):
             failed = reader(geometry.form_tests, "pension", kind)
             if failed is not None:
+                # Pension cost-cell yield (priced): the routed
+                # cost cell firing on the movedens leg does not
+                # refuse a claim the geometry's own pension
+                # anchor legs carry.
+                if (
+                    kind == TEST_PENSION_ROUTED
+                    and failed.detail == "kind:cost cell fired (A:movedens_le_0.25)"
+                    and pension_anchor_legs(geometry)
+                ):
+                    scores = append_note(
+                        scores,
+                        "pension",
+                        "gate",
+                        f"{failed.detail}; pension anchor yield",
+                    )
+                    continue
                 claims.remove("pension")
                 if "pension" in contested:
                     contested.remove("pension")
@@ -223,6 +240,43 @@ def pension_veto_rescued(geometry, scores):
         1 for group in spec.npbc_groups if any(term in stubtext for term in group)
     )
     return groups >= spec.npbc_min_groups
+
+
+def pension_anchor_legs(geometry):
+    """The geometry's pension anchor legs under the base spec."""
+    spec = PENSION_ANCHOR_SPECS.get("pension")
+    if spec is None:
+        return frozenset()
+    return pension_anchor_set(PensionText.from_geometry(geometry), spec)
+
+
+# Priced VETO-RC yield data: the pension stub vocabulary
+# whose majority share marks a geometry as the family's
+# own table under a reclassification caption.
+PENSION_VETO_YIELD_STUB_TERMS = (
+    "pension",
+    "postretirement",
+    "benefit cost",
+    "service cost",
+    "actuarial",
+    "prior service",
+    "net periodic",
+    "benefit obligation",
+)
+
+
+def pension_veto_yielded(geometry, term):
+    """Whether the priced reclassification yield lifts
+    the veto: pension stubs in the majority and an
+    anchor leg carrying the geometry."""
+    if term != "reclassification" or not geometry.stubs:
+        return False
+    share = sum(
+        1
+        for stub in geometry.stubs
+        if any(t in stub.lower() for t in PENSION_VETO_YIELD_STUB_TERMS)
+    ) / len(geometry.stubs)
+    return share >= 0.5 and bool(pension_anchor_legs(geometry))
 
 
 def apply_tax_seat(claims, contested, scores, geometry, hard_vetoed, floor):

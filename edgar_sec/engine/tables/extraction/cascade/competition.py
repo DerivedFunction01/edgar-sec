@@ -36,7 +36,9 @@ from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
     apply_derivatives_gates,
     apply_pension_gates,
+    pension_anchor_legs,
     pension_veto_rescued,
+    pension_veto_yielded,
     apply_tax_seat,
 )
 from edgar_sec.engine.tables.extraction.seats.genre_seat import (
@@ -192,8 +194,12 @@ def compete(
         family: tiers["hard"] for family, tiers in veto_hits.items() if "hard" in tiers
     }
     # Priced scoping (pension): a hard hit does not bar a
-    # geometry the priced R2 combination rescues.
-    if "pension" in hard_vetoed and pension_veto_rescued(geometry, scores):
+    # geometry the priced R2 combination rescues, nor one
+    # the priced reclassification yield carries.
+    if "pension" in hard_vetoed and (
+        pension_veto_rescued(geometry, scores)
+        or pension_veto_yielded(geometry, hard_vetoed["pension"])
+    ):
         del hard_vetoed["pension"]
     # Priced scoping (balance_sheet): a hard hit in either
     # channel reads term context the table's own complete
@@ -541,11 +547,22 @@ def compete(
             ev.channel == "gate" and ev.detail.startswith("restructuring charges:")
             for ev in scores["restructuring"].evidence
         )
+        # Pension MD&A yield (priced): a pension claim whose
+        # only fired summary rule is the MD&A rows-12 rule
+        # survives the fire when the geometry carries a
+        # pension anchor leg.
+        keep_pension_mda = (
+            "pension" in claims
+            and fired_rules <= frozenset({"mda_item7_rows12"})
+            and bool(pension_anchor_legs(geometry))
+        )
         kept = list(spared)
         if keep_tax and "tax_reconciliation" not in kept:
             kept.append("tax_reconciliation")
         if keep_charges and "restructuring" not in kept:
             kept.append("restructuring")
+        if keep_pension_mda and "pension" not in kept:
+            kept.append("pension")
         removed = tuple(f for f in claims if f not in kept)
         claims = [f for f in claims if f in kept]
         contested = [f for f in contested if f in kept]
@@ -605,6 +622,21 @@ def compete(
                     ClaimEvidence(
                         "gate",
                         f"summary separator: {separator.detail}; charges seat exemption",
+                        0.0,
+                    ),
+                ),
+            )
+        if keep_pension_mda:
+            gated = scores["pension"]
+            scores["pension"] = FamilyScore(
+                gated.family,
+                gated.total,
+                dict(gated.by_channel),
+                gated.evidence
+                + (
+                    ClaimEvidence(
+                        "gate",
+                        f"summary separator: {separator.detail}; pension anchor yield",
                         0.0,
                     ),
                 ),
