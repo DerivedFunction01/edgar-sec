@@ -10,7 +10,8 @@ primitives every other extraction subpackage builds on. The package groups
 into `subjects/` (profiles, classification, and subject vocabulary) and
 `text/` (context and the text primitives); the measured calibration
 tables (`term_patterns`, `prose_patterns`, `location_strengths`), policy,
-the registry, sequences, typed rows, and validation stay at the root.
+the registry, sequences, typed rows, validation, and the shared
+single-pass term matcher (`term_index`) stay at the root.
 
 ## Contracts
 

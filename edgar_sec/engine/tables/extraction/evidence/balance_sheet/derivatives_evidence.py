@@ -7,13 +7,13 @@ requires underlying/notional or accounting-effects evidence.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 from functools import lru_cache
 
 from edgar_sec.engine.tables.extraction.cascade.leadin_segmentation import (
     leadin_segment,
 )
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.specs.families.derivatives_evidence_specs import (
     DERIVATIVES_EVIDENCE_SPECS,
@@ -38,16 +38,65 @@ _INSTRUMENT_ROW_BASES = ("swap", "swaps", "forward", "forwards", "futures")
 _COMMODITY_EFFECTS = ("unrealized", "gain/loss", "(gain)/loss")
 
 
+_UNAMBIGUOUS = "unambiguous"
+_AMBIGUOUS = "ambiguous"
+_STEM = "stem"
+_DESIGNATION = "designation"
+_ANCHOR = "anchor"
+_SUFFIX = "suffix"
+_COMMERCIAL = "commercial"
+_NPNS = "npns"
+_EQUITY_COMP = "equity_comp"
+_EQUITY_PREFIXED = "equity_prefixed"
+_AOCI_SUBJECT = "aoci_subject"
+_COMMODITY_HEADER = "commodity_header"
+_EFFECTS = "effects"
+_EFFECTS_LEADIN = "effects_leadin"
+_OFFSETTING = "offsetting"
+_INSTRUMENT_ROW = "instrument_row"
+_FORWARD_LOOKING_KIND = "forward_looking"
+_SUBJECT_ANCHOR = "subject_anchor"
+
+
 @lru_cache(maxsize=None)
-def _term_pattern(term: str) -> re.Pattern[str]:
-    """One term's word-boundary pattern, compiled once per term."""
-    return re.compile(r"\b" + re.escape(term) + r"\b")
+def _spec_index(spec: DerivativesEvidenceSpec) -> TermIndex:
+    """The spec's unified term index: each form once, with its kinds.
 
+    Match mode is the consulting list's own: bases, suffix and
+    commercial terms match on word boundaries; phrase lists match
+    as literal substrings; stems and equity-prefixed compounds
+    report the base they credit or discount.
+    """
+    entries: list[TermEntry] = []
 
-def _present(term: str, text: str) -> bool:
-    if " " in term or "-" in term:
-        return term in text
-    return _term_pattern(term).search(text) is not None
+    def add(terms: tuple[str, ...], kind: str, word: bool = False) -> None:
+        entries.extend(TermEntry(term, kind, word=word) for term in terms)
+
+    add(spec.unambiguous_bases, _UNAMBIGUOUS, word=True)
+    add(spec.ambiguous_bases, _AMBIGUOUS, word=True)
+    entries.extend(
+        TermEntry(stem, _STEM, value=base) for stem, base in spec.stem_bases
+    )
+    add(spec.designation_phrases, _DESIGNATION)
+    add(spec.anchor_terms, _ANCHOR)
+    add(spec.suffix_terms, _SUFFIX, word=True)
+    add(spec.commercial_terms, _COMMERCIAL, word=True)
+    add(spec.npns_phrases, _NPNS)
+    add(spec.equity_comp_terms, _EQUITY_COMP)
+    entries.extend(
+        TermEntry(f"{prefix} {base}", _EQUITY_PREFIXED, value=base)
+        for prefix in spec.equity_prefixes
+        for base in spec.ambiguous_bases
+    )
+    add(spec.aoci_subject_phrases, _AOCI_SUBJECT)
+    entries.append(TermEntry(spec.commodity_header, _COMMODITY_HEADER))
+    add(spec.effects_phrases, _EFFECTS)
+    add(spec.effects_leadin_phrases, _EFFECTS_LEADIN)
+    add(spec.offsetting_phrases, _OFFSETTING)
+    add(_INSTRUMENT_ROW_BASES, _INSTRUMENT_ROW, word=True)
+    add(_FORWARD_LOOKING, _FORWARD_LOOKING_KIND)
+    add(_SUBJECT_ANCHORS, _SUBJECT_ANCHOR)
+    return TermIndex(entries)
 
 
 @dataclass(frozen=True, slots=True)
@@ -143,59 +192,56 @@ class DerivativesEvidence:
 _REFUSED_N = DerivativesEvidence(False, "N", False, "no U/A evidence")
 
 
-def _base_in_lines(base: str, lines: tuple[str, ...]) -> bool:
-    return any(_present(base, line) for line in lines)
+def _hits(
+    index: TermIndex, lines: tuple[str, ...]
+) -> list[dict[str, frozenset[str]]]:
+    """One traversal per line: every evidence kind collected at once."""
+    return [index.scan(line) for line in lines]
 
 
 def _unambiguous(
-    spec: DerivativesEvidenceSpec, lines: tuple[str, ...]
+    spec: DerivativesEvidenceSpec, line_hits: list[dict[str, frozenset[str]]]
 ) -> tuple[str, ...]:
     """Unambiguous bases present, with the forward guards applied."""
     found = []
     for base in spec.unambiguous_bases:
         if base not in ("forward", "forwards"):
-            if _base_in_lines(base, lines):
+            if any(base in hits.get(_UNAMBIGUOUS, ()) for hits in line_hits):
                 found.append(base)
             continue
-        for line in lines:
-            if not _present(base, line):
+        for hits in line_hits:
+            if base not in hits.get(_UNAMBIGUOUS, ()):
                 continue
-            if any(phrase in line for phrase in _FORWARD_LOOKING):
+            if hits.get(_FORWARD_LOOKING_KIND):
                 continue
-            if any(_present(term, line) for term in spec.commercial_terms):
+            if hits.get(_COMMERCIAL):
                 continue
             found.append(base)
             break
     return tuple(found)
 
 
-def _ambiguous(spec: DerivativesEvidenceSpec, lines: tuple[str, ...]) -> frozenset[str]:
+def _ambiguous(line_hits: list[dict[str, frozenset[str]]]) -> frozenset[str]:
     """Distinct ambiguous bases, equity-prefixed ones discounted.
 
     A prefixed base counts only inside a triple on its own line:
     the suffix-lookbehind rule of the design algebra.
     """
     found: set[str] = set()
-    for line in lines:
-        bases = {base for base in spec.ambiguous_bases if _present(base, line)}
-        for stem, base in spec.stem_bases:
-            if stem in line:
-                bases.add(base)
+    for hits in line_hits:
+        bases = set(hits.get(_AMBIGUOUS, ())) | set(hits.get(_STEM, ()))
         if len(bases) < 3:
-            for prefix in spec.equity_prefixes:
-                for base in list(bases):
-                    if f"{prefix} {base}" in line:
-                        bases.discard(base)
+            bases -= set(hits.get(_EQUITY_PREFIXED, ()))
         found.update(bases)
     return frozenset(found)
 
 
-def _instrument_row(spec: DerivativesEvidenceSpec, stubs: tuple[str, ...]) -> bool:
+def _instrument_row(index: TermIndex, stubs: tuple[str, ...]) -> bool:
     """A stub label naming an instrument, not an income-statement line."""
     for label in stubs:
         if "related to" in label:
             continue
-        if any(_present(base, label) for base in _INSTRUMENT_ROW_BASES):
+        if index.scan(label).get(_INSTRUMENT_ROW):
             return True
     return False
 
@@ -209,35 +255,50 @@ def evaluate_derivatives_evidence(
     evidence = text.evidence
     lines = (text.caption, text.notehead, text.lead_title, *text.stubs, *text.headers)
     grid_lines = (*lines, *text.grid)
-    unamb_subject = _unambiguous(spec, lines)
-    unamb_grid = _unambiguous(spec, grid_lines)
-    unamb_leadin = _unambiguous(spec, (text.leadin,))
-    amb = _ambiguous(spec, lines)
+    index = _spec_index(spec)
+    line_hits = _hits(index, lines)
+    grid_hits = line_hits + _hits(index, text.grid)
+    leadin_hits = index.scan(text.leadin)
+    subject_hits = index.scan(subject)
+    evidence_hits = index.scan(evidence)
+    leadin_scan = [leadin_hits]
+    unamb_subject = _unambiguous(spec, line_hits)
+    unamb_grid = _unambiguous(spec, grid_hits)
+    unamb_leadin = _unambiguous(spec, leadin_scan)
+    amb = _ambiguous(line_hits)
     designation = tuple(
-        phrase for phrase in spec.designation_phrases if phrase in subject
+        phrase
+        for phrase in spec.designation_phrases
+        if phrase in subject_hits.get(_DESIGNATION, ())
     )
     designation_leadin = tuple(
-        phrase for phrase in spec.designation_phrases if phrase in text.leadin
+        phrase
+        for phrase in spec.designation_phrases
+        if phrase in leadin_hits.get(_DESIGNATION, ())
     )
-    anchors = tuple(term for term in spec.anchor_terms if term in evidence)
-    aoci_subject = any(
-        phrase in text.caption + " " + text.lead_title + " " + " ".join(text.stubs[:3])
-        for phrase in spec.aoci_subject_phrases
+    anchors = tuple(
+        term for term in spec.anchor_terms if term in evidence_hits.get(_ANCHOR, ())
+    )
+    aoci_subject = bool(
+        index.scan(
+            text.caption + " " + text.lead_title + " " + " ".join(text.stubs[:3])
+        ).get(_AOCI_SUBJECT)
     )
     if (
         aoci_subject
         and "notional" not in evidence
-        and not _instrument_row(spec, text.stubs)
+        and not _instrument_row(index, text.stubs)
     ):
         return DerivativesEvidence(
             False, "E", False, "aoci-components subject: equity carve-out"
         )
-    comp = any(term in evidence + " " + text.leadin for term in spec.equity_comp_terms)
+    comp_hits = index.scan(evidence + " " + text.leadin)
+    comp = bool(comp_hits.get(_EQUITY_COMP))
     if comp and not unamb_grid and not designation:
         return DerivativesEvidence(
             False, "E", False, "equity-compensation evidence only"
         )
-    npns = any(phrase in evidence + " " + text.leadin for phrase in spec.npns_phrases)
+    npns = bool(comp_hits.get(_NPNS))
     nonforward = tuple(
         base for base in unamb_grid if base not in ("forward", "forwards")
     )
@@ -255,9 +316,8 @@ def evaluate_derivatives_evidence(
             True, "A", True, "designation: " + ", ".join(designation)
         )
     suffix = any(
-        any(_present(base, line) for base in amb)
-        and any(_present(term, line) for term in spec.suffix_terms)
-        for line in lines
+        bool(hits.get(_AMBIGUOUS, frozenset()) & amb) and bool(hits.get(_SUFFIX))
+        for hits in line_hits
     )
     if len(amb) >= 2:
         return DerivativesEvidence(
@@ -271,15 +331,15 @@ def evaluate_derivatives_evidence(
         return DerivativesEvidence(
             True, "A", True, "ambiguous + anchor: " + ", ".join(anchors)
         )
-    offsetting = any(phrase in subject for phrase in spec.offsetting_phrases) and (
+    offsetting = bool(subject_hits.get(_OFFSETTING)) and (
         bool(designation)
         or "financial instruments" in subject
         or "financial assets" in subject
     )
     if offsetting:
         return DerivativesEvidence(True, "A", True, "offsetting form")
-    effects = any(phrase in subject for phrase in spec.effects_phrases) or any(
-        phrase in text.leadin for phrase in spec.effects_leadin_phrases
+    effects = bool(subject_hits.get(_EFFECTS)) or bool(
+        leadin_hits.get(_EFFECTS_LEADIN)
     )
     if effects:
         return DerivativesEvidence(True, "A", True, "asc 815 effects form")
@@ -290,7 +350,7 @@ def evaluate_derivatives_evidence(
         return DerivativesEvidence(
             True, "A", True, "position anchors: notional + fair value"
         )
-    if spec.commodity_header in subject and any(
+    if subject_hits.get(_COMMODITY_HEADER) and any(
         term in subject for term in _COMMODITY_EFFECTS
     ):
         return DerivativesEvidence(
@@ -357,20 +417,24 @@ def derivatives_subject_for_geometry(
     text = DerivativesText.from_geometry(geometry)
     lines = _subject_framing(text, geometry.leadin or "")
     framing = " ".join(lines)
-    unambiguous = _unambiguous(spec, lines)
+    index = _spec_index(spec)
+    unambiguous = _unambiguous(spec, _hits(index, lines))
     if unambiguous:
         return DerivativesSubject(True, "subject: " + ", ".join(unambiguous))
-    designation = tuple(p for p in spec.designation_phrases if p in framing)
+    framing_hits = index.scan(framing)
+    designation = tuple(
+        p for p in spec.designation_phrases if p in framing_hits.get(_DESIGNATION, ())
+    )
     if designation:
         return DerivativesSubject(True, "subject: " + ", ".join(designation))
     if "hedg" in framing:
         return DerivativesSubject(True, "subject: hedging")
-    anchors = tuple(term for term in _SUBJECT_ANCHORS if term in framing)
+    anchors = tuple(
+        term for term in _SUBJECT_ANCHORS if term in framing_hits.get(_SUBJECT_ANCHOR, ())
+    )
     if anchors:
         return DerivativesSubject(True, "subject: " + ", ".join(anchors))
-    if any(phrase in framing for phrase in spec.offsetting_phrases) and (
-        _instrument_row(spec, text.stubs)
-    ):
+    if framing_hits.get(_OFFSETTING) and _instrument_row(index, text.stubs):
         return DerivativesSubject(True, "subject: offsetting form")
     return _NO_SUBJECT
 
