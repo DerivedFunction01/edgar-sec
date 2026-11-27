@@ -141,6 +141,8 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "names": (
             "RE_FULL_DATE",
             "FULL_DATE_STUB_RE",
+            "MONTH_NAME_WORD_RE",
+            "FULL_DATE_ANY_RE",
             "RE_DATE_OR_YEAR",
             "TABLE_YEAR_RE",
             "YEAR_TOKEN_PATTERN",

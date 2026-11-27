@@ -134,6 +134,34 @@ _MONTH_NAME_PATTERN = build_alternation(MONTH_NAMES, auto_escape=True, compact=T
 FULL_DATE_STUB_RE = re.compile(rf"(?i)^(?:{_MONTH_NAME_PATTERN}) \d{{1,2}}, \d{{4}}$")
 
 
+# Full month names only, as a word: the names-only counterpart of
+# MONTH_WORD_RE (which carries the abbreviated aliases).
+MONTH_NAME_WORD_RE = re.compile(rf"\b(?:{_MONTH_NAME_PATTERN})\b", re.IGNORECASE)
+
+
+_DAY_FIRST_DATE_PAT = (
+    rf"\d{{1,2}}(?:{ORDINAL_SUFFIX_PATTERN})?\s+(?:{MONTH_PATTERN}),?\s+"
+    rf"{YEAR_TOKEN_PATTERN}"
+)
+
+
+_ISO_DATE_PAT = r"\d{4}-\d{2}-\d{2}"
+
+
+_NUMERIC_DATE_PAT = r"\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}"
+
+
+# Every evidence-backed full-date spelling in one recognizer
+# (format invariance): Month-first, day-first, ISO, and numeric
+# slash/dash/dot. Validation runs through the parse core, whose
+# 2-digit expansion is the settled rolling span.
+FULL_DATE_ANY_RE = re.compile(
+    rf"\b(?:{_DATE_TOKEN_PAT}|{_DAY_FIRST_DATE_PAT}|{_ISO_DATE_PAT}|"
+    rf"{_NUMERIC_DATE_PAT})\b",
+    re.IGNORECASE,
+)
+
+
 _Q_TOKEN_PAT = rf"Q[1-4]\s+{YEAR_TOKEN_PATTERN}"
 
 
