@@ -238,10 +238,11 @@ def test_summary_guard_refuses_lending_sense():
     # N1: a troubled-debt-restructuring table — "restructuring"
     # in the lending sense — is refused however it is captioned.
     rows = (
-        ("Commercial loans", "10"),
-        ("Residential loans", "5"),
-        ("Consumer loans", "3"),
-        ("Total loans restructured", "18"),
+        ("", "Initial Restructuring", "Multiple Restructurings"),
+        ("Commercial and industrial", "10", "2"),
+        ("Consumer installment", "5", "1"),
+        ("Agricultural", "3", "0"),
+        ("Total", "18", "3"),
     )
     prose = (
         "The company enters into troubled debt restructurings "
