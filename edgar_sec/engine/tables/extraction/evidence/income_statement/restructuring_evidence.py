@@ -290,6 +290,9 @@ _SUMMARY_ANATOMY_MARKERS = (
     "total current",
 )
 
+_PAREN_SPAN_RE = re.compile(r"\([^)]*\)")
+
+
 _SUMMARY_CHARGE_VOCAB = (
     "restructur",
     "severance",
@@ -301,12 +304,11 @@ _SUMMARY_CHARGE_VOCAB = (
 
 
 def _summary_guard(arm: str, lines_l: list[str], caption_l: str, note_l: str) -> str:
-    """The summary form's precision guard (V3 with the priced
-    R-A/R-B recoveries and the C3 extended veto): lead anchor or
-    a two-charge-type prose form, no competing anatomy outside
-    parentheses, charge vocabulary in rows or head."""
+    """The summary form's precision guard: V3 plus the priced
+    R-A/R-B recoveries and the C3 extended veto — lead anchor or
+    two-charge-type prose, anatomy veto, charge vocabulary."""
     rows_l = "\n".join(lines_l)
-    veto_l = re.sub(r"\([^)]*\)", " ", rows_l)
+    veto_l = _PAREN_SPAN_RE.sub(" ", rows_l)
     if any(marker in veto_l for marker in _SUMMARY_ANATOMY_MARKERS):
         return "competing anatomy"
     head_l = note_l + " " + caption_l
