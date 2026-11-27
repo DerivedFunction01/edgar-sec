@@ -613,3 +613,73 @@ def test_summary_form_without_a_total_row_stays_out():
     result = _verdict(rows, caption_stack=("Restructuring Charges",))
     assert not result.admitted
     assert result.detail == "no bookend pair in any filed form"
+
+
+def test_summary_guard_refuses_a_prose_anchor():
+    # A summary fragment whose subject arrives only through the
+    # prose arm is refused by the guard: the priced V3 form
+    # requires a lead anchor (caption, note, tail, first line).
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Other exit costs", "12"),
+        ("Total", "177"),
+    )
+    prose = "The company recorded restructuring charges in the year. " + (
+        "Further detail follows in the notes to the statements. " * 30
+    )
+    result = _verdict(rows, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert not result.admitted
+    assert result.detail == "summary form refused: prose anchor"
+
+
+def test_summary_guard_refuses_competing_anatomy():
+    # A lead-anchored fragment whose own rows are a revenue
+    # statement's anatomy is refused, however it is captioned.
+    rows = (
+        ("North America", "100"),
+        ("Europe", "80"),
+        ("Other regions", "20"),
+        ("Total revenue", "200"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_missing_charge_vocabulary():
+    # The payment-schedule shape: lead-anchored through a subject
+    # term outside the charge vocabulary, with no charge word in
+    # its rows or its head — refused (the priced :14 kill).
+    rows = (
+        ("Year ending December 31, 2006", "5.9"),
+        ("Year ending December 31, 2007", "4.3"),
+        ("Year ending December 31, 2008", "3.4"),
+        ("Total", "13.6"),
+    )
+    result = _verdict(rows, caption_stack=("Employee Separation Program",))
+    assert not result.admitted
+    assert result.detail == "summary form refused: no charge vocabulary"
+
+
+def test_summary_guard_admits_a_note_carried_segment_summary():
+    # The adopted :217 shape: segment-name rows and a Total,
+    # the subject and the charge vocabulary carried by the note
+    # title — admitted as a summary claim.
+    text = RestructuringText(
+        caption="",
+        note_title="Restructuring",
+        prose="",
+        lines=(
+            "Eastern | $ 4",
+            "Midwest | 3",
+            "South | 5",
+            "West | 2",
+            "Corporate | 1",
+            "Eliminations | 1",
+            "Total | $ 19",
+        ),
+    )
+    result = evaluate_restructuring_evidence(text, SPEC)
+    assert result.admitted
+    assert result.detail.startswith("restructuring summary: subject lead")
