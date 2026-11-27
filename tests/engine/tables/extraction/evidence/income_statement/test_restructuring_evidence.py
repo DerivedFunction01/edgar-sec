@@ -702,6 +702,8 @@ def test_summary_guard_admits_a_parenthesized_marker():
     result = evaluate_restructuring_evidence(text, SPEC)
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
+
+
 def test_summary_guard_admits_a_two_charge_type_prose_form():
     # R-B: a prose-anchored summary whose own rows carry at
     # least two distinct charge types is admitted — the priced
