@@ -143,12 +143,7 @@ _SEP_HINTS = (
 def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool:
     """C-SEAT-NARROW admission (the priced stage
     divergence cure): sole anchor leg the funded leg
-    on the bare term, no veto or separator kill. A
-    veto entry on the funded anchor term itself
-    (term:benefit obligation, stamped by the cascade
-    term-veto from the geometry's own stubs) is not
-    a kill: it is the funded evidence read by
-    another channel, not a rival's veto."""
+    on the bare term, no veto or separator kill."""
     spec = PENSION_ANCHOR_SPECS.get(FAMILY)
     if spec is None:
         return False
@@ -169,6 +164,8 @@ def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool
     score = result.scores.get(FAMILY)
     if score is None:
         return True
+    # A veto entry on the funded anchor term itself is
+    # not a kill: the funded evidence, read by another channel.
     return not any(
         (entry.channel == "veto" and entry.detail != "term:benefit obligation")
         or (
