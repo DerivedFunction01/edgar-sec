@@ -148,9 +148,7 @@ def specimen_features(row: dict) -> dict:
         f[f"hdr:{k}"] = 1
     cap_toks = set()
     for cap in row["caption_stack"]:
-        cap_toks.update(
-            t for t in norm(cap).split() if len(t) > 2 and t not in stop
-        )
+        cap_toks.update(t for t in norm(cap).split() if len(t) > 2 and t not in stop)
     for t in cap_toks:
         f[f"cap:{t}"] = 1
     prose = norm(row["prose_before"][-700:] + " " + row["prose_after"][:300])
@@ -180,20 +178,14 @@ def specimen_features(row: dict) -> dict:
         )
     )
     f["bookend_end"] = int(
-        bool(
-            re.search(
-                r"ending|closing balance|balance at (the )?end", stub_blob
-            )
-        )
+        bool(re.search(r"ending|closing balance|balance at (the )?end", stub_blob))
     )
     f["has_bookend_pair"] = f["bookend_begin"] and f["bookend_end"]
     move_hits = sum(1 for s in stubs if MOVE_WORDS & set(norm(s).split()))
     f["move_density"] = round(move_hits / max(1, len(stubs)), 3)
     head_blob = " ".join(headers)
     f["date_header"] = int(bool(DATE_RE.search(head_blob.lower())))
-    f["year_ladder"] = int(
-        len(re.findall(r"\b(?:19|20)\d{2}\b", head_blob)) >= 3
-    )
+    f["year_ladder"] = int(len(re.findall(r"\b(?:19|20)\d{2}\b", head_blob)) >= 3)
     f["asof_header"] = int("as of" in head_blob.lower())
     f["_stub_keys"] = skeys
     f["_stub_blob"] = stub_blob
@@ -326,9 +318,7 @@ def _family_register(fam_rows: dict, feat: dict, sparse: set) -> dict:
 
     def in_pool(key):
         name = key[2:]
-        if not (
-            name.startswith(content_prefixes) or name.startswith(structural)
-        ):
+        if not (name.startswith(content_prefixes) or name.startswith(structural)):
             return False
         kf, kt = cand[key]
         return len(kf) >= 2 and len(kt) <= max_leg_touches
@@ -345,16 +335,8 @@ def _family_register(fam_rows: dict, feat: dict, sparse: set) -> dict:
     def core_cells(terms, tag):
         if not terms:
             return
-        kf = {
-            s
-            for s in f_sids
-            if any(not feat[s].get(f"stub:{t}") for t in terms)
-        }
-        kt = {
-            s
-            for s in t_sids
-            if any(not feat[s].get(f"stub:{t}") for t in terms)
-        }
+        kf = {s for s in f_sids if any(not feat[s].get(f"stub:{t}") for t in terms)}
+        kt = {s for s in t_sids if any(not feat[s].get(f"stub:{t}") for t in terms)}
         combos[f"core_absence_any_{tag}"] = {
             "legs": [f"B:stub:{t}" for t in terms],
             **price_rule(kf, kt, sparse),
@@ -392,10 +374,7 @@ def _family_register(fam_rows: dict, feat: dict, sparse: set) -> dict:
     # held-out cross-pricing: derive the greedy combination on one
     # half of the falses, price its kills on the other half (and
     # vice versa). A combination that only memorizes collapses here.
-    half = {
-        s: int(hashlib.sha1(s.encode()).hexdigest()[:8], 16) % 2
-        for s in f_sids
-    }
+    half = {s: int(hashlib.sha1(s.encode()).hexdigest()[:8], 16) % 2 for s in f_sids}
     cross_kills = 0
     cross_touches = 0
     for h in (0, 1):
@@ -475,11 +454,7 @@ def _family_register(fam_rows: dict, feat: dict, sparse: set) -> dict:
             bkf |= cand[leg][0]
     elif best_name.startswith("core_absence_any"):
         terms = strong_terms if best_name.endswith("_strong") else vocab_terms
-        bkf = {
-            s
-            for s in f_sids
-            if any(not feat[s].get(f"stub:{t}") for t in terms)
-        }
+        bkf = {s for s in f_sids if any(not feat[s].get(f"stub:{t}") for t in terms)}
     elif best_name.startswith("core_share"):
         parts = best_name.split("_")
         share = float(parts[3])
@@ -503,13 +478,10 @@ def _family_register(fam_rows: dict, feat: dict, sparse: set) -> dict:
                     "true_family": r.get("true_family"),
                     "firm": sid.split("-")[0],
                     "core_terms_carried": sorted(
-                        t
-                        for t in strong_terms
-                        if feat[sid].get(f"stub:{t}")
+                        t for t in strong_terms if feat[sid].get(f"stub:{t}")
                     ),
                     "killed_by_lexical_single": any(
-                        sid in kf and len(kt) <= 2
-                        for kf, kt in lexical.values()
+                        sid in kf and len(kt) <= 2 for kf, kt in lexical.values()
                     ),
                 }
             )
@@ -522,16 +494,12 @@ def _family_register(fam_rows: dict, feat: dict, sparse: set) -> dict:
         "singles_total": len(singles),
         "pool_legs": len(pool),
         "zero_price_candidates": len(zero_price),
-        "zero_price_examples": [
-            s["feature"] + "|" + s["dir"] for s in zero_price[:10]
-        ],
+        "zero_price_examples": [s["feature"] + "|" + s["dir"] for s in zero_price[:10]],
         "combos": combos,
         "best_combo": best_name,
         "touch_budget": budget,
         "best_over_budget": best_over_budget,
-        "singles_inbudget": [s for s in singles if s["touches"] <= budget][
-            :20
-        ],
+        "singles_inbudget": [s for s in singles if s["touches"] <= budget][:20],
         "residual": residual,
     }
 
@@ -564,9 +532,7 @@ def price_population(rows: list[dict]) -> dict:
             for k in set(feat[r["sid"]]["_stub_keys"]):
                 tcount[k] += 1
         n_t = max(1, len(trues))
-        core = {
-            k: c for k, c in tcount.items() if c >= max(2, 0.2 * n_t)
-        }
+        core = {k: c for k, c in tcount.items() if c >= max(2, 0.2 * n_t)}
         core_strong = {k for k, c in core.items() if c >= 0.5 * n_t}
         staged[fam] = {
             "n_falses": len(falses),

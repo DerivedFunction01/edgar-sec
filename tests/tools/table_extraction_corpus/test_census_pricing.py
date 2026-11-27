@@ -50,9 +50,7 @@ def _population():
         for i in range(2)
     ]
     rows.append(_row("3000000003-24-000001:3", "beta", "true", ROLLFORWARD))
-    rows.append(
-        _row("4000000004-24-000001:4", "alpha", "true", "", text_source=None)
-    )
+    rows.append(_row("4000000004-24-000001:4", "alpha", "true", "", text_source=None))
     return rows
 
 
@@ -70,9 +68,7 @@ def test_price_population_prices_and_names_residual():
     assert alpha["n_falses"] == 2
     assert alpha["n_trues"] == 4
     assert alpha["best_combo"]
-    assert all(
-        r["sid"].startswith("2000000002") for r in alpha["residual"]
-    )
+    assert all(r["sid"].startswith("2000000002") for r in alpha["residual"])
     single = alpha["singles"][0]
     assert set(single) >= {"feature", "dir", "kills", "touches"}
     assert register["beta"]["note"] == "no falses on this population"
