@@ -296,6 +296,11 @@ _SUMMARY_ANATOMY_MARKERS = (
     "real estate",
     "encumbrance",
     "accumulated depreciation",
+    "% change",
+    "fair value",
+    "segment operating income",
+    "segment operating profit",
+    "segment profit",
 )
 
 _PAREN_SPAN_RE = re.compile(r"\([^)]*\)")

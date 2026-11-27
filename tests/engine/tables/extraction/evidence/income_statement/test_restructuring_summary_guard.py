@@ -312,3 +312,108 @@ def test_summary_guard_refuses_subject_free_prose():
     )
     assert not result.admitted
     assert result.detail == "summary form refused: prose subject absent"
+
+
+def test_summary_guard_refuses_pct_change_anatomy():
+    # Residue cure: a % Change variance column is MD&A
+    # function-table anatomy, however it is captioned.
+    rows = (
+        ("", "2019", "2018", "% Change"),
+        ("Sales and marketing", "49,565", "57,714", "(14)"),
+        ("Stock-based compensation", "2,221", "2,313", "(4)"),
+        ("Restructuring costs", "349", "229", "52"),
+        ("Total sales and marketing", "52,135", "60,256", "(13)"),
+        ("Percentage of revenue", "17.8%", "21.3%", ""),
+    )
+    result = _verdict(
+        rows,
+        caption_stack=("Restructuring Charges",),
+        prose_before="The company recorded restructuring charges in the year.",
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_segment_profit_anatomy():
+    # Residue cure: a segment-profit reconciliation's stubs
+    # are competing anatomy.
+    rows = (
+        ("Total segment profit (loss)", "172,901"),
+        ("Restructuring charges", "(15,463)"),
+        ("Operating income (loss)", "106,427"),
+    )
+    result = _verdict(
+        rows,
+        caption_stack=("Restructuring Charges",),
+        prose_before="The company recorded restructuring charges in the year.",
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_segment_operating_profit_anatomy():
+    # Residue cure: the segment operating profit form, with
+    # restructuring as one reconciling line.
+    rows = (
+        ("U.S. Retail", "1,779"),
+        ("Total segment operating profit", "2,119"),
+        ("Restructuring and other exit costs", "(30)"),
+    )
+    result = _verdict(
+        rows,
+        caption_stack=("Restructuring Charges",),
+        prose_before="The company recorded restructuring charges in the year.",
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_fair_value_anatomy():
+    # Residue cure: a fair-value-basis schedule's header is
+    # competing anatomy.
+    rows = (
+        ("Project Name", "Project Status", "June 30, 2004", "Fair Value Basis"),
+        (
+            "New Roads Holding LLC",
+            "Non-operating asset",
+            "1,676",
+            "Projected cash flows",
+        ),
+        ("Devon Power LLC", "Operating at a loss", "64,198", "Projected cash flows"),
+        (
+            "Middletown Power LLC",
+            "Operating at a loss",
+            "157,323",
+            "Projected cash flows",
+        ),
+        ("Other", "Terminated", "2,085", ""),
+        ("Total impairment charges", "", "223,606", ""),
+    )
+    result = _verdict(
+        rows,
+        caption_stack=("Fair Value Basis", "Restructuring Charges"),
+        prose_before="The company recorded restructuring charges in the year.",
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_segment_operating_income_anatomy():
+    # Residue cure: a segment operating income (non-GAAP)
+    # reconciliation's bottom line is competing anatomy.
+    rows = (
+        ("", "Fabrication Technology", "Medical Technology", "Total"),
+        ("Operating income (loss) (GAAP)", "224.4", "(1.2)", "162.3"),
+        ("Restructuring and other related charges", "21.6", "23.4", "45.0"),
+        ("MDR and other costs", "—", "6.9", "6.9"),
+        ("Segment operating income (loss) (non-GAAP)", "246.0", "29.1", "214.3"),
+        ("Strategic transaction costs", "—", "—", "2.8"),
+        ("Adjusted EBITA (non-GAAP)", "282.3", "136.7", "361.0"),
+    )
+    result = _verdict(
+        rows,
+        caption_stack=("Restructuring Charges",),
+        prose_before="The company recorded restructuring charges in the year.",
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
