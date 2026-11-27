@@ -51,11 +51,10 @@ the lane's hands, never an owner decision. Venue-present:
 the measure reads the programme's work set for the
 staffable count and the run-record store for the workers
 observed; the fleet capacity source prices idle capacity
-only. No-venue: no sessions exist; the expected count is
-the staffable count still, the local machine's own
-parallelism is the capacity, and serial local work beyond
-that capacity is not a staffing defect — the class binds
-wherever capacity exists to be idle.
+only. No-venue: the expected count is the staffable
+count still, the local machine's own parallelism is the
+capacity, and serial local work beyond that capacity is
+not a staffing defect.
 
 **Inline class — only a measure clears.** An
 acknowledgement never clears a staffing row; only a later
@@ -171,26 +170,13 @@ toward expected and actual exactly as venue lanes do. A
 declaration is not its own yardstick: the declared count
 is checked against the staffable count, and a declaration
 below it is a staffing defect in itself, priced by the
-shortfall — a seat never measures clean by declaring
-less.
-Ping: the declaration stays live only while the lane
+shortfall. Ping: the declaration stays live only while the lane
 pings; the ping is the lane's own checkpoint writes on
 the supervision cadence, never a separate manual act, and
 a missed ping raises the lane's row at once. Renew: at
 the estimate's end the lane renews with a new estimate or
 terminates; the record shows estimate against actual and
-the renewal count.
-
-The measured record is the next estimate's analogy base:
-landing records, per-phase prices, and fire statistics —
-which phases consumed the wall-clock, which fires never
-reached a verdict, what a formation of this shape cost
-last time — are priced into the next estimate of the
-same class, in every work form. An estimate that ignores
-a measured sink of its own class repeats it; the
-evidence register that holds the measurements is the
-pattern library's recorded form, and pricing from it is
-the loop that keeps the library current. Terminate: only on an explicit,
+the renewal count. Terminate: only on an explicit,
 checkable condition drawn from the queue's marker
 vocabulary — never by silence, by expiry, or on the
 lane's own say-so; an expired declaration with no renewal
@@ -201,8 +187,16 @@ a lane never ends, merges, or hands its item back for
 want of a session — declared lanes exceeding the sessions
 up is the healthy shape. The measure cross-checks three
 signals — lane records, venue run records, and worktree
-activity — and a disagreement among them is a finding,
-not a rounding.
+activity — and a disagreement among them is a finding.
+
+The measured record is the next estimate's analogy base:
+landing records, per-phase prices, and fire statistics
+are priced into the next estimate of the same class, in
+every work form. An estimate that ignores a measured
+sink of its own class repeats it; the evidence register
+that holds the measurements is the pattern library's
+recorded form, and pricing from it is the loop that
+keeps the library current.
 
 Estimates are part of the record, carried on the
 surface the work runs: every plan states the estimate
@@ -217,9 +211,7 @@ mode-independent: it governs any stated price in any
 artifact or message — a plan, a todo, a register row,
 an account, a census, a ruling, or a chat message. A
 price does not escape the discipline by the
-informality of its surface; accounts and chat are
-where long prices are produced and relayed, and the
-discipline binds where the price is stated. Estimates are
+informality of its surface. Estimates are
 stated at the scale the work runs: a code edit is
 minutes, many under five, and over thirty minutes is
 unlikely for an edit — an edit estimated past thirty
@@ -251,8 +243,7 @@ declared fan-out prices at its longest lane's
 wall-clock, not its lanes summed. A summed serial figure
 presented as a plan's size — in a headline, a ruling, or
 a report — is a mispricing of the same class as an
-unjustified overrun: it is the slack a reader waits
-through.
+unjustified overrun.
 
 Bundled scope is unbundled at pricing time. A single
 figure spanning design, build, verification, and
@@ -298,14 +289,11 @@ be bounded in advance enters the slow register.
 
 Once a census or inventory of an edit surface exists,
 its edits price per item at the minutes scale the
-inventory makes possible — a declaration plus a call, a
-guard, a swap, each priced as the item it is. Pricing
-inventoried mechanical edits as craft work is a
-mispricing: the inventory is what the price is made
-from.
+inventory makes possible. Pricing inventoried mechanical
+edits as craft work is a mispricing: the inventory is
+what the price is made from.
 
-The slow register's boundaries — the over-hour classes
-have boundaries, and size alone
+The slow register's boundaries: size alone
 meets none of them. Novel work is work whose design has
 no existing shape in the codebase to copy and whose
 failure modes cannot be enumerated in advance;
@@ -396,7 +384,6 @@ lane's hands; a row still unstaffed after the escalation
 interval (a mechanism default; its value is owned by the
 bindings layer) escalates to the parent thread and stays
 escalated until a measure shows the programme staffed.
-The parent step replaces endless direct re-pings.
 
 Replacement at the stall bound: a lane that misses one
 progress-checkpoint interval is replaced, not
@@ -479,9 +466,9 @@ message (thread and time). An uncited claim is a defect,
 not a state, surfaced as its own row priced with the
 frozen duration and addressed to the verifying party from
 the first report; the verifying party holds the owner's
-actual traffic, an unverifiable claim is void on detection
-and the lane resumes under its standing authorization, and
-the row never escalates to the owner as a question. A
+actual traffic, and the claim's verdict follows the
+evidentiary rule (The record never verifies itself). The
+row never escalates to the owner as a question. A
 cited claim is a state and draws no row.
 
 Blocked is a supervised state, not an exit: only the
@@ -542,8 +529,7 @@ The six fields:
   owner-only decision, or a verified external blocker.
   The claim carries its cited basis, with its time, and a
   verification stamp; an uncited or unverified claim is
-  void — the work resumes under its standing authorization
-  and the claim is surfaced as a defect. Sequencing
+  void (The record never verifies itself). Sequencing
   choices, agent-clearable waits, and matters already
   decided are never blocked states.
 - **Work record** — where progress is measured: the record
@@ -643,11 +629,10 @@ declared outputs were never recovered — a terminal
 state that reads complete while the substance is
 absent, and the derivable face of the orphan
 residual above, since such a record carries the
-outputs declaration the residual waits on. The
-record is the runner's, and recording is not
-consumption: the collector stamps a terminal state
-within seconds, and the outcome then sits silent
-unless the launching seat polls for it. Consumption
+outputs declaration the residual waits on. Recording
+is not consumption: the collector stamps a terminal
+state, and the outcome then sits silent unless the
+launching seat polls for it. Consumption
 is the owning programme's own record — a todo, a
 pass record, a lane or coordinator record at the
 programme's declared locations — citing the run in
@@ -674,9 +659,7 @@ claim is a progress-checkpoint line naming the commit
 beside a completion word — a build stated complete, a
 gate stated passed — and the measure is ancestry: the
 tick checks the named commit against main, never the
-claim's own word, so a checkpoint claiming "landed"
-for a commit main does not carry is the same gap in
-its sharpest form. A gate verdict is not a landing,
+claim's own word. A gate verdict is not a landing,
 and a branch push is not one either: the transport
 branch is the landing vehicle, not the landing. A
 claim at least one checkpoint interval old (the
@@ -701,8 +684,8 @@ The actuator ladder, in order; a message alone is
 the weakest form and never counts as the act by
 itself. Self-collect: for a terminal-but-uncollected
 record, read the result and deliver it with its
-verdict — since the underivable orphan shape is not
-derived, this rung stays a coordinator act. Direct
+verdict — for the underivable orphan shape this rung
+stays a coordinator act. Direct
 commission: steer the owning coordinator carrying
 the concrete next act, drawn from the programme's
 own plan and records — the named step, its inputs,
@@ -722,8 +705,7 @@ hand-back consumed). The next run checks it; an
 unmet expectation escalates the channel
 (coordinator note, then defect report to the parent
 thread naming the non-response) and re-actuates in
-the same run. An acknowledgement is not movement;
-only the measured change closes the gap. A gap
+the same run. A gap
 actuates at most once per hour while unchanged,
 unless its expectation failed verification — a
 failed expectation always re-actuates immediately.
@@ -773,10 +755,9 @@ with no ramp-up. The form's purpose is cost: editors
 composing over shared worktrees collide as they go, in
 the open, rather than at a landing boundary, and the
 composed tree gates once — parallel work pays neither
-merge-conflict costs nor merge-driven re-testing. A
-plan's wall-clock, priced and later measured, is its
-serial prefix plus its longest parallel branch plus its
-fan-in, never a serial sum of branch estimates.
+merge-conflict costs nor merge-driven re-testing. Its
+wall-clock is that ruling's critical path: serial prefix
+plus longest parallel branch plus fan-in.
 
 One executor per plan: an adopted plan names its executing
 lane in its header, before its first edit — that edit is
@@ -852,8 +833,7 @@ A gate scopes to the change: a lane's gate runs the tests
 for its delta's affected modules — the gate tool's
 change-aware selection, widened to every surface sharing
 a changed contract — and never the full suite as a
-requirement. Per-lane full gates are the slowness this
-abolishes. Lanes fan in as union trees, and where a full
+requirement. Lanes fan in as union trees, and where a full
 run is owed it happens once, on the union tree.
 
 Gate work shards across the available parallel capacity:
@@ -876,8 +856,7 @@ whose pre-state is not yet known. The union is also the
 dispatch default, not only the landing form: work
 standing in a gate queue is dispatched as one union fire
 by the dispatcher itself, and the fire's record names
-its constituents — per-item gate queues are abolished,
-not merely discouraged.
+its constituents — per-item gate queues are abolished.
 
 A full run is a proof instrument, not a landing gate:
 where one is owed it runs last, and even it may skip
@@ -939,8 +918,8 @@ see. A mechanical refusal that attaches to a plan's step
 blocks — a plan gate's formation check — has no planless
 reach; its contract twin, the grouping act at staffing
 and the standing form itself, is the carrier in both
-planless forms, and the record names that asymmetry
-rather than papering over it. Wall-clock counters read
+planless forms, and the record names that asymmetry.
+Wall-clock counters read
 the home repo's landing records; another form's phase
 accounting stands in its own records — the register
 row's closure fields, the lane's state record — until a
@@ -967,11 +946,9 @@ offers no tier choice, and nothing is owed.
 
 A venue's finite capacities — its pid and thread budget,
 its concurrent connections, its sessions — are declared
-in its definition, not discovered at runtime. A job sizes
-its parallelism (worker pools, thread pools, connection
-use) to a share of the declared budget; a consumer that
-cannot state its footprint against the budget is not
-ready to fire on a shared venue.
+in its definition, not discovered at runtime. A consumer
+that cannot state its footprint against the declared
+budget is not ready to fire on a shared venue.
 
 Sizing counts every pool the job brings: its declared
 workers and the thread pools its libraries create at
@@ -984,8 +961,7 @@ measured by census of the holding process (thread names,
 wait state, creation pattern) and cured at the consumer —
 engine pool caps or the suite's own executor sizing —
 before any rise of the venue's declared budget is
-entertained; idle pools are neither legitimate work nor
-proof the budget is small. Process sharding multiplies a
+entertained. Process sharding multiplies a
 per-process claim rather than dividing it; machine
 sharding divides the container count, not the claim.
 
@@ -1015,9 +991,7 @@ venue's declared budget; the cap routes the class
 across venues. The curves and their knees are untracked
 bindings per fleet, held with the venue definitions:
 the spec carries the form, never a machine's name or a
-measured value — the rule stands in tracked form
-because it is what a coordinator itself schedules
-against.
+measured value.
 
 Venue state is classified on a generic contract, the same
 for every venue kind: idle, advancing, saturated, wedged.
@@ -1041,9 +1015,10 @@ states. Completion words are measured words: in a
 checkpoint or a report, "complete" is reserved for
 landed-on-main, and a built-but-unlanded item is stated
 "built, unlanded" — the unlanded gap class reads the
-record on exactly this vocabulary. Work running past an hour while its thread stays
-active states itself under stalling — long-running is
-self-stated at the hour, not discovered after the fact.
+record on exactly this vocabulary. Work running past an
+hour while its thread stays active states itself under
+stalling — long-running is self-stated at the hour, not
+discovered after the fact.
 
 The per-state forms:
 
@@ -1095,6 +1070,61 @@ a follow-up, improvement, or consolidation proposed in
 prose alone does not exist, and a prose-only offer is a
 reporting defect.
 
+A lane's stop is a claim, read from its stated cause. A
+stop whose stated cause matches a ruled agent-clearable
+class is void as a stop: the supervising sweep applies
+the class's standing disposition in the same pass that
+detects the stop, and the stop never becomes an owner
+item. The class register is closed: a class enters it
+only by an owner ruling, recorded with its matching
+form, its disposition, and its proof. The register
+itself is deployment data, held beside the supervising
+machinery in the form this text fixes; its content
+changes only by the ruling that admits a class. The
+ruled dispositions are the standing forms — an
+execution-risk flag re-routes its flagged output in the
+same movement and the lane continues; an agent-clearable
+wait clears within the original approved scope; a missed
+progress interval staffs its successor in the same
+movement. Actuation requires a positive exact match of
+the stated cause against a register form; an
+unrecognized cause surfaces and is never actuated on a
+guess. The hard-stop register bounds the mechanism
+absolutely: a stated cause naming a hard-stop class is
+refused before any class match is attempted, so no
+actuation path exists from an owner-class stop. Every
+actuation carries its proof — the lane's next conforming
+progress record naming the disposition's effect — and an
+unmet proof escalates; it never retries silently, and it
+never converts the stop into an owner item.
+
+## The record never verifies itself
+
+An owner-block claim is verified against owner traffic
+and the hard-stop register only. The claiming lane's own
+records — its status records, its checkpoints, and every
+cadence copy of them — are the claim restating itself
+and carry no evidentiary weight, however many files
+repeat them. The default verdict on an owner-block claim
+is false: it is true only when it cites the owner's
+actual message, identified by thread and time, and that
+citation verifies against owner traffic the system
+holds, or when it names a hard-stop-floor act that
+exists. An uncited or unverifiable claim is void on
+detection: the lane resumes under standing authorization
+in the same pass, the frozen interval is priced and
+recorded as a defect against the stamping seat, and the
+voiding is never posed to the owner as a question nor
+left standing as true pending review. A stop's state
+string parses by exact match against the canonical
+status vocabulary; a near-miss string is an unrecognized
+signal that escalates to judgment, never a guess toward
+an owner block, and an absent or corrupt signal never
+reads as one. A struck classification restated as
+present-tense fact in derived or standing context is the
+same void claim, not corroboration, and is struck or
+flagged in the same pass that voids the claim.
+
 ## Handler freshness
 
 A handler registry's rows carry a served currency
@@ -1142,11 +1172,10 @@ the registry's programme declarations plus the armed
 work-record entries — a topic with no armed entries has
 no live work. Liveness and completion come from todo
 statuses, checkpoint stamps, and worktree presence: a
-standing worktree is unfinished work whatever any
-earlier claim said, and a programme is complete only
-when its armed entries are terminal and no worktree
-stands unlanded. Blocked claims come from blocked
-todos: the todo's status is `blocked`, its basis is in
+programme is complete only when its armed entries are
+terminal and no worktree stands unlanded. Blocked
+claims come from blocked todos: the todo's status is
+`blocked`, its basis is in
 its body, and its citation is a body line naming the
 owner's message thread and the time — a claim without
 one is unverified, never a state. Owner-waiting
@@ -1161,7 +1190,7 @@ against the actual in-flight set.
 The surfaces that read records alone once the transport
 is retired are the sends ledger — the steers and
 escalations the tick sends — and the staffing rows the
-measure serves. No live surface reads a status code.
+measure serves.
 
 Named remainder, not silently left: the digest's
 historical rendering of posted records and the waits
@@ -1180,10 +1209,9 @@ characters and never by where a line happens to wrap.
 A surface never joins items into one dot-separated
 string: each item gets its own row, or the surface
 compacts to a summary — a count, tap to expand. A space
-is not a valid separator: items are separated by rows
-and layout, never by spaces inside a string, and
-wrapping behaviour is consistent across surfaces of a
-kind. A summary never repeats its title: title and
+is not a valid separator either. Wrapping behaviour is
+consistent across surfaces of a kind. A summary never
+repeats its title: title and
 summary are separate elements on a row, and the summary
 carries what the title does not say.
 
