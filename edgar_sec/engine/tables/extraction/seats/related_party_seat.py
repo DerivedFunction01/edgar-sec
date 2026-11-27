@@ -108,7 +108,9 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     )
     # The table's own heading names the related-party
     # subject; a prose-blob heading names nothing.
-    heading_leg = len(heading.split()) <= PROSE_HEADING_WORDS and "heading" in heading_hits
+    heading_leg = (
+        len(heading.split()) <= PROSE_HEADING_WORDS and "heading" in heading_hits
+    )
     stub_any = "stub" in stub_hits
     corroborated = heading_leg and stub_any
     separator = geometry.summary_separator
@@ -121,7 +123,9 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
         return result
     title_hits = _TITLE_INDEX.scan(normalize_text(geometry.note_title or ""))
     stub_leg = "title" in title_hits and stub_any
-    affiliate_leg = ("heading" in heading_hits or "relational" in heading_hits) and stub_any
+    affiliate_leg = (
+        "heading" in heading_hits or "relational" in heading_hits
+    ) and stub_any
     relationship_leg = "relationship" in title_hits and "context" in _LEADIN_INDEX.scan(
         normalize_text(geometry.leadin)
     )
