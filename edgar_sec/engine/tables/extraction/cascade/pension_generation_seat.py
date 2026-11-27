@@ -13,6 +13,12 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
+from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
+    PENSION_ANCHOR_SPECS,
+    PensionText,
+    pension_anchor_set,
+)
 from edgar_sec.engine.tables.extraction.seats.seat_application import seat_role
 
 FAMILY = "pension"
@@ -123,6 +129,50 @@ def _definition_form(geometry: GeometryText) -> bool:
     )
 
 
+_SEP_HINTS = (
+    "cell fired",
+    "summary separator",
+    "seg:",
+    "rows_le_2",
+    "inc:",
+    "host_stubkey",
+    "revenue_stub",
+)
+
+
+def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool:
+    """C-SEAT-NARROW admission (the priced stage
+    divergence cure): sole anchor leg the funded leg
+    on the bare term, no veto or separator kill."""
+    spec = PENSION_ANCHOR_SPECS.get(FAMILY)
+    if spec is None:
+        return False
+    text = PensionText.from_geometry(geometry)
+    if pension_anchor_set(text, spec) != frozenset({"funded"}):
+        return False
+    stubtext = (
+        "\n".join(normalize_text(stub) for stub in text.stubs)
+        + "\n"
+        + normalize_text(text.prose_after)
+    )
+    if "benefit obligation" not in stubtext:
+        return False
+    if any(
+        term in stubtext for term in spec.funded_terms if term != "benefit obligation"
+    ):
+        return False
+    score = result.scores.get(FAMILY)
+    if score is None:
+        return True
+    return not any(
+        entry.channel == "veto"
+        or (
+            entry.channel == "gate" and any(hint in entry.detail for hint in _SEP_HINTS)
+        )
+        for entry in score.evidence
+    )
+
+
 def _seat_one(
     geometry: GeometryText,
     result: CompetitionResult,
@@ -132,7 +182,9 @@ def _seat_one(
     if result.claims:
         return result
     note_leg = geometry.note_number is not None and geometry.note_number in anchor_notes
-    if not (note_leg and _definition_form(geometry)):
+    if not note_leg:
+        return result
+    if not (_definition_form(geometry) or _funded_only_form(geometry, result)):
         return result
     score = result.scores.get(FAMILY)
     group = ClaimGroup(
