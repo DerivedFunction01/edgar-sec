@@ -72,8 +72,7 @@ _QUIET_TERMS = (
 def _seat_index() -> TermIndex:
     """One substring index over the seat's stub terms: kind is
     the term itself; npbc groups and companions ride own kinds.
-    Phrase entries only — the seat's matching is literal
-    substring for single words too."""
+    Phrase entries only — the seat's matching is literal substring."""
     entries = [TermEntry(term, term) for term in _QUIET_TERMS]
     for i, group in enumerate(NPBC_GROUPS):
         entries.extend(TermEntry(term, f"npbc:{i}") for term in group)

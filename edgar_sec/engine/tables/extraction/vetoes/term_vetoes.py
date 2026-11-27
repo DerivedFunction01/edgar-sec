@@ -87,8 +87,7 @@ def hard_veto_form_exemption(family: str, term: str) -> tuple[str, ...] | None:
 def _veto_index() -> TermIndex:
     """One substring index over every veto term: kind is the
     spec's position, value the term as listed. Entries carry
-    the normalized term — matching is normalized substring,
-    as priced; phrase entries only."""
+    the normalized term; phrase entries only."""
     return TermIndex(
         TermEntry(normalize_text(term), str(i), value=term)
         for i, spec in enumerate(TERM_VETOES)
