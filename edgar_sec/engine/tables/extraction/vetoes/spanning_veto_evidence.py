@@ -26,12 +26,16 @@ from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_specs import (
 
 
 def _cf_dominance_fires(result) -> bool:
-    """The claim's score under 1.25x its best rival's score."""
+    """The claim's score under 1.25x its best live rival's score."""
     own = result.scores.get(CF_FAMILY)
     if own is None:
         return False
     best_rival = max(
-        (s.total for f, s in result.scores.items() if f != CF_FAMILY),
+        (
+            s.total
+            for f, s in result.scores.items()
+            if f != CF_FAMILY and f in result.claims
+        ),
         default=0.0,
     )
     return own.total < CF_DOMINANCE_RATIO * best_rival

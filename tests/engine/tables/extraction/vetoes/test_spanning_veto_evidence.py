@@ -59,20 +59,30 @@ def test_non_dominant_cash_flow_claim_removed():
     geo = GeometryText()
     results = apply_spanning_vetoes(
         [geo],
-        [_result(("cash_flow",), {"cash_flow": 8.45, "income_statement": 8.45})],
+        [
+            _result(
+                ("cash_flow", "income_statement"),
+                {"cash_flow": 8.45, "income_statement": 8.45},
+            )
+        ],
     )
     assert "cash_flow" not in results[0].claims
     assert "cash_flow" not in results[0].contested
     assert results[0].scores["cash_flow"].total == 8.45
     assert _gate_details(results[0]) == ["spanning veto: dominance"]
-    assert results[0].groups == ()
+    assert [group.family for group in results[0].groups] == ["income_statement"]
 
 
 def test_dominant_cash_flow_claim_kept():
     geo = GeometryText()
     results = apply_spanning_vetoes(
         [geo],
-        [_result(("cash_flow",), {"cash_flow": 13.0, "income_statement": 8.45})],
+        [
+            _result(
+                ("cash_flow", "income_statement"),
+                {"cash_flow": 13.0, "income_statement": 8.45},
+            )
+        ],
     )
     assert "cash_flow" in results[0].claims
     assert _gate_details(results[0]) == []
@@ -82,12 +92,17 @@ def test_exact_ratio_boundary_kept():
     geo = GeometryText()
     results = apply_spanning_vetoes(
         [geo],
-        [_result(("cash_flow",), {"cash_flow": 12.5, "income_statement": 10.0})],
+        [
+            _result(
+                ("cash_flow", "income_statement"),
+                {"cash_flow": 12.5, "income_statement": 10.0},
+            )
+        ],
     )
     assert "cash_flow" in results[0].claims
 
 
-def test_rival_claim_state_irrelevant_scores_govern():
+def test_claimed_rival_dominates():
     geo = GeometryText()
     results = apply_spanning_vetoes(
         [geo],
@@ -95,6 +110,16 @@ def test_rival_claim_state_irrelevant_scores_govern():
     )
     assert "cash_flow" not in results[0].claims
     assert "ppe" in results[0].claims
+
+
+def test_unclaimed_rival_does_not_dominate():
+    geo = GeometryText()
+    results = apply_spanning_vetoes(
+        [geo],
+        [_result(("cash_flow",), {"cash_flow": 20.0, "ppe": 30.0})],
+    )
+    assert "cash_flow" in results[0].claims
+    assert _gate_details(results[0]) == []
 
 
 def test_unclaimed_cash_flow_never_fires():
@@ -186,7 +211,12 @@ def test_both_cf_legs_report_together():
     geo = GeometryText(form_tests=(_absence_outcome(False),))
     results = apply_spanning_vetoes(
         [geo],
-        [_result(("cash_flow",), {"cash_flow": 8.45, "income_statement": 8.45})],
+        [
+            _result(
+                ("cash_flow", "income_statement"),
+                {"cash_flow": 8.45, "income_statement": 8.45},
+            )
+        ],
     )
     assert "cash_flow" not in results[0].claims
     assert _gate_details(results[0]) == ["spanning veto: dominance, signature"]
