@@ -80,7 +80,11 @@ def test_selected_data_silent_below_four_years() -> None:
 
 def test_selected_data_last_total_at_item6() -> None:
     table = _table(
-        (("Revenue", "10"), ("Total", "20")),
+        (
+            ("", "2020", "2021", "2022", "2023"),
+            ("Revenue", "10", "", "", ""),
+            ("Total", "20", "", "", ""),
+        ),
         section=SectionRef(item="ITEM 6", title=None),
     )
     assert "selected_data_last_total_item6" in _rules(table)
@@ -176,10 +180,10 @@ def test_mda_financing_operating_silent_at_twelve_rows() -> None:
 
 def test_mda_composed_item7_rows12() -> None:
     table = _table(
-        tuple((f"Line {i}", "1") for i in range(5)),
+        (("", "2021", "2022", "2023"),) + tuple((f"Line {i}", "1") for i in range(5)),
         section=SectionRef(item="ITEM 7", title=None),
     )
-    assert _rules(table) == ("mda_item7_rows12",)
+    assert "mda_item7_rows12" in _rules(table)
 
 
 def test_quarterly_named_rule_at_item8() -> None:
@@ -302,7 +306,7 @@ def test_plain_table_fires_nothing() -> None:
 
 def test_stamp_lands_on_geometry_text() -> None:
     table = _table(
-        tuple((f"Line {i}", "1") for i in range(5)),
+        (("", "2021", "2022", "2023"),) + tuple((f"Line {i}", "1") for i in range(5)),
         section=SectionRef(item="ITEM 7", title=None),
     )
     stamped = geometry_text_from_table(table)
