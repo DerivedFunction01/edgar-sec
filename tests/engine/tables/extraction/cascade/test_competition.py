@@ -204,8 +204,11 @@ def test_component_floor_bars_equity_claim_without_component_term() -> None:
     )
     barred = compete(aoci_form, terms=_TERMS, edges=_EDGES)
     assert "equity_statement" not in barred.claims
-    gate = {e.detail for e in barred.scores["equity_statement"].evidence
-            if e.channel == "gate"}
+    gate = {
+        e.detail
+        for e in barred.scores["equity_statement"].evidence
+        if e.channel == "gate"
+    }
     assert "component_gate" in gate
     component_form = GeometryText(
         caption="Changes in Equity",
@@ -218,9 +221,9 @@ def test_component_floor_bars_equity_claim_without_component_term() -> None:
         ),
         headers=("Common Stock", "Total"),
     )
-    assert "equity_statement" in compete(
-        component_form, terms=_TERMS, edges=_EDGES
-    ).claims
+    assert (
+        "equity_statement" in compete(component_form, terms=_TERMS, edges=_EDGES).claims
+    )
 
 
 def test_year_columns_signature_spans_the_full_year_range() -> None:

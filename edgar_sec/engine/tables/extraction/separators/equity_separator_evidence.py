@@ -102,9 +102,7 @@ def equity_carries_component(geometry, spec) -> bool:
     stub_keys = frozenset(
         key for key in (stub_key(stub) for stub in geometry.stubs) if key
     )
-    return _carries_component_keys(
-        stub_keys, header_keys(geometry.headers), spec
-    )
+    return _carries_component_keys(stub_keys, header_keys(geometry.headers), spec)
 
 
 def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:
