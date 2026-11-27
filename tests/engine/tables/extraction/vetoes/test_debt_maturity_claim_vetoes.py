@@ -34,13 +34,13 @@ def test_headers_n_25_passes() -> None:
 
 
 def test_cash_flow_per_share_hard_hit_refuses() -> None:
-    geometry = GeometryText(caption="Data per share")
+    geometry = GeometryText(lead="Data per share")
     assert debt_maturity_veto_reason(geometry) == "debt veto: cash_flow hard per share"
 
 
 def test_total_header_with_maturity_scored_hit_refuses() -> None:
     geometry = GeometryText(
-        caption="Debt maturity schedule", headers=("Fiscal year", "Total")
+        lead="Debt maturity schedule", headers=("Fiscal year", "Total")
     )
     assert (
         debt_maturity_veto_reason(geometry)
@@ -49,20 +49,20 @@ def test_total_header_with_maturity_scored_hit_refuses() -> None:
 
 
 def test_total_header_without_maturity_hit_passes() -> None:
-    geometry = GeometryText(caption="Borrowings", headers=("Fiscal year", "Total"))
+    geometry = GeometryText(lead="Borrowings", headers=("Fiscal year", "Total"))
     assert debt_maturity_veto_reason(geometry) is None
 
 
 def test_maturity_hit_without_total_header_passes() -> None:
     geometry = GeometryText(
-        caption="Debt maturity schedule", headers=("Fiscal year", "Amount")
+        lead="Debt maturity schedule", headers=("Fiscal year", "Amount")
     )
     assert debt_maturity_veto_reason(geometry) is None
 
 
 def test_apply_removes_only_the_vetoed_claim() -> None:
     vetoed = GeometryText(headers=tuple(f"H{i}" for i in range(26)))
-    spared = GeometryText(caption="Borrowings", headers=("Year", "Amount"))
+    spared = GeometryText(lead="Borrowings", headers=("Year", "Amount"))
     results = apply_debt_maturity_claim_vetoes(
         [vetoed, spared], [_claimed(vetoed), _claimed(spared)]
     )
