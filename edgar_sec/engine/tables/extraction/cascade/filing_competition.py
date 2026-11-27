@@ -331,9 +331,7 @@ def compete_filing_gated(
 ) -> list[CompetitionResult]:
     """The filing's claims as the primary gate admits them:
     compete's early discipline, before the late veto stages."""
-    gated, _ = _compete_through_gate(
-        geometries, terms, edges, ladder_terms, scopes
-    )
+    gated, _ = _compete_through_gate(geometries, terms, edges, ladder_terms, scopes)
     return gated
 
 
