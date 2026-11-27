@@ -481,13 +481,12 @@ _FV_LEVEL_RE = re.compile(
     r"level\s*(" + build_alternation(_FV_LEVEL_TOKENS) + r")\b",
     re.IGNORECASE,
 )
-_FV_WS_RE = re.compile(r"\s+")
 _FV_ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4}
 
 
 def _fv_norm(texts) -> str:
     joined = " ".join(str(t) for t in texts if t)
-    return _FV_WS_RE.sub(" ", joined).lower()
+    return collapse_whitespace(joined).lower()
 
 
 def _fv_levels(texts) -> set:
