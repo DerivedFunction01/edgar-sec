@@ -522,6 +522,25 @@ def _fv_levels(texts) -> set:
     return found
 
 
+@lru_cache(maxsize=None)
+def _fv_index() -> TermIndex:
+    """The fair_value packet's term lists as one index,
+    substring mode: hierarchy phrases, VMA terms, SEC
+    concepts, and the packet's header/stub literals."""
+    entries = [TermEntry(phrase, "hierarchy") for phrase in FV_HIERARCHY_PHRASES]
+    entries += [TermEntry(term, "vma", value=term) for term in FV_VMA_TERMS]
+    entries += [TermEntry(concept, "sec") for concept in FV_SEC_CONCEPTS]
+    entries += [
+        TermEntry("unrealized loss", "age_a"),
+        TermEntry("less than 12 months", "age_b"),
+        TermEntry("12 months or longer", "age_b"),
+        TermEntry("net assets acquired", "alloc_a"),
+        TermEntry("goodwill", "alloc_b"),
+        TermEntry(LEVEL3_QUANTITATIVE_CAPTION, "level3_caption"),
+    ]
+    return TermIndex(entries)
+
+
 def _fair_value_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """Fair_value precision packet: the ITEMS surface forms
     (VMA / SEC / ALLOC) and W3 (H == 0) under the g5 guard.
@@ -535,22 +554,23 @@ def _fair_value_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]
     stb = _fv_norm(stubs)
     cap = _fv_norm([caption, notehead] + [str(h) for h in headers])
     joined_hs = " ".join([str(h) for h in headers] + [str(s) for s in stubs]).lower()
+    index = _fv_index()
     h_score = (
         len(_fv_levels(headers))
         + len(_fv_levels(stubs))
-        + sum(1 for ph in FV_HIERARCHY_PHRASES if ph in joined_hs)
+        + len(index.scan(joined_hs).get("hierarchy", frozenset()))
     )
     legs = []
-    vma_terms = [t for t in FV_VMA_TERMS if t in hdr]
-    if LEVEL3_QUANTITATIVE_CAPTION in cap or len(vma_terms) >= 2:
+    hdr_hits = index.scan(hdr)
+    vma_terms = hdr_hits.get("vma", frozenset())
+    if "level3_caption" in index.scan(cap) or len(vma_terms) >= 2:
         legs.append(LEG_FV_VMA)
-    strict = sum(1 for c in FV_SEC_CONCEPTS if c in hdr) >= 3
-    age = "unrealized loss" in hdr and (
-        "less than 12 months" in hdr or "12 months or longer" in hdr
-    )
+    strict = len(hdr_hits.get("sec", frozenset())) >= 3
+    age = "age_a" in hdr_hits and "age_b" in hdr_hits
     if strict or age:
         legs.append(LEG_FV_SEC)
-    if "net assets acquired" in stb and "goodwill" in stb and len(headers) <= 6:
+    stb_hits = index.scan(stb)
+    if "alloc_a" in stb_hits and "alloc_b" in stb_hits and len(headers) <= 6:
         legs.append(LEG_FV_ALLOC)
     if h_score == 0 and "fair value" not in note_title.lower():
         legs.append(LEG_FV_W3)
