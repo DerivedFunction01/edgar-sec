@@ -47,10 +47,7 @@ _INDEX = json.loads((_CORPUS / "index.json").read_text(encoding="utf-8"))
 # (beside the corpus) re-verifies them in the tooling layer.
 _DROPPED_PATH = _CORPUS / "dropped_texts.json"
 _DROPPED: dict[str, dict] = (
-    {
-        e["id"]: e
-        for e in json.loads(_DROPPED_PATH.read_text(encoding="utf-8"))
-    }
+    {e["id"]: e for e in json.loads(_DROPPED_PATH.read_text(encoding="utf-8"))}
     if _DROPPED_PATH.exists()
     else {}
 )
