@@ -246,16 +246,13 @@ def _charge_type_count(text_l: str) -> int:
     return sum(1 for term in _CHARGE_TYPE_TERMS if term in collapsed)
 
 
-
 def _summary_form(lines_l: list[str]) -> str:
     """The summary form (Form B, programme-adopted): an anchored,
     bookendless fragment carrying a Total row, no balance line
     anywhere, and at least 3 data rows — the census's B3 shape."""
     if any("balance" in ln for ln in lines_l):
         return ""
-    if not any(
-        ln.strip().startswith("total") or " | total" in ln for ln in lines_l
-    ):
+    if not any(ln.strip().startswith("total") or " | total" in ln for ln in lines_l):
         return ""
     data_rows = sum(1 for ln in lines_l if any(ch.isdigit() for ch in ln))
     if data_rows < 3:
