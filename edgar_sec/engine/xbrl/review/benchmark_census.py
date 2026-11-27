@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from typing import Any
 
 from edgar_sec.engine.xbrl.review.census_expectations import (
-    CENSUS_EXPECTATIONS,
     CensusExpectation,
+    load_expectations,
 )
 
 
@@ -105,9 +105,11 @@ _ADVERSE_CLASSES = frozenset(
 
 def score_census(
     summary: dict[str, Any],
-    expectations: dict[str, CensusExpectation] = CENSUS_EXPECTATIONS,
+    expectations: dict[str, CensusExpectation] | None = None,
 ) -> CensusScore:
     """Score a census summary; any unadjudicated movement fails the gate."""
+    if expectations is None:
+        expectations = load_expectations()
     failures: list[str] = []
     populations = summary.get("populations", {})
     for name, expected in expectations.items():

@@ -16,6 +16,15 @@ from an unrelated working directory.
   clone-mechanism proof against committed state only.
 - **Opt-in only**: the battery builds and installs, so the default gate never
   runs it; invoke it directly or via `check.py --package`.
+- **Taxonomy archive is seeded, not shipped**: the archive parquet slices
+  are a generated class written by `tools/xbrl_discovery/build_taxonomy_archive.py`
+  (and seeded by `tests/conftest.py` in a fresh clone), never wheel data.
+  The probes assert the shipped taxonomy JSON tree and that the archive
+  resolver answers; a bare wheel carrying no archive is a passing state.
+- **The battery proves the finalized surface only**: review-plane data
+  (cohort registries, review expectation JSONs) is wheel-excluded and no
+  probe loads it; the import sweep still imports every shipped module,
+  whose expectation loaders read their data lazily on first use.
 - **Scratch lives outside the repo** and is removed after the run unless
   `--keep` is passed; the run record lands in `.artifacts/run-logs/`.
 

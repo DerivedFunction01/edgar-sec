@@ -15,7 +15,7 @@ from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.review.battery import BATTERY_SET, evaluate_battery
 from edgar_sec.engine.xbrl.review.benchmark_census import score_census
 from edgar_sec.engine.xbrl.review.benchmark_pairs import PAIR_SET, evaluate_pairs
-from edgar_sec.engine.xbrl.review.census_expectations import CENSUS_EXPECTATIONS
+from edgar_sec.engine.xbrl.review.census_expectations import load_expectations
 from edgar_sec.engine.xbrl.review.relations import RELATION_SET, evaluate_relations
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.cohort.cohort_lookup import CohortLookup
@@ -100,10 +100,11 @@ def _pair_gate_evidence(taxonomy: Any) -> dict[str, Any]:
 def _census_evidence(census_summary: dict[str, Any] | None) -> dict[str, Any]:
     if census_summary is None:
         return {"passed": False, "status": "not_recorded", "populations": {}}
+    expectations = load_expectations()
     expected = {
-        name: CENSUS_EXPECTATIONS[name]
+        name: expectations[name]
         for name in census_summary.get("populations", {})
-        if name in CENSUS_EXPECTATIONS
+        if name in expectations
     }
     score = score_census(census_summary, expected)
     return {

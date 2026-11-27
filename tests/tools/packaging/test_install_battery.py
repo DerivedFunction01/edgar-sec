@@ -19,8 +19,9 @@ def test_a_leg_passes_only_when_every_check_passes() -> None:
 def test_the_probes_cover_the_installed_contract() -> None:
     from edgar_sec.tools.packaging import install_battery
 
-    assert "load_canonical_union_cohort" in install_battery._COHORT_PROBE
-    assert "125" in install_battery._COHORT_PROBE
+    assert not hasattr(install_battery, "_COHORT_PROBE")
     assert "archived_taxonomies" in install_battery._TAXONOMY_PROBE
+    assert "load_slice" not in install_battery._TAXONOMY_PROBE
     assert "package_data_status" in install_battery._PRESENCE_PROBE
+    assert "taxonomy_dir_present" in install_battery._PRESENCE_PROBE
     assert "edgar_sec.tools" in install_battery._IMPORT_SWEEP

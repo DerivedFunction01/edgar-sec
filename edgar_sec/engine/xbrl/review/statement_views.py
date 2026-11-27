@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -33,6 +34,7 @@ class StatementViewExpectations:
     blocked_cells: tuple[BlockedCell, ...] = ()
 
 
+@lru_cache(maxsize=1)
 def _load_expectations() -> StatementViewExpectations:
     """Load the pinned statement-view expectations from their data file."""
     raw = json.loads(
@@ -50,7 +52,11 @@ def _load_expectations() -> StatementViewExpectations:
     )
 
 
-STATEMENT_VIEW_EXPECTATIONS: StatementViewExpectations = _load_expectations()
+def __getattr__(name: str) -> Any:
+    """Serve STATEMENT_VIEW_EXPECTATIONS lazily, so import reads no file."""
+    if name == "STATEMENT_VIEW_EXPECTATIONS":
+        return _load_expectations()
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 def summarize_driver_report(report: dict[str, Any]) -> dict[str, Any]:
@@ -86,9 +92,11 @@ def summarize_driver_report(report: dict[str, Any]) -> dict[str, Any]:
 
 def score_statement_views(
     report: dict[str, Any],
-    expectations: StatementViewExpectations = STATEMENT_VIEW_EXPECTATIONS,
+    expectations: StatementViewExpectations | None = None,
 ) -> CensusScore:
     """Score a driver report; any unadjudicated movement fails."""
+    if expectations is None:
+        expectations = _load_expectations()
     summary = summarize_driver_report(report)
     failures: list[str] = []
     for folder in summary["load_errors"]:

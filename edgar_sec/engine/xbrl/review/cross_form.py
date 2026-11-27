@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from collections import Counter
 from dataclasses import dataclass, field
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +38,7 @@ class CrossFormExpectation:
     replay_mismatches: int = 0
 
 
+@lru_cache(maxsize=1)
 def _load_expectations() -> dict[str, CrossFormExpectation]:
     """Load the pinned cross-form expectation blocks from their data file."""
     raw = json.loads(
@@ -45,9 +47,6 @@ def _load_expectations() -> dict[str, CrossFormExpectation]:
         .read_text(encoding="utf-8")
     )
     return {key: CrossFormExpectation(**row) for key, row in sorted(raw.items())}
-
-
-CROSS_FORM_EXPECTATIONS: dict[str, CrossFormExpectation] = _load_expectations()
 
 
 @dataclass(frozen=True, slots=True)
@@ -64,6 +63,7 @@ class FactExpectation:
     quarantined_facts: int
 
 
+@lru_cache(maxsize=1)
 def _load_fact_expectations() -> dict[str, FactExpectation]:
     """Load the pinned fact-matrix rows from their data file."""
     raw = json.loads(
@@ -74,14 +74,13 @@ def _load_fact_expectations() -> dict[str, FactExpectation]:
     return {key: FactExpectation(**row) for key, row in sorted(raw.items())}
 
 
-FACT_EXPECTATIONS: dict[str, FactExpectation] = _load_fact_expectations()
-
-
 def score_fact_matrix(
     summary: dict[str, Any],
-    expectations: dict[str, FactExpectation] = FACT_EXPECTATIONS,
+    expectations: dict[str, FactExpectation] | None = None,
 ) -> CensusScore:
     """Score the fact matrix; any unadjudicated movement fails."""
+    if expectations is None:
+        expectations = _load_fact_expectations()
     failures: list[str] = []
     matrix = summary.get("fact_matrix", {})
     for key, expected in expectations.items():
@@ -121,6 +120,7 @@ class K1Expectation:
     orphan: int
 
 
+@lru_cache(maxsize=1)
 def _load_k1_expectations() -> dict[str, K1Expectation]:
     """Load the pinned K1 blocks from their data file."""
     raw = json.loads(
@@ -128,8 +128,6 @@ def _load_k1_expectations() -> dict[str, K1Expectation]:
     )
     return {key: K1Expectation(**row) for key, row in sorted(raw.items())}
 
-
-K1_EXPECTATIONS: dict[str, K1Expectation] = _load_k1_expectations()
 
 _K1_FIELDS = (
     "filings",
@@ -154,9 +152,11 @@ _K1_DISPOSITIONS = (
 
 def score_k1(
     summary: dict[str, Any],
-    expectations: dict[str, K1Expectation] = K1_EXPECTATIONS,
+    expectations: dict[str, K1Expectation] | None = None,
 ) -> CensusScore:
     """Score the K1 census; mass moves only by adjudicated reclassification."""
+    if expectations is None:
+        expectations = _load_k1_expectations()
     failures: list[str] = []
     blocks = summary.get("k1_blocks", {})
     for key, expected in expectations.items():
@@ -185,6 +185,7 @@ class DeiPresenceExpectation:
     present: dict[str, int] = field(default_factory=dict)
 
 
+@lru_cache(maxsize=1)
 def _load_dei_presence_expectations() -> dict[str, DeiPresenceExpectation]:
     """Load the pinned dei presence rows from their data file."""
     raw = json.loads(
@@ -195,16 +196,13 @@ def _load_dei_presence_expectations() -> dict[str, DeiPresenceExpectation]:
     return {key: DeiPresenceExpectation(**row) for key, row in sorted(raw.items())}
 
 
-DEI_PRESENCE_EXPECTATIONS: dict[str, DeiPresenceExpectation] = (
-    _load_dei_presence_expectations()
-)
-
-
 def score_dei_presence(
     summary: dict[str, Any],
-    expectations: dict[str, DeiPresenceExpectation] = DEI_PRESENCE_EXPECTATIONS,
+    expectations: dict[str, DeiPresenceExpectation] | None = None,
 ) -> CensusScore:
     """Score dei metadata presence per form family; movement fails."""
+    if expectations is None:
+        expectations = _load_dei_presence_expectations()
     failures: list[str] = []
     presence = summary.get("dei_presence", {})
     for form, expected in expectations.items():
@@ -254,9 +252,11 @@ def summarize_cross_form(evaluations: list[dict]) -> dict:
 
 def score_cross_form(
     summary: dict[str, Any],
-    expectations: dict[str, CrossFormExpectation] = CROSS_FORM_EXPECTATIONS,
+    expectations: dict[str, CrossFormExpectation] | None = None,
 ) -> CensusScore:
     """Score a cross-form summary; any unadjudicated movement fails."""
+    if expectations is None:
+        expectations = _load_expectations()
     failures: list[str] = []
     blocks = summary.get("blocks", {})
     for key, expected in expectations.items():
@@ -292,3 +292,19 @@ def score_cross_form(
         if expected.posture == "absence" and block["solved"] != 0:
             failures.append(f"{key}: absence solved {block['solved']} != 0")
     return CensusScore(passed=not failures, failures=tuple(failures))
+
+
+_LAZY_EXPECTATIONS = {
+    "CROSS_FORM_EXPECTATIONS": _load_expectations,
+    "FACT_EXPECTATIONS": _load_fact_expectations,
+    "K1_EXPECTATIONS": _load_k1_expectations,
+    "DEI_PRESENCE_EXPECTATIONS": _load_dei_presence_expectations,
+}
+
+
+def __getattr__(name: str) -> Any:
+    """Serve the expectation constants lazily, so import reads no data file."""
+    loader = _LAZY_EXPECTATIONS.get(name)
+    if loader is None:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    return loader()

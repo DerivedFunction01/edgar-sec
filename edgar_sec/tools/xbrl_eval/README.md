@@ -16,6 +16,10 @@ none fetch remotely.
   client facade, never by re-implementing query semantics.
 - **JSON adjudication**: Battery and benchmark outcomes record per-filing
   check outcomes as JSON.
+- **Probe registry home**: `probe_cohort.json` lives in this package, homed
+  with the tools plane that consumes it; `pipelines.xbrl_review.cohort`'s
+  `canonical_probe_cohort_path` resolves it, and an external corpus root's
+  `review/` copy wins when present.
 
 ## Deliberate gaps
 
