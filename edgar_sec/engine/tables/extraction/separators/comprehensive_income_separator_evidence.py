@@ -41,9 +41,8 @@ _BOOKEND_END_PHRASES = (
 @lru_cache(maxsize=None)
 def _spec_index(spec) -> TermIndex:
     """One index over the cascade's term census: the spec's
-    stub-key lists by role, the bookend phrases, the tax-header
-    phrases, and the two single tokens. Every entry is
-    phrase-kind — the standing scans are substring."""
+    stub-key lists by role, the bookend and tax-header phrases,
+    and the two single tokens — every entry phrase-kind."""
     entries = []
     for kind, terms in (
         ("walk_begin", spec.walk_begin_terms),
