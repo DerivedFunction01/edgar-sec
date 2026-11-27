@@ -59,6 +59,9 @@ from edgar_sec.engine.tables.extraction.note_separators.lease_separator_evidence
 from edgar_sec.engine.tables.extraction.seats.related_party_seat import (
     apply_related_party_seat,
 )
+from edgar_sec.engine.tables.extraction.cascade.pension_generation_seat import (
+    apply_pension_generation_seat,
+)
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
 from edgar_sec.engine.tables.extraction.seats.warrant_seat import apply_warrant_seat
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
@@ -339,4 +342,8 @@ def compete_filing(
     partied = apply_related_party_seat(geometries, epsed)
     # Formation seat (priced): warrant_activity seats on the
     # gate-final set its two form tests cannot claim alone.
-    return apply_warrant_seat(geometries, partied)
+    warranted = apply_warrant_seat(geometries, partied)
+    # Formation seat (priced): pension seats on the
+    # gate-final unclaimed set under the generation
+    # admission (note identity or quiet-form stubs).
+    return apply_pension_generation_seat(geometries, warranted)
