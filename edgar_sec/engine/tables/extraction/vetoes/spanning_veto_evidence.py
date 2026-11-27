@@ -12,6 +12,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
     stub_key,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    cash_flow_fragment_identity,
     statement_clusters,
 )
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_specs import (
@@ -91,7 +92,8 @@ def _fired_legs(geometries, results, index, filing_top, clusters):
     result = results[index]
     legs = []
     if CF_FAMILY in result.claims:
-        if _cf_dominance_fires(result):
+        dominance_fired = _cf_dominance_fires(result)
+        if dominance_fired:
             legs.append((CF_FAMILY, LEG_CF_DOMINANCE))
         # The signature read at statement-cluster scope: the
         # leg fires only when no cluster member carries a
@@ -101,7 +103,11 @@ def _fired_legs(geometries, results, index, filing_top, clusters):
         if _cf_signature_fires(geometries[index]) and not any(
             _cf_signature_passes(geometries[member]) for member in clusters[index]
         ):
-            legs.append((CF_FAMILY, LEG_CF_SIGNATURE))
+            # Fragment-scoped restoration (priced): a geometry
+            # carrying fragment identity is not refused on the
+            # signature leg alone; a dominance firing stands.
+            if dominance_fired or not cash_flow_fragment_identity(geometries[index]):
+                legs.append((CF_FAMILY, LEG_CF_SIGNATURE))
     if (
         BS_FAMILY in result.claims
         and not _bs_carries_closing_total(geometries[index])

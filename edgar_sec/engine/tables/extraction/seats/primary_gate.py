@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
+from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN,
@@ -406,6 +407,19 @@ def cash_flow_missing_sections(
         missing = []
     if "investing" in missing and _fund_form(source_stubs):
         missing = [s for s in missing if s != "investing"]
+    if (
+        missing == ["operating", "investing", "financing"]
+        and len(members) == 1
+        and (
+            cash_flow_fragment_identity(geometries[index])
+            or cash_flow_sum_identity(geometries[index])
+        )
+    ):
+        # Fragment admission (priced): a singleton geometry
+        # refused on exactly the three sections is admitted
+        # when it carries its own identity — fragment
+        # identity, or the cash sum identity over its grid.
+        missing = []
     return missing
 
 
@@ -437,6 +451,98 @@ def cash_flow_grantor_veto_scoped(geometry: GeometryText) -> bool:
         geometry.note_title or "",
     ]
     return any(_GRANTOR_MARKER.search(t) for t in texts)
+
+
+_TOTAL_CASH_BLOCK = (
+    re.compile(r"total cash and cash equivalents", re.IGNORECASE),
+    re.compile(
+        r"total cash,? cash equivalents,? and restricted cash",
+        re.IGNORECASE,
+    ),
+)
+_SUPPLEMENTAL_TITLE = re.compile(r"supplemental cash flow", re.IGNORECASE)
+
+
+def cash_flow_fragment_identity(geometry: GeometryText) -> bool:
+    """Fragment identity: a supplemental cash-flow title on
+    any title channel, or a total-cash reconciliation block
+    in the geometry's own stubs."""
+    titles = (
+        geometry.note_title or "",
+        geometry.caption or "",
+        geometry.notehead or "",
+        geometry.lead_title or "",
+    )
+    if any(_SUPPLEMENTAL_TITLE.search(t) for t in titles):
+        return True
+    return any(p.search(s) for p in _TOTAL_CASH_BLOCK for s in geometry.stubs)
+
+
+_TOTAL_CASH_LINE = re.compile(
+    r"total|combined|cash,? cash equivalents and restricted cash",
+    re.IGNORECASE,
+)
+_GRID_NUM = re.compile(r"\(?-?\$?" + NUMERIC_TOKEN_RE.pattern + r"\)?")
+
+
+def _grid_row_values(geometry: GeometryText) -> list[list[float]] | None:
+    """Per-stub-row numeric values parsed from grid_text:
+    the tokens between one stub's occurrence and the next."""
+    gt = geometry.grid_text or ""
+    spans = []
+    pos = 0
+    for stub in geometry.stubs:
+        needle = " ".join(str(stub).lower().split())
+        at = gt.find(needle, pos)
+        if at < 0:
+            return None
+        spans.append(at)
+        pos = at + len(needle)
+    rows = []
+    for i, at in enumerate(spans):
+        end = spans[i + 1] if i + 1 < len(spans) else len(gt)
+        vals = []
+        for tok in _GRID_NUM.findall(gt[at:end]):
+            t = tok.replace("$", "").replace(",", "").strip()
+            if not t or t in ("-", "(", ")"):
+                continue
+            neg = t.startswith("(") and t.endswith(")")
+            t = t.strip("()")
+            try:
+                v = float(t)
+            except ValueError:
+                continue
+            vals.append(-v if neg else v)
+        rows.append(vals)
+    return rows
+
+
+def cash_flow_sum_identity(geometry: GeometryText) -> bool:
+    """The cash sum identity, claim-local: the component
+    cash lines sum to the total-cash line in every column
+    (tolerance one printed unit per component row)."""
+    stubs = list(geometry.stubs)
+    total_rows = [
+        i
+        for i, s in enumerate(stubs)
+        if "cash" in s.lower() and _TOTAL_CASH_LINE.search(s)
+    ]
+    if not total_rows:
+        return False
+    ti = total_rows[-1]
+    if ti == 0:
+        return False
+    rows = _grid_row_values(geometry)
+    if rows is None:
+        return False
+    k = len(rows[ti])
+    if k == 0 or any(len(rows[i]) != k for i in range(ti + 1)):
+        return False
+    tol = float(ti)
+    for c in range(k):
+        if abs(sum(rows[i][c] for i in range(ti)) - rows[ti][c]) > tol:
+            return False
+    return True
 
 
 def statement_clusters(
