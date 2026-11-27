@@ -61,12 +61,8 @@ _SUBJECT_ANCHOR = "subject_anchor"
 @lru_cache(maxsize=None)
 def _spec_index(spec: DerivativesEvidenceSpec) -> TermIndex:
     """The spec's unified term index: each form once, with its kinds.
-
-    Match mode is the consulting list's own: bases, suffix and
-    commercial terms match on word boundaries; phrase lists match
-    as literal substrings; stems and equity-prefixed compounds
-    report the base they credit or discount.
-    """
+    Match mode is the consulting list's own (word-boundary for the
+    base/suffix/commercial lists, literal substring for phrases)."""
     entries: list[TermEntry] = []
 
     def add(terms: tuple[str, ...], kind: str, word: bool = False) -> None:
