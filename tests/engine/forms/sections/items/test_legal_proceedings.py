@@ -67,9 +67,7 @@ def test_parenthesized_omitted_marker_in_heading() -> None:
 
 
 def test_not_applicable_stub_on_following_line() -> None:
-    emission, _, _ = _emit(
-        _framed(["Item 3. Legal Proceedings", "Not applicable."])
-    )
+    emission, _, _ = _emit(_framed(["Item 3. Legal Proceedings", "Not applicable."]))
     assert emission is not None
     assert emission.disposition is LegalProceedingsDisposition.NONE
 
