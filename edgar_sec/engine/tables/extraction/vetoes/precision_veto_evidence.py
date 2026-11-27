@@ -508,9 +508,7 @@ def _fair_value_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]
     hdr = _fv_norm(headers)
     stb = _fv_norm(stubs)
     cap = _fv_norm([caption, notehead] + [str(h) for h in headers])
-    joined_hs = " ".join(
-        [str(h) for h in headers] + [str(s) for s in stubs]
-    ).lower()
+    joined_hs = " ".join([str(h) for h in headers] + [str(s) for s in stubs]).lower()
     h_score = (
         len(_fv_levels(headers))
         + len(_fv_levels(stubs))
