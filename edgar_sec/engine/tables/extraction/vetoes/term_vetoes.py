@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.vetoes.term_veto_notes import NOTE_VETO_ENTRIES
 from edgar_sec.engine.tables.extraction.vetoes.term_veto_statements import (
@@ -83,6 +84,21 @@ def hard_veto_form_exemption(family: str, term: str) -> tuple[str, ...] | None:
     return HARD_VETO_FORM_EXEMPTIONS.get((family, term))
 
 
+def _veto_index() -> TermIndex:
+    """One substring index over every veto term: kind is the
+    spec's position, value the term as listed. Entries carry
+    the normalized term — matching is normalized substring,
+    as priced; phrase entries only."""
+    return TermIndex(
+        TermEntry(normalize_text(term), str(i), value=term)
+        for i, spec in enumerate(TERM_VETOES)
+        for term in spec.terms
+    )
+
+
+_VETO_INDEX = _veto_index()
+
+
 def term_veto_hits_by_channel(
     geometry: GeometryText,
 ) -> dict[str, dict[str, dict[str, str]]]:
@@ -91,13 +107,14 @@ def term_veto_hits_by_channel(
         "lead": normalize_text(geometry.lead),
         "body": normalize_text(geometry.grid_text),
     }
+    found = {channel: _VETO_INDEX.scan(text) for channel, text in texts.items()}
     hits: dict[str, dict[str, dict[str, str]]] = {}
-    for spec in TERM_VETOES:
-        text = texts[spec.channel]
-        if not text:
+    for i, spec in enumerate(TERM_VETOES):
+        if not texts[spec.channel]:
             continue
+        present = found[spec.channel].get(str(i), frozenset())
         for term in spec.terms:
-            if normalize_text(term) in text:
+            if term in present:
                 tiers = hits.setdefault(spec.family, {})
                 by_channel = tiers.setdefault(spec.tier, {})
                 if spec.channel not in by_channel:

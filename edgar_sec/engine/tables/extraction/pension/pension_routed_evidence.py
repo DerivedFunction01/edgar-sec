@@ -9,10 +9,12 @@ from __future__ import annotations
 
 import re
 from collections import Counter
+from functools import lru_cache
 from dataclasses import dataclass
 
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
 from edgar_sec.foundation.text.patterns import RE_NON_ALNUM, RE_WHITESPACE
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome,
 )
@@ -36,6 +38,30 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
 _DIGITS_RE = re.compile(r"\b\d+\b")
 _BOOKEND_BEGIN_RE = re.compile(r"beginning|opening balance|balance at (the )?beginning")
 _HEADER_LINES = 3
+
+
+def _marker_index() -> TermIndex:
+    """One substring index over the marker stems, kind per
+    routed kind. Phrase entries only: the routed matching is
+    literal substring for every stem."""
+    return TermIndex(
+        TermEntry(stem, kind) for kind, stems in MARKER_STEMS.items() for stem in stems
+    )
+
+
+_MARKER_INDEX = _marker_index()
+_BENEFIT_INDEX = TermIndex(TermEntry(term, term) for term in BENEFIT_HDR_TERMS)
+
+
+@lru_cache(maxsize=None)
+def _scalar_index(spec: PensionRoutedSpec) -> TermIndex:
+    """The routed spec's two scalar phrases as one index."""
+    return TermIndex(
+        (
+            TermEntry(spec.payments_due_term, "payments_due"),
+            TermEntry(spec.item201d_phrase, "item201d"),
+        )
+    )
 
 
 def norm(text):
@@ -141,19 +167,18 @@ def read_routed(text: PensionRoutedText) -> _Read:
     }
     payments_hits = frozenset(
         stem
-        for stem in MARKER_STEMS["payments"]
-        if any(stem in blob for blob in blobs.values())
+        for blob in blobs.values()
+        for stem in _MARKER_INDEX.scan(blob).get("payments", frozenset())
     )
     year_stubs = 0
     for stub in stubs:
         toks = [t for t in norm(stub).replace("-", " ").split() if t not in DROP_TOKS]
         if toks and all(YEAR_TOKEN_RE.match(t) for t in toks):
             year_stubs += 1
-    benefit_terms = tuple(
-        term
-        for term in BENEFIT_HDR_TERMS
-        if term in blobs["hdr"] or term in blobs["cap"] or term in blobs["col"]
-    )
+    benefit_found: set[str] = set()
+    for blob_name in ("hdr", "cap", "col"):
+        benefit_found.update(_BENEFIT_INDEX.scan(blobs[blob_name]))
+    benefit_terms = tuple(term for term in BENEFIT_HDR_TERMS if term in benefit_found)
     raw = Counter(t for t in (norm(s) for s in stubs) if t)
     return _Read(
         features=frozenset(features),
@@ -170,10 +195,12 @@ def read_routed(text: PensionRoutedText) -> _Read:
 def _route(stub_keys) -> str | None:
     scores = {}
     hits = {}
+    found_by_kind: dict[str, set[str]] = {kind: set() for kind in KIND_ORDER}
+    for key in stub_keys:
+        for kind, stems in _MARKER_INDEX.scan(key).items():
+            found_by_kind[kind].update(stems)
     for kind in KIND_ORDER:
-        found = sorted(
-            {s for s in MARKER_STEMS[kind] if any(s in k for k in stub_keys)}
-        )
+        found = sorted(found_by_kind[kind])
         hits[kind] = found
         scores[kind] = len(found)
     member = [
@@ -232,8 +259,8 @@ def evaluate_pension_routed(
         killed, leg = _cell_kill(kind, read.features)
         detail = f"kind:{kind} cell fired ({leg})" if killed else f"kind:{kind} clear"
         return PensionRoutedVerdict(not killed, detail)
-    if spec.payments_due_term in read.blobs["cap"] or (
-        spec.payments_due_term in read.blobs["hdr"]
+    if "payments_due" in _scalar_index(spec).scan(read.blobs["cap"]) or (
+        "payments_due" in _scalar_index(spec).scan(read.blobs["hdr"])
     ):
         return PensionRoutedVerdict(
             False, f"inc:cap_payments_due (host {spec.payments_due_host})"
@@ -244,8 +271,8 @@ def evaluate_pension_routed(
     # estimated-benefit-payments form, not a host supplement.
     if host is not None and not (read.benefit_terms and read.stub_year_ladder):
         return PensionRoutedVerdict(False, f"inc:host2_supp (host {host})")
-    if spec.item201d_phrase in read.blobs["hdr"] or (
-        spec.item201d_phrase in read.blobs["col"]
+    if "item201d" in _scalar_index(spec).scan(read.blobs["hdr"]) or (
+        "item201d" in _scalar_index(spec).scan(read.blobs["col"])
     ):
         return PensionRoutedVerdict(
             False, f"inc:hdr_item201d (host {spec.item201d_host})"

@@ -7,7 +7,9 @@ PENSION_ANCHOR_SPECS; a claim requires one anchor.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_PENSION_ANCHOR,
@@ -144,6 +146,39 @@ class PensionAnchors:
     detail: str
 
 
+@lru_cache(maxsize=None)
+def _anchor_index(spec: PensionAnchorSpec) -> TermIndex:
+    """One substring index over the spec's lists, kind per list.
+    Every entry is a phrase entry: pension's matching is literal
+    substring for single words too, never word-boundary."""
+    entries: list[TermEntry] = []
+
+    def add(kind: str, terms: tuple[str, ...]) -> None:
+        entries.extend(TermEntry(term, kind) for term in terms)
+
+    add("oci_phrases", spec.oci_phrases)
+    add("oci_components", spec.oci_component_terms)
+    for i, grp in enumerate(spec.npbc_groups):
+        add(f"npbc:{i}", grp)
+    add("walk_subject", spec.walk_subject_terms)
+    add("walk_open", spec.walk_open_terms)
+    add("walk_close", spec.walk_close_terms)
+    add("assumptions_anchor", (spec.assumptions_anchor_term,))
+    add("assumptions_partner", spec.assumptions_partner_terms)
+    add("payments_context", spec.payments_context_terms)
+    add("sensitivity_anchor", spec.sensitivity_anchor_terms)
+    add("sensitivity_subject", spec.sensitivity_subject_terms)
+    add("contributions_stub", spec.contributions_stub_terms)
+    add("contributions_lead", spec.contributions_lead_terms)
+    add("funded", spec.funded_terms)
+    add("allocation_asset", spec.allocation_asset_terms)
+    add("allocation_context", spec.allocation_context_terms)
+    add("multiemployer_id", spec.multiemployer_id_terms)
+    add("multiemployer_status", spec.multiemployer_status_terms)
+    add("multiemployer_context", spec.multiemployer_context_terms)
+    return TermIndex(entries)
+
+
 def pension_anchor_set(text: PensionText, spec: PensionAnchorSpec) -> frozenset[str]:
     """The core anchors firing on the prose-completed surfaces.
     Surfaces are normalized at this leg, so a directly constructed
@@ -154,52 +189,48 @@ def pension_anchor_set(text: PensionText, spec: PensionAnchorSpec) -> frozenset[
     stubtext = plain_stubtext + "\n" + after
     low = normalize_text(text.grid_text) + "\n" + after
     lead = normalize_text(text.lead) + " " + after
+    index = _anchor_index(spec)
+    plain = index.scan(plain_stubtext)
+    stub_hits = index.scan(stubtext)
+    low_hits = index.scan(low)
+    lead_hits = index.scan(lead)
     anchors: set[str] = set()
     # The oci leg reads the stub surface alone, as priced: its
     # conjunction was priced over production stubtext, not completed.
-    if any(x in plain_stubtext for x in spec.oci_phrases) and any(
-        x in plain_stubtext for x in spec.oci_component_terms
-    ):
+    if "oci_phrases" in plain and "oci_components" in plain:
         anchors.add("oci")
-    groups = sum(1 for grp in spec.npbc_groups if any(x in stubtext for x in grp))
+    groups = sum(1 for i in range(len(spec.npbc_groups)) if f"npbc:{i}" in stub_hits)
     if groups >= spec.npbc_min_groups:
         anchors.add("npbc")
     if (
-        any(x in low for x in spec.walk_subject_terms)
-        and any(x in low for x in spec.walk_open_terms)
-        and any(x in low for x in spec.walk_close_terms)
+        "walk_subject" in low_hits
+        and "walk_open" in low_hits
+        and "walk_close" in low_hits
     ):
         anchors.add("walk")
-    if spec.assumptions_anchor_term in stubtext and any(
-        x in stubtext for x in spec.assumptions_partner_terms
-    ):
+    if "assumptions_anchor" in stub_hits and "assumptions_partner" in stub_hits:
         anchors.add("assumptions")
     years = sum(1 for s in stubs if YEAR_TOKEN_SEARCH_RE.search(s))
-    if years >= spec.payments_min_year_stubs and any(
-        x in lead for x in spec.payments_context_terms
-    ):
+    if years >= spec.payments_min_year_stubs and "payments_context" in lead_hits:
         anchors.add("payments")
-    if any(x in low for x in spec.sensitivity_anchor_terms) and any(
-        x in low for x in spec.sensitivity_subject_terms
-    ):
+    if "sensitivity_anchor" in low_hits and "sensitivity_subject" in low_hits:
         anchors.add("sensitivity")
-    if any(x in stub for stub in stubs for x in spec.contributions_stub_terms) and any(
-        x in lead for x in spec.contributions_lead_terms
-    ):
+    if "contributions_stub" in plain and "contributions_lead" in lead_hits:
         anchors.add("contributions")
-    if any(x in stubtext for x in spec.funded_terms):
+    if "funded" in stub_hits:
         anchors.add("funded")
-    if any(x in stubtext for x in spec.allocation_asset_terms) and any(
-        x in lead for x in spec.allocation_context_terms
-    ):
+    if "allocation_asset" in stub_hits and "allocation_context" in lead_hits:
         anchors.add("allocation")
     # The multiemployer leg (ASC 715-80): plan identification and
     # PPA zone/FIP-RP machinery on the grid, in multiemployer or
     # collective-bargaining context.
     if (
-        all(x in low for x in spec.multiemployer_id_terms)
-        and any(x in low for x in spec.multiemployer_status_terms)
-        and any(x in lead or x in low for x in spec.multiemployer_context_terms)
+        set(spec.multiemployer_id_terms) <= low_hits.get("multiemployer_id", frozenset())
+        and "multiemployer_status" in low_hits
+        and (
+            "multiemployer_context" in lead_hits
+            or "multiemployer_context" in low_hits
+        )
     ):
         anchors.add("multiemployer")
     return frozenset(anchors)

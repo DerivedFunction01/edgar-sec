@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.pension.pension_combination_specs import (
     CC_HDR_VOCAB,
     CC_TOKEN_VOCAB,
@@ -28,6 +29,18 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 )
 
 _HEADER_LINES = 3
+
+
+def _stub_index() -> TermIndex:
+    """One substring index over the combination stub terms:
+    core and revenue kinds. Phrase entries only — the
+    combination matching is literal substring."""
+    entries = [TermEntry(term, "core") for term in COMBINATION_CORE_TERMS]
+    entries.extend(TermEntry(term, "revenue") for term in REVENUE_STUBS)
+    return TermIndex(entries)
+
+
+_STUB_INDEX = _stub_index()
 
 
 def _stub_norm(text):
@@ -97,16 +110,15 @@ def _read(text: PensionCombinationText) -> _Read:
     offset_tokens = set()
     for stub in offset_stubs:
         offset_tokens.update(stub_key(stub).split())
+    stub_kinds: set[str] = set()
+    for stub in offset_stubs:
+        stub_kinds.update(_STUB_INDEX.scan(stub))
     return _Read(
         n_rows=len(offset_rows),
         census_n_rows=len(census_lines),
         census_n_cols=max((len(ln.split("|")) for ln in census_lines), default=0),
-        core_present=any(
-            term in stub for term in COMBINATION_CORE_TERMS for stub in offset_stubs
-        ),
-        revenue_stub=any(
-            term in stub for term in REVENUE_STUBS for stub in offset_stubs
-        ),
+        core_present="core" in stub_kinds,
+        revenue_stub="revenue" in stub_kinds,
         stub_keys=frozenset(stub_keys),
         offset_tokens=frozenset(offset_tokens),
         hdr_keys=header_keys(tuple(headers)),

@@ -13,6 +13,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.pension.pension_evidence import (
     PENSION_ANCHOR_SPECS,
@@ -41,32 +42,86 @@ NPBC_GROUPS = (
 )
 ASSUMPTION_COMPANIONS = ("expected", "compensation", "health")
 
+_QUIET_TERMS = (
+    "benefit obligation",
+    "fair value of plan assets",
+    "plan assets",
+    "funded status",
+    "discount rate",
+    "accumulated other comprehensive",
+    "pension",
+    "postretirement",
+    "equity",
+    "fixed income",
+    "level",
+    "qualified pension plan",
+    "net amount recognized",
+    "expected benefit payments",
+    "expected employer contributions",
+    "balance",
+    "arising during",
+    "amortization",
+    "crediting rate",
+    "rate of return",
+    "actual return",
+    "actual gain",
+    "capitalized portion",
+)
+
+
+def _seat_index() -> TermIndex:
+    """One substring index over the seat's stub terms: kind is
+    the term itself; npbc groups and companions ride own kinds.
+    Phrase entries only — the seat's matching is literal
+    substring for single words too."""
+    entries = [TermEntry(term, term) for term in _QUIET_TERMS]
+    for i, group in enumerate(NPBC_GROUPS):
+        entries.extend(TermEntry(term, f"npbc:{i}") for term in group)
+    entries.extend(TermEntry(term, "companion") for term in ASSUMPTION_COMPANIONS)
+    return TermIndex(entries)
+
+
+_SEAT_INDEX = _seat_index()
+
+
+def _stub_hits(text: str) -> frozenset[str]:
+    """The seat terms present in one stub text, one traversal."""
+    found = _SEAT_INDEX.scan(text)
+    return frozenset(
+        value
+        for kind, values in found.items()
+        if not kind.startswith("npbc:")
+        for value in values
+    )
+
 
 def _quiet_form(geometry: GeometryText) -> bool:
     """The geometry's own stubs carry a pension form the
     scored floor prices too quietly to surface."""
     text = geometry.stub_text
-    npbc = sum(1 for group in NPBC_GROUPS if any(term in text for term in group))
-    pbo = "benefit obligation" in text
-    fvpa = "fair value of plan assets" in text or "plan assets" in text
-    if "funded status" in text and (pbo or fvpa):
+    found = _SEAT_INDEX.scan(text)
+    hits = _stub_hits(text)
+    npbc = sum(1 for i in range(len(NPBC_GROUPS)) if f"npbc:{i}" in found)
+    pbo = "benefit obligation" in hits
+    fvpa = "fair value of plan assets" in hits or "plan assets" in hits
+    if "funded status" in hits and (pbo or fvpa):
         return True
     if npbc >= 2:
         return True
-    if "discount rate" in text and any(term in text for term in ASSUMPTION_COMPANIONS):
+    if "discount rate" in hits and "companion" in found:
         return True
-    if "accumulated other comprehensive" in text and (
-        "pension" in text or "postretirement" in text
+    if "accumulated other comprehensive" in hits and (
+        "pension" in hits or "postretirement" in hits
     ):
         return True
-    if "plan assets" in text and (
-        "equity" in text or "fixed income" in text or "level" in text
+    if "plan assets" in hits and (
+        "equity" in hits or "fixed income" in hits or "level" in hits
     ):
         return True
-    if "qualified pension plan" in text or "net amount recognized" in text:
+    if "qualified pension plan" in hits or "net amount recognized" in hits:
         return True
-    if "expected benefit payments" in text or (
-        "expected employer contributions" in text
+    if "expected benefit payments" in hits or (
+        "expected employer contributions" in hits
     ):
         return True
     return False
@@ -78,41 +133,44 @@ def _quiet_form(geometry: GeometryText) -> bool:
 def _rollforward_form(geometry: GeometryText) -> bool:
     """AOCI rollforward row-shape: a balance row, an
     arising-during row, a net amortization row."""
-    text = geometry.stub_text
-    return "balance" in text and "arising during" in text and "amortization" in text
+    hits = _stub_hits(geometry.stub_text)
+    return "balance" in hits and "arising during" in hits and "amortization" in hits
 
 
 def _conjoined_form(geometry: GeometryText) -> bool:
     """One stub carrying both NPBC components conjoined:
     'service and interest cost'."""
-    return any("service and interest cost" in stub for stub in geometry.stubs)
+    return any(
+        "service and interest cost" in _CONJOINED_INDEX.scan(stub)
+        for stub in geometry.stubs
+    )
 
 
 def _crediting_form(geometry: GeometryText) -> bool:
     """Assumptions companion: discount rate stated with
     a crediting rate."""
-    text = geometry.stub_text
-    return "discount rate" in text and "crediting rate" in text
+    hits = _stub_hits(geometry.stub_text)
+    return "discount rate" in hits and "crediting rate" in hits
 
 
 def _return_form(geometry: GeometryText) -> bool:
     """Assumptions companion: discount rate stated with
     a rate of return."""
-    text = geometry.stub_text
-    return "discount rate" in text and "rate of return" in text
+    hits = _stub_hits(geometry.stub_text)
+    return "discount rate" in hits and "rate of return" in hits
 
 
 def _asset_return_form(geometry: GeometryText) -> bool:
     """Assets-leg companion: plan assets with an actual
     return or gain."""
-    text = geometry.stub_text
-    return "plan assets" in text and ("actual return" in text or "actual gain" in text)
+    hits = _stub_hits(geometry.stub_text)
+    return "plan assets" in hits and ("actual return" in hits or "actual gain" in hits)
 
 
 def _capitalized_form(geometry: GeometryText) -> bool:
     """Genuine-only phrase of the census read:
     'capitalized portion'."""
-    return "capitalized portion" in geometry.stub_text
+    return "capitalized portion" in _stub_hits(geometry.stub_text)
 
 
 def _definition_form(geometry: GeometryText) -> bool:
@@ -139,6 +197,15 @@ _SEP_HINTS = (
     "revenue_stub",
 )
 
+_CONJOINED_INDEX = TermIndex(
+    (TermEntry("service and interest cost", "conjoined"),)
+)
+_HINT_INDEX = TermIndex(TermEntry(hint, hint) for hint in _SEP_HINTS)
+_FUNDED_INDEX = TermIndex(
+    TermEntry(term, term)
+    for term in PENSION_ANCHOR_SPECS[FAMILY].funded_terms
+)
+
 
 def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool:
     """C-SEAT-NARROW admission (the priced stage
@@ -155,11 +222,10 @@ def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool
         + "\n"
         + normalize_text(text.prose_after)
     )
-    if "benefit obligation" not in stubtext:
+    funded_hits = _FUNDED_INDEX.scan(stubtext)
+    if "benefit obligation" not in funded_hits:
         return False
-    if any(
-        term in stubtext for term in spec.funded_terms if term != "benefit obligation"
-    ):
+    if any(term in funded_hits for term in spec.funded_terms if term != "benefit obligation"):
         return False
     score = result.scores.get(FAMILY)
     if score is None:
@@ -168,9 +234,7 @@ def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool
     # not a kill: the funded evidence, read by another channel.
     return not any(
         (entry.channel == "veto" and entry.detail != "term:benefit obligation")
-        or (
-            entry.channel == "gate" and any(hint in entry.detail for hint in _SEP_HINTS)
-        )
+        or (entry.channel == "gate" and bool(_HINT_INDEX.scan(entry.detail)))
         for entry in score.evidence
     )
 
