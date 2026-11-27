@@ -332,12 +332,9 @@ _SUMMARY_CHARGE_VOCAB = (
 def _summary_guard(
     arm: str, lines_l: list[str], caption_l: str, note_l: str, prose_l: str
 ) -> str:
-    """The summary form's precision guard: V3 plus the priced
-    R-A/R-B recoveries and the C3 extended veto, and the V4
-    population composition — lending sense (N1), the extended
-    anatomy veto (N2), note family (N4), prose subject (N3) —
-    over the lead anchor / two-charge-type prose discipline,
-    the anatomy veto, and the charge vocabulary."""
+    """The summary form's precision guard: V3 with the priced
+    R-A/R-B recoveries and C3 veto, plus the V4 population
+    composition (N1 lending, N2 anatomy, N4 note, N3 prose)."""
     rows_l = "\n".join(lines_l)
     veto_l = _PAREN_SPAN_RE.sub(" ", rows_l)
     if any(marker in veto_l for marker in _SUMMARY_ANATOMY_MARKERS):
