@@ -8,9 +8,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from edgar_sec.engine.tables.extraction.evidence.balance_sheet.derivatives_evidence import (
-    _term_pattern,
-)
 from edgar_sec.engine.tables.extraction.cascade.geometry.detail_signatures import (
     SCORED_VETOES,
     detail_signatures,
@@ -18,6 +15,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.detail_signatures impor
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
+from edgar_sec.engine.tables.extraction.core.term_index import term_present
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNEL_WEIGHTS,
@@ -77,9 +75,7 @@ class CompetitionResult:
 
 
 def _term_present(term: str, text: str) -> bool:
-    if " " in term or "-" in term:
-        return term in text
-    return _term_pattern(term).search(text) is not None
+    return term_present(term, text)
 
 
 def score_geometry(

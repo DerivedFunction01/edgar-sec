@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
+from edgar_sec.engine.tables.extraction.core.term_index import (
+    TermEntry,
+    TermIndex,
+    term_present,
+)
 
 
 def _index() -> TermIndex:
@@ -59,3 +63,11 @@ def test_empty_and_absent_texts_hit_nothing():
     index = _index()
     assert index.scan("") == {}
     assert index.scan("nothing censused here") == {}
+
+
+def test_term_present_legacy_dual_semantics():
+    assert term_present("cap", "the cap rate")
+    assert not term_present("cap", "capacity")
+    assert term_present("interest rate swaps", "the interest rate swaps table")
+    assert term_present("own-use exemption", "an own-use exemption applies")
+    assert not term_present("swap", "swapmeet")

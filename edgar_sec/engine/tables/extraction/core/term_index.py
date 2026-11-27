@@ -8,6 +8,7 @@ boundaries, phrase entries as literal substrings; overlaps report.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import Iterable
 
 
@@ -87,3 +88,15 @@ class TermIndex:
                         continue
                 found.setdefault(entry.kind, set()).add(entry.reported)
         return {kind: frozenset(values) for kind, values in found.items()}
+
+
+@lru_cache(maxsize=None)
+def _single(term: str) -> TermIndex:
+    word = " " not in term and "-" not in term
+    return TermIndex((TermEntry(term, "hit", word=word),))
+
+
+def term_present(term: str, text: str) -> bool:
+    """One term's presence: word-boundary for single words,
+    literal substring for phrases — the legacy dual semantics."""
+    return bool(_single(term).scan(text))
