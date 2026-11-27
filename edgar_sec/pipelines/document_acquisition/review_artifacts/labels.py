@@ -37,7 +37,7 @@ def _review_context(artifact: dict[str, object]) -> dict[str, object]:
     unsigned.pop("artifact_sha256", None)
     if (
         artifact.get("artifact_type") != "document_acquisition.processing_review"
-        or artifact.get("artifact_version") != 4
+        or artifact.get("artifact_version") != 5
         or not is_sha256_hex_digest(digest)
         or canonical_hash(unsigned) != digest
     ):
@@ -61,7 +61,7 @@ def _review_context(artifact: dict[str, object]) -> dict[str, object]:
     try:
         identity = ExhibitIdentity(**expected_identity)
         accession = AccessionNumber.from_any(str(artifact["accession"]))
-        issuer_cik = Cik.from_raw(accession.raw[:10])
+        issuer_cik = Cik.from_raw(str(artifact["issuer_cik"]))
     except (KeyError, TypeError, ValueError) as error:
         raise ReviewLabelError("review artifact identity is invalid") from error
     if (
@@ -313,7 +313,7 @@ def _case_label_directory(
 def load_case_review_labels(
     review_root: Path, review_artifact: dict[str, object]
 ) -> tuple[dict[str, object], ...]:
-    if review_artifact.get("artifact_version") != 4:
+    if review_artifact.get("artifact_version") != 5:
         return ()
     processing = review_artifact.get("processing")
     if (

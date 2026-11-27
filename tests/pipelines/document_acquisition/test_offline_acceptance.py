@@ -599,7 +599,7 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     assert review_record["body_sha256"] == selected_digest
     assert file_sha256(review_artifact) == review_output["sha256"]
     review_payload = json.loads(review_artifact.read_text(encoding="utf-8"))
-    assert review_payload["artifact_version"] == 4
+    assert review_payload["artifact_version"] == 5
     assert review_payload["fixture"]["body_sha256"] == selected_digest
     assert "receipt" not in review_payload
     assert "projection" not in review_payload

@@ -24,7 +24,7 @@ def _write_review_run(root):
     case_root.mkdir(parents=True)
     artifact = {
         "artifact_type": "document_acquisition.processing_review",
-        "artifact_version": 4,
+        "artifact_version": 5,
         "fixture": {
             "fixture_id": "fixture-a",
             "capture_id": "capture-a",
@@ -125,7 +125,7 @@ def test_review_analysis_reports_consensus_labels_by_form_and_family(tmp_path) -
     run = tmp_path / "run-labeled"
     artifact_path, manifest_path = _write_review_run(run)
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
-    artifact["artifact_version"] = 4
+    artifact["artifact_version"] = 5
     artifact["form"] = "10-K"
     artifact["target_role"] = "exhibit"
     artifact["target_type"] = "EX-3.1"

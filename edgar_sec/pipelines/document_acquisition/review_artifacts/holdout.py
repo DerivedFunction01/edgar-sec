@@ -117,8 +117,7 @@ def _case_rows(labels: tuple[dict[str, object], ...]) -> tuple[dict[str, Any], .
                 "holdout accession identity is invalid"
             ) from error
         if (
-            cik != str(Cik.from_raw(accession.raw[:10]))
-            or first.get("accession_year_code") != accession.raw[11:13]
+            first.get("accession_year_code") != accession.raw[11:13]
             or any(
                 label.get("outcome") not in {"positive", "negative", "ambiguous"}
                 for label in case_labels
@@ -126,7 +125,7 @@ def _case_rows(labels: tuple[dict[str, object], ...]) -> tuple[dict[str, Any], .
             or first.get("predicted_outcome")
             not in {"positive", "negative", "ambiguous"}
         ):
-            raise HoldoutAnalysisError("holdout label disagrees with accession")
+            raise HoldoutAnalysisError("holdout label identity is inconsistent")
         adjudications = [
             label
             for label in case_labels

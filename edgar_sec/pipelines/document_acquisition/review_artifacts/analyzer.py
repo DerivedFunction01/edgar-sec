@@ -77,7 +77,7 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
     artifact_version = artifact.get("artifact_version")
     if (
         artifact_type != "document_acquisition.processing_review"
-        or artifact_version != 4
+        or artifact_version != 5
     ):
         raise ReviewAnalysisError("case artifact format is unsupported")
     digest = artifact.get("artifact_sha256")

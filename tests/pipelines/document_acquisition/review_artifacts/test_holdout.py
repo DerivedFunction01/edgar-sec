@@ -25,6 +25,7 @@ def _label(
     outcome: str,
     predicted: str,
     annotator: str,
+    issuer_cik: str | None = None,
 ) -> dict[str, object]:
     identity = {
         "authority_id": "reg_s_k_item_601",
@@ -38,7 +39,7 @@ def _label(
         "capture_id": "capture-" + accession[-6:],
         "target_id": "target-" + accession[-6:],
         "accession": accession,
-        "issuer_cik": accession[:10],
+        "issuer_cik": issuer_cik if issuer_cik is not None else accession[:10],
         "accession_year_code": accession[11:13],
         "form": "10-K",
         "target_type": "EX-3.1",
@@ -76,6 +77,7 @@ def _consensus_case(
     predicted: str,
     sequence: int,
     body_sequence: int | None = None,
+    issuer_cik: str | None = None,
 ) -> tuple[dict[str, object], ...]:
     return tuple(
         _label(
@@ -86,6 +88,7 @@ def _consensus_case(
             outcome=outcome,
             predicted=predicted,
             annotator=annotator,
+            issuer_cik=issuer_cik,
         )
         for annotator in ("reviewer-a", "reviewer-b")
     )
@@ -135,6 +138,30 @@ def test_holdout_report_is_issuer_and_time_disjoint_with_form_family_counts():
     assert metrics["prediction_abstentions"] == 1
 
 
+def test_holdout_partitions_by_the_carried_cik_not_the_accession_prefix():
+    labels = _consensus_case(
+        "0001193125-24-000001",
+        outcome="positive",
+        predicted="positive",
+        sequence=3,
+        issuer_cik="0000000002",
+    )
+    spec = {
+        "schema_version": 1,
+        "protocol_id": "holdout-v1",
+        "accession_century": 2000,
+        "training_end_year": 2022,
+        "holdout_start_year": 2023,
+        "holdout_end_year": 2025,
+        "holdout_ciks": ["0000000002"],
+    }
+
+    report = analyze_holdout_labels(labels, spec)
+
+    assert report["labeled_holdout_cases"] == 1
+    assert report["holdout_issuers_observed"] == 1
+
+
 def test_holdout_partition_rejects_duplicate_bodies_and_time_overlap():
     labels = _consensus_case(
         "0000000002-24-000001",
@@ -175,7 +202,7 @@ def _write_review_case(
     plan_digest = "a" * 64
     artifact = {
         "artifact_type": "document_acquisition.processing_review",
-        "artifact_version": 4,
+        "artifact_version": 5,
         "fixture": {
             "fixture_id": fixture_id,
             "capture_id": capture_id,
@@ -188,6 +215,7 @@ def _write_review_case(
         "capture_id": capture_id,
         "target_id": target_id,
         "accession": accession,
+        "issuer_cik": accession[:10],
         "form": "10-K",
         "target_role": "exhibit",
         "target_type": "EX-3.1",

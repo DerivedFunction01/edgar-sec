@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.labels import (
 def _review_artifact() -> dict[str, object]:
     artifact: dict[str, object] = {
         "artifact_type": "document_acquisition.processing_review",
-        "artifact_version": 4,
+        "artifact_version": 5,
         "fixture": {
             "fixture_id": "fixture_exhibit",
             "capture_id": "capture_exhibit",
@@ -26,6 +26,7 @@ def _review_artifact() -> dict[str, object]:
         "capture_id": "capture_exhibit",
         "target_id": "target_exhibit",
         "accession": "0000320193-25-000001",
+        "issuer_cik": "0000320193",
         "form": "10-K",
         "target_role": "exhibit",
         "target_type": "EX-3.1",
@@ -77,6 +78,27 @@ def test_label_pins_body_review_and_versioned_assessment(tmp_path):
     assert label["issuer_cik"] == "0000320193"
     assert label["accession_year_code"] == "25"
     assert label["assessment_fingerprint"] == "b" * 64
+
+
+def test_label_carries_the_artifact_cik_not_the_accession_prefix():
+    review = _review_artifact()
+    review["accession"] = "0001193125-25-000001"
+    review["artifact_sha256"] = canonical_hash(
+        {key: value for key, value in review.items() if key != "artifact_sha256"}
+    )
+    label = build_review_label(
+        review,
+        outcome="positive",
+        observed_kind="exhibit",
+        observed_identity=ExhibitIdentity("reg_s_k_item_601", "3.1"),
+        annotator_id="reviewer-a",
+        annotated_at_utc="2026-10-13T20:00:00Z",
+        evidence_ref="normalized-text:chars-0-43",
+    )
+
+    validate_review_label(label, review)
+    assert label["accession"] == "0001193125-25-000001"
+    assert label["issuer_cik"] == "0000320193"
 
 
 def test_negative_label_requires_a_conflicting_observed_identity():

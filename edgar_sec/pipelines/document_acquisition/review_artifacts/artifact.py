@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from edgar_sec.domain.identity import Cik
+from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
@@ -18,7 +20,19 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.models import (
 OBSERVATIONS_FILE = "processing-review.json"
 
 
-_ARTIFACT_VERSION = 4
+_ARTIFACT_VERSION = 5
+
+
+def _issuer_cik(case: FixtureCaseMetadata) -> str | None:
+    if case.target_url is None:
+        return None
+    try:
+        parts = validate_archive_url(case.target_url, case.accession)
+    except ValueError as error:
+        raise ProcessingReviewError(
+            "review artifact target URL is not an archive URL for its accession"
+        ) from error
+    return str(Cik.from_raw(parts.archive_cik))
 
 
 def _review_payload(
@@ -46,6 +60,7 @@ def _review_payload(
         "capture_id": case.capture_id,
         "target_id": case.target_id,
         "accession": case.accession,
+        "issuer_cik": _issuer_cik(case),
         "form": case.form,
         "target_role": case.target_role,
         "target_type": case.target_type,
