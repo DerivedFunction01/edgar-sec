@@ -74,9 +74,7 @@ def _spec_index(spec: DerivativesEvidenceSpec) -> TermIndex:
 
     add(spec.unambiguous_bases, _UNAMBIGUOUS, word=True)
     add(spec.ambiguous_bases, _AMBIGUOUS, word=True)
-    entries.extend(
-        TermEntry(stem, _STEM, value=base) for stem, base in spec.stem_bases
-    )
+    entries.extend(TermEntry(stem, _STEM, value=base) for stem, base in spec.stem_bases)
     add(spec.designation_phrases, _DESIGNATION)
     add(spec.anchor_terms, _ANCHOR)
     add(spec.suffix_terms, _SUFFIX, word=True)
@@ -192,9 +190,7 @@ class DerivativesEvidence:
 _REFUSED_N = DerivativesEvidence(False, "N", False, "no U/A evidence")
 
 
-def _hits(
-    index: TermIndex, lines: tuple[str, ...]
-) -> list[dict[str, frozenset[str]]]:
+def _hits(index: TermIndex, lines: tuple[str, ...]) -> list[dict[str, frozenset[str]]]:
     """One traversal per line: every evidence kind collected at once."""
     return [index.scan(line) for line in lines]
 
@@ -338,9 +334,7 @@ def evaluate_derivatives_evidence(
     )
     if offsetting:
         return DerivativesEvidence(True, "A", True, "offsetting form")
-    effects = bool(subject_hits.get(_EFFECTS)) or bool(
-        leadin_hits.get(_EFFECTS_LEADIN)
-    )
+    effects = bool(subject_hits.get(_EFFECTS)) or bool(leadin_hits.get(_EFFECTS_LEADIN))
     if effects:
         return DerivativesEvidence(True, "A", True, "asc 815 effects form")
     anchor_kinds = ("notional" in subject) + (
@@ -430,7 +424,9 @@ def derivatives_subject_for_geometry(
     if "hedg" in framing:
         return DerivativesSubject(True, "subject: hedging")
     anchors = tuple(
-        term for term in _SUBJECT_ANCHORS if term in framing_hits.get(_SUBJECT_ANCHOR, ())
+        term
+        for term in _SUBJECT_ANCHORS
+        if term in framing_hits.get(_SUBJECT_ANCHOR, ())
     )
     if anchors:
         return DerivativesSubject(True, "subject: " + ", ".join(anchors))
