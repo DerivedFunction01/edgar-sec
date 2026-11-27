@@ -124,7 +124,7 @@ REACH_MIN_STUB_SHARE: dict[str, float] = {
 
 
 _SEP5_STAMP = "mda_financing_operating_rows11"
-_SEP5_TITLE_RE = re.compile(r"statements? of cash flows", re.IGNORECASE)
+_SEP5_TITLE_RE = re.compile(r"cash flows?", re.IGNORECASE)
 
 
 def _sep5_criterion_holds(geometry, cluster_stubs=None) -> bool:
