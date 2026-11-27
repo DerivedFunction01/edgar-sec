@@ -90,11 +90,15 @@ def _run(
 def test_agent_prefixed_accession_fetches_under_carried_cik(tmp_path: Path) -> None:
     accession = "0009999999-24-000042"
     root = "https://www.sec.gov/Archives/edgar/data/1234567/000999999924000042/"
+    page = (
+        fixture_path("document_planning_index_page.html")
+        .read_bytes()
+        .replace(b"000123456724000042", b"000999999924000042")
+        .replace(b"0001234567-24-000042", accession.encode())
+    )
     transport = _Transport(
         {
-            root + f"{accession}-index.html": fixture_path(
-                "document_planning_index_page.html"
-            ).read_bytes(),
+            root + f"{accession}-index.html": page,
             root + "ex991.htm": _EXHIBIT_BODY,
         }
     )
