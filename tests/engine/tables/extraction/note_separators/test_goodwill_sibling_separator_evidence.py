@@ -195,6 +195,19 @@ def test_stage_adapter_over_full_grid():
     assert "sibling_mass" in verdict.legs
 
 
+def test_stage_adapter_keeps_embedded_newlines_inside_their_row():
+    rows = (
+        ("Balance at December 31, 2007", "$ 96,701"),
+        ("Acquired during the year", "4,000"),
+        ("Adjustment", "see note\nAmortization schedule"),
+        ("Balance at June 30, 2008", "100,701"),
+    )
+    table = _table(rows)
+    spec = next(s for s in FORM_TEST_SPECS if s.test_id == "goodwill_sibling_separator")
+    verdict = evaluate_form_test_goodwill_sibling_separator(table, spec)
+    assert not verdict.fired
+
+
 def test_stage_dispatch_stamps_separator_outcome():
     table = _table(_COMPOSITION_ROWS)
     outcomes = {o.test_id: o for o in evaluate_form_tests(table)}

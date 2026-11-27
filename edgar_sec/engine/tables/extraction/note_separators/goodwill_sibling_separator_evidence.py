@@ -102,7 +102,11 @@ def evaluate_form_test_goodwill_sibling_separator(table, spec):
             False, False, (), "no separator spec for family"
         )
     text = RollforwardGridText(
-        "\n".join(" | ".join(row) for row in table.context.rows),
+        "\n".join(
+            " | ".join(cell.replace("\n", " ").replace("\r", " ")
+                       for cell in row)
+            for row in table.context.rows
+        ),
         " ".join(table.context.caption_stack or ()),
     )
     return evaluate_goodwill_sibling_separator(text, gate_spec)
