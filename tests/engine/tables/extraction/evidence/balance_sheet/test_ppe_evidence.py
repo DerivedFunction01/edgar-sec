@@ -93,7 +93,7 @@ def test_bare_total_after_contra_seats_via_net_bare() -> None:
     assert legs.newcore_lg and _outcome(table).passed
 
 
-def test_balance_sheet_block_is_shed_by_the_bs_guard() -> None:
+def test_balance_sheet_block_with_net_line_seats_on_the_face_form() -> None:
     table = _table(
         (
             ("Cash", "1"),
@@ -106,7 +106,7 @@ def test_balance_sheet_block_is_shed_by_the_bs_guard() -> None:
     )
     legs = _legs(table)
     assert legs.net_close and not legs.bs_guard and not legs.newcore
-    assert not legs.claim and not _outcome(table).passed
+    assert legs.face_form and legs.claim and _outcome(table).passed
 
 
 def test_lease_mimic_is_shed_by_the_lease_guard_only() -> None:
