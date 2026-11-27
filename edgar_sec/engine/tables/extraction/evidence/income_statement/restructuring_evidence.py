@@ -246,6 +246,20 @@ def _charge_type_count(text_l: str) -> int:
     return sum(1 for term in _CHARGE_TYPE_TERMS if term in collapsed)
 
 
+def _summary_form(lines_l: list[str]) -> str:
+    """The summary form (Form B, programme-adopted): an anchored,
+    bookendless fragment carrying a Total row, no balance line
+    anywhere, and at least 3 data rows — the census's B3 shape."""
+    if any("balance" in ln for ln in lines_l):
+        return ""
+    if not any(ln.strip().startswith("total") or " | total" in ln for ln in lines_l):
+        return ""
+    data_rows = sum(1 for ln in lines_l if any(ch.isdigit() for ch in ln))
+    if data_rows < 3:
+        return ""
+    return f"summary form, data rows {data_rows}"
+
+
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
     """The bookend pair in any filed form, with the forms named."""
     begin_row = any("balance" in ln and "beginning" in ln for ln in lines_l)
@@ -404,6 +418,12 @@ def evaluate_restructuring_evidence(
             arm = "prose" if prose and not lead else "lead"
             return RestructuringEvidence(
                 True, f"restructuring charges: subject {arm}, {charges}"
+            )
+        summary = _summary_form(lines_l)
+        if summary:
+            arm = "prose" if prose and not lead else "lead"
+            return RestructuringEvidence(
+                True, f"restructuring summary: subject {arm}, {summary}"
             )
         return RestructuringEvidence(False, "no bookend pair in any filed form")
     types = _movement_types(spec, lines_l, first_idx)
