@@ -1,12 +1,6 @@
 """Section corpus: the detector over the simplified specimen set.
 
-The specimens are skeleton texts under ``simplified/`` beside this
-corpus's taxonomies: each carries one named detector behaviour (a
-family's section-sequence shape, a TOC-span or pseudo-TOC case, a
-run-in, wrapped, colon, parenthesized, table-row, or composite
-heading form, or a control case) with the expected resolutions the
-banked corpus's index carried for that behaviour. Banking and
-conventions: the corpus README beside the fixtures.
+Skeleton texts and conventions: the corpus README beside the fixtures.
 """
 
 from __future__ import annotations
