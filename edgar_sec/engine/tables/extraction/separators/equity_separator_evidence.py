@@ -28,7 +28,7 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS,
 )
-from edgar_sec.engine.tables.extraction.seats.seat_test_specs import (
+from edgar_sec.engine.tables.extraction.seats.specs.seat_test_specs import (
     SEAT_TEST_SPECS_BY_FAMILY,
 )
 from edgar_sec.engine.tables.extraction.seats.statement_seat import _column_walk
