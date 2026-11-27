@@ -100,11 +100,7 @@ def test_fires_on_sibling_class_composition():
 
 
 def test_fires_on_two_sibling_rows_only():
-    text = (
-        "Patents | 800\n"
-        "Licenses | 300\n"
-        "Total | 1,100"
-    )
+    text = "Patents | 800\nLicenses | 300\nTotal | 1,100"
     assert _eval(text).fired
 
 
@@ -140,11 +136,7 @@ def test_clear_on_pure_goodwill_walk():
 
 
 def test_clear_below_sibling_mass():
-    text = (
-        "Trademarks | 45,000\n"
-        "Other assets | 12,000\n"
-        "Total | 57,000"
-    )
+    text = "Trademarks | 45,000\nOther assets | 12,000\nTotal | 57,000"
     assert not _eval(text).fired
 
 

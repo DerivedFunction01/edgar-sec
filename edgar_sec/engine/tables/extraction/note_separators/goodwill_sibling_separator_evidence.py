@@ -53,11 +53,7 @@ def _stubs(rows: list[list[str]]) -> list[str]:
 
 def _sibling_mass(stubs: list[str]) -> int:
     """Stub rows carrying a sibling intangibles-class term."""
-    return sum(
-        1
-        for stub in stubs
-        if any(term in stub for term in SIBLING_CLASS_TERMS)
-    )
+    return sum(1 for stub in stubs if any(term in stub for term in SIBLING_CLASS_TERMS))
 
 
 def evaluate_goodwill_sibling_separator(
