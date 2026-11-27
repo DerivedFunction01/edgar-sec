@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.common.models import ItemDefinition
+from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.domain.sec_urls import archives_url
 from edgar_sec.engine.forms.normalize import normalize_document
@@ -133,7 +134,7 @@ def bank_specimen(
 
 def _fetch_body(job: dict[str, Any], client: SecHttpClient) -> bytes:
     """Fetch one specimen body from the EDGAR archives."""
-    cik = int(job["accession"].split("-")[0])
+    cik = int(AccessionNumber.from_any(job["accession"]).normalized[:10])
     url = archives_url(cik, job["accession"], job["document"])
     return client.get_bytes(url)
 

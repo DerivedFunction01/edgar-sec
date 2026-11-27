@@ -5,8 +5,32 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from edgar_sec.tools.section_corpus.build import bank_specimen
+from edgar_sec.tools.section_corpus.build import _fetch_body, bank_specimen
 from tests.support.fixtures import fixture_path
+
+
+class _RecordingClient:
+    """Offline double capturing the archive URL _fetch_body builds."""
+
+    def __init__(self) -> None:
+        self.url = ""
+
+    def get_bytes(self, url: str) -> bytes:
+        self.url = url
+        return b""
+
+
+def test_fetch_body_cik_for_dashed_and_dashless_accessions() -> None:
+    job = {
+        "accession": "0000912057-00-051893",
+        "document": "a2031946zn-30da.txt",
+    }
+    dashed = _RecordingClient()
+    _fetch_body(job, dashed)  # type: ignore[arg-type]
+    dashless = _RecordingClient()
+    _fetch_body({**job, "accession": "000091205700051893"}, dashless)  # type: ignore[arg-type]
+    assert dashed.url == dashless.url
+    assert "/912057/000091205700051893/" in dashed.url
 
 _JOB = {
     "slug": "control_18k",
