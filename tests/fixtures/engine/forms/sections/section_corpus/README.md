@@ -17,6 +17,12 @@ specimen, so detector tests never re-run normalization.
   (resolutions when banked) and `expected` (resolutions the corpus
   test asserts; equal to `baseline` at banking, afterwards changed
   only by a deliberate, reviewed corpus edit).
+- `dropped_texts.json` — the specimens whose texts are not tracked:
+  the re-proof showed each regenerable from the EDGAR archives on the
+  corpus builder (byte-identical, or byte-differing with resolutions
+  preserved). Each entry names the specimen, its text path, its class,
+  and its banked size and SHA-256. Specimens the archives no longer
+  serve stay banked in `texts/` — those texts are the surviving copy.
 
 ## Conventions
 
@@ -44,3 +50,10 @@ python -m edgar_sec.tools.section_corpus.build --jobs jobs.json \
 Without `--specimen-dir`, bodies are fetched from the EDGAR archives;
 with it, a job's `file` names a local body. A slug's banked taxonomy
 is written only when the slug is new or `--refresh-taxonomy` is given.
+
+The dropped specimens' coverage lives in the tooling layer:
+`regen_check.py` beside this README re-banks them from the archives
+and verifies each against `dropped_texts.json` and the index's
+`expected`, on demand (it needs `SEC_USER_AGENT`); the offline corpus
+test covers the banked specimens and asserts the registry's
+completeness against the index.

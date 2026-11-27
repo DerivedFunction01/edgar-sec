@@ -41,8 +41,23 @@ def _taxonomies() -> dict[str, tuple[ItemDefinition, ...]]:
 _TAXONOMIES = _taxonomies()
 _INDEX = json.loads((_CORPUS / "index.json").read_text(encoding="utf-8"))
 
+# Specimens whose texts the re-proof showed regenerable from the EDGAR
+# archives on the corpus builder are not tracked; the registry beside
+# the index names each one with its banked hash, and regen_check.py
+# (beside the corpus) re-verifies them in the tooling layer.
+_DROPPED_PATH = _CORPUS / "dropped_texts.json"
+_DROPPED: dict[str, dict] = (
+    {
+        e["id"]: e
+        for e in json.loads(_DROPPED_PATH.read_text(encoding="utf-8"))
+    }
+    if _DROPPED_PATH.exists()
+    else {}
+)
+_LIVE = [e for e in _INDEX if e["id"] not in _DROPPED]
 
-@pytest.mark.parametrize("entry", _INDEX, ids=[e["id"] for e in _INDEX])
+
+@pytest.mark.parametrize("entry", _LIVE, ids=[e["id"] for e in _LIVE])
 def test_specimen_resolutions_match_expectations(entry: dict) -> None:
     text = (_CORPUS / entry["text"]).read_text(encoding="utf-8")
     toc_span = tuple(entry["toc_span"]) if entry["toc_span"] else None
@@ -59,8 +74,13 @@ def test_specimen_resolutions_match_expectations(entry: dict) -> None:
 def test_corpus_index_is_complete_and_consistent() -> None:
     ids = [e["id"] for e in _INDEX]
     assert len(ids) == len(set(ids))
-    for entry in _INDEX:
+    for entry in _LIVE:
         assert entry["family"] in _TAXONOMIES
         text_path = _CORPUS / entry["text"]
         assert text_path.is_file() and text_path.stat().st_size > 0
         assert Path(entry["text"]).name == f"{entry['accession']}__{entry['document']}"
+    by_id = {e["id"]: e for e in _INDEX}
+    for entry_id, dropped in _DROPPED.items():
+        assert entry_id in by_id
+        assert dropped["text"] == by_id[entry_id]["text"]
+        assert not (_CORPUS / dropped["text"]).exists()
