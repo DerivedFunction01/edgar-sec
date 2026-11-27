@@ -29,6 +29,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_COMPOSITION_TWIN,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_CORE_FORM,
+    TEST_INTANGIBLES_IDENTITY,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_CREDIT_SEPARATOR,
     TEST_DEFERRED_TAX_SEPARATOR,
@@ -266,7 +267,12 @@ PROFILES: tuple[FamilyProfile, ...] = (
         KIND_FAMILY,
         _support(0.349, 0.857, 0.543, 0.750),
         SEAT_SIGNATURE,
-        form_tests=(TEST_COMPOSITION_TWIN, TEST_CORE_FORM, TEST_FORM_SEPARATION),
+        form_tests=(
+            TEST_COMPOSITION_TWIN,
+            TEST_CORE_FORM,
+            TEST_FORM_SEPARATION,
+            TEST_INTANGIBLES_IDENTITY,
+        ),
     ),
     FamilyProfile(
         "inventory",
