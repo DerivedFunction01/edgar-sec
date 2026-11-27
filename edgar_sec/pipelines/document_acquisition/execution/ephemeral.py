@@ -46,10 +46,8 @@ def run_ephemeral_pass(
 ) -> dict[str, int]:
     """Fetch each accession's index page in the pool and acquire its matches.
 
-    Each pair carries the accession's archive CIK as data from the run's
-    work order; the index URL is never derived from the accession itself.
-    Resolutions are recorded in the run's own state store and nowhere else:
-    no plan, manifest, or inventory record is created for them.
+    Each pair carries the accession's archive CIK as work-order data — never
+    derived from the accession; resolutions record in the run's state store.
     """
     staging_root = paths.run_staging_root(run_id)
     staging_root.mkdir(parents=True, exist_ok=True)
