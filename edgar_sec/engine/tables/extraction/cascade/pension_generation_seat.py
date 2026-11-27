@@ -140,10 +140,7 @@ def _rollforward_form(geometry: GeometryText) -> bool:
 def _conjoined_form(geometry: GeometryText) -> bool:
     """One stub carrying both NPBC components conjoined:
     'service and interest cost'."""
-    return any(
-        "service and interest cost" in _CONJOINED_INDEX.scan(stub)
-        for stub in geometry.stubs
-    )
+    return any("conjoined" in _CONJOINED_INDEX.scan(stub) for stub in geometry.stubs)
 
 
 def _crediting_form(geometry: GeometryText) -> bool:
