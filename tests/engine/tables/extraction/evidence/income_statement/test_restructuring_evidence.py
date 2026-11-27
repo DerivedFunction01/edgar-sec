@@ -689,7 +689,13 @@ def test_summary_guard_admits_a_parenthesized_marker():
     # R-A: an anatomy marker inside parentheses (a column
     # qualifier) does not veto — the priced :78 recovery shape.
     rows = (
-        ("Program", "Sales Returns (included in Net Sales)", "Cost of Sales", "Operating Expenses", "Total"),
+        (
+            "Program",
+            "Sales Returns (included in Net Sales)",
+            "Cost of Sales",
+            "Operating Expenses",
+            "Total",
+        ),
         ("2019 Plan", "2,625", "-", "13,318", "15,943"),
         ("2018 Plan", "-", "3,724", "-", "3,724"),
         ("2017 and Prior Plans", "-", "-", "1,575", "1,575"),
