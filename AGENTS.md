@@ -133,10 +133,13 @@ comment is counted alone.
 ## Testing & Fixtures
 
 Fixture discipline is the generic pattern (Code and documentation patterns). This repo's
-instance: committed fixtures live under `tests/fixtures/`; production-consumed
-data beside its owning module is the cohort bundle corpora under
-`engine/xbrl/discovery/` (wheel-excluded in `pyproject.toml`); generated outputs
-use pytest's `tmp_path` or transient paths; the default suite is under 1s total.
+instance: committed fixtures live under `tests/fixtures/`, sanitized and minimal;
+generated outputs use pytest's `tmp_path` or transient paths, never the repository
+tree. Tracking itself is governed by the Data Tracking tests below (R6/D1, R7):
+consumed-but-regenerable data lives untracked. The cohort bundle corpora under
+`engine/xbrl/discovery/` (seed, vintage, sp100) are the named R6/D1 exemption, not
+the pattern — they stay tracked beside their owning module, with the bundle
+directories wheel-excluded in `pyproject.toml`.
 
 **Determinism**: nondeterministic tests are removed, and flaky tests are
 changed or dropped — never quarantined, skipped, or retried into green. The
