@@ -125,10 +125,10 @@ def _f2_forms(
     hits = [_scan(spec, ln) for ln in lines_l]
     lex = [h.get("lex", frozenset()) for h in hits]
     begin_row = any("balance" in lx and "beginning" in lx for lx in lex)
-    end_row = any(
-        "balance" in lx and ("ending" in lx or "end of" in lx) for lx in lex
-    )
-    dated = [ln for ln, lx in zip(lines_l, lex) if "balance" in lx and _priced_years(ln)]
+    end_row = any("balance" in lx and ("ending" in lx or "end of" in lx) for lx in lex)
+    dated = [
+        ln for ln, lx in zip(lines_l, lex) if "balance" in lx and _priced_years(ln)
+    ]
     years: set[str] = set()
     months: set[str] = set()
     for ln in dated:
@@ -279,15 +279,11 @@ def _f_amendment_arms(
         hdr_keys |= _period_keys_x(spec, lines_l[index])
     lex = [_scan(spec, ln).get("lex", frozenset()) for ln in lines_l]
     open_rows = [i for i, lx in enumerate(lex) if "beginning" in lx]
-    close_rows = [
-        i for i, lx in enumerate(lex) if any(c in lx for c in _CLOSE_LEX)
-    ]
+    close_rows = [i for i, lx in enumerate(lex) if any(c in lx for c in _CLOSE_LEX)]
     arms = []
     if any(i != j for i in open_rows for j in close_rows) and len(hdr_keys) >= 2:
         arms.append("header-dated pair")
-    asof_idx = [
-        i for i, lx in enumerate(lex) if "balanc" in lx and "as of" in lx
-    ]
+    asof_idx = [i for i, lx in enumerate(lex) if "balanc" in lx and "as of" in lx]
     akeys = set(hdr_keys)
     for i in asof_idx:
         akeys |= _period_keys_x(spec, lines_l[i])
