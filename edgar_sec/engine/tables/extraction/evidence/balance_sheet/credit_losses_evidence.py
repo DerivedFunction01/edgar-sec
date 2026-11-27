@@ -154,7 +154,9 @@ def _spec_index(spec: CreditLossesEvidenceSpec) -> TermIndex:
     entries += [TermEntry(word, "anchor") for word in spec.anchor_words]
     for key, terms in spec.movement_elements:
         entries += [TermEntry(term, "element", value=key) for term in terms]
-    entries += [TermEntry(marker, "schedule_marker") for marker in spec.schedule_markers]
+    entries += [
+        TermEntry(marker, "schedule_marker") for marker in spec.schedule_markers
+    ]
     entries += [
         TermEntry(phrase, "carrier", value=phrase) for phrase in spec.carrier_phrases
     ]
