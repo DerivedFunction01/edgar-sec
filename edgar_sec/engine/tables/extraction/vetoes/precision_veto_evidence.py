@@ -102,6 +102,7 @@ from edgar_sec.foundation.text.date_patterns import (
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.normalize import collapse_whitespace
 from edgar_sec.foundation.text.words import word_tokens
+from edgar_sec.foundation.regex.builder import build_alternation
 
 
 def _token_list(text: str) -> list[str]:
@@ -475,13 +476,18 @@ def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     return tuple(legs)
 
 
-_FV_LEVEL_RE = re.compile(r"level\s*(1|2|3|i{1,3}|iv)\b", re.IGNORECASE)
+_FV_LEVEL_TOKENS = ("1", "2", "3", "i", "ii", "iii", "iv")
+_FV_LEVEL_RE = re.compile(
+    r"level\s*(" + build_alternation(_FV_LEVEL_TOKENS) + r")\b",
+    re.IGNORECASE,
+)
+_FV_WS_RE = re.compile(r"\s+")
 _FV_ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4}
 
 
 def _fv_norm(texts) -> str:
     joined = " ".join(str(t) for t in texts if t)
-    return re.sub(r"\s+", " ", joined).lower()
+    return _FV_WS_RE.sub(" ", joined).lower()
 
 
 def _fv_levels(texts) -> set:
@@ -497,9 +503,8 @@ def _fv_levels(texts) -> set:
 
 def _fair_value_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """Fair_value precision packet: the ITEMS surface forms
-    (VMA / SEC / ALLOC) and W3 (H == 0) under the g5 guard
-    (the note title names fair value). Priced form of record:
-    ITEMS | W3-guarded-g5 (register-fair-value.md)."""
+    (VMA / SEC / ALLOC) and W3 (H == 0) under the g5 guard.
+    Priced form: ITEMS | W3-guarded-g5 (register-fair-value.md)."""
     headers = list(geometry.headers or [])
     stubs = list(geometry.stubs or [])
     caption = geometry.caption or ""
