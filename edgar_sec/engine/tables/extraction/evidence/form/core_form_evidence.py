@@ -110,6 +110,7 @@ class CoreFormText:
 class CoreFormVerdict:
     core_present: bool
     detail: str
+    letters: str = ""
 
 
 def _numeric_row(row, dash=True):
@@ -210,7 +211,7 @@ def _eval_intangibles(t, spec):
         nclass,
         yearrows,
     )
-    return CoreFormVerdict(core, detail)
+    return CoreFormVerdict(core, detail, letters)
 
 
 # ---------------- fair_value (components A/B/C) ----------------

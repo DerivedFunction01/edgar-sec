@@ -149,5 +149,5 @@ CORE_FORM_GATE_FORM_EXEMPTIONS = {
 # packet): the S1 denial does not refuse the named family's
 # claim when a companion form test passed.
 SUMMARY_SEPARATOR_FORM_EXEMPTIONS = {
-    "intangibles": ("intangibles_composition", "intangibles_core_form"),
+    "intangibles": ("intangibles_identity_form",),
 }

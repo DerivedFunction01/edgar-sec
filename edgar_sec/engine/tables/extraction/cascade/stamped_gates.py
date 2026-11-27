@@ -112,10 +112,7 @@ STAMPED_GATES = (
 # intangibles packet): the named gate does not refuse the
 # family's claim when a companion form test passed.
 STAMPED_GATE_FORM_EXEMPTIONS = {
-    ("intangibles", TEST_FORM_SEPARATION): (
-        "intangibles_composition",
-        "intangibles_core_form",
-    ),
+    ("intangibles", TEST_FORM_SEPARATION): ("intangibles_identity_form",),
 }
 
 

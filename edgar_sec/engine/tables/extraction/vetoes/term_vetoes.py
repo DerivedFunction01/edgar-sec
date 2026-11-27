@@ -66,26 +66,11 @@ def term_veto_hits(geometry: GeometryText) -> dict[str, dict[str, str]]:
 # packet): a recorded hard hit on these terms does not bar the
 # family when a named form test passed on the same geometry.
 HARD_VETO_FORM_EXEMPTIONS: dict[tuple[str, str], tuple[str, ...]] = {
-    ("intangibles", "segment"): (
-        "intangibles_composition",
-        "intangibles_core_form",
-    ),
-    ("intangibles", "revenue"): (
-        "intangibles_composition",
-        "intangibles_core_form",
-    ),
-    ("intangibles", "revenues"): (
-        "intangibles_composition",
-        "intangibles_core_form",
-    ),
-    ("intangibles", "cash flow"): (
-        "intangibles_composition",
-        "intangibles_core_form",
-    ),
-    ("intangibles", "income tax"): (
-        "intangibles_composition",
-        "intangibles_core_form",
-    ),
+    ("intangibles", "segment"): ("intangibles_identity_form",),
+    ("intangibles", "revenue"): ("intangibles_identity_form",),
+    ("intangibles", "revenues"): ("intangibles_identity_form",),
+    ("intangibles", "cash flow"): ("intangibles_identity_form",),
+    ("intangibles", "income tax"): ("intangibles_identity_form",),
 }
 
 

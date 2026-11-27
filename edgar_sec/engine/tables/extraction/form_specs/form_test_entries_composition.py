@@ -13,6 +13,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_STEP8_PRICING,
     TEST_COMPOSITION_TWIN,
     TEST_CORE_FORM,
+    TEST_INTANGIBLES_IDENTITY,
     TEST_DEFERRED_TAX_SEPARATOR,
     TEST_DERIVATIVES_EVIDENCE,
     TEST_INVENTORY_EVIDENCE,
@@ -72,6 +73,13 @@ COMPOSITION_FORM_TEST_ENTRIES: tuple[FormTestSpec, ...] = (
         TEST_CORE_FORM,
         "intangibles_core_form",
         3.0,
+        provenance=PROV_STEP8_PRICING,
+    ),
+    FormTestSpec(
+        "intangibles",
+        TEST_INTANGIBLES_IDENTITY,
+        "intangibles_identity_form",
+        0.0,
         provenance=PROV_STEP8_PRICING,
     ),
     FormTestSpec(

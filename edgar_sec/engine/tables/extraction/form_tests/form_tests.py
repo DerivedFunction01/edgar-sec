@@ -74,6 +74,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_COMPREHENSIVE_INCOME_SEPARATOR,
     TEST_COMPOSITION_TWIN,
     TEST_CORE_FORM,
+    TEST_INTANGIBLES_IDENTITY,
     TEST_CREDIT_SEPARATOR,
     TEST_CREDIT_LOSSES_EVIDENCE,
     TEST_DERIVATIVES_EVIDENCE,
@@ -234,6 +235,35 @@ def _evaluate_core_form(table: TypedTable, spec: FormTestSpec) -> FormTestOutcom
         0,
         spec.points,
         result.detail,
+    )
+
+
+_INTANGIBLES_IDENTITY_LETTERS = frozenset("ABEGHF")
+
+
+def _evaluate_intangibles_identity(
+    table: TypedTable, spec: FormTestSpec
+) -> FormTestOutcome:
+    """The ASC 350-30 composition identity: the twin, or a core pass
+    on an identity letter (A/B/E/G/H) or the F companion alone."""
+    by_id = {s.test_id: s for s in FORM_TEST_SPECS}
+    comp = evaluate_composition(table, by_id["intangibles_composition"])
+    core = evaluate_form_test_core_form(table, by_id["intangibles_core_form"])
+    letters = set(core.letters) & _INTANGIBLES_IDENTITY_LETTERS
+    passed = comp.passed or bool(letters)
+    detail = (
+        f"identity: twin={comp.passed} letters="
+        f"{''.join(sorted(letters)) or '-'} (core {core.letters or '-'})"
+    )
+    return FormTestOutcome(
+        spec.family,
+        spec.test_id,
+        spec.kind,
+        passed,
+        True,
+        0,
+        spec.points,
+        detail,
     )
 
 
@@ -505,6 +535,7 @@ _EVALUATORS = {
     TEST_COMPOSITION_TWIN: _evaluate_composition,
     TEST_DERIVATIVES_EVIDENCE: _evaluate_derivatives,
     TEST_CORE_FORM: _evaluate_core_form,
+    TEST_INTANGIBLES_IDENTITY: _evaluate_intangibles_identity,
     TEST_BALANCE_SHEET_SEPARATOR: _evaluate_balance_sheet_separator,
     TEST_COMPREHENSIVE_INCOME_SEPARATOR: _evaluate_comprehensive_income_separator,
     TEST_PENSION_ROUTED: _evaluate_pension_routed,
