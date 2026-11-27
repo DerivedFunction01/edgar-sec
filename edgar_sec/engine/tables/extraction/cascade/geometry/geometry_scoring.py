@@ -7,6 +7,7 @@ text, folds form-test outcomes, and applies scored vetoes.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import lru_cache
 
 from edgar_sec.engine.tables.extraction.cascade.geometry.detail_signatures import (
     SCORED_VETOES,
@@ -15,7 +16,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.detail_signatures impor
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
-from edgar_sec.engine.tables.extraction.core.term_index import term_present
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNEL_WEIGHTS,
@@ -74,8 +75,36 @@ class CompetitionResult:
     groups: tuple[ClaimGroup, ...] = ()
 
 
-def _term_present(term: str, text: str) -> bool:
-    return term_present(term, text)
+_HIT = "hit"
+
+
+@lru_cache(maxsize=None)
+def _channel_index(terms: tuple[SignatureTerm, ...], channel: str) -> TermIndex:
+    """One unified index over a channel's signature terms.
+
+    Match mode is the per-term scan's own: word-boundary for a
+    term with no space or hyphen, literal substring otherwise.
+    """
+    return TermIndex(
+        TermEntry(spec.term, _HIT, word=" " not in spec.term and "-" not in spec.term)
+        for spec in terms
+        if spec.channel == channel
+    )
+
+
+def _signature_hits(
+    terms: tuple[SignatureTerm, ...], texts: dict[str, str]
+) -> dict[str, frozenset[str]]:
+    """Collected matches per channel: one traversal per text."""
+    hits: dict[str, frozenset[str]] = {}
+    for spec in terms:
+        if spec.channel not in hits:
+            hits[spec.channel] = (
+                _channel_index(terms, spec.channel)
+                .scan(texts[spec.channel])
+                .get(_HIT, frozenset())
+            )
+    return hits
 
 
 def score_geometry(
@@ -92,9 +121,9 @@ def score_geometry(
     }
     by_family: dict[str, dict[str, float]] = {}
     evidence: dict[str, list[ClaimEvidence]] = {}
+    hits = _signature_hits(terms, texts)
     for spec in terms:
-        text = texts[spec.channel]
-        if not text or not _term_present(spec.term, text):
+        if spec.term not in hits[spec.channel]:
             continue
         points = spec.weight * CHANNEL_WEIGHTS[spec.channel]
         by_family.setdefault(spec.family, {}).setdefault(spec.channel, 0.0)

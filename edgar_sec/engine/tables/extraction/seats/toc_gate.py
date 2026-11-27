@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.subjects.profiles import PROFILES
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
@@ -52,6 +54,17 @@ for _term in SIGNATURE_TERMS:
 _FAMILY_TERMS: dict[str, tuple[str, ...]] = {
     family: tuple(terms) for family, terms in _TERM_SETS.items()
 }
+
+
+@lru_cache(maxsize=None)
+def _family_index() -> TermIndex:
+    """One unified index over the family term sets: the kind is
+    the family, so one traversal collects every family at once."""
+    return TermIndex(
+        TermEntry(term, family)
+        for family, terms in _FAMILY_TERMS.items()
+        for term in terms
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -155,15 +168,11 @@ def toc_signals(table: TypedTable) -> TocSignals:
             weak_labels.append(row.label)
     weak = len(weak_pages) if _increasing(weak_pages) else 0
     kept_labels = strong_labels + (weak_labels if weak else [])
-    families = tuple(
-        sorted(
-            family
-            for family, terms in _FAMILY_TERMS.items()
-            if any(
-                term in normalize_text(label) for label in kept_labels for term in terms
-            )
-        )
-    )
+    index = _family_index()
+    found: set[str] = set()
+    for label in kept_labels:
+        found.update(index.scan(normalize_text(label)))
+    families = tuple(sorted(found))
     return TocSignals(
         rows=len(rows),
         strong_rows=strong,
@@ -220,12 +229,12 @@ def _title_families(title: str) -> tuple[str, ...]:
     """The families a note title names: the family's own name in the
     title's words, or one of its caption terms where it carries any."""
     text = normalize_text(title)
+    named = _family_index().scan(text)
     return tuple(
         sorted(
             family
             for family in _TITLE_FAMILY_NAMES
-            if family.replace("_", " ") in text
-            or any(term in text for term in _FAMILY_TERMS.get(family, ()))
+            if family.replace("_", " ") in text or family in named
         )
     )
 
