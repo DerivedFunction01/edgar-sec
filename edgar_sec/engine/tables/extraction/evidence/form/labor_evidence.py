@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.specs.families.labor_specs import (
     COUNT_HDR,
@@ -86,18 +88,47 @@ class LaborEvidence:
 
 _REFUSED = LaborEvidence(False, "", "labor signature absent")
 
+_REP = "rep"
+_COUNT = "count"
+_COUNT_NUMBER = "count_number"
+_WORKFORCE = "workforce"
+_DATE = "date"
+_UNION_NAME = "union_name"
+
+
+@lru_cache(maxsize=None)
+def _header_index() -> TermIndex:
+    """The header tuples as one index, substring mode (the
+    lists' own semantics), plus the compound count check's
+    bare "number" as its own kind."""
+    entries = [TermEntry(term, _REP) for term in REP_HDR]
+    entries += [TermEntry(term, _COUNT) for term in COUNT_HDR]
+    entries.append(TermEntry("number", _COUNT_NUMBER))
+    entries += [TermEntry(term, _WORKFORCE) for term in WORKFORCE_HDR]
+    entries += [TermEntry(term, _DATE) for term in DATE_HDR]
+    return TermIndex(entries)
+
+
+@lru_cache(maxsize=None)
+def _stub_index() -> TermIndex:
+    """The stub tuple as one index, substring mode."""
+    return TermIndex(TermEntry(term, _UNION_NAME) for term in UNION_NAMES)
+
 
 def evaluate_labor_evidence(text: LaborText, spec: LaborEvidenceSpec) -> LaborEvidence:
     """Seat iff the priced signature fires outside the guard.
     Core legs only: representative identity or temporal terms in
     the header grammar; supporting features never seat alone."""
-    hdr_rep = any(term in text.header_text for term in REP_HDR)
-    count = any(term in text.header_text for term in COUNT_HDR) or (
-        "employees" in text.header_text and "number" in text.header_text
+    header_hits = _header_index().scan(text.header_text)
+    stub_hits = _stub_index().scan(text.stub_text)
+    hdr_rep = bool(header_hits.get(_REP))
+    count = bool(header_hits.get(_COUNT)) or (
+        "employees" in header_hits.get(_WORKFORCE, frozenset())
+        and bool(header_hits.get(_COUNT_NUMBER))
     )
-    count3 = count or any(term in text.header_text for term in WORKFORCE_HDR)
-    hdr_date = any(term in text.header_text for term in DATE_HDR)
-    stub_name = any(term in text.stub_text for term in UNION_NAMES)
+    count3 = count or bool(header_hits.get(_WORKFORCE))
+    hdr_date = bool(header_hits.get(_DATE))
+    stub_name = bool(stub_hits.get(_UNION_NAME))
     arm = ""
     legs = ""
     if hdr_rep and count3:

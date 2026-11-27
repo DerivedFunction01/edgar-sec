@@ -6,8 +6,10 @@ the shared home tokenizer; legs are the census-priced sets.
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 from typing import NamedTuple
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import (
     normalize_text,
 )
@@ -457,21 +459,35 @@ def _eps_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     return tuple(legs)
 
 
+_FORM_PHRASE = "form_phrase"
+_CONTRIBUTIONS = "contributions"
+_EXPIRATION = "expiration"
+
+
+@lru_cache(maxsize=None)
+def _labor_header_index() -> TermIndex:
+    """The labor veto's phrase lists as one index, substring
+    mode (the lists' own semantics). The EIN checks stay
+    token/prefix operations, not term-list scans."""
+    entries = [TermEntry(phrase, _FORM_PHRASE) for phrase in LABOR_FORM_PHRASES]
+    entries.append(TermEntry(LABOR_CONTRIBUTIONS_PHRASE, _CONTRIBUTIONS))
+    entries.append(TermEntry(LABOR_EXPIRATION_TOKEN, _EXPIRATION))
+    return TermIndex(entries)
+
+
 def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     """Labor: the multiemployer-plan form signature and the
     orphaned contributions caption, over the headers."""
     headers = [normalize_text(header) for header in geometry.headers or ()]
+    hits = _labor_header_index().scan("\n".join(headers))
     legs = []
     for text in headers:
         if LABOR_EIN_TOKEN in text.split() or LABOR_EIN_PREFIX in text:
             legs.append(LEG_EMPLOYER_FORM)
             break
-        if any(phrase in text for phrase in LABOR_FORM_PHRASES):
-            legs.append(LEG_EMPLOYER_FORM)
-            break
-    if any(LABOR_CONTRIBUTIONS_PHRASE in text for text in headers) and not any(
-        LABOR_EXPIRATION_TOKEN in text for text in headers
-    ):
+    if LEG_EMPLOYER_FORM not in legs and hits.get(_FORM_PHRASE):
+        legs.append(LEG_EMPLOYER_FORM)
+    if hits.get(_CONTRIBUTIONS) and not hits.get(_EXPIRATION):
         legs.append(LEG_CONTRIBUTIONS_ORPHAN)
     return tuple(legs)
 
