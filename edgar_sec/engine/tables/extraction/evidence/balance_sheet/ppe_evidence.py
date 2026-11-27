@@ -122,6 +122,7 @@ class PpeLegs:
     roll_form: bool
     rights_form: bool
     comp_form: bool
+    face_form: bool
 
     @property
     def claim(self) -> bool:
@@ -134,6 +135,7 @@ class PpeLegs:
             or self.roll_form
             or self.rights_form
             or self.comp_form
+            or self.face_form
         )
 
     @property
@@ -147,6 +149,7 @@ class PpeLegs:
             "roll_form",
             "rights_form",
             "comp_form",
+            "face_form",
         ):
             if getattr(self, name):
                 return name
@@ -223,6 +226,9 @@ def legs_for(text: PpeText, spec: PpeEvidenceSpec) -> PpeLegs:
         comp_form=class_rows == 1
         and contra
         and any(term in text.lead for term in spec.comp_lead_terms),
+        face_form=any(lit in stub_text for lit in spec.net_close_literals)
+        and classes2
+        and not bs_guard,
     )
 
 
