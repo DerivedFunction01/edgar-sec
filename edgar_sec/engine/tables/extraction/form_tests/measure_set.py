@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.specs.measure_set_specs import (
     MEASURE_SET_SPECS_BY_TEST_ID,
@@ -86,8 +88,21 @@ def _head_year_variants(texts: list[str]) -> list[str]:
     ]
 
 
+@lru_cache(maxsize=None)
+def _phrase_index(phrases: tuple[str, ...]) -> TermIndex:
+    """One index over a phrase tuple. Every entry is
+    phrase-kind — the standing match is substring."""
+    return TermIndex([TermEntry(phrase, "hit") for phrase in phrases])
+
+
 def _present(texts: list[str], phrases: tuple[str, ...]) -> bool:
-    return any(phrase in text for text in texts for phrase in phrases)
+    index = _phrase_index(phrases)
+    return any(index.scan(text) for text in texts)
+
+
+def _contains(text: str, phrases: tuple[str, ...]) -> bool:
+    """One text against a phrase tuple, index form."""
+    return bool(_phrase_index(phrases).scan(text))
 
 
 def _build_dated_bookend_re() -> re.Pattern[str]:
@@ -342,7 +357,7 @@ def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetRes
         (
             term
             for term in params.subject_terms
-            if not _present(texts, (term,)) and term not in prose_tail
+            if not _present(texts, (term,)) and not _contains(prose_tail, (term,))
         ),
         None,
     )
@@ -352,7 +367,7 @@ def evaluate_measure_set(table: TypedTable, spec: FormTestSpec) -> MeasureSetRes
     unbound = False
     if params.date_bookend_groups:
         present, unbound = _dated_verdict(table, texts, present, params)
-    if unbound and any(term in prose_tail for term in params.subject_terms):
+    if unbound and _contains(prose_tail, params.subject_terms):
         unbound = False
     hits = sum(present)
     missing_required = next((i for i in params.required_groups if not present[i]), None)
