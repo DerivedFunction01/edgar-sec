@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -18,6 +17,7 @@ from typing import Any
 from edgar_sec.domain.forms.common.models import ItemDefinition
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
+from edgar_sec.domain.index_urls import full_index_url
 from edgar_sec.domain.sec_urls import archives_url
 from edgar_sec.engine.forms.normalize import normalize_document
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
@@ -136,30 +136,29 @@ def bank_specimen(
     return record
 
 
-_FORM_IDX_BASE = "https://www.sec.gov/Archives/edgar/full-index"
-_ACCESSION_IN_PATH_RE = re.compile(r"(\d{10}-\d{2}-\d{6}|\d{18})")
-_DATE_TOKEN_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+def _accession_in_path(path: str) -> str | None:
+    """The accession a form.idx file name names, via the identity home."""
+    for segment in path.split("/"):
+        try:
+            return AccessionNumber.from_any(segment.rsplit(".", 1)[0]).normalized
+        except ValueError:
+            continue
+    return None
 
 
 def _form_idx_ciks(client: SecHttpClient, year: int, quarter: int) -> dict[str, int]:
     """Map accession to registrant CIK from one quarter's form.idx."""
-    url = f"{_FORM_IDX_BASE}/{year}/QTR{quarter}/form.idx"
-    text = client.get_bytes(url).decode("utf-8", errors="replace")
+    text = client.get_bytes(full_index_url(year, quarter, "form")).decode(
+        "utf-8", errors="replace"
+    )
     found: dict[str, int] = {}
     for line in text.splitlines():
         tokens = line.split()
-        if len(tokens) < 5:
+        if len(tokens) < 5 or not tokens[-3].isdigit():
             continue
-        match = _ACCESSION_IN_PATH_RE.search(tokens[-1])
-        if match is None:
-            continue
-        date_at = next(
-            (i for i, t in enumerate(tokens) if _DATE_TOKEN_RE.fullmatch(t)),
-            None,
-        )
-        if date_at is None or not tokens[date_at - 1].isdigit():
-            continue
-        found[match.group(1).replace("-", "")] = int(tokens[date_at - 1])
+        accession = _accession_in_path(tokens[-1])
+        if accession is not None:
+            found[accession] = int(tokens[-3])
     return found
 
 
@@ -169,8 +168,7 @@ def prepare_jobs(
     """Fill each job's registrant CIK from the Archives form.idx join.
 
     The accession prefix is the filer's or agent's CIK, not reliably the
-    registrant's, so the CIK is job data, joined at preparation from the
-    form.idx of the accession's filing year, which carries it as a field.
+    registrant's, so the CIK is job data, joined at preparation.
     """
     by_year: dict[int, list[dict[str, Any]]] = {}
     for job in jobs:
