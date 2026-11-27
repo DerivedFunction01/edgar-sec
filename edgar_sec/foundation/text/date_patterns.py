@@ -151,10 +151,9 @@ _ISO_DATE_PAT = r"\d{4}-\d{2}-\d{2}"
 _NUMERIC_DATE_PAT = r"\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}"
 
 
-# Every evidence-backed full-date spelling in one recognizer
-# (format invariance): Month-first, day-first, ISO, and numeric
-# slash/dash/dot. Validation runs through the parse core, whose
-# 2-digit expansion is the settled rolling span.
+# Every evidence-backed full-date spelling in one recognizer:
+# Month-first, day-first, ISO, and numeric slash/dash/dot.
+# Validation runs through the parse core.
 FULL_DATE_ANY_RE = re.compile(
     rf"\b(?:{_DATE_TOKEN_PAT}|{_DAY_FIRST_DATE_PAT}|{_ISO_DATE_PAT}|"
     rf"{_NUMERIC_DATE_PAT})\b",
