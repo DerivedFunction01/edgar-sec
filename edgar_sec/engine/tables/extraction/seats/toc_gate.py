@@ -11,6 +11,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import PROFILES
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     SIGNATURE_TERMS,
 )
@@ -24,6 +25,8 @@ from edgar_sec.engine.tables.toc.patterns import (
     RE_PART_REFERENCE,
     looks_like_toc_row,
     looks_like_toc_tabular,
+    page_range_start,
+    toc_title_parts,
 )
 from edgar_sec.foundation.text.patterns import (
     GROUPED_AMOUNT_CORE,
@@ -34,6 +37,8 @@ MIN_ROWS = 3
 _MIN_PAGE_SEQUENCE = 3
 PAGE_REF_SHARE = 0.5
 BREADTH_MIN = 4
+NARROW_BREADTH_MIN = 2
+NARROW_MIN_WEAK = 6
 
 _PAGE_LETTER_RE = re.compile(r"^[A-Z]-\d+$")
 _BARE_INT_RE = re.compile(r"^\d{1,3}$")
@@ -95,7 +100,9 @@ def _strong_page_ref(cells: list[str]) -> bool:
         return True
     if any(RE_PAGE_REFERENCE.search(cell) for cell in cells):
         return True
-    return any(_PAGE_LETTER_RE.match(cell) for cell in cells[1:])
+    if any(_PAGE_LETTER_RE.match(cell) for cell in cells[1:]):
+        return True
+    return any(page_range_start(cell) is not None for cell in cells[1:])
 
 
 def _weak_page_ref(cells: list[str]) -> int | None:
@@ -106,6 +113,10 @@ def _weak_page_ref(cells: list[str]) -> int | None:
     for cell in cells[1:]:
         if _BARE_INT_RE.match(cell):
             page = int(cell)
+        elif _PAGE_LETTER_RE.match(cell):
+            page = int(cell.split("-", 1)[1])
+        elif page_range_start(cell) is not None:
+            page = page_range_start(cell)
         elif not _REF_CELL_RE.match(cell):
             return None
     return page
@@ -165,7 +176,12 @@ def toc_signals(table: TypedTable) -> TocSignals:
 def page_ref_cell(cell: str) -> bool:
     """One cell that carries only a page or section reference."""
     cell = cell.strip()
-    return bool(_BARE_INT_RE.match(cell) or _REF_CELL_RE.match(cell))
+    return bool(
+        _BARE_INT_RE.match(cell)
+        or _REF_CELL_RE.match(cell)
+        or _PAGE_LETTER_RE.match(cell)
+        or page_range_start(cell) is not None
+    )
 
 
 def grid_page_ref_share(rows: tuple[tuple[str, ...], ...]) -> float:
@@ -197,10 +213,26 @@ def grid_page_ref_share(rows: tuple[tuple[str, ...], ...]) -> float:
     return (strong + weak) / total if total else 0.0
 
 
+_TITLE_FAMILY_NAMES: tuple[str, ...] = tuple(p.family for p in PROFILES)
+
+
+def _title_families(title: str) -> tuple[str, ...]:
+    """The families a note title names: the family's own name in the
+    title's words, or one of its caption terms where it carries any."""
+    text = normalize_text(title)
+    return tuple(
+        sorted(
+            family
+            for family in _TITLE_FAMILY_NAMES
+            if family.replace("_", " ") in text
+            or any(term in text for term in _FAMILY_TERMS.get(family, ()))
+        )
+    )
+
+
 def toc_refusal(table: TypedTable) -> TocRefusal | None:
-    """Refuse on the cover-span fact alone inside the filing's TOC
-    span; outside it, refuse a TOC-shaped table only with no currency
-    and at least BREADTH_MIN namespaces across its page-ref rows."""
+    """Refuse inside the TOC span on that fact; on a TOC-formed note
+    title naming families the table's own labels do not; else on shape."""
     signals = toc_signals(table)
     shape = (
         f"{signals.page_ref_rows}/{signals.rows} page-reference rows, "
@@ -208,8 +240,26 @@ def toc_refusal(table: TypedTable) -> TocRefusal | None:
     )
     if table.context.in_toc_span:
         return TocRefusal(f"toc refused (cover span): {shape}", signals)
+    note = table.context.note
+    if note is not None and note.title and toc_title_parts(note.title):
+        title_families = _title_families(note.title)
+        own_families = _title_families(" ".join(row.label for row in table.rows))
+        if title_families and not set(title_families) & set(own_families):
+            return TocRefusal(
+                f"toc refused (title): note title {note.title!r} names "
+                f"{', '.join(title_families)}; {shape}",
+                signals,
+            )
     if not signals.shaped:
         return None
-    if not signals.currency_present and len(signals.families) >= BREADTH_MIN:
+    if signals.currency_present:
+        return None
+    if len(signals.families) >= BREADTH_MIN:
         return TocRefusal(f"toc refused (content): {shape}", signals)
+    if (
+        len(signals.families) >= NARROW_BREADTH_MIN
+        and signals.strong_rows >= 1
+        and signals.weak_rows >= NARROW_MIN_WEAK
+    ):
+        return TocRefusal(f"toc refused (content, narrow): {shape}", signals)
     return None

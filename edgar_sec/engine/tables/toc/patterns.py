@@ -137,6 +137,36 @@ def looks_like_toc_row(line: str) -> bool:
     )
 
 
+RE_PAGE_RANGE = re.compile(
+    r"^(?:[A-Z]-)?(\d{1,3})\s*[\u2013\u2014-]\s*(?:[A-Z]-)?\d{1,3}$"
+)
+_TOC_TITLE_PAGE = re.compile(
+    r"^(?P<title>.{4,}?)\s+(?P<page>(?:[A-Z]-)?\d{1,3}"
+    r"(?:\s*[\u2013\u2014-]\s*(?:[A-Z]-)?\d{1,3})?)$"
+)
+
+
+def page_range_start(cell: str) -> int | None:
+    """The start page of a page-range cell (``12-14``, ``F-12 - F-14``)."""
+    match = RE_PAGE_RANGE.match(cell.strip())
+    return int(match.group(1)) if match else None
+
+
+def toc_title_parts(line: str) -> tuple[str, str] | None:
+    """Split a TOC-formed title line into (title, page token): a title
+    closed by a bare, namespaced, or ranged page reference, leader or not."""
+    stripped = line.strip().strip("|+")
+    if not stripped or is_toc_row(stripped):
+        return None
+    match = _TOC_TITLE_PAGE.match(stripped)
+    if match is None:
+        return None
+    title = match.group("title").strip(" .")
+    if not any(char.isalpha() for char in title):
+        return None
+    return title, match.group("page")
+
+
 def looks_like_toc_tabular(line: str) -> bool:
     """Return whether a line is dot-leader tabular content with a page token.
     Uses the shared patterns, so ``F-1`` and roman page tokens count.
@@ -163,6 +193,7 @@ __all__ = [
     "RE_NOTE_REFERENCE",
     "RE_NUMERIC_LABEL",
     "RE_NUMERIC_RUN_IN",
+    "RE_PAGE_RANGE",
     "RE_PAGE_SUFFIX",
     "RE_PAREN_LABEL",
     "RE_PART_REFERENCE",
@@ -174,4 +205,6 @@ __all__ = [
     "is_toc_row",
     "looks_like_toc_row",
     "looks_like_toc_tabular",
+    "page_range_start",
+    "toc_title_parts",
 ]
