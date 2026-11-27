@@ -614,6 +614,7 @@ def test_summary_form_without_a_total_row_stays_out():
     assert not result.admitted
     assert result.detail == "no bookend pair in any filed form"
 
+
 def test_summary_guard_refuses_a_prose_anchor():
     # A summary fragment whose subject arrives only through the
     # prose arm is refused by the guard: the priced V3 form
@@ -682,4 +683,3 @@ def test_summary_guard_admits_a_note_carried_segment_summary():
     result = evaluate_restructuring_evidence(text, SPEC)
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
-

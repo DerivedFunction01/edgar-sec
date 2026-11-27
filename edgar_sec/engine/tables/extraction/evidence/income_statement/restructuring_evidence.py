@@ -260,7 +260,6 @@ def _summary_form(lines_l: list[str]) -> str:
     return f"summary form, data rows {data_rows}"
 
 
-
 _SUMMARY_ANATOMY_MARKERS = (
     "total revenue",
     "net sales",
@@ -476,9 +475,7 @@ def evaluate_restructuring_evidence(
                 arm, lines_l, cap_l, (text.note_title or "").lower()
             )
             if refusal:
-                return RestructuringEvidence(
-                    False, f"summary form refused: {refusal}"
-                )
+                return RestructuringEvidence(False, f"summary form refused: {refusal}")
             return RestructuringEvidence(
                 True, f"restructuring summary: subject {arm}, {summary}"
             )
