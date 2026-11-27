@@ -18,9 +18,7 @@ GENERIC_NONE_MARKERS: frozenset[str] = frozenset({"none", "not applicable", "n/a
 FORM144_COVER_NONE_MARKERS: frozenset[str] = frozenset({"none", "n/a", "no", "nil"})
 
 
-FORM144_SECTION_NONE_MARKERS: frozenset[str] = frozenset(
-    {"n/a", "none", "no reported"}
-)
+FORM144_SECTION_NONE_MARKERS: frozenset[str] = frozenset({"n/a", "none", "no reported"})
 
 
 FORM144_SECURITY_NONE_TERMS: tuple[str, ...] = (
