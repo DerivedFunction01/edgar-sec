@@ -13,11 +13,8 @@ from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import 
     JOINT_TEST_ID,
     evaluate_commitments_joint,
 )
-from edgar_sec.engine.tables.extraction.cascade.filing_competition import (
-    compete_filing_gated,
-)
-from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
-    geometry_text_from_table,
+from edgar_sec.engine.tables.extraction.assembly.balance_sheet_realignment import (
+    realign_balance_sheet,
 )
 from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
     Classification,
@@ -696,61 +693,6 @@ def _seat_joint_evidence(
     return seated, scores
 
 
-def _realign_balance_sheet(
-    members: list[_Member],
-    groups: list[_Group],
-    sectioned: dict[int, str],
-    by_position: dict[int, GeometryAssignment],
-) -> None:
-    """Realign balance_sheet assignments to compete's gate
-    discipline, at statement level: a statement's assignment
-    follows the gate's read on its head; joins follow it."""
-    texts = [geometry_text_from_table(member.table) for member in members]
-    gated = compete_filing_gated(texts)
-    admitted = {
-        position
-        for position, result in enumerate(gated)
-        if "balance_sheet" in result.claims
-    }
-
-    def seat(position: int, family: str) -> None:
-        current = by_position[position]
-        if family == RESIDUAL_FAMILY:
-            by_position[position] = GeometryAssignment(
-                current.table_index, RESIDUAL_FAMILY, "residual"
-            )
-        elif current.family != family:
-            by_position[position] = GeometryAssignment(
-                current.table_index,
-                family,
-                "winner" if current.role != "join" else "join",
-            )
-
-    grouped = set()
-    for group in groups:
-        head = next(
-            (m for m in group.members if m.family == group.family),
-            group.members[0],
-        )
-        grouped.update(m.position for m in group.members)
-        if group.family == "balance_sheet" and head.position not in admitted:
-            for member in group.members:
-                seat(member.position, RESIDUAL_FAMILY)
-        elif group.family != "balance_sheet" and head.position in admitted:
-            for member in group.members:
-                seat(member.position, "balance_sheet")
-    for member in members:
-        if member.position in grouped or member.position in sectioned:
-            continue
-        if member.position in admitted:
-            seat(member.position, "balance_sheet")
-    for position, family in sectioned.items():
-        if family == "balance_sheet" and position not in admitted:
-            seat(position, RESIDUAL_FAMILY)
-        elif family != "balance_sheet" and position in admitted:
-            seat(position, "balance_sheet")
-
-
 def assemble(
     contexts: list[TableContext] | tuple[TableContext, ...],
     policy: ClassificationPolicy | None = None,
@@ -800,7 +742,7 @@ def assemble(
             by_position[member.position] = GeometryAssignment(
                 member.table_index, RESIDUAL_FAMILY, "residual"
             )
-    _realign_balance_sheet(members, groups, sectioned, by_position)
+    realign_balance_sheet(members, groups, sectioned, by_position)
     unassigned = [
         by_position[member.position].table_index
         for member in members
