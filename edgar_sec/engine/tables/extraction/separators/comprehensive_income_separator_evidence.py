@@ -162,14 +162,10 @@ def comprehensive_income_candidate_features(
             )
             >= spec.equity_host_min
         ),
-        detail_taxcol=(
-            "tax_header" in header_kinds and "tax_token" in header_kinds
-        ),
+        detail_taxcol=("tax_header" in header_kinds and "tax_token" in header_kinds),
         guarantor=(
             "guarantor" in blob_kinds
-            or any(
-                "guarantor" in index.scan(norm(cell)) for cell in text.headers
-            )
+            or any("guarantor" in index.scan(norm(cell)) for cell in text.headers)
         ),
     )
 
