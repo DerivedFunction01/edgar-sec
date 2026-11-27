@@ -101,9 +101,8 @@ _LEX_LITERALS = (
 @lru_cache(maxsize=None)
 def _spec_index(spec: WarrantyEvidenceSpec) -> TermIndex:
     """One index over the spec's term census: anchors, movement
-    terms by type name, and the bookend literals. Every entry is
-    phrase-kind — the standing scans are substring, and plurals
-    ride that subsumption."""
+    terms by type name, and the bookend literals — every entry
+    phrase-kind, the standing substring semantics."""
     entries = [TermEntry(anchor, "anchor") for anchor in spec.anchors]
     for name, terms in spec.move_types:
         entries += [TermEntry(term, "move", value=name) for term in terms]
