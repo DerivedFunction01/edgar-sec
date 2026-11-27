@@ -84,58 +84,9 @@ CASH_FLOW_TAIL_RE = re.compile(rf"^\s*{_CASH_FLOW_TAIL_PATTERN}(?=\s|$)", re.IGN
 
 CASH_FLOW_VETOES: tuple[str, ...] = ("balance sheet",)
 
-from edgar_sec.domain.taxonomy.tables.shapes import ShapeConstraint
-from edgar_sec.domain.taxonomy.tables.specs import (
-    RepairPolicy,
-    TableFamilySpec,
-    TableScope,
-    build_ngram_tier,
-)
-from edgar_sec.foundation.text.evidence import (
-    LexicalEvidencePack,
-    compile_evidence_pack,
-)
-
-_cf_primary: tuple[str, ...] = (
-    *OPERATING_ACTIVITIES_TERMS,
-    *INVESTING_ACTIVITIES_TERMS,
-    *FINANCING_ACTIVITIES_TERMS,
-    *CASH_FLOW_ACTIVITIES_TRIO,
-)
-
-_CASH_FLOW_PACK = compile_evidence_pack(
-    LexicalEvidencePack(
-        name="cash_flow",
-        tiers=tuple(
-            t
-            for t in (
-                build_ngram_tier(
-                    "cf_activities",
-                    _cf_primary,
-                    priority=10,
-                    value=2,
-                    min_distinct_hits=2,
-                ),
-            )
-            if t is not None
-        ),
-    )
-)
-
-CASH_FLOW_SPEC = TableFamilySpec(
-    name="cash_flow",
-    shape=ShapeConstraint(
-        min_rows=12, max_rows=85, min_cols=2, min_numeric_density=0.15
-    ),
-    evidence_pack=_CASH_FLOW_PACK,
-    repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
-    candidate_default_scope=TableScope.BODY,
-    priority=100,
-)
 
 __all__ = [
     "CASH_FLOW_ACTIVITIES_TRIO",
-    "CASH_FLOW_SPEC",
     "CASH_FLOW_TAIL_RE",
     "CASH_FLOW_TAIL_TERMS",
     "CASH_FLOW_VETOES",

@@ -54,7 +54,6 @@ def test_registry_covers_exactly_the_supported_set() -> None:
     families = {profile.family for profile in PROFILES}
     assert OPEN_FAMILIES <= families
     assert families == OPEN_FAMILIES | {
-        "labor_capture",
         "labor_contracts",
         "demographics",
         "shares_purchased",
@@ -81,7 +80,6 @@ def test_subsequent_events_is_absent_and_cannot_claim() -> None:
 def test_no_profile_no_claims_for_unknown_families() -> None:
     assert profile_for("no_such_family") is None
     assert set(competing_families()) == OPEN_FAMILIES | {
-        "labor_capture",
         "labor_contracts",
         "demographics",
         "shares_purchased",
@@ -158,9 +156,6 @@ def test_admitted_and_genre_profiles() -> None:
     demo = PROFILES_BY_FAMILY["demographics"]
     assert demo.region_gate is not None and "Item 1" in demo.region_gate
     assert demo.shape is not None and "no currency" in demo.shape
-    labor = PROFILES_BY_FAMILY["labor_capture"]
-    assert labor.kind == "prose_profile"
-    assert labor.shape == "employee group x contract x union"
     genre = [p for p in PROFILES if p.kind == KIND_GENRE_SEAT]
     assert {p.family for p in genre} == {"other"}
     assert all(p.support is None and not p.form_tests for p in genre)
