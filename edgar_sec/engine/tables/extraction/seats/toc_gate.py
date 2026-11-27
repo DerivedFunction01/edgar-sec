@@ -213,13 +213,15 @@ def grid_page_ref_share(rows: tuple[tuple[str, ...], ...]) -> float:
 
 
 def _title_families(title: str) -> tuple[str, ...]:
-    """The signature families a note title names, on the caption terms."""
+    """The signature families a note title names: a caption term, or
+    the family's own name in the title's words."""
     text = normalize_text(title)
     return tuple(
         sorted(
             family
             for family, terms in _FAMILY_TERMS.items()
-            if any(term in text for term in terms)
+            if family.replace("_", " ") in text
+            or any(term in text for term in terms)
         )
     )
 
