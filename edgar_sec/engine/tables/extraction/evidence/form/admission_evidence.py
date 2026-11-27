@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE, YEAR_TOKEN_SEARCH_RE
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import TOTAL_ROW_RE, TypedTable
 from edgar_sec.engine.tables.extraction.core.validation import values_close
@@ -68,6 +69,25 @@ _PURCHASE_TABLE_PHRASES = (
     "manufacturing commitments",
 )
 
+_JOINT_INDEX = TermIndex(
+    [TermEntry(key, "bucket", value=key) for key in _BUCKET_KEYS]
+    + [TermEntry(phrase, "credit", value=phrase) for phrase in _CREDIT_PHRASES]
+    + [
+        TermEntry(phrase, "purchase", value=phrase)
+        for phrase in _PURCHASE_TABLE_PHRASES
+    ]
+    + [TermEntry("unfunded", "grid_lit", value="unfunded")]
+    + [
+        TermEntry(literal, "head_lit", value=literal)
+        for literal in (
+            "unfunded",
+            "unused commitments",
+            "commitments to extend financing",
+            "purchase commitments",
+        )
+    ]
+)
+
 
 @dataclass(frozen=True, slots=True)
 class AdmissionOutcome:
@@ -107,7 +127,7 @@ def _ladder(grid: str) -> bool:
             run = run + 1 if b == a + 1 else 1
             best = max(best, run)
         consec = best
-    buckets = sum(1 for key in _BUCKET_KEYS if key in grid)
+    buckets = len(_JOINT_INDEX.scan(grid).get("bucket", frozenset()))
     return (
         consec >= 3
         or len(years) >= 3
@@ -229,19 +249,18 @@ def evaluate_commitments_joint(table: TypedTable) -> AdmissionOutcome:
     head_hit = bool(_HEAD_COMMITMENT.search(head)) or bool(
         _HEAD_CONTRACTUAL.search(head)
     )
-    buckets = sum(1 for key in _BUCKET_KEYS if key in grid)
+    grid_hits = _JOINT_INDEX.scan(grid)
+    head_hits = _JOINT_INDEX.scan(head).get("head_lit", frozenset())
+    buckets = len(grid_hits.get("bucket", frozenset()))
     period = buckets >= 2 or bool(_PERIOD_RE.search(grid))
-    credit = any(phrase in grid for phrase in _CREDIT_PHRASES)
+    credit = "credit" in grid_hits
     unfunded = (
-        "unfunded" in grid
-        or "unfunded" in head
-        or "unused commitments" in head
-        or "commitments to extend financing" in head
+        "grid_lit" in grid_hits
+        or "unfunded" in head_hits
+        or "unused commitments" in head_hits
+        or "commitments to extend financing" in head_hits
     )
-    purchase = (
-        any(phrase in grid for phrase in _PURCHASE_TABLE_PHRASES)
-        or "purchase commitments" in head
-    )
+    purchase = "purchase" in grid_hits or "purchase commitments" in head_hits
     subform = period or credit or unfunded or purchase
     passed = head_hit and subform
     legs = (
