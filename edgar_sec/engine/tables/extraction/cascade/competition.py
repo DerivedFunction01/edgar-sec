@@ -32,6 +32,9 @@ from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evide
 from edgar_sec.engine.tables.extraction.note_separators.goodwill_foreign_separator_evidence import (
     failing_goodwill_foreign_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_sibling_separator_evidence import (
+    failing_goodwill_sibling_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.cascade.competition_gates import (
     apply_core_form_gates,
     apply_derivatives_gates,
@@ -481,6 +484,20 @@ def compete(
     # separator gate above.
     if "goodwill_rollforward" in claims:
         fired = failing_goodwill_foreign_separator_outcome(geometry.form_tests)
+        if fired is not None:
+            claims.remove("goodwill_rollforward")
+            if "goodwill_rollforward" in contested:
+                contested.remove("goodwill_rollforward")
+            scores = append_note(scores, "goodwill_rollforward", "gate", fired.detail)
+    # Goodwill sibling-mass separator gate (priced): a
+    # goodwill_rollforward claim is refused when the stamped
+    # sibling-mass separator outcome fired — the grid's stub
+    # rows carry at least two sibling intangibles-class rows
+    # and no stub row binds goodwill as a subject. It binds
+    # after the seat-at-floor channel, beside the sibling
+    # separator gates above.
+    if "goodwill_rollforward" in claims:
+        fired = failing_goodwill_sibling_separator_outcome(geometry.form_tests)
         if fired is not None:
             claims.remove("goodwill_rollforward")
             if "goodwill_rollforward" in contested:

@@ -28,6 +28,9 @@ from edgar_sec.engine.tables.extraction.note_separators.goodwill_separator_evide
 from edgar_sec.engine.tables.extraction.note_separators.goodwill_foreign_separator_evidence import (
     fired_separator_outcome as fired_goodwill_foreign_separator_outcome,
 )
+from edgar_sec.engine.tables.extraction.note_separators.goodwill_sibling_separator_evidence import (
+    fired_separator_outcome as fired_goodwill_sibling_separator_outcome,
+)
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_BALANCE_SHEET_SEPARATOR,
     TEST_CASH_FLOW_SEPARATOR,
@@ -41,6 +44,7 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_FORM_SEPARATION,
     TEST_GOODWILL_FOREIGN_SEPARATOR,
     TEST_GOODWILL_SEPARATOR,
+    TEST_GOODWILL_SIBLING_SEPARATOR,
     TEST_LEASE_SEPARATOR,
     TEST_RESTRUCTURING_SEPARATOR,
     TEST_STOCK_COMP_SEPARATOR,
@@ -104,6 +108,11 @@ STAMPED_GATES = (
         "goodwill_rollforward",
         TEST_GOODWILL_FOREIGN_SEPARATOR,
         fired_goodwill_foreign_separator_outcome,
+    ),
+    (
+        "goodwill_rollforward",
+        TEST_GOODWILL_SIBLING_SEPARATOR,
+        fired_goodwill_sibling_separator_outcome,
     ),
 )
 
