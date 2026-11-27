@@ -697,12 +697,12 @@ def _seat_joint_evidence(
 
 
 def _realign_balance_sheet(
-    tables: list[TypedTable], by_position: dict[int, GeometryAssignment]
+    members: list[_Member], by_position: dict[int, GeometryAssignment]
 ) -> None:
     """Realign balance_sheet assignments to compete's gate
     discipline: an assignment stands only where the primary
     gate admits the claim, and admitted claims seat it."""
-    texts = [geometry_text_from_table(table) for table in tables]
+    texts = [geometry_text_from_table(member.table) for member in members]
     gated = compete_filing_gated(texts)
     for position, result in enumerate(gated):
         current = by_position[position]
@@ -766,7 +766,7 @@ def assemble(
             by_position[member.position] = GeometryAssignment(
                 member.table_index, RESIDUAL_FAMILY, "residual"
             )
-    _realign_balance_sheet(tables, by_position)
+    _realign_balance_sheet(members, by_position)
     unassigned = [
         by_position[member.position].table_index
         for member in members
