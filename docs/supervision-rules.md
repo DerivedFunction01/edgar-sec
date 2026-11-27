@@ -756,6 +756,28 @@ plan with no parallelization ruling is unfinished.
 Adoption executes the plan's stated split and does not
 re-derive one; plan numbering is not a dependency.
 
+The fan-out's form: the ruling states what is serial
+first, if anything, then the fan-out. The fan-out is N
+editors over M worktrees — the plan declares its editor
+count and its worktree count independently, editors
+share worktrees, and the pairing of one worktree per
+editor, N equal to M, is excluded. The worktree count
+is a formation decision, bounded per formation group
+against a current base, never derived from the editor
+count. Editors are spawned when the fan-out is declared,
+before the serial prefix completes: they wait for the
+go, and while waiting they gather the context their
+branch touches — the files, the contracts, the
+codebase — so edits begin the moment the go arrives,
+with no ramp-up. The form's purpose is cost: editors
+composing over shared worktrees collide as they go, in
+the open, rather than at a landing boundary, and the
+composed tree gates once — parallel work pays neither
+merge-conflict costs nor merge-driven re-testing. A
+plan's wall-clock, priced and later measured, is its
+serial prefix plus its longest parallel branch plus its
+fan-in, never a serial sum of branch estimates.
+
 One executor per plan: an adopted plan names its executing
 lane in its header, before its first edit — that edit is
 the claim. A lane that finds a plan claimed by another
@@ -982,6 +1004,20 @@ does not fit waits. A table found full mid-run is an
 admission defect — every admitted claim was declared in
 advance, so saturation by co-tenants inside their
 envelopes is the admission's failure, not a tenant's.
+
+Dispatch routes by the measured curve: a venue's
+concurrency cap for gate-class work is set from its
+measured contention curve — gate-class work routes to a
+venue up to its measured knee, with headroom, and work
+beyond the cap spills to the next venue under the
+load-aware rule. Admission decides whether work fits a
+venue's declared budget; the cap routes the class
+across venues. The curves and their knees are untracked
+bindings per fleet, held with the venue definitions:
+the spec carries the form, never a machine's name or a
+measured value — the rule stands in tracked form
+because it is what a coordinator itself schedules
+against.
 
 Venue state is classified on a generic contract, the same
 for every venue kind: idle, advancing, saturated, wedged.
