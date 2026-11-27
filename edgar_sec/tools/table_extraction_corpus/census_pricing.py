@@ -14,13 +14,15 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from edgar_sec.foundation.text.date_patterns import MONTH_ALIASES
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
-MONTHS = (
-    "january february march april may june july august september "
-    "october november december jan feb mar apr jun jul aug sep sept "
-    "oct nov dec"
-).split()
+# The instrument's month vocabulary: the home's full names and
+# undotted abbreviations (population tokens never carry a period,
+# so the dotted aliases in MONTH_ALIASES cannot occur in one).
+MONTHS = frozenset(
+    alias for aliases in MONTH_ALIASES for alias in aliases if "." not in alias
+)
 NUM_RE = re.compile(r"\(?-?\$?\s*\d[\d,]*(\.\d+)?\s*\)?%?\)?")
 YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 DATE_RE = re.compile(
