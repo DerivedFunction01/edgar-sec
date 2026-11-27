@@ -126,6 +126,15 @@ def default_threads() -> int:
     return default_cpu_cores()
 
 
+def default_duckdb_threads() -> int:
+    """Bounded thread stamp for a default-profile DuckDB connection.
+
+    One unstamped connection pool runs ~5x cores; the stamp keeps a
+    worker holding several connections inside the host thread budget.
+    """
+    return 2
+
+
 def default_memory_limit(fraction: float = DEFAULT_MEMORY_FRACTION) -> str:
     """Machine-derived memory limit from a fraction of physical memory (e.g. '4096MiB')."""
     if not 0 < fraction <= 1:
@@ -271,6 +280,7 @@ __all__ = [
     "available_memory_bytes",
     "default_cpu_cores",
     "default_memory_limit",
+    "default_duckdb_threads",
     "default_threads",
     "derive_resources",
     "read_cgroup_v1_available_bytes",

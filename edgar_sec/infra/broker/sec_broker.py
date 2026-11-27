@@ -33,9 +33,8 @@ MAX_SOCKET_PATH_CHARS = 100
 def bindable_socket_path(socket_path: str | Path) -> Path:
     """Return a bindable form of ``socket_path``, identical when it fits.
 
-    A path too long for AF_UNIX is remapped deterministically to a short
-    hashed path, so the server bind and every client connect land on the
-    same address whatever depth the caller's root sits at.
+    An over-long path remaps deterministically to a short hashed path, so
+    bind and connect land on the same address at any root depth.
     """
     path = Path(socket_path)
     if len(str(path)) < MAX_SOCKET_PATH_CHARS:

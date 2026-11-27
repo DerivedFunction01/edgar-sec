@@ -6,9 +6,8 @@ from pathlib import Path
 
 from edgar_sec.infra.storage.duckdb import Connection, connect
 
-#: Test connections stamp 2 threads each: an unstamped connection pool
-#: runs ~5x cores, and several connections per worker exhaust the host
-#: thread budget (census 2026-11-26).
+#: Test connections stamp 2 threads each: an unstamped pool runs ~5x
+#: cores, and several per worker exhaust the host thread budget.
 TEST_CONNECTION_THREADS = 2
 
 
