@@ -9,6 +9,7 @@ from typing import Any
 import pyarrow as pa
 
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
@@ -34,8 +35,13 @@ def _assemble_snapshot_tables(
 
     for target in work_targets:
         accession = target["accession"]
-        cik_digits = accession.split("-")[0]
-        accession_ciks[accession] = cik_digits
+        target_url = target.get("target_url")
+        if target_url:
+            # The CIK is the archive CIK the catalog paired with this
+            # accession in its target URL, never the accession prefix.
+            accession_ciks[accession] = validate_archive_url(
+                target_url, accession
+            ).archive_cik
 
         target_id = target["target_id"]
         req_id = target["request_id"]
