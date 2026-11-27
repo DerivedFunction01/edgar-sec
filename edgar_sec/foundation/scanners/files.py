@@ -5,7 +5,7 @@ from __future__ import annotations
 import subprocess
 from pathlib import Path
 
-CODE_SUFFIXES: tuple[str, ...] = (".py", ".js", ".mjs", ".ts", ".tsx", ".css")
+CODE_SUFFIXES: tuple[str, ...] = (".py", ".js", ".mjs", ".ts", ".tsx", ".css", ".sh")
 EXCLUDED_PARTS = frozenset({"assets", "generated"})
 
 _ROOT_FILES = ["check.py", "run.py"]

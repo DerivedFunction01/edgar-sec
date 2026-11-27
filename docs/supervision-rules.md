@@ -179,7 +179,18 @@ the supervision cadence, never a separate manual act, and
 a missed ping raises the lane's row at once. Renew: at
 the estimate's end the lane renews with a new estimate or
 terminates; the record shows estimate against actual and
-the renewal count. Terminate: only on an explicit,
+the renewal count.
+
+The measured record is the next estimate's analogy base:
+landing records, per-phase prices, and fire statistics —
+which phases consumed the wall-clock, which fires never
+reached a verdict, what a formation of this shape cost
+last time — are priced into the next estimate of the
+same class, in every work form. An estimate that ignores
+a measured sink of its own class repeats it; the
+evidence register that holds the measurements is the
+pattern library's recorded form, and pricing from it is
+the loop that keeps the library current. Terminate: only on an explicit,
 checkable condition drawn from the queue's marker
 vocabulary — never by silence, by expiry, or on the
 lane's own say-so; an expired declaration with no renewal
@@ -193,9 +204,15 @@ signals — lane records, venue run records, and worktree
 activity — and a disagreement among them is a finding,
 not a rounding.
 
-Estimates are part of the record: every todo states its
-completion-time estimate, and every plan states the
-estimate per step in the plan file. Estimates are
+Estimates are part of the record, carried on the
+surface the work runs: every plan states the estimate
+per step in the plan file; planless work carries the
+estimate on its register row, the row standing as the
+plan-substitute with its formation membership and the
+gate it rides; every todo states its completion-time
+estimate. The categorization and the wall-clock
+discipline in this passage apply to the estimate on
+whichever surface carries it. Estimates are
 stated at the scale the work runs: a code edit is
 minutes, many under five, and over thirty minutes is
 unlikely for an edit — an edit estimated past thirty
@@ -218,7 +235,111 @@ ceiling, and any proposed shortcut names what it
 surrenders. Duration claimed for serial-by-default work,
 polling intervals, re-running from zero, lanes queued
 behind sessions, manufactured approvals, or transport
-round-trips is a justification in no class. An item that
+round-trips is a justification in no class.
+
+A plan's duration is its wall-clock: the critical path
+through its steps under their declared fan-out, never
+the serial sum of its step estimates. A step under a
+declared fan-out prices at its longest lane's
+wall-clock, not its lanes summed. A summed serial figure
+presented as a plan's size — in a headline, a ruling, or
+a report — is a mispricing of the same class as an
+unjustified overrun: it is the slack a reader waits
+through.
+
+Work prices by category; the category carries the
+number, and a step prices by naming its category. The
+fast categories are the default register for plan work.
+Inventoried mechanical edit — a declaration plus a call,
+a guard, a swap, over a censused surface: minutes per
+item. Deterministic design and build — new code or text
+whose shape follows a pattern of record, its edge cases
+enumerable in advance: tens of minutes. Proof run —
+dummy testing, gate and verification runs over a known
+corpus: minutes, set by the corpus and the venue.
+Coordination and fan-in — union formation, gate draws,
+landings: minutes to tens of minutes. Generation- or
+reading-bound work: its duration is computed, volume
+over the served rate, never guessed. Each category's
+typical duration carries its measured basis in the
+estimate evidence register; a category whose duration
+has no basis recorded there is unbacked and is marked
+as such, never silently carried.
+
+The slow register — the benchmark class — is one
+category among them: genuinely novel research, hard
+open-ended debugging, frontier problems with no known
+shape. It is not the default register for plan work,
+and it carries no typical duration: a price in it is
+argued per step. A step enters it only with its
+justification, at the boundaries below; a step priced
+in the slow register without that justification is the
+overestimate defect in its categorical form. Bounded
+investigation — a question whose answer sits in the
+codebase or its docs, its extent estimable — prices in
+the fast categories; only research whose extent cannot
+be bounded in advance enters the slow register.
+
+Once a census or inventory of an edit surface exists,
+its edits price per item at the minutes scale the
+inventory makes possible — a declaration plus a call, a
+guard, a swap, each priced as the item it is. Pricing
+inventoried mechanical edits as craft work is a
+mispricing: the inventory is what the price is made
+from.
+
+The slow register's boundaries — the over-hour classes
+have boundaries, and size alone
+meets none of them. Novel work is work whose design has
+no existing shape in the codebase to copy and whose
+failure modes cannot be enumerated in advance;
+deterministic design with known edge cases, a pattern
+of record, or an inventory is not novel, however large.
+Deep research is investigation whose extent cannot be
+bounded in advance because the answer is not in the
+codebase or its docs. Language-model-bound work is work
+whose duration is set by generation or reading volume
+at its measured rate. An over-hour claim that does not
+meet its class's boundary is a mispricing, and the
+entry's why-not-lower addresses the boundary, not the
+size.
+
+Migration-class work — inventoried code edits over a
+known surface — fits a one-hour wall-clock cap for its
+edit phase, after initial dummy testing on the known
+edge cases; where the work cannot fit at
+minutes-per-edit pricing, the lane split widens until
+it does, lanes being capacity-bound, not seat-bound.
+Residue that cannot price as an edit is named as
+not-an-edit — a decision to take, a semantics
+requirement discharged in the design step — never
+absorbed into an edit estimate.
+
+Proof is priced by the failure mode's direction. For a
+continuously-used system whose failure modes are loud —
+a refusal, never a silent wrong action — dummy testing
+against the contract is the primary proof, and
+exhaustive up-front discovery is over-priced: residue
+surfaces on first real use and is fixed then. Static
+discovery is priced only for silent-direction changes,
+where behaviour alters with no loud signal at the point
+of change.
+
+Prices stated in rulings and decisions — a build price
+attached to an option, a token's discharge price — obey
+the same discipline as step estimates: wall-clock under
+the declared split, per-item against an inventory where
+one exists, and an over-hour class only at its boundary.
+
+The numeric anchors in this passage — the minutes
+scale, the one-hour cap, the justification threshold —
+carry their measured basis in the estimate evidence
+register (`docs/estimate-evidence-register.md`). An
+anchor with no basis recorded there is unbacked, and an
+unbacked anchor is struck or marked, never silently
+carried.
+
+An item that
 passes its estimate without completing is overdue: the
 owning thread actuates on it — re-estimates it with the
 reason stated, staffs it, or escalates it — rather than
@@ -611,6 +732,15 @@ execute is completed by naming the executing lane when the
 offer is taken up; an offer taken up in two places executes
 on the first claim.
 
+Formations are bounded by construction: worktrees and
+branches are commissioned per formation group against a
+current base — the rows of a group share one worktree and
+its transport — never one long-lived worktree per row or
+per base. Parallel worktrees on diverging bases
+manufacture composition collisions at landing; a
+formation that outgrows its group's bound splits by
+file-set, not by row.
+
 Prerequisites are data, not prose. Every step carries a
 machine-readable block declaring the todos it mints and
 the prerequisites those todos carry — todo ids anywhere
@@ -686,7 +816,12 @@ on it; gating each delta separately and then re-running
 the overlapping tests on the union is double work.
 Formation hash-verification stays — it is what makes the
 pre-state known; per-delta gates remain only for deltas
-whose pre-state is not yet known.
+whose pre-state is not yet known. The union is also the
+dispatch default, not only the landing form: work
+standing in a gate queue is dispatched as one union fire
+by the dispatcher itself, and the fire's record names
+its constituents — per-item gate queues are abolished,
+not merely discouraged.
 
 A full run is a proof instrument, not a landing gate:
 where one is owed it runs last, and even it may skip
@@ -712,6 +847,49 @@ it: a markdown step lands on scanner-clean — or on
 nothing, where no scanner reads the file — and never
 queues behind test runs or gate draws.
 
+A gate job runs its scoped check once. A second run
+happens only as a re-proof: once, inside the same fire,
+on a red verdict — never as a standing double run, whose
+measured catch rate is zero. The verdict the record
+carries is the fire's single run, or the re-proof's where
+one ran.
+
+Fires dispatch only over the runner's authorized routes,
+and every fire's record carries its outcome class:
+`manifest` (the job's own declaration failed validation
+before transport), `transport`, `launch`,
+`dispatch-blocked` (no route could fire it), `ran-red`,
+`ran-green`. The manifest is validated before transport,
+so a malformed job dies at the cheapest phase and is
+priced there. A fire that produced no verdict is read
+from its class, never retried blind: an identical re-fire
+is the defect class the standing forms already name.
+Dispatching around the runner — a bare direct execution
+of the job's payload — is the anti-form: it produces no
+record, no class, and no verdict the supervision measure
+can read.
+
+These disciplines bind where there is no plan file,
+through the planless form's own instruments. On a defect
+register, the row's staffing and formation fields carry
+the formation bound and the union form, its gate and
+resolution fields carry the fire's accounting, and its
+closed rows are the priced history the next estimate
+reads. In a goal file's standing execution form, the
+recurring-defect classes carry the same disciplines as
+standing dispositions with instance counts, and the
+supervision measure verifies what the shared records can
+see. A mechanical refusal that attaches to a plan's step
+blocks — a plan gate's formation check — has no planless
+reach; its contract twin, the grouping act at staffing
+and the standing form itself, is the carrier in both
+planless forms, and the record names that asymmetry
+rather than papering over it. Wall-clock counters read
+the home repo's landing records; another form's phase
+accounting stands in its own records — the register
+row's closure fields, the lane's state record — until a
+record family covers it.
+
 ## Venue use
 
 Sessions are shared computers, not queues: another
@@ -730,6 +908,56 @@ justification names why it was not used. No justification
 that survives stating means the work moves to the
 full-capability tier instead. No-venue: the local machine
 offers no tier choice, and nothing is owed.
+
+A venue's finite capacities — its pid and thread budget,
+its concurrent connections, its sessions — are declared
+in its definition, not discovered at runtime. A job sizes
+its parallelism (worker pools, thread pools, connection
+use) to a share of the declared budget; a consumer that
+cannot state its footprint against the budget is not
+ready to fire on a shared venue.
+
+Sizing counts every pool the job brings: its declared
+workers and the thread pools its libraries create at
+startup, capped in the job's environment where the
+venue's declared budget requires it — a pool sized to
+the host's core count alone is not sized. A consumer
+whose startup claim is a large fraction of a shared
+venue's budget is a defect in the consumer: the claim is
+measured by census of the holding process (thread names,
+wait state, creation pattern) and cured at the consumer —
+engine pool caps or the suite's own executor sizing —
+before any rise of the venue's declared budget is
+entertained; idle pools are neither legitimate work nor
+proof the budget is small. Process sharding multiplies a
+per-process claim rather than dividing it; machine
+sharding divides the container count, not the claim.
+
+The declaration a venue checks before dispatch states
+the claim in countable terms: workers × (the library
+base at its stamped caps + the per-connection pools at
+their stamped thread counts) + a controller and
+subprocess allowance. Each term is measurable, and the
+stamped counts are the ones the job's environment and
+its own factories actually apply.
+
+Admission is arithmetic, not discovery: before dispatch
+the venue sums the declared footprints of the work it
+would hold against its declared budget, and work that
+does not fit waits. A table found full mid-run is an
+admission defect — every admitted claim was declared in
+advance, so saturation by co-tenants inside their
+envelopes is the admission's failure, not a tenant's.
+
+Venue state is classified on a generic contract, the same
+for every venue kind: idle, advancing, saturated, wedged.
+Sampled CPU-time progression and pids against the
+declared budget are its instruments. The classification
+actuates: a wedged run is reaped at its timeout and
+killed on frozen evidence, the evidence going to the
+owning lane; dispatch holds at saturation; idle capacity
+is surfaced to staffing. Diagnosis is the runner's,
+automatic — no venue's state waits on a manual check.
 
 ## Status vocabulary
 
@@ -796,6 +1024,38 @@ just elapsed time. An offer exists only as a posted item:
 a follow-up, improvement, or consolidation proposed in
 prose alone does not exist, and a prose-only offer is a
 reporting defect.
+
+## Handler freshness
+
+A handler registry's rows carry a served currency
+verdict, composed by the one component that holds every
+truth source — the reconciler — and consumed by surfaces
+without derivation. The verdict set is fixed: `current`,
+`stale`, `dead-binding`, `unresolvable`,
+`retired-with-cause`. Composition reads only named
+sources: the live chat census, the bindings registry,
+the seat-truth owners files, and the handler's own
+postings; run-record caller attribution is corroboration
+only — it can support a verdict when its resolution
+agrees with the binding, and its absence never marks a
+handler stale or dead. A verdict older than two
+reconcile cycles renders `stale` regardless of content;
+evidence windows are short for programme seats and long
+for lanes, because a quiet lane is not a dead one. A
+handler no source covers is `unresolvable`, never
+interpolated: no chat id, lane, or venue is invented to
+fill a row.
+
+Residue — bindings and owners rows naming deleted or
+superseded seats — leaves by a recorded disposition,
+never a guess and never an open-ended escalation of rows
+whose seats are already known gone: each row is retired
+with a cause from the fixed vocabulary (`seat-deleted`,
+`superseded-by <handle>`, `lane-dissolved`), the cause
+carried verbatim in the served record thereafter, and
+the reconciler reports the row resolved, not drift. A
+row whose cause cannot be stated from the record stays
+`unresolvable` and is named once, with its evidence.
 
 ## Retiring the status-code transport
 
