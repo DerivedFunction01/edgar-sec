@@ -1,4 +1,4 @@
-"""Spanning veto pass: the priced CF-1, CF-2, BS-1 legs."""
+"""Spanning veto pass: the priced CF-1, CF-2, CF-3, BS-1 legs."""
 
 from __future__ import annotations
 
@@ -326,3 +326,42 @@ def test_signature_fragment_identity_dominance_still_removes():
     )
     assert "cash_flow" not in results[0].claims
     assert _gate_details(results[0]) == ["spanning veto: dominance, signature"]
+
+
+def _cf_result_with_channels(channels, total):
+    score = FamilyScore("cash_flow", total, channels, ())
+    return CompetitionResult(
+        claims=("cash_flow",),
+        contested=("cash_flow",),
+        scores={"cash_flow": score},
+        groups=(ClaimGroup("cash_flow", total, "claimed", "head", channels, (), 0.0),),
+    )
+
+
+def test_context_carried_claim_removed():
+    # The priced specimen shape: the whole standing mass is
+    # inherited notehead context (share 6.2 / 5.7 > 0.5).
+    result = _cf_result_with_channels(
+        {"notehead": 6.2, "form_test": 1.0, "veto": -1.5}, 5.7
+    )
+    results = apply_spanning_vetoes([GeometryText()], [result])
+    assert "cash_flow" not in results[0].claims
+    assert _gate_details(results[0]) == ["spanning veto: context"]
+
+
+def test_context_share_at_ceiling_kept():
+    result = _cf_result_with_channels({"notehead": 5.0, "stub": 5.0}, 10.0)
+    results = apply_spanning_vetoes([GeometryText()], [result])
+    assert "cash_flow" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_context_share_fragment_shape_kept():
+    # The waiver pair's shape: a fragment whose own channels
+    # carry the score (share 2.06 / 12.63) stands.
+    result = _cf_result_with_channels(
+        {"notehead": 2.06, "leadin": 12.06, "lead_title": 2.41}, 12.63
+    )
+    results = apply_spanning_vetoes([GeometryText()], [result])
+    assert "cash_flow" in results[0].claims
+    assert _gate_details(results[0]) == []
