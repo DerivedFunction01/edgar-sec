@@ -158,6 +158,7 @@ def _spec_index(spec: CreditLossesEvidenceSpec) -> TermIndex:
     entries += [
         TermEntry(phrase, "carrier", value=phrase) for phrase in spec.carrier_phrases
     ]
+    entries.append(TermEntry(spec.da_phrase, "da"))
     return TermIndex(entries)
 
 
@@ -241,7 +242,7 @@ def legs_for(
     vetoed = (
         carrier
         and not (r1 or bare or acltok)
-        and (spec.da_phrase in drawn or spec.da_phrase in prose)
+        and ("da" in index.scan(drawn) or "da" in index.scan(prose))
     )
     stub_pair = _stub_pair(text)
     token_subject = _token_subject(text)
