@@ -28,9 +28,11 @@ def test_fetch_body_cik_for_dashed_and_dashless_accessions() -> None:
     dashed = _RecordingClient()
     _fetch_body(job, dashed)  # type: ignore[arg-type]
     dashless = _RecordingClient()
-    _fetch_body({**job, "accession": "000091205700051893"}, dashless)  # type: ignore[arg-type]
+    dashless_job = {**job, "accession": "000091205700051893"}
+    _fetch_body(dashless_job, dashless)  # type: ignore[arg-type]
     assert dashed.url == dashless.url
     assert "/912057/000091205700051893/" in dashed.url
+
 
 _JOB = {
     "slug": "control_18k",
