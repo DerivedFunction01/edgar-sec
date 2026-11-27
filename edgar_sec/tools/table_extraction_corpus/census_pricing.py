@@ -17,6 +17,7 @@ from pathlib import Path
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_ALIASES,
     STRICT_MONTH_PATTERN,
+    YEAR_TOKEN_SEARCH_RE,
 )
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
@@ -27,7 +28,6 @@ MONTHS = frozenset(
     alias for aliases in MONTH_ALIASES for alias in aliases if "." not in alias
 )
 NUM_RE = re.compile(r"\(?-?\$?\s*\d[\d,]*(\.\d+)?\s*\)?%?\)?")
-YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 DATE_RE = re.compile(
     r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b"
     r"|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
@@ -192,7 +192,7 @@ def specimen_features(row: dict) -> dict:
     f["move_density"] = round(move_hits / max(1, len(stubs)), 3)
     head_blob = " ".join(headers)
     f["date_header"] = int(bool(DATE_RE.search(head_blob.lower())))
-    f["year_ladder"] = int(len(re.findall(r"\b(?:19|20)\d{2}\b", head_blob)) >= 3)
+    f["year_ladder"] = int(len(YEAR_TOKEN_SEARCH_RE.findall(head_blob)) >= 3)
     f["asof_header"] = int("as of" in head_blob.lower())
     f["_stub_keys"] = skeys
     f["_stub_blob"] = stub_blob
