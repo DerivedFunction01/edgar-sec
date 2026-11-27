@@ -65,7 +65,7 @@ def test_empty_and_absent_texts_hit_nothing():
     assert index.scan("nothing censused here") == {}
 
 
-def test_term_present_legacy_dual_semantics():
+def test_term_present_dual_semantics():
     assert term_present("cap", "the cap rate")
     assert not term_present("cap", "capacity")
     assert term_present("interest rate swaps", "the interest rate swaps table")

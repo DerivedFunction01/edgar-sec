@@ -82,9 +82,12 @@ class TermIndex:
             for entry, length in out[node]:
                 if entry.word:
                     start = pos - length + 1
-                    if start > 0 and _is_word_char(text[start - 1]):
+                    end = pos + 1
+                    left = start > 0 and _is_word_char(text[start - 1])
+                    right = end < len(text) and _is_word_char(text[end])
+                    if left == _is_word_char(entry.term[0]):
                         continue
-                    if pos + 1 < len(text) and _is_word_char(text[pos + 1]):
+                    if right == _is_word_char(entry.term[-1]):
                         continue
                 found.setdefault(entry.kind, set()).add(entry.reported)
         return {kind: frozenset(values) for kind, values in found.items()}
@@ -98,5 +101,5 @@ def _single(term: str) -> TermIndex:
 
 def term_present(term: str, text: str) -> bool:
     """One term's presence: word-boundary for single words,
-    literal substring for phrases — the legacy dual semantics."""
+    literal substring for phrases — the standing dual semantics."""
     return bool(_single(term).scan(text))
