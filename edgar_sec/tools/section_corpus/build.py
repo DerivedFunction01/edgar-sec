@@ -230,11 +230,7 @@ def main(argv: list[str] | None = None) -> int:
 
     jobs = json.loads(Path(args.jobs).read_text(encoding="utf-8"))
     corpus_dir = Path(args.corpus_dir)
-    fetch_jobs = [
-        job
-        for job in jobs
-        if not (args.specimen_dir and job.get("file"))
-    ]
+    fetch_jobs = [job for job in jobs if not (args.specimen_dir and job.get("file"))]
     client: SecHttpClient | None = None
     if fetch_jobs:
         user_agent = get_env("SEC_USER_AGENT")
