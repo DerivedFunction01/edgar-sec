@@ -97,7 +97,7 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     artifact_path = output / record["outputs"][OBSERVATIONS_FILE]["path"]
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     assert artifact["artifact_version"] == 5
-    assert artifact["issuer_cik"] is None
+    assert artifact["issuer_cik"] == "0000123456"
     assert artifact["fixture"]["body_sha256"] == sha256_bytes(_BODY)
     assert artifact["fixture"]["index_sha256"] == index_ref.body_sha256
     operations = {

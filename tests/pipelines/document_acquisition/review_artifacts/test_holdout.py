@@ -139,12 +139,17 @@ def test_holdout_report_is_issuer_and_time_disjoint_with_form_family_counts():
 
 
 def test_holdout_partitions_by_the_carried_cik_not_the_accession_prefix():
-    labels = _consensus_case(
-        "0001193125-24-000001",
-        outcome="positive",
-        predicted="positive",
-        sequence=3,
-        issuer_cik="0000000002",
+    labels = tuple(
+        _label(
+            accession="0001193125-24-000001",
+            review_sha="9" * 64,
+            body_sha="8" * 64,
+            outcome="positive",
+            predicted="positive",
+            annotator=annotator,
+            issuer_cik="0000000002",
+        )
+        for annotator in ("reviewer-a", "reviewer-b")
     )
     spec = {
         "schema_version": 1,

@@ -37,6 +37,7 @@ def _write_review_run(root):
         "capture_id": "capture-a",
         "target_id": "target-a",
         "accession": "0000000001-24-000001",
+        "issuer_cik": "0000000001",
         "processing": {
             "outputs": {},
             "operations": [
