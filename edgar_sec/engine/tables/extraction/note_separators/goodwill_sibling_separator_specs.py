@@ -20,9 +20,8 @@ class GoodwillSiblingSeparatorLeg:
 @dataclass(frozen=True)
 class GoodwillSiblingSeparatorSpec:
     """One family's sibling-mass separator: the priced legs,
-    held conjunctively — at least two stub rows carrying
-    sibling intangibles-class terms, and no stub row binding
-    goodwill as a subject of the grid."""
+    held conjunctively — sibling stub mass at the limit, and
+    no stub row binding goodwill as a subject."""
 
     family: str
     legs: tuple[GoodwillSiblingSeparatorLeg, ...]

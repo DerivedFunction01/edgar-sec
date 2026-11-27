@@ -1,8 +1,7 @@
 """Goodwill sibling-mass separator evidence
 (TEST_GOODWILL_SIBLING_SEPARATOR): the priced conjunction
-over one table's grid — a claim is refused when the grid's
-stub rows carry sibling-class mass and no stub binds
-goodwill."""
+over one table's grid — refused when the grid's stub rows
+carry sibling-class mass and no stub binds goodwill."""
 
 from __future__ import annotations
 
