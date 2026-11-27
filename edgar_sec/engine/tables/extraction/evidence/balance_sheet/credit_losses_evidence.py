@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.specs.families.credit_losses_specs import (
     CREDIT_LOSSES_EVIDENCE_SPECS_BY_TEST_ID,
     CreditLossesEvidenceSpec,
@@ -130,25 +132,48 @@ def _dates_in(segment: str) -> set[tuple[int, int]]:
     return out
 
 
+@lru_cache(maxsize=None)
+def _spec_index(spec: CreditLossesEvidenceSpec) -> TermIndex:
+    """One index over the spec's term census: subject phrases
+    by key, the bookend lists and literals, anchor words, the
+    movement elements by key, schedule markers, carrier
+    phrases. Every entry phrase-kind — substring standing."""
+    entries = []
+    entries += [
+        TermEntry(phrase, "subject", value=key) for key, phrase in spec.subject_phrases
+    ]
+    entries += [TermEntry(phrase, "bookend_begin") for phrase in spec.bookend_x_begin]
+    entries += [TermEntry(phrase, "bookend_end") for phrase in spec.bookend_x_end]
+    entries += [
+        TermEntry("beginning", "lit_beginning"),
+        TermEntry("ending", "lit_ending"),
+        TermEntry("opening balance", "arm_begin_lit"),
+        TermEntry("opening allowance", "arm_begin_lit"),
+        TermEntry("closing balance", "arm_end_lit"),
+    ]
+    entries += [TermEntry(word, "anchor") for word in spec.anchor_words]
+    for key, terms in spec.movement_elements:
+        entries += [TermEntry(term, "element", value=key) for term in terms]
+    entries += [TermEntry(marker, "schedule_marker") for marker in spec.schedule_markers]
+    entries += [
+        TermEntry(phrase, "carrier", value=phrase) for phrase in spec.carrier_phrases
+    ]
+    return TermIndex(entries)
+
+
 def _bookends(drawn: str, spec: CreditLossesEvidenceSpec) -> tuple[bool, bool]:
     """(baseline, arm-3) bookend verdicts over the drawn text."""
-    beginning = "beginning" in drawn
-    ending = "ending" in drawn
+    drawn_kinds = set(_spec_index(spec).scan(drawn))
+    beginning = "lit_beginning" in drawn_kinds
+    ending = "lit_ending" in drawn_kinds
     n_asof = sum(1 for line in drawn.split("|") if _RE_ASOF_PREP.search(line))
     baseline = (
         (beginning and ending) or n_asof >= 2 or _RE_BARE_END.search(drawn) is not None
     )
     segments = _RE_SEP.split(drawn)
     arm1 = (
-        beginning
-        or any(phrase in drawn for phrase in spec.bookend_x_begin)
-        or "opening balance" in drawn
-        or "opening allowance" in drawn
-    ) and (
-        ending
-        or any(phrase in drawn for phrase in spec.bookend_x_end)
-        or "closing balance" in drawn
-    )
+        beginning or "bookend_begin" in drawn_kinds or "arm_begin_lit" in drawn_kinds
+    ) and (ending or "bookend_end" in drawn_kinds or "arm_end_lit" in drawn_kinds)
     asof_dates: set[tuple[int, int]] = set()
     anchored_dates: set[tuple[int, int]] = set()
     for segment in segments:
@@ -157,7 +182,7 @@ def _bookends(drawn: str, spec: CreditLossesEvidenceSpec) -> tuple[bool, bool]:
             continue
         if _RE_ASOF_PREP.search(segment):
             asof_dates |= keys
-        if any(word in segment for word in spec.anchor_words):
+        if "anchor" in _spec_index(spec).scan(segment):
             anchored_dates |= keys
     arm3 = arm1 or len(asof_dates) >= 2 or len(anchored_dates) >= 2
     return baseline, arm3
@@ -165,13 +190,12 @@ def _bookends(drawn: str, spec: CreditLossesEvidenceSpec) -> tuple[bool, bool]:
 
 def _movement(drawn: str, spec: CreditLossesEvidenceSpec) -> bool:
     """Movement: one element, or a Schedule II valuation marker."""
-    elements = {
-        key: any(term in drawn for term in terms)
-        for key, terms in spec.movement_elements
-    }
+    hits = _spec_index(spec).scan(drawn)
+    element_keys = hits.get("element", frozenset())
+    elements = {key: key in element_keys for key, _terms in spec.movement_elements}
     n_base = sum(elements[key] for key in spec.movement_base_keys)
     moves_ext = n_base >= 1 or any(elements[key] for key in spec.movement_ext_keys)
-    schedule = any(marker in drawn for marker in spec.schedule_markers) or any(
+    schedule = "schedule_marker" in hits or any(
         elements[key] for key in spec.schedule_keys
     )
     return moves_ext or schedule
@@ -201,13 +225,15 @@ def legs_for(
 ) -> CreditLossesLegs:
     """Every leg of the priced claim over one table's text."""
     drawn, prose = text.drawn, text.prose
-    subjects = {key for key, phrase in spec.subject_phrases if phrase in drawn}
+    index = _spec_index(spec)
+    subjects = set(index.scan(drawn).get("subject", frozenset()))
     r1 = bool(subjects & set(spec.r1_keys))
     bare = spec.bare_key in subjects
     acltok = _RE_ACLTOK.search(drawn) is not None
     collapsed = _RE_SEP.sub(" ", drawn)
-    carrier = any(phrase in prose for phrase in spec.carrier_phrases) or any(
-        phrase in collapsed and phrase not in drawn for phrase in spec.carrier_phrases
+    carrier = bool(index.scan(prose).get("carrier", frozenset())) or bool(
+        index.scan(collapsed).get("carrier", frozenset())
+        - index.scan(drawn).get("carrier", frozenset())
     )
     subject = r1 or bare or acltok or carrier
     baseline, arm3 = _bookends(drawn, spec)
