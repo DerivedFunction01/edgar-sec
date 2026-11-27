@@ -8,7 +8,9 @@ family; neither leg alone admits.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.specs.families.tax_evidence_specs import (
@@ -51,17 +53,34 @@ def _folded(text: str) -> str:
     return RE_NON_ALNUM.sub(" ", text).strip()
 
 
+@lru_cache(maxsize=None)
+def _spec_index(spec: TaxEvidenceSpec) -> TermIndex:
+    """One index over the seat spec's terms: the anchor terms
+    in their folded form (reported as the original term) and
+    the lead-context terms. Every entry phrase-kind."""
+    entries = [
+        TermEntry(_folded(term), "anchor", value=term)
+        for term in spec.stub_anchor_terms
+    ]
+    entries += [
+        TermEntry(term, "context", value=term) for term in spec.lead_context_terms
+    ]
+    return TermIndex(entries)
+
+
 def evaluate_tax_evidence(text: TaxText, spec: TaxEvidenceSpec) -> TaxEvidence:
     """Admit only when both legs of the conjunction are present."""
-    stub = _folded(text.stub_text)
+    index = _spec_index(spec)
+    stub_hits = index.scan(_folded(text.stub_text)).get("anchor", frozenset())
     anchor = next(
-        (term for term in spec.stub_anchor_terms if _folded(term) in stub),
+        (term for term in spec.stub_anchor_terms if term in stub_hits),
         None,
     )
     if anchor is None:
         return TaxEvidence(False, "statutory anchor absent from stub")
+    lead_hits = index.scan(text.lead_text).get("context", frozenset())
     context = next(
-        (term for term in spec.lead_context_terms if term in text.lead_text),
+        (term for term in spec.lead_context_terms if term in lead_hits),
         None,
     )
     if context is None:
