@@ -1,6 +1,7 @@
 """PPE veto pass: set-level refusals over gate-final claims.
-The dominance leg prices rival presence on the pre-gate
-claim stage; the rest read gate-final results and geometry.
+The composition build retires the dominance and host-claim
+legs; the remaining legs read gate-final results and
+geometry.
 """
 
 from __future__ import annotations
@@ -17,12 +18,9 @@ from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     DISCIPLINE_CLASS_MIN,
     DISCIPLINE_NUMERIC_MIN,
     DISCIPLINE_S3_NUMERIC_MIN,
-    HOST_MIN_SHARED_KEYS,
     LEAD_BALANCE_MIN,
     LEG_COEX_LEAD,
     LEG_CONTEXT_CARRIED,
-    LEG_DOMINANCE,
-    LEG_HOST_CLAIM,
     LEG_LEAD_BALANCE,
     LEG_STATEMENT_FORM,
     LEG_WEAK_SIGNATURE,
@@ -31,7 +29,6 @@ from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     SIGNATURE_CHANNELS,
     STATEMENT_MIN_DATA_ROWS,
     STATEMENT_MIN_NUMERIC_CELLS,
-    STRONG_STUB_KEYS,
     WEAK_CLASS_DIVERSITY_MAX,
     WEAK_SIG_MAX,
 )
@@ -96,33 +93,6 @@ def _discipline_admission_seat(geometry, result) -> bool:
     if group is None or group.state != "admission":
         return False
     return discipline_form_fires(geometry, result.scores.get(PPE_FAMILY))
-
-
-def _host_claim_fires(geometry, result) -> bool:
-    """A claiming rival hosts the strong-key threshold."""
-    stubs = {normalize_text(stub) for stub in geometry.stubs}
-    for family in result.claims:
-        if family == PPE_FAMILY:
-            continue
-        strong = STRONG_STUB_KEYS.get(family)
-        if strong and len(stubs & strong) >= HOST_MIN_SHARED_KEYS:
-            return True
-    return False
-
-
-def _dominance_fires(result, stage) -> bool:
-    """A stage-claiming rival's own-stage total reaches the
-    PPE final total (weak dominance, as arbitrated)."""
-    own = result.scores.get(PPE_FAMILY)
-    if own is None:
-        return False
-    for family in stage.claims:
-        if family == PPE_FAMILY:
-            continue
-        rival = stage.scores.get(family)
-        if rival is not None and rival.total >= own.total:
-            return True
-    return False
 
 
 def _lead_balance_fires(result) -> bool:
@@ -249,10 +219,6 @@ def _fired_legs(geometries, results, stages, index):
     geometry = geometries[index]
     result = results[index]
     legs = []
-    if _host_claim_fires(geometry, result):
-        legs.append(LEG_HOST_CLAIM)
-    if _dominance_fires(result, stages[index]):
-        legs.append(LEG_DOMINANCE)
     if _lead_balance_fires(result):
         legs.append(LEG_LEAD_BALANCE)
     if _context_carried_fires(geometries, results, index, result):

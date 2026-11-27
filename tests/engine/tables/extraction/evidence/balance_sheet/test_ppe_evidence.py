@@ -93,7 +93,7 @@ def test_bare_total_after_contra_seats_via_net_bare() -> None:
     assert legs.newcore_lg and _outcome(table).passed
 
 
-def test_balance_sheet_block_is_shed_by_the_bs_guard() -> None:
+def test_balance_sheet_block_with_net_line_seats_on_the_face_form() -> None:
     table = _table(
         (
             ("Cash", "1"),
@@ -106,7 +106,7 @@ def test_balance_sheet_block_is_shed_by_the_bs_guard() -> None:
     )
     legs = _legs(table)
     assert legs.net_close and not legs.bs_guard and not legs.newcore
-    assert not legs.claim and not _outcome(table).passed
+    assert legs.face_form and legs.claim and _outcome(table).passed
 
 
 def test_lease_mimic_is_shed_by_the_lease_guard_only() -> None:
@@ -239,6 +239,62 @@ def test_outcome_carries_the_seat_kind_and_points() -> None:
     assert outcome.kind == "ppe_evidence"
     assert outcome.points == 3.0
     assert outcome.evaluable
+
+
+def test_specific_only_schedule_seats_as_newcore_lg() -> None:
+    table = _table(
+        (
+            ("Flight equipment", "100"),
+            ("Rotable parts", "20"),
+            ("Accumulated depreciation", "(30)"),
+            ("Property and equipment, net", "90"),
+        )
+    )
+    legs = _legs(table)
+    assert legs.class_rows == 3 and legs.newcore_lg and legs.claim
+    assert _outcome(table).passed
+
+
+def test_specific_rollforward_seats_as_roll_form() -> None:
+    table = _table(
+        (
+            ("Flight equipment, beginning of year", "100"),
+            ("Additions", "10"),
+            ("Flight equipment, end of year", "110"),
+            ("Aircraft, beginning of year", "50"),
+            ("Aircraft, end of year", "55"),
+        )
+    )
+    legs = _legs(table)
+    assert legs.bookend_r2 and legs.roll_form and legs.claim
+    assert _outcome(table).detail == "seat leg: roll_form"
+
+
+def test_variant_plant_and_equipment_net_close_seats() -> None:
+    table = _table(
+        (
+            ("Utility plant", "100"),
+            ("Plant in service", "200"),
+            ("Accumulated depreciation", "(50)"),
+            ("Plant and equipment, net", "250"),
+        )
+    )
+    legs = _legs(table)
+    assert legs.net_close and legs.newcore_lg and legs.claim
+    assert _outcome(table).passed
+
+
+def test_specific_terms_without_contra_or_net_do_not_seat() -> None:
+    table = _table(
+        (
+            ("Flight equipment", "100"),
+            ("Aircraft", "50"),
+            ("Total flight operations", "150"),
+        )
+    )
+    legs = _legs(table)
+    assert legs.class_rows == 2 and not legs.claim
+    assert not _outcome(table).passed
 
 
 def test_empty_grid_is_unevaluable() -> None:

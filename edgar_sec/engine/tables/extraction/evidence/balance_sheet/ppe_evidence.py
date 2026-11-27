@@ -122,6 +122,7 @@ class PpeLegs:
     roll_form: bool
     rights_form: bool
     comp_form: bool
+    face_form: bool
 
     @property
     def claim(self) -> bool:
@@ -134,6 +135,7 @@ class PpeLegs:
             or self.roll_form
             or self.rights_form
             or self.comp_form
+            or self.face_form
         )
 
     @property
@@ -147,6 +149,7 @@ class PpeLegs:
             "roll_form",
             "rights_form",
             "comp_form",
+            "face_form",
         ):
             if getattr(self, name):
                 return name
@@ -162,7 +165,7 @@ def legs_for(text: PpeText, spec: PpeEvidenceSpec) -> PpeLegs:
     def count_stub(*terms: str) -> int:
         return sum(1 for s in stub if any(t in s for t in terms))
 
-    class_rows = count_stub(*spec.class_terms)
+    class_rows = count_stub(*spec.class_terms, *spec.specific_terms)
     classes2 = class_rows >= 2
     contra = spec.contra_term in stub_text
     net_close = bool(NET_CLOSE_RE.search(stub_text)) or any(
@@ -216,11 +219,16 @@ def legs_for(text: PpeText, spec: PpeEvidenceSpec) -> PpeLegs:
         and contra_all
         and any(term in all_text for term in spec.s3_cost_terms),
         roll_form=bookend_r2
-        and all(term in stub_text for term in spec.roll_stub_terms),
+        and (all(term in stub_text for term in spec.roll_stub_terms) or classes2),
         rights_form=count_stub(spec.rights_term) >= 2
         and spec.depletion_term in stub_text
         and net_label,
-        comp_form=class_rows == 1 and contra and spec.comp_lead_term in text.lead,
+        comp_form=class_rows == 1
+        and contra
+        and any(term in text.lead for term in spec.comp_lead_terms),
+        face_form=any(lit in stub_text for lit in spec.net_close_literals)
+        and classes2
+        and not bs_guard,
     )
 
 

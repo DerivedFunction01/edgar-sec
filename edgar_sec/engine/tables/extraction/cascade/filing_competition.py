@@ -145,7 +145,7 @@ def apply_ppe_veto_override_seat(
     out: list[CompetitionResult] = []
     for geometry, result in zip(geometries, results, strict=True):
         score = result.scores.get("ppe")
-        if result.claims or score is None:
+        if score is None or "ppe" in result.claims:
             out.append(result)
             continue
         hard = (term_veto_hits(geometry).get("ppe") or {}).get("hard")

@@ -67,7 +67,7 @@ def test_specs_carry_the_arbitrated_strong_sets():
     assert "ppe" not in STRONG_STUB_KEYS
 
 
-def test_host_claim_removes_ppe_on_two_shared_keys():
+def test_host_claim_no_longer_removes_ppe_on_two_shared_keys():
     geo = GeometryText(stubs=("Total Assets", "Total Liabilities", "Land"))
     groups = (
         ClaimGroup("ppe", 11.0, "claimed", "primary", {"stub": 11.0}, (), 0.0),
@@ -83,12 +83,14 @@ def test_host_claim_removes_ppe_on_two_shared_keys():
             )
         ],
     )
-    assert "ppe" not in results[0].claims
-    assert "ppe" not in results[0].contested
+    assert "ppe" in results[0].claims
     assert "balance_sheet" in results[0].claims
     assert results[0].scores["ppe"].total == 11.0
-    assert _gate_details(results[0]) == ["ppe veto: H2claim"]
-    assert [group.family for group in results[0].groups] == ["balance_sheet"]
+    assert _gate_details(results[0]) == []
+    assert [group.family for group in results[0].groups] == [
+        "ppe",
+        "balance_sheet",
+    ]
 
 
 def test_host_claim_needs_two_shared_keys():
@@ -106,11 +108,11 @@ def test_host_claim_needs_the_host_claiming():
     assert "ppe" in results[0].claims
 
 
-def test_dominance_removes_on_a_tie():
+def test_dominance_no_longer_removes_on_a_tie():
     geo = GeometryText()
     results = _apply([geo], [_result(("ppe", "inventory"), totals={"inventory": 11.0})])
-    assert "ppe" not in results[0].claims
-    assert _gate_details(results[0]) == ["ppe veto: LBdomF"]
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
 
 
 def test_dominance_keeps_below_the_tie():
@@ -218,9 +220,7 @@ def test_note_names_every_fired_leg():
         ],
     )
     assert "ppe" not in results[0].claims
-    assert _gate_details(results[0]) == [
-        "ppe veto: H2claim, LBdomF, L6bal0.4, AcoexLead"
-    ]
+    assert _gate_details(results[0]) == ["ppe veto: L6bal0.4, AcoexLead"]
 
 
 def test_removals_read_the_input_results_only():
@@ -262,7 +262,7 @@ def test_signature_channels_are_the_homed_channels():
     assert SIGNATURE_CHANNELS is CHANNELS
 
 
-def test_dominance_reads_the_pre_gate_stage():
+def test_dominance_leg_is_retired_a_stage_rival_does_not_remove():
     geo = GeometryText()
     final = _result(("ppe",), totals={"ppe": 11.0})
     stage = ClaimStage(
@@ -270,8 +270,8 @@ def test_dominance_reads_the_pre_gate_stage():
         scores={"inventory": _score("inventory", 11.0)},
     )
     results = apply_ppe_vetoes([geo], [final], [stage])
-    assert "ppe" not in results[0].claims
-    assert _gate_details(results[0]) == ["ppe veto: LBdomF"]
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
 
 
 def test_dominance_ignores_a_rival_absent_at_the_stage():
@@ -479,11 +479,11 @@ def test_skip_needs_the_admission_state():
     assert _gate_details(results[0]) == ["ppe veto: B6sig5div1"]
 
 
-def test_priced_legs_still_fire_on_an_admission_seat():
+def test_retired_legs_do_not_fire_on_an_admission_seat():
     geo = GeometryText(stubs=("Total Assets", "Total Liabilities", "Land"))
     seated = _seated_result(
         3.0, {"stub": 3.0}, _BOTH_PASSED, families=("ppe", "balance_sheet")
     )
     results = _apply([geo], [seated])
-    assert "ppe" not in results[0].claims
-    assert _gate_details(results[0]) == ["ppe veto: H2claim"]
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
