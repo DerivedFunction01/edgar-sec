@@ -257,7 +257,7 @@ def transposed_period_axis(text: LeaseSeparatorText) -> bool:
     a thereafter header over at least two distinct header years,
     over lease-named stubs (comparative-year columns excluded)."""
     zone = [cell for row in text.rows[:3] for cell in row[1:] if cell.strip()]
-    if not any("thereafter" in _THEREAFTER_INDEX.scan(norml(c)) for c in zone):
+    if not any("hit" in _THEREAFTER_INDEX.scan(norml(c)) for c in zone):
         return False
     years = set(YEAR_TOKEN_SEARCH_RE.findall(" ".join(zone)))
     if len(years) < 2:
