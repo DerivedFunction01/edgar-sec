@@ -35,10 +35,7 @@ def test_headers_n_25_passes() -> None:
 
 def test_cash_flow_per_share_hard_hit_refuses() -> None:
     geometry = GeometryText(caption="Data per share")
-    assert (
-        debt_maturity_veto_reason(geometry)
-        == "debt veto: cash_flow hard per share"
-    )
+    assert debt_maturity_veto_reason(geometry) == "debt veto: cash_flow hard per share"
 
 
 def test_total_header_with_maturity_scored_hit_refuses() -> None:

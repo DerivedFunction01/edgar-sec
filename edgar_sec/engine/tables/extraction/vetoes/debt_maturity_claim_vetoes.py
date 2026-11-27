@@ -70,12 +70,8 @@ def apply_debt_maturity_claim_vetoes(geometries, results):
             )
         out.append(
             CompetitionResult(
-                claims=tuple(
-                    name for name in result.claims if name != FAMILY
-                ),
-                contested=tuple(
-                    name for name in result.contested if name != FAMILY
-                ),
+                claims=tuple(name for name in result.claims if name != FAMILY),
+                contested=tuple(name for name in result.contested if name != FAMILY),
                 scores=scores,
                 foreign_explained=result.foreign_explained,
                 groups=result.groups,
