@@ -8,6 +8,8 @@ from collections.abc import Callable
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from datetime import datetime
 from pathlib import Path
+from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.engine.index_pages.enumeration import TargetIntent
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
@@ -228,14 +230,26 @@ def execute_acquisition_run(
                         {"status": status, "count": 1},
                     )
 
-                seen_accessions: set[str] = set()
+                seen_accession_ciks: dict[str, str] = {}
 
                 def _tracked_pairs():
                     for pair in iter_target_state_pairs(
                         paths.run_state_path(run_id),
                         iter_work_order_rows(parts),
                     ):
-                        seen_accessions.add(str(pair[0]["accession"]))
+                        row = pair[0]
+                        accession_value = str(row["accession"])
+                        target_url = row.get("target_url")
+                        if target_url and accession_value not in seen_accession_ciks:
+                            try:
+                                seen_accession_ciks[accession_value] = (
+                                    validate_archive_url(
+                                        str(target_url),
+                                        AccessionNumber.from_any(accession_value),
+                                    ).archive_cik
+                                )
+                            except ValueError:
+                                pass
                         yield pair
 
                 pairs_iter = _tracked_pairs()
@@ -330,10 +344,10 @@ def execute_acquisition_run(
                             _drain_one()
                     finally:
                         pool.shutdown(wait=False, cancel_futures=True)
-                if ephemeral_intents and seen_accessions:
+                if ephemeral_intents and seen_accession_ciks:
                     ephemeral_counts = run_ephemeral_pass(
                         run_id=run_id,
-                        accessions=tuple(sorted(seen_accessions)),
+                        accession_ciks=tuple(sorted(seen_accession_ciks.items())),
                         intents=ephemeral_intents,
                         paths=paths,
                         policy=policy,

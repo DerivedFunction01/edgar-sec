@@ -67,11 +67,17 @@ def _intent(doc_type: str) -> TargetIntent:
     )
 
 
-def _run(tmp_path: Path, transport: _Transport, intents: tuple[TargetIntent, ...]):
+def _run(
+    tmp_path: Path,
+    transport: _Transport,
+    intents: tuple[TargetIntent, ...],
+    accession: str = _ACCESSION,
+    archive_cik: str = "1234567",
+):
     paths = resolve_acquisition_paths(artifacts_root=tmp_path / "artifacts")
     counts = run_ephemeral_pass(
         run_id="run-1",
-        accessions=(_ACCESSION,),
+        accession_ciks=((accession, archive_cik),),
         intents=intents,
         paths=paths,
         policy=AcquisitionPolicy(max_response_bytes=100_000),
@@ -79,6 +85,26 @@ def _run(tmp_path: Path, transport: _Transport, intents: tuple[TargetIntent, ...
         workers=1,
     )
     return paths, counts
+
+
+def test_agent_prefixed_accession_fetches_under_carried_cik(tmp_path: Path) -> None:
+    accession = "0009999999-24-000042"
+    root = "https://www.sec.gov/Archives/edgar/data/1234567/000999999924000042/"
+    transport = _Transport(
+        {
+            root + f"{accession}-index.html": fixture_path(
+                "document_planning_index_page.html"
+            ).read_bytes(),
+            root + "ex991.htm": _EXHIBIT_BODY,
+        }
+    )
+    paths, counts = _run(
+        tmp_path, transport, (_intent("EX-99.1"),), accession, "1234567"
+    )
+    assert counts == {"acquired": 1}
+    assert transport.calls[0] == root + f"{accession}-index.html"
+    (row,) = read_ephemeral_targets(paths.run_state_path("run-1"))
+    assert row["outcome"] == "acquired"
 
 
 def test_matched_intent_is_acquired_and_recorded(tmp_path: Path) -> None:

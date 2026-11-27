@@ -37,7 +37,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.ephemeral import (
 def run_ephemeral_pass(
     *,
     run_id: str,
-    accessions: tuple[str, ...],
+    accession_ciks: tuple[tuple[str, str], ...],
     intents: tuple[TargetIntent, ...],
     paths: AcquisitionPaths,
     policy: AcquisitionPolicy,
@@ -46,6 +46,8 @@ def run_ephemeral_pass(
 ) -> dict[str, int]:
     """Fetch each accession's index page in the pool and acquire its matches.
 
+    Each pair carries the accession's archive CIK as data from the run's
+    work order; the index URL is never derived from the accession itself.
     Resolutions are recorded in the run's own state store and nowhere else:
     no plan, manifest, or inventory record is created for them.
     """
@@ -53,14 +55,21 @@ def run_ephemeral_pass(
     staging_root.mkdir(parents=True, exist_ok=True)
     run_root = paths.run_dir(run_id)
 
-    def task(accession: str) -> list[dict[str, Any]]:
+    def task(pair: tuple[str, str]) -> list[dict[str, Any]]:
         return _accession_rows(
-            run_id, accession, intents, staging_root, run_root, policy, transport
+            run_id,
+            pair[0],
+            pair[1],
+            intents,
+            staging_root,
+            run_root,
+            policy,
+            transport,
         )
 
     rows: list[dict[str, Any]] = []
     with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
-        for accession_rows in pool.map(task, accessions):
+        for accession_rows in pool.map(task, accession_ciks):
             rows.extend(accession_rows)
     record_ephemeral_targets(paths.run_state_path(run_id), rows)
     return dict(sorted(Counter(row["outcome"] for row in rows).items()))
@@ -69,6 +78,7 @@ def run_ephemeral_pass(
 def _accession_rows(
     run_id: str,
     accession_value: str,
+    archive_cik: str,
     intents: tuple[TargetIntent, ...],
     staging_root: Path,
     run_root: Path,
@@ -76,7 +86,7 @@ def _accession_rows(
     transport: AcquisitionTransport,
 ) -> list[dict[str, Any]]:
     accession = AccessionNumber.from_any(accession_value)
-    url = index_url_for(accession, accession.normalized[:10])
+    url = index_url_for(accession, archive_cik)
     page_path = new_staging_path(staging_root, "index")
     try:
         result = stream(transport, url, page_path, accession, policy)
