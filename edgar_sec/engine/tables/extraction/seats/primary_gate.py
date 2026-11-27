@@ -201,6 +201,7 @@ PATTERNS: dict[str, tuple[str, ...]] = {
         r"^balance.*\bend of\b",
         rf"^balances?\s+{build_alternation(['as of', 'at'], auto_escape=True)}\b",
         rf"^balances?\s+(?:{STRICT_MONTH_PATTERN})\b",
+        rf"^balances?,\s+(?:{STRICT_MONTH_PATTERN})\b",
     ),
     "in_period_activity": (
         r"net income",

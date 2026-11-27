@@ -222,6 +222,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
             (
                 "beginning balance",
                 "beginning of period",
+                "beginning of the period",
                 "beginning of year",
                 "brought forward",
                 "balance at the beginning",
@@ -231,7 +232,9 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
             (
                 "ending balance",
                 "end of period",
+                "end of the period",
                 "end of year",
+                "end of the year",
                 "carried forward",
                 "balance at the end",
                 "at the end of the year",
@@ -254,6 +257,7 @@ MEASURE_SET_SPECS_BY_TEST_ID: dict[str, MeasureSetSpec] = {
                 "realignment",
                 "translation",
                 "foreign currency",
+                "exchange",
                 "deferred tax",
                 "measurement period",
                 "reclassification",

@@ -263,7 +263,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "selected_data_last_total_item6",
         "SELECTED-DATA",
-        ("last_stub_total", "loc_item6"),
+        ("last_stub_total", "loc_item6", "years>=4"),
         1,
         0,
         0,
@@ -472,7 +472,7 @@ SUMMARY_SEPARATOR_SPECS: tuple[SummarySeparatorSpec, ...] = (
     SummarySeparatorSpec(
         "mda_item7_rows12",
         "MD&A-SUMMARY",
-        ("loc_item7", "rows<=12"),
+        ("loc_item7", "rows<=12", "years>=3"),
         2,
         1,
         0,
@@ -544,4 +544,16 @@ SEPARATOR_EXEMPTIONS: dict[str, tuple[str, ...]] = {
         "selected_data_last_total_item6",
     ),
     "restructuring": ("mda_item2_data",),
+    "shares_purchased": (
+        "mda_item2_data",
+        "mda_item2_sales",
+        "mda_cols6_activities_rows12",
+        "mda_item2_income_tax_rows12",
+        "mda_item2_net_loss",
+        "mda_total_row_item2_net_loss",
+        "mda_item2_financing_activities",
+        "mda_item2_operating_activities",
+        "mda_item2_cash_equivalents_data",
+        "selected_data_last_total_item6",
+    ),
 }

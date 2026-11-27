@@ -17,6 +17,9 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
 from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     INTANGIBLES_LEXICON,
 )
+from edgar_sec.engine.tables.extraction.specs.input_class_specs import (
+    LEVEL3_QUANTITATIVE_CAPTION,
+)
 from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DERIV_FAMILY,
     DERIV_HEADER_LEVEL_TOKEN,
@@ -59,6 +62,14 @@ from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     LABOR_EIN_TOKEN,
     LABOR_EXPIRATION_TOKEN,
     LABOR_FAMILY,
+    FV_FAMILY,
+    FV_HIERARCHY_PHRASES,
+    FV_SEC_CONCEPTS,
+    FV_VMA_TERMS,
+    LEG_FV_ALLOC,
+    LEG_FV_SEC,
+    LEG_FV_VMA,
+    LEG_FV_W3,
     LABOR_FORM_PHRASES,
     LEG_CONTEXT_ONLY,
     LEG_CONTRIBUTIONS_ORPHAN,
@@ -91,6 +102,7 @@ from edgar_sec.foundation.text.date_patterns import (
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.normalize import collapse_whitespace
 from edgar_sec.foundation.text.words import word_tokens
+from edgar_sec.foundation.regex.builder import build_alternation
 
 
 def _token_list(text: str) -> list[str]:
@@ -464,6 +476,65 @@ def _labor_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
     return tuple(legs)
 
 
+_FV_LEVEL_TOKENS = ("1", "2", "3", "i", "ii", "iii", "iv")
+_FV_LEVEL_RE = re.compile(
+    r"level\s*(" + build_alternation(_FV_LEVEL_TOKENS) + r")\b",
+    re.IGNORECASE,
+)
+_FV_ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4}
+
+
+def _fv_norm(texts) -> str:
+    joined = " ".join(str(t) for t in texts if t)
+    return collapse_whitespace(joined).lower()
+
+
+def _fv_levels(texts) -> set:
+    found = set()
+    for text in texts:
+        if not text:
+            continue
+        for m in _FV_LEVEL_RE.finditer(str(text)):
+            tok = m.group(1).lower()
+            found.add(_FV_ROMAN.get(tok) or int(tok))
+    return found
+
+
+def _fair_value_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
+    """Fair_value precision packet: the ITEMS surface forms
+    (VMA / SEC / ALLOC) and W3 (H == 0) under the g5 guard.
+    Priced form: ITEMS | W3-guarded-g5 (register-fair-value.md)."""
+    headers = list(geometry.headers or [])
+    stubs = list(geometry.stubs or [])
+    caption = geometry.caption or ""
+    notehead = geometry.notehead or ""
+    note_title = geometry.note_title or ""
+    hdr = _fv_norm(headers)
+    stb = _fv_norm(stubs)
+    cap = _fv_norm([caption, notehead] + [str(h) for h in headers])
+    joined_hs = " ".join([str(h) for h in headers] + [str(s) for s in stubs]).lower()
+    h_score = (
+        len(_fv_levels(headers))
+        + len(_fv_levels(stubs))
+        + sum(1 for ph in FV_HIERARCHY_PHRASES if ph in joined_hs)
+    )
+    legs = []
+    vma_terms = [t for t in FV_VMA_TERMS if t in hdr]
+    if LEVEL3_QUANTITATIVE_CAPTION in cap or len(vma_terms) >= 2:
+        legs.append(LEG_FV_VMA)
+    strict = sum(1 for c in FV_SEC_CONCEPTS if c in hdr) >= 3
+    age = "unrealized loss" in hdr and (
+        "less than 12 months" in hdr or "12 months or longer" in hdr
+    )
+    if strict or age:
+        legs.append(LEG_FV_SEC)
+    if "net assets acquired" in stb and "goodwill" in stb and len(headers) <= 6:
+        legs.append(LEG_FV_ALLOC)
+    if h_score == 0 and "fair value" not in note_title.lower():
+        legs.append(LEG_FV_W3)
+    return tuple(legs)
+
+
 _LEG_EVALUATORS = {
     DERIV_FAMILY: _deriv_legs,
     DT_FAMILY: _deferred_tax_legs,
@@ -472,6 +543,7 @@ _LEG_EVALUATORS = {
     CREDIT_FAMILY: _credit_legs,
     LABOR_FAMILY: _labor_legs,
     EPS_FAMILY: _eps_legs,
+    FV_FAMILY: _fair_value_legs,
 }
 
 

@@ -20,6 +20,7 @@ from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_PATTERN,
+    YEAR_TOKEN_SEARCH_RE,
 )
 
 
@@ -54,7 +55,35 @@ def _texts(table: TypedTable) -> list[str]:
         )
         if joined:
             texts.append(joined)
+    texts.extend(_head_year_variants(texts))
     return [text for text in texts if text]
+
+
+_MONTH_DAY_BOOKEND_RE = re.compile(
+    rf"^(?:gross\s+|net\s+)?balances?,?\s+(?:as\s+of\s+)?"
+    rf"(?:{MONTH_PATTERN})\s*\d{{1,2}},?$"
+)
+
+
+def _head_year_variants(texts: list[str]) -> list[str]:
+    """Dated forms of month-day bookend stubs, years from the texts.
+
+    A balance stub carrying a month and day but no year is dated when
+    the table's own head zone carries the year (at most four appended).
+    """
+    years: list[str] = []
+    for text in texts:
+        for year in YEAR_TOKEN_SEARCH_RE.findall(text):
+            if year not in years:
+                years.append(year)
+    if not years:
+        return []
+    return [
+        f"{text} {year}"
+        for text in texts
+        if _MONTH_DAY_BOOKEND_RE.match(text)
+        for year in years[:4]
+    ]
 
 
 def _present(texts: list[str], phrases: tuple[str, ...]) -> bool:
@@ -63,9 +92,9 @@ def _present(texts: list[str], phrases: tuple[str, ...]) -> bool:
 
 def _build_dated_bookend_re() -> re.Pattern[str]:
     """Compose the dated-bookend recognizer from the dates home."""
-    md = rf"(?:{MONTH_PATTERN}) \d{{1,2}},? (?:{YEAR_TOKEN_PATTERN})"
+    md = rf"(?:{MONTH_PATTERN})\s*\d{{1,2}},? (?:{YEAR_TOKEN_PATTERN})"
     df = rf"\d{{1,2}} (?:{MONTH_PATTERN}),? (?:{YEAR_TOKEN_PATTERN})"
-    mdy = rf"(?:{MONTH_PATTERN}) \d{{1,2}},?"
+    mdy = rf"(?:{MONTH_PATTERN})\s*\d{{1,2}},?"
     qual = (
         "(?:"
         + "|".join(
@@ -81,6 +110,7 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
     prefixes = (
         rf"balances?,?\s+{connector}",
         rf"balances?,?\s*[-–—]\s*",
+        rf"totals?,?\s+(?:at\s+|as of\s+)?",
         rf"net\s+balances?,?\s+(?:at\s+|as of\s+)?",
         rf"goodwill\s+balances?,?\s+(?:at\s+|as of\s+)?",
         r"as of\s+",
@@ -101,11 +131,16 @@ def _build_dated_bookend_re() -> re.Pattern[str]:
         rf"as of year[-\s]end (?:{YEAR_TOKEN_PATTERN})"
     )
     balance_year_end = rf"balances?,?\s+as of year[-\s]end (?:{YEAR_TOKEN_PATTERN})"
+    year_first_year_end = (
+        rf"balances?,?\s+as of (?:{YEAR_TOKEN_PATTERN})\s+year[-\s]end{qual}"
+    )
     alts = (
         rf"{prefix}{core}{qual}",
+        rf"{prefix}{md}{qual}\s+and\s+.+",
         rf"balances?,?\s+(?:{YEAR_TOKEN_PATTERN}){qual}",
         year_end,
         balance_year_end,
+        year_first_year_end,
     )
     return re.compile("^(?:" + "|".join(alts) + ")$")
 
@@ -162,6 +197,30 @@ def _qualified_dated(
     rows = set(row_texts) | set(head_stub_texts or ())
     zone = set(zone_texts)
     return {t for t in dated if t in rows or t in worded or (worded and t in zone)}
+
+
+_HEAD_MONTH_DAY_RE = re.compile(rf"(?:{MONTH_PATTERN})\s*\d{{1,2}}\b")
+
+
+def _head_dated_composition(head_texts: list[str]) -> bool:
+    """True when the head zone carries dated material: a
+    month-day phrase plus a year token among the head cells."""
+    phrase = any(_HEAD_MONTH_DAY_RE.search(t) for t in head_texts)
+    years = any(YEAR_TOKEN_SEARCH_RE.search(t) for t in head_texts)
+    return phrase and years
+
+
+def _stub_position_worded(
+    admitted: set[str],
+    row_texts: list[str],
+    head_stub_texts: list[str],
+) -> bool:
+    """True when the single dated text is balance/subject-worded
+    and stands in a stub position (row label or head stub)."""
+    text = next(iter(admitted))
+    if "balance" not in text and "goodwill" not in text:
+        return False
+    return text in row_texts or text in head_stub_texts
 
 
 def _head_pair(head_texts: list[str], params: MeasureSetSpec) -> bool:
@@ -237,6 +296,16 @@ def _dated_verdict(
         and _head_pair(head_texts, params)
     ):
         hits = _dated_hits(present, dated, params)
+    if (
+        params.date_bookend_groups
+        and not _groups_admitted(hits, params)
+        and len(admitted) == 1
+        and _stub_position_worded(admitted, row_texts, head_stub_texts)
+        and _head_dated_composition(head_texts)
+    ):
+        hits = list(hits)
+        for index in params.date_bookend_groups:
+            hits[index] = True
     unbound = (
         params.subject_position_bound
         and _groups_admitted(hits, params)

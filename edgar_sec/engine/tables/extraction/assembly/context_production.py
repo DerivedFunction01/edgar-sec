@@ -487,21 +487,26 @@ def _produce_document(document: DocumentInput) -> ProducedDocument:
     for geometry, span, rendered in zip(
         result.table_geometries, spans, rendered_sets, strict=True
     ):
+        section = _span_bounds(sections, span[0]) if span else None
         if (
             facts.cover_end_line is not None
             and span is not None
             and span[0] < facts.cover_end_line
+            and section is None
         ):
             # The cover-boundary split: a geometry starting
             # before the boundary is cover, never classification
             # input; an unlocated geometry cannot be placed
-            # against the boundary and stays in the input.
+            # against the boundary and stays in the input. A
+            # geometry seated in a document section is placed by
+            # its section, not by the boundary: the boundary
+            # governs section-less content only, so a seated body
+            # table the cover region overruns is still input.
             cover_excluded.append(geometry.table_index)
             continue
         rows = [list(row) for row in geometry.rows]
         captions = list(parse_caption_stack(tuple(tuple(row) for row in rows)).lines)
         issues: list[str] = []
-        section = _span_bounds(sections, span[0]) if span else None
         note_span = _span_bounds(notes, span[0]) if span else None
         titles = [
             title

@@ -7,10 +7,13 @@ legs; the filing-level assignment pass reads the same features.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
+    STRICT_MONTH_PATTERN,
+    YEAR_TOKEN_PATTERN,
     YEAR_TOKEN_SEARCH_RE,
 )
 from edgar_sec.engine.tables.extraction.separators.equity_separator_specs import (
@@ -25,9 +28,18 @@ from edgar_sec.engine.tables.extraction.pension.pension_routed_evidence import (
 from edgar_sec.engine.tables.extraction.pension.pension_routed_specs import (
     HEADER_STOP_TOKENS,
 )
+from edgar_sec.engine.tables.extraction.seats.specs.seat_test_specs import (
+    SEAT_TEST_SPECS_BY_FAMILY,
+)
+from edgar_sec.engine.tables.extraction.seats.statement_seat import _column_walk
 
 _HEADER_LINES = 3
 _YEAR_RE = YEAR_TOKEN_SEARCH_RE
+
+_DATE_ONLY_RE = re.compile(
+    rf"^(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}},\s+(?:{YEAR_TOKEN_PATTERN})$",
+    re.IGNORECASE,
+)
 
 
 def _dated_balance_count(raw_stubs) -> int:
@@ -35,11 +47,48 @@ def _dated_balance_count(raw_stubs) -> int:
     count = 0
     for stub in raw_stubs:
         lowered = (stub or "").lower()
-        if "balance" not in lowered:
+        if _DATE_ONLY_RE.match(lowered.strip()):
+            count += 1
+            continue
+        if "balance" not in lowered and "net assets" not in lowered:
             continue
         if _YEAR_RE.search(lowered) or any(name in lowered for name in MONTH_NAMES):
             count += 1
     return count
+
+
+def _has_period_bookend(raw_stubs) -> bool:
+    """Stub rows that bookend a period, balance-named or not."""
+    for stub in raw_stubs:
+        lowered = (stub or "").lower()
+        if "balance" in lowered and ("beginning" in lowered or "end of" in lowered):
+            return True
+        if (
+            "beginning of period" in lowered
+            or "end of period" in lowered
+            or "beginning of year" in lowered
+            or "end of year" in lowered
+        ):
+            return True
+    return False
+
+
+def _carries_period_date(texts) -> bool:
+    """A year token anywhere across the texts."""
+    joined = " ".join((text or "").lower() for text in texts)
+    return bool(_YEAR_RE.search(joined))
+
+
+def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:
+    """The stock count, credited to 1 when the statement phrases
+    its bookends without dates and carries the period date on
+    its header or caption surface instead."""
+    count = _dated_balance_count(raw_stubs)
+    if count:
+        return count
+    if _has_period_bookend(raw_stubs) and _carries_period_date(dated_texts):
+        return 1
+    return 0
 
 
 class EquitySeparatorText:
@@ -56,7 +105,10 @@ class EquitySeparatorText:
             key for key in (stub_key(stub) for stub in self.stubs) if key
         )
         self.header_keys = header_keys(self.headers)
-        self.dated_balance_rows = _dated_balance_count(self.raw_stubs)
+        self.dated_balance_rows = _credited_dated_balance_count(
+            self.raw_stubs,
+            list(self.headers) + list(self.caption_stack) + list(self.raw_stubs),
+        )
         years = set()
         for cell in self.headers:
             years.update(_YEAR_RE.findall(cell))
@@ -83,7 +135,7 @@ class EquitySeparatorVerdict:
 
 
 def evaluate_equity_separator(
-    text: EquitySeparatorText, spec: EquitySeparatorSpec
+    text: EquitySeparatorText, spec: EquitySeparatorSpec, *, walk_closed: bool = False
 ) -> EquitySeparatorVerdict:
     """Fire the claim-local legs in their priced order."""
     if not text.rows:
@@ -91,7 +143,7 @@ def evaluate_equity_separator(
     legs = []
     if len(text.rows) <= spec.max_rows:
         legs.append(f"rows_le_{spec.max_rows}")
-    if len(text.header_years) >= spec.span_years_min:
+    if len(text.header_years) >= spec.span_years_min and not walk_closed:
         legs.append(f"span_ge_{spec.span_years_min}")
     if text.dated_balance_rows == 0:
         legs.append("core_gate")
@@ -166,7 +218,9 @@ def equity_candidate_features_from_geometry(geometry, spec) -> EquityCandidateFe
         key for key in (stub_key(stub) for stub in geometry.stubs) if key
     )
     return _candidate_features(
-        _dated_balance_count(geometry.stubs),
+        _credited_dated_balance_count(
+            geometry.stubs, list(geometry.headers) + list(geometry.stubs)
+        ),
         stub_keys,
         header_keys(geometry.headers),
         geometry.grid_rows,
@@ -239,4 +293,9 @@ def evaluate_form_test_equity_separator(table, spec) -> EquitySeparatorVerdict:
     text = EquitySeparatorText.from_rows(
         context.rows, list(context.caption_stack) + list(table.caption.titles)
     )
-    return evaluate_equity_separator(text, EQUITY_SEPARATOR_SPECS[spec.family])
+    walk_closed = (
+        _column_walk(table, SEAT_TEST_SPECS_BY_FAMILY["equity_statement"]) >= 1
+    )
+    return evaluate_equity_separator(
+        text, EQUITY_SEPARATOR_SPECS[spec.family], walk_closed=walk_closed
+    )
