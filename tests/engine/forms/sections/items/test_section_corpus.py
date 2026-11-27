@@ -1,6 +1,6 @@
-"""Section corpus: the detector over banked normalized text, per specimen.
+"""Section corpus: the detector over the simplified specimen set.
 
-Banking and conventions: the corpus README beside the fixtures.
+Skeleton texts and conventions: the corpus README beside the fixtures.
 """
 
 from __future__ import annotations
@@ -15,6 +15,7 @@ from edgar_sec.engine.forms.sections.items.detector import detect_section_sequen
 from tests.support.fixtures import fixture_path
 
 _CORPUS = fixture_path("engine/forms/sections/section_corpus")
+_SIMPLIFIED = _CORPUS / "simplified"
 
 # Families whose profiles opt into run-in section titles; the corpus
 # builder (edgar_sec.tools.section_corpus) applies the same convention.
@@ -39,28 +40,31 @@ def _taxonomies() -> dict[str, tuple[ItemDefinition, ...]]:
 
 
 _TAXONOMIES = _taxonomies()
-_INDEX = json.loads((_CORPUS / "index.json").read_text(encoding="utf-8"))
+_SPECIMENS = json.loads((_SIMPLIFIED / "specimens.json").read_text(encoding="utf-8"))
 
 
-@pytest.mark.parametrize("entry", _INDEX, ids=[e["id"] for e in _INDEX])
-def test_specimen_resolutions_match_expectations(entry: dict) -> None:
-    text = (_CORPUS / entry["text"]).read_text(encoding="utf-8")
-    toc_span = tuple(entry["toc_span"]) if entry["toc_span"] else None
+@pytest.mark.parametrize("specimen", _SPECIMENS, ids=[s["id"] for s in _SPECIMENS])
+def test_specimen_resolutions_match_expectations(specimen: dict) -> None:
+    text = (_SIMPLIFIED / specimen["text"]).read_text(encoding="utf-8")
+    toc_span = tuple(specimen["toc_span"]) if specimen["toc_span"] else None
     seq = detect_section_sequence(
         text,
-        family=entry["family"],
-        taxonomy_items=_TAXONOMIES[entry["family"]],
+        family=specimen["family"],
+        taxonomy_items=_TAXONOMIES[specimen["family"]],
         toc_span=toc_span,
-        run_in_titles=entry["family"] in _RUN_IN_FAMILIES,
+        run_in_titles=specimen["family"] in _RUN_IN_FAMILIES,
     )
-    assert [s.item_identifier for s in seq.sections] == entry["expected"]
+    assert [s.item_identifier for s in seq.sections] == specimen["expected"]
 
 
-def test_corpus_index_is_complete_and_consistent() -> None:
-    ids = [e["id"] for e in _INDEX]
+def test_specimen_set_is_complete_and_consistent() -> None:
+    ids = [s["id"] for s in _SPECIMENS]
     assert len(ids) == len(set(ids))
-    for entry in _INDEX:
-        assert entry["family"] in _TAXONOMIES
-        text_path = _CORPUS / entry["text"]
+    covered = {s["family"] for s in _SPECIMENS}
+    assert covered == set(_TAXONOMIES)
+    for specimen in _SPECIMENS:
+        text_path = _SIMPLIFIED / specimen["text"]
         assert text_path.is_file() and text_path.stat().st_size > 0
-        assert Path(entry["text"]).name == f"{entry['accession']}__{entry['document']}"
+        assert Path(specimen["text"]).name == specimen["text"]
+        known = {f"ITEM {item.item}" for item in _TAXONOMIES[specimen["family"]]}
+        assert set(specimen["expected"]) <= known

@@ -442,6 +442,12 @@ tests/fixtures/catalog/s1_plan/**
 !tests/fixtures/xbrl/
 !tests/fixtures/xbrl/**
 tests/fixtures/taxonomy_corpus/**
+# The section corpus's banked full-filing texts are purged; only the
+# simplified specimen set is tracked, and a re-banked text never
+# re-enters. The document_storage .sgm bundles are likewise purged:
+# no consumer loads them, and only its two JSON fixtures stay tracked.
+tests/fixtures/engine/forms/sections/section_corpus/texts/**
+tests/fixtures/document_storage/*.sgm
 tests/fixtures/table_extraction_corpus/**
 !tests/fixtures/table_extraction_corpus/0000024491-19-000016.json
 !tests/fixtures/table_extraction_corpus/0000077543-25-000025.json

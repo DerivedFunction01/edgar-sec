@@ -2,6 +2,7 @@
 
 A jobs JSON names specimens by form, accession, and document; each body
 is normalized once and banked with the taxonomy it is judged against.
+The registrant CIK is job data, joined at preparation from form.idx.
 """
 
 from __future__ import annotations
@@ -9,15 +10,19 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.common.models import ItemDefinition
+from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
+from edgar_sec.domain.index_urls import full_index_url
 from edgar_sec.domain.sec_urls import archives_url
 from edgar_sec.engine.forms.normalize import normalize_document
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.foundation.runtime.env import get_env
+from edgar_sec.foundation.text.date_years import expand_2digit_year
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -131,10 +136,78 @@ def bank_specimen(
     return record
 
 
+def _accession_in_path(path: str) -> str | None:
+    """The accession a form.idx file name names, via the identity home."""
+    for segment in path.split("/"):
+        try:
+            return AccessionNumber.from_any(segment.rsplit(".", 1)[0]).normalized
+        except ValueError:
+            continue
+    return None
+
+
+def _form_idx_ciks(client: SecHttpClient, year: int, quarter: int) -> dict[str, int]:
+    """Map accession to registrant CIK from one quarter's form.idx."""
+    text = client.get_bytes(full_index_url(year, quarter, "form")).decode(
+        "utf-8", errors="replace"
+    )
+    found: dict[str, int] = {}
+    for line in text.splitlines():
+        tokens = line.split()
+        if len(tokens) < 5 or not tokens[-3].isdigit():
+            continue
+        accession = _accession_in_path(tokens[-1])
+        if accession is not None:
+            found[accession] = int(tokens[-3])
+    return found
+
+
+def prepare_jobs(
+    jobs: list[dict[str, Any]], client: SecHttpClient
+) -> list[dict[str, Any]]:
+    """Fill each job's registrant CIK from the Archives form.idx join.
+
+    The accession prefix is the filer's or agent's CIK, not reliably the
+    registrant's, so the CIK is job data, joined at preparation.
+    """
+    by_year: dict[int, list[dict[str, Any]]] = {}
+    for job in jobs:
+        if job.get("cik") is None:
+            accession = AccessionNumber.from_any(job["accession"])
+            year = expand_2digit_year(
+                int(accession.raw.split("-")[1]),
+                reference_year=datetime.now(UTC).year,
+            )
+            by_year.setdefault(year, []).append(job)
+    for year, group in by_year.items():
+        resolved: dict[str, int] = {}
+        for quarter in (1, 2, 3, 4):
+            resolved.update(_form_idx_ciks(client, year, quarter))
+            if all(
+                AccessionNumber.from_any(j["accession"]).normalized in resolved
+                for j in group
+            ):
+                break
+        for job in group:
+            key = AccessionNumber.from_any(job["accession"]).normalized
+            if key not in resolved:
+                raise ValueError(
+                    f"no form.idx row for accession {job['accession']} "
+                    f"in {year}; its registrant CIK cannot be joined"
+                )
+            job["cik"] = resolved[key]
+    return jobs
+
+
 def _fetch_body(job: dict[str, Any], client: SecHttpClient) -> bytes:
     """Fetch one specimen body from the EDGAR archives."""
-    cik = int(job["accession"].split("-")[0])
-    url = archives_url(cik, job["accession"], job["document"])
+    cik = job.get("cik")
+    if cik is None:
+        raise ValueError(
+            f"job for accession {job['accession']} carries no cik; "
+            "job preparation supplies it from the form.idx join"
+        )
+    url = archives_url(int(cik), job["accession"], job["document"])
     return client.get_bytes(url)
 
 
@@ -153,20 +226,20 @@ def main(argv: list[str] | None = None) -> int:
 
     jobs = json.loads(Path(args.jobs).read_text(encoding="utf-8"))
     corpus_dir = Path(args.corpus_dir)
+    fetch_jobs = [job for job in jobs if not (args.specimen_dir and job.get("file"))]
     client: SecHttpClient | None = None
+    if fetch_jobs:
+        user_agent = get_env("SEC_USER_AGENT")
+        if not user_agent:
+            raise ValueError("SEC_USER_AGENT must be set in the process environment")
+        client = SecHttpClient(user_agent=user_agent, rate_limiter=RateLimiter())
+        prepare_jobs(fetch_jobs, client)
     for job in jobs:
         if args.specimen_dir and job.get("file"):
             raw = (Path(args.specimen_dir) / job["file"]).read_bytes()
         else:
             if client is None:
-                user_agent = get_env("SEC_USER_AGENT")
-                if not user_agent:
-                    raise ValueError(
-                        "SEC_USER_AGENT must be set in the process environment"
-                    )
-                client = SecHttpClient(
-                    user_agent=user_agent, rate_limiter=RateLimiter()
-                )
+                raise RuntimeError("fetch client was not built")
             raw = _fetch_body(job, client)
         record = bank_specimen(
             corpus_dir, job, raw, refresh_taxonomy=args.refresh_taxonomy
