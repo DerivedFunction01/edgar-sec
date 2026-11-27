@@ -200,16 +200,15 @@ def apply_ppe_veto_override_seat(
     return out
 
 
-def compete_filing(
+def _compete_through_gate(
     geometries: list[GeometryText] | tuple[GeometryText, ...],
-    terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
-    edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
-    ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
-    scopes: tuple[ScopeRow, ...] = (),
-) -> list[CompetitionResult]:
-    """Compete one filing's geometries with context fed back;
-    context lends to unclaimed geometries only and never
-    overrides a geometry's own scored claim."""
+    terms: tuple[SignatureTerm, ...],
+    edges: tuple[ContainmentEdge, ...],
+    ladder_terms: tuple[LadderTerm, ...],
+    scopes: tuple[ScopeRow, ...],
+):
+    """Compete through the primary gate: the claim set the
+    gate admits, with the claim stages captured pre-gate."""
     clusters = statement_clusters(geometries)
 
     def cluster_stubs(index: int) -> tuple[str, ...]:
@@ -320,6 +319,37 @@ def compete_filing(
     # sections are missing over the statement cluster; the PPE,
     # precision, and spanning vetoes read gate-final claims.
     gated = apply_primary_gate(geometries, results)
+    return gated, stages
+
+
+def compete_filing_gated(
+    geometries: list[GeometryText] | tuple[GeometryText, ...],
+    terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
+    edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
+    ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
+    scopes: tuple[ScopeRow, ...] = (),
+) -> list[CompetitionResult]:
+    """The filing's claims as the primary gate admits them:
+    compete's early discipline, before the late veto stages."""
+    gated, _ = _compete_through_gate(
+        geometries, terms, edges, ladder_terms, scopes
+    )
+    return gated
+
+
+def compete_filing(
+    geometries: list[GeometryText] | tuple[GeometryText, ...],
+    terms: tuple[SignatureTerm, ...] = SIGNATURE_TERMS,
+    edges: tuple[ContainmentEdge, ...] = CONTAINMENT_EDGES,
+    ladder_terms: tuple[LadderTerm, ...] = LADDER_EDGE_TERMS,
+    scopes: tuple[ScopeRow, ...] = (),
+) -> list[CompetitionResult]:
+    """Compete one filing's geometries with context fed back;
+    context lends to unclaimed geometries only and never
+    overrides a geometry's own scored claim."""
+    gated, stages = _compete_through_gate(
+        geometries, terms, edges, ladder_terms, scopes
+    )
     vetoed = apply_ppe_vetoes(geometries, gated, stages)
     precise = apply_precision_vetoes(geometries, vetoed, stages)
     spanned = apply_spanning_vetoes(geometries, precise)

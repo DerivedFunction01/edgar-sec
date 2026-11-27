@@ -13,6 +13,12 @@ from edgar_sec.engine.tables.extraction.evidence.form.admission_evidence import 
     JOINT_TEST_ID,
     evaluate_commitments_joint,
 )
+from edgar_sec.engine.tables.extraction.cascade.filing_competition import (
+    compete_filing_gated,
+)
+from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
+    geometry_text_from_table,
+)
 from edgar_sec.engine.tables.extraction.cascade.scoring.classify import (
     Classification,
     Evidence,
@@ -690,6 +696,28 @@ def _seat_joint_evidence(
     return seated, scores
 
 
+def _realign_balance_sheet(
+    tables: list[TypedTable], by_position: dict[int, GeometryAssignment]
+) -> None:
+    """Realign balance_sheet assignments to compete's gate
+    discipline: an assignment stands only where the primary
+    gate admits the claim, and admitted claims seat the
+    family over the assembly's own assignment."""
+    texts = [geometry_text_from_table(table) for table in tables]
+    gated = compete_filing_gated(texts)
+    for position, result in enumerate(gated):
+        current = by_position[position]
+        admitted = "balance_sheet" in result.claims
+        if current.family == "balance_sheet" and not admitted:
+            by_position[position] = GeometryAssignment(
+                current.table_index, RESIDUAL_FAMILY, "residual"
+            )
+        elif current.family != "balance_sheet" and admitted:
+            by_position[position] = GeometryAssignment(
+                current.table_index, "balance_sheet", "winner"
+            )
+
+
 def assemble(
     contexts: list[TableContext] | tuple[TableContext, ...],
     policy: ClassificationPolicy | None = None,
@@ -734,13 +762,17 @@ def assemble(
         by_position[position] = GeometryAssignment(
             member.table_index, family, "section"
         )
-    unassigned: list[int] = []
     for member in members:
         if member.position not in by_position:
             by_position[member.position] = GeometryAssignment(
                 member.table_index, RESIDUAL_FAMILY, "residual"
             )
-            unassigned.append(member.table_index)
+    _realign_balance_sheet(tables, by_position)
+    unassigned = [
+        by_position[member.position].table_index
+        for member in members
+        if by_position[member.position].family == RESIDUAL_FAMILY
+    ]
     assignments = tuple(by_position[member.position] for member in members)
     return FilingAssembly(
         tables=tables,
