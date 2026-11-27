@@ -11,6 +11,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
+from edgar_sec.engine.tables.extraction.core.subjects.profiles import PROFILES
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     SIGNATURE_TERMS,
 )
@@ -212,16 +213,19 @@ def grid_page_ref_share(rows: tuple[tuple[str, ...], ...]) -> float:
     return (strong + weak) / total if total else 0.0
 
 
+_TITLE_FAMILY_NAMES: tuple[str, ...] = tuple(p.family for p in PROFILES)
+
+
 def _title_families(title: str) -> tuple[str, ...]:
-    """The signature families a note title names: a caption term, or
-    the family's own name in the title's words."""
+    """The families a note title names: the family's own name in the
+    title's words, or one of its caption terms where it carries any."""
     text = normalize_text(title)
     return tuple(
         sorted(
             family
-            for family, terms in _FAMILY_TERMS.items()
+            for family in _TITLE_FAMILY_NAMES
             if family.replace("_", " ") in text
-            or any(term in text for term in terms)
+            or any(term in text for term in _FAMILY_TERMS.get(family, ()))
         )
     )
 
