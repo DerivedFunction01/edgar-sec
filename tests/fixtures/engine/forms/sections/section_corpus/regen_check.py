@@ -20,7 +20,11 @@ if str(REPO_ROOT) not in sys.path:
 from edgar_sec.foundation.runtime.env import get_env  # noqa: E402
 from edgar_sec.infra.sec_http.client import SecHttpClient  # noqa: E402
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter  # noqa: E402
-from edgar_sec.tools.section_corpus.build import _fetch_body, bank_specimen  # noqa: E402
+from edgar_sec.tools.section_corpus.build import (  # noqa: E402
+    _fetch_body,
+    bank_specimen,
+    prepare_jobs,
+)
 
 CORPUS = Path(__file__).resolve().parent
 
@@ -35,21 +39,25 @@ def main() -> int:
     if not user_agent:
         raise ValueError("SEC_USER_AGENT must be set in the process environment")
     client = SecHttpClient(user_agent=user_agent, rate_limiter=RateLimiter())
+    jobs = [
+        {
+            "slug": index[e["id"]]["family"],
+            "form": index[e["id"]]["form"],
+            "accession": index[e["id"]]["accession"],
+            "document": index[e["id"]]["document"],
+            "era": index[e["id"]].get("era"),
+        }
+        for e in dropped
+    ]
+    prepare_jobs(jobs, client)
     failures = 0
     with tempfile.TemporaryDirectory() as tmp:
         scratch = Path(tmp)
         (scratch / "taxonomies.json").write_bytes(
             (CORPUS / "taxonomies.json").read_bytes()
         )
-        for entry in dropped:
+        for entry, job in zip(dropped, jobs, strict=True):
             spec = index[entry["id"]]
-            job = {
-                "slug": spec["family"],
-                "form": spec["form"],
-                "accession": spec["accession"],
-                "document": spec["document"],
-                "era": spec.get("era"),
-            }
             try:
                 record = bank_specimen(scratch, job, _fetch_body(job, client))
             except Exception as exc:  # noqa: BLE001 - report and continue
