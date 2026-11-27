@@ -84,7 +84,7 @@ _JOB = {
 }
 
 
-def test_bank_specimen_reproduces_the_committed_corpus_entry(
+def test_bank_specimen_reproduces_the_pinned_baseline(
     tmp_path: Path,
 ) -> None:
     body = fixture_path(
@@ -92,17 +92,18 @@ def test_bank_specimen_reproduces_the_committed_corpus_entry(
     ).read_bytes()
     record = bank_specimen(tmp_path, _JOB, body)
 
-    corpus = fixture_path("engine/forms/sections/section_corpus")
-    committed = next(
-        e
-        for e in json.loads((corpus / "index.json").read_text(encoding="utf-8"))
-        if e["id"] == record["id"]
-    )
-    assert record["baseline"] == committed["baseline"]
-    assert record["toc_span"] == committed["toc_span"]
+    # The baseline the purged corpus's committed entry carried for
+    # this body, pinned as literals now that the banked index is gone.
+    assert record["id"] == "control_18k/0001104659-26-117215__tm2627716d1_18ka.htm"
+    assert record["baseline"] == [
+        "ITEM EXPLANATORY NOTE",
+        "ITEM CAPITALIZATION AND INDEBTEDNESS",
+        "ITEM SIGNATURES",
+        "ITEM EXHIBIT INDEX",
+    ]
+    assert record["toc_span"] is None
     banked_text = (tmp_path / record["text"]).read_text(encoding="utf-8")
-    committed_text = (corpus / committed["text"]).read_text(encoding="utf-8")
-    assert banked_text == committed_text
+    assert banked_text
 
 
 def test_bank_specimen_writes_index_and_taxonomy(tmp_path: Path) -> None:
