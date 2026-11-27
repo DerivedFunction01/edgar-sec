@@ -259,7 +259,10 @@ def test_dated_row_pair_alone_is_no_bookend_but_seats_as_summary():
         ("Changes in estimates", "\u2014", "(2.2)", "(2.2)"),
         ("Total at September 30, 2016", "$ 2.2", "$ 2.3", "$ 4.5"),
     )
-    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    prose = "The company recorded restructuring charges in the year."
+    result = _verdict(
+        rows, caption_stack=("Restructuring Charges",), prose_before=prose
+    )
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
 
@@ -450,7 +453,12 @@ def test_charge_incidence_table_seats_under_the_summary_form():
         ("Segment B", "5"),
         ("Total charges", "15"),
     )
-    result = _verdict(rows, caption_stack=("Restructuring Charges by Segment",))
+    prose = "The company recorded restructuring charges in the year."
+    result = _verdict(
+        rows,
+        caption_stack=("Restructuring Charges by Segment",),
+        prose_before=prose,
+    )
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
 
@@ -573,7 +581,10 @@ def test_summary_form_is_admitted():
         ("Other exit costs", "12"),
         ("Total", "177"),
     )
-    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    prose = "The company recorded restructuring charges in the year."
+    result = _verdict(
+        rows, caption_stack=("Restructuring Charges",), prose_before=prose
+    )
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
     assert "summary form, data rows 4" in result.detail
@@ -669,7 +680,7 @@ def test_summary_guard_admits_a_note_carried_segment_summary():
     text = RestructuringText(
         caption="",
         note_title="Restructuring",
-        prose="",
+        prose="The company recorded restructuring charges during the year.",
         lines=(
             "Eastern | $ 4",
             "Midwest | 3",
@@ -697,7 +708,7 @@ def test_summary_guard_admits_a_parenthesized_marker():
         ),
         caption="Charges Associated with Restructuring and Other Activities",
         note_title="",
-        prose="",
+        prose="The company recorded restructuring charges during the year.",
     )
     result = evaluate_restructuring_evidence(text, SPEC)
     assert result.admitted
@@ -734,3 +745,82 @@ def test_summary_guard_refuses_an_extended_anatomy_total():
     result = _verdict(rows, caption_stack=("Restructuring Commitments",))
     assert not result.admitted
     assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_lending_sense():
+    # N1: a troubled-debt-restructuring table — "restructuring"
+    # in the lending sense — is refused however it is captioned.
+    rows = (
+        ("Commercial loans", "10"),
+        ("Residential loans", "5"),
+        ("Consumer loans", "3"),
+        ("Total loans restructured", "18"),
+    )
+    prose = (
+        "The company enters into troubled debt restructurings "
+        "with certain borrowers experiencing financial difficulty."
+    )
+    result = _verdict(
+        rows,
+        caption_stack=("Restructurings that occurred during the year",),
+        prose_before=prose,
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: lending sense"
+
+
+def test_summary_guard_refuses_derivative_anatomy():
+    # N2: derivative rows are competing anatomy under the
+    # extended veto.
+    rows = (
+        ("Derivative assets", "10"),
+        ("Derivative liabilities", "5"),
+        ("Severance costs", "3"),
+        ("Total", "18"),
+    )
+    prose = "The company recorded restructuring charges in the year."
+    result = _verdict(
+        rows, caption_stack=("Restructuring Charges",), prose_before=prose
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
+
+
+def test_summary_guard_refuses_a_note_family_title():
+    # N4: a summary under a note naming another family is
+    # refused — the note's subject governs.
+    text = RestructuringText(
+        caption="Restructuring Charges",
+        note_title="Segment Information",
+        prose="The company recorded restructuring charges during the year.",
+        lines=(
+            "Severance and related costs | 120",
+            "Facility exit costs | 45",
+            "Other exit costs | 12",
+            "Total | 177",
+        ),
+    )
+    result = evaluate_restructuring_evidence(text, SPEC)
+    assert not result.admitted
+    assert result.detail == "summary form refused: note names another family"
+
+
+def test_summary_guard_refuses_subject_free_prose():
+    # N3: a lead-anchored summary whose introducing prose never
+    # names the subject is refused — the anchor was satisfied
+    # by context outside the geometry's own account.
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Other exit costs", "12"),
+        ("Total", "177"),
+    )
+    prose = (
+        "The following table presents the accrued liability "
+        "by category for the periods presented."
+    )
+    result = _verdict(
+        rows, caption_stack=("Restructuring Charges",), prose_before=prose
+    )
+    assert not result.admitted
+    assert result.detail == "summary form refused: prose subject absent"

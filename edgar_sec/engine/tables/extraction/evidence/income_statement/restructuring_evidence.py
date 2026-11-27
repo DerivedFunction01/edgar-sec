@@ -288,9 +288,35 @@ _SUMMARY_ANATOMY_MARKERS = (
     "liabilities assumed",
     "operating lease obligations",
     "total current",
+    "derivative",
+    "hedging",
+    "weighted average common shares",
+    "net debt",
+    "debt obligation",
+    "real estate",
+    "encumbrance",
+    "accumulated depreciation",
 )
 
 _PAREN_SPAN_RE = re.compile(r"\([^)]*\)")
+
+_TDR_TOKEN_RE = re.compile(r"\btdrs?\b")
+
+# The note-family veto (N4): a note title naming another
+# family means the geometry's organizing subject is that
+# family's, whatever the caption carries.
+_SUMMARY_NOTE_FAMILY_TERMS = (
+    "segment",
+    "revenue",
+    "derivative",
+    "intangible",
+    "loan",
+    "allowance",
+    "real estate",
+    "subsequent",
+    "other comprehensive",
+    "recent accounting",
+)
 
 
 _SUMMARY_CHARGE_VOCAB = (
@@ -303,19 +329,36 @@ _SUMMARY_CHARGE_VOCAB = (
 )
 
 
-def _summary_guard(arm: str, lines_l: list[str], caption_l: str, note_l: str) -> str:
+def _summary_guard(
+    arm: str, lines_l: list[str], caption_l: str, note_l: str, prose_l: str
+) -> str:
     """The summary form's precision guard: V3 plus the priced
-    R-A/R-B recoveries and the C3 extended veto — lead anchor or
-    two-charge-type prose, anatomy veto, charge vocabulary."""
+    R-A/R-B recoveries and the C3 extended veto, and the V4
+    population composition — lending sense (N1), the extended
+    anatomy veto (N2), note family (N4), prose subject (N3) —
+    over the lead anchor / two-charge-type prose discipline,
+    the anatomy veto, and the charge vocabulary."""
     rows_l = "\n".join(lines_l)
     veto_l = _PAREN_SPAN_RE.sub(" ", rows_l)
     if any(marker in veto_l for marker in _SUMMARY_ANATOMY_MARKERS):
         return "competing anatomy"
+    if (
+        "troubled debt" in prose_l
+        or _TDR_TOKEN_RE.search(prose_l)
+        or "restructurings that occurred" in caption_l
+        or "initial restructuring" in rows_l
+        or "multiple restructurings" in rows_l
+    ):
+        return "lending sense"
+    if any(term in note_l for term in _SUMMARY_NOTE_FAMILY_TERMS):
+        return "note names another family"
     head_l = note_l + " " + caption_l
     if not any(word in rows_l for word in _SUMMARY_CHARGE_VOCAB) and not (
         "restructur" in head_l or "exit" in head_l
     ):
         return "no charge vocabulary"
+    if "restructur" not in prose_l:
+        return "prose subject absent"
     if arm != "lead" and _charge_type_count(rows_l) < 2:
         return "prose anchor"
     return ""
@@ -484,7 +527,7 @@ def evaluate_restructuring_evidence(
         if summary:
             arm = "prose" if prose and not lead else "lead"
             refusal = _summary_guard(
-                arm, lines_l, cap_l, (text.note_title or "").lower()
+                arm, lines_l, cap_l, (text.note_title or "").lower(), prose_l
             )
             if refusal:
                 return RestructuringEvidence(False, f"summary form refused: {refusal}")
