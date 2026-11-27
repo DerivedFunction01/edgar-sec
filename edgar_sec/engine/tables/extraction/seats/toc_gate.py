@@ -224,8 +224,7 @@ def _title_families(title: str) -> tuple[str, ...]:
         sorted(
             family
             for family in _TITLE_FAMILY_NAMES
-            if family.replace("_", " ") in text
-            or any(term in text for term in _FAMILY_TERMS.get(family, ()))
+            if family.replace("_", " ") in text or any(term in text for term in _FAMILY_TERMS.get(family, ()))
         )
     )
 
