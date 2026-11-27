@@ -190,6 +190,39 @@ def test_scored_veto_can_kill_a_detail_shaped_claim() -> None:
     assert compete(plain, terms=terms, edges=()).claims == ("intangibles",)
 
 
+def test_component_floor_bars_equity_claim_without_component_term() -> None:
+    aoci_form = GeometryText(
+        caption="Changes in Equity",
+        leadin="statement of changes",
+        stubs=(
+            "Balance at December 31, 2023",
+            "Accumulated other comprehensive loss",
+            "Other comprehensive income",
+            "Balance at March 31, 2024",
+        ),
+        headers=("Foreign Currency Translation", "Total"),
+    )
+    barred = compete(aoci_form, terms=_TERMS, edges=_EDGES)
+    assert "equity_statement" not in barred.claims
+    gate = {e.detail for e in barred.scores["equity_statement"].evidence
+            if e.channel == "gate"}
+    assert "component_gate" in gate
+    component_form = GeometryText(
+        caption="Changes in Equity",
+        leadin="statement of changes",
+        stubs=(
+            "Balance at December 31, 2023",
+            "Common stock",
+            "Net income",
+            "Balance at March 31, 2024",
+        ),
+        headers=("Common Stock", "Total"),
+    )
+    assert "equity_statement" in compete(
+        component_form, terms=_TERMS, edges=_EDGES
+    ).claims
+
+
 def test_year_columns_signature_spans_the_full_year_range() -> None:
     """Delta pin: year_columns keys on the homed year token; the
     deleted private vocabulary was hard-narrowed to 2022-2027."""

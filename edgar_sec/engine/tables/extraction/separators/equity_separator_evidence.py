@@ -79,16 +79,32 @@ def _carries_period_date(texts) -> bool:
     return bool(_YEAR_RE.search(joined))
 
 
-def _carries_component(text, spec) -> bool:
-    """A non-OCI equity component term on the assembled surface:
-    a component stub key, or a component header token."""
+def _carries_component_keys(stub_keys, header_keys_, spec) -> bool:
+    """A non-OCI equity component term on the surface: a
+    component stub key, or a component header token."""
     if any(
         key.startswith(component)
-        for key in text.stub_keys
+        for key in stub_keys
         for component in spec.component_keys
     ):
         return True
-    return bool(text.header_keys.intersection(spec.component_header_tokens))
+    return bool(header_keys_.intersection(spec.component_header_tokens))
+
+
+def _carries_component(text, spec) -> bool:
+    """The text-surface read of the component floor."""
+    return _carries_component_keys(text.stub_keys, text.header_keys, spec)
+
+
+def equity_carries_component(geometry, spec) -> bool:
+    """The geometry-surface read of the component floor, keyed
+    exactly as the assignment features key a claimed geometry."""
+    stub_keys = frozenset(
+        key for key in (stub_key(stub) for stub in geometry.stubs) if key
+    )
+    return _carries_component_keys(
+        stub_keys, header_keys(geometry.headers), spec
+    )
 
 
 def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:

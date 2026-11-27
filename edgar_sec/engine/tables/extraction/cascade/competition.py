@@ -18,6 +18,9 @@ from edgar_sec.engine.tables.extraction.seats.aoci_gate import (
     aoci_gate_detail,
     component_grid,
 )
+from edgar_sec.engine.tables.extraction.separators.equity_separator_evidence import (
+    equity_carries_component,
+)
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_evidence import (
     failing_combined_operations_separator_outcome,
     location_refusal_detail,
@@ -263,6 +266,15 @@ def compete(
                 channels,
                 score.evidence + (ClaimEvidence("veto", f"term:{term}", -VETO_POINTS),),
             )
+    # Priced bar (equity_statement, component floor): an
+    # equity claim requires a non-OCI equity component term
+    # on the geometry's own surface. The score stays as
+    # foreign mass; the family is barred from claims below.
+    component_barred = "equity_statement" in scores and not equity_carries_component(
+        geometry, EQUITY_SEPARATOR_SPECS["equity_statement"]
+    )
+    if component_barred:
+        scores = append_note(scores, "equity_statement", "gate", "component_gate")
     ranked = sorted(scores.values(), key=lambda s: -s.total)
     claims: list[str] = []
     contested: list[str] = []
@@ -284,6 +296,8 @@ def compete(
         }
     for candidate in ranked:
         if candidate.family in hard_vetoed:
+            continue
+        if component_barred and candidate.family == "equity_statement":
             continue
         if candidate.total < CLAIM_FLOOR:
             continue
@@ -309,7 +323,9 @@ def compete(
         floored = [
             c.family
             for c in ranked
-            if c.total >= CLAIM_FLOOR and c.family not in hard_vetoed
+            if c.total >= CLAIM_FLOOR
+            and c.family not in hard_vetoed
+            and not (component_barred and c.family == "equity_statement")
         ]
         if len(floored) >= 2:
             top, second = scores[floored[0]].total, scores[floored[1]].total
