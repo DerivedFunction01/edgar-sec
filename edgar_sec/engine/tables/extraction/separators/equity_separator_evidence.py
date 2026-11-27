@@ -136,6 +136,11 @@ def _carries_component_keys(stub_keys, header_keys_, spec) -> bool:
     return "component_key" in stub_scan or "component_header" in header_scan
 
 
+def _carries_component(text, spec) -> bool:
+    """The text-surface read of the component floor."""
+    return _carries_component_keys(text.stub_keys, text.header_keys, spec)
+
+
 def _credited_dated_balance_count(raw_stubs, dated_texts) -> int:
     """The stock count, credited to 1 when the statement phrases
     its bookends without dates and carries the period date on
