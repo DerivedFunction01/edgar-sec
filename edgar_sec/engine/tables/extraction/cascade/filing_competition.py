@@ -64,6 +64,9 @@ from edgar_sec.engine.tables.extraction.cascade.pension_generation_seat import (
 )
 from edgar_sec.engine.tables.extraction.seats.segment_seat import apply_segment_seat
 from edgar_sec.engine.tables.extraction.seats.warrant_seat import apply_warrant_seat
+from edgar_sec.engine.tables.extraction.vetoes.debt_maturity_claim_vetoes import (
+    apply_debt_maturity_claim_vetoes,
+)
 from edgar_sec.engine.tables.extraction.seats.section_gate import ScopeRow
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNELS as SIGNATURE_CHANNELS,
@@ -346,4 +349,8 @@ def compete_filing(
     # Formation seat (priced): pension seats on the
     # gate-final unclaimed set under the generation
     # admission (note identity or quiet-form stubs).
-    return apply_pension_generation_seat(geometries, warranted)
+    generated = apply_pension_generation_seat(geometries, warranted)
+    # Claim veto (priced): debt_maturity claims meeting one of
+    # the section 7 tree front's rule-form conditions are
+    # refused at the final output.
+    return apply_debt_maturity_claim_vetoes(geometries, generated)
