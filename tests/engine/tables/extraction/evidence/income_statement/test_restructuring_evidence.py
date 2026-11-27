@@ -435,17 +435,19 @@ def test_tail_subject_after_a_heading_is_admitted():
     assert result.admitted
 
 
-def test_charge_incidence_table_stays_outside_the_walk_gate():
-    # The incidence sub-kind carries no accrual walk; the term
-    # set does not seat it (a determination split, not built).
+def test_charge_incidence_table_seats_under_the_summary_form():
+    # The incidence sub-kind carries no accrual walk and stays
+    # outside the walk gate; under the programme-adopted summary
+    # form (Form B) its shape — a Total row, no balance line,
+    # 3 data rows — seats as a summary claim, not a walk.
     rows = (
         ("Segment A", "10"),
         ("Segment B", "5"),
         ("Total charges", "15"),
     )
     result = _verdict(rows, caption_stack=("Restructuring Charges by Segment",))
-    assert not result.admitted
-    assert result.detail == "no bookend pair in any filed form"
+    assert result.admitted
+    assert result.detail.startswith("restructuring summary: subject lead")
 
 
 def test_charges_stub_form_is_admitted():
@@ -553,5 +555,56 @@ def test_header_form_without_charge_line_has_no_bookend():
         ("Balance at March 31, 2006", "1", "2", "3"),
     )
     result = _verdict(rows, caption_stack=("Accrued Liabilities",))
+    assert not result.admitted
+    assert result.detail == "no bookend pair in any filed form"
+
+
+def test_summary_form_is_admitted():
+    # The Form B summary fragment: charge-type summary rows and
+    # a Total row, no balance line, at least 3 data rows.
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Other exit costs", "12"),
+        ("Total", "177"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert result.admitted
+    assert result.detail.startswith("restructuring summary: subject lead")
+    assert "summary form, data rows 4" in result.detail
+
+
+def test_summary_form_with_a_balance_line_stays_out():
+    # A balance line anywhere takes the fragment out of the
+    # summary shape (and no bookend pair is filed here).
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Balance carried forward", "5"),
+        ("Total", "170"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert not result.admitted
+    assert result.detail == "no bookend pair in any filed form"
+
+
+def test_summary_form_below_three_data_rows_stays_out():
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Total restructuring costs", ""),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
+    assert not result.admitted
+    assert result.detail == "no bookend pair in any filed form"
+
+
+def test_summary_form_without_a_total_row_stays_out():
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Other exit costs", "12"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Charges",))
     assert not result.admitted
     assert result.detail == "no bookend pair in any filed form"
