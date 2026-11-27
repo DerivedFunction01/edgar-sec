@@ -50,6 +50,7 @@ RESTRUCTURING_EVIDENCE_SPECS: dict[str, RestructuringEvidenceSpec] = {
             "employee separation",
             "separation costs",
             "reduction in force",
+            "branch closure",
         ),
         prose_tail_chars=400,
         anchors=(
