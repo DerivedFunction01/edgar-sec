@@ -118,8 +118,10 @@ def test_equity_detector_lexical_and_dated_balance_rows() -> None:
         "Balance, December 31, 2023",
     )
     assert missing_sections(dated, "equity_statement") == []
-    one_dated = ("Balance, January 1, 2023", "Shares issued")
-    assert missing_sections(one_dated, "equity_statement") == ["ending_balances"]
+    comma_dated = ("Balance, January 1, 2023", "Shares issued")
+    assert missing_sections(comma_dated, "equity_statement") == []
+    date_only = ("December 31, 2023", "Shares issued")
+    assert missing_sections(date_only, "equity_statement") == ["ending_balances"]
 
 
 def test_equity_detector_single_dated_balance_row_closes_bookend() -> None:

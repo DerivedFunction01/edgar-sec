@@ -61,7 +61,11 @@ def _matches(label: str, anchors: tuple[str, ...]) -> bool:
 
 
 def _column_walk(table: TypedTable, params: SeatTestSpec) -> int:
-    """Columns whose beginning plus movements reconcile to ending."""
+    """Columns whose beginning plus movements reconcile to ending.
+
+    Block-stacked statements are walked per segment: each
+    beginning pairs with its first non-crossing ending anchor.
+    """
     labels = [normalize_text(row.label) for row in table.rows]
     beginnings = [
         i for i, label in enumerate(labels) if _matches(label, _BEGINNING_ANCHORS)
@@ -69,9 +73,21 @@ def _column_walk(table: TypedTable, params: SeatTestSpec) -> int:
     endings = [i for i, label in enumerate(labels) if _matches(label, _ENDING_ANCHORS)]
     if not beginnings or not endings:
         return 0
-    begin_row, end_row = beginnings[0], endings[-1]
-    if end_row <= begin_row:
-        return 0
+    best = 0
+    for pos, begin_row in enumerate(beginnings):
+        later = [e for e in endings if e > begin_row]
+        if not later:
+            continue
+        end_row = later[0]
+        next_begin = beginnings[pos + 1] if pos + 1 < len(beginnings) else None
+        if next_begin is not None and end_row > next_begin:
+            continue
+        best = max(best, _walk_span(table, params, labels, begin_row, end_row))
+    return best
+
+
+def _walk_span(table, params, labels, begin_row, end_row) -> int:
+    """The single-span walk over one beginning/ending pair."""
     movements = [
         index
         for index in range(begin_row + 1, end_row)
