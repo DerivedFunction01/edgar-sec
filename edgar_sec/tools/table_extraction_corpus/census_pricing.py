@@ -14,6 +14,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_ALIASES,
     STRICT_MONTH_PATTERN,
@@ -27,7 +28,7 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 MONTHS = frozenset(
     alias for aliases in MONTH_ALIASES for alias in aliases if "." not in alias
 )
-NUM_RE = re.compile(r"\(?-?\$?\s*\d[\d,]*(\.\d+)?\s*\)?%?\)?")
+NUM_RE = re.compile(r"\(?-?\$?\s*" + NUMERIC_TOKEN_RE.pattern + r"\s*\)?%?\)?")
 DATE_RE = re.compile(
     r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b"
     r"|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
