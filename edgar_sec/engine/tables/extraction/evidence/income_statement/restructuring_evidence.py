@@ -280,7 +280,18 @@ _SUMMARY_ANATOMY_MARKERS = (
     "earnings per share",
     "quarterly financial",
     "purchase price",
+    "total commitments",
+    "total other long-term",
+    "total obligations",
+    "contractual obligations",
+    "total stockholders",
+    "liabilities assumed",
+    "operating lease obligations",
+    "total current",
 )
+
+_PAREN_SPAN_RE = re.compile(r"\([^)]*\)")
+
 
 _SUMMARY_CHARGE_VOCAB = (
     "restructur",
@@ -293,19 +304,20 @@ _SUMMARY_CHARGE_VOCAB = (
 
 
 def _summary_guard(arm: str, lines_l: list[str], caption_l: str, note_l: str) -> str:
-    """The summary form's precision guard (V3, priced on the
-    adjudicated B3 population): lead anchor only, no competing
-    anatomy in the rows, charge vocabulary in rows or head."""
-    if arm != "lead":
-        return "prose anchor"
+    """The summary form's precision guard: V3 plus the priced
+    R-A/R-B recoveries and the C3 extended veto — lead anchor or
+    two-charge-type prose, anatomy veto, charge vocabulary."""
     rows_l = "\n".join(lines_l)
-    if any(marker in rows_l for marker in _SUMMARY_ANATOMY_MARKERS):
+    veto_l = _PAREN_SPAN_RE.sub(" ", rows_l)
+    if any(marker in veto_l for marker in _SUMMARY_ANATOMY_MARKERS):
         return "competing anatomy"
     head_l = note_l + " " + caption_l
     if not any(word in rows_l for word in _SUMMARY_CHARGE_VOCAB) and not (
         "restructur" in head_l or "exit" in head_l
     ):
         return "no charge vocabulary"
+    if arm != "lead" and _charge_type_count(rows_l) < 2:
+        return "prose anchor"
     return ""
 
 

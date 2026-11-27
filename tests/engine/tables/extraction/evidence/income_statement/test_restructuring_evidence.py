@@ -620,9 +620,9 @@ def test_summary_guard_refuses_a_prose_anchor():
     # prose arm is refused by the guard: the priced V3 form
     # requires a lead anchor (caption, note, tail, first line).
     rows = (
-        ("Severance and related costs", "120"),
-        ("Facility exit costs", "45"),
-        ("Other exit costs", "12"),
+        ("Other charges", "120"),
+        ("Administrative expenses", "45"),
+        ("Selling expenses", "12"),
         ("Total", "177"),
     )
     prose = "The company recorded restructuring charges in the year. " + (
@@ -683,3 +683,54 @@ def test_summary_guard_admits_a_note_carried_segment_summary():
     result = evaluate_restructuring_evidence(text, SPEC)
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
+
+
+def test_summary_guard_admits_a_parenthesized_marker():
+    # R-A: an anatomy marker inside parentheses (a column
+    # qualifier) does not veto — the priced :78 recovery shape.
+    text = RestructuringText(
+        lines=(
+            "Program | Sales Returns (included in Net Sales) | Charges | Amount",
+            "Plan A | 10 | 2 | 12",
+            "Plan B | 8 | 1 | 9",
+            "Total | 18 | 3 | 21",
+        ),
+        caption="Charges Associated with Restructuring and Other Activities",
+        note_title="",
+        prose="",
+    )
+    result = evaluate_restructuring_evidence(text, SPEC)
+    assert result.admitted
+    assert result.detail.startswith("restructuring summary: subject lead")
+
+
+def test_summary_guard_admits_a_two_charge_type_prose_form():
+    # R-B: a prose-anchored summary whose own rows carry at
+    # least two distinct charge types is admitted — the priced
+    # :23 recovery shape.
+    rows = (
+        ("Severance and related costs", "120"),
+        ("Facility exit costs", "45"),
+        ("Asset impairments", "12"),
+        ("Total", "177"),
+    )
+    prose = "The company recorded restructuring charges in the year. " + (
+        "Further detail follows in the notes to the statements. " * 30
+    )
+    result = _verdict(rows, caption_stack=("Accrued Liabilities",), prose_before=prose)
+    assert result.admitted
+    assert result.detail.startswith("restructuring summary: subject prose")
+
+
+def test_summary_guard_refuses_an_extended_anatomy_total():
+    # C3: a commitments total is competing anatomy under the
+    # extended veto — the priced :26 kill shape.
+    rows = (
+        ("Operating leases", "128.8", "14.7"),
+        ("Restructurings", "15.8", "6.0"),
+        ("Purchase obligations", "2.6", "0.7"),
+        ("Total commitments", "153.4", "24.4"),
+    )
+    result = _verdict(rows, caption_stack=("Restructuring Commitments",))
+    assert not result.admitted
+    assert result.detail == "summary form refused: competing anatomy"
