@@ -12,6 +12,7 @@ This package resolves statutory Part/Item sections and Financial Statement Notes
 - **Contiguity invariant for grouped headings**: Multi-item lists (`Items 1, 1A, and 1B` or `Notes 4 and 5`) must form a strictly adjacent chain in canonical order ($\Delta = 1$); lists with gaps ($\Delta > 1$) are rejected as disjoint prose references.
 - **Dense pseudo-TOC isolation**: Candidate runs with tight line spacing and zero substantive prose are classified as navigation artifacts and excluded from section assignments.
 - **Omitted item monotonicity**: Sections marked with statutory omission markers (`[Omitted]`, `Not Applicable`, `None`, `[Reserved]`) advance sequence state with `is_omitted=True` without halting progression.
+- **Item 3 emission**: The legal proceedings consumer emits the resolved Item 3 span with a disposition — none, omitted, cross-reference, or substantive — classified from the section body behind the detector; it adds no detection of its own.
 - **Scoped notes activation**: Financial note detection is active only within the financial statements block, insulating it from prose references in MD&A or Risk Factors.
 
 ## Deliberate gaps

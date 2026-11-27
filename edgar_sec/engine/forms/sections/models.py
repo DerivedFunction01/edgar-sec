@@ -131,6 +131,26 @@ class SectionSequence:
         return "\n".join(lines[sec.start_line : end])
 
 
+class LegalProceedingsDisposition(StrEnum):
+    """Disposition of one filing's Item 3 legal proceedings section."""
+
+    NONE = "none"
+    OMITTED = "omitted"
+    CROSS_REFERENCE = "cross_reference"
+    SUBSTANTIVE = "substantive"
+
+
+@dataclass(frozen=True, slots=True)
+class LegalProceedingsSection:
+    """One filing's Item 3 section: resolved span and disposition."""
+
+    start_line: int
+    end_line: int | None
+    start_char: int | None
+    end_char: int | None
+    disposition: LegalProceedingsDisposition
+
+
 @dataclass(frozen=True, slots=True)
 class ResolvedNote:
     """Validated financial statement footnote bounded by document coordinates."""
