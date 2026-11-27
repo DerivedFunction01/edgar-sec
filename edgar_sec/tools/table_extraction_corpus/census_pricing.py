@@ -14,6 +14,8 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from edgar_sec.infra.storage.atomic import atomic_write_json
+
 MONTHS = (
     "january february march april may june july august september "
     "october november december jan feb mar apr jun jul aug sep sept "
@@ -578,8 +580,7 @@ def main(argv: list[str] | None = None) -> int:
     with open(args.population) as fh:
         rows = [json.loads(ln) for ln in fh]
     register = price_population(rows)
-    with open(args.out, "w") as fh:
-        json.dump(register, fh, indent=1)
+    atomic_write_json(args.out, register, canonical=False, indent=1)
     print(
         json.dumps(
             {
