@@ -246,18 +246,22 @@ def test_bare_closing_row_bookend_is_admitted():
     assert "bare closing" in result.detail
 
 
-def test_dated_row_pair_alone_is_refused():
+def test_dated_row_pair_alone_is_no_bookend_but_seats_as_summary():
+    # A dated row pair alone files no bookend pair — that
+    # determination stands — but the fragment's shape (a Total
+    # row in the header and the Total-at rows, no balance line,
+    # 4 data rows) is the programme-adopted summary form, so it
+    # seats as a summary claim, not a walk.
     rows = (
         ("", "Canada", "", "Europe", "", "Total", ""),
         ("Total at December 31, 2015", "$ 2.3", "$ 5.6", "$ 9.2"),
         ("Payments made", "(0.1)", "(0.7)", "(2.1)"),
-        ("Changes in estimates", "—", "(2.2)", "(2.2)"),
+        ("Changes in estimates", "\u2014", "(2.2)", "(2.2)"),
         ("Total at September 30, 2016", "$ 2.2", "$ 2.3", "$ 4.5"),
     )
     result = _verdict(rows, caption_stack=("Restructuring Charges",))
-    assert not result.admitted
-    assert result.detail == "no bookend pair in any filed form"
-
+    assert result.admitted
+    assert result.detail.startswith("restructuring summary: subject lead")
 
 def test_dated_pair_bookends_are_admitted():
     rows = (
