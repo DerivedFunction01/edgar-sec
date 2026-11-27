@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
@@ -312,9 +313,21 @@ _CF_SECTION_CAPTION = re.compile(
     re.IGNORECASE,
 )
 
+
+def _phrase_index(*terms: str) -> TermIndex:
+    """One substring index over listed literal forms:
+    word=False entries over lowered text, matching the
+    case-insensitive unanchored regexes they replace."""
+    return TermIndex(tuple(TermEntry(t, "hit", False) for t in terms))
+
+
+def _any_in(index: TermIndex, texts) -> bool:
+    return any(index.scan(t.lower()) for t in texts)
+
+
 # A grantor trust holding only bullion sells bullion to pay
 # the sponsor fee; the marker is the specimens' own stub.
-_GRANTOR_MARKER = re.compile(r"bullion", re.IGNORECASE)
+_GRANTOR_INDEX = _phrase_index("bullion")
 
 # The supplemental schedule's canonical blocks (ASC 230):
 # cash paid for interest/taxes, non-cash investing/financing.
@@ -339,7 +352,7 @@ def _supplemental_identity(geometry: GeometryText) -> bool:
         geometry.notehead or "",
         geometry.caption or "",
     )
-    if not any("statement of cash flows" in t.lower() for t in titles):
+    if not _any_in(_STATEMENT_TITLE_INDEX, titles):
         return False
     hits = sum(
         1 for p in _SUPPLEMENTAL_MARKERS if any(p.search(s) for s in geometry.stubs)
@@ -450,17 +463,18 @@ def cash_flow_grantor_veto_scoped(geometry: GeometryText) -> bool:
         geometry.lead_title or "",
         geometry.note_title or "",
     ]
-    return any(_GRANTOR_MARKER.search(t) for t in texts)
+    return _any_in(_GRANTOR_INDEX, texts)
 
 
-_TOTAL_CASH_BLOCK = (
-    re.compile(r"total cash and cash equivalents", re.IGNORECASE),
-    re.compile(
-        r"total cash,? cash equivalents,? and restricted cash",
-        re.IGNORECASE,
-    ),
+_TOTAL_CASH_INDEX = _phrase_index(
+    "total cash and cash equivalents",
+    "total cash cash equivalents and restricted cash",
+    "total cash, cash equivalents and restricted cash",
+    "total cash cash equivalents, and restricted cash",
+    "total cash, cash equivalents, and restricted cash",
 )
-_SUPPLEMENTAL_TITLE = re.compile(r"supplemental cash flow", re.IGNORECASE)
+_SUPPLEMENTAL_TITLE_INDEX = _phrase_index("supplemental cash flow")
+_STATEMENT_TITLE_INDEX = _phrase_index("statement of cash flows")
 
 
 def cash_flow_fragment_identity(geometry: GeometryText) -> bool:
@@ -473,9 +487,9 @@ def cash_flow_fragment_identity(geometry: GeometryText) -> bool:
         geometry.notehead or "",
         geometry.lead_title or "",
     )
-    if any(_SUPPLEMENTAL_TITLE.search(t) for t in titles):
+    if _any_in(_SUPPLEMENTAL_TITLE_INDEX, titles):
         return True
-    return any(p.search(s) for p in _TOTAL_CASH_BLOCK for s in geometry.stubs)
+    return _any_in(_TOTAL_CASH_INDEX, geometry.stubs)
 
 
 _TOTAL_CASH_LINE = re.compile(

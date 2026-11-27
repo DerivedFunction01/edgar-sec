@@ -7,6 +7,7 @@ explained by a measured containment edge. Closure corroborates.
 
 from __future__ import annotations
 import re
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.separators.summary_separator import (
     SummarySeparatorResult,
 )
@@ -127,7 +128,12 @@ REACH_MIN_STUB_SHARE: dict[str, float] = {
 
 
 _SEP5_STAMP = "mda_financing_operating_rows11"
-_SEP5_TITLE_RE = re.compile(r"cash flows?", re.IGNORECASE)
+_SEP5_TITLE_INDEX = TermIndex(
+    (
+        TermEntry("cash flow", "hit", False),
+        TermEntry("cash flows", "hit", False),
+    )
+)
 
 
 def _sep5_criterion_holds(geometry, cluster_stubs=None) -> bool:
@@ -138,7 +144,7 @@ def _sep5_criterion_holds(geometry, cluster_stubs=None) -> bool:
     titles = " ".join(
         t for t in (geometry.lead_title or "", geometry.note_title or "") if t
     )
-    if not _SEP5_TITLE_RE.search(titles):
+    if not _SEP5_TITLE_INDEX.scan(titles.lower()):
         return False
     stubs = geometry.stubs if cluster_stubs is None else cluster_stubs
     presence = section_presence(stubs, "cash_flow")
