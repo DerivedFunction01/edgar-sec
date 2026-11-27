@@ -194,13 +194,10 @@ _SEP_HINTS = (
     "revenue_stub",
 )
 
-_CONJOINED_INDEX = TermIndex(
-    (TermEntry("service and interest cost", "conjoined"),)
-)
+_CONJOINED_INDEX = TermIndex((TermEntry("service and interest cost", "conjoined"),))
 _HINT_INDEX = TermIndex(TermEntry(hint, hint) for hint in _SEP_HINTS)
 _FUNDED_INDEX = TermIndex(
-    TermEntry(term, term)
-    for term in PENSION_ANCHOR_SPECS[FAMILY].funded_terms
+    TermEntry(term, term) for term in PENSION_ANCHOR_SPECS[FAMILY].funded_terms
 )
 
 
@@ -222,7 +219,11 @@ def _funded_only_form(geometry: GeometryText, result: CompetitionResult) -> bool
     funded_hits = _FUNDED_INDEX.scan(stubtext)
     if "benefit obligation" not in funded_hits:
         return False
-    if any(term in funded_hits for term in spec.funded_terms if term != "benefit obligation"):
+    if any(
+        term in funded_hits
+        for term in spec.funded_terms
+        if term != "benefit obligation"
+    ):
         return False
     score = result.scores.get(FAMILY)
     if score is None:

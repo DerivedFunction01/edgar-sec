@@ -225,11 +225,11 @@ def pension_anchor_set(text: PensionText, spec: PensionAnchorSpec) -> frozenset[
     # PPA zone/FIP-RP machinery on the grid, in multiemployer or
     # collective-bargaining context.
     if (
-        set(spec.multiemployer_id_terms) <= low_hits.get("multiemployer_id", frozenset())
+        set(spec.multiemployer_id_terms)
+        <= low_hits.get("multiemployer_id", frozenset())
         and "multiemployer_status" in low_hits
         and (
-            "multiemployer_context" in lead_hits
-            or "multiemployer_context" in low_hits
+            "multiemployer_context" in lead_hits or "multiemployer_context" in low_hits
         )
     ):
         anchors.add("multiemployer")
