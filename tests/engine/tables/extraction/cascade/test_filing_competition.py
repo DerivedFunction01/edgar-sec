@@ -382,7 +382,7 @@ def test_compete_filing_seats_the_vetoed_schedule() -> None:
     )
     geometry = GeometryText(
         stubs=("Elm Street Apartments", "Oak Plaza"),
-        grid_text=_ACQUISITION_GRID,
+        grid_text=_ACQUISITION_GRID + " Land Buildings and Improvements",
         form_tests=outcomes,
     )
     out = compete_filing([geometry])

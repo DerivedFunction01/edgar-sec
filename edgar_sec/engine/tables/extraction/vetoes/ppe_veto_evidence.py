@@ -15,12 +15,14 @@ from edgar_sec.engine.tables.extraction.specs.families.ppe_specs import (
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     ADMISSION_FORM_TEST_DETAILS,
     CLASS_TERMS,
+    CORE_FLOOR_TERMS,
     DISCIPLINE_CLASS_MIN,
     DISCIPLINE_NUMERIC_MIN,
     DISCIPLINE_S3_NUMERIC_MIN,
     LEAD_BALANCE_MIN,
     LEG_COEX_LEAD,
     LEG_CONTEXT_CARRIED,
+    LEG_CORE_FLOOR,
     LEG_LEAD_BALANCE,
     LEG_STATEMENT_FORM,
     LEG_WEAK_SIGNATURE,
@@ -214,6 +216,18 @@ def _statement_form_fires(geometry) -> bool:
     )
 
 
+def _core_floor_fires(geometry) -> bool:
+    """No deep-core term in the table's own text: the claim
+    carries no core evidence of its own. A geometry with no
+    table text is not evaluable; the floor abstains."""
+    text = normalize_text(
+        " ".join([*geometry.stubs, *geometry.headers, geometry.grid_text])
+    )
+    if not text:
+        return False
+    return not any(term in text for term in CORE_FLOOR_TERMS)
+
+
 def _fired_legs(geometries, results, stages, index):
     """Every priced leg firing on one PPE-claimed geometry."""
     geometry = geometries[index]
@@ -235,6 +249,11 @@ def _fired_legs(geometries, results, stages, index):
             legs.append(LEG_COEX_LEAD)
         if _statement_form_fires(geometry):
             legs.append(LEG_STATEMENT_FORM)
+    # The core floor is a claim condition, not a packet
+    # leg: it applies to admission seats too, whose form
+    # legs carry core terms by construction.
+    if _core_floor_fires(geometry):
+        legs.append(LEG_CORE_FLOOR)
     return tuple(legs)
 
 

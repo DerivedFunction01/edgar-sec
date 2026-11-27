@@ -103,7 +103,7 @@ def test_host_claim_needs_two_shared_keys():
 
 
 def test_host_claim_needs_the_host_claiming():
-    geo = GeometryText(stubs=("Total Assets", "Total Liabilities"))
+    geo = GeometryText(stubs=("Total Assets", "Total Liabilities", "Land"))
     results = _apply([geo], [_result(("ppe",))])
     assert "ppe" in results[0].claims
 
@@ -220,7 +220,7 @@ def test_note_names_every_fired_leg():
         ],
     )
     assert "ppe" not in results[0].claims
-    assert _gate_details(results[0]) == ["ppe veto: L6bal0.4, AcoexLead"]
+    assert _gate_details(results[0]) == ["ppe veto: L6bal0.4, AcoexLead, COREfloor"]
 
 
 def test_removals_read_the_input_results_only():
@@ -319,7 +319,7 @@ def test_weak_signature_keeps_strong_signature():
 
 
 def test_coex_lead_removes_lead_only_with_rival():
-    geo = GeometryText(stubs=("Unfunded commitments",))
+    geo = GeometryText(stubs=("Unfunded commitments", "Land"))
     results = _apply(
         [geo],
         [
@@ -335,7 +335,7 @@ def test_coex_lead_removes_lead_only_with_rival():
 
 
 def test_coex_lead_keeps_stub_earned_signature():
-    geo = GeometryText(stubs=("Unfunded commitments",))
+    geo = GeometryText(stubs=("Unfunded commitments", "Land"))
     results = _apply(
         [geo],
         [
@@ -350,7 +350,7 @@ def test_coex_lead_keeps_stub_earned_signature():
 
 
 def test_coex_lead_keeps_without_rival():
-    geo = GeometryText(stubs=("Unfunded commitments",))
+    geo = GeometryText(stubs=("Unfunded commitments", "Land"))
     results = _apply(
         [geo],
         [
@@ -434,7 +434,7 @@ def test_packet_legs_skip_a_form_test_admission_seat():
 
 
 def test_packet_legs_skip_statement_form_on_an_admission_seat():
-    geo = GeometryText(data_rows=34, numeric_cells=102)
+    geo = GeometryText(stubs=("Land",), data_rows=34, numeric_cells=102)
     results = _apply([geo], [_seated_result(9.0, {"stub": 9.0}, _BOTH_PASSED)])
     assert "ppe" in results[0].claims
     assert _gate_details(results[0]) == []
@@ -487,3 +487,30 @@ def test_retired_legs_do_not_fire_on_an_admission_seat():
     results = _apply([geo], [seated])
     assert "ppe" in results[0].claims
     assert _gate_details(results[0]) == []
+
+
+def test_core_floor_removes_claim_without_in_table_core():
+    geo = GeometryText(stubs=("Revenue", "Cost of sales", "Gross profit"))
+    results = _apply([geo], [_result(("ppe",), channels={"ppe": {"stub": 11.0}})])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: COREfloor"]
+
+
+def test_core_floor_keeps_claim_with_in_table_core():
+    geo = GeometryText(stubs=("Land", "Buildings", "Accumulated depreciation"))
+    results = _apply([geo], [_result(("ppe",))])
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_core_floor_abstains_on_a_geometry_with_no_table_text():
+    results = _apply([GeometryText()], [_result(("ppe",))])
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_core_floor_fires_on_a_form_test_admission_seat():
+    geo = GeometryText(stubs=("Revenue", "Cost of sales"))
+    results = _apply([geo], [_seated_result(9.0, {"stub": 9.0}, _BOTH_PASSED)])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: COREfloor"]
