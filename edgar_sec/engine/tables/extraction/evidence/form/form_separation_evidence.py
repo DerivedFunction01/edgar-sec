@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_RE
 from edgar_sec.engine.tables.extraction.specs.form_separation_specs import (
@@ -351,9 +352,14 @@ def _is_fragment(text: FormSeparationText) -> bool:
     return bool(stubs) and all(len(stub) >= 80 for stub in stubs)
 
 
+_EPS_FRAME_INDEX = TermIndex(
+    [TermEntry(term, "eps_frame") for term in _EPS_OWN_FRAME_TERMS]
+)
+
+
 def _is_eps_own_frame(subjects: tuple[str, ...]) -> bool:
     """An EPS computation's own frame: numerator/denominator or share base."""
-    return any(term in subject for subject in subjects for term in _EPS_OWN_FRAME_TERMS)
+    return any("eps_frame" in _EPS_FRAME_INDEX.scan(subject) for subject in subjects)
 
 
 def _eps_own_frame_in_headers(text: FormSeparationText) -> bool:

@@ -427,6 +427,12 @@ def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...
     return (LEG_GOODWILL_HOST,)
 
 
+@lru_cache(maxsize=None)
+def _eps_face_index() -> TermIndex:
+    """The EPS face-statement phrases as one index, substring mode."""
+    return TermIndex([TermEntry(phrase, "face") for phrase in EPS_FACE_STATEMENT_PHRASES])
+
+
 def eps_restatement_face_fires(geometry) -> bool:
     """EPS-P1: the header token set carries the restatement-
     adjustment columns and a face statement is named in the
@@ -437,7 +443,7 @@ def eps_restatement_face_fires(geometry) -> bool:
     if not all(token in tokens for token in EPS_RESTATEMENT_TOKENS):
         return False
     text = normalize_text(" ".join([*geometry.headers, *geometry.stubs]))
-    return any(phrase in text for phrase in EPS_FACE_STATEMENT_PHRASES)
+    return "face" in _eps_face_index().scan(text)
 
 
 def eps_context_only_fires(result) -> bool:
