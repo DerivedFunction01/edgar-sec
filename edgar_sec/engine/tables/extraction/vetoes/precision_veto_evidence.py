@@ -430,7 +430,9 @@ def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...
 @lru_cache(maxsize=None)
 def _eps_face_index() -> TermIndex:
     """The EPS face-statement phrases as one index, substring mode."""
-    return TermIndex([TermEntry(phrase, "face") for phrase in EPS_FACE_STATEMENT_PHRASES])
+    return TermIndex(
+        [TermEntry(phrase, "face") for phrase in EPS_FACE_STATEMENT_PHRASES]
+    )
 
 
 def eps_restatement_face_fires(geometry) -> bool:
