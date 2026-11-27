@@ -26,6 +26,10 @@ later drives (derivation self-check, verdict, validation).
   proven by the reconciliation's geometry-count contract.
 - Labels and split are inherited from the retained corpus verbatim; this
   tooling never relabels and never modifies the retained corpus.
+- Census pricing (`census_pricing.py`) prices feature candidates over
+  the assembled imposter-census population as kills/touches per family
+  and names the residual falses; command form:
+  `python -m edgar_sec.tools.table_extraction_corpus.census_pricing <population.jsonl> <pricing.json>`.
 - New populations are labelled by `label.py`, the taxonomy lane's XBRL
   alignment method ported verbatim (role-title map, significant-digit
   scoring, schedule signatures, aligned-negative rule); it labels only
