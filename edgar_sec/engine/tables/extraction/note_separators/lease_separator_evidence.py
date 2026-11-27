@@ -9,8 +9,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
 from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
+from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
     norml,
 )
