@@ -742,7 +742,7 @@ def assemble(
             by_position[member.position] = GeometryAssignment(
                 member.table_index, RESIDUAL_FAMILY, "residual"
             )
-    realign_balance_sheet(members, groups, sectioned, by_position)
+    realign_balance_sheet(members, by_position)
     unassigned = [
         by_position[member.position].table_index
         for member in members
