@@ -20,6 +20,7 @@ LEG_CONTEXT_CARRIED = "D1c_true"
 LEG_WEAK_SIGNATURE = "B6sig5div1"
 LEG_COEX_LEAD = "AcoexLead"
 LEG_STATEMENT_FORM = "Bstmt30x100"
+LEG_CORE_FLOOR = "COREfloor"
 
 HOST_MIN_SHARED_KEYS = 2
 LEAD_BALANCE_MIN = 0.4
@@ -41,6 +42,25 @@ ADMISSION_FORM_TEST_DETAILS = ("ppe_evidence passed", "ppe_row_bound passed")
 DISCIPLINE_CLASS_MIN = 2
 DISCIPLINE_NUMERIC_MIN = 2
 DISCIPLINE_S3_NUMERIC_MIN = 3
+
+# The core floor (score-decomposition pricing): a claim
+# must carry deep-core evidence of its own in-table. The
+# term set is the decomposition's, as priced over the
+# imposter-census population (kills 10 of 18 falses at
+# 1 of 49 trues).
+CORE_FLOOR_TERMS = (
+    "property",
+    "plant",
+    "equipment",
+    "accumulated",
+    "depreciation",
+    "machinery",
+    "land",
+    "building",
+    "furniture",
+    "vehicles",
+    "construction in progress",
+)
 
 # PPE asset-class terms: a geometry's class diversity is
 # the count of these terms its normalized stubs carry.
