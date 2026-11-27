@@ -701,8 +701,7 @@ def _realign_balance_sheet(
 ) -> None:
     """Realign balance_sheet assignments to compete's gate
     discipline: an assignment stands only where the primary
-    gate admits the claim, and admitted claims seat the
-    family over the assembly's own assignment."""
+    gate admits the claim, and admitted claims seat it."""
     texts = [geometry_text_from_table(table) for table in tables]
     gated = compete_filing_gated(texts)
     for position, result in enumerate(gated):
