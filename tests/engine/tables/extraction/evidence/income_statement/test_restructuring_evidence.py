@@ -263,6 +263,7 @@ def test_dated_row_pair_alone_is_no_bookend_but_seats_as_summary():
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
 
+
 def test_dated_pair_bookends_are_admitted():
     rows = (
         ("Balance at December 31, 2023", "100"),
