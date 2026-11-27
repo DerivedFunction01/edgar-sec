@@ -214,3 +214,31 @@ def test_seat_refuses_a_prose_mention_off_the_heading_line() -> None:
 def test_compete_filing_leaves_a_scoreless_geometry_unclaimed() -> None:
     (out,) = compete_filing([GeometryText()])
     assert out.claims == ()
+
+
+def test_single_pass_keeps_the_relational_phrases_plural_only() -> None:
+    geometry = _geometry(
+        lead_title="Amounts from affiliate",
+        stubs=("Due to affiliate", "Total"),
+    )
+    out = _seat(geometry, _result())
+    assert out.claims == ()
+
+
+def test_single_pass_keeps_the_heading_stem_reach() -> None:
+    geometry = _geometry(
+        lead_title="Balances with related partners",
+        stubs=("Taehoon Kim", "Total"),
+    )
+    out = _seat(geometry, _result())
+    assert out.claims == (RP,)
+
+
+def test_single_pass_never_matches_across_a_stub_boundary() -> None:
+    geometry = _geometry(
+        lead_title="",
+        note_title="Related party transactions",
+        stubs=("Due", "to whom it may concern", "Total"),
+    )
+    out = _seat(geometry, _result())
+    assert out.claims == ()

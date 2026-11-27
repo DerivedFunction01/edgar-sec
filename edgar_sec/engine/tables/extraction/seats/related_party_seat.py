@@ -2,6 +2,12 @@
 related-party tables whose own score stays under the floor.
 Final compete_filing pass: an unclaimed geometry seats on
 its own heading or stub form over an amount-bearing grid.
+
+Evidence matching is single-pass: one term-index scan per
+channel text collects every evidence class at once, and
+the legs read the collected hit sets. Every index key is
+the verbatim priced string, so admissions are preserved
+by construction.
 """
 
 from __future__ import annotations
@@ -13,6 +19,7 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.seats.seat_application import (
     seat_applier,
@@ -44,6 +51,19 @@ MIN_NUMERIC_CELLS = 2
 MAX_DATA_ROWS = 48
 MAX_STUBS = 20
 
+# One compiled matcher per channel text: a single scan
+# reports every evidence class the channel carries.
+_HEADING_INDEX = TermIndex(
+    [TermEntry(phrase, "heading") for phrase in HEADING_PHRASES]
+    + [TermEntry(phrase, "relational") for phrase in RELATIONAL_HEADING_PHRASES]
+)
+_TITLE_INDEX = TermIndex(
+    [TermEntry(phrase, "title") for phrase in TITLE_PHRASES]
+    + [TermEntry(RELATIONSHIP_PHRASE, "relationship")]
+)
+_STUB_INDEX = TermIndex(TermEntry(phrase, "stub") for phrase in STUB_PARTY_PHRASES)
+_LEADIN_INDEX = TermIndex(TermEntry(term, "context") for term in RELATIONSHIP_CONTEXT)
+
 
 def _heading_text(geometry: GeometryText) -> str:
     """The geometry's own heading channels: lead title,
@@ -67,47 +87,6 @@ def _amounts(geometry: GeometryText) -> bool:
     )
 
 
-def _heading_leg(geometry: GeometryText) -> bool:
-    """The table's own heading names the related-party
-    subject; a prose-blob heading names nothing."""
-    heading = _heading_text(geometry)
-    if len(heading.split()) > PROSE_HEADING_WORDS:
-        return False
-    return any(phrase in heading for phrase in HEADING_PHRASES)
-
-
-def _stub_any(geometry: GeometryText) -> bool:
-    """Any stub carries a party form, whatever its title."""
-    stubs = [normalize_text(stub) for stub in geometry.stubs]
-    return any(phrase in stub for stub in stubs for phrase in STUB_PARTY_PHRASES)
-
-
-def _stub_leg(geometry: GeometryText) -> bool:
-    """Party-form stubs under a related-party note title."""
-    title = normalize_text(geometry.note_title or "")
-    if not any(phrase in title for phrase in TITLE_PHRASES):
-        return False
-    stubs = [normalize_text(stub) for stub in geometry.stubs]
-    return any(phrase in stub for stub in stubs for phrase in STUB_PARTY_PHRASES)
-
-
-def _relationship_leg(geometry: GeometryText) -> bool:
-    """A relationship-titled note whose prose names the
-    parent/subsidiary relation the table prices."""
-    title = normalize_text(geometry.note_title or "")
-    if RELATIONSHIP_PHRASE not in title:
-        return False
-    lead = normalize_text(geometry.leadin)
-    return any(term in lead for term in RELATIONSHIP_CONTEXT)
-
-
-def _affiliate_leg(geometry: GeometryText) -> bool:
-    """A relational affiliate heading over party-form stubs."""
-    heading = _heading_text(geometry)
-    phrases = HEADING_PHRASES + RELATIONAL_HEADING_PHRASES
-    return any(phrase in heading for phrase in phrases) and _stub_any(geometry)
-
-
 def _hard_terms(hits: dict) -> set[str] | None:
     """The geometry's hard veto terms for this family."""
     hard = hits.get("hard")
@@ -122,7 +101,16 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
     """Seat related_party on one unclaimed geometry, or don't."""
     if result.claims:
         return result
-    corroborated = _heading_leg(geometry) and _stub_any(geometry)
+    heading = _heading_text(geometry)
+    heading_hits = _HEADING_INDEX.scan(heading)
+    stub_hits = _STUB_INDEX.scan(
+        "\n".join(normalize_text(stub) for stub in geometry.stubs)
+    )
+    # The table's own heading names the related-party
+    # subject; a prose-blob heading names nothing.
+    heading_leg = len(heading.split()) <= PROSE_HEADING_WORDS and "heading" in heading_hits
+    stub_any = "stub" in stub_hits
+    corroborated = heading_leg and stub_any
     separator = geometry.summary_separator
     if separator is not None and separator.fired and not corroborated:
         return result
@@ -131,12 +119,13 @@ def _seat_one(geometry: GeometryText, result: CompetitionResult) -> CompetitionR
         return result
     if not _amounts(geometry):
         return result
-    if not (
-        _heading_leg(geometry)
-        or _stub_leg(geometry)
-        or _relationship_leg(geometry)
-        or _affiliate_leg(geometry)
-    ):
+    title_hits = _TITLE_INDEX.scan(normalize_text(geometry.note_title or ""))
+    stub_leg = "title" in title_hits and stub_any
+    affiliate_leg = ("heading" in heading_hits or "relational" in heading_hits) and stub_any
+    relationship_leg = "relationship" in title_hits and "context" in _LEADIN_INDEX.scan(
+        normalize_text(geometry.leadin)
+    )
+    if not (heading_leg or stub_leg or relationship_leg or affiliate_leg):
         return result
     score = result.scores.get(FAMILY)
     role = seat_role(geometry)
