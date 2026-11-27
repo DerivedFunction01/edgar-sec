@@ -17,6 +17,9 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
 from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     INTANGIBLES_LEXICON,
 )
+from edgar_sec.engine.tables.extraction.specs.input_class_specs import (
+    LEVEL3_QUANTITATIVE_CAPTION,
+)
 from edgar_sec.engine.tables.extraction.vetoes.precision_veto_specs import (
     DERIV_FAMILY,
     DERIV_HEADER_LEVEL_TOKEN,
@@ -515,7 +518,7 @@ def _fair_value_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]
     )
     legs = []
     vma_terms = [t for t in FV_VMA_TERMS if t in hdr]
-    if "quantitative information about level 3" in cap or len(vma_terms) >= 2:
+    if LEVEL3_QUANTITATIVE_CAPTION in cap or len(vma_terms) >= 2:
         legs.append(LEG_FV_VMA)
     strict = sum(1 for c in FV_SEC_CONCEPTS if c in hdr) >= 3
     age = "unrealized loss" in hdr and (
