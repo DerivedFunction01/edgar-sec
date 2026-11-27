@@ -135,9 +135,8 @@ def _dates_in(segment: str) -> set[tuple[int, int]]:
 @lru_cache(maxsize=None)
 def _spec_index(spec: CreditLossesEvidenceSpec) -> TermIndex:
     """One index over the spec's term census: subject phrases
-    by key, the bookend lists and literals, anchor words, the
-    movement elements by key, schedule markers, carrier
-    phrases. Every entry phrase-kind — substring standing."""
+    by key, bookends, anchors, movement elements, schedule
+    markers, carriers. Every entry phrase-kind."""
     entries = []
     entries += [
         TermEntry(phrase, "subject", value=key) for key, phrase in spec.subject_phrases
