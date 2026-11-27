@@ -99,6 +99,15 @@ def test_fires_on_sibling_class_composition():
     assert verdict.legs == ("sibling_mass", "goodwill_not_stub_subject")
 
 
+def test_fires_on_priced_vocabulary_stems():
+    text = (
+        "Finite-lived intangible assets | 800\n"
+        "Amortization expense | (100)\n"
+        "Total | 700"
+    )
+    assert _eval(text).fired
+
+
 def test_fires_on_two_sibling_rows_only():
     text = "Patents | 800\nLicenses | 300\nTotal | 1,100"
     assert _eval(text).fired

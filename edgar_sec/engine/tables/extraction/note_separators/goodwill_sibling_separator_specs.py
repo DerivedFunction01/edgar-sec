@@ -33,17 +33,14 @@ SIBLING_CLASS_TERMS = (
     "intangible",
     "masthead",
     "trademark",
+    "trade name",
     "customer",
     "patent",
     "license",
-    "trade name",
-    "copyright",
     "franchise",
-    "noncompete",
-    "non-compete",
-    "favorable",
-    "deferred financing",
     "indefinite",
+    "finite-lived",
+    "amortiz",
 )
 
 
