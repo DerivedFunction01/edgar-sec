@@ -141,9 +141,7 @@ _ACCESSION_IN_PATH_RE = re.compile(r"(\d{10}-\d{2}-\d{6}|\d{18})")
 _DATE_TOKEN_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 
 
-def _form_idx_ciks(
-    client: SecHttpClient, year: int, quarter: int
-) -> dict[str, int]:
+def _form_idx_ciks(client: SecHttpClient, year: int, quarter: int) -> dict[str, int]:
     """Map accession to registrant CIK from one quarter's form.idx."""
     url = f"{_FORM_IDX_BASE}/{year}/QTR{quarter}/form.idx"
     text = client.get_bytes(url).decode("utf-8", errors="replace")
