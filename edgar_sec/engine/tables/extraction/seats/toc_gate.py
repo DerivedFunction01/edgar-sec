@@ -225,10 +225,8 @@ def _title_families(title: str) -> tuple[str, ...]:
 
 
 def toc_refusal(table: TypedTable) -> TocRefusal | None:
-    """Refuse on the cover-span fact alone inside the filing's TOC
-    span; on a TOC-formed note title naming families the table's own
-    page-ref rows do not; outside those, refuse a TOC-shaped table
-    only with no currency and enough namespaces across its rows."""
+    """Refuse inside the TOC span on that fact; on a TOC-formed note
+    title naming families the table's own labels do not; else on shape."""
     signals = toc_signals(table)
     shape = (
         f"{signals.page_ref_rows}/{signals.rows} page-reference rows, "

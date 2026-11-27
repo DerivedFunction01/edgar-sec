@@ -153,13 +153,8 @@ def page_range_start(cell: str) -> int | None:
 
 
 def toc_title_parts(line: str) -> tuple[str, str] | None:
-    """Split a TOC-formed title line into (title, page token).
-
-    The padded cover-TOC form: a title of at least four characters
-    closed by a bare, namespaced, or ranged page reference, with no
-    dot leader required — the shape a contents line takes when it
-    rides as a note title over a filing's tables.
-    """
+    """Split a TOC-formed title line into (title, page token): a title
+    closed by a bare, namespaced, or ranged page reference, leader or not."""
     stripped = line.strip().strip("|+")
     if not stripped or is_toc_row(stripped):
         return None
