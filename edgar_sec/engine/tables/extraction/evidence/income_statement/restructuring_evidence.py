@@ -50,6 +50,7 @@ class RestructuringText:
     caption: str = ""
     prose: str = ""
     lines: tuple[str, ...] = ()
+    note_title: str = ""
 
     @classmethod
     def from_table(cls, table: TypedTable) -> RestructuringText:
@@ -60,6 +61,7 @@ class RestructuringText:
         )
         return cls(
             caption=" ".join(context.caption_stack),
+            note_title=(getattr(context.note, "title", "") or ""),
             prose=(context.prose_before or "")[-_TEXT_CAP:],
             lines=tuple(table_text[:_TEXT_CAP].split("\n")),
         )
@@ -380,10 +382,18 @@ def evaluate_restructuring_evidence(
         or any(term in first_line for term in terms)
     )
     prose = _prose_anchor(text.prose, prose_l, terms)
+    note_form = any(term in (text.note_title or "").lower() for term in terms)
+    if note_form:
+        lead = True
     header_form = _charge_type_count(first_line) >= 2 and any(
         "balance at" in ln for ln in lines_l
     )
     if header_form:
+        lead = True
+    sched_form = any(
+        "balance at beginning" in ln and "balance at end" in ln for ln in lines_l
+    ) and any(term in ln for term in terms for ln in lines_l)
+    if sched_form:
         lead = True
     if not (lead or prose):
         return RestructuringEvidence(False, "subject not anchored")
