@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     TEST_GOODWILL_FOREIGN_SEPARATOR,
 )
@@ -73,24 +74,37 @@ def _zone(rows: list[list[str]]) -> tuple[list[str], list[str], list[str]]:
     return stubs, header_cells, zone_cells
 
 
+_FOREIGN_INDEX = TermIndex(
+    [TermEntry(term, "title") for term in STATEMENT_TITLE_TERMS]
+    + [TermEntry(term, "class", value=term) for term in FOREIGN_CLASS_TERMS]
+    + [
+        TermEntry("level 3", "level3"),
+        TermEntry("goodwill", "goodwill"),
+    ]
+    + [TermEntry(q, "qualifier") for q in _GOODWILL_SUBJECT_QUALIFIERS]
+)
+
+
 def _foreign_subject_zone(
     text: RollforwardGridText, stubs: list[str], zone_cells: list[str]
 ) -> bool:
     """A foreign walked subject is bound in the zone: by title,
     by class enumeration, or as the single walked subject."""
     caption = text.caption.lower()
-    if "level 3" in caption:
+    caption_hits = _FOREIGN_INDEX.scan(caption)
+    if "level3" in caption_hits:
         return True
-    if any(term in cell for cell in zone_cells for term in STATEMENT_TITLE_TERMS):
+    zone_hits = [ _FOREIGN_INDEX.scan(cell) for cell in zone_cells ]
+    if any("title" in hits for hits in zone_hits):
         return True
     if any(stub.startswith("intangible assets") for stub in stubs):
         return True
-    classes = {
-        term for term in FOREIGN_CLASS_TERMS if any(term in cell for cell in zone_cells)
-    }
+    classes = set()
+    for hits in zone_hits:
+        classes |= set(hits.get("class", frozenset()))
     if len(classes) >= 2:
         return True
-    if any(term in caption for term in FOREIGN_CLASS_TERMS):
+    if "class" in caption_hits:
         return True
     return bool(stubs) and any(
         stubs[0] == term or stubs[0].startswith(term + " ")
@@ -103,13 +117,12 @@ def _goodwill_bound(
 ) -> bool:
     """Goodwill is a bound subject of the zone: named in the
     caption, heading a column, or bound by a qualified stub."""
-    if "goodwill" in text.caption.lower():
+    if "goodwill" in _FOREIGN_INDEX.scan(text.caption.lower()):
         return True
-    if any("goodwill" in cell for cell in header_cells):
+    if any("goodwill" in _FOREIGN_INDEX.scan(cell) for cell in header_cells):
         return True
     return any(
-        stub.startswith("goodwill")
-        and any(qualifier in stub for qualifier in _GOODWILL_SUBJECT_QUALIFIERS)
+        stub.startswith("goodwill") and "qualifier" in _FOREIGN_INDEX.scan(stub)
         for stub in stubs
     )
 
