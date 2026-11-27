@@ -49,9 +49,7 @@ _TAXONOMIES = _taxonomies()
 _SPECIMENS = json.loads((_SIMPLIFIED / "specimens.json").read_text(encoding="utf-8"))
 
 
-@pytest.mark.parametrize(
-    "specimen", _SPECIMENS, ids=[s["id"] for s in _SPECIMENS]
-)
+@pytest.mark.parametrize("specimen", _SPECIMENS, ids=[s["id"] for s in _SPECIMENS])
 def test_specimen_resolutions_match_expectations(specimen: dict) -> None:
     text = (_SIMPLIFIED / specimen["text"]).read_text(encoding="utf-8")
     toc_span = tuple(specimen["toc_span"]) if specimen["toc_span"] else None
@@ -74,7 +72,5 @@ def test_specimen_set_is_complete_and_consistent() -> None:
         text_path = _SIMPLIFIED / specimen["text"]
         assert text_path.is_file() and text_path.stat().st_size > 0
         assert Path(specimen["text"]).name == specimen["text"]
-        known = {
-            f"ITEM {item.item}" for item in _TAXONOMIES[specimen["family"]]
-        }
+        known = {f"ITEM {item.item}" for item in _TAXONOMIES[specimen["family"]]}
         assert set(specimen["expected"]) <= known
