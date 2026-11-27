@@ -288,3 +288,41 @@ def test_filing_relative_ignores_unclaimed_scores():
         ],
     )
     assert "balance_sheet" in results[1].claims
+
+
+def test_signature_fragment_title_identity_claim_kept():
+    geo = GeometryText(
+        lead_title="Supplemental Cash Flow Information",
+        form_tests=(_absence_outcome(False),),
+    )
+    results = apply_spanning_vetoes([geo], [_dominant_cf()])
+    assert "cash_flow" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_signature_recon_block_identity_claim_kept():
+    geo = GeometryText(
+        stubs=("Total cash and cash equivalents",),
+        form_tests=(_absence_outcome(False),),
+    )
+    results = apply_spanning_vetoes([geo], [_dominant_cf()])
+    assert "cash_flow" in results[0].claims
+    assert _gate_details(results[0]) == []
+
+
+def test_signature_fragment_identity_dominance_still_removes():
+    geo = GeometryText(
+        lead_title="Supplemental Cash Flow Information",
+        form_tests=(_absence_outcome(False),),
+    )
+    results = apply_spanning_vetoes(
+        [geo],
+        [
+            _result(
+                ("cash_flow", "income_statement"),
+                {"cash_flow": 8.45, "income_statement": 8.45},
+            )
+        ],
+    )
+    assert "cash_flow" not in results[0].claims
+    assert _gate_details(results[0]) == ["spanning veto: dominance, signature"]

@@ -7,6 +7,9 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
 from edgar_sec.engine.tables.extraction.seats.primary_gate import (
+    cash_flow_fragment_identity,
+    cash_flow_missing_sections,
+    cash_flow_sum_identity,
     missing_sections,
     section_presence,
     statement_clusters,
@@ -517,3 +520,81 @@ def test_cash_flow_grantor_veto_scoped_shapes() -> None:
         GeometryText(stubs=(_CF_OP, _CF_INV, _CF_FIN, _CF_REC), lead_title=marker)
     )
     assert not cash_flow_grantor_veto_scoped(GeometryText(stubs=(marker, _CF_REC)))
+
+
+def _cf_missing(geometries, index=0):
+    clusters = statement_clusters(geometries)
+    return cash_flow_missing_sections(geometries, index, clusters)
+
+
+def test_fragment_admission_supplemental_title_singleton() -> None:
+    geo = GeometryText(
+        lead_title="Supplemental Cash Flow Information",
+        stubs=("Interest", "Income taxes"),
+    )
+    assert cash_flow_fragment_identity(geo)
+    assert _cf_missing([geo]) == []
+
+
+def test_fragment_admission_absent_identity_refused() -> None:
+    geo = GeometryText(stubs=("Interest", "Income taxes"))
+    assert not cash_flow_fragment_identity(geo)
+    assert _cf_missing([geo]) == ["operating", "investing", "financing"]
+
+
+def test_fragment_admission_sum_identity_singleton() -> None:
+    geo = GeometryText(
+        stubs=(
+            "Cash and cash equivalents",
+            "Restricted cash",
+            "Total cash and restricted cash",
+        ),
+        grid_text=(
+            "cash and cash equivalents 100 90 "
+            "restricted cash 50 40 "
+            "total cash and restricted cash 150 130"
+        ),
+    )
+    assert not cash_flow_fragment_identity(geo)
+    assert cash_flow_sum_identity(geo)
+    assert _cf_missing([geo]) == []
+
+
+def test_fragment_admission_broken_sum_refused() -> None:
+    geo = GeometryText(
+        stubs=(
+            "Cash and cash equivalents",
+            "Restricted cash",
+            "Total cash and restricted cash",
+        ),
+        grid_text=(
+            "cash and cash equivalents 100 90 "
+            "restricted cash 50 40 "
+            "total cash and restricted cash 155 130"
+        ),
+    )
+    assert not cash_flow_sum_identity(geo)
+    assert _cf_missing([geo]) == ["operating", "investing", "financing"]
+
+
+def test_fragment_admission_non_singleton_refused() -> None:
+    head = GeometryText(
+        note_title="Notes",
+        lead_title="Supplemental Cash Flow Information",
+        stubs=("Interest",),
+    )
+    tail = GeometryText(note_title="Notes", stubs=("Income taxes",))
+    assert _cf_missing([head, tail]) == [
+        "operating",
+        "investing",
+        "financing",
+        "cash_reconciliation",
+    ]
+
+
+def test_fragment_admission_other_missing_set_refused() -> None:
+    geo = GeometryText(
+        lead_title="Supplemental Cash Flow Information",
+        stubs=("Cash flows from financing activities",),
+    )
+    assert _cf_missing([geo]) == ["operating", "investing"]
