@@ -10,8 +10,10 @@ from __future__ import annotations
 import re
 from collections import Counter
 from dataclasses import dataclass
+from functools import lru_cache
 
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.text.period_keys import (
     numeric_dates as _numeric_dates,
     period_keys as _period_keys,
@@ -82,22 +84,58 @@ class WarrantyEvidence:
 
 _REFUSED_NO_SPEC = WarrantyEvidence(False, "no gate spec for test id")
 
+_LEX_LITERALS = (
+    "balance",
+    "balanc",
+    "beginning",
+    "ending",
+    "end of",
+    "year-end",
+    "year end",
+    "as of",
+    " at ",
+    " end",
+)
+
+
+@lru_cache(maxsize=None)
+def _spec_index(spec: WarrantyEvidenceSpec) -> TermIndex:
+    """One index over the spec's term census: anchors, movement
+    terms by type name, and the bookend literals. Every entry is
+    phrase-kind — the standing scans are substring, and plurals
+    ride that subsumption."""
+    entries = [TermEntry(anchor, "anchor") for anchor in spec.anchors]
+    for name, terms in spec.move_types:
+        entries += [TermEntry(term, "move", value=name) for term in terms]
+    entries += [
+        TermEntry(term, "move", value=name) for term, name in spec.extra_move_terms
+    ]
+    entries += [TermEntry(literal, "lex") for literal in _LEX_LITERALS]
+    return TermIndex(entries)
+
+
+def _scan(spec: WarrantyEvidenceSpec, text: str) -> dict[str, frozenset[str]]:
+    return _spec_index(spec).scan(text)
+
 
 def _f2_forms(
     spec: WarrantyEvidenceSpec, lines_l: list[str], first_line: str
 ) -> list[str]:
     """The F2 bookend forms: the pair in its phase-2 dialects."""
-    begin_row = any("balance" in ln and "beginning" in ln for ln in lines_l)
+    hits = [_scan(spec, ln) for ln in lines_l]
+    lex = [h.get("lex", frozenset()) for h in hits]
+    begin_row = any("balance" in lx and "beginning" in lx for lx in lex)
     end_row = any(
-        "balance" in ln and ("ending" in ln or "end of" in ln) for ln in lines_l
+        "balance" in lx and ("ending" in lx or "end of" in lx) for lx in lex
     )
-    dated = [ln for ln in lines_l if "balance" in ln and _priced_years(ln)]
+    dated = [ln for ln, lx in zip(lines_l, lex) if "balance" in lx and _priced_years(ln)]
     years: set[str] = set()
     months: set[str] = set()
     for ln in dated:
         years.update(_priced_years(ln))
         months.update(name for name in MONTH_NAMES if name in ln)
-    anchor_lines = [ln for ln in lines_l if any(a in ln for a in spec.anchors)]
+    anchor_idx = [i for i, h in enumerate(hits) if "anchor" in h]
+    anchor_lines = [lines_l[i] for i in anchor_idx]
     akeys: set = set()
     for ln in anchor_lines:
         akeys |= _period_keys(ln)
@@ -106,9 +144,10 @@ def _f2_forms(
     for ln in bare:
         bkeys |= _period_keys(ln)
     horiz_keys = _period_keys(first_line)
-    if "beginning" in first_line:
+    first_lex = _scan(spec, first_line).get("lex", frozenset())
+    if "beginning" in first_lex:
         horiz_keys.add("beginning")
-    if " end" in first_line:
+    if " end" in first_lex:
         horiz_keys.add("end")
     forms = []
     if begin_row and end_row:
@@ -117,13 +156,13 @@ def _f2_forms(
         forms.append("dated pair")
     if len(anchor_lines) >= 2 and len(akeys) >= 2:
         forms.append("anchor pair")
-    if any("beginning" in ln for ln in anchor_lines) and any(
-        "end of" in ln or "ending" in ln for ln in anchor_lines
+    if any("beginning" in lex[i] for i in anchor_idx) and any(
+        "end of" in lex[i] or "ending" in lex[i] for i in anchor_idx
     ):
         forms.append("anchor word")
     if len(bare) >= 2 and len(bkeys) >= 2:
         forms.append("bare pair")
-    if any(a in first_line for a in spec.anchors) and len(horiz_keys) >= 2:
+    if "anchor" in _scan(spec, first_line) and len(horiz_keys) >= 2:
         forms.append("horizontal header")
     return forms
 
@@ -148,9 +187,10 @@ def _transposed(
             continue
         cells = [cell.strip() for cell in ln.split("|")]
         stub = cells[0] if cells else ""
-        if any(any(term in stub for term in terms) for _name, terms in spec.move_types):
+        stub_hits = _scan(spec, stub)
+        if "move" in stub_hits:
             move_rows.append(index)
-        if any(a in stub for a in spec.anchors) or subject_re.search(stub):
+        if "anchor" in stub_hits or subject_re.search(stub):
             balance_rows.append((index, cells))
     for row_idx, cells in balance_rows:
 
@@ -175,31 +215,33 @@ def _f_arms(
 ) -> list[str]:
     """The priced bookend arms beyond F2, with the arms named."""
     arms = []
+    hits = [_scan(spec, ln) for ln in lines_l]
+    lex = [h.get("lex", frozenset()) for h in hits]
     begin_key = [
-        i for i, ln in enumerate(lines_l) if "beginning" in ln and _period_keys(ln)
+        i for i, lx in enumerate(lex) if "beginning" in lx and _period_keys(lines_l[i])
     ]
     end_key = [
         i
-        for i, ln in enumerate(lines_l)
-        if ("ending" in ln or "end of" in ln) and _period_keys(ln)
+        for i, lx in enumerate(lex)
+        if ("ending" in lx or "end of" in lx) and _period_keys(lines_l[i])
     ]
     if any(i != j for i in begin_key for j in end_key):
         arms.append("dated bare pair")
     if (
-        any("beginning" in ln for ln in lines_l)
-        and any("ending" in ln or "end of" in ln for ln in lines_l)
+        any("beginning" in lx for lx in lex)
+        and any("ending" in lx or "end of" in lx for lx in lex)
         and len(_period_keys(first_line)) >= 2
     ):
         arms.append("header-dated bare pair")
     asof_keys: set = set()
-    for ln in lines_l:
-        if "balance" in ln and ("as of" in ln or " at " in ln):
+    for ln, lx in zip(lines_l, lex):
+        if "balance" in lx and ("as of" in lx or " at " in lx):
             asof_keys |= _period_keys_x(spec, ln)
     if len(asof_keys) >= 2:
         arms.append("as-of closings")
     balance_keys: set = set()
-    for ln in lines_l:
-        if "balance" in ln:
+    for ln, lx in zip(lines_l, lex):
+        if "balance" in lx:
             balance_keys |= _period_keys(ln)
     if len(balance_keys) >= 2:
         arms.append("dated-balance union")
@@ -208,11 +250,11 @@ def _f_arms(
     )
     ye_lines = 0
     ye_years: set[str] = set()
-    for ln in lines_l:
+    for ln, lx in zip(lines_l, lex):
         if (
             ((_MONTH_WORD_RE.search(ln) or abbrev_re.search(ln)) and _priced_years(ln))
-            or "year-end" in ln
-            or "year end" in ln
+            or "year-end" in lx
+            or "year end" in lx
         ):
             ye_lines += 1
             ye_years.update(_priced_years(ln))
@@ -235,18 +277,23 @@ def _f_amendment_arms(
     hdr_keys: set = set()
     for index in zone_idx:
         hdr_keys |= _period_keys_x(spec, lines_l[index])
-    open_rows = [i for i, ln in enumerate(lines_l) if "beginning" in ln]
-    close_rows = [i for i, ln in enumerate(lines_l) if any(c in ln for c in _CLOSE_LEX)]
+    lex = [_scan(spec, ln).get("lex", frozenset()) for ln in lines_l]
+    open_rows = [i for i, lx in enumerate(lex) if "beginning" in lx]
+    close_rows = [
+        i for i, lx in enumerate(lex) if any(c in lx for c in _CLOSE_LEX)
+    ]
     arms = []
     if any(i != j for i in open_rows for j in close_rows) and len(hdr_keys) >= 2:
         arms.append("header-dated pair")
-    asof_lines = [ln for ln in lines_l if "balanc" in ln and "as of" in ln]
+    asof_idx = [
+        i for i, lx in enumerate(lex) if "balanc" in lx and "as of" in lx
+    ]
     akeys = set(hdr_keys)
-    for ln in asof_lines:
-        akeys |= _period_keys_x(spec, ln)
+    for i in asof_idx:
+        akeys |= _period_keys_x(spec, lines_l[i])
     if (
-        len(asof_lines) >= 2
-        and any("beginning" in ln for ln in asof_lines)
+        len(asof_idx) >= 2
+        and any("beginning" in lex[i] for i in asof_idx)
         and len(akeys) >= 2
     ):
         arms.append("as-of header pair")
@@ -305,23 +352,20 @@ def _bare_pair_scoped(
         and any(pos >= spec.header_zone_lines for pos in sec_positions)
     ):
         return True
-    zone = [lines_l[i] for i in nonempty[: spec.frag_zone_lines]]
+    zone = nonempty[: spec.frag_zone_lines]
+    zone_lex = [_scan(spec, lines_l[i]).get("lex", frozenset()) for i in zone]
     return (
-        any("beginning" in ln for ln in zone)
-        and any("ending" in ln or "end of" in ln for ln in zone)
-        and any("balance" in ln for ln in zone)
+        any("beginning" in lx for lx in zone_lex)
+        and any("ending" in lx or "end of" in lx for lx in zone_lex)
+        and any("balance" in lx for lx in zone_lex)
     )
 
 
 def _movement_types(spec: WarrantyEvidenceSpec, lines_l: list[str]) -> set[str]:
     """Distinct movement types over the lines, widened vocabulary."""
-    types = set()
-    for name, terms in spec.move_types:
-        if any(any(term in ln for term in terms) for ln in lines_l):
-            types.add(name)
-    for term, name in spec.extra_move_terms:
-        if any(term in ln for ln in lines_l):
-            types.add(name)
+    types: set[str] = set()
+    for ln in lines_l:
+        types |= _scan(spec, ln).get("move", frozenset())
     return types
 
 
