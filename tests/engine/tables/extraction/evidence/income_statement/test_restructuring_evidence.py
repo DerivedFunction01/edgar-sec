@@ -684,6 +684,7 @@ def test_summary_guard_admits_a_note_carried_segment_summary():
     assert result.admitted
     assert result.detail.startswith("restructuring summary: subject lead")
 
+
 def test_summary_guard_admits_a_parenthesized_marker():
     # R-A: an anatomy marker inside parentheses (a column
     # qualifier) does not veto — the priced :78 recovery shape.
@@ -731,4 +732,3 @@ def test_summary_guard_refuses_an_extended_anatomy_total():
     result = _verdict(rows, caption_stack=("Restructuring Commitments",))
     assert not result.admitted
     assert result.detail == "summary form refused: competing anatomy"
-

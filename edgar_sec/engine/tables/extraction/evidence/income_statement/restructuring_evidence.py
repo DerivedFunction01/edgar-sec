@@ -317,6 +317,8 @@ def _summary_guard(arm: str, lines_l: list[str], caption_l: str, note_l: str) ->
     if arm != "lead" and _charge_type_count(rows_l) < 2:
         return "prose anchor"
     return ""
+
+
 def _bookends(spec: RestructuringEvidenceSpec, lines_l: list[str], first_line: str):
     """The bookend pair in any filed form, with the forms named."""
     begin_row = any("balance" in ln and "beginning" in ln for ln in lines_l)
