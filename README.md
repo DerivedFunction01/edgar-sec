@@ -142,17 +142,6 @@ contract is stated in
 [its package README](edgar_sec/pipelines/metadata_sync/README.md).
 Nothing about a pipeline's layout or semantics is restated here.
 
-## Venue discipline
-
-While Colab High-RAM sessions are live, gates and other compute run on
-the fleet, not locally: local work is authoring and orchestration only,
-and execution rides the runner funnel (`bin/colab-run`) with caller
-attribution. Gates scope to the change and shard across the available
-sessions — the binding statement is the Supervision rules block in
-AGENTS.md. The venue contract itself (lease lifecycle, session rules,
-sync discipline) is owned by `pipeline/venue/AGENTS.md` in the
-workspace's `supreme-octo-robot` repository.
-
 ## Tests
 
 The test tree mirrors the source tree; every test directory is a package,

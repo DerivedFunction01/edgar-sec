@@ -2,8 +2,7 @@
 
 ## Purpose
 
-Tooling for the table-extraction successor plan
-(`.plans/2026-11-08-table-extraction-successor.md`): rebuild the retained
+Tooling for the table-extraction successor plan: rebuild the retained
 taxonomy corpus as context-carrying fixtures (grid, caption stack,
 preceding cues, prose windows on both sides, structured location, page-break
 evidence with namespace, scale), and reconcile the rebuild against the
@@ -12,8 +11,8 @@ later drives (derivation self-check, verdict, validation).
 
 ## Contracts
 
-- Every compute leg (fetch, normalize, extraction) runs on Colab High-RAM
-  and says so in its record; local use is authoring only.
+- Every compute leg (fetch, normalize, extraction) runs on the parallel
+  compute venue and says so in its record; local use is authoring only.
 - Retrieval is catalog-free (the facade's fetch-by-accession requires a
   published filing catalog no live session carries — the taxonomy lane's
   recorded substitution): each filing's aggregate is built from its
