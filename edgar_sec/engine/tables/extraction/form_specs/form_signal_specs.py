@@ -554,5 +554,6 @@ SEPARATOR_EXEMPTIONS: dict[str, tuple[str, ...]] = {
         "mda_item2_financing_activities",
         "mda_item2_operating_activities",
         "mda_item2_cash_equivalents_data",
+        "selected_data_last_total_item6",
     ),
 }
