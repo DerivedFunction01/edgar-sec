@@ -401,10 +401,16 @@ def _composition_failed(score) -> bool:
     )
 
 
+@lru_cache(maxsize=None)
+def _intangibles_lexicon_index() -> TermIndex:
+    """The intangibles lexicon as one index, substring mode."""
+    return TermIndex([TermEntry(term, "lexicon") for term in INTANGIBLES_LEXICON])
+
+
 def _has_class_stub(geometry) -> bool:
     """An intangibles class term in the geometry's stubs."""
     text = " || ".join({normalize_text(stub) for stub in geometry.stubs})
-    return any(term in text for term in INTANGIBLES_LEXICON)
+    return "lexicon" in _intangibles_lexicon_index().scan(text)
 
 
 def _intangibles_legs(geometry, tokens: ChannelTokens, result) -> tuple[str, ...]:
