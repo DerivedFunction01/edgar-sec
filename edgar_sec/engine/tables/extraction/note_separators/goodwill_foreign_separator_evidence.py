@@ -94,7 +94,7 @@ def _foreign_subject_zone(
     caption_hits = _FOREIGN_INDEX.scan(caption)
     if "level3" in caption_hits:
         return True
-    zone_hits = [ _FOREIGN_INDEX.scan(cell) for cell in zone_cells ]
+    zone_hits = [_FOREIGN_INDEX.scan(cell) for cell in zone_cells ]
     if any("title" in hits for hits in zone_hits):
         return True
     if any(stub.startswith("intangible assets") for stub in stubs):
