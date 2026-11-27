@@ -28,8 +28,24 @@ def corpus_dir(corpus: str) -> Path:
     return DISCOVERY_DIR / corpus
 
 
+def _generated_catalog_path(name: str) -> Path | None:
+    """The generated catalog fixtures, materialized from authored rows."""
+    from tests.support.catalog_fixtures import (
+        GENERATED_CATALOG_FIXTURES,
+        catalog_fixture_dir,
+    )
+
+    if name in GENERATED_CATALOG_FIXTURES:
+        return catalog_fixture_dir() / name
+    return None
+
+
 def _resolve_fixture(name: str) -> Path:
     parts = name.split("/")
+    if len(parts) == 2 and parts[0] == "catalog":
+        generated = _generated_catalog_path(parts[1])
+        if generated is not None:
+            return generated
     if len(parts) >= 2 and parts[0] == "xbrl" and parts[1] in _CORPUS_DIRS:
         return corpus_dir(parts[1]).joinpath(*parts[2:])
     return FIXTURES / name
@@ -62,6 +78,9 @@ def load_cohort_registry(name: str) -> Any:
 
 
 def catalog_fixture_path(name: str) -> Path:
+    generated = _generated_catalog_path(name)
+    if generated is not None:
+        return generated
     return CATALOG_FIXTURES / name
 
 

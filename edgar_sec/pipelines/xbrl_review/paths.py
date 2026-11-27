@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from edgar_sec.engine.xbrl.discovery.cohort import (
+    CORPUS_DIR,
+    corpus_root as _discovery_corpus_root,
+)
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
@@ -42,6 +46,7 @@ DEFAULT_SP100_COHORT_FILE = "sp100_cohort.json"
 
 PIPELINE_ROOT = Path(__file__).resolve().parent
 FIXTURES_DIR = PIPELINE_ROOT / "fixtures"
+REVIEW_CORPUS_DIR = "review"
 
 
 class XbrlPaths:
@@ -73,8 +78,17 @@ class XbrlPaths:
         return self.fixture_paths(fixture_id).storage_path
 
     @property
+    def corpus_root(self) -> Path:
+        """Corpus root anchored at this instance's artifacts root. :no-docgen:"""
+        return corpus_root(self.artifacts_root)
+
+    @property
     def builtin_fixtures_dir(self) -> Path:
-        """Package-local cohort inputs; not published artifacts. :no-docgen:"""
+        """Cohort registry home: the corpus root's review dir when it holds
+        the sp100 registry, else this package's fixtures. :no-docgen:"""
+        external = review_corpus_dir(self.artifacts_root)
+        if (external / DEFAULT_SP100_COHORT_FILE).is_file():
+            return external
         return FIXTURES_DIR
 
     @property
@@ -235,8 +249,29 @@ def xbrl_paths(artifacts_root: Path | str | None = None) -> XbrlPaths:
     return XbrlPaths(root)
 
 
+def corpus_root(artifacts_root: Path | str | None = None) -> Path:
+    """Corpus root for the review plane: the discovery corpus seam's root.
+
+    An explicit artifacts root that differs from the resolved default
+    anchors the convention (``<root>/xbrl/corpus``) at that root instead.
+    """
+    if artifacts_root is not None:
+        anchored = Path(artifacts_root)
+        if anchored.resolve() != foundation_paths.resolve_paths().artifacts_root:
+            return foundation_paths.dataset_root(anchored, DATASET) / CORPUS_DIR
+    return _discovery_corpus_root()
+
+
+def review_corpus_dir(artifacts_root: Path | str | None = None) -> Path:
+    """Review registries' corpus home, ``<corpus_root>/review`` — distinct
+    from the top level, where the discovery registries live, so the review
+    sp100 registry never conflates with the discovery one of the same name.
+    """
+    return corpus_root(artifacts_root) / REVIEW_CORPUS_DIR
+
+
 def default_sp100_cohort_path(artifacts_root: Path | str | None = None) -> Path:
-    """Return default S&P 100 cohort fixture path."""
+    """Default S&P 100 cohort path: corpus review dir, else package fixtures."""
     return xbrl_paths(artifacts_root).default_sp100_cohort_path
 
 
@@ -256,6 +291,7 @@ __all__ = [
     "PROJECTION_MANIFEST_FILE",
     "PUBLICATION_LOCK_FILE",
     "QUARANTINE_FILE",
+    "REVIEW_CORPUS_DIR",
     "RULE_TRACE_FILE",
     "RUN_LOCK_FILE",
     "RUN_MANIFEST_FILE",
@@ -264,8 +300,10 @@ __all__ = [
     "WORK_ORDER_FILE",
     "XbrlPaths",
     "XbrlRunPaths",
+    "corpus_root",
     "default_sp100_cohort_path",
     "resolve_filing_catalog_paths",
+    "review_corpus_dir",
     "xbrl_paths",
     "xbrl_run_paths",
 ]

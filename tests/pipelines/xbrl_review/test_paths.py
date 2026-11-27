@@ -2,6 +2,8 @@
 
 from pathlib import Path
 
+import pytest
+
 from edgar_sec.pipelines.xbrl_review.paths import (
     FIXTURES_DIR,
     WORK_ORDER_FILE,
@@ -26,6 +28,8 @@ def test_xbrl_paths_properties(tmp_path: Path) -> None:
         paths.unification_rules_db_path
         == tmp_path / "xbrl" / "unification_rules.duckdb"
     )
+
+    assert paths.corpus_root == tmp_path / "xbrl" / "corpus"
 
     rp = paths.review_paths("run-20261014_120000")
     assert rp.root == tmp_path / "xbrl" / "review-runs" / "run-20261014_120000"
@@ -82,3 +86,30 @@ def test_xbrl_run_paths_derivation(tmp_path: Path) -> None:
     assert run_p.work_order_path().name == WORK_ORDER_FILE
     assert run_p.chunk_dir("0000").name == "0000"
     assert run_p.attempt_dir("0000", "01").name == "attempt-01"
+
+
+def test_default_sp100_cohort_path_uses_corpus_review_dir(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Verify the review sp100 registry resolves in the corpus review dir."""
+    source_bytes = default_sp100_cohort_path().read_bytes()
+    corpus = tmp_path / "corpus"
+    review_dir = corpus / "review"
+    review_dir.mkdir(parents=True)
+    target = review_dir / "sp100_cohort.json"
+    target.write_bytes(source_bytes)
+    monkeypatch.setenv("XBRL_CORPUS_ROOT", str(corpus))
+    assert default_sp100_cohort_path() == target
+    assert xbrl_paths().corpus_root == corpus
+    assert xbrl_paths().default_sp100_cohort_path == target
+
+
+def test_default_sp100_cohort_path_ignores_discovery_registry(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Verify a top-level corpus sp100 registry is not the review registry."""
+    corpus = tmp_path / "corpus"
+    corpus.mkdir()
+    (corpus / "sp100_cohort.json").write_bytes(b"[]")
+    monkeypatch.setenv("XBRL_CORPUS_ROOT", str(corpus))
+    assert default_sp100_cohort_path() == FIXTURES_DIR / "sp100_cohort.json"

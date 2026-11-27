@@ -8,12 +8,39 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.foundation.runtime.paths import dataset_root, resolve_paths
+from edgar_sec.foundation.runtime.settings import resolve_settings
 
-# The canonical registries are package data and live beside this module.
+# The in-repo discovery directory is the migration fallback: the canonical
+# registries and their bundle corpora live beside this module until Step 8.
 DISCOVERY_DIR = Path(__file__).resolve().parent
 SEED_COHORT_FILE = "seed_cohort.json"
 VINTAGE_COHORT_FILE = "vintage_cohort.json"
 SP100_COHORT_FILE = "sp100_cohort.json"
+
+XBRL_DATASET = "xbrl"
+CORPUS_DIR = "corpus"
+
+
+def corpus_root() -> Path:
+    """Corpus root: the ``xbrl.corpus_root`` override when set, else the
+    artifacts-root convention ``<artifacts_root>/xbrl/corpus``.
+    """
+    configured = resolve_settings().get("xbrl.corpus_root", "")
+    text = str(configured).strip() if configured is not None else ""
+    if text:
+        return Path(text)
+    return dataset_root(resolve_paths().artifacts_root, XBRL_DATASET) / CORPUS_DIR
+
+
+def _canonical_registry_path(file_name: str) -> Path:
+    """One canonical registry path: corpus root first, in-repo fallback.
+
+    The corpus-root candidate is used only when the registry file is
+    there; the in-repo registry is the migration fallback until Step 8.
+    """
+    external = corpus_root() / file_name
+    return external if external.is_file() else DISCOVERY_DIR / file_name
 
 
 @dataclass(frozen=True, slots=True)
@@ -54,7 +81,7 @@ def load_seed_cohort(source: Path) -> tuple[SeedFiling, ...]:
 
 def canonical_seed_cohort_path() -> Path:
     """Path of the canonical seed cohort registry, the single cohort source."""
-    return DISCOVERY_DIR / SEED_COHORT_FILE
+    return _canonical_registry_path(SEED_COHORT_FILE)
 
 
 def load_canonical_seed_cohort() -> tuple[SeedFiling, ...]:
@@ -64,7 +91,7 @@ def load_canonical_seed_cohort() -> tuple[SeedFiling, ...]:
 
 def canonical_vintage_cohort_path() -> Path:
     """Path of the canonical vintage cohort registry, the measurement corpus."""
-    return DISCOVERY_DIR / VINTAGE_COHORT_FILE
+    return _canonical_registry_path(VINTAGE_COHORT_FILE)
 
 
 def load_canonical_vintage_cohort() -> tuple[SeedFiling, ...]:
@@ -74,7 +101,7 @@ def load_canonical_vintage_cohort() -> tuple[SeedFiling, ...]:
 
 def canonical_sp100_cohort_path() -> Path:
     """Path of the canonical SP100 cohort registry, the scale corpus."""
-    return DISCOVERY_DIR / SP100_COHORT_FILE
+    return _canonical_registry_path(SP100_COHORT_FILE)
 
 
 def load_canonical_sp100_cohort() -> tuple[SeedFiling, ...]:

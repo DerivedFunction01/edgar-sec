@@ -32,8 +32,9 @@ from edgar_sec.pipelines.filing_catalog.cli import (
 )
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+from tests.support.fixtures import catalog_fixture_path
 
-SAMPLE = "tests/fixtures/catalog/sample_submission_metadata.parquet"
+SAMPLE = str(catalog_fixture_path("sample_submission_metadata.parquet"))
 
 
 def _json_output(capsys: pytest.CaptureFixture[str]) -> dict[str, Any]:

@@ -1,9 +1,15 @@
 """Tests for seed cohort definitions and loading."""
 
+from pathlib import Path
+
+import pytest
+
 from edgar_sec.engine.xbrl.discovery.cohort import (
+    DISCOVERY_DIR,
     canonical_seed_cohort_path,
     canonical_sp100_cohort_path,
     canonical_vintage_cohort_path,
+    corpus_root,
     load_canonical_seed_cohort,
     load_canonical_sp100_cohort,
     load_canonical_union_cohort,
@@ -157,3 +163,38 @@ def test_load_sp100_cohort_from_fixture() -> None:
         assert len(str(filing.accession)) == 20
         assert int(filing.cik) > 0
         assert filing.form in ("10-K", "20-F")
+
+
+def test_corpus_root_defaults_to_artifacts_convention(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Verify the unset override resolves under the artifacts root."""
+    monkeypatch.delenv("XBRL_CORPUS_ROOT", raising=False)
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    assert corpus_root() == tmp_path / "xbrl" / "corpus"
+
+
+def test_corpus_root_override_wins_per_file_with_fallback(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Verify an external registry wins; an absent one falls back in-repo."""
+    seed_bytes = (DISCOVERY_DIR / "seed_cohort.json").read_bytes()
+    monkeypatch.setenv("XBRL_CORPUS_ROOT", str(tmp_path))
+    assert corpus_root() == tmp_path
+    (tmp_path / "seed_cohort.json").write_bytes(seed_bytes)
+    assert canonical_seed_cohort_path() == tmp_path / "seed_cohort.json"
+    assert load_canonical_seed_cohort()[0].firm == "MSFT"
+    assert canonical_vintage_cohort_path() == DISCOVERY_DIR / "vintage_cohort.json"
+
+
+def test_probe_cohort_path_uses_corpus_review_dir(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Verify the probe registry resolves in the corpus root's review dir."""
+    probe_bytes = cohort_registry_path("probe_cohort.json").read_bytes()
+    review_dir = tmp_path / "review"
+    review_dir.mkdir()
+    (review_dir / "probe_cohort.json").write_bytes(probe_bytes)
+    monkeypatch.setenv("XBRL_CORPUS_ROOT", str(tmp_path))
+    assert canonical_probe_cohort_path() == review_dir / "probe_cohort.json"
+    assert len(load_canonical_probe_cohort()) == 445

@@ -74,7 +74,7 @@ class LoadedFiling:
 
 def bundle_root(registry_path: Path) -> Path:
     """The corpus root holding a cohort registry's bundles: beside the
-    registry itself (<name>_cohort.json -> <name>/), nowhere else.
+    registry itself (<name>_cohort.json -> <name/>), in-repo or external.
     """
     return registry_path.parent / registry_path.stem.removesuffix("_cohort")
 
@@ -98,6 +98,15 @@ def _canonical_registry_paths() -> tuple[Path, ...]:
         canonical_vintage_cohort_path(),
         canonical_sp100_cohort_path(),
     )
+
+
+def corpus_registry_paths() -> tuple[Path, ...]:
+    """Canonical registries in bundle search order, through the paths seam.
+
+    Each path resolves corpus-root-first with the in-repo registry as
+    fallback; an external registry's bundles resolve beside it.
+    """
+    return _canonical_registry_paths()
 
 
 def corpus_registry_path(source_ref: str | None) -> Path | None:
@@ -238,6 +247,7 @@ __all__ = [
     "bundle_root",
     "cohort_entries",
     "corpus_registry_path",
+    "corpus_registry_paths",
     "load_filing",
     "missing_bundles",
     "registry_filings",
