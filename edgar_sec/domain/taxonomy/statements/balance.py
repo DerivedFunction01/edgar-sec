@@ -85,58 +85,9 @@ BALANCE_SHEET_VETOES: tuple[str, ...] = (
     "statements of cash flows",
 )
 
-from edgar_sec.domain.taxonomy.tables.shapes import ShapeConstraint
-from edgar_sec.domain.taxonomy.tables.specs import (
-    RepairPolicy,
-    TableFamilySpec,
-    TableScope,
-    build_ngram_tier,
-)
-from edgar_sec.foundation.text.evidence import (
-    LexicalEvidencePack,
-    compile_evidence_pack,
-)
-
-_bs_primary: tuple[str, ...] = (
-    *ASSETS_TERMS,
-    *LIABILITIES_TERMS,
-    *EQUITY_TERMS,
-)
-
-_BALANCE_SHEET_PACK = compile_evidence_pack(
-    LexicalEvidencePack(
-        name="balance_sheet",
-        tiers=tuple(
-            t
-            for t in (
-                build_ngram_tier(
-                    "bs_lines",
-                    _bs_primary,
-                    priority=10,
-                    value=2,
-                    min_distinct_hits=2,
-                ),
-            )
-            if t is not None
-        ),
-        exclusion_terms=BALANCE_SHEET_VETOES,
-    )
-)
-
-BALANCE_SHEET_SPEC = TableFamilySpec(
-    name="balance_sheet",
-    shape=ShapeConstraint(
-        min_rows=8, max_rows=65, min_cols=2, min_numeric_density=0.15
-    ),
-    evidence_pack=_BALANCE_SHEET_PACK,
-    repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
-    candidate_default_scope=TableScope.BODY,
-    priority=100,
-)
 
 __all__ = [
     "ASSETS_TERMS",
-    "BALANCE_SHEET_SPEC",
     "BALANCE_SHEET_TAIL_RE",
     "BALANCE_SHEET_TAIL_TERMS",
     "BALANCE_SHEET_VETOES",

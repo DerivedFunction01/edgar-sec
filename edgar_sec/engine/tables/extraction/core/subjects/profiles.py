@@ -9,9 +9,7 @@ from dataclasses import asdict
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     KIND_FAMILY,
     KIND_GENRE_SEAT,
-    KIND_PROSE_PROFILE,
     PROV_DEMOGRAPHICS,
-    PROV_LABOR,
     PROV_RESTRUCTURING_PRICING,
     PROV_S4_GOODWILL_BASE,
     PROV_S6B_PRICING,
@@ -20,7 +18,6 @@ from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     SEAT_GENRE_REFUSAL,
     SEAT_GEOMETRY_TEXT,
     SEAT_NOTE_TITLE_CONTENT,
-    SEAT_PROSE_CAPTURE,
     SEAT_REGION_GATED,
     SEAT_SIGNATURE,
     STRATUM_ANNUAL,
@@ -405,21 +402,6 @@ PROFILES: tuple[FamilyProfile, ...] = (
         "on 468 unexamined judged filings; fresh-strata "
         "measurement is Step 10's",
         provenance=PROV_S6B_PRICING,
-    ),
-    FamilyProfile(
-        "labor_capture",
-        KIND_PROSE_PROFILE,
-        None,
-        SEAT_PROSE_CAPTURE,
-        shape="employee group x contract x union",
-        note="prose-side converter, outside the geometry verdict: "
-        "the n=0 premise is falsified — specimens exist; directed "
-        "census presence .071 (26 of 365 judged) is a floor and "
-        "the priced signature recovers .088 (32 of 365); the "
-        "labor_contracts family seat carries the intent in the "
-        "geometry verdict and this prose-capture seat stands "
-        "retired in its favour",
-        provenance=PROV_LABOR,
     ),
     FamilyProfile(
         "combined_operations_ci",

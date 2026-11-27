@@ -61,14 +61,6 @@ EPS_TERMS: tuple[str, ...] = (
     "per share - diluted",
 )
 
-NET_INCOME_TERMS: tuple[str, ...] = (
-    "net income",
-    "net loss",
-    "net income (loss)",
-    "net earnings",
-    "net loss attributable to",
-    "net income attributable to",
-)
 
 INCOME_STATEMENT_TAIL_TERMS: tuple[str, ...] = (
     "net income",
@@ -92,70 +84,11 @@ INCOME_STATEMENT_TAIL_RE = re.compile(
 
 INCOME_STATEMENT_VETOES: tuple[str, ...] = ("activities",)
 
-from edgar_sec.domain.taxonomy.tables.shapes import ShapeConstraint
-from edgar_sec.domain.taxonomy.tables.specs import (
-    RepairPolicy,
-    TableFamilySpec,
-    TableScope,
-    build_ngram_tier,
-)
-from edgar_sec.foundation.text.evidence import (
-    LexicalEvidencePack,
-    compile_evidence_pack,
-)
-
-_is_primary: tuple[str, ...] = (
-    *REVENUE_TERMS,
-    *COST_OF_SALES_TERMS,
-    *GROSS_PROFIT_TERMS,
-    *OPERATING_INCOME_TERMS,
-    *NET_INCOME_TERMS,
-    *EPS_TERMS,
-)
-
-_INCOME_STATEMENT_PACK = compile_evidence_pack(
-    LexicalEvidencePack(
-        name="income_statement",
-        tiers=tuple(
-            t
-            for t in (
-                build_ngram_tier(
-                    "primary_statement_lines",
-                    _is_primary,
-                    priority=10,
-                    value=2,
-                    min_distinct_hits=2,
-                ),
-                build_ngram_tier(
-                    "opex_support",
-                    OPERATING_EXPENSES_TERMS,
-                    priority=5,
-                    value=1,
-                    support=True,
-                ),
-            )
-            if t is not None
-        ),
-        exclusion_terms=INCOME_STATEMENT_VETOES,
-    )
-)
-
-INCOME_STATEMENT_SPEC = TableFamilySpec(
-    name="income_statement",
-    shape=ShapeConstraint(
-        min_rows=8, max_rows=55, min_cols=2, min_numeric_density=0.15
-    ),
-    evidence_pack=_INCOME_STATEMENT_PACK,
-    repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
-    candidate_default_scope=TableScope.BODY,
-    priority=100,
-)
 
 __all__ = [
     "COST_OF_SALES_TERMS",
     "EPS_TERMS",
     "GROSS_PROFIT_TERMS",
-    "INCOME_STATEMENT_SPEC",
     "INCOME_STATEMENT_TAIL_RE",
     "INCOME_STATEMENT_TAIL_TERMS",
     "INCOME_STATEMENT_VETOES",

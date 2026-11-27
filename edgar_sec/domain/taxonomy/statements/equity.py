@@ -50,59 +50,9 @@ EQUITY_STATEMENT_TAIL_RE = re.compile(
 
 EQUITY_VETOES: tuple[str, ...] = ("activities",)
 
-from edgar_sec.domain.taxonomy.tables.shapes import ShapeConstraint
-from edgar_sec.domain.taxonomy.tables.specs import (
-    RepairPolicy,
-    TableFamilySpec,
-    TableScope,
-    build_ngram_tier,
-)
-from edgar_sec.foundation.text.evidence import (
-    LexicalEvidencePack,
-    compile_evidence_pack,
-)
-
-_EQUITY_PACK = compile_evidence_pack(
-    LexicalEvidencePack(
-        name="equity_statement",
-        tiers=tuple(
-            t
-            for t in (
-                build_ngram_tier(
-                    "equity_primary",
-                    EQUITY_PRIMARY_TERMS,
-                    priority=10,
-                    value=2,
-                    min_distinct_hits=2,
-                ),
-                build_ngram_tier(
-                    "equity_support",
-                    EQUITY_SUPPORTING_TERMS,
-                    priority=5,
-                    value=1,
-                    support=True,
-                ),
-            )
-            if t is not None
-        ),
-        exclusion_terms=EQUITY_VETOES,
-    )
-)
-
-EQUITY_STATEMENT_SPEC = TableFamilySpec(
-    name="equity_statement",
-    shape=ShapeConstraint(
-        min_rows=5, max_rows=120, min_cols=3, min_numeric_density=0.15
-    ),
-    evidence_pack=_EQUITY_PACK,
-    repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
-    candidate_default_scope=TableScope.BODY,
-    priority=100,
-)
 
 __all__ = [
     "EQUITY_PRIMARY_TERMS",
-    "EQUITY_STATEMENT_SPEC",
     "EQUITY_STATEMENT_TAIL_RE",
     "EQUITY_STATEMENT_TAIL_TERMS",
     "EQUITY_SUPPORTING_TERMS",

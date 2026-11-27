@@ -4,7 +4,6 @@ from __future__ import annotations
 
 PROV_FAMILY_SUPPORT = "verdict:family_support"
 PROV_DEMOGRAPHICS = "measurement:demographics_profile"
-PROV_LABOR = "measurement:labor_capture_profile"
 PROV_EX13 = "census:ex13_exhibit_links"
 
 # Strata are the measurement strata: B is the annual stratum,
