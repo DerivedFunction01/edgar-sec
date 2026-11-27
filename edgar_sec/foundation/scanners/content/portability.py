@@ -25,9 +25,7 @@ DEFAULT_REPO_SET_PATH = Path("var/config/repo-set.txt")
 EXCEPTION_FILES: tuple[str, ...] = ()
 
 _MARKER = "portability" + "-exception:"
-EXCEPTION_DIRECTIVE_RE = re.compile(
-    re.escape(_MARKER) + r"\s*(\S+)\s+—\s*(\S.*)$"
-)
+EXCEPTION_DIRECTIVE_RE = re.compile(re.escape(_MARKER) + r"\s*(\S+)\s+—\s*(\S.*)$")
 
 _BOUNDARY = r"(?<![\w/.-])"
 _PATH_TAIL = r"[\w.-]+(?:/[\w.-]+)*"
@@ -87,9 +85,7 @@ def _scan_file(root: Path, path: Path) -> list[ScannerFinding]:
     exceptions = _declared_exceptions(relpath, lines)
     findings: list[ScannerFinding] = []
     for lineno, line in enumerate(lines, start=1):
-        if relpath not in EXCEPTION_FILES and EXCEPTION_DIRECTIVE_RE.search(
-            line
-        ):
+        if relpath not in EXCEPTION_FILES and EXCEPTION_DIRECTIVE_RE.search(line):
             findings.append(
                 finding(
                     "portability",
@@ -110,8 +106,7 @@ def _scan_file(root: Path, path: Path) -> list[ScannerFinding]:
                         "portability",
                         relpath,
                         lineno,
-                        f"{rule}: non-portable reference"
-                        " (content withheld)",
+                        f"{rule}: non-portable reference (content withheld)",
                         "Reference only what a fresh clone of this"
                         " repository resolves.",
                     )
@@ -148,9 +143,7 @@ def _load_repo_set(root: Path) -> list[str]:
 
 def _code_population(root: Path) -> list[Path]:
     """Tracked code files, the scanner mirror tests excluded."""
-    return [
-        path for path in population(root) if path.suffix in CODE_SUFFIXES
-    ]
+    return [path for path in population(root) if path.suffix in CODE_SUFFIXES]
 
 
 def _repo_ref_findings(root: Path) -> list[ScannerFinding]:

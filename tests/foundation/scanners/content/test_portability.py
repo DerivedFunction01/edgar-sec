@@ -84,6 +84,4 @@ def test_exception_directive_in_non_registry_file_is_an_error(
     marker = "portability" + "-exception:"
     _write(tmp_path, "note.md", f"{marker} /home/x — a reason\n")
     findings = scan_tree(tmp_path)
-    assert any(
-        "portability/exception-misuse" in f.message for f in findings
-    )
+    assert any("portability/exception-misuse" in f.message for f in findings)
