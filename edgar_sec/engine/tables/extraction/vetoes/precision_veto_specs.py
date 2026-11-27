@@ -202,6 +202,40 @@ CREDIT_FAMILY = "credit_losses_rollforward"
 # Credit dominance leg name, as the gate note reports it.
 LEG_DOMINANT_CO_CLAIM = "dom:co-claim"
 
+
+# --- fair_value precision packet (ITEMS + W3 under the g5 guard) ---
+FV_FAMILY = "fair_value"
+LEG_FV_VMA = "items:vma"
+LEG_FV_SEC = "items:sec"
+LEG_FV_ALLOC = "items:alloc"
+LEG_FV_W3 = "w3:no-hierarchy-unguarded"
+FV_VMA_TERMS = (
+    "valuation technique",
+    "unobservable input",
+    "range of inputs",
+    "range/weighted average",
+    "weighted average",
+    "discount rate",
+    "prepayment",
+    "default rate",
+    "severity",
+    "probability of success",
+    "pull-through",
+    "pull through",
+    "discount margin",
+)
+FV_HIERARCHY_PHRASES = (
+    "quoted prices in active markets",
+    "significant other observable inputs",
+    "significant unobservable inputs",
+)
+FV_SEC_CONCEPTS = (
+    "amortized cost",
+    "unrealized gain",
+    "unrealized loss",
+    "fair value",
+)
+
 # The priced dominance margin: a co-claimant family's
 # total must clear the credit claim's total by at least
 # this margin for the leg to refuse the credit claim.

@@ -7,6 +7,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+# The Level 3 quantitative-disclosure caption: one literal home
+# for the shape both the input-class seat and the fair_value
+# precision packet recognize.
+LEVEL3_QUANTITATIVE_CAPTION = "quantitative information about level 3"
+
+
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_R18_SEAT_PRICING,
 )
