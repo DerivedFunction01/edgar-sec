@@ -45,13 +45,8 @@ def _review_sp100_cohort_path() -> Path:
     return default_sp100_cohort_path()
 
 
-#: Benchmark taxonomy members copied from the package home at resolve time:
-#: industries (byte-exact mirror), prime_heads (one trailing byte drifted),
-#: and the re-based snapshots atom_relations, subatomic_modifiers and
-#: token_lexicon (Step 2 re-base: the package vocabulary is the standard).
-#: inflections rides with the lexicon: the package lexicon authors canonical
-#: singular forms only, and plurals exist solely as loader generations from
-#: this table — a dir without it silently degrades the lexicon.
+#: Package-home members of the benchmark taxonomy (Step 2 re-base: package
+#: vocabulary is the standard; inflections — plurals are its generations only).
 _PACKAGE_TAXONOMY_MEMBERS = (
     "atom_relations.json",
     "industries.json",
@@ -70,10 +65,8 @@ _FIXTURE_TAXONOMY_MEMBERS = (
 
 
 def _derived_relation_types() -> bytes:
-    """The benchmark relation_types reduction of the package home.
-
-    Derivation: package entries minus PLACEMENT and DIALECT_OF, with
-    CONTRA_OF stripped of its algebraic_weight and formula fields.
+    """The benchmark relation_types reduction of the package home: entries
+    minus PLACEMENT and DIALECT_OF, CONTRA_OF stripped of weight and formula.
     """
     entries = json.loads(
         (_package_taxonomy_dir() / "relation_types.json").read_text(encoding="utf-8")
@@ -91,10 +84,8 @@ def _derived_relation_types() -> bytes:
 
 
 def benchmark_taxonomy_dir() -> Path:
-    """Materialize the benchmark taxonomy dir from its single homes.
-
-    The dir is composed per the member lists above plus the derived
-    relation_types; it is rebuilt when any source byte changes.
+    """Materialize the benchmark taxonomy dir from its single homes: member
+    lists plus derived relation_types, rebuilt when any source byte changes.
     """
     sources: dict[str, bytes] = {}
     for member in _PACKAGE_TAXONOMY_MEMBERS:
