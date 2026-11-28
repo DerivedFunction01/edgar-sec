@@ -196,8 +196,13 @@ def _selection(pop: list, spec: dict, rules: dict) -> dict:
 _FORMS = {"necessary": _necessary, "kill": _kill, "selection": _selection}
 
 
-def price_cell(specimens: list, spec: dict, rules: dict,
-               scope: dict | None = None, form: str = "necessary") -> dict:
+def price_cell(
+    specimens: list,
+    spec: dict,
+    rules: dict,
+    scope: dict | None = None,
+    form: str = "necessary",
+) -> dict:
     """Price one rule spec over a packet, optionally scoped."""
     pop = _scoped(specimens, rules, scope)
     cell = _FORMS[form](pop, spec, rules)
@@ -234,8 +239,12 @@ def price_packet(packet: dict) -> dict:
     for request in packet.get("cells") or []:
         spec = rules[request["rule"]] if "rule" in request else request["spec"]
         cells[request["name"]] = price_cell(
-            specimens, spec, rules,
-            scope=request.get("scope"), form=request.get("form", "necessary"))
+            specimens,
+            spec,
+            rules,
+            scope=request.get("scope"),
+            form=request.get("form", "necessary"),
+        )
     return {"board": packet_board(specimens), "cells": cells}
 
 
@@ -250,8 +259,11 @@ def main(argv: list[str] | None = None) -> int:
     atomic_write_json(args.out, result, canonical=False, indent=1)
     summary = {}
     for name, cell in result["cells"].items():
-        keys = ("kills", "touches") if "kills" in cell else (
-            "selected", "precision", "recall")
+        keys = (
+            ("kills", "touches")
+            if "kills" in cell
+            else ("selected", "precision", "recall")
+        )
         summary[name] = {k: cell[k] for k in keys}
     print(json.dumps(summary, indent=1))
     return 0
