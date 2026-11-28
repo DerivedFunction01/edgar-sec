@@ -47,6 +47,13 @@ later drives (derivation self-check, verdict, validation).
   against the census residual falses, and certifies the learned
   separations the held-out split supports; command form:
   `python -m edgar_sec.tools.table_extraction_corpus.shadow_learner <population.jsonl> <residual-lists.txt> <pricing.json> <shadow.json>`.
+- Fixture rebuild (`fixture_rebuild.py`) rebuilds adjudicated
+  specimens' fixtures from harvested adjudication corpora in two
+  stages — the corpus aggregate route, then the document cure for
+  weak members — matches each member's adjudicated table to a
+  production geometry by normalized cell overlap, and writes the
+  gold bases with matched/weak accounting; command form:
+  `python -m edgar_sec.tools.table_extraction_corpus.fixture_rebuild --inputs <dir> --specimens <file> --work <dir> --out <dir> [--tree <tag>]`.
 - New populations are labelled by `label.py`, the taxonomy lane's XBRL
   alignment method ported verbatim (role-title map, significant-digit
   scoring, schedule signatures, aligned-negative rule); it labels only
