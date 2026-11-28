@@ -16,7 +16,7 @@ from edgar_sec.engine.forms.common.phrases.phrases import (
 from edgar_sec.engine.forms.common.tables.tables import IGNORE_SUBBOX_MARKERS
 from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, FULL_DATE_ANY_RE
 
 SEC_FILE_LABEL_RE = re.compile(
     r"(?:s\.?e\.?c\.?\s*file\s*(?:no\.?|number)?|file\s*no\.?)\s*[:\s]*([0-9]{1,3}-[0-9]{4,7})",
@@ -27,7 +27,7 @@ SEC_FILE_BARE_RE = re.compile(r"\b([0-9]{1,3}-[0-9]{4,7})\b")
 # sale-parsing reads of issuer and broker contact fields.
 ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
 AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
-_NOTICE_DATE_PAT = rf"({RE_FULL_DATE.pattern}|{NUMERIC_DATE_RE.pattern})"
+_NOTICE_DATE_PAT = rf"({FULL_DATE_ANY_RE.pattern}|{NUMERIC_DATE_RE.pattern})"
 NOTICE_DATE_LABEL_RE = re.compile(
     rf"(?:(?:date of notice|date\s*:?)\s*[:\s]*{_NOTICE_DATE_PAT}|{_NOTICE_DATE_PAT}\s*date of notice)",
     re.IGNORECASE,
