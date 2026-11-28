@@ -146,9 +146,7 @@ _DAY_FIRST_DATE_PAT = (
 )
 
 
-_DAY_FIRST_DASH_DATE_PAT = (
-    rf"\d{{1,2}}-(?:{MONTH_PATTERN})-(?:\d{{4}}|\d{{2}})"
-)
+_DAY_FIRST_DASH_DATE_PAT = rf"\d{{1,2}}-(?:{MONTH_PATTERN})-(?:\d{{4}}|\d{{2}})"
 
 
 _ISO_DATE_PAT = r"\d{4}-\d{2}-\d{2}"
