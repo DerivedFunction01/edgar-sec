@@ -151,7 +151,11 @@ def test_load_vintage_cohort_from_fixture() -> None:
 
 
 def test_load_sp100_cohort_from_fixture() -> None:
-    """Verify loading 98 verified firms from the sp100 fixture."""
+    """Verify loading 98 verified firms from the sp100 registry.
+
+    tests/support routes this fixture name to the review-plane registry,
+    its single home (the former taxonomy-dir copy was byte-exact).
+    """
     cohort = load_seed_cohort(fixture_path("xbrl/taxonomy/sp100_cohort.json"))
     assert len(cohort) == 98
     firms = {f.firm for f in cohort}

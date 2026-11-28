@@ -1,5 +1,6 @@
 """Tests for sub-atomic accounting taxonomy and relational schemas."""
 
+import csv
 import json
 from pathlib import Path
 import pytest
@@ -19,6 +20,7 @@ from edgar_sec.engine.xbrl.taxonomy.records import (
     AxisFamilyMapping,
     MemberRoleMapping,
     UnitMapping,
+    load_geography_dag,
 )
 from tests.support.fixtures import fixture_path
 
@@ -136,6 +138,21 @@ def test_load_from_csv(tmp_path: Path) -> None:
     mods = load_subatomic_modifiers(csv_mods)
     assert len(mods) == 1
     assert mods[0].keywords == ("Research", "Development")
+
+
+def test_load_geography_dag_from_csv(tmp_path: Path) -> None:
+    """Verify the geography loader's CSV branch against the JSON fixture."""
+    rows = json.loads(
+        fixture_path("xbrl/taxonomy/geography_dag.json").read_text(encoding="utf-8")
+    )
+    csv_path = tmp_path / "geography_dag.csv"
+    with csv_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    assert load_geography_dag(csv_path) == load_geography_dag(
+        fixture_path("xbrl/taxonomy/geography_dag.json")
+    )
 
 
 def test_missing_taxonomy_file_raises(tmp_path: Path) -> None:
