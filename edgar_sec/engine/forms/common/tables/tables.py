@@ -348,9 +348,7 @@ def is_single_cell_empty_table(
         for cell in row
         if cell.strip() and not cell.strip().lower().startswith("remarks")
     ]
-    return bool(clean_cells) and all(
-        c in EMPTY_CONTINUATION_WORDS for c in clean_cells
-    )
+    return bool(clean_cells) and all(c in EMPTY_CONTINUATION_WORDS for c in clean_cells)
 
 
 def is_empty_continuation_row(cells: Iterable[str]) -> bool:
