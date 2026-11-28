@@ -64,8 +64,7 @@ def extract_temporal(
             return TemporalInterval(min(m1, m2), max(m1, m2), RANGE)
     for idx, value in sorted(ordinal_values.items()):
         if any(
-            0 <= j < len(tokens) and lower[j] in _YEAR_UNITS
-            for j in (idx - 1, idx + 1)
+            0 <= j < len(tokens) and lower[j] in _YEAR_UNITS for j in (idx - 1, idx + 1)
         ):
             return TemporalInterval((value - 1) * 12, value * 12, BUCKET)
     if not cardinals:
