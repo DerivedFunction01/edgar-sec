@@ -7,7 +7,7 @@ paced specimen leg (cooldown, block probe, single size-scored fetch).
 
 from __future__ import annotations
 
-import html as _html
+import html
 import json
 import re
 import time
@@ -18,6 +18,7 @@ from typing import Any, Protocol
 from urllib.parse import urlencode
 
 from edgar_sec.domain.sec_urls import archives_url, efts_search_url, index_json_url_for
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.tools.measurement.config import load_config, workdir
@@ -29,7 +30,6 @@ END_RES = tuple(
 RAW_END_RES = tuple(re.compile(p) for p in (r"item\s+4", r"item\s+5", r"part\s+iii"))
 SPAN_RE = re.compile(r"legal\s+proceedings", re.I)
 TAG_RE = re.compile(r"<[^>]+>")
-WS_RE = re.compile(r"\s+")
 SCRIPT_STYLE_RE = re.compile(r"(?is)<(script|style)[^>]*>.*?</\1>")
 HREF_RE = re.compile(r'href="([^"]+\.html?)"', re.I)
 STUB_OPENER_RE = re.compile(r"\s*(none|not applicable|n/a|omitted)\b")
@@ -204,7 +204,7 @@ def strip_text(raw: str) -> str:
     """Document text with markup, scripts, and styles stripped out."""
     text = SCRIPT_STYLE_RE.sub(" ", raw)
     text = TAG_RE.sub("\n", text)
-    return WS_RE.sub(" ", _html.unescape(text))
+    return RE_WHITESPACE.sub(" ", html.unescape(text))
 
 
 def classify_segment(segment: str) -> str:
@@ -288,18 +288,27 @@ def list_docs(client: CensusClient, cik: str, accession: str) -> list[tuple[str,
         return []
 
 
-def _doc_score(name_size: tuple[str, int]) -> float:
+def _doc_name_tokens(forms: tuple[str, ...]) -> tuple[str, ...]:
+    """Doc-name bonus tokens derived from the configured forms."""
+    tokens = {form.lower() for form in forms}
+    tokens |= {token.replace("-", "") for token in tokens}
+    return tuple(sorted(tokens))
+
+
+def _doc_score(name_size: tuple[str, int], tokens: tuple[str, ...]) -> float:
     name, size = name_size
     low = name.lower()
     score = size / 1e6
-    if "10-k" in low or "10k" in low:
+    if any(token in low for token in tokens):
         score += 2
     if low.startswith("ex") or "-ex" in low or "_ex" in low:
         score -= 3
     return score
 
 
-def measure_specimen(client: CensusClient, record: dict) -> dict:
+def measure_specimen(
+    client: CensusClient, record: dict, tokens: tuple[str, ...]
+) -> dict:
     """One sampled filing's section measurement, or its error record."""
     line = {
         "accession": record["accession"],
@@ -313,7 +322,10 @@ def measure_specimen(client: CensusClient, record: dict) -> dict:
         if not candidates:
             line["err"] = "no-doc-listing"
             return line
-        doc = sorted(candidates, key=_doc_score, reverse=True)[0][0]
+        ranked = sorted(
+            candidates, key=lambda item: _doc_score(item, tokens), reverse=True
+        )
+        doc = ranked[0][0]
         raw = client.get_bytes(
             archives_url(record["cik"], record["accession"], doc)
         ).decode("utf-8", "replace")
@@ -371,9 +383,10 @@ def specimen_leg(
     sleep(cfg.cooldown_s)
     if not probe(client, cfg, sample, sleep):
         raise ProbeExhausted("archives probe exhausted its backoffs")
+    tokens = _doc_name_tokens(cfg.forms)
     results: list[dict] = []
     for record in sample:
-        results.append(measure_specimen(client, record))
+        results.append(measure_specimen(client, record, tokens))
         sleep(cfg.pace_s)
     return results
 
