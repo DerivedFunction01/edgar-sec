@@ -9,7 +9,9 @@ from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any
 
-_DASH_CHARS = "-\u2010\u2011\u2012\u2013\u2014\u2212"
+from edgar_sec.foundation.text.dashes import DASH_CHARS
+
+_DASH_CHARS = DASH_CHARS
 _DASH_TRANSLATION = str.maketrans({char: " " for char in _DASH_CHARS})
 _TOKEN_RE = re.compile(r"[A-Za-z0-9'\-]+")
 

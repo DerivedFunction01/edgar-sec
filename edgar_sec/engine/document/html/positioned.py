@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from edgar_sec.engine.document.html.tags import BLOCK_TAGS
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
+from edgar_sec.foundation.text.dashes import CELL_DASHES
 from edgar_sec.foundation.text.patterns import (
     RE_TABLE_OPEN as _RE_TABLE_TAG,
     RE_WHITESPACE as _RE_WHITESPACE_RUN,
@@ -289,7 +290,7 @@ class FlowLine:
 PageBlock = TableBand | FlowLine
 
 _RE_NUMERIC_FRAGMENT = re.compile(rf"^\$?\s?\(?-?{NUMERIC_TOKEN_RE.pattern}\)?\s?%?$")
-_DASH_FRAGMENTS = frozenset({"-", "—", "–"})
+_DASH_FRAGMENTS = CELL_DASHES
 _MAX_PITCH_DELTA = 60.0
 _TABULAR_SPAN = 150.0
 

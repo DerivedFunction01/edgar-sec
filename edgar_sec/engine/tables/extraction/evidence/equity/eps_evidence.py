@@ -14,6 +14,7 @@ from edgar_sec.engine.tables.extraction.specs.families.eps_specs import (
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
+from edgar_sec.foundation.text.dashes import is_blank_or_dash
 
 
 @dataclass(frozen=True, slots=True)
@@ -66,14 +67,11 @@ class EpsText:
         )
 
 
-_DASHES = {"-", "–", "—", ""}
-
-
 def _cell_value(cell: str) -> tuple[float | None, bool]:
     """(value, is_dash) for a numeric-position cell, else
     (None, False). Percent cells are not values here."""
     s = (cell or "").strip()
-    if s in _DASHES:
+    if is_blank_or_dash(s):
         return 0.0, True
     if "%" in s:
         return None, False

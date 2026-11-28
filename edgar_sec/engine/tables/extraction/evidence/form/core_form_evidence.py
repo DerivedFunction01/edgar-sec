@@ -11,6 +11,7 @@ from edgar_sec.engine.tables.extraction.form_specs.core_form_specs import (
     CORE_FORM_SPECS,
 )
 from edgar_sec.engine.tables.numeric_cells import STRICT_NUMERIC_CELL_RE
+from edgar_sec.foundation.text.dashes import CELL_DASHES
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
@@ -22,7 +23,7 @@ from edgar_sec.foundation.text.date_patterns import (
 )
 from edgar_sec.foundation.text.patterns import FLOAT_SCALE_ALT, RE_WHITESPACE
 
-DASH_CELLS = {"—", "–", "-"}
+DASH_CELLS = CELL_DASHES
 LEVEL_RE = re.compile(r"level ([123])\b")
 USEFUL_LIFE_RE = re.compile(r"useful li(?:fe|ves)")
 NET_WORD_RE = re.compile(r"\bnet\b")

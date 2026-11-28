@@ -13,6 +13,7 @@ from edgar_sec.domain.world.currencies import (
     SUFFIX_SYMBOLS,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dashes import CELL_DASHES
 from edgar_sec.foundation.text.patterns import GROUPED_AMOUNT_CORE
 
 from .units import MEASUREMENT_UNITS
@@ -21,7 +22,7 @@ UNIT_SYMBOLS: set[str] = set()
 for _unit_data in MEASUREMENT_UNITS.values():
     UNIT_SYMBOLS.update(_unit_data.get("symbols", []))
 
-_EMPTY_NUMERIC_MARKERS = frozenset({"—", "-", "–"})
+_EMPTY_NUMERIC_MARKERS = CELL_DASHES
 FINANCIAL_PLACEHOLDERS = frozenset(
     {
         *(_EMPTY_NUMERIC_MARKERS | {"*"}),

@@ -5,6 +5,7 @@ predicates find the pure affix columns, and `numeric_cell_starts` works on rende
 
 from __future__ import annotations
 
+from edgar_sec.foundation.text.dashes import RANGE_DASHES
 from edgar_sec.foundation.text.patterns import RE_COLUMN_GAP, RE_DOT_LEADER
 
 from .numeric_cells import (
@@ -21,7 +22,7 @@ SUFFIX_TOKENS = frozenset(
     | CLOSING_DELIMITERS
 )
 PREFIX_TOKENS = frozenset({"("})
-RANGE_MARKERS = frozenset({"-", "–", "—", "−", "‒", "―", "to", "through", "thru"})
+RANGE_MARKERS = RANGE_DASHES | {"to", "through", "thru"}
 
 
 def is_prefix_token(value: str) -> bool:

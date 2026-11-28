@@ -18,6 +18,7 @@ from edgar_sec.engine.tables.extraction.note_separators.tax_reconciliation_separ
     TAX_RECONCILIATION_SEPARATOR_SPECS,
     TaxReconciliationSeparatorSpec,
 )
+from edgar_sec.foundation.text.dashes import CELL_DASHES
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 __all__ = [
@@ -31,7 +32,7 @@ __all__ = [
     "rate_core_present",
 ]
 
-_ZERO_TOKENS = {"", "—", "-", "*", "–"}
+_ZERO_TOKENS = CELL_DASHES | {"", "*"}
 _NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?$")
 _DIGITS_RE = re.compile(r"\d+")
 _NON_PHRASE_RE = re.compile(r"[^a-z# ]+")
