@@ -151,8 +151,7 @@ def _is_vocabulary_build(line: str) -> bool:
     if not _BUILD_VERB_RE.search(line):
         return False
     return any(
-        re.search(rf"\b{identifier}\b", line)
-        for identifier in _VOCABULARY_IDENTIFIERS
+        re.search(rf"\b{identifier}\b", line) for identifier in _VOCABULARY_IDENTIFIERS
     )
 
 
@@ -532,9 +531,7 @@ class _VocabularyTaint:
             self._tainted.add(assign.group(1))
         return found
 
-    def _compile_step(
-        self, path: str, number: int, line: str
-    ) -> ScannerFinding | None:
+    def _compile_step(self, path: str, number: int, line: str) -> ScannerFinding | None:
         if self._compile_depth == 0 and not _COMPILE_RE.search(line):
             return None
         if self._compile_depth == 0:
