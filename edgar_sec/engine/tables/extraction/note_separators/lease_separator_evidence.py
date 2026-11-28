@@ -15,7 +15,10 @@ from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import 
     norml,
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TOTAL_ROW_RE
-from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
+from edgar_sec.engine.tables.numeric_cells import (
+    LEASE_VALUE_POLICY,
+    parse_cell_value,
+)
 from edgar_sec.engine.tables.extraction.note_separators.lease_separator_specs import (
     LEASE_SEPARATOR_SPECS,
     LeaseSeparatorSpec,
@@ -192,7 +195,6 @@ PERIOD_STUB_RE = re.compile(
     re.IGNORECASE,
 )
 LEASE_NAMED_RE = re.compile(r"lease|rent", re.IGNORECASE)
-_NUMBER_RE = re.compile(r"^\(?\$?\s*-?" + NUMERIC_TOKEN_RE.pattern + r"\s*\)?%?$")
 DOMINANCE_LEASE_SHARE_MAX = 0.01
 DOMINANCE_FOREIGN_SHARE_MIN = 0.5
 
@@ -267,15 +269,7 @@ def transposed_period_axis(text: LeaseSeparatorText) -> bool:
 
 def _number_value(cell: str) -> float | None:
     """One grid cell's numeric value, or None when not numeric."""
-    c = cell.strip().replace("$", "").replace(",", "").replace("%", "")
-    if not c or not _NUMBER_RE.match(cell.strip()):
-        return None
-    negative = c.startswith("(") and c.endswith(")")
-    try:
-        value = float(c.strip("()"))
-    except ValueError:
-        return None
-    return -value if negative else value
+    return parse_cell_value(cell, LEASE_VALUE_POLICY).value
 
 
 def column_mass_shares(text: LeaseSeparatorText) -> tuple[float, float] | None:

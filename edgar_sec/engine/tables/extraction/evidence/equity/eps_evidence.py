@@ -14,7 +14,7 @@ from edgar_sec.engine.tables.extraction.specs.families.eps_specs import (
 )
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.text.dashes import is_blank_or_dash
+from edgar_sec.engine.tables.numeric_cells import EPS_VALUE_POLICY, parse_cell_value
 
 
 @dataclass(frozen=True, slots=True)
@@ -70,20 +70,8 @@ class EpsText:
 def _cell_value(cell: str) -> tuple[float | None, bool]:
     """(value, is_dash) for a numeric-position cell, else
     (None, False). Percent cells are not values here."""
-    s = (cell or "").strip()
-    if is_blank_or_dash(s):
-        return 0.0, True
-    if "%" in s:
-        return None, False
-    t = s.replace("$", "").replace(",", "").replace(" ", "")
-    neg = t.startswith("(") and t.endswith(")")
-    if neg:
-        t = t[1:-1]
-    try:
-        v = float(t)
-    except ValueError:
-        return None, False
-    return (-v if neg else v), False
+    parsed = parse_cell_value(cell, EPS_VALUE_POLICY)
+    return parsed.value, parsed.is_dash
 
 
 def _share_scale(v: float, floor: float) -> bool:

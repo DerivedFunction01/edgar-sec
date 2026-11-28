@@ -7,19 +7,16 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, GROUPED_INTEGER_FRAGMENT
-from edgar_sec.foundation.text.dashes import CELL_DASHES
+from edgar_sec.engine.tables.numeric_cells import (
+    DIGIT_RE,
+    ROLLFORWARD_VALUE_POLICY,
+    parse_cell_value,
+)
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 _YEAR_RE = YEAR_TOKEN_SEARCH_RE
 _NON_ALPHA_RE = re.compile(r"[^a-z# ]")
 _RATE_RE = re.compile(r"\brate\b")
-# _NUM_RE recomposed from the homed digit/comma fragment; the %? tail
-# is dead on the call path (_cell_value rstrips "%" first), so the
-# verdicts match _NUM_RE exactly, leading-minus rejection included.
-_ROLLFORWARD_NUM_RE = re.compile(rf"^\(?\$?{GROUPED_INTEGER_FRAGMENT}(?:\.\d+)?\)?$")
-# No-value cell tokens: the homed cell dashes plus the star marker.
-_NO_VALUE_TOKENS = CELL_DASHES | {"*"}
 # Word lists ported verbatim from the priced g1 instrument.
 _ANCHOR_WORDS = (
     "balance",
@@ -114,19 +111,7 @@ def _norm_phrase(text: str) -> str:
 
 
 def _cell_value(cell: str) -> float | None:
-    token = cell.strip()
-    if not token or token in _NO_VALUE_TOKENS:
-        return None
-    core = token.rstrip("%").strip()
-    if not _ROLLFORWARD_NUM_RE.match(core):
-        return None
-    negative = core.startswith("(") and core.endswith(")")
-    token = core.strip("()$").replace(",", "")
-    try:
-        value = float(token)
-    except ValueError:
-        return None
-    return -value if negative else value
+    return parse_cell_value(cell, ROLLFORWARD_VALUE_POLICY).value
 
 
 def grid_features(text: RollforwardGridText) -> RollforwardGridFeatures:
