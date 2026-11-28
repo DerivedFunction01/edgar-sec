@@ -23,7 +23,7 @@ from edgar_sec.foundation.text.date_patterns import (
     ISO_DATE_RE,
     MONTH_SUFFIX_RE,
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
+    FULL_DATE_ANY_RE,
 )
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
@@ -52,7 +52,7 @@ def extract_signature_candidate(sig_text: str) -> tuple[str | None, str | None]:
     def _first_date(text: str) -> str | None:
         unruled = SIG_RULE_RUN_RE.sub(" ", text)
         found = (
-            RE_FULL_DATE.search(unruled)
+            FULL_DATE_ANY_RE.search(unruled)
             or NUMERIC_DATE_RE.search(unruled)
             or ISO_DATE_RE.search(unruled)
         )
