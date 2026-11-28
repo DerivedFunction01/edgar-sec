@@ -331,6 +331,22 @@ RECOGNIZER_FAMILIES: tuple[dict, ...] = (
         "shape_hint": "",
     },
     {
+        "family": "table-tokens",
+        "home": "edgar_sec/engine/tables/tokens.py",
+        "names": (
+            "CLOSING_DELIMITERS",
+            "PREFIX_TOKENS",
+            "RANGE_MARKERS",
+            "SUFFIX_TOKENS",
+            "is_prefix_token",
+            "is_range_marker",
+            "is_suffix_token",
+            "numeric_cell_starts",
+        ),
+        "shapes": (),
+        "shape_hint": "",
+    },
+    {
         "family": "metadata-paths",
         "home": "edgar_sec/pipelines/metadata_sync/paths.py",
         "names": ("CIK_MEMBER_RE",),

@@ -21,6 +21,7 @@ _UNIT_MONTHS = {
     "quarter": 3,
     "quarters": 3,
 }
+_YEAR_UNITS = frozenset(name for name, months in _UNIT_MONTHS.items() if months == 12)
 _WINDOW_LEADS = ("within", "in", "due", "less", "next")
 _BUCKET_BLOCKERS = ("within", "next", "less")
 
@@ -63,7 +64,7 @@ def extract_temporal(
             return TemporalInterval(min(m1, m2), max(m1, m2), RANGE)
     for idx, value in sorted(ordinal_values.items()):
         if any(
-            0 <= j < len(tokens) and lower[j] in ("year", "years")
+            0 <= j < len(tokens) and lower[j] in _YEAR_UNITS
             for j in (idx - 1, idx + 1)
         ):
             return TemporalInterval((value - 1) * 12, value * 12, BUCKET)
