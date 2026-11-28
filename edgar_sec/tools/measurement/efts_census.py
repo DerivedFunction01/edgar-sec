@@ -256,7 +256,7 @@ def count_tables(raw: str) -> int:
     for pattern in RAW_END_RES:
         match = pattern.search(rawl, start + 10)
         if match:
-            mend = start + 10 + match.start()
+            mend = match.start()
             break
     span = rawl[start : mend if mend else start + SPAN_CAP_CHARS]
     return span.count("<table")
