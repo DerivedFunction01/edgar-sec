@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
     STRICT_MONTH_PATTERN,
@@ -41,6 +43,59 @@ _DATE_ONLY_RE = re.compile(
     re.IGNORECASE,
 )
 
+_TEXT_INDEX = TermIndex(
+    [TermEntry(name, "month") for name in MONTH_NAMES]
+    + [
+        TermEntry("balance", "balance"),
+        TermEntry("beginning", "beginning"),
+        TermEntry("end of", "end_of"),
+    ]
+    + [
+        TermEntry(phrase, "period")
+        for phrase in (
+            "beginning of period",
+            "end of period",
+            "beginning of year",
+            "end of year",
+        )
+    ]
+)
+
+_SEP = "\x00"
+
+
+@lru_cache(maxsize=None)
+def _spec_index(spec) -> TermIndex:
+    """The spec's keyed entries on the term-index home: exact
+    kinds fold the key separator in, prefix kinds lead with it."""
+    entries: list[TermEntry] = []
+
+    def exact(terms, kind):
+        entries.extend(TermEntry(f"{_SEP}{t}{_SEP}", kind, value=t) for t in terms)
+
+    def prefix(terms, kind):
+        entries.extend(TermEntry(f"{_SEP}{t}", kind, value=t) for t in terms)
+
+    exact(spec.stub_keys, "stub_key")
+    exact(spec.header_tokens, "header_token")
+    exact(spec.flow_stub_keys, "flow_key")
+    exact(spec.core_vocab, "core_vocab")
+    prefix(spec.component_keys, "component_key")
+    exact(spec.component_header_tokens, "component_header")
+    prefix((spec.flow_prefix,), "flow_prefix")
+    exact(("total",), "total_key")
+    return TermIndex(entries)
+
+
+def _key_scans(spec, stub_keys, header_keys_):
+    """One index pass per key surface: kind -> terms present."""
+    index = _spec_index(spec)
+    stub_surface = _SEP + _SEP.join(sorted(stub_keys)) + _SEP if stub_keys else ""
+    header_surface = (
+        _SEP + _SEP.join(sorted(header_keys_)) + _SEP if header_keys_ else ""
+    )
+    return index.scan(stub_surface), index.scan(header_surface)
+
 
 def _dated_balance_count(raw_stubs) -> int:
     """Stub rows naming a balance together with a date."""
@@ -52,7 +107,7 @@ def _dated_balance_count(raw_stubs) -> int:
             continue
         if "balance" not in lowered and "net assets" not in lowered:
             continue
-        if _YEAR_RE.search(lowered) or any(name in lowered for name in MONTH_NAMES):
+        if _YEAR_RE.search(lowered) or "month" in _TEXT_INDEX.scan(lowered):
             count += 1
     return count
 
@@ -60,15 +115,10 @@ def _dated_balance_count(raw_stubs) -> int:
 def _has_period_bookend(raw_stubs) -> bool:
     """Stub rows that bookend a period, balance-named or not."""
     for stub in raw_stubs:
-        lowered = (stub or "").lower()
-        if "balance" in lowered and ("beginning" in lowered or "end of" in lowered):
+        found = _TEXT_INDEX.scan((stub or "").lower())
+        if "period" in found:
             return True
-        if (
-            "beginning of period" in lowered
-            or "end of period" in lowered
-            or "beginning of year" in lowered
-            or "end of year" in lowered
-        ):
+        if "balance" in found and ("beginning" in found or "end_of" in found):
             return True
     return False
 
@@ -82,13 +132,8 @@ def _carries_period_date(texts) -> bool:
 def _carries_component_keys(stub_keys, header_keys_, spec) -> bool:
     """A non-OCI equity component term on the surface: a
     component stub key, or a component header token."""
-    if any(
-        key.startswith(component)
-        for key in stub_keys
-        for component in spec.component_keys
-    ):
-        return True
-    return bool(header_keys_.intersection(spec.component_header_tokens))
+    stub_scan, header_scan = _key_scans(spec, stub_keys, header_keys_)
+    return "component_key" in stub_scan or "component_header" in header_scan
 
 
 def _carries_component(text, spec) -> bool:
@@ -164,13 +209,14 @@ def evaluate_equity_separator(
         legs.append(f"span_ge_{spec.span_years_min}")
     if text.dated_balance_rows == 0:
         legs.append("core_gate")
-    if not _carries_component(text, spec):
+    stub_scan, header_scan = _key_scans(spec, text.stub_keys, text.header_keys)
+    if "component_key" not in stub_scan and "component_header" not in header_scan:
         legs.append("component_gate")
     for key in spec.stub_keys:
-        if key in text.stub_keys:
+        if key in stub_scan.get("stub_key", ()):
             legs.append(f"stub:{key}")
     for token in spec.header_tokens:
-        if token in text.header_keys:
+        if token in header_scan.get("header_token", ()):
             legs.append(f"hdr:{token}")
     fired = bool(legs)
     detail = (
@@ -207,14 +253,13 @@ def _candidate_features(dated_balance_rows, stub_keys, header_keys, row_count, s
         supporting = 1
     else:
         supporting = 0
-    flow = bool(stub_keys.intersection(spec.flow_stub_keys)) or any(
-        key.startswith(spec.flow_prefix) for key in stub_keys
-    )
+    stub_scan, header_scan = _key_scans(spec, stub_keys, header_keys)
+    flow = bool(stub_scan.get("flow_key")) or "flow_prefix" in stub_scan
     if flow:
         supporting += 1
-    if "total" in header_keys:
+    if "total_key" in header_scan:
         supporting += 1
-    supporting += sum(1 for term in spec.core_vocab if term in stub_keys)
+    supporting += len(stub_scan.get("core_vocab", ()))
     return EquityCandidateFeatures(dated_balance_rows, supporting, row_count)
 
 

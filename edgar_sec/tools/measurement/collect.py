@@ -41,9 +41,9 @@ SWEEP_SEED = CONFIG["sweep_seed"]
 PREFIX = CONFIG["prefix"]
 
 
-def geometry_text(g: dict) -> GeometryText:
+def geometry_text(g: dict, filing_year: int | None = None) -> GeometryText:
     """One fixture geometry's channel text, mirroring the TypedTable seam."""
-    return geometry_text_from_table(structure_table(_context(g)))
+    return geometry_text_from_table(structure_table(_context(g, filing_year)))
 
 
 def packet(accession: str, g: dict) -> dict:
@@ -62,7 +62,7 @@ def packet(accession: str, g: dict) -> dict:
     }
 
 
-def _context(record: dict) -> TableContext:
+def _context(record: dict, filing_year: int | None = None) -> TableContext:
     grid = ResolvedGrid(
         rows=tuple(tuple(str(c) for c in row) for row in record.get("rows") or ()),
         column_alignments=(),
@@ -77,15 +77,17 @@ def _context(record: dict) -> TableContext:
             confidence=record.get("confidence", 1.0),
         ),
     )
-    return TableContext.from_record(geometry, record)
+    return TableContext.from_record(geometry, {**record, "filing_year": filing_year})
 
 
 def run_filing(path: Path) -> tuple[list, list, list, list, dict]:
     """Returns, assignments, toc reads and packets for one fixture."""
     doc = json.loads(path.read_text(encoding="utf-8"))
     accession = doc["accession"]
+    filing_date = doc.get("filing_date") or ""
+    filing_year = int(filing_date[:4]) if filing_date else None
     geoms = sorted(doc.get("geometries") or [], key=lambda g: g.get("table_index") or 0)
-    texts = [geometry_text(g) for g in geoms]
+    texts = [geometry_text(g, filing_year) for g in geoms]
     results = compete_filing(texts, scopes=section_scopes())
     returns: list[dict] = []
     packets: dict[str, dict] = {}
@@ -108,7 +110,7 @@ def run_filing(path: Path) -> tuple[list, list, list, list, dict]:
                 }
             )
         packets[specimen] = packet(accession, g)
-    contexts = [_context(g) for g in geoms]
+    contexts = [_context(g, filing_year) for g in geoms]
     assembly = assemble(contexts)
     assignments: list[dict] = []
     for a in assembly.assignments:

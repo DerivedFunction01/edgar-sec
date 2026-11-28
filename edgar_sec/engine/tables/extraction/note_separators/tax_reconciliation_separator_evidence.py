@@ -10,6 +10,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.forms.common.values.numbers import SCHEMA_PERCENT_RE
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
@@ -31,6 +32,16 @@ __all__ = [
     "norm_phrase",
     "rate_core_present",
 ]
+
+_MOVE_INDEX = TermIndex([TermEntry(word, "move") for word in MOVE_WORDS])
+_ANCHOR_INDEX = TermIndex(
+    [
+        TermEntry("statutory", "anchor_a"),
+        TermEntry("effective", "anchor_a"),
+        TermEntry("rate", "anchor_b"),
+        TermEntry("tax", "anchor_b"),
+    ]
+)
 
 _ZERO_TOKENS = CELL_DASHES | {"", "*"}
 _NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?$")
@@ -107,7 +118,7 @@ def movement_nonzero(text: TaxReconciliationSeparatorText) -> int:
     count = 0
     for cells in text.rows:
         joined = " ".join(cells).lower()
-        if not any(word in joined for word in MOVE_WORDS):
+        if "move" not in _MOVE_INDEX.scan(joined):
             continue
         for cell in cells:
             is_num, val = _cell_value(cell)
@@ -120,7 +131,7 @@ def rate_core_present(text: TaxReconciliationSeparatorText) -> bool:
     """The determined rate core: a statutory/effective anchor stub
     naming a rate or tax, plus at least one percentage-bearing row."""
     anchor = any(
-        ("statutory" in ph or "effective" in ph) and ("rate" in ph or "tax" in ph)
+        {"anchor_a", "anchor_b"} <= set(_ANCHOR_INDEX.scan(ph))
         for ph in text.stub_phrases
     )
     rate_rows = sum(1 for cells in text.rows if "%" in " ".join(cells))

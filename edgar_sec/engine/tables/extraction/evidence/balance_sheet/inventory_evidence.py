@@ -6,7 +6,9 @@ finished-goods stub vocabulary (the Ruling 18 priced form).
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.specs.families.inventory_specs import (
     INVENTORY_EVIDENCE_SPECS_BY_TEST_ID,
@@ -52,19 +54,29 @@ class InventoryLegs:
         return self.core or self.finished
 
 
+@lru_cache(maxsize=None)
+def _spec_index(spec: InventoryEvidenceSpec) -> TermIndex:
+    """One index over the seat spec's term lists by role.
+    Every entry phrase-kind — the standing scans are substring."""
+    entries = [TermEntry(term, "class") for term in spec.class_terms]
+    entries += [TermEntry(term, "total") for term in spec.total_terms]
+    entries.append(TermEntry(spec.finished_term, "finished"))
+    return TermIndex(entries)
+
+
 def legs_for(text: InventoryText, spec: InventoryEvidenceSpec) -> InventoryLegs:
     """Every leg of the priced rule over one geometry's stubs."""
-    class_rows = sum(
-        1 for stub in text.stubs if any(term in stub for term in spec.class_terms)
-    )
+    index = _spec_index(spec)
+    class_rows = sum(1 for stub in text.stubs if "class" in index.scan(stub))
     classes2 = class_rows >= spec.min_class_rows
-    total_line = any(term in text.stub_text for term in spec.total_terms)
+    stub_kinds = set(index.scan(text.stub_text))
+    total_line = "total" in stub_kinds
     return InventoryLegs(
         class_rows=class_rows,
         classes2=classes2,
         total_line=total_line,
         core=classes2 and total_line,
-        finished=spec.finished_term in text.stub_text,
+        finished="finished" in stub_kinds,
     )
 
 

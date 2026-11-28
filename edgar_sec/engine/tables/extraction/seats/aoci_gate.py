@@ -15,6 +15,11 @@ from edgar_sec.engine.tables.extraction.form_specs.aoci_claim_shape_specs import
 from edgar_sec.engine.tables.extraction.form_specs.form_test_specs import (
     form_test_specs_for,
 )
+from edgar_sec.engine.tables.extraction.core.term_index import (
+    TermEntry,
+    TermIndex,
+    term_present,
+)
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.foundation.text.date_patterns import FULL_DATE_STUB_RE
 
@@ -63,21 +68,33 @@ _STATEMENT_SECTION_TERMS = (
     "financing activities",
 )
 
+_GATE_INDEX = TermIndex(
+    [TermEntry(name, "month") for name in _MONTHS]
+    + [TermEntry(term, "equity_account") for term in _EQUITY_ACCOUNT_TERMS]
+    + [TermEntry(term, "statement_section") for term in _STATEMENT_SECTION_TERMS]
+    + [
+        TermEntry(term, "movement")
+        for term in ("reclassif", "other comprehensive", "unrealized")
+    ]
+    + [TermEntry(term, "component") for term in AOCI_CLAIM_SHAPE_SPEC.component_terms]
+    + [
+        TermEntry("balance", "balance"),
+        TermEntry("purchases", "purchases"),
+        TermEntry("sales", "sales"),
+    ]
+)
+
 
 def _dated_balance(text: str) -> bool:
     """A balance stub or header carrying a month name."""
-    return text.startswith(("balance", "beginning balance", "ending balance")) and any(
-        m in text for m in _MONTHS
-    )
+    return text.startswith(
+        ("balance", "beginning balance", "ending balance")
+    ) and "month" in _GATE_INDEX.scan(text)
 
 
 def _movement_stubs(stubs: list[str]) -> int:
     """Stub lines carrying OCI movement vocabulary."""
-    return sum(
-        1
-        for stub in stubs
-        if "reclassif" in stub or "other comprehensive" in stub or "unrealized" in stub
-    )
+    return sum(1 for stub in stubs if "movement" in _GATE_INDEX.scan(stub))
 
 
 def rollforward_evidence(score) -> bool:
@@ -102,10 +119,14 @@ def claim_shape(geometry) -> tuple[bool, bool]:
         ),
         None,
     )
-    anchored = walk_spec is not None and (
-        any(term in stub for stub in stubs for term in walk_spec.beginning)
-        and any(term in stub for stub in stubs for term in walk_spec.ending)
-    )
+    anchored = False
+    if walk_spec is not None:
+        walk_index = TermIndex(
+            [TermEntry(term, "begin") for term in walk_spec.beginning]
+            + [TermEntry(term, "end") for term in walk_spec.ending]
+        )
+        walk_found = walk_index.scan(" ".join(stubs))
+        anchored = "begin" in walk_found and "end" in walk_found
     dated = sum(
         1
         for stub in stubs
@@ -122,7 +143,7 @@ def claim_shape(geometry) -> tuple[bool, bool]:
     walk = (
         anchored
         or dated >= 2
-        or (aoci_dated >= 1 and any("balance" in stub for stub in stubs))
+        or (aoci_dated >= 1 and "balance" in _GATE_INDEX.scan(" ".join(stubs)))
         or (
             "balance at beginning of period" in stubs
             and any(
@@ -141,10 +162,10 @@ def claim_shape(geometry) -> tuple[bool, bool]:
     )
     spec = AOCI_CLAIM_SHAPE_SPEC
     grid = geometry.grid_text + " " + " ".join(geometry.headers)
-    components = sum(1 for term in spec.component_terms if term in grid)
+    components = len(_GATE_INDEX.scan(grid).get("component", ()))
     subject = (
-        spec.subject_phrase in geometry.stub_text
-        or spec.lead_phrase in geometry.lead
+        term_present(spec.subject_phrase, geometry.stub_text)
+        or term_present(spec.lead_phrase, geometry.lead)
         or components >= spec.min_components
     )
     return walk, subject
@@ -169,16 +190,14 @@ def component_grid(geometry) -> bool:
     # section lines), statement section lines, and the
     # purchases/sales pair of a fair-value walk.
     header_text = " ".join(normalize_text(header) for header in geometry.headers)
-    if any(term in header_text for term in _EQUITY_ACCOUNT_TERMS):
+    if "equity_account" in _GATE_INDEX.scan(header_text):
         return False
-    if any(term in stub for stub in stubs for term in _EQUITY_ACCOUNT_TERMS):
+    stub_found = _GATE_INDEX.scan(" ".join(stubs))
+    if "equity_account" in stub_found:
         return False
-    if any(term in stub for stub in stubs for term in _STATEMENT_SECTION_TERMS):
+    if "statement_section" in stub_found:
         return False
-    return not (
-        any("purchases" in stub for stub in stubs)
-        and any("sales" in stub for stub in stubs)
-    )
+    return not ("purchases" in stub_found and "sales" in stub_found)
 
 
 def aoci_gate_detail(claims: list[str], scores, geometry) -> str | None:

@@ -6,7 +6,9 @@ ladder form under the prose-class guard.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.specs.families.lease_specs import (
     LEASE_EVIDENCE_SPECS_BY_TEST_ID,
@@ -93,19 +95,35 @@ class LeaseLegs:
         return self.winner or self.named_class
 
 
+@lru_cache(maxsize=None)
+def _spec_index(spec: LeaseEvidenceSpec) -> TermIndex:
+    """One index over the seat spec's term lists by role.
+    Every entry phrase-kind — the standing scans are substring."""
+    entries = []
+    for kind, terms in (
+        ("total", spec.total_terms),
+        ("pv", spec.pv_terms),
+        ("class", spec.class_terms),
+    ):
+        entries += [TermEntry(term, kind) for term in terms]
+    return TermIndex(entries)
+
+
 def legs_for(text: LeaseText, spec: LeaseEvidenceSpec) -> LeaseLegs:
     """Every leg of the priced rule over one geometry's text."""
     years = text.year_labels
     ladder2 = years >= spec.named_min_year_labels
     ladder3 = years >= spec.core_min_year_labels
     ta_row = any(s.startswith(spec.thereafter_prefix) for s in text.stub_low)
-    total_pay = any(term in text.stub_text for term in spec.total_terms)
-    pv_leg = any(term in text.stub_text for term in spec.pv_terms)
+    index = _spec_index(spec)
+    stub_kinds = set(index.scan(text.stub_text))
+    total_pay = "total" in stub_kinds
+    pv_leg = "pv" in stub_kinds
     core = ladder3 and total_pay
     cap_n = text.caption.replace("-", " ")
     lead_n = text.lead.replace("-", " ")
-    prose_class_cap = any(term in cap_n for term in spec.class_terms)
-    prose_class_lead = any(term in lead_n for term in spec.class_terms)
+    prose_class_cap = "class" in index.scan(cap_n)
+    prose_class_lead = "class" in index.scan(lead_n)
     prose_class = prose_class_cap or prose_class_lead
     named = ladder2 and ta_row
     return LeaseLegs(

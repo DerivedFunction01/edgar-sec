@@ -8,8 +8,10 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import TYPE_CHECKING
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.specs.families.deferred_tax_specs import (
     A4_STUB_TERMS,
     A5_STUB_TERM,
@@ -66,8 +68,26 @@ def text_from_table(table: TypedTable) -> DeferredTaxText:
     )
 
 
+@lru_cache(maxsize=None)
+def _terms_index(terms: tuple[str, ...]) -> TermIndex:
+    """One phrase-kind index per term tuple, substring mode."""
+    return TermIndex([TermEntry(term, "hit") for term in terms])
+
+
 def _has(text: str, terms: tuple[str, ...]) -> bool:
-    return any(term in text for term in terms)
+    return "hit" in _terms_index(terms).scan(text)
+
+
+@lru_cache(maxsize=None)
+def _terms_index_valued(terms: tuple[str, ...]) -> TermIndex:
+    """The valued form: reported values are the terms."""
+    return TermIndex([TermEntry(term, "hit", value=term) for term in terms])
+
+
+def _has_all(text: str, terms: tuple[str, ...]) -> bool:
+    return set(terms) <= set(
+        _terms_index_valued(terms).scan(text).get("hit", frozenset())
+    )
 
 
 def legs_for(text: DeferredTaxText) -> dict[str, bool]:
@@ -83,7 +103,7 @@ def legs_for(text: DeferredTaxText) -> dict[str, bool]:
     legs["A0_core"] = legs["two_sided"] and (legs["val_allow"] or legs["net_line"])
     legs["total_either"] = _has(st, TOTAL_TERMS)
     legs["closing"] = legs["val_allow"] or legs["net_line"] or legs["total_either"]
-    components = sum(1 for s in stub if s and not any(m in s for m in MARKERS))
+    components = sum(1 for s in stub if s and not _has(s, MARKERS))
     legs["components2"] = components >= 2
     legs["temp_diff"] = _has(st, TEMP_DIFF_TERMS)
     legs["hdr_dt"] = _has(text.header_text, HEADER_TERMS)
@@ -93,8 +113,8 @@ def legs_for(text: DeferredTaxText) -> dict[str, bool]:
         (legs["dta"] or legs["dtl"]) and legs["components2"] and legs["closing"]
     )
     legs["A3"] = legs["temp_diff"] and legs["net_line"]
-    walk = sum(1 for s in stub if any(term in s for term in WALK_ROW_TERMS))
-    legs["A4"] = walk >= 2 and all(term in st for term in A4_STUB_TERMS)
+    walk = sum(1 for s in stub if _has(s, WALK_ROW_TERMS))
+    legs["A4"] = walk >= 2 and _has_all(st, A4_STUB_TERMS)
     legs["A5"] = legs["val_allow"] and _has(st, PERIOD_TERMS) and A5_STUB_TERM in st
     legs["unstubbed_total"] = any(
         (not (row[0] if row else ""))

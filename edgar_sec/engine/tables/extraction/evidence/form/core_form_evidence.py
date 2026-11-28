@@ -15,7 +15,7 @@ from edgar_sec.foundation.text.dashes import CELL_DASHES
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
+    FULL_DATE_ANY_RE,
     STRICT_MONTH_PATTERN,
     YEAR_TOKEN_PATTERN,
     YEAR_TOKEN_RE,
@@ -44,7 +44,7 @@ DATE_RES = (
 )
 FULLDATE_RES = (
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
+    FULL_DATE_ANY_RE,
     re.compile(r"\b\d{1,2}\s+(?:%s)\s+(?:%s)\b" % (MONTH_PATTERN, YEAR_TOKEN_PATTERN)),
 )
 LETTER_RE = re.compile(r"[a-z]")

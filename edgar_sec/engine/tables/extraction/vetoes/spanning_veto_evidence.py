@@ -18,9 +18,11 @@ from edgar_sec.engine.tables.extraction.seats.primary_gate import (
 from edgar_sec.engine.tables.extraction.vetoes.spanning_veto_specs import (
     BS_FAMILY,
     BS_FILING_RELATIVE_FLOOR,
+    CF_CONTEXT_SHARE_CEILING,
     CF_DOMINANCE_RATIO,
     CF_FAMILY,
     LEG_BS_FILING_RELATIVE,
+    LEG_CF_CONTEXT,
     LEG_CF_DOMINANCE,
     LEG_CF_SIGNATURE,
 )
@@ -40,6 +42,15 @@ def _cf_dominance_fires(result) -> bool:
         default=0.0,
     )
     return own.total < CF_DOMINANCE_RATIO * best_rival
+
+
+def _cf_context_fires(result) -> bool:
+    """Inherited context carries over half the claim's score."""
+    own = result.scores.get(CF_FAMILY)
+    if own is None or own.total <= 0.0:
+        return False
+    share = own.by_channel.get("notehead", 0.0) / own.total
+    return share > CF_CONTEXT_SHARE_CEILING
 
 
 def _cf_signature_fires(geometry) -> bool:
@@ -108,6 +119,8 @@ def _fired_legs(geometries, results, index, filing_top, clusters):
             # signature leg alone; a dominance firing stands.
             if dominance_fired or not cash_flow_fragment_identity(geometries[index]):
                 legs.append((CF_FAMILY, LEG_CF_SIGNATURE))
+        if _cf_context_fires(result):
+            legs.append((CF_FAMILY, LEG_CF_CONTEXT))
     if (
         BS_FAMILY in result.claims
         and not _bs_carries_closing_total(geometries[index])

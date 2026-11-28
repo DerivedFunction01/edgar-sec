@@ -21,7 +21,7 @@ from edgar_sec.engine.forms.analysis import (
 )
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import FULL_DATE_ANY_RE
 
 _BANNER_PHRASES = (
     "as confidentially submitted",
@@ -120,7 +120,7 @@ def _letter_metadata(lines: list[str], text: str) -> dict[str, Any]:
         registrant = _STATEMENT_PHRASE_RE.sub("", registrant).strip(" -–—,")
         registrant = registrant or None
     firm = _FIRM_RE.search(head_text)
-    date = RE_FULL_DATE.search(head_text)
+    date = FULL_DATE_ANY_RE.search(head_text)
     return {
         "re_subject": re_subject,
         "registrant": registrant,

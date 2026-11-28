@@ -9,6 +9,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
     norml,
@@ -48,6 +49,8 @@ __all__ = [
 
 DEBT_LADDER_TEST_ID = "debt_maturity_year_ladder"
 DEBT_ADMISSION_TEST_ID = "debt_maturity_j1_admission"
+_THEREAFTER_INDEX = TermIndex([TermEntry("thereafter", "hit")])
+
 _SUBJECT_RES = {
     leg.leg_id: re.compile(leg.pattern)
     for spec in LEASE_SEPARATOR_SPECS.values()
@@ -254,7 +257,7 @@ def transposed_period_axis(text: LeaseSeparatorText) -> bool:
     a thereafter header over at least two distinct header years,
     over lease-named stubs (comparative-year columns excluded)."""
     zone = [cell for row in text.rows[:3] for cell in row[1:] if cell.strip()]
-    if not any("thereafter" in norml(c) for c in zone):
+    if not any("hit" in _THEREAFTER_INDEX.scan(norml(c)) for c in zone):
         return False
     years = set(YEAR_TOKEN_SEARCH_RE.findall(" ".join(zone)))
     if len(years) < 2:

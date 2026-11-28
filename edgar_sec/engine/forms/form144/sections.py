@@ -46,7 +46,7 @@ from edgar_sec.engine.tables.ascii_html.model.model import (
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import Token, tokenize
-from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, FULL_DATE_ANY_RE
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
@@ -368,7 +368,7 @@ def _is_box3_data_row(row: tuple[str, ...], reference_year: int | None = None) -
     has_date = bool(
         parse_date(row_text, reference_year=reference_year)
         or NUMERIC_DATE_RE.search(row_text)
-        or RE_FULL_DATE.search(row_text)
+        or FULL_DATE_ANY_RE.search(row_text)
     )
     num_count = sum(bool(NUMERIC_TOKEN_RE.search(c)) for c in row if c.strip())
     return has_market and has_date and num_count >= 2

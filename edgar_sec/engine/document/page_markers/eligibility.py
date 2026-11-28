@@ -11,7 +11,7 @@ from .content_lines import is_content_line, is_date_line
 from .observations import _ALPHA_WORD_RE, _STANDALONE_TAG_RE, is_table_tag
 from edgar_sec.engine.tables.toc.patterns import ITEM_HEADING_CORE, RE_NOTE_CAPTION
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, FULL_DATE_ANY_RE
 from edgar_sec.foundation.text.patterns import is_separator_line
 
 _ITEM_HEADING_ALT = build_alternation(
@@ -52,7 +52,7 @@ def _is_dated_title_line(stripped: str) -> bool:
     """Return whether the line is a title carrying a full date, not a date line.
     The shape is a title-case title, a dash, and a full date at the line's end ("... Prospectus – April 27, 2015"); a period banner ("FOR THE YEAR END DECEMBER 31, 2025") has no dash and stays furniture.
     """
-    match = RE_FULL_DATE.search(stripped)
+    match = FULL_DATE_ANY_RE.search(stripped)
     if match is None or stripped[match.end() :].strip(" ,"):
         return False
     head = stripped[: match.start()].rstrip()

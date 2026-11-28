@@ -40,6 +40,11 @@ under `configs/`; a driver run is:
   (specimens, adjudicated bases, rule specs as data) priced into
   cells — claims, kills, touches, and combination cells in the
   necessary, kill, and selection forms (argv: packet, out).
+- `efts_census` — the paced EFTS census form: year-sharded phrase
+  totals and pools, a first/middle/last sample per year, and a paced
+  specimen leg (cooldown, block probe, size-scored single fetch)
+  classifying each sampled section (phrase, forms, years, and all
+  pacing values in config).
 
 Proof of the move: re-running `merge` and `reread_score` from this
 package over the sealed Step 6 workspace reproduces its recorded

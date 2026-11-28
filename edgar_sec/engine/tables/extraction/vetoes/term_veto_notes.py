@@ -206,6 +206,15 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "total",
         ),
     ),
+    # Subject-core bar (item-9 narrower form): a reconciliation OF
+    # the deferred tax asset is a deferred-tax table, not an income
+    # tax reconciliation; body must record before the lead spec.
+    (
+        "tax_reconciliation",
+        "body",
+        "hard",
+        ("reconciliation of deferred tax asset",),
+    ),
     (
         "tax_reconciliation",
         "lead",
@@ -283,7 +292,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "revenues",
             "gross profit",
             "net sales",
-            "three months ended march",
         ),
     ),
     (

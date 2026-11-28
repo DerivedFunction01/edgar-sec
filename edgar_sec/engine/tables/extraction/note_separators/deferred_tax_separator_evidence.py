@@ -7,7 +7,9 @@ core is absent and a shares stub or a geography stub holds.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.evidence.form.core_form_evidence import (
     failing_core_form_outcome as fired_separator_outcome,
 )
@@ -77,16 +79,35 @@ def shares_stub(text: DeferredTaxSeparatorText, spec: DeferredTaxSeparatorSpec) 
     """Any row stub naming shares (the ESOP-table content leg)."""
     for cells in text.rows:
         first = next((c for c in cells if c), "")
-        if spec.shares_token in first.lower():
+        if "shares" in _spec_index(spec).scan(first.lower()):
             return True
     return False
 
 
+@lru_cache(maxsize=None)
+def _spec_index(spec: DeferredTaxSeparatorSpec) -> TermIndex:
+    """The separator spec's tokens as one index, substring
+    mode: the shares token and the geography tokens."""
+    entries = [TermEntry(spec.shares_token, "shares")]
+    entries += [TermEntry(token, "geo") for token in spec.geo_tokens]
+    return TermIndex(entries)
+
+
+_CORE_INDEX = TermIndex(
+    [
+        TermEntry("deferred tax", "subject"),
+        TermEntry("deferred income tax", "subject"),
+        TermEntry("deferred tax asset", "dta"),
+        TermEntry("deferred tax liabilit", "dtl"),
+        TermEntry("net deferred", "net"),
+    ]
+)
+
+
 def geo_stub(text: DeferredTaxSeparatorText, spec: DeferredTaxSeparatorSpec) -> bool:
     """Any stub phrase naming a geography (the by-geography leg)."""
-    return any(
-        token in phrase for phrase in text.stub_phrases for token in spec.geo_tokens
-    )
+    index = _spec_index(spec)
+    return any("geo" in index.scan(phrase) for phrase in text.stub_phrases)
 
 
 def deferred_core_present(text: DeferredTaxSeparatorText) -> bool:
@@ -94,10 +115,10 @@ def deferred_core_present(text: DeferredTaxSeparatorText) -> bool:
     plus grid, a deferred-tax-asset or net leg, and a liability or
     net leg, read over the normalized stub phrases."""
     joined_all = (" ".join(text.caption_stack) + " " + text.table_text).lower()
-    subject = "deferred tax" in joined_all or "deferred income tax" in joined_all
-    dta_total = any("deferred tax asset" in ph for ph in text.stub_phrases)
-    dtl_total = any("deferred tax liabilit" in ph for ph in text.stub_phrases)
-    dt_net = any("net deferred" in ph for ph in text.stub_phrases)
+    subject = "subject" in _CORE_INDEX.scan(joined_all)
+    dta_total = any("dta" in _CORE_INDEX.scan(ph) for ph in text.stub_phrases)
+    dtl_total = any("dtl" in _CORE_INDEX.scan(ph) for ph in text.stub_phrases)
+    dt_net = any("net" in _CORE_INDEX.scan(ph) for ph in text.stub_phrases)
     return bool(subject and (dta_total or dt_net) and (dtl_total or dt_net))
 
 

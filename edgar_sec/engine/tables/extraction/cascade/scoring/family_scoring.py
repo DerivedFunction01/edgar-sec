@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
+
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.core.prose_patterns import PROSE_PATTERNS
 from edgar_sec.engine.tables.extraction.core.term_patterns import PATTERNS
 from edgar_sec.engine.tables.extraction.core.subjects.classification import Evidence
@@ -88,6 +91,18 @@ def prose_ngrams(text: str) -> set[str]:
     return grams
 
 
+@lru_cache(maxsize=None)
+def _note_title_index() -> TermIndex:
+    """The note-title specs as one phrase-kind index, valued
+    by registry position; the pass replays in registry order."""
+    return TermIndex(
+        [
+            TermEntry(spec.phrase, "note", value=position)
+            for position, spec in enumerate(NOTE_TITLE_SPECS)
+        ]
+    )
+
+
 def score_family(
     family: str,
     labels: list[str],
@@ -167,10 +182,11 @@ def score_family(
     if note is not None and note.title:
         title = normalize_text(note.title)
         note_hits = 0
-        for spec in NOTE_TITLE_SPECS:
+        title_hits = _note_title_index().scan(title).get("note", frozenset())
+        for position, spec in enumerate(NOTE_TITLE_SPECS):
             if spec.family != family or note_hits >= NOTE_GROUP_QUOTA:
                 continue
-            if spec.phrase in title:
+            if position in title_hits:
                 if family in CONTENT_GATED_FAMILIES and not corroborates(
                     family, geometry_text_from_table(table)
                 ):

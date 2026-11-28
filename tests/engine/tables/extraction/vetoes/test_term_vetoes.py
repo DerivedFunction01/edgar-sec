@@ -267,7 +267,7 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 972 rows.
+# priced records after the ruled holds and release; 949 rows.
 _GROUP_COUNTS = {
     ("aoci_rollforward", "body", "hard"): 27,
     ("aoci_rollforward", "body", "scored"): 13,
@@ -306,7 +306,7 @@ _GROUP_COUNTS = {
     ("income_statement", "body", "scored"): 45,
     ("income_statement", "lead", "hard"): 4,
     ("income_statement", "lead", "scored"): 34,
-    ("intangibles", "body", "hard"): 29,
+    ("intangibles", "body", "hard"): 5,
     ("intangibles", "body", "scored"): 3,
     ("intangibles", "lead", "hard"): 6,
     ("intangibles", "lead", "scored"): 33,
@@ -333,7 +333,7 @@ _GROUP_COUNTS = {
     ("stock_comp_rollforward", "body", "scored"): 5,
     ("stock_comp_rollforward", "lead", "hard"): 2,
     ("stock_comp_rollforward", "lead", "scored"): 33,
-    ("tax_reconciliation", "body", "hard"): 31,
+    ("tax_reconciliation", "body", "hard"): 32,
     ("tax_reconciliation", "body", "scored"): 4,
     ("tax_reconciliation", "lead", "hard"): 38,
     ("tax_reconciliation", "lead", "scored"): 3,
@@ -350,14 +350,14 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 972
+    assert len(rows) == 949
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 332
+    assert tiers.count("hard") == 309
     assert tiers.count("scored") == 640
 
 

@@ -7,7 +7,9 @@ claim-local legs in firing order, plus the ranking pass.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.separators.comprehensive_income_separator_specs import (
     COMPREHENSIVE_INCOME_SEPARATOR_SPECS,
     ComprehensiveIncomeSeparatorSpec,
@@ -34,6 +36,40 @@ _BOOKEND_END_PHRASES = (
     "balance at end",
     "balance at the end",
 )
+
+
+@lru_cache(maxsize=None)
+def _spec_index(spec) -> TermIndex:
+    """One index over the cascade's term census: the spec's
+    stub-key lists by role, the bookend and tax-header phrases,
+    and the two single tokens — every entry phrase-kind."""
+    entries = []
+    for kind, terms in (
+        ("walk_begin", spec.walk_begin_terms),
+        ("walk_end", spec.walk_end_terms),
+        ("oci", spec.oci_terms),
+        ("components_total", spec.components_total_terms),
+        ("descent", spec.descent_terms),
+        ("tax_header", spec.tax_header_phrases),
+    ):
+        entries += [TermEntry(term, kind) for term in terms]
+    entries += [
+        TermEntry(term, "equity_host", value=term) for term in spec.equity_host_terms
+    ]
+    entries += [TermEntry(p, "bookend_begin") for p in _BOOKEND_BEGIN_PHRASES]
+    entries += [TermEntry(p, "bookend_end") for p in _BOOKEND_END_PHRASES]
+    entries.append(TermEntry(_GUARANTOR_TOKEN, "guarantor"))
+    entries.append(TermEntry(_TAX_TOKEN, "tax_token"))
+    return TermIndex(entries)
+
+
+def _kinds_over(spec, texts) -> set:
+    """The union of kinds the index finds over the texts."""
+    index = _spec_index(spec)
+    kinds = set()
+    for text in texts:
+        kinds |= set(index.scan(text))
+    return kinds
 
 
 class ComprehensiveIncomeSeparatorText:
@@ -87,14 +123,13 @@ def _core_complete(stub_keys: frozenset, spec) -> bool:
     """The determined core: walk head, walk tail, OCI element.
     The components schedule is the second determined shape:
     OCI element, walk tail, and a components-total stub."""
-    begin = any(term in key for key in stub_keys for term in spec.walk_begin_terms)
-    end = any(term in key for key in stub_keys for term in spec.walk_end_terms)
-    oci = any(term in key for key in stub_keys for term in spec.oci_terms)
+    kinds = _kinds_over(spec, stub_keys)
+    begin = "walk_begin" in kinds
+    end = "walk_end" in kinds
+    oci = "oci" in kinds
     if begin and end and oci:
         return True
-    total = any(
-        term in key for key in stub_keys for term in spec.components_total_terms
-    )
+    total = "components_total" in kinds
     return bool(oci and end and total)
 
 
@@ -104,34 +139,33 @@ def comprehensive_income_candidate_features(
 ) -> ComprehensiveIncomeCandidateFeatures:
     """Cascade features over the packet text surface."""
     blob = text.stub_blob
-    bookend_pair = any(phrase in blob for phrase in _BOOKEND_BEGIN_PHRASES) and any(
-        phrase in blob for phrase in _BOOKEND_END_PHRASES
-    )
+    index = _spec_index(spec)
+    blob_kinds = set(index.scan(blob))
+    bookend_pair = "bookend_begin" in blob_kinds and "bookend_end" in blob_kinds
     header_text = norm(" ".join([*text.caption_stack, *text.headers]))
+    header_kinds = set(index.scan(header_text))
     return ComprehensiveIncomeCandidateFeatures(
         row_count=len(text.stubs),
         span_years=len(text.span_years),
         core_complete=_core_complete(text.stub_keys, spec),
         hdr_accumulated=_ACCUMULATED_KEY in text.header_keys,
         bookend_pair=bookend_pair,
-        descent=any(
-            term in key for key in text.stub_keys for term in spec.descent_terms
-        ),
+        descent="descent" in _kinds_over(spec, text.stub_keys),
         host_equity=(
-            sum(
-                1
-                for term in spec.equity_host_terms
-                if any(term in stub for stub in text.norm_stubs)
+            len(
+                set().union(
+                    *(
+                        index.scan(stub).get("equity_host", frozenset())
+                        for stub in text.norm_stubs
+                    )
+                )
             )
             >= spec.equity_host_min
         ),
-        detail_taxcol=(
-            any(phrase in header_text for phrase in spec.tax_header_phrases)
-            and _TAX_TOKEN in header_text
-        ),
+        detail_taxcol=("tax_header" in header_kinds and "tax_token" in header_kinds),
         guarantor=(
-            _GUARANTOR_TOKEN in blob
-            or any(_GUARANTOR_TOKEN in norm(cell) for cell in text.headers)
+            "guarantor" in blob_kinds
+            or any("guarantor" in index.scan(norm(cell)) for cell in text.headers)
         ),
     )
 
@@ -211,12 +245,10 @@ def comprehensive_income_components_form(geometry, spec) -> bool:
     stub_keys = frozenset(
         key for key in (stub_key(stub) for stub in geometry.stubs) if len(key) >= 3
     )
-    begin = any(term in key for key in stub_keys for term in spec.walk_begin_terms)
-    oci = any(term in key for key in stub_keys for term in spec.oci_terms)
-    total = any(
-        term in key for key in stub_keys for term in spec.components_total_terms
+    kinds = _kinds_over(spec, stub_keys)
+    return bool(
+        "oci" in kinds and "components_total" in kinds and "walk_begin" not in kinds
     )
-    return bool(oci and total and not begin)
 
 
 def apply_comprehensive_income_assignment(geometries, results):

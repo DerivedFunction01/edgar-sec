@@ -6,6 +6,7 @@ passed; leg B on a lead naming the calculation, guarded.
 
 from __future__ import annotations
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_scoring import (
     ClaimGroup,
     CompetitionResult,
@@ -47,15 +48,24 @@ def _form_passed(geometry: GeometryText, test_id: str) -> bool | None:
     return None
 
 
+_SEAT_INDEX = TermIndex(
+    [TermEntry(term, "grid", value=term) for term in CANDIDATE_GRID_TERMS]
+    + [TermEntry(term, "anatomy") for term in CANDIDATE_ANATOMY_TERMS]
+    + [TermEntry(term, "lead") for term in CANDIDATE_LEAD_TERMS]
+    + [TermEntry(phrase, "lead_b", value=phrase) for phrase in LEG_B_LEAD_PHRASES]
+)
+
+
 def _is_candidate(geometry: GeometryText) -> bool:
     """The priced candidate shape: both share bases in the
     grid, plus anatomy in stub/grid or a per-share lead."""
     grid = (geometry.grid_text or "").lower()
     stub = (geometry.stub_text or "").lower()
     lead = (geometry.lead or "").lower()
-    both = all(term in grid for term in CANDIDATE_GRID_TERMS)
-    anatomy = any(term in stub or term in grid for term in CANDIDATE_ANATOMY_TERMS)
-    lead_in = any(term in lead for term in CANDIDATE_LEAD_TERMS)
+    grid_hits = _SEAT_INDEX.scan(grid)
+    both = set(CANDIDATE_GRID_TERMS) <= set(grid_hits.get("grid", frozenset()))
+    anatomy = "anatomy" in grid_hits or "anatomy" in _SEAT_INDEX.scan(stub)
+    lead_in = "lead" in _SEAT_INDEX.scan(lead)
     return both and (anatomy or lead_in)
 
 
@@ -101,7 +111,8 @@ def _leg_b(geometry: GeometryText, result: CompetitionResult) -> bool:
     lead = normalize_text(geometry.lead or "")
     return (
         _eps_total(result) >= LEG_B_FLOOR
-        and all(phrase in lead for phrase in LEG_B_LEAD_PHRASES)
+        and set(LEG_B_LEAD_PHRASES)
+        <= set(_SEAT_INDEX.scan(lead).get("lead_b", frozenset()))
         and all(_form_passed(geometry, test_id) is True for test_id in LEG_B_FORM_TESTS)
     )
 

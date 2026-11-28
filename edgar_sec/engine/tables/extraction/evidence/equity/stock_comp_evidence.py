@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.specs.families.stock_comp_specs import (
     STOCK_COMP_EVIDENCE_SPECS_BY_TEST_ID,
@@ -121,18 +123,42 @@ class StockCompLegs:
         return self.derived_claim if form == "derived" else self.seat_claim
 
 
+@lru_cache(maxsize=None)
+def _spec_index(spec: StockCompEvidenceSpec) -> TermIndex:
+    """One index over the seat spec's term census: the activity
+    terms, the single terms by role, and the bookend literals.
+    Every entry phrase-kind — the standing scans are substring."""
+    entries = [TermEntry(term, "activity") for term in spec.activity_terms]
+    entries += [
+        TermEntry(spec.granted_term, "granted"),
+        TermEntry(spec.lead_options_term, "lead_options"),
+        TermEntry(spec.units_term, "units"),
+        TermEntry(spec.waep_term, "waep"),
+        TermEntry(spec.outstanding_term, "outstanding"),
+        TermEntry(spec.exercisable_term, "exercisable"),
+        TermEntry("beginning of year", "bookend_begin_lit"),
+        TermEntry("beginning of period", "bookend_begin_lit"),
+        TermEntry("end of year", "bookend_end_lit"),
+        TermEntry("end of period", "bookend_end_lit"),
+    ]
+    return TermIndex(entries)
+
+
 def legs_for(text: StockCompText, spec: StockCompEvidenceSpec) -> StockCompLegs:
     """Every leg of the priced rule over one geometry."""
     rows = text.rows
     stub_low = [(row[0] if row else "").lower() for row in rows]
     stub_text = " ".join(stub_low)
     lead = text.lead.lower()
-    activity_rows = sum(1 for s in stub_low if any(t in s for t in spec.activity_terms))
+    index = _spec_index(spec)
+    activity_rows = sum(1 for s in stub_low if "activity" in index.scan(s))
     act1 = activity_rows >= 1
     act2 = activity_rows >= spec.min_activity_rows
-    granted = spec.granted_term in stub_text
+    stub_kinds = set(index.scan(stub_text))
+    granted = "granted" in stub_kinds
     pair = granted and act2
-    lead_options = spec.lead_options_term in lead
+    lead_kinds = set(index.scan(lead))
+    lead_options = "lead_options" in lead_kinds
     winner = pair or (lead_options and act2)
     hdr_end = len(rows)
     for i, row in enumerate(rows):
@@ -152,16 +178,17 @@ def legs_for(text: StockCompText, spec: StockCompEvidenceSpec) -> StockCompLegs:
         " ".join(r[j] for r in hdr_block if j < len(r)).lower() for j in range(n_cols)
     ]
     range_rows = sum(1 for s in data_stub if _is_range(s))
-    col_waep = any(spec.waep_term in h for h in col_hdrs[1:])
-    col_out = any(spec.outstanding_term in h for h in col_hdrs[1:])
-    col_exerc = any(spec.exercisable_term in h for h in col_hdrs[1:])
+    hdr_kinds = set()
+    for h in col_hdrs[1:]:
+        hdr_kinds |= set(index.scan(h))
+    col_waep = "waep" in hdr_kinds
+    col_out = "outstanding" in hdr_kinds
+    col_exerc = "exercisable" in hdr_kinds
     gx2 = range_rows >= spec.min_range_rows and col_waep and (col_out or col_exerc)
     bookend_begin = bool(_BEGIN.search(stub_text)) or (
-        "beginning of year" in stub_text or "beginning of period" in stub_text
+        "bookend_begin_lit" in stub_kinds
     )
-    bookend_end = bool(_END.search(stub_text)) or (
-        "end of year" in stub_text or "end of period" in stub_text
-    )
+    bookend_end = bool(_END.search(stub_text)) or "bookend_end_lit" in stub_kinds
     return StockCompLegs(
         activity_rows=activity_rows,
         act1=act1,
@@ -178,7 +205,7 @@ def legs_for(text: StockCompText, spec: StockCompEvidenceSpec) -> StockCompLegs:
         bookend_begin=bookend_begin,
         bookend_end=bookend_end,
         core=bookend_begin and bookend_end and act1,
-        units_lead=spec.units_term in lead,
+        units_lead="units" in lead_kinds,
     )
 
 

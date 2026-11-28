@@ -8,7 +8,10 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import TYPE_CHECKING
+
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 
 from edgar_sec.engine.tables.extraction.separators.combined_operations_separator_specs import (
     COMBINED_OPERATIONS_SEPARATOR_SPECS,
@@ -149,13 +152,29 @@ def failing_combined_operations_separator_outcome(form_tests):
     )
 
 
+@lru_cache(maxsize=None)
+def _field_index(field: str) -> TermIndex:
+    """One index over one field's refusal phrases, reported
+    by phrase. Every entry phrase-kind — substring standing."""
+    return TermIndex(
+        [
+            TermEntry(phrase, "hit", value=phrase)
+            for f, phrase in LOCATION_REFUSALS
+            if f == field
+        ]
+    )
+
+
 def location_refusal_detail(geometry) -> str | None:
     """The location-refusal signal over a geometry's text
     context, or None: segment-note allocations and
     comparative-figures reproductions are refused."""
+    hits = {}
     for field, phrase in LOCATION_REFUSALS:
-        text = normalize_text(getattr(geometry, field, "") or "")
-        if phrase in text:
+        if field not in hits:
+            text = normalize_text(getattr(geometry, field, "") or "")
+            hits[field] = _field_index(field).scan(text).get("hit", frozenset())
+        if phrase in hits[field]:
             return f"coci location refusal: {field} '{phrase}'"
     return None
 
