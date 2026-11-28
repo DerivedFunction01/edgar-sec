@@ -139,7 +139,9 @@ def parse_signatures(
 
     plan_match = PLAN_ADOPTION_RE.search(combined)
     if plan_match:
-        plan_dates.append(plan_match.group(1).strip())
+        value_match = NOTICE_DATE_VALUE_RE.search(plan_match.group(0))
+        if value_match:
+            plan_dates.append(value_match.group(0).strip())
 
     notice_date = normalize_iso_date(notice_date, reference_year) or notice_date
     plan_dates = [
