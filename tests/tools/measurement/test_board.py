@@ -124,6 +124,43 @@ def test_bare_keying_collapses_occurrences(tmp_path):
     assert board["members_not_in_packet"] == []
 
 
+def test_claims_record_with_corpus_universe(tmp_path):
+    basis_path = _write(
+        tmp_path / "basis.json",
+        {
+            "family": "segment_reporting",
+            "keying": "bare",
+            "members": ["m1", "m2", "m3"],
+            "truth": {"m1": "segment_reporting", "m2": "segment_reporting",
+                      "m3": "segment_reporting", "x": "pension"},
+        },
+    )
+    packet = _packet(
+        tmp_path / "rows.jsonl",
+        [
+            {"specimen": "m1#0", "claims": ["segment_reporting"]},
+            {"specimen": "x#0", "claims": ["segment_reporting"]},
+        ],
+    )
+    universe = _packet(
+        tmp_path / "population.jsonl",
+        [
+            {"specimen_id": "m1#0"},
+            {"specimen_id": "m2#0"},
+            {"specimen_id": "m3#0"},
+            {"specimen_id": "x#0"},
+        ],
+    )
+    board = run_score(packet, load_basis(basis_path), universe)
+    assert board["members"] == 3
+    assert board["member_claims"] == 1
+    assert board["fn"] == 2
+    assert board["R"] == 0.3333
+    record_only = run_score(packet, load_basis(basis_path))
+    assert record_only["members"] == 1
+    assert record_only["members_not_in_packet"] == ["m2", "m3"]
+
+
 def test_joint_objective_points_of_record():
     assert round(joint_objective(171 / 176, 171 / 184), 4) == 0.9200
     assert round(joint_objective(172 / 180, 172 / 184), 4) == 0.9200

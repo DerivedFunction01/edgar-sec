@@ -28,11 +28,20 @@ def joint_objective(precision: float, recall: float, bar: float = BAR) -> float:
     return (3.0 * min(adjusted_p, adjusted_r) + max(adjusted_p, adjusted_r)) / 4.0
 
 
-def load_packet(packet_path: str | Path, family: str, keying: str) -> dict:
-    """Read an emit rows file into one family's claim set.
+def _keyed(specimen: str, keying: str) -> str:
+    return specimen.split("#")[0] if keying == "bare" else specimen
 
-    Keys come back in the basis's keying (full occurrence keys,
-    or bare keys without the ordinal), claims and universe alike.
+
+def load_packet(
+    packet_path: str | Path,
+    family: str,
+    keying: str,
+    universe_path: str | Path | None = None,
+) -> dict:
+    """Read a packet rows file into one family's claim set.
+
+    The universe is the packet's own specimens, or an explicit
+    corpus readout's for claims-record packets.
     """
     claimed: set[str] = set()
     universe: set[str] = set()
@@ -40,12 +49,17 @@ def load_packet(packet_path: str | Path, family: str, keying: str) -> dict:
         if not line.strip():
             continue
         row = json.loads(line)
-        specimen = row["specimen"]
-        if keying == "bare":
-            specimen = specimen.split("#")[0]
+        specimen = _keyed(row["specimen"], keying)
         universe.add(specimen)
         if family in (row.get("claims") or []):
             claimed.add(specimen)
+    if universe_path is not None:
+        universe = set()
+        for line in Path(universe_path).read_text().splitlines():
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            universe.add(_keyed(row.get("specimen") or row["specimen_id"], keying))
     return {"claimed": claimed, "universe": universe}
 
 
@@ -127,9 +141,11 @@ def fidelity_diff(board: dict, expected: dict) -> list[dict]:
     return out
 
 
-def run_score(packet: str | Path, basis: dict) -> dict:
+def run_score(
+    packet: str | Path, basis: dict, universe: str | Path | None = None
+) -> dict:
     """Load a packet in the basis's keying and score its board."""
-    packet_sets = load_packet(packet, basis["family"], basis["keying"])
+    packet_sets = load_packet(packet, basis["family"], basis["keying"], universe)
     return score_board(packet_sets["claimed"], packet_sets["universe"], basis)
 
 
@@ -142,11 +158,12 @@ def main(argv: list[str] | None = None) -> int:
         cmd.add_argument("packet", type=Path)
         cmd.add_argument("basis", type=Path)
         cmd.add_argument("--out", type=Path)
+        cmd.add_argument("--universe", type=Path)
         if name == "verify":
             cmd.add_argument("expected", type=Path)
     args = parser.parse_args(argv)
     basis = load_basis(args.basis)
-    board = run_score(args.packet, basis)
+    board = run_score(args.packet, basis, args.universe)
     if args.out:
         atomic_write_json(args.out, board, canonical=False, indent=1)
     if args.command == "score":
