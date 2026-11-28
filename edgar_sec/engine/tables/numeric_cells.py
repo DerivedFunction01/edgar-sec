@@ -6,6 +6,7 @@ because a partial match would right-align prose.
 from __future__ import annotations
 
 import re
+from dataclasses import dataclass
 
 from edgar_sec.domain.world.currencies import (
     ALL_CURRENCY_SYMBOLS,
@@ -13,7 +14,7 @@ from edgar_sec.domain.world.currencies import (
     SUFFIX_SYMBOLS,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dashes import CELL_DASHES
+from edgar_sec.foundation.text.dashes import CELL_DASHES, is_blank_or_dash
 from edgar_sec.foundation.text.patterns import GROUPED_AMOUNT_CORE
 
 from .units import MEASUREMENT_UNITS
@@ -97,6 +98,18 @@ WRAPPED_NUMERIC_CELL_RE = re.compile(
     r"\(?-?\$?\s*" + UNICODE_NUMERIC_CORE + r"\s*\)?\)?"
 )
 
+# The wrapped grouped-cell grammar: an optional paren and dollar
+# over the loose grouped fragment with one decimal tail. The grid
+# and separator value parses gate on this one export.
+GROUPED_CELL_RE = re.compile(rf"^\(?\$?{GROUPED_INTEGER_FRAGMENT}(?:\.\d+)?\)?$")
+
+# The signed-token cell grammar: the homed numeric token under an
+# optional paren, dollar, sign, and percent tail, matched against
+# the original cell. The lease value parse gates on this export.
+SIGNED_NUMERIC_CELL_RE = re.compile(
+    r"^\(?\$?\s*-?" + NUMERIC_TOKEN_RE.pattern + r"\s*\)?%?$"
+)
+
 # A single Unicode decimal digit, anywhere in the text.
 DIGIT_RE = re.compile(r"\d")
 
@@ -146,23 +159,159 @@ def is_numeric_start(value: str) -> bool:
     return bool(clean) and (clean[0].isdigit() or clean.startswith(("-", ".")))
 
 
+# Cell tokens carrying no value in the grid and separator parses:
+# the homed cell dashes plus the blank and star markers.
+_NO_VALUE_TOKENS = CELL_DASHES | {"", "*"}
+
+
+@dataclass(frozen=True, slots=True)
+class CellValuePolicy:
+    """One consumer's value-parse projection, as data: its percent
+    handling, dash handling, gate, paren handling, space handling."""
+
+    percent: str
+    dash: str
+    gate: str
+    paren: str
+    spaces: bool
+
+
+@dataclass(frozen=True, slots=True)
+class CellValue:
+    """One cell's parse under a policy: the value (None when the
+    policy prices no value), the token facts, and whether a
+    numeric value was parsed from the cell's digits."""
+
+    value: float | None
+    is_dash: bool
+    is_percent: bool
+    is_zero_token: bool
+    is_numeric: bool
+
+
+EPS_VALUE_POLICY = CellValuePolicy(
+    percent="exclude",
+    dash="zero_flagged",
+    gate="float_free",
+    paren="single_pair",
+    spaces=True,
+)
+INCOME_VALUE_POLICY = CellValuePolicy(
+    percent="strip_all",
+    dash="absent",
+    gate="float_free",
+    paren="strip_chars",
+    spaces=False,
+)
+ROLLFORWARD_VALUE_POLICY = CellValuePolicy(
+    percent="rstrip",
+    dash="none_value",
+    gate="grouped_core",
+    paren="strip_chars",
+    spaces=False,
+)
+TAX_VALUE_POLICY = CellValuePolicy(
+    percent="schema",
+    dash="not_numeric",
+    gate="grouped_core",
+    paren="strip_chars",
+    spaces=False,
+)
+LEASE_VALUE_POLICY = CellValuePolicy(
+    percent="strip_all",
+    dash="absent",
+    gate="numeric_token",
+    paren="strip_chars",
+    spaces=False,
+)
+
+
+def _policy_substrate(
+    token: str, policy: CellValuePolicy, schema_re: re.Pattern[str] | None
+) -> str | None:
+    """The policy's float substrate for a token, or None when the
+    policy's gate rejects the token before the float read."""
+    if policy.gate == "grouped_core":
+        if policy.percent == "rstrip":
+            core = token.rstrip("%").strip()
+        else:
+            if schema_re is None:
+                raise ValueError("schema percent policy requires schema_re")
+            core = schema_re.sub("", token).strip()
+        return core if GROUPED_CELL_RE.match(core) else None
+    if policy.gate == "numeric_token":
+        if not SIGNED_NUMERIC_CELL_RE.match(token):
+            return None
+        return token.replace("$", "").replace(",", "").replace("%", "")
+    substrate = token.replace("$", "").replace(",", "")
+    if policy.percent == "strip_all":
+        substrate = substrate.replace("%", "").strip()
+    if policy.spaces:
+        substrate = substrate.replace(" ", "")
+    return substrate
+
+
+def parse_cell_value(
+    cell: str, policy: CellValuePolicy, schema_re: re.Pattern[str] | None = None
+) -> CellValue:
+    """The one cell value parse: the token's facts read once, the
+    policy's projection applied. The schema percent pattern is
+    passed by its consumer — its home imports this module."""
+    token = (cell or "").strip()
+    is_dash = is_blank_or_dash(token)
+    is_zero_token = token in _NO_VALUE_TOKENS
+    is_percent = "%" in token
+    if policy.dash == "zero_flagged" and is_dash:
+        return CellValue(0.0, is_dash, is_percent, is_zero_token, False)
+    if policy.dash in ("none_value", "not_numeric") and is_zero_token:
+        return CellValue(None, is_dash, is_percent, is_zero_token, False)
+    if policy.percent == "exclude" and is_percent:
+        return CellValue(None, is_dash, is_percent, is_zero_token, False)
+    substrate = _policy_substrate(token, policy, schema_re)
+    if substrate is None:
+        return CellValue(None, is_dash, is_percent, is_zero_token, False)
+    negative = substrate.startswith("(") and substrate.endswith(")")
+    if policy.gate == "grouped_core":
+        digits = substrate.strip("()$").replace(",", "")
+    elif policy.paren == "single_pair":
+        digits = substrate[1:-1] if negative else substrate
+    else:
+        digits = substrate.strip("()$")
+    try:
+        value = float(digits)
+    except ValueError:
+        return CellValue(None, is_dash, is_percent, is_zero_token, False)
+    return CellValue(
+        -value if negative else value, is_dash, is_percent, is_zero_token, True
+    )
+
+
 __all__ = [
     "ALL_CURRENCY_SYMBOLS",
     "AMOUNT_RE",
     "CURRENCY_TOKEN_RE",
+    "CellValue",
+    "CellValuePolicy",
     "DECIMAL_AMOUNT_RE",
     "DECIMAL_FIGURE_RE",
     "DIGIT_RE",
+    "EPS_VALUE_POLICY",
     "EUROPEAN_COMMA_DECIMAL_RE",
     "FINANCIAL_PLACEHOLDERS",
     "GROUPED_AMOUNT_RE",
+    "GROUPED_CELL_RE",
     "GROUPED_INTEGER_FRAGMENT",
     "GROUPED_INTEGER_RE",
+    "INCOME_VALUE_POLICY",
+    "LEASE_VALUE_POLICY",
     "NUMERIC_CELL_RE",
     "NUMERIC_TOKEN_RE",
     "PREFIX_SYMBOLS",
+    "ROLLFORWARD_VALUE_POLICY",
+    "SIGNED_NUMERIC_CELL_RE",
     "STRICT_NUMERIC_CELL_RE",
     "SUFFIX_SYMBOLS",
+    "TAX_VALUE_POLICY",
     "UNIT_SYMBOLS",
     "UNIT_TOKEN_RE",
     "WRAPPED_NUMERIC_CELL_RE",
@@ -170,4 +319,5 @@ __all__ = [
     "is_numeric_cell",
     "is_numeric_start",
     "is_strict_numeric_cell",
+    "parse_cell_value",
 ]

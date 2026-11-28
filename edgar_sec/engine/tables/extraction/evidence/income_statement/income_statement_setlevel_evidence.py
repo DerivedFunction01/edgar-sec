@@ -19,6 +19,10 @@ from edgar_sec.engine.tables.extraction.seats.primary_gate import (
     section_presence,
     statement_clusters,
 )
+from edgar_sec.engine.tables.numeric_cells import (
+    INCOME_VALUE_POLICY,
+    parse_cell_value,
+)
 
 _ROUTING_DETAIL = "income statement assignment: cross-family routing"
 _UNIQUENESS_DETAIL = "income statement assignment: within-filing uniqueness"
@@ -42,14 +46,7 @@ def _canon(value: float) -> str | None:
 
 
 def _cell_value(cell: str) -> float | None:
-    text = cell.replace("$", "").replace(",", "").replace("%", "").strip()
-    negative = text.startswith("(") and text.endswith(")")
-    text = text.strip("()")
-    try:
-        value = float(text)
-    except ValueError:
-        return None
-    return -value if negative else value
+    return parse_cell_value(cell, INCOME_VALUE_POLICY).value
 
 
 def net_values(geometry) -> set[str]:

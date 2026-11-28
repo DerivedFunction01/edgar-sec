@@ -19,7 +19,10 @@ from edgar_sec.engine.tables.extraction.note_separators.tax_reconciliation_separ
     TAX_RECONCILIATION_SEPARATOR_SPECS,
     TaxReconciliationSeparatorSpec,
 )
-from edgar_sec.foundation.text.dashes import CELL_DASHES
+from edgar_sec.engine.tables.numeric_cells import (
+    TAX_VALUE_POLICY,
+    parse_cell_value,
+)
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
 __all__ = [
@@ -43,8 +46,6 @@ _ANCHOR_INDEX = TermIndex(
     ]
 )
 
-_ZERO_TOKENS = CELL_DASHES | {"", "*"}
-_NUM_RE = re.compile(r"^\(?\$?[\d,]+(?:\.\d+)?\)?$")
 _DIGITS_RE = re.compile(r"\d+")
 _NON_PHRASE_RE = re.compile(r"[^a-z# ]+")
 
@@ -61,19 +62,8 @@ def norm_phrase(text):
 
 def _cell_value(cell):
     """The priced cell grammar: (is_numeric, value) for one cell."""
-    c = cell.strip()
-    if c in _ZERO_TOKENS:
-        return False, 0.0
-    core = SCHEMA_PERCENT_RE.sub("", c).strip()
-    if not _NUM_RE.match(core):
-        return False, 0.0
-    neg = core.startswith("(") and core.endswith(")")
-    num = core.strip("()$").replace(",", "")
-    try:
-        val = float(num)
-    except ValueError:
-        return False, 0.0
-    return True, (-val if neg else val)
+    parsed = parse_cell_value(cell, TAX_VALUE_POLICY, schema_re=SCHEMA_PERCENT_RE)
+    return parsed.is_numeric, parsed.value if parsed.is_numeric else 0.0
 
 
 class TaxReconciliationSeparatorText:
