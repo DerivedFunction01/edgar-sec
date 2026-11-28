@@ -24,12 +24,9 @@ from edgar_sec.tools.measurement.config import load_config, workdir
 
 HEADING_RE = re.compile(r"item\s+3\.?\s+legal\s+proceedings", re.I)
 END_RES = tuple(
-    re.compile(p, re.I)
-    for p in (r"item\s+4\.?\s+", r"item\s+5\.?\s+", r"part\s+iii\b")
+    re.compile(p, re.I) for p in (r"item\s+4\.?\s+", r"item\s+5\.?\s+", r"part\s+iii\b")
 )
-RAW_END_RES = tuple(
-    re.compile(p) for p in (r"item\s+4", r"item\s+5", r"part\s+iii")
-)
+RAW_END_RES = tuple(re.compile(p) for p in (r"item\s+4", r"item\s+5", r"part\s+iii"))
 SPAN_RE = re.compile(r"legal\s+proceedings", re.I)
 TAG_RE = re.compile(r"<[^>]+>")
 WS_RE = re.compile(r"\s+")
@@ -96,9 +93,7 @@ class CensusConfig:
             cooldown_s=float(config["cooldown_s"]),
             pace_s=float(config["pace_s"]),
             totals_pace_s=float(config["totals_pace_s"]),
-            probe_backoffs_s=tuple(
-                float(s) for s in config["probe_backoffs_s"]
-            ),
+            probe_backoffs_s=tuple(float(s) for s in config["probe_backoffs_s"]),
         )
 
 
@@ -178,8 +173,7 @@ def pools_leg(
                 if accession and accession not in accs:
                     accs[accession] = {
                         "accession": accession,
-                        "cik": str((src.get("ciks") or [""])[0]).lstrip("0")
-                        or "0",
+                        "cik": str((src.get("ciks") or [""])[0]).lstrip("0") or "0",
                         "form": src.get("form"),
                         "date": src.get("file_date"),
                     }
@@ -268,9 +262,7 @@ def count_tables(raw: str) -> int:
     return span.count("<table")
 
 
-def list_docs(
-    client: CensusClient, cik: str, accession: str
-) -> list[tuple[str, int]]:
+def list_docs(client: CensusClient, cik: str, accession: str) -> list[tuple[str, int]]:
     """Candidate documents (name, size): index.json, else the listing page."""
     try:
         index = client.get_json(index_json_url_for(accession, cik))
@@ -400,15 +392,9 @@ def summarize(
     )
     measured = [r for r in results if r.get("class")]
     return {
-        "year_totals_q1": {
-            str(year): row for year, row in year_totals.items()
-        },
+        "year_totals_q1": {str(year): row for year, row in year_totals.items()},
         "year_totals_q1_sums": {
-            form: sum(
-                row[i]
-                for row in year_totals.values()
-                if isinstance(row[i], int)
-            )
+            form: sum(row[i] for row in year_totals.values() if isinstance(row[i], int))
             for i, form in enumerate(forms)
         },
         "broad_phrase_10k_total_capped": broad,
@@ -418,9 +404,7 @@ def summarize(
         "sample_n": len(results),
         "class_counts": dict(classes),
         "measured_n": len(measured),
-        "table_bearing_sections": sum(
-            1 for r in results if (r.get("tables") or 0) > 0
-        ),
+        "table_bearing_sections": sum(1 for r in results if (r.get("tables") or 0) > 0),
         "substantive_median_chars": (
             substantive[len(substantive) // 2] if substantive else None
         ),

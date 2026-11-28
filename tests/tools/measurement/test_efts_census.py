@@ -86,15 +86,11 @@ def register_efts(
     hits: list[dict],
 ) -> None:
     """Register one year/form shard response at its driver URL."""
-    url = efts_url(
-        cfg.phrase, form, f"{year}-01-01", f"{year}-12-31", 0, cfg.pool_size
-    )
+    url = efts_url(cfg.phrase, form, f"{year}-01-01", f"{year}-12-31", 0, cfg.pool_size)
     session.register(url, efts_payload(total, hits))
 
 
-def register_doc(
-    session: FakeSession, cik: str, accession: str, body: str
-) -> None:
+def register_doc(session: FakeSession, cik: str, accession: str, body: str) -> None:
     """Register a filing index and its main document body."""
     index_url = index_json_url_for(accession, cik)
     session.register(
@@ -126,7 +122,9 @@ def doc(segment_inner: str) -> str:
 
 
 def test_efts_url_shape():
-    url = efts_url("Item 3. Legal Proceedings", "10-K", "2001-01-01", "2001-12-31", 0, 100)
+    url = efts_url(
+        "Item 3. Legal Proceedings", "10-K", "2001-01-01", "2001-12-31", 0, 100
+    )
     assert url.startswith("https://efts.sec.gov/LATEST/search-index?")
     assert "q=%22Item+3.+Legal+Proceedings%22" in url
     assert "forms=10-K" in url and "size=100" in url
@@ -200,9 +198,7 @@ def test_probe_exhaustion_records_backoffs():
     session = FakeSession()
     client = build_test_http(session)
     cfg = make_config()
-    sample = [
-        {"accession": f"000000000{i}-01-000001", "cik": "1"} for i in range(6)
-    ]
+    sample = [{"accession": f"000000000{i}-01-000001", "cik": "1"} for i in range(6)]
     sleep = RecordingSleep()
     assert probe(client, cfg, sample, sleep) is False
     assert sleep.calls == [30.0, 60.0]
@@ -239,9 +235,7 @@ def scenario_session(cfg: CensusConfig) -> FakeSession:
             ]
             total = totals[year][FORMS.index(form)]
             register_efts(session, cfg, year, form, total, form_hits)
-    broad_url = efts_url(
-        cfg.broad_phrase, "10-K", "2001-01-01", cfg.end_date, 0, 100
-    )
+    broad_url = efts_url(cfg.broad_phrase, "10-K", "2001-01-01", cfg.end_date, 0, 100)
     session.register(broad_url, efts_payload(10_000, []))
     bodies = {
         "stub": doc("None."),
