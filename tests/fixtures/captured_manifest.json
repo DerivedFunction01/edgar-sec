@@ -137,12 +137,12 @@
   },
   {
    "path": "document/form_24f2/0000355348-01-000008__0001.txt",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/data/741350/0000355348-01-000008.txt",
    "accession": "0000355348-01-000008",
    "sha256": "7259dfc2900e2481a011c66e89deb8b82706a60ae4cd6efd4c293306630fa5f1",
    "bytes": 4800,
-   "extract": "body"
+   "note": "reclassified from full on the gate11 populate mismatch and diag2 byte diff (2026-11-28): body extraction from the live submission under the registrant CIK (741350) reproduces the content including the tail but not the bytes (the served body runs 4,812 B against this 4,800 B capture, and the capture's per-line leading whitespace differs from byte 0: a re-rendered extraction, centered header lines at different columns), so byte-regeneration is disproven; stays tracked as the exercised form, never fetched"
   },
   {
    "path": "document/form_24f2/0000858581-22-000065__primary_doc.xml",
@@ -219,12 +219,12 @@
   },
   {
    "path": "document/form_4017f2/0001047469-03-041537__a2125145z40-17f2a.txt",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/data/877346/0001047469-03-041537.txt",
    "accession": "0001047469-03-041537",
    "sha256": "9ab7e74cdd377c3a962fac4e587245e6d44eb4c75633b0b840b58c7e1aeb4b39",
    "bytes": 10064,
-   "extract": "block"
+   "note": "reclassified from full on the gate11 populate mismatch and diag2 byte diff (2026-11-28): block extraction from the live submission reproduces the content but not the bytes (+10 B: the served serialization wraps a long table-rule line where the capture does not; the wrap-drift class of the gate9 pair), so byte-regeneration is disproven; stays tracked as the exercised form, never fetched"
   },
   {
    "path": "document/form_4017f2/000119312505058584__d4017f2.htm",
@@ -428,12 +428,12 @@
   },
   {
    "path": "document/form_s6/0000875626-03-001585__s487.txt",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1259530/0000875626-03-001585.txt",
    "accession": "0000875626-03-001585",
-   "sha256": "6c09321563c0549dd34ca7e76a820f8346829f690e4f83b406b84ce32e0a2945",
-   "bytes": 3141,
-   "extract": "body"
+   "sha256": "d59a093e06a1a3614ed123934b009382cdc816f25bb000401a79665979f0ee71",
+   "bytes": 3142,
+   "note": "reclassified from full on the gate11 populate mismatch and diag2 byte diff (2026-11-28): the capture is a re-rendered head excerpt of the filing's TYPE-487 document (the live extracted body under the registrant CIK 1259530 runs 124,743 B against this 3,142 B capture): same header content with whitespace re-rendered, ending mid-document at the exhibit-index language, never the whole document; stays tracked as the exercised form, never fetched. Hash re-keyed to the tracked capture file (the full-form value keyed the edge-stripped body)"
   },
   {
    "path": "document/form_s6/0001445546-13-000978__s-6.txt",
