@@ -330,8 +330,7 @@ def address_from_inline_cells(
     return fields.get("street"), fields.get("city"), state, zip_code
 
 
-_EMPTY_CONTINUATION_WORDS = EMPTY_CONTINUATION_WORDS
-_EMPTY_CONTINUATION_CELLS: frozenset[str] = _EMPTY_CONTINUATION_WORDS | {""}
+_EMPTY_CONTINUATION_CELLS: frozenset[str] = EMPTY_CONTINUATION_WORDS | {""}
 
 
 def is_trailing_signature_table(text: str, row_count: int) -> bool:
@@ -350,7 +349,7 @@ def is_single_cell_empty_table(
         if cell.strip() and not cell.strip().lower().startswith("remarks")
     ]
     return bool(clean_cells) and all(
-        c in _EMPTY_CONTINUATION_WORDS for c in clean_cells
+        c in EMPTY_CONTINUATION_WORDS for c in clean_cells
     )
 
 
