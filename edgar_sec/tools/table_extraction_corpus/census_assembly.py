@@ -1,9 +1,8 @@
 """Imposter-census assembly over the harvested census inputs.
 
-Joins the register falses and the per-family adjudicated trues
-(bases of record, precedence per the census bound) to packet text
-from every preserved store, and emits the census population, the
-assembly account, and the pricing record's residual lists.
+Joins the register falses and the per-family adjudicated trues to
+packet text from every preserved store, and emits the census
+population, the assembly account, and the residual lists.
 """
 
 from __future__ import annotations
@@ -17,9 +16,29 @@ import re
 import tarfile
 from pathlib import Path
 
+from edgar_sec.domain.identity import ACCESSION_RE
 from edgar_sec.infra.storage.atomic import atomic_write_text
 
-_SID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+$")
+_ACCESSION_CORE = ACCESSION_RE.pattern[1:-1]
+_SID_RE = re.compile(f"^{_ACCESSION_CORE}:\\d+$")
+_SID_PREFIX_RE = re.compile(f"({_ACCESSION_CORE}:\\d+)")
+_SID_PARTS_RE = re.compile(f"({_ACCESSION_CORE}):(\\d+)\\b")
+_ID_TBL_RE = re.compile(f"ID ({_ACCESSION_CORE}) tbl(\\d+)")
+_GOLD_HDR_RE = re.compile(f"^===== ({_ACCESSION_CORE}:\\d+)", re.M)
+_SPECIMEN_LINE_RE = re.compile(f'"specimen_id": "({_ACCESSION_CORE}:\\d+)"')
+_GOLD_SPLIT_RE = re.compile(r"^===== ", re.M)
+_GOLD_CAP_RE = re.compile(r"caption_stack: (\[.*?\])\n", re.S)
+_GOLD_PROSE_RE = re.compile(r"prose_before: (.*?)\ntable_text:\n", re.S)
+_GOLD_TABLE_RE = re.compile(r"table_text:\n(.*)$", re.S)
+_DUMP_SPLIT_RE = re.compile(r"^={10,} ", re.M)
+_DUMP_CAP_RE = re.compile(r"CAPSTACK: (\[.*?\])\n", re.S)
+_DUMP_PROSE_RE = re.compile(r"PROSE: (.*?)\nTABLE: ", re.S)
+_DUMP_TABLE_RE = re.compile(r"TABLE: (.*)$", re.S)
+_RENDER_SPLIT_RE = re.compile(r"^### ", re.M)
+_CAP_LINE_RE = re.compile(r"^CAP: (.*)$", re.M)
+_CTX_LINE_RE = re.compile(r"^CTX: (.*)$", re.M)
+_HDR_LINE_RE = re.compile(r"^HDR: (.*)$", re.M)
+_ROW_LINE_RE = re.compile(r"^\s*R: (.*)$", re.M)
 _HOST_LABELS = {"LI", "LINE-ITEM", "LINE_ITEM", "HOST-CONTENT", "HOST_CONTENT"}
 _SEAT_BASES = [
     ("s4.jsonl", "goodwill"),
@@ -51,7 +70,7 @@ def _row_sid(row: dict) -> str | None:
     return None
 
 
-def _load_json(path: Path) -> object:
+def _read_json(path: Path) -> object:
     with open(path) as fh:
         return json.load(fh)
 
@@ -108,7 +127,7 @@ class _CensusAssembly:
 
     def _register_falses(self) -> None:
         try:
-            reg = _load_json(self.inputs / "step1" / "register-step1.json")
+            reg = _read_json(self.inputs / "step1" / "register-step1.json")
             for row in reg.get("false_claims", []):
                 self._add_false(
                     row["specimen_id"],
@@ -175,7 +194,7 @@ class _CensusAssembly:
 
     def _grouped_populations(self) -> None:
         try:
-            laneb = _load_json(self.inputs / "step9" / "core-populations.json")
+            laneb = _read_json(self.inputs / "step9" / "core-populations.json")
             pops = laneb.get("pops", {})
             for key, family in _LANE_POPULATIONS:
                 for sid in pops.get(key, []):
@@ -185,7 +204,7 @@ class _CensusAssembly:
 
     def _sweep_populations(self) -> None:
         try:
-            laned = _load_json(self.inputs / "step9" / "pops.json")
+            laned = _read_json(self.inputs / "step9" / "pops.json")
             for family, sides in laned.items():
                 for entry in sides.get("true", []):
                     self._add_true(family, entry.get("sid"), "step9-lane-d")
@@ -196,9 +215,7 @@ class _CensusAssembly:
         try:
             for txt in sorted((self.inputs / "step8").glob("*.txt")):
                 family = txt.stem
-                sids = re.findall(
-                    r"^===== (\d{10}-\d{2}-\d{6}:\d+)", txt.read_text(), flags=re.M
-                )
+                sids = _GOLD_HDR_RE.findall(txt.read_text())
                 self.gold_families[family] = sids
                 for sid in sids:
                     self._add_true(family, sid, "step8-golds")
@@ -294,7 +311,7 @@ class _CensusAssembly:
 
     def _lane_packets(self) -> None:
         try:
-            data = _load_json(self.inputs / "step9" / "core-populations.json")
+            data = _read_json(self.inputs / "step9" / "core-populations.json")
             pk = data.get("packets", {})
             if isinstance(pk, dict):
                 for sid, row in pk.items():
@@ -310,7 +327,7 @@ class _CensusAssembly:
         except Exception as exc:  # noqa: BLE001
             self._note_error("lane-b packets", exc)
         try:
-            cache = _load_json(self.inputs / "step9" / "cache.json")
+            cache = _read_json(self.inputs / "step9" / "cache.json")
             pk = cache.get("packets", {})
             if isinstance(pk, dict):
                 for sid, row in pk.items():
@@ -330,17 +347,15 @@ class _CensusAssembly:
         try:
             for txt in sorted((self.inputs / "step8").glob("*.txt")):
                 body = txt.read_text()
-                blocks = re.split(r"^===== ", body, flags=re.M)
+                blocks = _GOLD_SPLIT_RE.split(body)
                 for block in blocks:
-                    m = re.match(r"(\d{10}-\d{2}-\d{6}:\d+)", block)
+                    m = _SID_PREFIX_RE.match(block)
                     if not m:
                         continue
                     sid = m.group(1)
-                    cap = re.search(r"caption_stack: (\[.*?\])\n", block, flags=re.S)
-                    pro = re.search(
-                        r"prose_before: (.*?)\ntable_text:\n", block, flags=re.S
-                    )
-                    tab = re.search(r"table_text:\n(.*)$", block, flags=re.S)
+                    cap = _GOLD_CAP_RE.search(block)
+                    pro = _GOLD_PROSE_RE.search(block)
+                    tab = _GOLD_TABLE_RE.search(block)
                     caption = []
                     if cap:
                         try:
@@ -368,15 +383,15 @@ class _CensusAssembly:
     def _stratum_dump(self) -> None:
         try:
             body = (self.inputs / "bases" / "s4-packets.txt").read_text()
-            blocks = re.split(r"^={10,} ", body, flags=re.M)
+            blocks = _DUMP_SPLIT_RE.split(body)
             for block in blocks:
-                m = re.match(r"(\d{10}-\d{2}-\d{6}:\d+)", block)
+                m = _SID_PREFIX_RE.match(block)
                 if not m:
                     continue
                 sid = m.group(1)
-                cap = re.search(r"CAPSTACK: (\[.*?\])\n", block, flags=re.S)
-                pro = re.search(r"PROSE: (.*?)\nTABLE: ", block, flags=re.S)
-                tab = re.search(r"TABLE: (.*)$", block, flags=re.S)
+                cap = _DUMP_CAP_RE.search(block)
+                pro = _DUMP_PROSE_RE.search(block)
+                tab = _DUMP_TABLE_RE.search(block)
                 caption = []
                 if cap:
                     try:
@@ -416,19 +431,19 @@ class _CensusAssembly:
 
     def _rendered_dump(self, path: Path, store: str) -> None:
         body = path.read_text()
-        for block in re.split(r"^### ", body, flags=re.M):
-            m = re.search(r"(\d{10}-\d{2}-\d{6}):(\d+)\b", block)
-            mid = re.search(r"ID (\d{10}-\d{2}-\d{6}) tbl(\d+)", block)
+        for block in _RENDER_SPLIT_RE.split(body):
+            m = _SID_PARTS_RE.search(block)
+            mid = _ID_TBL_RE.search(block)
             if m:
                 sid = f"{m.group(1)}:{m.group(2)}"
             elif mid:
                 sid = f"{mid.group(1)}:{mid.group(2)}"
             else:
                 continue
-            cap = re.search(r"^CAP: (.*)$", block, flags=re.M)
-            ctx = re.search(r"^CTX: (.*)$", block, flags=re.M)
-            hdr = re.search(r"^HDR: (.*)$", block, flags=re.M)
-            rows = re.findall(r"^\s*R: (.*)$", block, flags=re.M)
+            cap = _CAP_LINE_RE.search(block)
+            ctx = _CTX_LINE_RE.search(block)
+            hdr = _HDR_LINE_RE.search(block)
+            rows = _ROW_LINE_RE.findall(block)
             table_lines = ([hdr.group(1)] if hdr else []) + rows
             caption = [cap.group(1)] if cap and cap.group(1).strip() else []
             self._put_text(
@@ -452,7 +467,7 @@ class _CensusAssembly:
 
     def _pool_records(self) -> None:
         try:
-            pools = _load_json(self.inputs / "bases" / "pools-e.json")
+            pools = _read_json(self.inputs / "bases" / "pools-e.json")
             records = pools.values() if isinstance(pools, dict) else pools
             for rec in records:
                 if not isinstance(rec, dict):
@@ -487,7 +502,6 @@ class _CensusAssembly:
         }
         missing = needed - set(self.text)
         if missing:
-            sid_line = re.compile(r'"specimen_id": "(\d{10}-\d{2}-\d{6}:\d+)"')
             for strat in ("b", "d"):
                 if not missing:
                     break
@@ -498,7 +512,7 @@ class _CensusAssembly:
                         errors="replace",
                     ) as fh:
                         for line in fh:
-                            m = sid_line.search(line[:80])
+                            m = _SPECIMEN_LINE_RE.search(line[:80])
                             if m and m.group(1) in missing:
                                 row = json.loads(line)
                                 self._packet_row(row, "run2-packets")
@@ -636,7 +650,7 @@ def assemble(inputs: Path, out_dir: Path, pricing_path: Path | None = None) -> d
     atomic_write_text(out_dir / "census-population.jsonl", population)
     atomic_write_text(out_dir / "census-assembly.json", json.dumps(assembly, indent=1))
     if pricing_path is not None:
-        pricing = _load_json(pricing_path)
+        pricing = _read_json(pricing_path)
         atomic_write_text(out_dir / "residual-lists.txt", residual_lists(pricing))
     return {
         "units": len(assembly["units"]),
