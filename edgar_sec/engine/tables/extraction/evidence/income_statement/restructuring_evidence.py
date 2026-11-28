@@ -26,6 +26,7 @@ from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAMES,
+    MONTH_NAME_WORD_RE,
     PERIOD_ENDED_PAT,
     YEAR_TOKEN_PATTERN,
 )
@@ -34,8 +35,6 @@ from edgar_sec.foundation.text.date_patterns import (
 # text each capped at 6000 chars, as the collect's packet() caps.
 _TEXT_CAP = 6000
 
-_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)
-_MONTH_WORD_RE = re.compile(rf"\b(?:{_MONTH_ALT})\b", re.IGNORECASE)
 
 # Heading boundaries in the prose surface: a numbered note
 # heading or an all-caps statement title line.
@@ -434,7 +433,9 @@ def _header_forms(
     if nonempty:
         last = nonempty[-1]
         stripped = last.strip(" |")
-        starts = _MONTH_WORD_RE.match(stripped) or _starts_with_numeric_date(stripped)
+        starts = MONTH_NAME_WORD_RE.match(stripped) or _starts_with_numeric_date(
+            stripped
+        )
         if (
             starts
             and any(ch.isdigit() for ch in last)
