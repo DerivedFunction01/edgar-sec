@@ -225,14 +225,12 @@ def _find(directory: Path, finished: str, probe: str) -> Path:
     return candidate if candidate.exists() else directory / probe
 
 
-def _summary_family_claims(summary: dict) -> dict[str, int]:
-    if "family_claims" in summary:
-        return dict(summary["family_claims"])
-    return {
-        k[: -len("_claims")]: v
-        for k, v in summary.items()
-        if k.endswith("_claims") and isinstance(v, int)
-    }
+def _row_family_counts(rows: list[dict]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for r in rows:
+        for family in r.get("claims") or []:
+            counts[family] = counts.get(family, 0) + 1
+    return counts
 
 
 def diff_emit_dirs(
@@ -268,8 +266,8 @@ def diff_emit_dirs(
         if field in emit_summary and field in gold_summary:
             counts[field] = [emit_summary[field], gold_summary[field]]
             equal = equal and emit_summary[field] == gold_summary[field]
-    e_fam = _summary_family_claims(emit_summary)
-    g_fam = _summary_family_claims(gold_summary)
+    e_fam = _row_family_counts(emit_rows)
+    g_fam = _row_family_counts(gold_rows)
     for family in sorted(set(e_fam) | set(g_fam)):
         counts[f"family_claims:{family}"] = [e_fam.get(family), g_fam.get(family)]
         equal = equal and e_fam.get(family) == g_fam.get(family)

@@ -116,6 +116,24 @@ def test_diff_equal_and_divergent(tmp_path):
     assert not diverged["equal"]
 
 
+def test_diff_accepts_probe_form_gold_frame(tmp_path):
+    fixtures, bases = _stage(tmp_path)
+    out = tmp_path / "emit"
+    summary = emit_claims([(str(fixtures), "E")], bases, out, workers=1)
+    gold = tmp_path / "gold"
+    gold.mkdir()
+    (gold / "int-rows.jsonl").write_text((out / "rows.jsonl").read_text())
+    probe_summary = {
+        "filings": summary["filings"],
+        "geometries": summary["geometries"],
+        "gold_rows": summary["gold_rows"],
+        "intangibles_claims": summary["family_claims"].get("intangibles", 0),
+        "goodwill_claims": summary["family_claims"].get("goodwill_rollforward", 0),
+    }
+    (gold / "int-emit-summary.json").write_text(json.dumps(probe_summary))
+    assert diff_emit_dirs(out, gold, bases)["equal"]
+
+
 def test_main_emit_then_diff_round_trip(tmp_path):
     fixtures, bases = _stage(tmp_path)
     out = tmp_path / "emit"
