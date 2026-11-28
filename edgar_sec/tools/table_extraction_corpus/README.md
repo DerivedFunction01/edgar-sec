@@ -42,6 +42,11 @@ later drives (derivation self-check, verdict, validation).
   assembly account, and the pricing record's residual lists as one
   artifact; command form:
   `python -m edgar_sec.tools.table_extraction_corpus.census_assembly <inputs> <out> [--pricing <pricing.json>]`.
+- Shadow learning (`shadow_learner.py`) enumerates conjunctions of
+  census-feature atoms and gini decision-tree leaf paths per family
+  against the census residual falses, and certifies the learned
+  separations the held-out split supports; command form:
+  `python -m edgar_sec.tools.table_extraction_corpus.shadow_learner <population.jsonl> <residual-lists.txt> <pricing.json> <shadow.json>`.
 - New populations are labelled by `label.py`, the taxonomy lane's XBRL
   alignment method ported verbatim (role-title map, significant-digit
   scoring, schedule signatures, aligned-negative rule); it labels only
