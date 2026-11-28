@@ -46,7 +46,7 @@ from edgar_sec.engine.forms.form144.row_specs import (
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
-from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, FULL_DATE_ANY_RE
 
 
 def _integer_or_token(text: str) -> int | str | None:
@@ -85,7 +85,7 @@ def _is_table_i_header(row: tuple[str, ...]) -> bool:
     lower_cells = [" ".join(c.lower().split()) for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) or RE_FULL_DATE.search(c) for c in lower_cells):
+    if any(NUMERIC_DATE_RE.search(c) or FULL_DATE_ANY_RE.search(c) for c in lower_cells):
         return False
     row_str = " ".join(lower_cells)
     if "table i" in row_str or "securities to be sold" in row_str:
@@ -107,7 +107,7 @@ def _is_table_ii_header(row: tuple[str, ...]) -> bool:
     lower_cells = [" ".join(c.lower().split()) for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) or RE_FULL_DATE.search(c) for c in lower_cells):
+    if any(NUMERIC_DATE_RE.search(c) or FULL_DATE_ANY_RE.search(c) for c in lower_cells):
         return False
     row_str = " ".join(lower_cells)
     if "table ii" in row_str or "sold during the past" in row_str:
@@ -126,7 +126,7 @@ def _is_table_ii_header(row: tuple[str, ...]) -> bool:
 
 
 def _date_cell_match(text: str) -> re.Match[str] | None:
-    return NUMERIC_DATE_RE.search(text) or RE_FULL_DATE.search(text)
+    return NUMERIC_DATE_RE.search(text) or FULL_DATE_ANY_RE.search(text)
 
 
 def _extract_date_text(text: str) -> str | None:
