@@ -17,9 +17,11 @@ from pathlib import Path
 from edgar_sec.engine.tables.numeric_cells import NUMERIC_TOKEN_RE
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_ALIASES,
+    NUMERIC_DATE_RE,
     STRICT_MONTH_PATTERN,
     YEAR_TOKEN_SEARCH_RE,
 )
+from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 # The instrument's month vocabulary: the home's full names and
@@ -30,14 +32,12 @@ MONTHS = frozenset(
 )
 NUM_RE = re.compile(r"\(?-?\$?\s*" + NUMERIC_TOKEN_RE.pattern + r"\s*\)?%?\)?")
 _NON_ALNUM_SPACE_RE = re.compile(r"[^a-z0-9 ]+")
-_WHITESPACE_RUN_RE = re.compile(r"\s+")
 _NUMBER_TOKEN_RE = re.compile(r"\b\d+\b")
 _DIGIT_RE = re.compile(r"\d")
 _BOOKEND_BEGIN_RE = re.compile(r"beginning|opening balance|balance at (the )?beginning")
 _BOOKEND_END_RE = re.compile(r"ending|closing balance|balance at (the )?end")
 DATE_RE = re.compile(
-    r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b"
-    r"|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
+    r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b" + "|" + NUMERIC_DATE_RE.pattern
 )
 MOVE_WORDS = {
     "additions",
@@ -85,7 +85,7 @@ def norm(s: str) -> str:
     """Lowercase a text fragment and collapse non-alphanumerics."""
     s = s.lower()
     s = _NON_ALNUM_SPACE_RE.sub(" ", s)
-    return _WHITESPACE_RUN_RE.sub(" ", s).strip()
+    return RE_WHITESPACE.sub(" ", s).strip()
 
 
 def stub_key(stub: str) -> str:
