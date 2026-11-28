@@ -47,7 +47,7 @@ from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.foundation.text.date_patterns import (
     MONTH_RE,
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
+    FULL_DATE_ANY_RE,
 )
 from edgar_sec.foundation.text.dates import ParsedDate
 
@@ -340,7 +340,7 @@ def parse_metadata(
                     and not BARE_BOX_NUM_RE.match(right)
                     and (
                         NUMERIC_DATE_RE.search(right)
-                        or RE_FULL_DATE.search(right)
+                        or FULL_DATE_ANY_RE.search(right)
                         or (MONTH_RE.search(right) and any(c.isdigit() for c in right))
                     )
                     and not any(
@@ -361,7 +361,7 @@ def parse_metadata(
                         below = target_row[target_index].strip()
                         below_lower = lowered_rows[next_row][target_index]
                         has_date = bool(
-                            NUMERIC_DATE_RE.search(below) or RE_FULL_DATE.search(below)
+                            NUMERIC_DATE_RE.search(below) or FULL_DATE_ANY_RE.search(below)
                         )
                         if not has_date:
                             for offset in (1, -1):
@@ -370,7 +370,7 @@ def parse_metadata(
                                     adjacent = target_row[candidate_index].strip()
                                     if NUMERIC_DATE_RE.search(
                                         adjacent
-                                    ) or RE_FULL_DATE.search(adjacent):
+                                    ) or FULL_DATE_ANY_RE.search(adjacent):
                                         below = adjacent
                                         below_lower = lowered_rows[next_row][
                                             candidate_index
@@ -469,7 +469,7 @@ def parse_metadata(
                         previous_row = grid.rows[row_index - 1]
                         signature_name, _ = scan_signature_grid((row, previous_row))
                         if len(previous_row) > 1 and previous_row[1].strip():
-                            date_match = RE_FULL_DATE.search(
+                            date_match = FULL_DATE_ANY_RE.search(
                                 previous_row[1]
                             ) or NUMERIC_DATE_RE.search(previous_row[1])
                             if date_match:
