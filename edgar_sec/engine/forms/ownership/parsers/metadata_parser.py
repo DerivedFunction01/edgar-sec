@@ -361,7 +361,8 @@ def parse_metadata(
                         below = target_row[target_index].strip()
                         below_lower = lowered_rows[next_row][target_index]
                         has_date = bool(
-                            NUMERIC_DATE_RE.search(below) or FULL_DATE_ANY_RE.search(below)
+                            NUMERIC_DATE_RE.search(below)
+                            or FULL_DATE_ANY_RE.search(below)
                         )
                         if not has_date:
                             for offset in (1, -1):

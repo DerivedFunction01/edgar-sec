@@ -42,7 +42,9 @@ def parse_period(cell_text: str) -> FilingPeriod:
             if not line:
                 continue
             if AMEND_LABEL_RE.match(line):
-                m_label_date = NUMERIC_DATE_RE.search(line) or FULL_DATE_ANY_RE.search(line)
+                m_label_date = NUMERIC_DATE_RE.search(line) or FULL_DATE_ANY_RE.search(
+                    line
+                )
                 if m_label_date:
                     amend_date = m_label_date.group(0).strip()
                     break
