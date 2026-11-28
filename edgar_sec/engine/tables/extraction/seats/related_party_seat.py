@@ -2,12 +2,6 @@
 related-party tables whose own score stays under the floor.
 Final compete_filing pass: an unclaimed geometry seats on
 its own heading or stub form over an amount-bearing grid.
-
-Evidence matching is single-pass: one term-index scan per
-channel text collects every evidence class at once, and
-the legs read the collected hit sets. Every index key is
-the verbatim priced string, so admissions are preserved
-by construction.
 """
 
 from __future__ import annotations
@@ -51,8 +45,11 @@ MIN_NUMERIC_CELLS = 2
 MAX_DATA_ROWS = 48
 MAX_STUBS = 20
 
-# One compiled matcher per channel text: a single scan
-# reports every evidence class the channel carries.
+# Single-pass evidence matching: one compiled matcher per
+# channel text, a single scan reporting every evidence
+# class the channel carries, the legs reading the hit
+# sets. Every index key is the verbatim priced string,
+# so admissions are preserved by construction.
 _HEADING_INDEX = TermIndex(
     [TermEntry(phrase, "heading") for phrase in HEADING_PHRASES]
     + [TermEntry(phrase, "relational") for phrase in RELATIONAL_HEADING_PHRASES]
