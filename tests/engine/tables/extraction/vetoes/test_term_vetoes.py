@@ -267,25 +267,25 @@ def test_lead_channel_from_production_seam() -> None:
 
 
 # Set completeness: counts per (family, channel, tier) from the
-# priced records after the ruled holds and release; 542 rows.
+# priced records after the ruled holds and release; 972 rows.
 _GROUP_COUNTS = {
-    ("aoci_rollforward", "body", "hard"): 4,
+    ("aoci_rollforward", "body", "hard"): 27,
     ("aoci_rollforward", "body", "scored"): 13,
     ("aoci_rollforward", "lead", "scored"): 5,
     ("balance_sheet", "body", "hard"): 30,
     ("balance_sheet", "body", "scored"): 32,
     ("balance_sheet", "lead", "hard"): 22,
-    ("balance_sheet", "lead", "scored"): 20,
-    ("cash_flow", "body", "hard"): 4,
-    ("cash_flow", "body", "scored"): 20,
+    ("balance_sheet", "lead", "scored"): 43,
+    ("cash_flow", "body", "hard"): 27,
+    ("cash_flow", "body", "scored"): 43,
     ("cash_flow", "lead", "hard"): 12,
-    ("cash_flow", "lead", "scored"): 14,
+    ("cash_flow", "lead", "scored"): 35,
     ("comprehensive_income", "body", "hard"): 1,
     ("comprehensive_income", "body", "scored"): 13,
-    ("comprehensive_income", "lead", "scored"): 11,
+    ("comprehensive_income", "lead", "scored"): 34,
     ("debt_maturity", "body", "hard"): 1,
     ("debt_maturity", "lead", "scored"): 11,
-    ("deferred_tax", "body", "hard"): 3,
+    ("deferred_tax", "body", "hard"): 26,
     ("deferred_tax", "body", "scored"): 7,
     ("deferred_tax", "lead", "hard"): 6,
     ("deferred_tax", "lead", "scored"): 5,
@@ -294,22 +294,22 @@ _GROUP_COUNTS = {
     ("derivatives_hedging", "lead", "hard"): 2,
     ("derivatives_hedging", "lead", "scored"): 5,
     ("eps_reconciliation", "body", "hard"): 10,
-    ("eps_reconciliation", "body", "scored"): 9,
+    ("eps_reconciliation", "body", "scored"): 32,
     ("eps_reconciliation", "lead", "hard"): 3,
-    ("eps_reconciliation", "lead", "scored"): 23,
+    ("eps_reconciliation", "lead", "scored"): 45,
     ("equity_statement", "body", "hard"): 9,
-    ("equity_statement", "body", "scored"): 16,
+    ("equity_statement", "body", "scored"): 39,
     ("equity_statement", "lead", "hard"): 7,
-    ("equity_statement", "lead", "scored"): 15,
+    ("equity_statement", "lead", "scored"): 37,
     ("fair_value", "body", "scored"): 2,
     ("income_statement", "body", "hard"): 1,
-    ("income_statement", "body", "scored"): 23,
+    ("income_statement", "body", "scored"): 45,
     ("income_statement", "lead", "hard"): 4,
-    ("income_statement", "lead", "scored"): 12,
-    ("intangibles", "body", "hard"): 6,
+    ("income_statement", "lead", "scored"): 34,
+    ("intangibles", "body", "hard"): 29,
     ("intangibles", "body", "scored"): 3,
     ("intangibles", "lead", "hard"): 6,
-    ("intangibles", "lead", "scored"): 10,
+    ("intangibles", "lead", "scored"): 33,
     ("inventory", "lead", "hard"): 1,
     ("inventory", "lead", "scored"): 2,
     ("lease_maturity", "body", "hard"): 5,
@@ -319,7 +319,7 @@ _GROUP_COUNTS = {
     ("pension", "body", "hard"): 6,
     ("pension", "body", "scored"): 13,
     ("pension", "lead", "hard"): 5,
-    ("pension", "lead", "scored"): 9,
+    ("pension", "lead", "scored"): 31,
     ("ppe", "body", "hard"): 1,
     ("ppe", "lead", "scored"): 4,
     ("related_party", "body", "hard"): 2,
@@ -332,10 +332,10 @@ _GROUP_COUNTS = {
     ("stock_comp_rollforward", "body", "hard"): 4,
     ("stock_comp_rollforward", "body", "scored"): 5,
     ("stock_comp_rollforward", "lead", "hard"): 2,
-    ("stock_comp_rollforward", "lead", "scored"): 10,
-    ("tax_reconciliation", "body", "hard"): 8,
+    ("stock_comp_rollforward", "lead", "scored"): 33,
+    ("tax_reconciliation", "body", "hard"): 31,
     ("tax_reconciliation", "body", "scored"): 4,
-    ("tax_reconciliation", "lead", "hard"): 15,
+    ("tax_reconciliation", "lead", "hard"): 38,
     ("tax_reconciliation", "lead", "scored"): 3,
 }
 
@@ -350,15 +350,15 @@ def _all_rows() -> set[tuple[str, str, str, str]]:
 
 def test_veto_set_is_complete_as_ruled() -> None:
     rows = _all_rows()
-    assert len(rows) == 542
+    assert len(rows) == 972
     counts: dict[tuple[str, str, str], int] = {}
     for family, _term, channel, tier in rows:
         key = (family, channel, tier)
         counts[key] = counts.get(key, 0) + 1
     assert counts == _GROUP_COUNTS
     tiers = [tier for _f, _t, _c, tier in rows]
-    assert tiers.count("hard") == 194
-    assert tiers.count("scored") == 348
+    assert tiers.count("hard") == 332
+    assert tiers.count("scored") == 640
 
 
 def test_eps_v3_terms_leave_lead_hard() -> None:
