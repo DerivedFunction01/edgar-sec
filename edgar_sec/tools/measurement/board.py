@@ -1,9 +1,8 @@
 """Family board scoring: packet claims against adjudicated bases.
 
-Scores one family's claim packet (an emit's rows) against its
-adjudicated basis — joint precision / recall / J over the basis
-frame — and carries the fidelity form: a prior board of record
-is reproduced from the same runner before a new board is read.
+Joint precision / recall / J over the basis frame, with the
+fidelity form: a prior board of record reproduced from the
+same runner before a new board is read.
 """
 
 from __future__ import annotations
@@ -22,8 +21,7 @@ def joint_objective(precision: float, recall: float, bar: float = BAR) -> float:
     """The joint objective of record over one board's P and R.
 
     Each side is adjusted to the bar plus half its surplus over
-    the bar (no surplus below the bar); the weaker adjusted side
-    weighs threefold in the mean.
+    the bar; the weaker adjusted side weighs threefold.
     """
     adjusted_p = bar + max(0.0, precision - bar) / 2.0
     adjusted_r = bar + max(0.0, recall - bar) / 2.0
@@ -33,10 +31,8 @@ def joint_objective(precision: float, recall: float, bar: float = BAR) -> float:
 def load_packet(packet_path: str | Path, family: str, keying: str) -> dict:
     """Read an emit rows file into one family's claim set.
 
-    Returns the family's claimed specimen keys in the basis's
-    keying (full occurrence keys, or bare keys without the
-    occurrence ordinal) plus every specimen key the packet
-    carries, in the same keying.
+    Keys come back in the basis's keying (full occurrence keys,
+    or bare keys without the ordinal), claims and universe alike.
     """
     claimed: set[str] = set()
     universe: set[str] = set()
@@ -56,10 +52,8 @@ def load_packet(packet_path: str | Path, family: str, keying: str) -> dict:
 def load_basis(basis_path: str | Path) -> dict:
     """Read a board basis: family, keying, members, falses, truth.
 
-    Members and falses are specimen-key lists in the basis's
-    keying; truth, when present, maps specimen keys to their
-    adjudicated family label (the family's own name for members,
-    another label for adjudicated non-members).
+    Truth, when present, maps specimen keys to their adjudicated
+    family label; members and falses are specimen-key lists.
     """
     raw = json.loads(Path(basis_path).read_text())
     return {
@@ -74,12 +68,9 @@ def load_basis(basis_path: str | Path) -> dict:
 def score_board(claimed: set[str], universe: set[str], basis: dict) -> dict:
     """Score one family's claim set against its adjudicated basis.
 
-    Precision ranges over adjudicated claims: with a truth map,
-    claims adjudicated to the family against claims adjudicated
-    to any other label; without one, member claims against the
-    named falses. Recall ranges over the basis's members present
-    in the packet's universe; members outside it are named, not
-    silently carried in the frame.
+    Precision ranges over adjudicated claims (truth form) or
+    member claims vs the named falses (frame form); recall
+    ranges over members present in the packet's universe.
     """
     family = basis["family"]
     members_named = basis["members"]
@@ -127,8 +118,8 @@ def score_board(claimed: set[str], universe: set[str], basis: dict) -> dict:
 def fidelity_diff(board: dict, expected: dict) -> list[dict]:
     """Divergences between a scored board and a board of record.
 
-    The expected form names any subset of the board's cells
-    (counts, fn, P, R, J); an empty result is exact reproduction.
+    The expected form names any subset of the board's cells;
+    an empty result is exact reproduction.
     """
     out: list[dict] = []
     for cell in _CELLS:
