@@ -56,12 +56,9 @@ def load_specimens(path: str | Path) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def _load_json(inputs: Path, name: str):
-    return json.loads((inputs / name).read_text(encoding="utf-8"))
-
-
 def _adjudication(inputs: Path, name: str) -> dict[str, dict]:
-    return {item["adsh"]: item for item in _load_json(inputs, name)}
+    items = json.loads((inputs / name).read_text(encoding="utf-8"))
+    return {item["adsh"]: item for item in items}
 
 
 def _targets(inputs: Path, name: str) -> dict[str, list]:
@@ -71,7 +68,8 @@ def _targets(inputs: Path, name: str) -> dict[str, list]:
     list; the multi form extends, the single form is last-wins.
     """
     out: dict[str, list] = {}
-    for item in _load_json(inputs, name):
+    items = json.loads((inputs / name).read_text(encoding="utf-8"))
+    for item in items:
         if item.get("tables") is not None:
             out.setdefault(item["adsh"], []).extend(
                 table.get("rows") or [] for table in item["tables"] or []
@@ -98,9 +96,8 @@ def specimen_jobs(
 ) -> tuple[list[tuple[str, dict]], list[str]]:
     """Build jobs for every specimen, plus the round accessions.
 
-    Rounds in file order, then the frame members; a round member's
-    spec comes from its adjudication item, a frame member's from
-    the frame specs file.
+    Rounds in file order, then the frame members; specs derive
+    from the adjudication items and the frame specs file.
     """
     jobs: list[tuple[str, dict]] = []
     round_accessions: list[str] = []
@@ -114,7 +111,9 @@ def specimen_jobs(
                 )
             )
             round_accessions.append(accession)
-    frame_specs = _load_json(inputs, specimens["frame"]["specs"])
+    frame_specs = json.loads(
+        (inputs / specimens["frame"]["specs"]).read_text(encoding="utf-8")
+    )
     for bare in specimens["frame"]["bares"]:
         accession = bare.rsplit(":", 1)[0]
         fs = frame_specs[accession]
