@@ -131,8 +131,12 @@ def test_claims_record_with_corpus_universe(tmp_path):
             "family": "segment_reporting",
             "keying": "bare",
             "members": ["m1", "m2", "m3"],
-            "truth": {"m1": "segment_reporting", "m2": "segment_reporting",
-                      "m3": "segment_reporting", "x": "pension"},
+            "truth": {
+                "m1": "segment_reporting",
+                "m2": "segment_reporting",
+                "m3": "segment_reporting",
+                "x": "pension",
+            },
         },
     )
     packet = _packet(
