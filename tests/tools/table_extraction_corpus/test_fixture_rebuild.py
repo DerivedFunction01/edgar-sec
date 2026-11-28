@@ -35,9 +35,7 @@ def test_targets_loader_forms(tmp_path):
     (tmp_path / "single.json").write_text(json.dumps(single))
     (tmp_path / "multi.json").write_text(json.dumps(multi))
     assert fixture_rebuild._targets(tmp_path, "single.json") == {A1: [TARGET2]}
-    assert fixture_rebuild._targets(tmp_path, "multi.json") == {
-        A2: [TARGET1, TARGET2]
-    }
+    assert fixture_rebuild._targets(tmp_path, "multi.json") == {A2: [TARGET1, TARGET2]}
 
 
 def _write_inputs(tmp_path: Path) -> Path:
@@ -153,8 +151,11 @@ def _fake_extract(cured: dict):
             geometries = [
                 {
                     "table_index": 7,
-                    "rows": [["alpha", "bravo"], ["charlie", "delta"],
-                             ["echo", "zzzzz"]],
+                    "rows": [
+                        ["alpha", "bravo"],
+                        ["charlie", "delta"],
+                        ["echo", "zzzzz"],
+                    ],
                 }
             ]
         elif spec["accession"] == A2:
@@ -236,12 +237,18 @@ def test_rebuild_summary_and_cli(tmp_path, monkeypatch, capsys):
     assert load_specimens(specimens_path)["family"] == "intangibles"
     rc = fixture_rebuild.main(
         [
-            "--inputs", str(inputs),
-            "--specimens", str(specimens_path),
-            "--work", str(tmp_path / "work"),
-            "--out", str(tmp_path / "out"),
-            "--tree", "t0",
-            "--workers", "1",
+            "--inputs",
+            str(inputs),
+            "--specimens",
+            str(specimens_path),
+            "--work",
+            str(tmp_path / "work"),
+            "--out",
+            str(tmp_path / "out"),
+            "--tree",
+            "t0",
+            "--workers",
+            "1",
         ]
     )
     assert rc == 0

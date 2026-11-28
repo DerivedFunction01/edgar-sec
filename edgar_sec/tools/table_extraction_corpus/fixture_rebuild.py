@@ -108,8 +108,10 @@ def specimen_jobs(
         adjudication = _adjudication(inputs, round_["adjudication"])
         for accession in round_["accessions"]:
             jobs.append(
-                (accession, _round_spec(accession, adjudication[accession],
-                                         round_["era"]))
+                (
+                    accession,
+                    _round_spec(accession, adjudication[accession], round_["era"]),
+                )
             )
             round_accessions.append(accession)
     frame_specs = _load_json(inputs, specimens["frame"]["specs"])
@@ -285,7 +287,9 @@ def stage_aggregate(
             accession, entry = _build_one(job)
             index[accession] = entry
     match = match_members(
-        fixtures, _round_targets(specimens, inputs), round_accessions,
+        fixtures,
+        _round_targets(specimens, inputs),
+        round_accessions,
         _AGGREGATE_MIN_CELLS,
     )
     bases = _bases(specimens, match, round_accessions)
@@ -335,12 +339,9 @@ def stage_cure(
     jobs, round_accessions = specimen_jobs(specimens, inputs)
     have = {p.stem for p in fixtures.glob("*.json")}
     if len(have) != len(jobs):
-        raise ValueError(
-            f"expected {len(jobs)} staged fixtures, found {len(have)}"
-        )
+        raise ValueError(f"expected {len(jobs)} staged fixtures, found {len(have)}")
     adjudications = [
-        _adjudication(inputs, round_["adjudication"])
-        for round_ in specimens["rounds"]
+        _adjudication(inputs, round_["adjudication"]) for round_ in specimens["rounds"]
     ]
     rebuild = [
         accession
@@ -351,9 +352,7 @@ def stage_cure(
     client = make_client(1)
     rebuilt: dict[str, dict] = {}
     for accession in rebuild:
-        item = next(
-            (adj[accession] for adj in adjudications if accession in adj), {}
-        )
+        item = next((adj[accession] for adj in adjudications if accession in adj), {})
         filename = item.get("file_used") or item.get("file")
         cik = str(int(item["ciks"][0]))
         raw = _fetch_document(client, cik, accession, filename)
@@ -386,7 +385,9 @@ def stage_cure(
             "geometries": len(record.get("geometries") or []),
         }
     match = match_members(
-        fixtures, _round_targets(specimens, inputs), round_accessions,
+        fixtures,
+        _round_targets(specimens, inputs),
+        round_accessions,
         _CURE_MIN_CELLS,
     )
     for accession, entry in match.items():
@@ -447,8 +448,7 @@ def rebuild(
         inputs, specimens, work, out, tree=tree, workers=workers
     )
     prior_match = json.loads((out / "match-report.json").read_text(encoding="utf-8"))
-    cure = stage_cure(inputs, specimens, work, out, tree=tree,
-                      prior_match=prior_match)
+    cure = stage_cure(inputs, specimens, work, out, tree=tree, prior_match=prior_match)
     geometries = 0
     fixtures_dir = work / "fixtures"
     jobs, _round_accessions = specimen_jobs(specimens, inputs)
