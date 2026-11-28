@@ -1,0 +1,42 @@
+3568 files already formatted
+All checks passed!
+==> ruff format check
+==> ruff lint check
+==> repository policy scanners
+==> ran 34 checks: 33 clean, 1 violated
+    NOTICE [file-length] edgar_sec/apps/client/operator/operator_selection.py:753: File length is 753 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/apps/client/search/efts.py:732: File length is 732 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/apps/client/statements/rendering.py:777: File length is 777 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/apps/client/statements/views.py:707: File length is 707 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/apps/client/xbrl.py:789: File length is 789 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/domain/filing_catalog/filters.py:792: File length is 792 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/domain/sec_urls.py:798: File length is 798 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/document/html/positioned.py:777: File length is 777 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/document/page_markers/candidates.py:767: File length is 767 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/beneficial_ownership/issuer.py:748: File length is 748 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/beneficial_ownership/item_subsections.py:710: File length is 710 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/beneficial_ownership/parser.py:737: File length is 737 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/beneficial_ownership/render_to_xml.py:788: File length is 788 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/common/fields/extraction.py:743: File length is 743 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/cover/checkmarks/candidates.py:788: File length is 788 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/cover/profiles.py:713: File length is 713 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/forms/form144/sections.py:792: File length is 792 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/reflow/features/context.py:727: File length is 727 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/reflow/rules/cascades.py:740: File length is 740 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/selection/features.py:769: File length is 769 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/selection/selector.py:768: File length is 768 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/selection/source.py:763: File length is 763 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/tables/extraction/assembly/assembly.py:758: File length is 758 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/tables/extraction/cascade/competition.py:710: File length is 710 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/tables/extraction/vetoes/precision_veto_evidence.py:738: File length is 738 lines (creep band 700-800); decompose before the cap forces it
+    NOTICE [file-length] edgar_sec/engine/xbrl/discovery/fixture_miner.py:777: File length is 777 lines (creep band 700-800); decompose before the cap forces it
+    ERROR [prose-length] edgar_sec/engine/tables/extraction/seats/related_party_seat.py:48: comment run is 5 lines (cap 3)
+          hint: Keep the constraint; delete the narration around it.
+    NOTICE [folder-density] edgar_sec/apps/client:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/apps/client/financials:None: 19 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/apps/client/operator:None: 19 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/engine/tables/extraction/note_separators:None: 19 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/engine/tables/extraction/seats:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/tools/xbrl_eval:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] tests/apps/client/operator:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] tests/engine/tables/extraction/seats:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it

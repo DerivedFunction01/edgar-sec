@@ -1,0 +1,309 @@
+rpsinglepass start: 2026-11-28T11:51:34Z host=agent-ubuntu
+input hashes ok
+spec files: 140
+Cloning into '/home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-b'...
+Switched to a new branch 'ci-relatedparty-singlepass'
+branch 'ci-relatedparty-singlepass' set up to track 'origin/ci-relatedparty-singlepass'.
+tree-b HEAD=d37a6cb4f1563c8a82c456891f0b115a5231b339
+Cloning into '/home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-a'...
+Note: switching to '52d6173b1766ef5607f2b36db276d4a72ba8d291'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 52d6173 credit-losses term-index conversion: prose cure (_spec_index docstring)
+trees ok
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: work/venv-b
+Activate with: source work/venv-b/bin/activate
+Using Python 3.12.3 environment at: work/venv-b
+Resolved 52 packages in 775ms
+   Building edgar-sec @ file:///home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-b
+      Built edgar-sec @ file:///home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-b
+Prepared 1 package in 1.19s
+Installed 52 packages in 166ms
+ + annotated-doc==0.0.7
+ + annotated-types==0.8.0
+ + anyio==4.16.0
+ + certifi==2026.11.20
+ + charset-normalizer==3.5.3
+ + click==8.5.1
+ + duckdb==2.0.1
+ + edgar-sec==2.0.0 (from file:///home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-b)
+ + execnet==2.1.2
+ + fastapi==0.165.0
+ + flatbuffers==25.12.19
+ + h11==0.16.0
+ + httpcore2==2.16.2
+ + httpx2==2.16.2
+ + idna==3.20
+ + iniconfig==2.3.1
+ + networkx==3.7
+ + numpy==2.5.5
+ + onnxruntime==1.32.0
+ + opentelemetry-api==1.45.2
+ + packaging==26.4
+ + pandas==3.1.1
+ + pluggy==1.7.0
+ + polars==2.2.0
+ + polars-runtime-32==2.2.0
+ + protobuf==7.36.2
+ + psutil==7.2.2
+ + pyarrow==26.0.1
+ + pydantic==2.14.4
+ + pydantic-core==2.50.5
+ + pygments==2.21.0
+ + pymupdf==2.1
+ + pymupdf-layout==2.1
+ + pymupdf4llm==2.1
+ + pytest==9.2.0
+ + pytest-timeout==2.4.0
+ + pytest-xdist==3.8.0
+ + python-dateutil==4.0.0
+ + pyyaml==6.0.4
+ + requests==2.34.2
+ + ruff==0.17.6
+ + selectolax==1.0.2
+ + starlette==1.10.0
+ + tabulate==0.10.0
+ + tqdm==4.70.1
+ + truststore==0.10.5
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.5
+ + tzdata==2026.6
+ + urllib3==2.8.0
+ + uvicorn==0.54.0
+ + zstandard==0.25.0
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: work/venv-a
+Activate with: source work/venv-a/bin/activate
+Using Python 3.12.3 environment at: work/venv-a
+Resolved 52 packages in 432ms
+   Building edgar-sec @ file:///home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-a
+      Built edgar-sec @ file:///home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-a
+Prepared 1 package in 1.26s
+Installed 52 packages in 135ms
+ + annotated-doc==0.0.7
+ + annotated-types==0.8.0
+ + anyio==4.16.0
+ + certifi==2026.11.20
+ + charset-normalizer==3.5.3
+ + click==8.5.1
+ + duckdb==2.0.1
+ + edgar-sec==2.0.0 (from file:///home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/tree-a)
+ + execnet==2.1.2
+ + fastapi==0.165.0
+ + flatbuffers==25.12.19
+ + h11==0.16.0
+ + httpcore2==2.16.2
+ + httpx2==2.16.2
+ + idna==3.20
+ + iniconfig==2.3.1
+ + networkx==3.7
+ + numpy==2.5.5
+ + onnxruntime==1.32.0
+ + opentelemetry-api==1.45.2
+ + packaging==26.4
+ + pandas==3.1.1
+ + pluggy==1.7.0
+ + polars==2.2.0
+ + polars-runtime-32==2.2.0
+ + protobuf==7.36.2
+ + psutil==7.2.2
+ + pyarrow==26.0.1
+ + pydantic==2.14.4
+ + pydantic-core==2.50.5
+ + pygments==2.21.0
+ + pymupdf==2.1
+ + pymupdf-layout==2.1
+ + pymupdf4llm==2.1
+ + pytest==9.2.0
+ + pytest-timeout==2.4.0
+ + pytest-xdist==3.8.0
+ + python-dateutil==4.0.0
+ + pyyaml==6.0.4
+ + requests==2.34.2
+ + ruff==0.17.6
+ + selectolax==1.0.2
+ + starlette==1.10.0
+ + tabulate==0.10.0
+ + tqdm==4.70.1
+ + truststore==0.10.5
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.5
+ + tzdata==2026.6
+ + urllib3==2.8.0
+ + uvicorn==0.54.0
+ + zstandard==0.25.0
+venvs ok
+=== scoped gate (converted tree) ===
+    NOTICE [folder-density] edgar_sec/engine/tables/extraction/note_separators:None: 19 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/engine/tables/extraction/seats:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] edgar_sec/tools/xbrl_eval:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] tests/apps/client/operator:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+    NOTICE [folder-density] tests/engine/tables/extraction/seats:None: 18 code files, inside the creep band over 16; group into subfolders by intent before the cap forces it
+gate rc=1
+=== build wave-3 fixtures (converted tree tooling) ===
+[1/140] ok 0000009389-23-000011
+[2/140] ok 0000048465-21-000019
+[3/140] ok 0000048465-22-000013
+[4/140] ok 0000048465-22-000034
+[5/140] ok 0000050493-26-000006
+[6/140] ok 0000096943-20-000017
+[7/140] ok 0000950170-22-001531
+[8/140] ok 0000950170-22-013641
+[9/140] ok 0001013762-24-001683
+[10/140] ok 0001062993-22-012661
+[11/140] ok 0001062993-23-011308
+[12/140] ok 0001062993-26-005919
+[13/140] ok 0001079973-20-000480
+[14/140] ok 0001079974-19-000543
+[15/140] ok 0001079974-20-000021
+[16/140] ok 0001104659-19-064085
+[17/140] ok 0001104659-21-067017
+[18/140] ok 0001104659-23-054337
+[19/140] ok 0001104659-24-075318
+[20/140] ok 0001104659-26-048127
+[21/140] ok 0001104659-26-049055
+[22/140] ok 0001109189-21-000039
+[23/140] ok 0001109357-20-000108
+[24/140] ok 0001109357-21-000050
+[25/140] ok 0001109357-26-000063
+[26/140] ok 0001140361-19-020592
+[27/140] ok 0001140361-20-007734
+[28/140] ok 0001140361-20-011787
+[29/140] ok 0001140361-20-018474
+[30/140] ok 0001140361-23-015466
+[31/140] ok 0001140361-23-024683
+[32/140] ok 0001143513-22-000003
+[33/140] ok 0001144204-19-026420
+[34/140] ok 0001144204-19-040073
+[35/140] ok 0001171843-24-003729
+[36/140] ok 0001193125-19-045493
+[37/140] ok 0001193125-19-101694
+[38/140] ok 0001193125-19-112384
+[39/140] ok 0001193125-19-126951
+[40/140] ok 0001193125-19-208786
+[41/140] ok 0001193125-19-224490
+[42/140] ok 0001193125-20-025342
+[43/140] ok 0001193125-20-067482
+[44/140] ok 0001193125-21-027420
+[45/140] ok 0001193125-21-233199
+[46/140] ok 0001193125-22-103006
+[47/140] ok 0001193125-23-130462
+[48/140] ok 0001193125-25-068893
+[49/140] ok 0001193125-25-068914
+[50/140] ok 0001193125-26-065183
+[51/140] ok 0001193125-26-325872
+[52/140] ok 0001213900-19-017088
+[53/140] ok 0001213900-19-023503
+[54/140] ok 0001213900-20-012627
+[55/140] ok 0001213900-20-037178
+[56/140] ok 0001213900-22-014082
+[57/140] ok 0001213900-22-055805
+[58/140] ok 0001213900-23-096518
+[59/140] ok 0001213900-24-045166
+[60/140] ok 0001213900-24-075596
+[61/140] ok 0001213900-25-045730
+[62/140] ok 0001213900-25-059716
+[63/140] ok 0001213900-25-077494
+[64/140] ok 0001213900-25-110936
+[65/140] ok 0001213900-26-044270
+[66/140] ok 0001213900-26-055478
+[67/140] ok 0001213900-26-122958
+[68/140] ok 0001321741-22-000016
+[69/140] ok 0001331757-19-000007
+[70/140] ok 0001331757-22-000052
+[71/140] ok 0001331757-23-000055
+[72/140] ok 0001387467-23-000049
+[73/140] ok 0001437749-21-010003
+[74/140] ok 0001437749-21-010489
+[75/140] ok 0001437749-21-010490
+[76/140] ok 0001437749-21-015763
+[77/140] ok 0001477932-19-001284
+[78/140] ok 0001493152-23-014803
+[79/140] ok 0001493152-23-017183
+[80/140] ok 0001493152-24-017279
+[81/140] ok 0001493152-24-043460
+[82/140] ok 0001493152-24-047593
+[83/140] ok 0001493152-26-002776
+[84/140] ok 0001493152-26-023709
+[85/140] ok 0001493152-26-024554
+[86/140] ok 0001493152-26-024593
+[87/140] ok 0001493152-26-053069
+[88/140] ok 0001495240-19-000010
+[89/140] ok 0001495240-22-000009
+[90/140] ok 0001495240-25-000012
+[91/140] ok 0001552781-19-000220
+[92/140] ok 0001552781-21-000270
+[93/140] ok 0001552781-22-000367
+[94/140] ok 0001553350-21-000327
+[95/140] ok 0001553350-22-000367
+[96/140] ok 0001558370-20-002769
+[97/140] ok 0001562884-21-000047
+[98/140] ok 0001564590-20-006193
+[99/140] ok 0001564590-20-019704
+[100/140] ok 0001564590-20-034955
+[101/140] ok 0001607062-19-000457
+[102/140] ok 0001607062-20-000139
+[103/140] ok 0001607062-20-000234
+[104/140] ok 0001607062-21-000548
+[105/140] ok 0001627282-24-000124
+[106/140] ok 0001628280-26-059261
+[107/140] ok 0001640334-19-000243
+[108/140] ok 0001640334-19-000500
+[109/140] ok 0001640334-19-000890
+[110/140] ok 0001640334-19-002659
+[111/140] ok 0001641172-25-004566
+[112/140] ok 0001641172-25-010839
+[113/140] ok 0001641172-25-010997
+[114/140] ok 0001641172-25-011417
+[115/140] ok 0001641172-25-026372
+[116/140] ok 0001641172-25-026374
+[117/140] ok 0001654948-21-000009
+[118/140] ok 0001654948-22-000008
+[119/140] ok 0001654954-20-004695
+[120/140] ok 0001654954-20-007230
+[121/140] ok 0001654954-21-004616
+[122/140] ok 0001654954-21-004734
+[123/140] ok 0001654954-21-005825
+[124/140] ok 0001654954-25-013083
+[125/140] ok 0001683168-22-002045
+[126/140] ok 0001683168-22-002707
+[127/140] ok 0001683168-26-006570
+[128/140] ok 0001683168-26-008887
+[129/140] ok 0001733998-20-000006
+[130/140] ok 0001829126-23-005850
+[131/140] ok 0001829126-24-004384
+[132/140] ok 0001829126-24-008183
+[133/140] ok 0001829126-25-003214
+[134/140] ok 0001854401-23-000069
+[135/140] ok 0001854401-23-000097
+[136/140] ok 0001854401-23-000103
+[137/140] ok 0001868275-22-000044
+[138/140] ok 0001868275-22-000067
+[139/140] ok 0001868275-22-000094
+[140/140] ok 0002124122-26-000023
+build complete: 140 filings in 122.244s, statuses={'ok': 140}
+build rc=0 fixtures=140
+{
+ "ok": false,
+ "base": "52d6173b1766ef5607f2b36db276d4a72ba8d291",
+ "head": "d37a6cb4f1563c8a82c456891f0b115a5231b339",
+ "host": "agent-ubuntu"
+}
+=== products exit as an origin branch ===
+Cloning into '/home/agent/runs/greenfield-ci-rpsinglepass-20261128T115128Z/work/proofrepo'...
+Switched to a new branch 'ci-rpsinglepass-proof'
