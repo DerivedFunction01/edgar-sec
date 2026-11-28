@@ -86,12 +86,18 @@ def populate(
     *,
     only: str | None = None,
 ) -> list[str]:
-    """Fetch every full-form row into the cache, verifying its hash."""
+    """Fetch every full-form row into the cache, verifying its hash; a row
+    whose source refuses is reported FAILED and the rest still populate.
+    """
     lines = []
     for entry in manifest["fixtures"]:
         if entry["form"] != "full" or (only and only not in entry["path"]):
             continue
-        payload = client.get_bytes(entry["source_url"], force_refresh=True)
+        try:
+            payload = client.get_bytes(entry["source_url"], force_refresh=True)
+        except Exception as exc:  # per-row tolerance: report, never starve the rest
+            lines.append(f"FAILED {entry['path']} ({type(exc).__name__})")
+            continue
         stored, ok = _stored_form(entry, payload)
         target = cache_root / entry["path"]
         target.parent.mkdir(parents=True, exist_ok=True)
