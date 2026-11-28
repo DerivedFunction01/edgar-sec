@@ -38,6 +38,19 @@ _BS_TAIL = (
     ("Total stockholders' equity", "40", "40"),
     ("Total liabilities and stockholders' equity", "100", "90"),
 )
+_BS_FULL = (
+    ("ACME CORP",),
+    ("Consolidated Balance Sheets",),
+    _PERIODS,
+    ("Assets", "", ""),
+    ("Cash and cash equivalents", "100", "90"),
+    ("Total current assets", "100", "90"),
+    ("Total assets", "100", "90"),
+    ("Liabilities", "", ""),
+    ("Total liabilities", "60", "50"),
+    ("Total stockholders' equity", "40", "40"),
+    ("Total liabilities and stockholders' equity", "100", "90"),
+)
 _BS_SMALL = (
     ("Balance Sheets",),
     _PERIODS,
@@ -186,8 +199,10 @@ def test_split_statement_assembles_into_one_main() -> None:
     assert assembly.unassigned == ()
 
 
+# The complete-spine head is admitted at the gate, so the
+# join below is decided by the join rule, not the sweep.
 def test_residual_fragment_joins_on_a_continued_marker() -> None:
-    assembly = assemble([_context(6, _BS_HEAD), _context(7, _CONTINUED_QUIET)])
+    assembly = assemble([_context(6, _BS_FULL), _context(7, _CONTINUED_QUIET)])
     (table,) = _tables(assembly, "balance_sheet")
     assert table.members == (6, 7)
     assignment = {a.table_index: a for a in assembly.assignments}
@@ -195,8 +210,10 @@ def test_residual_fragment_joins_on_a_continued_marker() -> None:
     assert assignment[7].mechanism == "join"
 
 
+# Same gate-admitted head: period continuity alone still
+# does not join the thin fragment.
 def test_thin_fragment_does_not_join_on_period_continuity_alone() -> None:
-    assembly = assemble([_context(6, _BS_HEAD), _context(7, _THIN_FRAGMENT)])
+    assembly = assemble([_context(6, _BS_FULL), _context(7, _THIN_FRAGMENT)])
     (table,) = _tables(assembly, "balance_sheet")
     assert table.members == (6,)
     assert assembly.unassigned == (7,)
@@ -208,11 +225,16 @@ def test_evidenced_fragment_joins_on_period_continuity() -> None:
     assert table.members == (6, 7)
 
 
+# The gate admits nothing in this filing, so the demotion
+# sweep unassigns the head beside the quiet fragment.
 def test_quiet_zero_evidence_fragment_stays_unassigned() -> None:
     assembly = assemble([_context(6, _BS_HEAD), _context(7, _QUIET)])
     (table,) = _tables(assembly, "balance_sheet")
     assert table.members == (6,)
-    assert assembly.unassigned == (7,)
+    assert assembly.unassigned == (6, 7)
+    assignment = {a.table_index: a for a in assembly.assignments}
+    assert assignment[6].family == "other"
+    assert assignment[6].mechanism == "residual"
 
 
 def test_interleaved_residual_does_not_block_a_join() -> None:
