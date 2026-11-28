@@ -1,9 +1,7 @@
-"""Scanner flagging tracked references a fresh clone cannot resolve.
-Flags absolute or home-anchored paths, specific untracked plan files and
-dated memory logs in tracked text outside the test tree (test specimens
-seed such strings as inputs), and tracked code naming another repository
-when a repo set is provisioned. Exemptions: exception directives in the
-registry files named in ``EXCEPTION_FILES``."""
+"""Scanner flagging tracked references a fresh clone cannot resolve:
+absolute or home-anchored paths, untracked plan files and dated memory
+logs in tracked text outside the test tree, and tracked code naming
+another repository when a repo set is provisioned (exemptions: ``EXCEPTION_FILES``)."""
 
 from __future__ import annotations
 
