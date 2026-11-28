@@ -98,24 +98,12 @@ def connect(
     preserve_insertion_order: bool = False,
 ) -> duckdb.DuckDBPyConnection:
     """Create a DuckDB connection with strict resource bounds derived from the system."""
-    profile_supplied = profile is not None
     if profile is None:
-        from edgar_sec.foundation.runtime.resources import (
-            default_duckdb_threads,
-            derive_resources,
-        )
+        from edgar_sec.foundation.runtime.resources import derive_resources
 
         profile = derive_resources()
 
-    # Default-profile connections stamp the bounded thread count from
-    # the resources home; an explicit profile or count is honoured as-is.
-    actual_threads = (
-        threads
-        if threads is not None
-        else profile.threads
-        if profile_supplied
-        else default_duckdb_threads()
-    )
+    actual_threads = threads if threads is not None else profile.threads
     actual_memory_limit = (
         memory_limit if memory_limit is not None else profile.memory_limit
     )
