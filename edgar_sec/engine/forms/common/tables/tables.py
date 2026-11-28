@@ -16,6 +16,9 @@ from edgar_sec.engine.forms.common.identity.entities import (
     STATE_ZIP_RE,
     STREET_SUFFIX_RE,
 )
+from edgar_sec.engine.forms.common.values.none_markers import (
+    EMPTY_CONTINUATION_WORDS,
+)
 from edgar_sec.engine.forms.common.values.numbers import NUMERIC_TOKEN_RE
 from edgar_sec.engine.tables.ascii_html.converter import (
     ResolvedGrid,
@@ -327,9 +330,7 @@ def address_from_inline_cells(
     return fields.get("street"), fields.get("city"), state, zip_code
 
 
-_EMPTY_CONTINUATION_WORDS: frozenset[str] = frozenset(
-    {"none", "n/a", "no reported", "not applicable", "nil", "0"}
-)
+_EMPTY_CONTINUATION_WORDS = EMPTY_CONTINUATION_WORDS
 _EMPTY_CONTINUATION_CELLS: frozenset[str] = _EMPTY_CONTINUATION_WORDS | {""}
 
 

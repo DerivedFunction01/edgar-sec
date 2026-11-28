@@ -23,6 +23,10 @@ from edgar_sec.engine.forms.common.tables.alignment import (
 )
 from edgar_sec.engine.forms.common.phrases.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables.tables import is_instruction_row
+from edgar_sec.engine.forms.common.values.none_markers import (
+    FORM144_SECURITY_NONE_MARKERS,
+    FORM144_SECURITY_NONE_TERMS,
+)
 from edgar_sec.engine.forms.common.values.numbers import (
     NUMERIC_TOKEN_RE,
     extract_schema_number_or_token,
@@ -325,10 +329,7 @@ def parse_table_ii_rows(
         row_str = " ".join(raw_cells)
         row_lower = row_str.lower()
 
-        if any(
-            term in row_lower
-            for term in ("none", "n/a", "no reported", "nothing to report")
-        ):
+        if any(term in row_lower for term in FORM144_SECURITY_NONE_TERMS):
             return True, []
 
         if any(term in row_lower for term in _TABLE_TERMINATORS):
@@ -400,8 +401,7 @@ def parse_table_ii_rows(
 
         if (
             seller
-            and seller.strip().lower()
-            in {"none", "n/a", "na", "nil", "not applicable", "no"}
+            and seller.strip().lower() in FORM144_SECURITY_NONE_MARKERS
             and sale_date is None
             and amount_sold is None
             and gross_proceeds is None

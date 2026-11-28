@@ -30,6 +30,9 @@ from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_TABLE_II_LEXICAL_PACK,
 )
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
+from edgar_sec.engine.forms.common.values.none_markers import (
+    FORM144_SECTION_NONE_MARKERS,
+)
 from edgar_sec.engine.forms.common.values.numbers import NUMERIC_TOKEN_RE
 from edgar_sec.engine.forms.form144.patterns import (
     SEC_FILE_LABEL_RE,
@@ -388,7 +391,7 @@ def _is_table_ii_continuation(
     if not rows:
         return False
     if len(rows) == 1 and all(
-        cell.strip().lower() in {"n/a", "none", "no reported"}
+        cell.strip().lower() in FORM144_SECTION_NONE_MARKERS
         for cell in rows[0]
         if cell.strip()
     ):

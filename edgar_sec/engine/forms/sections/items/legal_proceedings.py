@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.engine.forms.common.values.none_markers import GENERIC_NONE_MARKERS
 from edgar_sec.engine.forms.sections.models import (
     LegalProceedingsDisposition,
     LegalProceedingsSection,
@@ -28,7 +29,7 @@ _RE_STRONG_REFERENCE = re.compile(
     r"incorporat|by reference|reference is made", re.IGNORECASE
 )
 
-_NONE_MARKERS = frozenset({"none", "not applicable", "n/a"})
+_NONE_MARKERS = GENERIC_NONE_MARKERS
 _OMITTED_MARKERS = frozenset(
     {"omitted", "[omitted]", "(omitted)", "reserved", "[reserved]"}
 )

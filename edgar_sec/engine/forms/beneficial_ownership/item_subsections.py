@@ -37,6 +37,9 @@ from edgar_sec.engine.forms.common.identity.entities import (
     ORGANIZATION_SUFFIX_ALT,
     is_boilerplate_entity_name,
 )
+from edgar_sec.engine.forms.common.values.none_markers import (
+    NOT_APPLICABLE_13G_TERMS,
+)
 from edgar_sec.engine.forms.common.values.numbers import (
     PERCENT_OF_CLASS_RE,
     _SCHEMA_UNIT_SUFFIX_ALT,
@@ -145,13 +148,7 @@ _ITEM9_LABELS = build_alternation(
     auto_escape=True,
     compact=True,
 )
-_NOT_APPLICABLE_TERMS = (
-    "not applicable",
-    "not-applicable",
-    "item not applicable",
-    "n/a",
-    "none",
-)
+_NOT_APPLICABLE_TERMS = NOT_APPLICABLE_13G_TERMS
 _NOT_APPLICABLE_ALT = build_alternation(
     _NOT_APPLICABLE_TERMS, auto_escape=True, compact=True
 )

@@ -25,6 +25,9 @@ from edgar_sec.engine.forms.common.tables.tables import (
     extract_labeled_field,
     parse_address_parts,
 )
+from edgar_sec.engine.forms.common.values.none_markers import (
+    FORM144_COVER_NONE_MARKERS,
+)
 from edgar_sec.engine.forms.cover.registrant import extract_irs_number
 from edgar_sec.engine.forms.form144.patterns import (
     SEC_FILE_BARE_RE,
@@ -110,7 +113,7 @@ def _extract_relationship_from_cell(text: str) -> tuple[list[str], list[str]]:
     cleaned = _PROMPT_CLEAN_RE.sub(" ", text).strip()
     rels: list[str] = []
     titles: list[str] = []
-    if not cleaned or cleaned.lower() in {"none", "n/a", "no", "nil"}:
+    if not cleaned or cleaned.lower() in FORM144_COVER_NONE_MARKERS:
         return rels, titles
     if _OFFICER_RE.search(cleaned):
         rels.append("Officer")
