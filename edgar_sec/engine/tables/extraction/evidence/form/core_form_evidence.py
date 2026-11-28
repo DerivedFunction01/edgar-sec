@@ -23,7 +23,6 @@ from edgar_sec.foundation.text.date_patterns import (
 )
 from edgar_sec.foundation.text.patterns import FLOAT_SCALE_ALT, RE_WHITESPACE
 
-DASH_CELLS = CELL_DASHES
 LEVEL_RE = re.compile(r"level ([123])\b")
 USEFUL_LIFE_RE = re.compile(r"useful li(?:fe|ves)")
 NET_WORD_RE = re.compile(r"\bnet\b")
@@ -117,7 +116,7 @@ class CoreFormVerdict:
 def _numeric_row(row, dash=True):
     for c in row[1:]:
         cc = norml(c).replace(" ", "")
-        if STRICT_NUMERIC_CELL_RE.match(cc) or (dash and cc in DASH_CELLS):
+        if STRICT_NUMERIC_CELL_RE.match(cc) or (dash and cc in CELL_DASHES):
             return True
     return False
 
@@ -126,7 +125,7 @@ def _block_numeric(row):
     """Numeric for header-block purposes: bare-year cells do not count."""
     for c in row[1:]:
         cc = norml(c).replace(" ", "")
-        if cc in DASH_CELLS:
+        if cc in CELL_DASHES:
             return True
         if STRICT_NUMERIC_CELL_RE.match(cc) and not YEAR_TOKEN_RE.match(cc):
             return True

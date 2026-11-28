@@ -11,8 +11,7 @@ from typing import Any
 
 from edgar_sec.foundation.text.dashes import DASH_CHARS
 
-_DASH_CHARS = DASH_CHARS
-_DASH_TRANSLATION = str.maketrans({char: " " for char in _DASH_CHARS})
+_DASH_TRANSLATION = str.maketrans({char: " " for char in DASH_CHARS})
 _TOKEN_RE = re.compile(r"[A-Za-z0-9'\-]+")
 
 
