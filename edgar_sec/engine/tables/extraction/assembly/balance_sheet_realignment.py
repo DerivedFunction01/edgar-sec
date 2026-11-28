@@ -43,8 +43,6 @@ def realign_balance_sheet(
     it; a promotion needs final-claim survival as well."""
     texts = [geometry_text_from_table(member.table) for member in members]
     gated = compete_filing_gated(texts)
-    if not any(result.claims for result in gated):
-        return
     survived = _final_survivors(texts, gated, by_position)
     for position, result in enumerate(gated):
         current = by_position[position]
