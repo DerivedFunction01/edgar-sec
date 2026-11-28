@@ -131,7 +131,8 @@ _MONTH_NAME_PATTERN = build_alternation(MONTH_NAMES, auto_escape=True, compact=T
 
 # A lone full-date label ("December 31, 2023"), whole string: the
 # dated-stub shape rollforward walks read as a balance anchor.
-FULL_DATE_STUB_RE = re.compile(rf"(?i)^(?:{_MONTH_NAME_PATTERN}) \d{{1,2}}, \d{{4}}$")
+# The month slot is MONTH_PATTERN, so abbreviated months anchor too.
+FULL_DATE_STUB_RE = re.compile(rf"(?i)^(?:{MONTH_PATTERN}) \d{{1,2}}, \d{{4}}$")
 
 
 # Full month names only, as a word: the names-only counterpart of
