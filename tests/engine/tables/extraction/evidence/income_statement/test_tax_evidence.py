@@ -341,11 +341,21 @@ def test_seat_outranks_the_ended_march_lead_veto():
 def test_months_ended_bars_the_seat_below_the_floor():
     geometry = GeometryText(
         stubs=("Income tax at statutory rate", "State taxes, net"),
-        lead="income taxes for the six months ended june 30, 2013",
+        lead="income taxes for the six months ended",
         form_tests=(_passed_outcome(),),
     )
     result = compete(geometry, terms=())
     assert "tax_reconciliation" not in result.claims
+
+
+def test_seat_outranks_the_ended_june_lead_veto():
+    geometry = GeometryText(
+        stubs=("Income tax at statutory rate", "State taxes, net"),
+        lead="income taxes for the three months ended june 30, 2013",
+        form_tests=(_passed_outcome(),),
+    )
+    result = compete(geometry, terms=())
+    assert result.claims == ("tax_reconciliation",)
 
 
 def test_seat_outranks_the_months_ended_veto_above_the_floor():
