@@ -22,6 +22,7 @@ from edgar_sec.engine.tables.extraction.core.registry import FAMILY_PRIORITY
 from edgar_sec.engine.tables.extraction.core.typed_rows import structure_table
 from edgar_sec.engine.tables.extraction.evidence.balance_sheet.warranty_evidence import (
     WarrantyText,
+    _section_date_keys,
     evaluate_form_test_warranty,
     evaluate_warranty_evidence,
 )
@@ -349,6 +350,70 @@ def test_stage_adapter_outcome_scores_the_seat():
     assert len(outcomes) == 1
     assert outcomes[0].passed
     assert outcomes[0].points == 3.0
+
+
+def test_section_date_keys_expand_against_the_reference_year():
+    keys = set()
+    for line in ("12/31/20", "12/31/21", "12/31/22"):
+        keys |= _section_date_keys(line, 2023)
+    assert keys == {
+        ("d", "12/31/2020"),
+        ("d", "12/31/2021"),
+        ("d", "12/31/2022"),
+    }
+    assert _section_date_keys("12/31/22", 2023) == _section_date_keys(
+        "12/31/2022", 2023
+    )
+
+
+def test_section_date_keys_stay_raw_without_a_reference_year():
+    assert _section_date_keys("12/31/22", None) == {("d", "12/31/22")}
+
+
+def _table_with_year(
+    rows: tuple[tuple[str, ...], ...],
+    caption_stack: tuple[str, ...] = (),
+    filing_year: int | None = None,
+):
+    geometry = TableGeometry(
+        table_index=0,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=rows,
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=0,
+            ),
+            confidence=1.0,
+        ),
+    )
+    context = TableContext(
+        geometry=geometry, caption_stack=caption_stack, filing_year=filing_year
+    )
+    return structure_table(context)
+
+
+def test_filing_year_reaches_the_gate_from_the_context():
+    rows = (
+        ("Description", "Balance", "Additions", "Deductions"),
+        ("12/31/22:", "", "", ""),
+        ("Product warranty", "100", "20", "15"),
+        ("12/31/21:", "", "", ""),
+        ("Other reserves", "2000", "5", "5"),
+        ("12/31/20:", "", "", ""),
+        ("Product warranty", "45", "5", "40"),
+    )
+    table = _table_with_year(
+        rows,
+        caption_stack=("Valuation and Qualifying Accounts",),
+        filing_year=2023,
+    )
+    assert WarrantyText.from_table(table).filing_year == 2023
+    spec = next(s for s in FORM_TEST_SPECS if s.family == "warranty")
+    result = evaluate_form_test_warranty(table, spec)
+    assert result.admitted
+    assert result.detail.endswith("(subject: table bare-pair form)")
 
 
 def test_text_and_adapter_paths_agree():

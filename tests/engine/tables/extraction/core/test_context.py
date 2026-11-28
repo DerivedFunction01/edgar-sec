@@ -124,3 +124,28 @@ def test_region_path_round_trips_from_record() -> None:
     )
     assert stamped.region == "body"
     assert stamped.region_path == "derived"
+
+
+def test_filing_year_is_absent_unless_a_builder_stamps_it() -> None:
+    context = _context("0000726854-20-000044", 6)
+    assert context.filing_year is None
+
+
+def test_stamped_filing_year_round_trips_from_record() -> None:
+    filing = load_fixture("table_extraction_corpus/0000726854-20-000044.json")
+    record = next(item for item in filing["geometries"] if item["table_index"] == 6)
+    geometry = TableGeometry(
+        table_index=6,
+        render_result=TableRenderResult(
+            ascii_text="",
+            resolved_grid=ResolvedGrid(
+                rows=tuple(tuple(row) for row in record["rows"]),
+                column_alignments=(),
+                column_widths=(),
+                header_row_count=record["header_row_count"],
+            ),
+            confidence=1.0,
+        ),
+    )
+    stamped = TableContext.from_record(geometry, {**record, "filing_year": 2023})
+    assert stamped.filing_year == 2023

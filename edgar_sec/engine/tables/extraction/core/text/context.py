@@ -82,6 +82,7 @@ class TableContext:
     label: LabelRef | None = None
     region: str | None = None
     region_path: str | None = None
+    filing_year: int | None = None
     in_toc_span: bool = False
     in_closing_span: bool = False
     closing_kind: str | None = None
@@ -168,6 +169,11 @@ class TableContext:
             else None,
             region=record.get("region"),
             region_path=record.get("region_path"),
+            filing_year=(
+                int(record["filing_year"])
+                if record.get("filing_year") is not None
+                else None
+            ),
             in_toc_span=bool(record.get("in_toc_span")),
             in_closing_span=bool(record.get("in_closing_span")),
             closing_kind=record.get("closing_kind"),

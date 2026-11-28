@@ -33,6 +33,7 @@ from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN,
     YEAR_TOKEN_PATTERN,
 )
+from edgar_sec.foundation.text.date_years import expand_2digit_year
 
 # The priced surface is the measurement packet's: prose and grid
 # text each capped at 6000 chars, as the collect's packet() caps.
@@ -55,6 +56,23 @@ def _period_keys_x(spec: WarrantyEvidenceSpec, line: str) -> set:
     return keys
 
 
+def _section_date_keys(content: str, reference_year: int | None) -> set:
+    """Period keys of a section-date line, its slash year read
+    through the settled expansion against the reference year,
+    so one date keys identically however it is written."""
+    keys = set()
+    for kind, value in _period_keys(content):
+        if kind == "d" and reference_year is not None:
+            month, day, year = value.split("/")
+            if len(year) < 4:
+                year = str(
+                    expand_2digit_year(int(year), reference_year=reference_year)
+                )
+            value = f"{month}/{day}/{year}"
+        keys.add((kind, value))
+    return keys
+
+
 @dataclass(frozen=True, slots=True)
 class WarrantyText:
     """One geometry's gate text: caption, prose, grid lines."""
@@ -62,6 +80,7 @@ class WarrantyText:
     caption: str = ""
     prose: str = ""
     lines: tuple[str, ...] = ()
+    filing_year: int | None = None
 
     @classmethod
     def from_table(cls, table: TypedTable) -> WarrantyText:
@@ -74,6 +93,7 @@ class WarrantyText:
             caption=" ".join(context.caption_stack),
             prose=(context.prose_before or "")[-_TEXT_CAP:],
             lines=tuple(table_text[:_TEXT_CAP].split("\n")),
+            filing_year=context.filing_year,
         )
 
 
@@ -334,6 +354,7 @@ def _bare_pair_scoped(
     lines_l: list[str],
     nonempty: list[int],
     stub_texts: list[str],
+    reference_year: int | None = None,
 ) -> bool:
     """The depth-3 disciplines on the bare-pair branch.
     Any one of: a repeated subject stub, body section-date
@@ -346,7 +367,7 @@ def _bare_pair_scoped(
         content = " ".join(lines_l[index].strip(" |").split())
         if _SEC_DATE_RE.match(content):
             sec_positions.append(pos)
-            sec_keys |= _period_keys(content)
+            sec_keys |= _section_date_keys(content, reference_year)
     if (
         len(sec_positions) >= 2
         and len(sec_keys) >= 2
@@ -408,7 +429,9 @@ def evaluate_warranty_evidence(
                 and "bare pair" in forms
                 and "word pair" not in forms
                 and "dated pair" not in forms
-                and _bare_pair_scoped(spec, lines_l, nonempty, stub_texts)
+                and _bare_pair_scoped(
+                    spec, lines_l, nonempty, stub_texts, text.filing_year
+                )
             )
             lead = bare_pair_subject
     if not lead:
