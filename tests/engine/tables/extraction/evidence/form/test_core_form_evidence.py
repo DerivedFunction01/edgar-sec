@@ -48,7 +48,7 @@ from edgar_sec.engine.tables.numeric_cells import (
 from edgar_sec.foundation.text.date_patterns import (
     NUMERIC_DATE_RE as _HOME_NUMERIC_DATE,
 )
-from edgar_sec.foundation.text.date_patterns import RE_FULL_DATE as _HOME_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import FULL_DATE_ANY_RE as _HOME_FULL_DATE
 from edgar_sec.foundation.text.date_patterns import (
     STRICT_MONTH_PATTERN as _HOME_STRICT_MONTH,
 )
