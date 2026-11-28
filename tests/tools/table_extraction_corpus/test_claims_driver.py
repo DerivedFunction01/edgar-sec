@@ -103,8 +103,12 @@ def test_diff_equal_and_divergent(tmp_path):
     assert verdict["members"]["intangibles"]["emit_member_claims"] in (0, 1)
     gold = tmp_path / "gold"
     gold.mkdir()
-    extra = {"specimen": "x:1#0", "accession": "x", "stratum": "E",
-             "claims": ["intangibles"]}
+    extra = {
+        "specimen": "x:1#0",
+        "accession": "x",
+        "stratum": "E",
+        "claims": ["intangibles"],
+    }
     rows = (out / "rows.jsonl").read_text() + json.dumps(extra) + "\n"
     (gold / "rows.jsonl").write_text(rows)
     (gold / "summary.json").write_text((out / "summary.json").read_text())

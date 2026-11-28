@@ -89,9 +89,7 @@ def _load_gold(bases: dict) -> None:
             for rec in records or []:
                 bare = rec["specimen_id"]
                 accession = bare.rsplit(":", 1)[0]
-                _GOLD.setdefault(accession, []).append(
-                    {"bare": bare, "family": family}
-                )
+                _GOLD.setdefault(accession, []).append({"bare": bare, "family": family})
 
 
 def _context(record: dict) -> TableContext:
@@ -191,12 +189,8 @@ def emit_claims(
             rows, logs = _emit_one(arg)
             all_rows.extend(rows)
             all_logs.extend(logs)
-    atomic_write_text(
-        out / ROWS_NAME, "".join(json.dumps(r) + "\n" for r in all_rows)
-    )
-    atomic_write_text(
-        out / GOLD_NAME, "".join(json.dumps(r) + "\n" for r in all_logs)
-    )
+    atomic_write_text(out / ROWS_NAME, "".join(json.dumps(r) + "\n" for r in all_rows))
+    atomic_write_text(out / GOLD_NAME, "".join(json.dumps(r) + "\n" for r in all_logs))
     family_claims: dict[str, int] = {}
     for r in all_rows:
         for family in r["claims"]:
