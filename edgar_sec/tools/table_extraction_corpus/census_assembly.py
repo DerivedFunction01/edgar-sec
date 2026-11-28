@@ -154,9 +154,7 @@ class _CensusAssembly:
                     self._dist_record(fname, label0)
                     self.unjoinable.setdefault(fname, {})
                     key = str(label0)
-                    self.unjoinable[fname][key] = (
-                        self.unjoinable[fname].get(key, 0) + 1
-                    )
+                    self.unjoinable[fname][key] = self.unjoinable[fname].get(key, 0) + 1
                     continue
                 label = label0
                 cverdict = row.get("combination_verdict")
@@ -630,17 +628,13 @@ def residual_lists(pricing: dict) -> str:
     return "\n".join(lines)
 
 
-def assemble(
-    inputs: Path, out_dir: Path, pricing_path: Path | None = None
-) -> dict:
+def assemble(inputs: Path, out_dir: Path, pricing_path: Path | None = None) -> dict:
     """Assemble the census artifact into out_dir; return the summary."""
     out_dir.mkdir(parents=True, exist_ok=True)
     pop_rows, assembly = _CensusAssembly(inputs).run()
     population = "".join(json.dumps(row) + "\n" for row in pop_rows)
     atomic_write_text(out_dir / "census-population.jsonl", population)
-    atomic_write_text(
-        out_dir / "census-assembly.json", json.dumps(assembly, indent=1)
-    )
+    atomic_write_text(out_dir / "census-assembly.json", json.dumps(assembly, indent=1))
     if pricing_path is not None:
         pricing = _load_json(pricing_path)
         atomic_write_text(out_dir / "residual-lists.txt", residual_lists(pricing))
