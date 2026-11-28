@@ -12,9 +12,7 @@ from edgar_sec.tools.table_extraction_corpus.shadow_learner import (
 )
 
 BASE_LINES = (
-    "Cash and equivalents | 10 | 20\n"
-    "Notes payable | 5 | 6\n"
-    "Other current items | 7 | 8"
+    "Cash and equivalents | 10 | 20\nNotes payable | 5 | 6\nOther current items | 7 | 8"
 )
 CARRY_TABLE = BASE_LINES + "\nCombined assets | 100 | 200"
 LACK_TABLE = BASE_LINES + "\nCash and equivalents | 100 | 200"
