@@ -8,7 +8,7 @@ and row labels, independent of caption vocabulary.
 from __future__ import annotations
 
 from edgar_sec.engine.forms.common.values.numbers import clean_numeric
-from edgar_sec.foundation.text.date_patterns import RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import FULL_DATE_ANY_RE
 
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
@@ -176,7 +176,7 @@ def has_balance_pair(table: TypedTable) -> bool:
         and (
             any(phrase in label for phrase in _BEGIN_PHRASES)
             or any(phrase in label for phrase in _END_PHRASES)
-            or RE_FULL_DATE.search(label)
+            or FULL_DATE_ANY_RE.search(label)
         )
     ]
     if len(texts) < 2:
@@ -185,7 +185,7 @@ def has_balance_pair(table: TypedTable) -> bool:
         phrase in text for text in texts for phrase in _END_PHRASES
     ):
         return True
-    return sum(1 for text in texts if RE_FULL_DATE.search(text)) >= 2
+    return sum(1 for text in texts if FULL_DATE_ANY_RE.search(text)) >= 2
 
 
 def grouping_signatures(table: TypedTable) -> frozenset[str]:
