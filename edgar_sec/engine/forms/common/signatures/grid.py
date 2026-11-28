@@ -18,7 +18,7 @@ from edgar_sec.foundation.text.date_patterns import (
     ISO_DATE_RE,
     MONTH_RE,
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
+    FULL_DATE_ANY_RE,
 )
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
@@ -121,7 +121,7 @@ def scan_signature_grid(
                 if not date_marker and len(cell.strip()) > 40:
                     continue
                 m_date = (
-                    RE_FULL_DATE.search(cell)
+                    FULL_DATE_ANY_RE.search(cell)
                     or NUMERIC_DATE_RE.search(cell)
                     or ISO_DATE_RE.search(cell)
                 )
@@ -134,7 +134,7 @@ def scan_signature_grid(
                         continue
                     unruled = SIG_RULE_RUN_RE.sub(" ", cell)
                     m_date = (
-                        RE_FULL_DATE.search(unruled)
+                        FULL_DATE_ANY_RE.search(unruled)
                         or NUMERIC_DATE_RE.search(unruled)
                         or ISO_DATE_RE.search(unruled)
                     )
