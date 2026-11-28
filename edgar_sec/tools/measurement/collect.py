@@ -77,9 +77,7 @@ def _context(record: dict, filing_year: int | None = None) -> TableContext:
             confidence=record.get("confidence", 1.0),
         ),
     )
-    return TableContext.from_record(
-        geometry, {**record, "filing_year": filing_year}
-    )
+    return TableContext.from_record(geometry, {**record, "filing_year": filing_year})
 
 
 def run_filing(path: Path) -> tuple[list, list, list, list, dict]:

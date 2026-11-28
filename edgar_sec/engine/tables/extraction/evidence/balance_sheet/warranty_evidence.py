@@ -65,9 +65,7 @@ def _section_date_keys(content: str, reference_year: int | None) -> set:
         if kind == "d" and reference_year is not None:
             month, day, year = value.split("/")
             if len(year) < 4:
-                year = str(
-                    expand_2digit_year(int(year), reference_year=reference_year)
-                )
+                year = str(expand_2digit_year(int(year), reference_year=reference_year))
             value = f"{month}/{day}/{year}"
         keys.add((kind, value))
     return keys
