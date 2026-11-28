@@ -9,43 +9,48 @@
  "fixtures": [
   {
    "path": "browse_edgar_company_0000003521.html",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000003521",
    "accession": null,
-   "sha256": "7057f1a053e8ef5325ed67330285cb66b6b5f84871b6da5653f9a25f5dedd947",
-   "bytes": 32688
+   "sha256": "7c831940b3e493ea2b5cdcab7077906eacea749318349c77b14c1cb81e365fd4",
+   "bytes": 4070,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); reduced to the page header block (banner heading, filer identity block, getcompany form): the content the browse parser's missing_series_heading verdict exercises; the filings table is dropped"
   },
   {
    "path": "browse_edgar_series_0000002663.html",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000002663&scd=series",
    "accession": null,
-   "sha256": "8938ccbf9cabdd50c96fdedfb0f5e73c55d3f1e0a54072cbbb6699862a0020eb",
-   "bytes": 6092
+   "sha256": "c9da2f270b4e0470c4af3ee2b181231cd037609771dc8260cbe48a3b2a1773b9",
+   "bytes": 2951,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); reduced to the content block: Series-for-CIK heading, the Items 1 - 5 line and the full results table (1 series / 4 classes, asserted exactly)"
   },
   {
    "path": "browse_edgar_series_0000003521.html",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000003521&scd=series",
    "accession": null,
-   "sha256": "d25145c068c3e6fbaf1f2da751a7c2d212d339cc16eb03777c2555dee2be9714",
-   "bytes": 36500
+   "sha256": "339d2563fbb9be31447a8dc2178ce4777ae178b344ff94e515d40e8144c3dce7",
+   "bytes": 33359,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); reduced to the content block: Series-for-CIK heading, the Items 1 - 106 line and the full results table (all 19 series / 87 classes are count-asserted)"
   },
   {
    "path": "browse_edgar_series_0001100663.html",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001100663&scd=series",
    "accession": null,
    "sha256": "fe1679c7692e085ba3ea1e1026fd1e5b1aa0a14631458092249a19c13ede1c0c",
-   "bytes": 384572
+   "bytes": 384572,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); kept whole: all 562 series / 562 classes are count-asserted and the exercised table is 99% of the document, so no reduction is available"
   },
   {
    "path": "browse_edgar_series_0001281790.html",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001281790&scd=series",
    "accession": null,
-   "sha256": "45f8519185695fb69bd5cd08b4aa938d542afb49a9d76e441be980ba5afd9d43",
-   "bytes": 7728
+   "sha256": "eb15dce61f0efe9ff87051af68f03ce49979c782143b7bdd176ba63b482a8206",
+   "bytes": 4587,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); reduced to the content block: Series-for-CIK heading, the Items 1 - 10 line and the full results table (3 series / 7 classes, asserted exactly, including both FNKIX listings)"
   },
   {
    "path": "datasets/bdc_2026_01_specimen.zip",
@@ -97,32 +102,37 @@
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1104659/000110465926117215/tm2627716d1_18ka.htm",
    "accession": "0001104659-26-117215",
-   "sha256": "ecfe3aa17c5b15189b7fb2fb393e28d3ede2b99d7f64c637c517a303df13a4b2",
-   "bytes": 39373
+   "sha256": "1e3b0c778e47d353b77f93fef14d9e2131f47a726ad6c572979060a8018f5219",
+   "bytes": 39254,
+   "strip_script": true
   },
   {
    "path": "document/form_18k/0001193125-17-066843__d308706d18ka.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1193125/000119312517066843/d308706d18ka.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/810961/0001193125-17-066843.txt",
    "accession": "0001193125-17-066843",
-   "sha256": "4e0143e3a0c0e9869412aee12263eee5461321423d8f96e487c06793d32f96c9",
-   "bytes": 14360
+   "sha256": "2329975b555cee2bf0957fd04b17361dd094d4032dc3221f9f0bfe39b3170ba3",
+   "bytes": 14241,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_18k/0001206212-03-000011__m09206a1e18vkza.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1206212/000120621203000011/m09206a1e18vkza.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/912239/0001206212-03-000011.txt",
    "accession": "0001206212-03-000011",
    "sha256": "3154acaef6af45604b9bcaf1054590fe101ef5923b2598898cc210918f7e4b57",
-   "bytes": 6221
+   "bytes": 6221,
+   "extract": "block"
   },
   {
    "path": "document/form_18k/9999999997-02-012414__9999999997-02-012414.paper",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/9999999997/999999999702012414/9999999997-02-012414.paper",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/805157/9999999997-02-012414.txt",
    "accession": "9999999997-02-012414",
    "sha256": "46b0f163d63503c12c9776fcd5d7a5018cfc4fa48cfd5ba20c711e3c6fa82fe6",
-   "bytes": 291
+   "bytes": 291,
+   "extract": "block"
   },
   {
    "path": "document/form_24f2/0000355348-01-000008__0001.txt",
@@ -143,18 +153,20 @@
   {
    "path": "document/form_24f2/0000950162-94-000092__24f-2tm.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/950162/000095016294000092/24f-2tm.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/893177/0000950162-94-000092.txt",
    "accession": "0000950162-94-000092",
    "sha256": "557b31f400c64c31997e6b4c4b1e9e4587436546df47d6ea231db378930cb6fa",
-   "bytes": 3018
+   "bytes": 3018,
+   "extract": "body"
   },
   {
    "path": "document/form_24f2/0001116679-04-000921__file01.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1116679/000111667904000921/file01.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1193705/0001116679-04-000921.txt",
    "accession": "0001116679-04-000921",
    "sha256": "d24393a48d6e62b9981dcf3828f6458ed28e2aa4d8e7d59126490a266cd4523a",
-   "bytes": 14248
+   "bytes": 14248,
+   "extract": "body"
   },
   {
    "path": "document/form_24f2/0001386929-21-000001__stockdivtwenty42020.txt",
@@ -167,26 +179,30 @@
   {
    "path": "document/form_4017f1/0000912057-00-039288__a40-17f1.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/912057/000091205700039288/a40-17f1.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/889392/0000912057-00-039288.txt",
    "accession": "0000912057-00-039288",
    "sha256": "3ad73c52419ffb5c02f412a0df9991fefab64d1c29d295b42e66ce2548fa2e18",
-   "bytes": 10677
+   "bytes": 10677,
+   "extract": "block"
   },
   {
    "path": "document/form_4017f1/0001111830-13-000443__stralem_4017f1-0513.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1111830/000111183013000443/stralem_4017f1-0513.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/94745/0001111830-13-000443.txt",
    "accession": "0001111830-13-000443",
-   "sha256": "8313d0765f0ed438d4ee8fd34e7d8bbbad68d52c14169ba5e7c40e0986e8b152",
-   "bytes": 44680
+   "sha256": "375f35fe337b3fb245d855e0579eaf84a0f2d5d949e92669a9bda8c578a6dead",
+   "bytes": 44561,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_4017f1/9999999997-02-050518__9999999997-02-050518.paper",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/9999999997/999999999702050518/9999999997-02-050518.paper",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/904333/9999999997-02-050518.txt",
    "accession": "9999999997-02-050518",
    "sha256": "b1ce7103ec76f49b01124540ba870c0bd68180a4a0241af5cf52e3198a191050",
-   "bytes": 294
+   "bytes": 294,
+   "extract": "block"
   },
   {
    "path": "document/form_4017f2/000086939205000161__report.txt",
@@ -207,82 +223,96 @@
   {
    "path": "document/form_4017f2/000119312505058584__d4017f2.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1193125/000119312505058584/d4017f2.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/878932/0001193125-05-058584.txt",
    "accession": "0001193125-05-058584",
-   "sha256": "cea5dd73ac6d3165ba344a9216ec715737ab1b3d1a8bc36e016a9cbe327ea98f",
-   "bytes": 19873
+   "sha256": "6d5498c112e34e52a6cadf319b3dad0ba0fd8bb5e9901ecaf6fe170ced4a4e54",
+   "bytes": 19754,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_4017g/000000223010000054__adxfidelitybond.htm",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/2230/000000223010000054/adxfidelitybond.htm",
    "accession": "0000002230-10-000054",
-   "sha256": "e60fbf99fca597448a691d3851b95ec5396820e6df4dab843cadf096a396ab57",
-   "bytes": 92994
+   "sha256": "2cfa66e0e1b95c58bb34613920a8523e2b751ccf7a95b894025a4400a7ee05dc",
+   "bytes": 92875,
+   "strip_script": true
   },
   {
    "path": "document/form_4017g/000089710104001897__faf044428_40-17g.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/897101/000089710104001897/faf044428_40-17g.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/838131/0000897101-04-001897.txt",
    "accession": "0000897101-04-001897",
-   "sha256": "619c95b8cd2f72cf4632e12aaad3462d518a458a15646d286c97375a64dca0ac",
-   "bytes": 10296
+   "sha256": "e8846ba4f323aeadfecbcfeacae4114c6af43f8a50d4792dd1eff9cdd017c198",
+   "bytes": 10177,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_4017g/999999999704025615__9999999997-04-025615.paper",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/9999999997/999999999704025615/9999999997-04-025615.paper",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1233681/9999999997-04-025615.txt",
    "accession": "9999999997-04-025615",
    "sha256": "3e1127d02a59724f611ad7f300238fb39dc9eae2fe49c90cbe91d09a32caca33",
-   "bytes": 293
+   "bytes": 293,
+   "extract": "block"
   },
   {
    "path": "document/form_4024b2/0000356787-08-000034__e726-728.htm",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/356787/000035678708000034/e726-728.htm",
    "accession": "0000356787-08-000034",
-   "sha256": "61824a9fb703abb3b9e461950810f0975faafeac5ba995be7203fac5edf3a964",
-   "bytes": 560
+   "sha256": "3662e989cf50a670e550cf31ce6ab3babac9195b7b48276c1781f1aebd694fb5",
+   "bytes": 441,
+   "strip_script": true
   },
   {
    "path": "document/form_4024b2/0000894189-11-003926__rbc_4024b2-a.htm",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/894189/000089418911003926/rbc_4024b2-a.htm",
    "accession": "0000894189-11-003926",
-   "sha256": "67733759ebf175a0a12f590cd307804e28727cb02da961d5ad7e14c60c3b4fff",
-   "bytes": 68069
+   "sha256": "d05182a7260a9cd41edebef94e1a271db41bc49fdd5010208f73307e51c411f0",
+   "bytes": 67950,
+   "strip_script": true
   },
   {
    "path": "document/form_40app/0000051931-14-001181__crmc40-app.htm",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/51931/000005193114001181/crmc40-app.htm",
    "accession": "0000051931-14-001181",
-   "sha256": "7ae48f63a0a34ea36f61c0febe68634162eee6151b9f99bbdccd318d311963a7",
-   "bytes": 224741
+   "sha256": "e4e01b6701c8b8826da0b2f4f240ee3c0eacb8b3be5f2faca1f2ec3bf4464be5",
+   "bytes": 224622,
+   "strip_script": true
   },
   {
    "path": "document/form_40app/0000899681-11-000293__dreyfus-40appa_081711.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/899681/000089968111000293/dreyfus-40appa_081711.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/914775/0000899681-11-000293.txt",
    "accession": "0000899681-11-000293",
-   "sha256": "29f7a29b4a6b7b77e3497a97b1c1d001224ee07d9ff36f4c53c04727f66c44a1",
-   "bytes": 262496
+   "sha256": "8c9b865ff06e958fcd5ea819dadcb27e5990929a9884579e9ba6b76998122778",
+   "bytes": 262377,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_40app/0001193125-14-427194__d823951d40appa.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1193125/000119312514427194/d823951d40appa.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1569261/0001193125-14-427194.txt",
    "accession": "0001193125-14-427194",
-   "sha256": "6f8cd3e37ebd15f6b0d107f5837bb7a70be22f4eead1802db24425ee182bbef8",
-   "bytes": 272911
+   "sha256": "d0793f21ec0dc030ec0e2fc4681bd9283cabe215979e6037a82953f7931e94c2",
+   "bytes": 272792,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_40app/9999999997-02-025153__9999999997-02-025153.paper",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/9999999997/999999999702025153/9999999997-02-025153.paper",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/926364/9999999997-02-025153.txt",
    "accession": "9999999997-02-025153",
    "sha256": "c6407400591fdaba5aca364fbfd75be90edd434de11bb71ca32253fd19ec4c82",
-   "bytes": 295
+   "bytes": 295,
+   "extract": "block"
   },
   {
    "path": "document/form_n23c/0000896717-95-000007__0000896717-95-000007.txt",
@@ -295,66 +325,77 @@
   {
    "path": "document/form_n23c/000091384909000258__n23c2_032009.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/913849/000091384909000258/n23c2_032009.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1158729/0000913849-09-000258.txt",
    "accession": "0000913849-09-000258",
-   "sha256": "6a9e7d359b01ad62b2b615847e3240346b17b01c7ce506a36a4b7cf5a0d0999d",
-   "bytes": 23383
+   "sha256": "ef5fb23dabd529c48f9b5941b9f09ef93fb308e3bc5241a167e90aae2f99d9ee",
+   "bytes": 23264,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_n23c/000110465922098710__tm2225392d1_n23c3a.htm",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1104659/000110465922098710/tm2225392d1_n23c3a.htm",
    "accession": "0001104659-22-098710",
-   "sha256": "8492761adbe9f413a90f50320ec2c3a7605bdafbeec242b58f7d44439979930b",
-   "bytes": 46970
+   "sha256": "dd406f3e0c6968b8e5c66ba924a357303c04e9358eedff98df483ab7cf5d5640",
+   "bytes": 46851,
+   "strip_script": true
   },
   {
    "path": "document/form_n23c/0001515001-19-000018__vcmixformn23c3-9132019final.htm",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1515001/000151500119000018/vcmixformn23c3-9132019final.htm",
    "accession": "0001515001-19-000018",
-   "sha256": "84422a2567afc0a5b160ca34e3531c6eb16be7198dd4b004301bc13ffb209d50",
-   "bytes": 52080
+   "sha256": "b855e7860fa21a9df84cdeb3c8c84714964ddf6ba191157b1849dc0df2466120",
+   "bytes": 51961,
+   "strip_script": true
   },
   {
    "path": "document/form_n23c/9999999997-03-043480__9999999997-03-043480.paper",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/9999999997/999999999703043480/9999999997-03-043480.paper",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1076322/9999999997-03-043480.txt",
    "accession": "9999999997-03-043480",
    "sha256": "0fe8b5957495da22609b064e7d1bd72b224abf97645c0d53e397c8e9a6922034",
-   "bytes": 294
+   "bytes": 294,
+   "extract": "block"
   },
   {
    "path": "document/form_n30d/0000950137-05-013155__c99520a1nv30bv2.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/950137/000095013705013155/c99520a1nv30bv2.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1268533/0000950137-05-013155.txt",
    "accession": "0000950137-05-013155",
-   "sha256": "15a3210b8f22424d7c198b14e47124a8b4c706ccfc84a2b01166b0b22e399172",
-   "bytes": 219934
+   "sha256": "ef24c54ee37336be46b162e3e8c758e43e35e7427e55ab1f24951029a4025795",
+   "bytes": 219815,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_n30d/0001005477-01-501237__d01-34714.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1005477/000100547701501237/d01-34714.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/759829/0001005477-01-501237.txt",
    "accession": "0001005477-01-501237",
    "sha256": "d5e0858c3f92af3fcbf871881ba728806a4d5bed08f571fb62a65708b71d510c",
-   "bytes": 118950
+   "bytes": 118950,
+   "extract": "block"
   },
   {
    "path": "document/form_n30d/0001086144-00-000101__0001.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1086144/000108614400000101/0001.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1018862/0001086144-00-000101.txt",
    "accession": "0001086144-00-000101",
    "sha256": "527eeba46ffe8dcb3687cc2cde33f9d644a626ee9336df5985ac79e8e2b0dde1",
-   "bytes": 112241
+   "bytes": 112241,
+   "extract": "body"
   },
   {
    "path": "document/form_n30d/0001193125-11-244302__dn30da.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1193125/000119312511244302/dn30da.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/841056/0001193125-11-244302.txt",
    "accession": "0001193125-11-244302",
-   "sha256": "96e39f944ef389fc807e841e6946ed9099cb2a823650a61e9681f1fd5f0fa0bc",
-   "bytes": 6104
+   "sha256": "9e8bb3bdf04d9efe6a9cc135ea47dbbc2eef037f80d1a27ccd6a63488516922e",
+   "bytes": 5985,
+   "extract": "block",
+   "strip_script": true
   },
   {
    "path": "document/form_nvp/0000806180-21-000025__completenoticedocument.htm",
@@ -362,7 +403,8 @@
    "source_url": "https://www.sec.gov/Archives/edgar/data/806180/000080618021000025/completenoticedocument.htm",
    "accession": "0000806180-21-000025",
    "sha256": "5a92f2bd35a3c8e37a141a093fff6aaf2144ea0b90b9214b5ec4918b6971ea4b",
-   "bytes": 160547
+   "bytes": 160547,
+   "extract": "body"
   },
   {
    "path": "document/form_nvp/0000912869-26-000009__a2026-04spinnadvzeroasset.htm",
@@ -370,7 +412,8 @@
    "source_url": "https://www.sec.gov/Archives/edgar/data/912869/000091286926000009/a2026-04spinnadvzeroasset.htm",
    "accession": "0000912869-26-000009",
    "sha256": "a72d353d09ed552028848bba8e79aa41c2adf61469e81b01a5d6f07dc3ee1441",
-   "bytes": 3361
+   "bytes": 3361,
+   "extract": "body"
   },
   {
    "path": "document/form_s6/0000875626-03-001585__s487.txt",
@@ -383,10 +426,11 @@
   {
    "path": "document/form_s6/0001445546-13-000978__s-6.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1445546/000144554613000978/s-6.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1560369/0001445546-13-000978.txt",
    "accession": "0001445546-13-000978",
    "sha256": "29c87f583fcc72ef416852353557f5b070997b28edf5ad0b89310d2343741762",
-   "bytes": 2567
+   "bytes": 2567,
+   "extract": "body"
   },
   {
    "path": "earnings/0000943374-04-000332/form8k_042104-ex99.txt.gz",
@@ -403,30 +447,33 @@
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/356028/000095012307001176/y29718exv99w1.htm",
    "accession": "0000950123-07-001176",
-   "sha256": "40fa129252e36ba4985cc3aee86cf7a5f1def7878b0a62b3406cabb23fc18c21",
-   "bytes": 13122,
+   "sha256": "9ee574e2f1ad4d98bbd913b89d3249b0418e375b3d91e4f104bac1be5f79c292",
+   "bytes": 12999,
    "stored": "gzip",
-   "content_sha256": "e72279c567178c09f35595474e9b55955e7937a57a64f0f3813acccb7fe6b084"
+   "content_sha256": "426b788ca67124eee11f49cf5995d46369fd831887916e49861ba28e096c2824",
+   "strip_script": true
   },
   {
    "path": "earnings/0001104659-18-039497/a18-15154_1ex99d1.htm.gz",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1615418/000110465918039497/a18-15154_1ex99d1.htm",
    "accession": "0001104659-18-039497",
-   "sha256": "ca5ff3da3a20cd15f1c5165588a389b14206fb1066ebd16f8176e05d74017775",
-   "bytes": 9576,
+   "sha256": "5c3be42a00a2edddb2dc18c7dd518bffe89de1083b85aa2f59b4fa806544fc46",
+   "bytes": 9460,
    "stored": "gzip",
-   "content_sha256": "f29683292d2f997791f9aa57a15578d2adab4234cd941aaed1bb886a6084b032"
+   "content_sha256": "afb3140cf76e8b563a4667579d34cbfa48e2e5ff89e7ab7701f3f3cb8fcf7b32",
+   "strip_script": true
   },
   {
    "path": "earnings/0001193125-05-202866/dex991.htm.gz",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1340156/000119312505202866/dex991.htm",
    "accession": "0001193125-05-202866",
-   "sha256": "1231df540eb12c0b82e3689be1ea382a193736c6bc1271105c7a50084f6ca0c3",
-   "bytes": 2369,
+   "sha256": "e285bf927682fb2ef429a65fc0c52d06bee34c8de34106ec0d3d79e10ac65606",
+   "bytes": 2262,
    "stored": "gzip",
-   "content_sha256": "6509e0e97fef11ef6f7b4528dead309080926f73babe6af9dccd278bffd40a1b"
+   "content_sha256": "33babce25ff8baef6d5a0c0ab7a18e245ad2faba2c18efcb6a88b5f1495ba0a8",
+   "strip_script": true
   },
   {
    "path": "earnings/0001279569-24-000173/ex991.pdf.gz",
@@ -443,30 +490,33 @@
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1402829/000140282908000026/exhibit992.htm",
    "accession": "0001402829-08-000026",
-   "sha256": "b11ec4e6b710ad5f69e69a56bb0a2cbe0d071bb4f0df03730353c01e137177c3",
-   "bytes": 20833,
+   "sha256": "4edf4a092d0856c7fab21fa4cc1224dbb769e7560c2bef64fbc6d8b599f3cf77",
+   "bytes": 20713,
    "stored": "gzip",
-   "content_sha256": "3455966e1398cfa8ec1b0110609b089d8a40c6e1ce764810298fb9bd4ca6d374"
+   "content_sha256": "182f4d7992baa9d04b44e59f832fe5182c0c5b8c714af297904429dab0c4de06",
+   "strip_script": true
   },
   {
    "path": "earnings/0001402829-08-000026/exhibit993.htm.gz",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1402829/000140282908000026/exhibit993.htm",
    "accession": "0001402829-08-000026",
-   "sha256": "3f56c34d60c9c1f6cae05cb27eda245b66bddcb85c2faea8cdfae1cf7969f796",
-   "bytes": 8573,
+   "sha256": "996d370cb21d21f263de08e840e016c9a933b1366cf891eb0b3e26613ca61647",
+   "bytes": 8453,
    "stored": "gzip",
-   "content_sha256": "1ef385bfa786d24ba6aa6a151a30b3bcf9d809bca5cc74d534541e3d85a16b6b"
+   "content_sha256": "f287cd6938ea697461bad1b124a28abdd1997004695394a9de72b299a1009bc6",
+   "strip_script": true
   },
   {
    "path": "earnings/0001437749-14-013440/ex99-1.htm.gz",
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/785956/000143774914013440/ex99-1.htm",
    "accession": "0001437749-14-013440",
-   "sha256": "fe205d9f8a240ee5b4f2927d1ad0595c55b3671332e4c775670e7ed337c0a9f4",
-   "bytes": 8319,
+   "sha256": "663f374b3c6434b656a4cae959c0a05365fd9fe7fbbe1ce590ddea2d07e0db53",
+   "bytes": 8206,
    "stored": "gzip",
-   "content_sha256": "29557530c51d763710254444bf56fc20313c661ad5e4ed99a6d3565e5ec44933"
+   "content_sha256": "f8ab70a6ec97e9c497a73e8bb60517a7354296a282f07263a5a0d17cf74f4d9f",
+   "strip_script": true
   },
   {
    "path": "earnings/0001437749-14-013440/ex99-1img001.jpg.gz",
@@ -480,31 +530,34 @@
   },
   {
    "path": "efts/error_bad_date.json",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://efts.sec.gov/LATEST/search-index",
    "accession": null,
    "sha256": "886263cb6673ed741d83a32f997fca65e6994ae3c6bb27f1c49d006098784eb1",
-   "bytes": 817
+   "bytes": 817,
+   "note": "endpoint error specimen; the capture conditions are not recorded in the tree, so it is not replayable"
   },
   {
    "path": "efts/error_blank_search.json",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://efts.sec.gov/LATEST/search-index",
    "accession": null,
    "sha256": "f006970d7250d6c29a78b7445ae3a8a153e62b5ac080b9e4ede86fd6665f5563",
-   "bytes": 125
+   "bytes": 125,
+   "note": "endpoint error specimen; the capture conditions are not recorded in the tree, so it is not replayable"
   },
   {
    "path": "efts/error_result_window.json",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://efts.sec.gov/LATEST/search-index",
    "accession": null,
    "sha256": "f17718a9b9fbb433c6ab56df9cea812fb5f2081fce06ac323ec149ed9fed838c",
-   "bytes": 1183
+   "bytes": 1183,
+   "note": "endpoint error specimen; the capture conditions are not recorded in the tree, so it is not replayable"
   },
   {
    "path": "efts/search_basic.json",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://efts.sec.gov/LATEST/search-index",
    "accession": null,
    "sha256": "001458fbc3d85d36c69435f44a2e2dd97ef38d07baa9070d839b4fdc6d31f6b9",
@@ -557,11 +610,12 @@
       }
      }
     }
-   }
+   },
+   "note": "2026-11-28 venue EFTS replay matched at the gte ceiling (10000), inconclusive by construction; the payload is a single-page specimen, not byte-reproducible as a fetch"
   },
   {
    "path": "efts/search_filtered.json",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://efts.sec.gov/LATEST/search-index",
    "accession": null,
    "sha256": "11fac7f3edcbc9dece95485dc380a71fa7ff7e48ef06b0780aed5d17a3e3d569",
@@ -630,11 +684,12 @@
       }
      }
     }
-   }
+   },
+   "note": "proven dynamic by the 2026-11-28 venue EFTS replay (coverage total 8819 at capture, 8846 live); kept whole as the single-page specimen the parser tests exercise"
   },
   {
    "path": "efts/search_phrase.json",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://efts.sec.gov/LATEST/search-index",
    "accession": null,
    "sha256": "fd4c6909bb74fe846d43c254c287e3d71878ac7f225c5e913c6319e03662e46e",
@@ -695,55 +750,62 @@
       }
      }
     }
-   }
+   },
+   "note": "2026-11-28 venue EFTS replay matched the capture totals (115, eq); the payload is a trimmed page specimen (3 hits of 115), not byte-reproducible as a fetch"
   },
   {
    "path": "feeds/current_filings_atom.xml",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
    "accession": null,
-   "sha256": "63ea76ce4414cfd0a12f6e9a8b1bb1fbdbe00ecdfbfae917b2cc4b48961677b9",
-   "bytes": 2132
+   "sha256": "e943ff61c2ba5d504feede5db34ec3280c82ee889fc0817a06815f9d5ddd7566",
+   "bytes": 1721,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); already the 3 exercised entries; reduced by dropping the unread category and id elements: title, link, summary and updated of every entry are kept"
   },
   {
    "path": "feeds/structured_all.rss.xml",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/xbrlrss.all.xml",
    "accession": null,
-   "sha256": "3c40ca2b80eb8bf3b11a8ef73ae06eb916ae5372208f3449a860663f01e8d0b0",
-   "bytes": 8518
+   "sha256": "f288f1a40ad762841a40e57d0afe13b1e83b3380653814c060dbde337f287148",
+   "bytes": 2646,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); already the 3 exercised items; reduced to the channel head plus, per item, link, pubDate and the parser-read xbrlFiling fields (companyName, formType, filingDate, cikNumber, accessionNumber, acceptanceDatetime)"
   },
   {
    "path": "feeds/structured_archive_2026-10.xml",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/monthly/xbrlrss-2026-10.xml",
    "accession": null,
    "sha256": "bfac266dc0398d5022671629e7bc3942e8fa3db77b37fbe385e3fd321b8ed8a3",
-   "bytes": 15196
+   "bytes": 15196,
+   "note": "reclassified from full on the 2026-11-28 venue byte census: the live monthly archive fetches at 56,109,404 B against this 15,196 B capture (first diff at byte 5981), so the capture is an excerpt of the October archive, not the archive itself; stays tracked as the exercised form, never fetched"
   },
   {
    "path": "feeds/structured_inline.rss.xml",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/xbrl-inline.rss.xml",
    "accession": null,
-   "sha256": "92466ad19e1cd518028631eec11cbe7041219e3ca097707ef908ee0213d816ca",
-   "bytes": 8715
+   "sha256": "cc4ca70dd74cbd5d204af90807fc3578f6fb6c9e954f84b945bf28a8bed0cbd5",
+   "bytes": 2843,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); already the 3 exercised items; reduced to the channel head plus, per item, link, pubDate and the parser-read xbrlFiling fields (companyName, formType, filingDate, cikNumber, accessionNumber, acceptanceDatetime)"
   },
   {
    "path": "feeds/structured_risk_return.rss.xml",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/xbrl-rr.rss.xml",
    "accession": null,
-   "sha256": "d4b6d61d9d1d3c640931b49384af8c5f82b842615437779edd905124f8596c9c",
-   "bytes": 16624
+   "sha256": "ebb8f51f6574c74fcbdb10878e42b62ac78a833db8aec0113fc6e67474e7a9a7",
+   "bytes": 2820,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); already the 3 exercised items; reduced to the channel head plus, per item, link, pubDate and the parser-read xbrlFiling fields (companyName, formType, filingDate, cikNumber, accessionNumber, acceptanceDatetime)"
   },
   {
    "path": "feeds/structured_usgaap.rss.xml",
-   "form": "live",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/usgaap.rss.xml",
    "accession": null,
-   "sha256": "89eec78b9b760bdf72788199a80c6d466101750b5c9fac6bfc9f6c96c2d4b96d",
-   "bytes": 9041
+   "sha256": "82d6ef6d99cfd4d4fae888e538868f40b492f9e3d89d3dac7feba4063b5e72e5",
+   "bytes": 2766,
+   "note": "proven dynamic by the 2026-11-28 venue re-fetch diff (check_live DIFF); already the 3 exercised items; reduced to the channel head plus, per item, link, pubDate and the parser-read xbrlFiling fields (companyName, formType, filingDate, cikNumber, accessionNumber, acceptanceDatetime)"
   },
   {
    "path": "index_pages/daily-company.20150102.idx",

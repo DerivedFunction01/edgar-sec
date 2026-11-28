@@ -11,7 +11,9 @@ import gzip
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
+import time
 from typing import Any
 
 from edgar_sec.foundation.runtime.env import get_env
@@ -25,6 +27,16 @@ from edgar_sec.infra.storage.atomic import atomic_write_bytes
 MANIFEST_NAME = "captured_manifest.json"
 _FIXTURES_DATASET = "fixtures"
 _CACHE_DIR = "captured"
+_RETRY_PAUSE_S = 10
+
+_TOKEN_SCRIPT = re.compile(
+    rb'<script type="text/javascript"\s+src="/[A-Za-z0-9_\-]+'
+    rb'(?:/[A-Za-z0-9_\-]+)+" *></script>(?=</body>)',
+    re.IGNORECASE,
+)
+_RE_DOCUMENT_BLOCK = re.compile(rb"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
+_RE_BLOCK_FILENAME = re.compile(rb"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
+_RE_TEXT_SPAN = re.compile(rb"(?is)<TEXT>(.*?)</TEXT>")
 
 
 def default_manifest_path() -> Path:
@@ -67,16 +79,112 @@ def _client() -> SecHttpClient:
     return SecHttpClient(user_agent=user_agent, rate_limiter=limiter)
 
 
-def _stored_form(entry: dict[str, Any], payload: bytes) -> tuple[bytes, bool]:
-    """Fetched payload in its stored form, and whether it verifies.
-    A gzip row verifies on the decompressed content hash and is stored
-    re-gzipped with a zero mtime; any other row verifies on its bytes.
+def _strip_token_script(content: bytes) -> bytes:
+    """Remove the CDN token script injected immediately before </body>;
+    its per-request token is what makes the raw fetch unverifiable.
+    """
+    return _TOKEN_SCRIPT.sub(b"", content)
+
+
+def _document_name(entry: dict[str, Any]) -> str | None:
+    """The document an extraction row keys on: the fixture name after "__"."""
+    base = entry["path"].rsplit("/", 1)[-1]
+    if "__" not in base:
+        return None
+    return base.split("__", 1)[1] or None
+
+
+def _document_blocks(
+    payload: bytes,
+) -> list[tuple[str, bytes, bytes | None]]:
+    """(filename, block, text span) per <DOCUMENT> block in a submission;
+    block spans are raw byte slices running through one trailing newline.
+    """
+    blocks = []
+    for match in _RE_DOCUMENT_BLOCK.finditer(payload):
+        name = _RE_BLOCK_FILENAME.search(match.group(1))
+        filename = name.group(1).decode("latin-1").strip() if name else ""
+        end = match.end()
+        if payload[end : end + 2] == b"\r\n":
+            end += 2
+        elif payload[end : end + 1] == b"\n":
+            end += 1
+        block = payload[match.start() : end]
+        text = _RE_TEXT_SPAN.search(block)
+        blocks.append((filename, block, text.group(1) if text else None))
+    return blocks
+
+
+def _text_body(text_span: bytes) -> bytes:
+    """A <TEXT> span's document body: one framing newline off each side."""
+    body = text_span
+    if body.startswith(b"\r\n"):
+        body = body[2:]
+    elif body.startswith(b"\n"):
+        body = body[1:]
+    if body.endswith(b"\r\n"):
+        body = body[:-2]
+    elif body.endswith(b"\n"):
+        body = body[:-1]
+    return body
+
+
+def _extract_document(payload: bytes, entry: dict[str, Any]) -> bytes | None:
+    """One document out of a submission payload, in the capture's form
+    ("block": the <DOCUMENT> block; "body": its <TEXT> body); None on a miss.
+    """
+    blocks = _document_blocks(payload)
+    document_name = _document_name(entry)
+    chosen = None
+    for filename, block, text_span in blocks:
+        if document_name and filename == document_name:
+            chosen = (block, text_span)
+            break
+    if chosen is None and len(blocks) == 1:
+        chosen = (blocks[0][1], blocks[0][2])
+    if chosen is None:
+        return None
+    block, text_span = chosen
+    if entry["extract"] == "block":
+        return block
+    if text_span is None:
+        return None
+    return _text_body(text_span)
+
+
+def _normalize_content(entry: dict[str, Any], payload: bytes) -> bytes | None:
+    """Fetched content in the form the manifest hash keys: extraction
+    first, then the token-script strip; None on an extraction miss.
+    """
+    content = payload
+    if entry.get("extract"):
+        content = _extract_document(content, entry)
+        if content is None:
+            return None
+    if entry.get("strip_script"):
+        content = _strip_token_script(content)
+    return content
+
+
+def _stored_form(entry: dict[str, Any], content: bytes) -> tuple[bytes, bool]:
+    """Content in its stored form, and whether it verifies: a gzip row
+    stores re-gzipped (zero mtime) and verifies on the content hash.
     """
     if entry.get("stored") == "gzip":
-        return gzip.compress(payload, mtime=0), _sha256(payload) == entry[
-            "content_sha256"
-        ]
-    return payload, _sha256(payload) == entry["sha256"]
+        stored = gzip.compress(content, mtime=0)
+        return stored, _sha256(content) == entry["content_sha256"]
+    return content, _sha256(content) == entry["sha256"]
+
+
+def _fetch_with_retry(client: SecHttpClient, url: str) -> bytes:
+    """Fetch one source; a refusal earns one retry after a pause, since
+    the Archives directories refuse transiently (the census's LISTED rows).
+    """
+    try:
+        return client.get_bytes(url, force_refresh=True)
+    except Exception:
+        time.sleep(_RETRY_PAUSE_S)
+        return client.get_bytes(url, force_refresh=True)
 
 
 def populate(
@@ -94,11 +202,15 @@ def populate(
         if entry["form"] != "full" or (only and only not in entry["path"]):
             continue
         try:
-            payload = client.get_bytes(entry["source_url"], force_refresh=True)
+            payload = _fetch_with_retry(client, entry["source_url"])
         except Exception as exc:  # per-row tolerance: report, never starve the rest
             lines.append(f"FAILED {entry['path']} ({type(exc).__name__})")
             continue
-        stored, ok = _stored_form(entry, payload)
+        content = _normalize_content(entry, payload)
+        if content is None:
+            lines.append(f"MISMATCH {entry['path']} (no matching document block)")
+            continue
+        stored, ok = _stored_form(entry, content)
         target = cache_root / entry["path"]
         target.parent.mkdir(parents=True, exist_ok=True)
         atomic_write_bytes(target, stored)
