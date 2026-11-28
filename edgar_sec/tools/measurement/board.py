@@ -69,8 +69,7 @@ def score_board(claimed: set[str], universe: set[str], basis: dict) -> dict:
     """Score one family's claim set against its adjudicated basis.
 
     Precision ranges over adjudicated claims (truth form) or
-    member claims vs the named falses (frame form); recall
-    ranges over members present in the packet's universe.
+    member claims vs named falses; recall over packet members.
     """
     family = basis["family"]
     members_named = basis["members"]
