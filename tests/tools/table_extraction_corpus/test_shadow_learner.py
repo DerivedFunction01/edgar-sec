@@ -11,10 +11,15 @@ from edgar_sec.tools.table_extraction_corpus.shadow_learner import (
     parse_residual_lists,
 )
 
-TRUE_TABLE = "Cash and equivalents | 10 | 20\nTotal assets | 100 | 200"
-FALSE_TABLE = "Notes payable | 5 | 6\nOther current items | 7 | 8"
-TRUE_PROSE = "The balance sheets present the position."
-FALSE_PROSE = "The following table presents the activity."
+BASE_LINES = (
+    "Cash and equivalents | 10 | 20\n"
+    "Notes payable | 5 | 6\n"
+    "Other current items | 7 | 8"
+)
+CARRY_TABLE = BASE_LINES + "\nCombined assets | 100 | 200"
+LACK_TABLE = BASE_LINES + "\nCash and equivalents | 100 | 200"
+SHEET_PROSE = "The balance sheets present the position."
+PLAIN_PROSE = "The balance present position."
 
 
 def _row(sid, family, side, table_text, prose, *, text_source="primary"):
@@ -50,23 +55,31 @@ def _balanced_false_sids(per_half):
 
 def _population():
     rows = [
-        _row(f"1000000001-24-{i:06d}:1", "alpha", "true", TRUE_TABLE, TRUE_PROSE)
-        for i in range(20)
+        _row(f"1000000001-24-{i:06d}:1", "alpha", "true", CARRY_TABLE, SHEET_PROSE)
+        for i in range(8)
+    ]
+    rows += [
+        _row(f"1100000001-24-{i:06d}:1", "alpha", "true", CARRY_TABLE, PLAIN_PROSE)
+        for i in range(6)
+    ]
+    rows += [
+        _row(f"1200000001-24-{i:06d}:1", "alpha", "true", LACK_TABLE, SHEET_PROSE)
+        for i in range(6)
     ]
     alpha_falses = _balanced_false_sids(6)
     rows += [
-        _row(sid, "alpha", "false", FALSE_TABLE, FALSE_PROSE) for sid in alpha_falses
+        _row(sid, "alpha", "false", LACK_TABLE, PLAIN_PROSE) for sid in alpha_falses
     ]
     rows += [
-        _row(f"3000000003-24-{i:06d}:3", "gamma", "true", TRUE_TABLE, TRUE_PROSE)
+        _row(f"3000000003-24-{i:06d}:3", "gamma", "true", CARRY_TABLE, SHEET_PROSE)
         for i in range(4)
     ]
     gamma_falses = [f"4000000004-24-{i:06d}:4" for i in range(4)]
     rows += [
-        _row(sid, "gamma", "false", TRUE_TABLE, TRUE_PROSE) for sid in gamma_falses
+        _row(sid, "gamma", "false", CARRY_TABLE, SHEET_PROSE) for sid in gamma_falses
     ]
     rows += [
-        _row(f"5000000005-24-{i:06d}:5", "beta", "true", TRUE_TABLE, TRUE_PROSE)
+        _row(f"5000000005-24-{i:06d}:5", "beta", "true", CARRY_TABLE, SHEET_PROSE)
         for i in range(2)
     ]
     residuals = {"alpha": alpha_falses, "gamma": gamma_falses}
@@ -91,7 +104,7 @@ def test_certified_conjunction_reproduces():
     named = [
         r
         for r in alpha["supported"]
-        if r["steps"] == [["is", "B:prose:sheets"], ["is", "B:stub:total assets"]]
+        if r["steps"] == [["is", "B:prose:sheets"], ["is", "B:stub:combined assets"]]
     ]
     assert len(named) == 1
     rule = named[0]
