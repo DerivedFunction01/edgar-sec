@@ -39,8 +39,6 @@ _TOKEN_SCRIPT = re.compile(
     rb'(?:/[A-Za-z0-9_\-]+)+" *></script>(?=</body>)',
     re.IGNORECASE,
 )
-# Block spans stay local: the unpacker returns bodies, not whole blocks.
-_RE_DOCUMENT_SPAN = re.compile(rb"(?is)<DOCUMENT>.*?</DOCUMENT>")
 
 
 def default_manifest_path() -> Path:
@@ -118,21 +116,6 @@ def _select_sub_document(
     return None
 
 
-def _block_spans(payload: bytes) -> list[bytes]:
-    """Whole <DOCUMENT> block slices in envelope order, each running
-    through one trailing newline — the form the block captures carry.
-    """
-    spans = []
-    for match in _RE_DOCUMENT_SPAN.finditer(payload):
-        end = match.end()
-        if payload[end : end + 2] == b"\r\n":
-            end += 2
-        elif payload[end : end + 1] == b"\n":
-            end += 1
-        spans.append(payload[match.start() : end])
-    return spans
-
-
 def _extract_document(payload: bytes, entry: dict[str, Any]) -> bytes | None:
     """One document out of a submission payload, in the capture's form
     ("block"/"body"), selected over the unpacker's sub-documents.
@@ -144,10 +127,7 @@ def _extract_document(payload: bytes, entry: dict[str, Any]) -> bytes | None:
         return None
     if entry["extract"] == "body":
         return docs[index].raw_payload
-    spans = _block_spans(content)
-    if index >= len(spans):
-        return None
-    return spans[index]
+    return docs[index].raw_block
 
 
 def _normalize_content(entry: dict[str, Any], payload: bytes) -> bytes | None:

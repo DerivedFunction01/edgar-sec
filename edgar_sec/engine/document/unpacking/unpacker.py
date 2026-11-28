@@ -57,6 +57,9 @@ class SgmlSubDocument:
     description: str | None
     raw_payload: bytes
     is_html: bool
+    # The whole <DOCUMENT>...</DOCUMENT> span as it appears in the source
+    # payload, running through one trailing newline when one is present.
+    raw_block: bytes = b""
 
 
 @dataclass(frozen=True, slots=True)
@@ -161,6 +164,13 @@ def unpack_sgml_submission(raw_bytes: bytes | str) -> list[SgmlSubDocument]:
             or "<!doctype html" in inner_text[:1000].lower()
         )
 
+        block_end = doc_match.end()
+        if text[block_end : block_end + 2] == "\r\n":
+            block_end += 2
+        elif text[block_end : block_end + 1] == "\n":
+            block_end += 1
+        raw_block = text[doc_match.start() : block_end].encode("latin-1")
+
         sub_docs.append(
             SgmlSubDocument(
                 doc_type=doc_type,
@@ -169,6 +179,7 @@ def unpack_sgml_submission(raw_bytes: bytes | str) -> list[SgmlSubDocument]:
                 description=description,
                 raw_payload=payload,
                 is_html=is_html,
+                raw_block=raw_block,
             )
         )
 
