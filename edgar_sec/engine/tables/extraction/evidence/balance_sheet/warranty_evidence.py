@@ -254,7 +254,10 @@ def _f_arms(
     ye_years: set[str] = set()
     for ln, lx in zip(lines_l, lex):
         if (
-            ((MONTH_NAME_WORD_RE.search(ln) or abbrev_re.search(ln)) and _priced_years(ln))
+            (
+                (MONTH_NAME_WORD_RE.search(ln) or abbrev_re.search(ln))
+                and _priced_years(ln)
+            )
             or "year-end" in lx
             or "year end" in lx
         ):
