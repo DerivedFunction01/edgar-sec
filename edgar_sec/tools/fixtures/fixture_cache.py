@@ -36,6 +36,7 @@ _TOKEN_SCRIPT = re.compile(
 )
 _RE_DOCUMENT_BLOCK = re.compile(rb"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
 _RE_BLOCK_FILENAME = re.compile(rb"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
+_RE_BLOCK_TYPE = re.compile(rb"(?im)^\s*<TYPE>\s*([^\r\n<]+)")
 _RE_TEXT_SPAN = re.compile(rb"(?is)<TEXT>(.*?)</TEXT>")
 
 
@@ -96,14 +97,16 @@ def _document_name(entry: dict[str, Any]) -> str | None:
 
 def _document_blocks(
     payload: bytes,
-) -> list[tuple[str, bytes, bytes | None]]:
-    """(filename, block, text span) per <DOCUMENT> block in a submission;
-    block spans are raw byte slices running through one trailing newline.
+) -> list[tuple[str, str, bytes, bytes | None]]:
+    """(filename, type, block, text span) per <DOCUMENT> block in a
+    submission; block spans are raw slices through one trailing newline.
     """
     blocks = []
     for match in _RE_DOCUMENT_BLOCK.finditer(payload):
         name = _RE_BLOCK_FILENAME.search(match.group(1))
         filename = name.group(1).decode("latin-1").strip() if name else ""
+        kind = _RE_BLOCK_TYPE.search(match.group(1))
+        doc_type = kind.group(1).decode("latin-1").strip() if kind else ""
         end = match.end()
         if payload[end : end + 2] == b"\r\n":
             end += 2
@@ -111,37 +114,35 @@ def _document_blocks(
             end += 1
         block = payload[match.start() : end]
         text = _RE_TEXT_SPAN.search(block)
-        blocks.append((filename, block, text.group(1) if text else None))
+        blocks.append((filename, doc_type, block, text.group(1) if text else None))
     return blocks
 
 
 def _text_body(text_span: bytes) -> bytes:
-    """A <TEXT> span's document body: one framing newline off each side."""
-    body = text_span
-    if body.startswith(b"\r\n"):
-        body = body[2:]
-    elif body.startswith(b"\n"):
-        body = body[1:]
-    if body.endswith(b"\r\n"):
-        body = body[:-2]
-    elif body.endswith(b"\n"):
-        body = body[:-1]
-    return body
+    """A <TEXT> span's document body: every framing newline stripped
+    off each side (live spans carry variable framing counts).
+    """
+    return text_span.strip(b"\r\n")
 
 
 def _extract_document(payload: bytes, entry: dict[str, Any]) -> bytes | None:
     """One document out of a submission payload, in the capture's form
-    ("block": the <DOCUMENT> block; "body": its <TEXT> body); None on a miss.
+    ("block"/"body"), keyed by <FILENAME> or, filename-less, by <TYPE>.
     """
     blocks = _document_blocks(payload)
     document_name = _document_name(entry)
     chosen = None
-    for filename, block, text_span in blocks:
+    for filename, _kind, block, text_span in blocks:
         if document_name and filename == document_name:
             chosen = (block, text_span)
             break
+    if chosen is None and entry.get("extract_type") and not any(b[0] for b in blocks):
+        for _name, doc_type, block, text_span in blocks:
+            if doc_type == entry["extract_type"]:
+                chosen = (block, text_span)
+                break
     if chosen is None and len(blocks) == 1:
-        chosen = (blocks[0][1], blocks[0][2])
+        chosen = (blocks[0][2], blocks[0][3])
     if chosen is None:
         return None
     block, text_span = chosen

@@ -118,12 +118,12 @@
   },
   {
    "path": "document/form_18k/0001206212-03-000011__m09206a1e18vkza.txt",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/data/912239/0001206212-03-000011.txt",
    "accession": "0001206212-03-000011",
    "sha256": "3154acaef6af45604b9bcaf1054590fe101ef5923b2598898cc210918f7e4b57",
    "bytes": 6221,
-   "extract": "block"
+   "note": "reclassified from full on the gate9 populate diff (2026-11-28): block extraction from the live submission reproduces the content but not the bytes (+2 B: the served serialization wraps long table-rule lines differently than the captured extraction), so byte-regeneration is disproven; stays tracked as the exercised form, never fetched"
   },
   {
    "path": "document/form_18k/9999999997-02-012414__9999999997-02-012414.paper",
@@ -137,18 +137,20 @@
   {
    "path": "document/form_24f2/0000355348-01-000008__0001.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/355348/000035534801000008/0001.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/355348/0000355348-01-000008.txt",
    "accession": "0000355348-01-000008",
    "sha256": "7259dfc2900e2481a011c66e89deb8b82706a60ae4cd6efd4c293306630fa5f1",
-   "bytes": 4800
+   "bytes": 4800,
+   "extract": "body"
   },
   {
    "path": "document/form_24f2/0000858581-22-000065__primary_doc.xml",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/858581/000085858122000065/primary_doc.xml",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/858581/0000858581-22-000065.txt",
    "accession": "0000858581-22-000065",
    "sha256": "fff065473570829dd9e60d33ff0b792f07497794694b11c4c6a8fb1bc8296f62",
-   "bytes": 3182
+   "bytes": 3182,
+   "extract": "body"
   },
   {
    "path": "document/form_24f2/0000950162-94-000092__24f-2tm.txt",
@@ -157,7 +159,8 @@
    "accession": "0000950162-94-000092",
    "sha256": "557b31f400c64c31997e6b4c4b1e9e4587436546df47d6ea231db378930cb6fa",
    "bytes": 3018,
-   "extract": "body"
+   "extract": "body",
+   "extract_type": "24F-2TM"
   },
   {
    "path": "document/form_24f2/0001116679-04-000921__file01.htm",
@@ -171,19 +174,20 @@
   {
    "path": "document/form_24f2/0001386929-21-000001__stockdivtwenty42020.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1386929/000138692921000001/stockdivtwenty42020.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1386929/0001386929-21-000001.txt",
    "accession": "0001386929-21-000001",
    "sha256": "b3921c6047f9217e89c965fe43206419be8ea740557da88ad6247b447b6f8459",
-   "bytes": 5737
+   "bytes": 5737,
+   "extract": "body"
   },
   {
    "path": "document/form_4017f1/0000912057-00-039288__a40-17f1.txt",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/data/889392/0000912057-00-039288.txt",
    "accession": "0000912057-00-039288",
    "sha256": "3ad73c52419ffb5c02f412a0df9991fefab64d1c29d295b42e66ce2548fa2e18",
    "bytes": 10677,
-   "extract": "block"
+   "note": "reclassified from full on the gate9 populate diff (2026-11-28): block extraction from the live submission reproduces the content but not the bytes (+32 B: the served serialization wraps long table-rule lines differently than the captured extraction), so byte-regeneration is disproven; stays tracked as the exercised form, never fetched"
   },
   {
    "path": "document/form_4017f1/0001111830-13-000443__stralem_4017f1-0513.htm",
@@ -215,10 +219,11 @@
   {
    "path": "document/form_4017f2/0001047469-03-041537__a2125145z40-17f2a.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1047469/000104746903041537/a2125145z40-17f2a.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1047469/0001047469-03-041537.txt",
    "accession": "0001047469-03-041537",
    "sha256": "9ab7e74cdd377c3a962fac4e587245e6d44eb4c75633b0b840b58c7e1aeb4b39",
-   "bytes": 10064
+   "bytes": 10064,
+   "extract": "block"
   },
   {
    "path": "document/form_4017f2/000119312505058584__d4017f2.htm",
@@ -270,10 +275,11 @@
   {
    "path": "document/form_4024b2/0000894189-11-003926__rbc_4024b2-a.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/894189/000089418911003926/rbc_4024b2-a.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/894189/0000894189-11-003926.txt",
    "accession": "0000894189-11-003926",
    "sha256": "d05182a7260a9cd41edebef94e1a271db41bc49fdd5010208f73307e51c411f0",
    "bytes": 67950,
+   "extract": "block",
    "strip_script": true
   },
   {
@@ -335,10 +341,11 @@
   {
    "path": "document/form_n23c/000110465922098710__tm2225392d1_n23c3a.htm",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1104659/000110465922098710/tm2225392d1_n23c3a.htm",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1104659/0001104659-22-098710.txt",
    "accession": "0001104659-22-098710",
    "sha256": "dd406f3e0c6968b8e5c66ba924a357303c04e9358eedff98df483ab7cf5d5640",
    "bytes": 46851,
+   "extract": "block",
    "strip_script": true
   },
   {
@@ -383,9 +390,10 @@
    "form": "full",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1018862/0001086144-00-000101.txt",
    "accession": "0001086144-00-000101",
-   "sha256": "527eeba46ffe8dcb3687cc2cde33f9d644a626ee9336df5985ac79e8e2b0dde1",
-   "bytes": 112241,
-   "extract": "body"
+   "sha256": "35d07611696463699ee86fd67e4b94a0cc6d9c113d259804542641cc08a07822",
+   "bytes": 112226,
+   "extract": "body",
+   "note": "capture-slice artifact: the capture keeps the submission's closing </TEXT> line inside its own tail (phase-3 report section 5); the manifest hash keys the clean body populate extracts: that framing line removed, edge newline runs stripped"
   },
   {
    "path": "document/form_n30d/0001193125-11-244302__dn30da.htm",
@@ -404,7 +412,8 @@
    "accession": "0000806180-21-000025",
    "sha256": "5a92f2bd35a3c8e37a141a093fff6aaf2144ea0b90b9214b5ec4918b6971ea4b",
    "bytes": 160547,
-   "extract": "body"
+   "extract": "body",
+   "strip_script": true
   },
   {
    "path": "document/form_nvp/0000912869-26-000009__a2026-04spinnadvzeroasset.htm",
@@ -413,24 +422,26 @@
    "accession": "0000912869-26-000009",
    "sha256": "a72d353d09ed552028848bba8e79aa41c2adf61469e81b01a5d6f07dc3ee1441",
    "bytes": 3361,
-   "extract": "body"
+   "extract": "body",
+   "strip_script": true
   },
   {
    "path": "document/form_s6/0000875626-03-001585__s487.txt",
    "form": "full",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/875626/000087562603001585/s487.txt",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/875626/0000875626-03-001585.txt",
    "accession": "0000875626-03-001585",
-   "sha256": "d59a093e06a1a3614ed123934b009382cdc816f25bb000401a79665979f0ee71",
-   "bytes": 3142
+   "sha256": "6c09321563c0549dd34ca7e76a820f8346829f690e4f83b406b84ce32e0a2945",
+   "bytes": 3141,
+   "extract": "body"
   },
   {
    "path": "document/form_s6/0001445546-13-000978__s-6.txt",
-   "form": "full",
+   "form": "excerpt",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1560369/0001445546-13-000978.txt",
    "accession": "0001445546-13-000978",
    "sha256": "29c87f583fcc72ef416852353557f5b070997b28edf5ad0b89310d2343741762",
    "bytes": 2567,
-   "extract": "body"
+   "note": "reclassified from full on the gate9 populate diff (2026-11-28): the capture is an excerpt of the filing's S-6 document (the live extracted body runs 184,210 B against this 2,567 B capture), never the whole document; stays tracked as the exercised form, never fetched"
   },
   {
    "path": "earnings/0000943374-04-000332/form8k_042104-ex99.txt.gz",
