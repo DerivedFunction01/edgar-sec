@@ -361,9 +361,12 @@ def test_section_date_keys_expand_against_the_reference_year():
         ("d", "12/31/2021"),
         ("d", "12/31/2022"),
     }
-    assert _section_date_keys("12/31/22", 2023) == _section_date_keys(
-        "12/31/2022", 2023
-    )
+    two_digit = _section_date_keys("12/31/22", 2023)
+    four_digit = _section_date_keys("12/31/2022", 2023)
+    assert {key for key in two_digit if key[0] == "d"} == {
+        key for key in four_digit if key[0] == "d"
+    }
+    assert four_digit - two_digit == {("y", "2022")}
 
 
 def test_section_date_keys_stay_raw_without_a_reference_year():
