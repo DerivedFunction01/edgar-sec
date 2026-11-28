@@ -574,3 +574,141 @@ def test_flags_year_pattern_recomposition_under_a_private_name(
     findings = pattern_registry.scan_pattern_registry()
     assert len(findings) == 2
     assert "YEAR_TOKEN_PATTERN" in findings[0].message
+
+
+def test_flags_vocabulary_build_over_month_names(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)\n"
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "registered vocabulary" in findings[0].message
+
+
+def test_flags_vocabulary_build_in_join_form(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/engine/thing.py": '_MONTH_ALT = "|".join(MONTH_NAMES)\n'},
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "registered vocabulary" in findings[0].message
+
+
+def test_flags_compile_of_a_tainted_vocabulary_build(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)\n"
+                '_MONTH_WORD_RE = re.compile(rf"\\b(?:{_MONTH_ALT})\\b")\n'
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert [f.line for f in findings] == [1, 2]
+    assert "_MONTH_ALT" in findings[1].message
+
+
+def test_flags_literal_list_equal_to_ordinal_membership(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                '_ORDINAL_ALT = build_alternation(["st", "nd", "rd", "th"])\n'
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "membership" in findings[0].message
+
+
+def test_flags_literal_list_equal_to_month_membership(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "_MONTHS = build_alternation("
+                '["january", "february", "march", "april", "may", "june", '
+                '"july", "august", "september", "october", "november", '
+                '"december"])\n'
+            )
+        },
+    )
+    findings = pattern_registry.scan_pattern_registry()
+    assert len(findings) == 1
+    assert "membership" in findings[0].message
+
+
+def test_eleven_month_literal_list_is_not_the_home_membership(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "_MONTHS = build_alternation("
+                '["january", "february", "march", "april", "june", '
+                '"july", "august", "september", "october", "november", '
+                '"december"])\n'
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_allows_consumers_of_homed_date_exports(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "from edgar_sec.foundation.text.date_patterns import (\n"
+                "    MONTH_NAME_WORD_RE,\n"
+                "    MONTH_WORD_RE,\n"
+                ")\n"
+                'HIT = MONTH_WORD_RE.search("x")\n'
+                'OTHER = MONTH_NAME_WORD_RE.search("y")\n'
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_allows_vocabulary_build_in_an_allowlisted_format_module(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/foundation/text/date_formats.py": (
+                "_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)\n"
+                '_MONTH_WORD_RE = re.compile(rf"\\b(?:{_MONTH_ALT})\\b")\n'
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
+
+
+def test_allows_vocabulary_build_at_the_dates_home(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/foundation/text/date_patterns.py": (
+                "_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)\n"
+                '_MONTH_WORD_RE = re.compile(rf"\\b(?:{_MONTH_ALT})\\b")\n'
+            )
+        },
+    )
+    assert pattern_registry.scan_pattern_registry() == []
