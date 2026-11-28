@@ -30,6 +30,12 @@ later drives (derivation self-check, verdict, validation).
   the assembled imposter-census population as kills/touches per family
   and names the residual falses; command form:
   `python -m edgar_sec.tools.table_extraction_corpus.census_pricing <population.jsonl> <pricing.json>`.
+- Claims driving (`claims_driver.py`) stages a fixture corpus, drives
+  the production claim path over it, emits every geometry's claims
+  plus a gold log over a bases file's member sets, and diffs an emit
+  against a gold frame at set level; command forms:
+  `python -m edgar_sec.tools.table_extraction_corpus.claims_driver emit <bases> <out_dir> <fixtures_dir>:<stratum>...`
+  and `python -m edgar_sec.tools.table_extraction_corpus.claims_driver diff <emit_dir> <gold_dir> [--bases <bases>]`.
 - New populations are labelled by `label.py`, the taxonomy lane's XBRL
   alignment method ported verbatim (role-title map, significant-digit
   scoring, schedule signatures, aligned-negative rule); it labels only
