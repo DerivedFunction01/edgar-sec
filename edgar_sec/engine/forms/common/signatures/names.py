@@ -35,7 +35,7 @@ from edgar_sec.foundation.text.date_patterns import (
     MONTH_NAME_RE,
     MONTH_RE,
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
+    FULL_DATE_ANY_RE,
 )
 from edgar_sec.foundation.text.patterns import RE_WHITESPACE
 
@@ -193,7 +193,7 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
             cand = f"{cand}, {rest}"
     cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
     cand = NUMERIC_DATE_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
-    cand = RE_FULL_DATE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
+    cand = FULL_DATE_ANY_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
     words = cand.split()
     if not (2 <= len(words) <= 6):
         return None
