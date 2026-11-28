@@ -5,6 +5,8 @@ extraction and whitespace output, so every use site imports rather than duplicat
 
 from __future__ import annotations
 
+from edgar_sec.foundation.regex.builder import build_alternation
+
 # Blocks that represent distinct paragraphs or headings; delimited with \n\n.
 PARAGRAPH_TAGS: frozenset[str] = frozenset(
     {"p", "blockquote", "h1", "h2", "h3", "h4", "h5", "h6"}
@@ -73,10 +75,14 @@ INLINE_TAGS: frozenset[str] = frozenset(
     }
 )
 
+# Elements whose content never renders as document text.
+NON_DISPLAYING_TAGS = build_alternation(["script", "style", "head"])
+
 __all__ = [
     "BLOCK_TAGS",
     "CONTAINER_BLOCK_TAGS",
     "INLINE_TAGS",
+    "NON_DISPLAYING_TAGS",
     "PARAGRAPH_TAGS",
     "TABLE_AND_PRE_TAGS",
 ]

@@ -14,7 +14,7 @@ from edgar_sec.domain.forms.common.checkmarks import (
     font_bullet_glyph_state,
     font_glyph_state,
 )
-from edgar_sec.engine.document.html.tags import BLOCK_TAGS
+from edgar_sec.engine.document.html.tags import BLOCK_TAGS, NON_DISPLAYING_TAGS
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.normalize import sanitize_unicode_whitespace
 
@@ -455,10 +455,9 @@ _RE_TOC_NAV_LINK = re.compile(
 )
 
 
-_NON_DISPLAYING_TAGS = build_alternation(["script", "style", "head"])
-_RE_HAS_NON_DISPLAYING_BLOCK = re.compile(rf"(?i)<(?:{_NON_DISPLAYING_TAGS})\b")
+_RE_HAS_NON_DISPLAYING_BLOCK = re.compile(rf"(?i)<(?:{NON_DISPLAYING_TAGS})\b")
 _RE_HEAD_SCRIPT_STYLE = re.compile(
-    rf"(?is)<(?:{_NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{_NON_DISPLAYING_TAGS})>"
+    rf"(?is)<(?:{NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{NON_DISPLAYING_TAGS})>"
 )
 
 

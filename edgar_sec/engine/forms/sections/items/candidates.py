@@ -11,6 +11,7 @@ from edgar_sec.engine.forms.sections.models import CandidateKind, SectionCandida
 from edgar_sec.engine.tables.toc.patterns import RE_ITEM_GROUPED, RE_ITEM_HEADING
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import MONTH_NAME_RE
+from edgar_sec.foundation.text.patterns import LEADING_PUNCT_RE
 
 if TYPE_CHECKING:
     from edgar_sec.domain.forms.common.models import ItemDefinition
@@ -29,7 +30,6 @@ _OMITTED_ALT = build_alternation(list(_OMITTED_TERMS), auto_escape=True)
 _RE_OMITTED = re.compile(rf"\b(?:{_OMITTED_ALT})\b", re.IGNORECASE)
 
 _RE_ITEM_TOKEN = re.compile(r"\b\d+[A-Z]?\b", re.IGNORECASE)
-_RE_LEADING_PUNCT = re.compile(r"^[\s:.\-\u2013\u2014]+")
 
 # Lowercase words that occur in running-head furniture (date phrases and
 # status qualifiers) without turning the line into prose.
@@ -286,7 +286,7 @@ def extract_section_candidates(
         grouped_match = RE_ITEM_GROUPED.search(stripped)
         if grouped_match:
             raw_ids = grouped_match.group(0)
-            raw_title = _RE_LEADING_PUNCT.sub(
+            raw_title = LEADING_PUNCT_RE.sub(
                 "", stripped[grouped_match.end() :]
             ).strip()
             item_ids = tuple(token.upper() for token in _RE_ITEM_TOKEN.findall(raw_ids))
@@ -308,7 +308,7 @@ def extract_section_candidates(
         single_match = _RE_ITEM_SINGLE.match(stripped)
         if single_match:
             item_id = single_match.group(1).upper()
-            raw_title = _RE_LEADING_PUNCT.sub("", single_match.group(2)).strip()
+            raw_title = LEADING_PUNCT_RE.sub("", single_match.group(2)).strip()
             is_omitted = bool(_RE_OMITTED.search(raw_title))
             if not raw_title and not is_omitted:
                 for lookahead in range(line_no + 1, min(line_no + 3, len(lines))):

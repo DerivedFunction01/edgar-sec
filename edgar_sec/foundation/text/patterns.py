@@ -12,6 +12,8 @@ RE_COLUMN_GAP = re.compile(r"[ \t]{2,}")
 PAGE_NUMBER_CORE = rf"(?:\d+|{ROMAN_NUMERAL_PATTERN}\b)"
 RE_PAGE_NUMBER_SUFFIX = re.compile(rf"{PAGE_NUMBER_CORE}\s*$", re.IGNORECASE)
 RE_PAGE_REFERENCE = re.compile(r"\bpage\s*(?:no\.?\s*)?[A-Z]?-?\d+", re.IGNORECASE)
+# The punctuation run stripped from the front of a heading's title remainder.
+LEADING_PUNCT_RE = re.compile(r"^[\s:.\-\u2013\u2014]+")
 
 # Amount fragments shared across layers (the layer wall bars domain ->
 # engine imports): a comma-grouped figure, a 1-3 digit head with triples.
@@ -70,6 +72,7 @@ __all__ = [
     "FLOAT_SCALE_ALT",
     "GROUPED_AMOUNT_CORE",
     "ITEM_REFERENCE_CORE",
+    "LEADING_PUNCT_RE",
     "LOOSE_FIGURE_CLASS",
     "PAGE_NUMBER_CORE",
     "PART_REFERENCE_CORE",

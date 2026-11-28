@@ -10,6 +10,7 @@ from collections import defaultdict
 from dataclasses import replace
 
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.tokens import FOOTNOTE_MARKER_CLASS
 
 from ...tokens import is_numeric_cell
 from ..model.balance import balance_span_widths, balanced_wrap_width
@@ -21,7 +22,7 @@ from ..model.model import (
 )
 
 _FOOTNOTE_MARKER_ALTERNATION = build_alternation(
-    [r"\([0-9]{1,2}\)", r"\([a-zA-Z]{1,2}\)", r"[*+†‡§u]+"]
+    [r"\([0-9]{1,2}\)", r"\([a-zA-Z]{1,2}\)", rf"[{FOOTNOTE_MARKER_CLASS}]+"]
 )
 _FOOTNOTE_SUFFIX_RE = re.compile(rf"\s*(?:{_FOOTNOTE_MARKER_ALTERNATION})\s*$")
 

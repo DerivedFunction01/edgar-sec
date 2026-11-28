@@ -77,6 +77,8 @@ def is_wrapped_marker_prefix(value: str) -> bool:
 
 
 FOOTNOTE_MARKERS: frozenset[str] = frozenset({"*", "+", "†", "‡", "§", "u"})
+# The same characters as a bare character-class fragment, for composition.
+FOOTNOTE_MARKER_CLASS = "*+†‡§u"
 FOOTNOTE_MARKER_RE: re.Pattern[str] = re.compile(r"^(?:[*+†‡§u]+)(?:\s+[*+†‡§u]+)*$")
 
 _ROMAN_VALUES = {
@@ -133,6 +135,7 @@ __all__ = [
     "BULLET_MARKER_RE",
     "DELIMITED_ORDERED_MARKER_RE",
     "FOOTNOTE_MARKERS",
+    "FOOTNOTE_MARKER_CLASS",
     "FOOTNOTE_MARKER_RE",
     "GLYPH_BULLET_MARKERS",
     "ORDERED_MARKER_PREFIX_RE",

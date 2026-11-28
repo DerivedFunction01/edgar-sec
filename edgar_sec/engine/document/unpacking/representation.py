@@ -13,6 +13,7 @@ from edgar_sec.engine.document.html.cleaner import (
     clean_html_for_parsing,
     strip_non_displaying_blocks,
 )
+from edgar_sec.engine.document.html.tags import NON_DISPLAYING_TAGS
 from edgar_sec.engine.document.unpacking.ascii_pre import extract_ascii_pre
 from edgar_sec.engine.document.unpacking.unpacker import (
     extract_target_sub_document,
@@ -21,9 +22,8 @@ from edgar_sec.engine.document.unpacking.unpacker import (
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 
-_NON_DISPLAYING_TAGS = build_alternation(["script", "style", "head"])
 _RE_HEAD_SCRIPT_STYLE = re.compile(
-    rf"(?is)<(?:{_NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{_NON_DISPLAYING_TAGS})>"
+    rf"(?is)<(?:{NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{NON_DISPLAYING_TAGS})>"
 )
 
 # Structural and styling discriminators, deliberately excluding the SGML ASCII `<TABLE>`/`<S>`/`<C>`
