@@ -5,17 +5,11 @@ The extraction evidence gates' shared line-level period vocabulary.
 
 from __future__ import annotations
 
-import re
-
-from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
-    MONTH_NAMES,
+    MONTH_NAME_WORD_RE,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_SEARCH_RE,
 )
-
-_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)
-_MONTH_WORD_RE = re.compile(rf"\b(?:{_MONTH_ALT})\b", re.IGNORECASE)
 
 
 def priced_years(line: str) -> list[str]:
@@ -37,7 +31,7 @@ def period_keys(line: str) -> set:
     keys = set()
     for year in priced_years(line):
         keys.add(("y", year))
-    for month in _MONTH_WORD_RE.findall(line):
+    for month in MONTH_NAME_WORD_RE.findall(line):
         keys.add(("m", month.lower()))
     for date in numeric_dates(line):
         keys.add(("d", date))
@@ -53,7 +47,7 @@ def starts_with_numeric_date(stripped: str) -> bool:
 def starts_with_period(line: str) -> bool:
     """A bare line opening with a month, a year, or a date."""
     stripped = line.strip(" |")
-    if _MONTH_WORD_RE.match(stripped):
+    if MONTH_NAME_WORD_RE.match(stripped):
         return True
     if YEAR_TOKEN_SEARCH_RE.match(stripped):
         return True

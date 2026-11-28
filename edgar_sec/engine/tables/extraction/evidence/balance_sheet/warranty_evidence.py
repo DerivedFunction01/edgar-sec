@@ -27,16 +27,19 @@ from edgar_sec.engine.tables.extraction.specs.families.warranty_specs import (
 )
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import MONTH_NAMES, YEAR_TOKEN_PATTERN
+from edgar_sec.foundation.text.date_patterns import (
+    MONTH_NAME_WORD_RE,
+    MONTH_NAMES,
+    STRICT_MONTH_PATTERN,
+    YEAR_TOKEN_PATTERN,
+)
 
 # The priced surface is the measurement packet's: prose and grid
 # text each capped at 6000 chars, as the collect's packet() caps.
 _TEXT_CAP = 6000
 
-_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)
-_MONTH_WORD_RE = re.compile(rf"\b(?:{_MONTH_ALT})\b", re.IGNORECASE)
 _SEC_DATE_RE = re.compile(
-    rf"^(?:(?:{_MONTH_ALT}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN})"
+    rf"^(?:(?:{STRICT_MONTH_PATTERN}) \d{{1,2}}, (?:{YEAR_TOKEN_PATTERN})"
     rf"|\d{{1,2}}/\d{{1,2}}/\d{{2,4}}):?$"
 )
 
@@ -251,7 +254,7 @@ def _f_arms(
     ye_years: set[str] = set()
     for ln, lx in zip(lines_l, lex):
         if (
-            ((_MONTH_WORD_RE.search(ln) or abbrev_re.search(ln)) and _priced_years(ln))
+            ((MONTH_NAME_WORD_RE.search(ln) or abbrev_re.search(ln)) and _priced_years(ln))
             or "year-end" in lx
             or "year end" in lx
         ):

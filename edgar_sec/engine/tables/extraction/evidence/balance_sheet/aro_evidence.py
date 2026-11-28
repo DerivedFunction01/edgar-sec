@@ -15,16 +15,13 @@ from edgar_sec.engine.tables.extraction.specs.families.aro_evidence_specs import
 from edgar_sec.engine.tables.extraction.form_specs.form_test_types import FormTestSpec
 from edgar_sec.engine.tables.extraction.core.text.period_keys import priced_years
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
+    MONTH_NAME_WORD_RE,
     MONTH_NAMES,
     NUMERIC_DATE_RE,
     YEAR_TOKEN_SEARCH_RE,
 )
 
-_MONTH_TOKEN_RE = re.compile(
-    rf"\b(?:{build_alternation(MONTH_NAMES, auto_escape=True, compact=True)})\b"
-)
 _ABBREVIATION_RE = re.compile(r"\baros?\b")
 _PROSE_TAIL = 400
 
@@ -71,7 +68,7 @@ def _windows(text: AroText) -> tuple[str, str, str]:
 
 def _months(line: str) -> list[str]:
     """Full month names on a line, the priced grammar."""
-    return [match.group(0) for match in _MONTH_TOKEN_RE.finditer(line)]
+    return [match.group(0) for match in MONTH_NAME_WORD_RE.finditer(line)]
 
 
 def _numeric_dates(line: str) -> list[str]:
@@ -89,7 +86,7 @@ def _period_keys(line: str) -> set[tuple[str, str]]:
 
 def _opens_with_period(stripped: str) -> bool:
     """A bare dated line: opens with a month, year, or numeric date."""
-    if _MONTH_TOKEN_RE.match(stripped):
+    if MONTH_NAME_WORD_RE.match(stripped):
         return True
     if YEAR_TOKEN_SEARCH_RE.match(stripped):
         return True

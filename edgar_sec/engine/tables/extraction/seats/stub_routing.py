@@ -19,16 +19,14 @@ from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_tex
 from edgar_sec.engine.tables.extraction.core.registry import RESIDUAL_FAMILY
 from edgar_sec.engine.tables.extraction.core.subjects.subject_evidence import load_map
 from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
-from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.date_patterns import MONTH_NAMES
+from edgar_sec.foundation.text.date_patterns import STRICT_MONTH_PATTERN
 
 PROV_S2_DEPTH2_PRICING = "s2-depth2-pricing:2026-11-17"
 
 ROUTING_FAMILIES = ("equity_statement", "fair_value")
 
-_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True)
 CARRIER_RE = re.compile(
-    rf"\b(balance|beginning balance)\b[^|\n]{{0,48}}?\b(?:{_MONTH_ALT})\s+1\b",
+    rf"\b(balance|beginning balance)\b[^|\n]{{0,48}}?\b(?:{STRICT_MONTH_PATTERN})\s+1\b",
     re.IGNORECASE,
 )
 

@@ -21,20 +21,22 @@ from edgar_sec.foundation.text.date_patterns import (
     ISO_DATE_RE,
     MONTH_NAMES,
     NUMERIC_DATE_RE,
+    ORDINAL_SUFFIX_PATTERN,
+    STRICT_MONTH_PATTERN,
     YEAR_TOKEN_PATTERN,
     month_name_to_index,
 )
 
-_MONTH_ALT = build_alternation(MONTH_NAMES, auto_escape=True, compact=True)
-_ORDINAL_ALT = build_alternation(["st", "nd", "rd", "th"], auto_escape=True)
 _RE_DATE_FULL = re.compile(
-    rf"\b({_MONTH_ALT})\s+\d{{1,2}}(?:{_ORDINAL_ALT})?,?\s+"
+    rf"\b({STRICT_MONTH_PATTERN})\s+\d{{1,2}}(?:{ORDINAL_SUFFIX_PATTERN})?,?\s+"
     rf"({YEAR_TOKEN_PATTERN})\b",
     re.IGNORECASE,
 )
-_RE_DATE_MY = re.compile(rf"\b({_MONTH_ALT})\s+({YEAR_TOKEN_PATTERN})\b", re.IGNORECASE)
+_RE_DATE_MY = re.compile(
+    rf"\b({STRICT_MONTH_PATTERN})\s+({YEAR_TOKEN_PATTERN})\b", re.IGNORECASE
+)
 _RE_BARE_END = re.compile(
-    rf"allowance[^\n|]*,\s*(?:{_MONTH_ALT})\s+\d{{1,2}}\b", re.IGNORECASE
+    rf"allowance[^\n|]*,\s*(?:{STRICT_MONTH_PATTERN})\s+\d{{1,2}}\b", re.IGNORECASE
 )
 _RE_ASOF_PREP = re.compile(r"(allowance|balance)[^\n|]*\bas of\b", re.IGNORECASE)
 _RE_ACLTOK = re.compile(r"(?<![a-z])acl(?![a-z])")
@@ -46,7 +48,7 @@ _STUB_PREFIX_ALT = build_alternation(
 )
 _RE_STUB_DATE = re.compile(
     rf"^{_STUB_PREFIX_ALT}?\s*,?\s*"
-    rf"([a-z]+)\s+(\d{{1,2}})(?:{_ORDINAL_ALT})?\s*,?\s*"
+    rf"([a-z]+)\s+(\d{{1,2}})(?:{ORDINAL_SUFFIX_PATTERN})?\s*,?\s*"
     rf"({YEAR_TOKEN_PATTERN})?$"
 )
 _RE_SEP = re.compile(r"[|\n]+")
