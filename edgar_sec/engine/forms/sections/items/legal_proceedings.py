@@ -16,9 +16,9 @@ from edgar_sec.engine.forms.sections.models import (
     ResolvedSection,
     SectionSequence,
 )
+from edgar_sec.foundation.text.patterns import LEADING_PUNCT_RE
 
 _RE_SUBJECT = re.compile(r"legal\s+proceedings", re.IGNORECASE)
-_RE_LEADING_PUNCT = re.compile(r"^[\s:.\-\u2013\u2014]+")
 _RE_SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+")
 _RE_REFERENCE = re.compile(
     r"incorporat|by reference|reference is made|\bsee\b|set forth in"
@@ -43,7 +43,7 @@ def _body_text(sequence: SectionSequence, text: str, section: ResolvedSection) -
     first, _, rest = raw.partition("\n")
     match = _RE_SUBJECT.search(first)
     if match:
-        tail = _RE_LEADING_PUNCT.sub("", first[match.end() :]).strip()
+        tail = LEADING_PUNCT_RE.sub("", first[match.end() :]).strip()
         return "\n".join(part for part in (tail, rest) if part).strip()
     lines = rest.split("\n")
     if lines and " ".join(lines[0].lower().split()).rstrip(" .:") == (
