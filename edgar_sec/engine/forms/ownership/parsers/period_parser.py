@@ -9,7 +9,7 @@ from edgar_sec.engine.forms.common.values.periods import (
     BOX5_SPLIT_RE,
     PERIOD_PREFIX_RE,
 )
-from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.date_patterns import NUMERIC_DATE_RE, FULL_DATE_ANY_RE
 
 _DIGIT_CHAR_RE = re.compile(r"\d")
 
@@ -26,7 +26,7 @@ def parse_period(cell_text: str) -> FilingPeriod:
     ]
     period: str | None = None
     for cleaned in cleaned_lines:
-        if NUMERIC_DATE_RE.search(cleaned) or RE_FULL_DATE.search(cleaned):
+        if NUMERIC_DATE_RE.search(cleaned) or FULL_DATE_ANY_RE.search(cleaned):
             period = cleaned
             break
     if period is None:
@@ -42,7 +42,7 @@ def parse_period(cell_text: str) -> FilingPeriod:
             if not line:
                 continue
             if AMEND_LABEL_RE.match(line):
-                m_label_date = NUMERIC_DATE_RE.search(line) or RE_FULL_DATE.search(line)
+                m_label_date = NUMERIC_DATE_RE.search(line) or FULL_DATE_ANY_RE.search(line)
                 if m_label_date:
                     amend_date = m_label_date.group(0).strip()
                     break
