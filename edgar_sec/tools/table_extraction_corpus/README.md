@@ -35,6 +35,13 @@ later drives (derivation self-check, verdict, validation).
   against a gold frame at set level; command forms:
   `python -m edgar_sec.tools.table_extraction_corpus.claims_driver emit <bases> <out_dir> <fixtures_dir>:<stratum>...`
   and `python -m edgar_sec.tools.table_extraction_corpus.claims_driver diff <emit_dir> <gold_dir> [--bases <bases>]`.
+- Census assembly (`census_assembly.py`) joins the register falses
+  and the per-family adjudicated trues (bases of record, precedence
+  per the census bound) to packet text from every preserved store
+  over a harvested inputs tree, and emits the census population, the
+  assembly account, and the pricing record's residual lists as one
+  artifact; command form:
+  `python -m edgar_sec.tools.table_extraction_corpus.census_assembly <inputs> <out> [--pricing <pricing.json>]`.
 - New populations are labelled by `label.py`, the taxonomy lane's XBRL
   alignment method ported verbatim (role-title map, significant-digit
   scoring, schedule signatures, aligned-negative rule); it labels only
