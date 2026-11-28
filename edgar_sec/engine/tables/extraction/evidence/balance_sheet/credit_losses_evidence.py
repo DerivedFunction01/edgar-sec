@@ -19,7 +19,7 @@ from edgar_sec.engine.tables.extraction.core.typed_rows import TypedTable
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.date_patterns import (
     ISO_DATE_RE,
-    MONTH_NAMES,
+    MONTH_PATTERN,
     NUMERIC_DATE_RE,
     ORDINAL_SUFFIX_PATTERN,
     STRICT_MONTH_PATTERN,
@@ -48,11 +48,10 @@ _STUB_PREFIX_ALT = build_alternation(
 )
 _RE_STUB_DATE = re.compile(
     rf"^{_STUB_PREFIX_ALT}?\s*,?\s*"
-    rf"([a-z]+)\s+(\d{{1,2}})(?:{ORDINAL_SUFFIX_PATTERN})?\s*,?\s*"
+    rf"({MONTH_PATTERN})\s+(\d{{1,2}})(?:{ORDINAL_SUFFIX_PATTERN})?\s*,?\s*"
     rf"({YEAR_TOKEN_PATTERN})?$"
 )
 _RE_SEP = re.compile(r"[|\n]+")
-_MONTH_NAME_SET = frozenset(MONTH_NAMES)
 
 
 def _stub_text(cell: str) -> str:
@@ -183,7 +182,7 @@ def _stub_pair(text: CreditLossesText) -> bool:
     keys: set[tuple[int, int]] = set()
     for stub in text.stubs:
         match = _RE_STUB_DATE.match(stub)
-        if match and match.group(1) in _MONTH_NAME_SET:
+        if match:
             index = month_name_to_index(match.group(1))
             if index is not None:
                 keys.add((index, int(match.group(2))))
