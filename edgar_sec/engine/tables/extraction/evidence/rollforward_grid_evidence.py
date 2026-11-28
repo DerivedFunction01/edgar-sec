@@ -8,6 +8,7 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.engine.tables.numeric_cells import DIGIT_RE, GROUPED_INTEGER_FRAGMENT
+from edgar_sec.foundation.text.dashes import CELL_DASHES
 from edgar_sec.foundation.text.date_patterns import YEAR_TOKEN_SEARCH_RE
 
 _YEAR_RE = YEAR_TOKEN_SEARCH_RE
@@ -17,6 +18,8 @@ _RATE_RE = re.compile(r"\brate\b")
 # is dead on the call path (_cell_value rstrips "%" first), so the
 # verdicts match _NUM_RE exactly, leading-minus rejection included.
 _ROLLFORWARD_NUM_RE = re.compile(rf"^\(?\$?{GROUPED_INTEGER_FRAGMENT}(?:\.\d+)?\)?$")
+# No-value cell tokens: the homed cell dashes plus the star marker.
+_NO_VALUE_TOKENS = CELL_DASHES | {"*"}
 # Word lists ported verbatim from the priced g1 instrument.
 _ANCHOR_WORDS = (
     "balance",
@@ -112,7 +115,7 @@ def _norm_phrase(text: str) -> str:
 
 def _cell_value(cell: str) -> float | None:
     token = cell.strip()
-    if not token or token in {"—", "-", "*", "–"}:
+    if not token or token in _NO_VALUE_TOKENS:
         return None
     core = token.rstrip("%").strip()
     if not _ROLLFORWARD_NUM_RE.match(core):
