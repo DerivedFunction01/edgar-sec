@@ -7,6 +7,9 @@ and filing placement rather than family arithmetic.
 
 from __future__ import annotations
 
+from functools import lru_cache
+
+from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
 from edgar_sec.engine.tables.extraction.form_specs.form_signal_specs import (
     ORIENT_EITHER_AXIS,
     PLACEMENT_SPECS_BY_TEST_ID,
@@ -65,6 +68,13 @@ def _evaluate_row_bound(table: TypedTable, spec: FormTestSpec) -> FormTestOutcom
     )
 
 
+@lru_cache(maxsize=None)
+def _signatures_index(signatures: tuple[str, ...]) -> TermIndex:
+    """One phrase-kind index over an absence spec's signature
+    labels, valued by the label itself."""
+    return TermIndex([TermEntry(term, "signature", value=term) for term in signatures])
+
+
 def _evaluate_absence(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
     params = SIGNATURE_ABSENCE_SPECS_BY_TEST_ID[spec.test_id]
     labels = [normalize_text(row.label) for row in table.rows if row.label]
@@ -80,8 +90,12 @@ def _evaluate_absence(table: TypedTable, spec: FormTestSpec) -> FormTestOutcome:
             "no labels",
         )
     signatures = [normalize_text(term) for term in params.signature_labels]
+    signature_index = _signatures_index(tuple(signatures))
+    present_values: set[str] = set()
+    for label in labels:
+        present_values |= set(signature_index.scan(label).get("signature", frozenset()))
     present = next(
-        (term for term in signatures if any(term in label for label in labels)),
+        (term for term in signatures if term in present_values),
         None,
     )
     detail = (
