@@ -27,7 +27,11 @@ SEC_FILE_BARE_RE = re.compile(r"\b([0-9]{1,3}-[0-9]{4,7})\b")
 # sale-parsing reads of issuer and broker contact fields.
 ZIP_5DIGIT_RE = re.compile(r"^\d{5}$")
 AREA_CODE_3DIGIT_RE = re.compile(r"^\d{3}$")
-_NOTICE_DATE_PAT = rf"({FULL_DATE_ANY_RE.pattern}|{NUMERIC_DATE_RE.pattern})"
+# The embedding stays non-capturing: FULL_DATE_ANY_RE's numeric
+# fragment carries a backreference, so its separator group must
+# remain group 1 of any composition it is embedded in.
+_NOTICE_DATE_PAT = rf"(?:{FULL_DATE_ANY_RE.pattern}|{NUMERIC_DATE_RE.pattern})"
+NOTICE_DATE_VALUE_RE = re.compile(_NOTICE_DATE_PAT, re.IGNORECASE)
 NOTICE_DATE_LABEL_RE = re.compile(
     rf"(?:(?:date of notice|date\s*:?)\s*[:\s]*{_NOTICE_DATE_PAT}|{_NOTICE_DATE_PAT}\s*date of notice)",
     re.IGNORECASE,

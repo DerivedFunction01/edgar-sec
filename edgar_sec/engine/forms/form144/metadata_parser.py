@@ -11,6 +11,7 @@ from edgar_sec.engine.forms.common.signatures.blocks import extract_signature_bl
 from edgar_sec.engine.forms.common.signatures.grid import scan_signature_grid
 from edgar_sec.engine.forms.form144.patterns import (
     NOTICE_DATE_LABEL_RE,
+    NOTICE_DATE_VALUE_RE,
     PLAN_ADOPTION_RE,
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
@@ -132,7 +133,9 @@ def parse_signatures(
     if not notice_date:
         notice_match = NOTICE_DATE_LABEL_RE.search(combined)
         if notice_match:
-            notice_date = (notice_match.group(1) or notice_match.group(2)).strip()
+            value_match = NOTICE_DATE_VALUE_RE.search(notice_match.group(0))
+            if value_match:
+                notice_date = value_match.group(0).strip()
 
     plan_match = PLAN_ADOPTION_RE.search(combined)
     if plan_match:
