@@ -16,6 +16,7 @@ from edgar_sec.engine.tables.extraction.vetoes.term_veto_notes import NOTE_VETO_
 from edgar_sec.engine.tables.extraction.vetoes.term_veto_statements import (
     STATEMENT_VETO_ENTRIES,
 )
+from edgar_sec.foundation.text.date_patterns import MONTH_ALIASES
 
 if TYPE_CHECKING:
     from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
@@ -33,11 +34,91 @@ class VetoSpec:
     terms: tuple[str, ...]
 
 
+def _month_spellings() -> tuple[str, ...]:
+    """The distinct month spellings as the matcher normalizes them."""
+    spellings: list[str] = []
+    for aliases in MONTH_ALIASES:
+        for alias in aliases:
+            spelling = normalize_text(alias)
+            if spelling not in spellings:
+                spellings.append(spelling)
+    return tuple(spellings)
+
+
+_MONTH_SPELLINGS = _month_spellings()
+
+_FYE_FORM_TEMPLATES: dict[str, str] = {
+    "bare": "ended {month}",
+    "span": "three months ended {month}",
+}
+
+
+def fiscal_year_end_terms(forms: tuple[str, ...]) -> tuple[str, ...]:
+    """Fiscal-year-end phrases for the adopted forms, every month."""
+    return tuple(
+        _FYE_FORM_TEMPLATES[form].format(month=spelling)
+        for form in forms
+        for spelling in _MONTH_SPELLINGS
+    )
+
+
+# Fiscal-year-end adoptions (register §1c): the named entries'
+# literal month phrases are replaced at composition by the
+# generated construction, attested forms only.
+_FYE_ADOPTIONS: dict[tuple[str, str, str], tuple[str, ...]] = {
+    ("balance_sheet", "lead", "scored"): ("bare",),
+    ("income_statement", "lead", "scored"): ("bare",),
+    ("income_statement", "body", "scored"): ("span",),
+    ("comprehensive_income", "lead", "scored"): ("bare",),
+    ("cash_flow", "body", "hard"): ("span",),
+    ("cash_flow", "lead", "scored"): ("bare",),
+    ("cash_flow", "body", "scored"): ("span",),
+    ("equity_statement", "lead", "scored"): ("bare",),
+    ("equity_statement", "body", "scored"): ("span",),
+    ("aoci_rollforward", "body", "hard"): ("span",),
+    ("eps_reconciliation", "lead", "scored"): ("bare",),
+    ("eps_reconciliation", "body", "scored"): ("span",),
+    ("deferred_tax", "body", "hard"): ("span",),
+    ("tax_reconciliation", "lead", "hard"): ("bare",),
+    ("tax_reconciliation", "body", "hard"): ("span",),
+    ("intangibles", "body", "hard"): ("span",),
+    ("intangibles", "lead", "scored"): ("bare",),
+    ("pension", "lead", "scored"): ("bare",),
+    ("stock_comp_rollforward", "lead", "scored"): ("bare",),
+}
+
+
+def _expand_fiscal_year_end(
+    entry: tuple[str, str, str, tuple[str, ...]],
+) -> tuple[str, str, str, tuple[str, ...]]:
+    """Splice one entry's generated phrases over its literals."""
+    family, channel, tier, terms = entry
+    forms = _FYE_ADOPTIONS.get((family, channel, tier))
+    if forms is None:
+        return entry
+    literals = {
+        _FYE_FORM_TEMPLATES[form].format(month=spelling)
+        for form in forms
+        for spelling in _MONTH_SPELLINGS
+    }
+    expanded: list[str] = []
+    spliced = False
+    for term in terms:
+        if term in literals:
+            if not spliced:
+                expanded.extend(fiscal_year_end_terms(forms))
+                spliced = True
+            continue
+        expanded.append(term)
+    return (family, channel, tier, tuple(expanded))
+
+
 # Step 6 v2 sets (record: 2026-11-16-greenfield-step6-v2-
 # measurement-record) plus the Step 4 v3 build-act rows (record:
 # greenfield-followup-discovery/step4) and the AOCI held-row release.
 TERM_VETOES: tuple[VetoSpec, ...] = tuple(
-    VetoSpec(*entry) for entry in STATEMENT_VETO_ENTRIES + NOTE_VETO_ENTRIES
+    VetoSpec(*_expand_fiscal_year_end(entry))
+    for entry in STATEMENT_VETO_ENTRIES + NOTE_VETO_ENTRIES
 )
 
 
