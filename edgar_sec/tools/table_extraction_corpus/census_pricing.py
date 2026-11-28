@@ -33,9 +33,7 @@ _NON_ALNUM_SPACE_RE = re.compile(r"[^a-z0-9 ]+")
 _WHITESPACE_RUN_RE = re.compile(r"\s+")
 _NUMBER_TOKEN_RE = re.compile(r"\b\d+\b")
 _DIGIT_RE = re.compile(r"\d")
-_BOOKEND_BEGIN_RE = re.compile(
-    r"beginning|opening balance|balance at (the )?beginning"
-)
+_BOOKEND_BEGIN_RE = re.compile(r"beginning|opening balance|balance at (the )?beginning")
 _BOOKEND_END_RE = re.compile(r"ending|closing balance|balance at (the )?end")
 DATE_RE = re.compile(
     r"\b(" + STRICT_MONTH_PATTERN + r")\s+\d{1,2}\b"
