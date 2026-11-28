@@ -16,7 +16,11 @@ from edgar_sec.engine.tables.extraction.cascade.geometry.detail_signatures impor
 from edgar_sec.engine.tables.extraction.cascade.geometry.geometry_text import (
     GeometryText,
 )
-from edgar_sec.engine.tables.extraction.core.term_index import TermEntry, TermIndex
+from edgar_sec.engine.tables.extraction.core.term_index import (
+    TermEntry,
+    TermIndex,
+    term_present as term_present,
+)
 from edgar_sec.engine.tables.extraction.core.text.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.core.subjects.signature_profiles import (
     CHANNEL_WEIGHTS,
