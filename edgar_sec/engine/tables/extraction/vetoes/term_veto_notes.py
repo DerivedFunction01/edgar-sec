@@ -292,7 +292,6 @@ NOTE_VETO_ENTRIES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
             "revenues",
             "gross profit",
             "net sales",
-            "three months ended march",
         ),
     ),
     (
