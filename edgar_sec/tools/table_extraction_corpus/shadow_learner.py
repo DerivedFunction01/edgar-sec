@@ -315,9 +315,7 @@ def learn_population(rows: list[dict], residuals: dict, pricing: dict) -> dict:
         fset = set(falses)
         targets = [s for s in residuals.get(fam, []) if s in fset]
         census_residual = pricing.get(fam, {}).get("residual", [])
-        results[fam] = learn_family(
-            d["feat"], falses, trues, targets, census_residual
-        )
+        results[fam] = learn_family(d["feat"], falses, trues, targets, census_residual)
     return {
         "population": {
             "rows": len(rows),
