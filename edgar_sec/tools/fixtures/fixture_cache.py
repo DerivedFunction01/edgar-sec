@@ -16,6 +16,11 @@ import sys
 import time
 from typing import Any
 
+from edgar_sec.engine.document.unpacking.unpacker import (
+    SgmlSubDocument,
+    strip_pem_envelope,
+    unpack_sgml_submission,
+)
 from edgar_sec.foundation.runtime.env import get_env
 from edgar_sec.foundation.runtime.paths import dataset_root, resolve_paths
 from edgar_sec.foundation.runtime.settings import resolve_settings
@@ -34,10 +39,8 @@ _TOKEN_SCRIPT = re.compile(
     rb'(?:/[A-Za-z0-9_\-]+)+" *></script>(?=</body>)',
     re.IGNORECASE,
 )
-_RE_DOCUMENT_BLOCK = re.compile(rb"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
-_RE_BLOCK_FILENAME = re.compile(rb"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
-_RE_BLOCK_TYPE = re.compile(rb"(?im)^\s*<TYPE>\s*([^\r\n<]+)")
-_RE_TEXT_SPAN = re.compile(rb"(?is)<TEXT>(.*?)</TEXT>")
+# Block spans stay local: the unpacker returns bodies, not whole blocks.
+_RE_DOCUMENT_SPAN = re.compile(rb"(?is)<DOCUMENT>.*?</DOCUMENT>")
 
 
 def default_manifest_path() -> Path:
@@ -95,62 +98,56 @@ def _document_name(entry: dict[str, Any]) -> str | None:
     return base.split("__", 1)[1] or None
 
 
-def _document_blocks(
-    payload: bytes,
-) -> list[tuple[str, str, bytes, bytes | None]]:
-    """(filename, type, block, text span) per <DOCUMENT> block in a
-    submission; block spans are raw slices through one trailing newline.
+def _select_sub_document(
+    docs: list[SgmlSubDocument], entry: dict[str, Any]
+) -> int | None:
+    """The sub-document an extraction row keys on: <FILENAME> first;
+    the row's extract_type only when no sub-document carries a filename.
     """
-    blocks = []
-    for match in _RE_DOCUMENT_BLOCK.finditer(payload):
-        name = _RE_BLOCK_FILENAME.search(match.group(1))
-        filename = name.group(1).decode("latin-1").strip() if name else ""
-        kind = _RE_BLOCK_TYPE.search(match.group(1))
-        doc_type = kind.group(1).decode("latin-1").strip() if kind else ""
+    document_name = _document_name(entry)
+    if document_name:
+        for index, doc in enumerate(docs):
+            if doc.filename == document_name:
+                return index
+    if entry.get("extract_type") and not any(doc.filename for doc in docs):
+        for index, doc in enumerate(docs):
+            if doc.doc_type == entry["extract_type"]:
+                return index
+    if len(docs) == 1:
+        return 0
+    return None
+
+
+def _block_spans(payload: bytes) -> list[bytes]:
+    """Whole <DOCUMENT> block slices in envelope order, each running
+    through one trailing newline — the form the block captures carry.
+    """
+    spans = []
+    for match in _RE_DOCUMENT_SPAN.finditer(payload):
         end = match.end()
         if payload[end : end + 2] == b"\r\n":
             end += 2
         elif payload[end : end + 1] == b"\n":
             end += 1
-        block = payload[match.start() : end]
-        text = _RE_TEXT_SPAN.search(block)
-        blocks.append((filename, doc_type, block, text.group(1) if text else None))
-    return blocks
-
-
-def _text_body(text_span: bytes) -> bytes:
-    """A <TEXT> span's document body: every framing newline stripped
-    off each side (live spans carry variable framing counts).
-    """
-    return text_span.strip(b"\r\n")
+        spans.append(payload[match.start() : end])
+    return spans
 
 
 def _extract_document(payload: bytes, entry: dict[str, Any]) -> bytes | None:
     """One document out of a submission payload, in the capture's form
-    ("block"/"body"), keyed by <FILENAME> or, filename-less, by <TYPE>.
+    ("block"/"body"), selected over the unpacker's sub-documents.
     """
-    blocks = _document_blocks(payload)
-    document_name = _document_name(entry)
-    chosen = None
-    for filename, _kind, block, text_span in blocks:
-        if document_name and filename == document_name:
-            chosen = (block, text_span)
-            break
-    if chosen is None and entry.get("extract_type") and not any(b[0] for b in blocks):
-        for _name, doc_type, block, text_span in blocks:
-            if doc_type == entry["extract_type"]:
-                chosen = (block, text_span)
-                break
-    if chosen is None and len(blocks) == 1:
-        chosen = (blocks[0][2], blocks[0][3])
-    if chosen is None:
+    content = strip_pem_envelope(payload)
+    docs = unpack_sgml_submission(content)
+    index = _select_sub_document(docs, entry)
+    if index is None:
         return None
-    block, text_span = chosen
-    if entry["extract"] == "block":
-        return block
-    if text_span is None:
+    if entry["extract"] == "body":
+        return docs[index].raw_payload
+    spans = _block_spans(content)
+    if index >= len(spans):
         return None
-    return _text_body(text_span)
+    return spans[index]
 
 
 def _normalize_content(entry: dict[str, Any], payload: bytes) -> bytes | None:
