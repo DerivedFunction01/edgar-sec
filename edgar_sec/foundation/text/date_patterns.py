@@ -142,22 +142,27 @@ MONTH_NAME_WORD_RE = re.compile(rf"\b(?:{_MONTH_NAME_PATTERN})\b", re.IGNORECASE
 
 _DAY_FIRST_DATE_PAT = (
     rf"\d{{1,2}}(?:{ORDINAL_SUFFIX_PATTERN})?\s+(?:{MONTH_PATTERN}),?\s+"
-    rf"{YEAR_TOKEN_PATTERN}"
+    rf"(?:{YEAR_TOKEN_PATTERN}|\d{{2}})"
+)
+
+
+_DAY_FIRST_DASH_DATE_PAT = (
+    rf"\d{{1,2}}-(?:{MONTH_PATTERN})-(?:\d{{4}}|\d{{2}})"
 )
 
 
 _ISO_DATE_PAT = r"\d{4}-\d{2}-\d{2}"
 
 
-_NUMERIC_DATE_PAT = r"\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}"
+_NUMERIC_DATE_PAT = r"\d{1,2}([-/])\d{1,2}\1(?:\d{4}|\d{2})"
 
 
-# Every evidence-backed full-date spelling in one recognizer:
-# Month-first, day-first, ISO, and numeric slash/dash/dot.
-# Validation runs through the parse core.
+# Full-date recognizer of record: Month-first "MonthName DD[,] YYYY";
+# day-first "DD[ordinal] MonthName YYYY" / "DD-MonthName-YYYY" (2- or
+# 4-digit year); ISO YYYY-MM-DD; numeric either-order (uniform / or -).
 FULL_DATE_ANY_RE = re.compile(
-    rf"\b(?:{_DATE_TOKEN_PAT}|{_DAY_FIRST_DATE_PAT}|{_ISO_DATE_PAT}|"
-    rf"{_NUMERIC_DATE_PAT})\b",
+    rf"\b(?:{_DATE_TOKEN_PAT}|{_DAY_FIRST_DATE_PAT}|"
+    rf"{_DAY_FIRST_DASH_DATE_PAT}|{_ISO_DATE_PAT}|{_NUMERIC_DATE_PAT})\b",
     re.IGNORECASE,
 )
 
@@ -282,7 +287,9 @@ __all__ = [
     "REPORT_QUARTER_ENDED_RE",
     "RE_DATE_OR_YEAR",
     "RE_FULL_DATE",
+    "FULL_DATE_ANY_RE",
     "FULL_DATE_STUB_RE",
+    "MONTH_NAME_WORD_RE",
     "STRICT_MONTH_PATTERN",
     "TABLE_YEAR_RE",
     "YEAR_IN_TEXT_RE",
