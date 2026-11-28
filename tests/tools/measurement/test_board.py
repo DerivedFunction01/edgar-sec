@@ -49,8 +49,14 @@ def test_truth_form_board():
         "keying": "bare",
         "members": {"a", "b", "c", "d"},
         "falses": set(),
-        "truth": {"a": "fair_value", "b": "fair_value", "c": "fair_value",
-                  "d": "fair_value", "x": "fair_value", "y": "pension"},
+        "truth": {
+            "a": "fair_value",
+            "b": "fair_value",
+            "c": "fair_value",
+            "d": "fair_value",
+            "x": "fair_value",
+            "y": "pension",
+        },
     }
     board = score_board({"a", "b", "x", "y"}, {"a", "b", "c", "d", "x", "y"}, basis)
     assert board["member_claims"] == 2
@@ -62,19 +68,29 @@ def test_truth_form_board():
 
 
 def test_labels_form_full_keying(tmp_path):
-    basis_path = _write(tmp_path / "basis.json", {
-        "family": "lease_maturity",
-        "keying": "full",
-        "members": ["k1#0", "k2#0", "k3#0"],
-        "truth": {"k1#0": "lease_maturity", "k2#0": "lease_maturity",
-                  "k3#0": "lease_maturity", "k4#0": "other"},
-    })
-    packet = _packet(tmp_path / "rows.jsonl", [
-        {"specimen": "k1#0", "claims": ["lease_maturity"]},
-        {"specimen": "k2#0", "claims": []},
-        {"specimen": "k3#0", "claims": ["debt_maturity"]},
-        {"specimen": "k4#0", "claims": ["lease_maturity"]},
-    ])
+    basis_path = _write(
+        tmp_path / "basis.json",
+        {
+            "family": "lease_maturity",
+            "keying": "full",
+            "members": ["k1#0", "k2#0", "k3#0"],
+            "truth": {
+                "k1#0": "lease_maturity",
+                "k2#0": "lease_maturity",
+                "k3#0": "lease_maturity",
+                "k4#0": "other",
+            },
+        },
+    )
+    packet = _packet(
+        tmp_path / "rows.jsonl",
+        [
+            {"specimen": "k1#0", "claims": ["lease_maturity"]},
+            {"specimen": "k2#0", "claims": []},
+            {"specimen": "k3#0", "claims": ["debt_maturity"]},
+            {"specimen": "k4#0", "claims": ["lease_maturity"]},
+        ],
+    )
     board = run_score(packet, load_basis(basis_path))
     assert board["member_claims"] == 1
     assert board["true_claims"] == 1
@@ -85,17 +101,23 @@ def test_labels_form_full_keying(tmp_path):
 
 
 def test_bare_keying_collapses_occurrences(tmp_path):
-    basis_path = _write(tmp_path / "basis.json", {
-        "family": "intangibles",
-        "keying": "bare",
-        "members": ["acc:1"],
-        "falses": [],
-    })
-    packet = _packet(tmp_path / "rows.jsonl", [
-        {"specimen": "acc:1#0", "claims": ["intangibles"]},
-        {"specimen": "acc:1#1", "claims": ["intangibles"]},
-        {"specimen": "acc:2#0", "claims": []},
-    ])
+    basis_path = _write(
+        tmp_path / "basis.json",
+        {
+            "family": "intangibles",
+            "keying": "bare",
+            "members": ["acc:1"],
+            "falses": [],
+        },
+    )
+    packet = _packet(
+        tmp_path / "rows.jsonl",
+        [
+            {"specimen": "acc:1#0", "claims": ["intangibles"]},
+            {"specimen": "acc:1#1", "claims": ["intangibles"]},
+            {"specimen": "acc:2#0", "claims": []},
+        ],
+    )
     board = run_score(packet, load_basis(basis_path))
     assert board["member_claims"] == 1
     assert board["fn"] == 0
@@ -109,10 +131,14 @@ def test_joint_objective_points_of_record():
 
 
 def test_fidelity_diff():
-    board = {"member_claims": 111, "false_claims": 1, "fn": 4,
-             "P": 0.9911, "R": 0.9652}
-    expected = {"member_claims": 111, "false_claims": 1, "fn": 4,
-                "P": 0.9911, "R": 0.9652}
+    board = {"member_claims": 111, "false_claims": 1, "fn": 4, "P": 0.9911, "R": 0.9652}
+    expected = {
+        "member_claims": 111,
+        "false_claims": 1,
+        "fn": 4,
+        "P": 0.9911,
+        "R": 0.9652,
+    }
     assert fidelity_diff(board, expected) == []
     assert fidelity_diff(board, {"P": 0.99}) == [
         {"cell": "P", "got": 0.9911, "want": 0.99}
@@ -120,24 +146,31 @@ def test_fidelity_diff():
 
 
 def test_cli_score_and_verify(tmp_path):
-    basis_path = _write(tmp_path / "basis.json", {
-        "family": "intangibles",
-        "keying": "bare",
-        "members": ["m1", "m2"],
-        "falses": ["f1"],
-    })
-    packet = _packet(tmp_path / "rows.jsonl", [
-        {"specimen": "m1#0", "claims": ["intangibles"]},
-        {"specimen": "f1#0", "claims": ["intangibles"]},
-    ])
+    basis_path = _write(
+        tmp_path / "basis.json",
+        {
+            "family": "intangibles",
+            "keying": "bare",
+            "members": ["m1", "m2"],
+            "falses": ["f1"],
+        },
+    )
+    packet = _packet(
+        tmp_path / "rows.jsonl",
+        [
+            {"specimen": "m1#0", "claims": ["intangibles"]},
+            {"specimen": "f1#0", "claims": ["intangibles"]},
+        ],
+    )
     out = tmp_path / "board.json"
     assert main(["score", str(packet), str(basis_path), "--out", str(out)]) == 0
     board = json.loads(out.read_text())
     assert board["member_claims"] == 1
     assert board["false_claims"] == 1
-    expected = _write(tmp_path / "expected.json",
-                      {"member_claims": 1, "false_claims": 1, "fn": 0,
-                       "P": 0.5, "R": 1.0})
+    expected = _write(
+        tmp_path / "expected.json",
+        {"member_claims": 1, "false_claims": 1, "fn": 0, "P": 0.5, "R": 1.0},
+    )
     assert main(["verify", str(packet), str(basis_path), str(expected)]) == 0
     wrong = _write(tmp_path / "wrong.json", {"member_claims": 2})
     assert main(["verify", str(packet), str(basis_path), str(wrong)]) == 1
