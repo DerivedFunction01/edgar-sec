@@ -29,6 +29,17 @@ under `configs/`; a driver run is:
 - `reread_build` / `reread_score` — the blind re-read: seeded
   subsample under blind IDs, then flip/class-agreement scoring
   (workdir and seed from config).
+- `board` — the family board runner: one family's claim packet
+  (an emit's rows, e.g. from the corpus tool's claims driver)
+  scored against its adjudicated basis (family, keying, members,
+  named falses and/or truth labels in one JSON), joint P / R / J
+  over the basis frame; `verify` reproduces a prior board of
+  record cell-for-cell before a new board is read (argv: packet,
+  basis[, expected]).
+- `pricing` — the generic rule-pricing evaluator: a packet
+  (specimens, adjudicated bases, rule specs as data) priced into
+  cells — claims, kills, touches, and combination cells in the
+  necessary, kill, and selection forms (argv: packet, out).
 
 Proof of the move: re-running `merge` and `reread_score` from this
 package over the sealed Step 6 workspace reproduces its recorded
