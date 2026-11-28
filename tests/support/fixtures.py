@@ -109,6 +109,56 @@ def benchmark_taxonomy_dir() -> Path:
     return root
 
 
+_CAPTURED_MANIFEST = FIXTURES / "captured_manifest.json"
+_captured_full_names: frozenset[str] | None = None
+
+
+def _captured_full_fixtures() -> frozenset[str]:
+    """Captured fixtures the cache serves: the manifest's full-form rows."""
+    global _captured_full_names
+    if _captured_full_names is None:
+        payload = json.loads(_CAPTURED_MANIFEST.read_text(encoding="utf-8"))
+        _captured_full_names = frozenset(
+            entry["path"] for entry in payload["fixtures"] if entry["form"] == "full"
+        )
+    return _captured_full_names
+
+
+def _captured_cache_path(name: str) -> Path:
+    """One captured fixture's path inside the untracked fixture cache."""
+    from edgar_sec.tools.fixtures.fixture_cache import cache_path
+
+    return cache_path(name)
+
+
+def _index_pages_dir() -> Path:
+    """The index-pages dir: tracked members composed with cached daily files."""
+    sources: dict[str, bytes] = {}
+    for member in sorted((FIXTURES / "index_pages").iterdir()):
+        if member.is_file():
+            sources[member.name] = member.read_bytes()
+    for name in sorted(_captured_full_fixtures()):
+        if not name.startswith("index_pages/"):
+            continue
+        cached = _captured_cache_path(name)
+        if not cached.is_file():
+            raise FileNotFoundError(
+                f"captured fixture {name} is not in the fixture cache; "
+                "run python -m edgar_sec.tools.fixtures.fixture_cache"
+            )
+        sources[Path(name).name] = cached.read_bytes()
+    digest = hashlib.sha256()
+    for member in sorted(sources):
+        digest.update(member.encode("utf-8"))
+        digest.update(sources[member])
+    root = Path(tempfile.gettempdir()) / "edgar-index-pages" / digest.hexdigest()[:16]
+    if not (root / "ground_truth.json").is_file():
+        root.mkdir(parents=True, exist_ok=True)
+        for member, payload in sources.items():
+            (root / member).write_bytes(payload)
+    return root
+
+
 def _generated_catalog_path(name: str) -> Path | None:
     """The generated catalog fixtures, materialized from authored rows."""
     from tests.support.catalog_fixtures import (
@@ -138,6 +188,10 @@ def _resolve_fixture(name: str) -> Path:
         "xbrl/taxonomy/prime_heads.json",
     ):
         return _package_taxonomy_dir() / Path(name).name
+    if name == "index_pages":
+        return _index_pages_dir()
+    if name in _captured_full_fixtures():
+        return _captured_cache_path(name)
     return FIXTURES / name
 
 

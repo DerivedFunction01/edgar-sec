@@ -66,6 +66,15 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
                 description="XBRL corpus root override; empty means the artifacts-root convention",
             ),
         },
+        "fixtures": {
+            "cache_root": SettingSpec(
+                value_type=Path,
+                default="",
+                env=True,
+                machine_local=True,
+                description="captured-fixture cache root override; empty means the artifacts-root convention",
+            ),
+        },
         "cache": {
             "root": SettingSpec(
                 value_type=Path,

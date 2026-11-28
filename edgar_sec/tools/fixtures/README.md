@@ -24,6 +24,10 @@ shards, and prices it, and candidates are scored for tagged content.
   policy --auto-policy` selection is not scoped by `--forms`.
 - **Per-family policy documents**: Family fixtures use a scoped per-family
   policy document (precedents: `form144-htm-v1`, `form15-htm-v1`).
+- **Captured fixtures re-fetch by manifest**: `fixture_cache` populates the
+  untracked captured-fixture cache from
+  `tests/fixtures/captured_manifest.json`; full-form rows verify against
+  the manifest sha256, live-form rows fetch only as the dynamic-proof diff.
 
 ## Deliberate gaps
 
