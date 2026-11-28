@@ -85,7 +85,9 @@ def _is_table_i_header(row: tuple[str, ...]) -> bool:
     lower_cells = [" ".join(c.lower().split()) for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) or FULL_DATE_ANY_RE.search(c) for c in lower_cells):
+    if any(
+        NUMERIC_DATE_RE.search(c) or FULL_DATE_ANY_RE.search(c) for c in lower_cells
+    ):
         return False
     row_str = " ".join(lower_cells)
     if "table i" in row_str or "securities to be sold" in row_str:
@@ -107,7 +109,9 @@ def _is_table_ii_header(row: tuple[str, ...]) -> bool:
     lower_cells = [" ".join(c.lower().split()) for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) or FULL_DATE_ANY_RE.search(c) for c in lower_cells):
+    if any(
+        NUMERIC_DATE_RE.search(c) or FULL_DATE_ANY_RE.search(c) for c in lower_cells
+    ):
         return False
     row_str = " ".join(lower_cells)
     if "table ii" in row_str or "sold during the past" in row_str:
