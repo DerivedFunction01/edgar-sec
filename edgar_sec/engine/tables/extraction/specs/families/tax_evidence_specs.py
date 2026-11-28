@@ -7,6 +7,9 @@ from dataclasses import dataclass
 from edgar_sec.engine.tables.extraction.core.subjects.profile_constants import (
     PROV_RULING18_PRICING,
 )
+from edgar_sec.engine.tables.extraction.vetoes.term_vetoes import (
+    fiscal_year_end_terms,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,7 +36,7 @@ TAX_EVIDENCE_SPECS: dict[str, TaxEvidenceSpec] = {
         stub_anchor_terms=("statutory", "computed expected", "expected federal"),
         lead_context_terms=("tax",),
         seat_veto_precedence_terms=(
-            "ended march",
+            *fiscal_year_end_terms(("bare",)),
             "total",
             "months ended",
             "form 10-k",
