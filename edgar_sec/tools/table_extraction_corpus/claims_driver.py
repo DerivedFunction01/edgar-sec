@@ -1,9 +1,8 @@
 """Production claims emit/read driver over a staged fixture corpus.
 
-Stages fixture filings, drives the production claim path
-(compete_filing over structured geometry texts), emits every
-geometry's claims plus a gold log over a bases file's member
-sets, and diffs an emit against a gold frame at set level.
+Stages fixture filings, drives the production claim path, emits
+every geometry's claims plus a gold log over a bases file's
+member sets, and diffs an emit against a gold frame at set level.
 """
 
 from __future__ import annotations
