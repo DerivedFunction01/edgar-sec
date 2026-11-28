@@ -81,7 +81,6 @@ _FYE_ADOPTIONS: dict[tuple[str, str, str], tuple[str, ...]] = {
     ("deferred_tax", "body", "hard"): ("span",),
     ("tax_reconciliation", "lead", "hard"): ("bare",),
     ("tax_reconciliation", "body", "hard"): ("span",),
-    ("intangibles", "body", "hard"): ("span",),
     ("intangibles", "lead", "scored"): ("bare",),
     ("pension", "lead", "scored"): ("bare",),
     ("stock_comp_rollforward", "lead", "scored"): ("bare",),
