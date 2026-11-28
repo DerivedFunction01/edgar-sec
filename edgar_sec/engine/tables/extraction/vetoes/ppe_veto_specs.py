@@ -21,6 +21,7 @@ LEG_WEAK_SIGNATURE = "B6sig5div1"
 LEG_COEX_LEAD = "AcoexLead"
 LEG_STATEMENT_FORM = "Bstmt30x100"
 LEG_CORE_FLOOR = "COREfloor"
+LEG_CORE_BAND = "COREband"
 
 HOST_MIN_SHARED_KEYS = 2
 LEAD_BALANCE_MIN = 0.4
@@ -59,6 +60,11 @@ CORE_FLOOR_TERMS = (
     "vehicles",
     "construction in progress",
 )
+
+# The core band: the floor's companion condition, priced
+# as the core<3 band point (post-composition census
+# 45T/1F, enlarged recall .7329, J .7845).
+CORE_BAND_MAX = 2
 
 # PPE asset-class terms: a geometry's class diversity is
 # the count of these terms its normalized stubs carry.

@@ -15,6 +15,7 @@ from edgar_sec.engine.tables.extraction.specs.families.ppe_specs import (
 from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     ADMISSION_FORM_TEST_DETAILS,
     CLASS_TERMS,
+    CORE_BAND_MAX,
     CORE_FLOOR_TERMS,
     DISCIPLINE_CLASS_MIN,
     DISCIPLINE_NUMERIC_MIN,
@@ -22,6 +23,7 @@ from edgar_sec.engine.tables.extraction.vetoes.ppe_veto_specs import (
     LEAD_BALANCE_MIN,
     LEG_COEX_LEAD,
     LEG_CONTEXT_CARRIED,
+    LEG_CORE_BAND,
     LEG_CORE_FLOOR,
     LEG_LEAD_BALANCE,
     LEG_STATEMENT_FORM,
@@ -228,6 +230,19 @@ def _core_floor_fires(geometry) -> bool:
     return not any(term in text for term in CORE_FLOOR_TERMS)
 
 
+def _core_band_fires(geometry) -> bool:
+    """At most two deep-core terms in the table's own
+    text: the claim's core evidence is present but thin.
+    A geometry with no table text is not evaluable; the
+    band abstains, as the floor does."""
+    text = normalize_text(
+        " ".join([*geometry.stubs, *geometry.headers, geometry.grid_text])
+    )
+    if not text:
+        return False
+    return sum(1 for term in CORE_FLOOR_TERMS if term in text) <= CORE_BAND_MAX
+
+
 def _fired_legs(geometries, results, stages, index):
     """Every priced leg firing on one PPE-claimed geometry."""
     geometry = geometries[index]
@@ -254,6 +269,8 @@ def _fired_legs(geometries, results, stages, index):
     # legs carry core terms by construction.
     if _core_floor_fires(geometry):
         legs.append(LEG_CORE_FLOOR)
+    if _core_band_fires(geometry):
+        legs.append(LEG_CORE_BAND)
     return tuple(legs)
 
 

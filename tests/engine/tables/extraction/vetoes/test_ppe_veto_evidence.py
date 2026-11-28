@@ -514,3 +514,17 @@ def test_core_floor_fires_on_a_form_test_admission_seat():
     results = _apply([geo], [_seated_result(9.0, {"stub": 9.0}, _BOTH_PASSED)])
     assert "ppe" not in results[0].claims
     assert _gate_details(results[0]) == ["ppe veto: COREfloor"]
+
+
+def test_core_band_removes_claim_with_thin_core():
+    geo = GeometryText(stubs=("Land", "Buildings"))
+    results = _apply([geo], [_result(("ppe",), channels={"ppe": {"stub": 11.0}})])
+    assert "ppe" not in results[0].claims
+    assert _gate_details(results[0]) == ["ppe veto: COREband"]
+
+
+def test_core_band_keeps_claim_with_three_core_terms():
+    geo = GeometryText(stubs=("Land", "Buildings", "Equipment"))
+    results = _apply([geo], [_result(("ppe",))])
+    assert "ppe" in results[0].claims
+    assert _gate_details(results[0]) == []
